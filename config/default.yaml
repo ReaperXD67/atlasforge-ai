@@ -1,0 +1,128 @@
+channel:
+  name: "Atomy, Explained"
+  language: "en"
+  region: "US"
+  timezone: "Asia/Kolkata"
+  audience:
+    - passive income
+    - online business
+    - entrepreneurship
+    - work from home
+    - side hustle
+    - productivity
+    - Korean skincare
+    - supplements
+    - financial freedom
+    - business mindset
+  disclosure: >-
+    This video uses AI-assisted production, including an AI-generated narration voice.
+    It is educational and is not financial, medical, or income advice. Results and
+    experiences vary. Atomy is discussed as one option, not as a guaranteed outcome.
+
+schedule:
+  hour: 7
+  minute: 0
+  upload_privacy: private
+  publish_hour: 18
+  catch_up_if_missed: true
+
+research:
+  seed_topics:
+    - online business for beginners
+    - realistic side hustle
+    - Korean skincare routine
+    - supplement habits
+    - productivity for entrepreneurs
+    - ethical network marketing
+    - financial freedom habits
+    - work from home systems
+  reddit_subreddits: [Entrepreneur, sidehustle, productivity, SkincareAddiction]
+  max_candidates: 40
+  request_timeout_seconds: 15
+
+script:
+  target_minutes: 7
+  words_per_minute: 145
+  min_words: 900
+  max_words: 1150
+  brand_mention_min_fraction: 0.55
+  brand_mention_max_fraction: 0.85
+  text_providers: [gemini, openrouter, ollama]
+  openrouter_model: "google/gemini-2.5-flash-lite"
+  gemini_model: "gemini-3.1-flash-lite"
+  ollama_model: "qwen2.5:7b-instruct-q4_K_M"
+
+storyboard:
+  target_scene_seconds: 16
+  min_scene_seconds: 8
+  max_scene_seconds: 24
+  max_scenes: 32
+
+voice:
+  providers: [openai, gemini, kokoro, piper]
+  openai_model: gpt-4o-mini-tts
+  openai_voice: coral
+  openai_instructions: >-
+    Warm, trustworthy documentary narration. Natural conversational rhythm,
+    restrained enthusiasm, precise pronunciation, and brief pauses between ideas.
+  gemini_model: gemini-2.5-flash-preview-tts
+  gemini_voice: Kore
+  kokoro_voice: af_heart
+  sample_rate: 24000
+  target_lufs: -16
+
+images:
+  providers: [pexels, title_card]
+  width: 1920
+  height: 1080
+  pexels_orientation: landscape
+
+video:
+  width: 1920
+  height: 1080
+  fps: 30
+  codec: h264_nvenc
+  fallback_codec: libx264
+  crf: 19
+  preset: p5
+  premium_providers: [veo, minimax]
+  enable_premium_scenes: false
+  premium_max_scenes_per_video: 1
+  premium_daily_budget_usd: 0.50
+  veo_model: veo-3.1-lite-generate-preview
+  veo_estimated_usd_per_second: 0.05
+  minimax_model: MiniMax-Hailuo-2.3-Fast
+  minimax_resolution: 768P
+  minimax_estimated_usd_per_clip: 0.30
+  cloud_clip_seconds: 8
+  transition_seconds: 0.35
+
+audio:
+  music_volume_db: -27
+  sfx_volume_db: -19
+  generate_original_music: true
+  sidechain_ratio: 8
+
+subtitles:
+  burn_in: true
+  max_words_per_caption: 7
+  font_name: Segoe UI Semibold
+  font_size: 56
+  highlight_color: "&H0037E6FF"
+
+publishing:
+  enabled: false
+  category_id: "27"
+  made_for_kids: false
+  contains_synthetic_media: true
+  upload_thumbnail: true
+  upload_caption_track: false
+
+runtime:
+  output_directory: output
+  retries: 3
+  retry_min_seconds: 2
+  retry_max_seconds: 30
+  stage_timeout_minutes: 45
+  keep_intermediates: true
+  fail_on_quality_gate: true
