@@ -16,7 +16,10 @@ from .pipeline import DailyVideoPipeline
 from .publishing.youtube import YouTubePublisher
 from .scheduler import run_scheduler
 
-app = typer.Typer(no_args_is_help=True, help="Build one complete, policy-aware YouTube video per day.")
+app = typer.Typer(
+    no_args_is_help=True,
+    help="AtlasForge AI builds one complete, policy-aware YouTube video per day.",
+)
 console = Console()
 
 

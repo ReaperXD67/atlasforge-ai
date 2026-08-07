@@ -20,7 +20,7 @@ class TopicResearcher:
         self.timeout = settings.research.request_timeout_seconds
         self.log = get_logger(component="research")
         self.headers = {
-            "User-Agent": "DailyVideoFactory/0.1 (+https://github.com/ReaperXD67/daily-video-factory)"
+            "User-Agent": "AtlasForgeAI/0.2 (+https://github.com/ReaperXD67/atlasforge-ai)"
         }
 
     def _youtube_suggestions(self) -> list[ResearchItem]:
@@ -162,4 +162,3 @@ class TopicResearcher:
                 "Any product, financial, supplement, or skincare claim must be verified before publication.",
             ],
         )
-

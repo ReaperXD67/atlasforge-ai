@@ -42,5 +42,4 @@ if (-not (Test-Path -LiteralPath '.env')) {
 
 Write-Host ''
 Write-Host 'Installation complete.' -ForegroundColor Green
-Write-Host 'Next: edit .env, then run .\.venv\Scripts\dailyvideo.exe doctor'
-
+Write-Host 'Next: edit .env, then run .\.venv\Scripts\atlasforge.exe doctor'

@@ -3,13 +3,13 @@ requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
 
 [project]
-name = "daily-video-factory"
-version = "0.1.0"
-description = "Local-first, policy-aware daily YouTube video automation with budgeted premium shots"
+name = "atlasforge-ai"
+version = "0.2.0"
+description = "AtlasForge AI: local-first, policy-aware daily YouTube production automation"
 readme = "README.md"
 requires-python = ">=3.11,<3.14"
 license = { text = "MIT" }
-authors = [{ name = "Daily Video Factory contributors" }]
+authors = [{ name = "AtlasForge AI contributors" }]
 keywords = ["youtube", "automation", "ffmpeg", "ai-video", "tts"]
 classifiers = [
   "Development Status :: 4 - Beta",
@@ -60,6 +60,8 @@ all = [
 ]
 
 [project.scripts]
+atlasforge = "daily_video_factory.cli:app"
+# Backward-compatible alias for existing scheduled tasks and installations.
 dailyvideo = "daily_video_factory.cli:app"
 
 [tool.hatch.build.targets.wheel]

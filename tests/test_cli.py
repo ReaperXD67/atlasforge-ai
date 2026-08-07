@@ -6,6 +6,7 @@ from daily_video_factory.cli import app
 def test_cli_help_loads() -> None:
     result = CliRunner().invoke(app, ["--help"])
     assert result.exit_code == 0
+    assert "AtlasForge AI" in result.output
     assert "doctor" in result.output
     assert "youtube-auth" in result.output
 
