@@ -1,4 +1,4 @@
-# Publishing and claims policy
+# AtlasForge AI publishing and claims policy
 
 This is an engineering guardrail, not legal advice.
 
@@ -32,4 +32,3 @@ Automation can run unattended after setup. Still schedule a non-editing governan
 - after YouTube policy changes: update prompts, gates, disclosures, and documentation.
 
 If a quality gate blocks a video, resolve the underlying content or configuration issue. Do not disable `fail_on_quality_gate` merely to maintain the one-video-per-day cadence.
-

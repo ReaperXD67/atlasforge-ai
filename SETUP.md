@@ -1,4 +1,4 @@
-# Fresh Windows laptop → unattended daily pipeline
+# AtlasForge AI: Fresh Windows laptop → unattended daily pipeline
 
 This guide starts from a clean Windows 11 laptop and ends with a tested, scheduled pipeline. Do the credential and channel setup once; no manual editing is required after that, although you should review early runs and periodically audit facts, audience response, and policy compliance.
 
@@ -55,8 +55,8 @@ GitHub explains the pointer model and plan limits in its [Git LFS documentation]
 ## 3. Clone and install
 
 ```powershell
-git clone https://github.com/ReaperXD67/daily-video-factory.git
-Set-Location daily-video-factory
+git clone https://github.com/ReaperXD67/atlasforge-ai.git
+Set-Location atlasforge-ai
 Set-ExecutionPolicy -Scope Process Bypass
 .\scripts\install.ps1
 Copy-Item .env.example .env
@@ -216,7 +216,7 @@ Publishing is optional and disabled until this is complete.
 8. Run:
 
 ```powershell
-.\.venv\Scripts\dailyvideo.exe youtube-auth
+.\.venv\Scripts\atlasforge.exe youtube-auth
 ```
 
 9. Approve the `youtube.upload` scope in the browser. The refresh token is saved as `secrets/youtube_token.json` and is ignored by Git.
@@ -254,9 +254,9 @@ Do not put secrets in YAML. Every secret belongs in `.env` or `secrets/`.
 ## 9. First validation
 
 ```powershell
-.\.venv\Scripts\dailyvideo.exe doctor
+.\.venv\Scripts\atlasforge.exe doctor
 .\.venv\Scripts\python.exe -m pytest
-.\.venv\Scripts\dailyvideo.exe run --topic "A realistic framework for evaluating side hustles" --no-upload
+.\.venv\Scripts\atlasforge.exe run --topic "A realistic framework for evaluating side hustles" --no-upload
 ```
 
 Inspect:
@@ -275,7 +275,7 @@ The first production-quality 7-minute render may take 15–45 minutes depending 
 Test the dashboard:
 
 ```powershell
-.\.venv\Scripts\dailyvideo.exe dashboard
+.\.venv\Scripts\atlasforge.exe dashboard
 ```
 
 Open `http://127.0.0.1:8741`.
@@ -314,4 +314,3 @@ Never paste an API key into source, GitHub Actions logs, issue text, or screensh
 ## 12. Expected recurring cost
 
 With premium scenes disabled and Gemini's eligible free tier, cost can approach zero beyond electricity. A practical quality configuration with paid TTS and one low-cost LLM call is commonly well under $1/video. Enabling one 8-second Veo Lite clip adds about $0.40 at the current documented rate; standard Veo is much more expensive. See [COSTS.md](COSTS.md) and always confirm live provider pricing before enabling billing.
-

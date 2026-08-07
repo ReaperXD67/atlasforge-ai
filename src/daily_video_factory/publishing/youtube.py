@@ -48,7 +48,7 @@ class YouTubePublisher:
             credentials.refresh(Request())
         if not credentials or not credentials.valid:
             if not interactive:
-                raise ConfigurationError("YouTube authorization is required; run dailyvideo youtube-auth")
+                raise ConfigurationError("YouTube authorization is required; run atlasforge youtube-auth")
             flow = InstalledAppFlow.from_client_secrets_file(
                 str(self.client_secrets), [YOUTUBE_UPLOAD_SCOPE]
             )
@@ -123,4 +123,3 @@ class YouTubePublisher:
                 media_body=MediaFileUpload(str(subtitles), mimetype="application/octet-stream"),
             ).execute()
         return str(video_id)
-

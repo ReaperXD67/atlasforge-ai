@@ -64,8 +64,8 @@ class OpenRouterTextProvider(TextProvider):
             headers={
                 "Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}",
                 "Content-Type": "application/json",
-                "HTTP-Referer": "https://github.com/ReaperXD67/daily-video-factory",
-                "X-OpenRouter-Title": "Daily Video Factory",
+                "HTTP-Referer": "https://github.com/ReaperXD67/atlasforge-ai",
+                "X-OpenRouter-Title": "AtlasForge AI",
             },
             json={
                 "model": self.model,

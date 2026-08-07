@@ -1,4 +1,4 @@
-# Architecture
+# AtlasForge AI architecture
 
 ## Design goals
 
@@ -64,4 +64,3 @@ To add a video provider, implement `PremiumVideoProvider.generate(scene, output)
 - Preview model IDs and prices change. They are configuration, not hard-coded invariants.
 - Pexels images may include people or marks that make a particular use inappropriate even when API access is allowed.
 - Consumer Google AI credits and Developer API billing are separate product contexts unless Google explicitly connects them for your account.
-

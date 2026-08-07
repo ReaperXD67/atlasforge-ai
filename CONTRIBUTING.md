@@ -1,4 +1,4 @@
-# Contributing
+# Contributing to AtlasForge AI
 
 1. Create a branch from `main`.
 2. Use Python 3.11 or 3.12.
@@ -8,4 +8,3 @@
 6. New paid providers must declare a conservative cost estimate and remain behind the daily budget scheduler.
 7. New media sources must save provenance/license metadata.
 8. Policy gates may become stricter; do not weaken them without an explicit documented rationale and tests.
-

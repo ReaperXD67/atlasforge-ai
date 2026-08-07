@@ -1,4 +1,4 @@
-# Cost model
+# AtlasForge AI cost model
 
 Provider prices and free tiers change. The values below are planning assumptions as of 7 August 2026; confirm the linked live pages before enabling paid features.
 
@@ -45,4 +45,3 @@ The MiniMax package system uses model-dependent units and package pricing, so th
 - The roughly $5 OpenRouter balance should be reserved for scripts, not video. One structured call per day stretches it far longer than multi-agent/script/storyboard/SEO calls.
 - A Google AI subscription can include AI Studio and product credits, but Google says each product has its own usage limits. Confirm Developer API billing and Veo entitlement inside the exact Cloud project instead of assuming consumer credits pay API invoices.
 - The RTX 4070 Laptop GPU is best used for NVENC, optional 7B quantized Ollama, local TTS, and perhaps image generation—not long-form local text-to-video.
-
