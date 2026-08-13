@@ -15,6 +15,7 @@ class FFmpeg:
         self.executable = executable or os.getenv("FFMPEG_PATH") or shutil.which("ffmpeg") or ""
         self.ffprobe = ffprobe or os.getenv("FFPROBE_PATH") or shutil.which("ffprobe") or ""
         self.log = get_logger(component="ffmpeg")
+        self._encoder_probe_cache: dict[str, bool] = {}
 
     @property
     def available(self) -> bool:
@@ -80,8 +81,48 @@ class FFmpeg:
         )
         return completed.returncode == 0 and encoder in completed.stdout
 
+    def can_encode(self, encoder: str) -> bool:
+        """Probe an encoder with a real frame; a listed NVENC encoder may still lack driver support."""
+        if encoder in self._encoder_probe_cache:
+            return self._encoder_probe_cache[encoder]
+        if not self.executable or not self.has_encoder(encoder):
+            self._encoder_probe_cache[encoder] = False
+            return False
+        try:
+            completed = subprocess.run(
+                [
+                    self.executable,
+                    "-hide_banner",
+                    "-nostdin",
+                    "-loglevel",
+                    "error",
+                    "-f",
+                    "lavfi",
+                    "-i",
+                    "color=c=black:s=256x256:r=1",
+                    "-frames:v",
+                    "1",
+                    "-c:v",
+                    encoder,
+                    "-f",
+                    "null",
+                    "-",
+                ],
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+                timeout=20,
+                check=False,
+            )
+        except (OSError, subprocess.TimeoutExpired):
+            self._encoder_probe_cache[encoder] = False
+            return False
+        result = completed.returncode == 0
+        self._encoder_probe_cache[encoder] = result
+        return result
+
     @staticmethod
     def filter_path(path: Path) -> str:
         value = path.resolve().as_posix().replace(":", r"\:").replace("'", r"\'")
         return value
-

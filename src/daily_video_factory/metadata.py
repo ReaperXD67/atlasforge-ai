@@ -14,6 +14,11 @@ def _font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.I
     choices = [
         Path("C:/Windows/Fonts/segoeuib.ttf" if bold else "C:/Windows/Fonts/segoeui.ttf"),
         Path("C:/Windows/Fonts/arialbd.ttf" if bold else "C:/Windows/Fonts/arial.ttf"),
+        Path(
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+            if bold
+            else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+        ),
     ]
     for path in choices:
         if path.exists():
@@ -60,12 +65,17 @@ def build_metadata(script: ScriptDocument, storyboard: Storyboard, settings: Set
         label_words = re.findall(r"[A-Za-z0-9'-]+", scene.narration)[:7]
         chapters.append(f"{_chapter_time(start_times[index])} {' '.join(label_words).rstrip('.,:;')}")
     summary = textwrap.shorten(script.body[0], width=480, placeholder="…")
+    sources = ""
+    if script.source_urls:
+        sources = "\n\nOFFICIAL SOURCES\n" + "\n".join(
+            f"- {url}" for url in script.source_urls
+        )
     description = (
         f"{summary}\n\n"
         "In this educational breakdown, we separate useful business and lifestyle principles "
         "from hype, then look at Atomy as one possible option—not a guaranteed shortcut.\n\n"
         f"{settings.channel.disclosure}\n\n"
-        "CHAPTERS\n" + "\n".join(chapters) + "\n\n"
+        "CHAPTERS\n" + "\n".join(chapters) + sources + "\n\n"
         "#OnlineBusiness #SideHustle #BusinessMindset"
     )
     thumbnail_text = " ".join(re.findall(r"[A-Za-z0-9]+", title)[:6]).upper()
@@ -109,4 +119,3 @@ def build_thumbnail(background: Path, metadata: VideoMetadata, output: Path) -> 
     output.parent.mkdir(parents=True, exist_ok=True)
     result.save(output, format="JPEG", quality=94, optimize=True)
     return output
-

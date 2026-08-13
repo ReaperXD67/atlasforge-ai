@@ -9,6 +9,8 @@
 - Expensive generation is selected by scene value and bounded by a daily cap.
 - Policy failures stop upload.
 - Secrets never enter manifests or logs.
+- Brand-specific instructions are grounded in a dated official-source pack.
+- Encoder selection is based on a real test frame, not advertised FFmpeg capability.
 
 ## Layers
 
@@ -48,6 +50,23 @@ Storyboard scenes receive a `premium_score` from hook position, product relevanc
 - `premium_daily_budget_usd`
 
 A failed or over-budget premium scene falls back to local motion from a licensed/source-recorded still. Cost entries are persisted in `manifest.json`.
+
+## Editorial grounding
+
+The configured topic rotation keeps the channel focused on Atomy onboarding, sponsor selection,
+membership choices, PV, and decision criteria instead of allowing unrelated trending topics to take
+over the calendar. Trend and social results influence search intent only. Specific U.S. registration
+and compensation statements are supplied from dated official Atomy summaries, while claim guidance
+comes from the FTC. Brand-focused scripts may name Atomy in the hook; general education videos retain
+the late-brand-mention gate. A stale source pack blocks brand-focused scripts.
+
+## Local media path
+
+Scenes use eased Ken Burns motion at 60 fps and overlap by the configured crossfade duration. Each
+non-final scene receives enough visual tail padding to keep the finished duration equal to narration
+duration after overlap. Caption timing uses local faster-whisper when available and falls back to
+deterministic word pacing. FFmpeg encoders must successfully encode a real frame; an unusable NVENC
+build automatically yields to `libx264`.
 
 ## Extension examples
 

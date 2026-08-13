@@ -47,3 +47,13 @@ def test_quality_gate_accepts_education_first_script(settings) -> None:
     prefix = " ".join(["Evaluate demand, time, skills, costs, and risk before choosing a model."] * 18)
     suffix = " ".join(["Atomy is one optional example to compare against retail and service alternatives."] * 14)
     assert validate_script(make_script(f"{prefix} {suffix}"), settings) == []
+
+
+def test_quality_gate_allows_direct_brand_topic_when_grounded(settings) -> None:
+    text = " ".join(
+        ["Atomy registration should be evaluated carefully against official requirements."] * 24
+    )
+    script = make_script(text)
+    script.brand_focused = True
+    script.source_urls = [settings.research.official_sources[0].url]
+    assert validate_script(script, settings) == []

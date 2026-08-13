@@ -59,10 +59,24 @@ def test_real_ffmpeg_render_mix_and_subtitles(tmp_path: Path, monkeypatch) -> No
     image_provider = TitleCardImageProvider(settings)
     renderer = VideoRenderer(settings, FFmpeg())
     rendered = []
-    for scene in scenes:
+    for position, scene in enumerate(scenes):
         image = image_provider.generate(scene, tmp_path / f"scene_{scene.index}.jpg")
-        rendered.append(renderer.render_scene(scene, image, tmp_path / f"scene_{scene.index}.mp4"))
-    silent = renderer.concatenate(rendered, tmp_path / "silent.mp4")
+        duration = scene.duration_seconds
+        if position < len(scenes) - 1:
+            duration += settings.video.transition_seconds
+        rendered.append(
+            renderer.render_scene(
+                scene,
+                image,
+                tmp_path / f"scene_{scene.index}.mp4",
+                duration_seconds=duration,
+            )
+        )
+    silent = renderer.concatenate(
+        rendered,
+        tmp_path / "silent.mp4",
+        [scene.duration_seconds for scene in scenes],
+    )
     narration = generate_original_music(6, tmp_path / "narration.wav")
     music = generate_original_music(6, tmp_path / "music.wav")
     sfx = generate_sfx_track(board, 6, tmp_path / "sfx.wav")
@@ -72,4 +86,3 @@ def test_real_ffmpeg_render_mix_and_subtitles(tmp_path: Path, monkeypatch) -> No
     final = renderer.finish(silent, mixed, ass, tmp_path / "final.mp4")
     assert final.stat().st_size > 100_000
     assert 5.5 <= FFmpeg().duration(final) <= 6.5
-

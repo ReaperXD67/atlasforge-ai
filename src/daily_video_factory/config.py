@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 import os
+from datetime import date
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 import yaml
 from dotenv import load_dotenv
@@ -28,8 +29,19 @@ class ScheduleConfig(BaseModel):
     catch_up_if_missed: bool = True
 
 
+class OfficialSourceConfig(BaseModel):
+    title: str
+    url: str
+    checked_on: date
+    summary: str
+
+
 class ResearchConfig(BaseModel):
     seed_topics: list[str]
+    editorial_topics: list[str] = Field(default_factory=list)
+    rotate_editorial_topics: bool = True
+    official_sources: list[OfficialSourceConfig] = Field(default_factory=list)
+    max_official_source_age_days: int = Field(default=90, ge=1)
     reddit_subreddits: list[str] = Field(default_factory=list)
     max_candidates: int = 40
     request_timeout_seconds: int = 15
@@ -82,6 +94,7 @@ class VideoConfig(BaseModel):
     fallback_codec: str = "libx264"
     crf: int = 19
     preset: str = "p5"
+    fallback_preset: str = "fast"
     premium_providers: list[str]
     enable_premium_scenes: bool = False
     premium_max_scenes_per_video: int = 1
@@ -108,6 +121,10 @@ class SubtitleConfig(BaseModel):
     font_name: str = "Segoe UI Semibold"
     font_size: int = 56
     highlight_color: str = "&H0037E6FF"
+    alignment: Literal["auto", "estimated", "whisper"] = "auto"
+    whisper_model: str = "small.en"
+    whisper_device: str = "auto"
+    whisper_compute_type: str = "default"
 
 
 class PublishingConfig(BaseModel):
@@ -121,6 +138,7 @@ class PublishingConfig(BaseModel):
 
 class RuntimeConfig(BaseModel):
     output_directory: Path = Path("output")
+    model_directory: Path = Path("models")
     retries: int = 3
     retry_min_seconds: int = 2
     retry_max_seconds: int = 30
@@ -147,6 +165,11 @@ class Settings(BaseModel):
     def output_directory(self) -> Path:
         env_path = os.getenv("OUTPUT_DIRECTORY")
         return Path(env_path) if env_path else self.runtime.output_directory
+
+    @property
+    def model_directory(self) -> Path:
+        env_path = os.getenv("MODEL_DIRECTORY")
+        return Path(env_path) if env_path else self.runtime.model_directory
 
 
 def _deep_merge(base: dict[str, Any], overlay: dict[str, Any]) -> dict[str, Any]:

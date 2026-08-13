@@ -18,18 +18,18 @@ The diagram is the product vision. The repository implements the complete core p
 
 | Stage | Status | What ships now | Difference from the target diagram |
 | --- | --- | --- | --- |
-| 1. Research and topic discovery | Partial | Google Trends RSS, YouTube autocomplete, and Reddit signals with ranked topic candidates | News and competitor-analysis adapters are roadmap items |
+| 1. Research and topic discovery | Implemented | Rotating Atomy editorial calendar, pinned official/regulatory source pack, Google Trends RSS, YouTube autocomplete, and Reddit audience signals | Source summaries intentionally require a periodic human refresh |
 | 2. Script generation | Implemented | Gemini, OpenRouter, or local Ollama; structured hook, chapters, body, CTA, sources, and disclosure | SEO is finalized later in the metadata stage |
 | 3. Storyboard planner | Implemented | Deterministic scene descriptions, timing, camera, environment, characters, emotion, lighting, SFX, transitions, and prompts | Defaults to 8-24 second scenes with a 32-scene cap, not 50-70 scenes |
 | 4. Smart scene scheduler | Implemented | Scores scenes, selects budgeted premium clips, then falls back to local FFmpeg motion | Veo and MiniMax Hailuo are cloud options; "MiniMax H3 local" is not a supported engine |
 | 5. Audio pipeline | Implemented | OpenAI TTS, Gemini TTS, local Kokoro, or local Piper; normalization, original music/SFX, ducking, and mixing | Provider choice is configured through fallback order |
-| 6. Video composition | Mostly implemented | Scene rendering, cloud-clip normalization, fades, zoom/pan motion, stitching, audio sync, captions, and FFmpeg final render | No semantic AI color-matching pass yet |
+| 6. Video composition | Mostly implemented | Eased 60 fps push/pan motion, true crossfades, cloud-clip normalization, audio sync, speech-aligned captions, runtime-probed GPU encoding, and FFmpeg final render | No semantic AI color-matching pass yet |
 | 7. QA and quality control | Partial | Script-policy validation plus duration, file-size, scene-count, chapter, thumbnail, and media checks | AI visual inspection and comprehensive factual/copyright scanning are roadmap items |
 | 8. SEO and metadata | Implemented | CTR-oriented title, description, tags, hashtags, chapters/timestamps, category, and disclosures | End-screen suggestions are not generated yet |
 | 9. Thumbnail generation | Partial | Automatic 1280x720 local composition from a scene image and generated copy | Flux/Imagen/SD concept generation and CTR ranking are roadmap items |
 | 10. Publishing automation | Partial | YouTube OAuth upload, scheduling, privacy, thumbnail, and optional captions | Cards, community posts, and analytics ingestion are roadmap items |
 
-The diagram's PostgreSQL, Redis, cloud-backup, notification, and model-manager boxes are also roadmap items. The current single-workstation design uses SQLite, filesystem artifacts, structured logs, retries, checkpoints, an overlap lock, and per-run cost records. That is simpler and less expensive for one daily job; PostgreSQL and Redis become useful when the system is distributed across multiple workers.
+The diagram's PostgreSQL, Redis, cloud-backup, notification, and model-manager boxes are also roadmap items. The current single-workstation design uses SQLite, filesystem artifacts, structured logs, retries, checkpoints, an overlap lock, and per-run cost records. That is simpler and less expensive for one daily job; PostgreSQL and Redis become useful when the system is distributed across multiple workers. Docker profiles now provide CPU-safe, GPU-render, and fully local Ollama execution without introducing distributed infrastructure.
 
 ## Actual runtime flow
 
@@ -52,9 +52,10 @@ The target diagram proposed "MiniMax H3 running locally" as the standard-scene e
 AtlasForge AI therefore uses:
 
 - free research signals and one structured LLM script call;
+- a rotating Atomy onboarding curriculum grounded in locally pinned official U.S. and FTC sources;
 - provider fallbacks for text and speech generation;
 - Pexels photography or project-owned local editorial cards;
-- deterministic FFmpeg motion, pacing, captions, and hardware encoding;
+- eased 60 fps FFmpeg motion, crossfades, Whisper-aligned captions, and runtime-verified hardware encoding;
 - original procedural ambient music and transition SFX;
 - only the configured number of premium Veo or MiniMax clips, behind a hard daily USD budget;
 - checkpointed artifacts and SQLite state so failed runs resume instead of restarting.
@@ -97,6 +98,8 @@ notepad .env
 ```
 
 The installer does not create API credentials or enable billing. Complete [SETUP.md](SETUP.md) before the first production run.
+
+For an isolated GPU/local-AI runtime, use the three Compose profiles in [Local and Docker operation](docs/LOCAL_DOCKER.md).
 
 ## Commands
 

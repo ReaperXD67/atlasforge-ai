@@ -36,6 +36,51 @@ research:
     - ethical network marketing
     - financial freedom habits
     - work from home systems
+  editorial_topics:
+    - "How to join Atomy USA: consumer vs distributor registration"
+    - "What an Atomy sponsor does and what to check before registering"
+    - "The Atomy compensation plan explained without income hype"
+    - "Atomy consumer membership: a practical first-time walkthrough"
+    - "How to decide whether Atomy fits your goals, budget, and time"
+    - "Questions to ask before joining Atomy as a distributor"
+    - "Atomy membership requirements, verification, and common registration mistakes"
+    - "How to read Atomy PV and commissions without confusing revenue with profit"
+  rotate_editorial_topics: true
+  max_official_source_age_days: 90
+  official_sources:
+    - title: Atomy USA Membership Registration User Guide
+      url: https://us.atomy.com/cst/userGuide/24100000001691
+      checked_on: 2026-08-12
+      summary: >-
+        The U.S. guide separates Consumer and Distributor registration. Both flows include
+        membership selection, acceptance of terms, U.S. mobile verification, personal
+        information, sponsor designation, review, and confirmation. Distributor registration
+        additionally requests Social Security and bank information. A sponsor may be selected
+        automatically or manually.
+    - title: Atomy America Member Agreement
+      url: https://us.atomy.com/common/footerTermsInfo?isHtml=Y&tabIndex=1
+      checked_on: 2026-08-12
+      summary: >-
+        The agreement says applicants must be legal U.S. residents who are at least 18,
+        apply under their legal name with valid identification, provide accurate information,
+        and receive company approval. Members are independent participants rather than company
+        employees and are responsible for their own taxes and expenses.
+    - title: Atomy USA Compensation Plan
+      url: https://us.atomy.com/cst/marketingPlan
+      checked_on: 2026-08-12
+      summary: >-
+        The official plan describes PV-based dealership classes, qualification thresholds,
+        general commissions, and mastership bonuses. Qualification and incentive figures are
+        conditional and subject to plan rules, sales activity, exchange rates, and change; the
+        page does not establish what a typical individual will earn after expenses.
+    - title: FTC Business Guidance Concerning Multi-Level Marketing
+      url: https://www.ftc.gov/business-guidance/resources/business-guidance-concerning-multi-level-marketing
+      checked_on: 2026-08-12
+      summary: >-
+        FTC staff guidance says earnings and lifestyle claims must be truthful, substantiated,
+        and representative of what the intended audience is likely to achieve after typical
+        expenses. A generic results-vary disclaimer does not repair a misleading claim, and
+        testimonials or limited-hours claims need reliable evidence.
   reddit_subreddits: [Entrepreneur, sidehustle, productivity, SkincareAddiction]
   max_candidates: 40
   request_timeout_seconds: 15
@@ -80,11 +125,12 @@ images:
 video:
   width: 1920
   height: 1080
-  fps: 30
+  fps: 60
   codec: h264_nvenc
   fallback_codec: libx264
   crf: 19
   preset: p5
+  fallback_preset: fast
   premium_providers: [veo, minimax]
   enable_premium_scenes: false
   premium_max_scenes_per_video: 1
@@ -95,7 +141,7 @@ video:
   minimax_resolution: 768P
   minimax_estimated_usd_per_clip: 0.30
   cloud_clip_seconds: 8
-  transition_seconds: 0.35
+  transition_seconds: 0.55
 
 audio:
   music_volume_db: -27
@@ -109,6 +155,10 @@ subtitles:
   font_name: Segoe UI Semibold
   font_size: 56
   highlight_color: "&H0037E6FF"
+  alignment: auto
+  whisper_model: small.en
+  whisper_device: auto
+  whisper_compute_type: default
 
 publishing:
   enabled: false
@@ -120,6 +170,7 @@ publishing:
 
 runtime:
   output_directory: output
+  model_directory: models
   retries: 3
   retry_min_seconds: 2
   retry_max_seconds: 30

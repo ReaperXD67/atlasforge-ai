@@ -147,13 +147,7 @@ class DailyVideoPipeline:
                 research_file = paths.research / "research.json"
 
                 def research_operation() -> ResearchReport:
-                    report = TopicResearcher(self.settings).run(publication_date)
-                    if topic_override:
-                        report.selected_title = topic_override
-                        report.selected_angle = (
-                            f"Create an education-first, skeptical beginner guide about '{topic_override}', "
-                            "using Atomy only as a neutral optional example."
-                        )
+                    report = TopicResearcher(self.settings).run(publication_date, topic_override)
                     paths.write_json("research/research.json", report)
                     return report
 
@@ -273,14 +267,32 @@ class DailyVideoPipeline:
 
                 def render_operation() -> Path:
                     rendered: list[Path] = []
-                    for scene in storyboard.scenes:
+                    scene_count = len(storyboard.scenes)
+                    for position, scene in enumerate(storyboard.scenes):
                         output = paths.videos / f"scene_{scene.index:03d}.mp4"
+                        visual_duration = scene.duration_seconds
+                        if position < scene_count - 1:
+                            visual_duration += self.settings.video.transition_seconds
                         if scene.index in premium:
-                            renderer.normalize_cloud_scene(scene, premium[scene.index], output)
+                            renderer.normalize_cloud_scene(
+                                scene,
+                                premium[scene.index],
+                                output,
+                                duration_seconds=visual_duration,
+                            )
                         else:
-                            renderer.render_scene(scene, images[scene.index], output)
+                            renderer.render_scene(
+                                scene,
+                                images[scene.index],
+                                output,
+                                duration_seconds=visual_duration,
+                            )
                         rendered.append(output)
-                    return renderer.concatenate(rendered, silent_video)
+                    return renderer.concatenate(
+                        rendered,
+                        silent_video,
+                        [scene.duration_seconds for scene in storyboard.scenes],
+                    )
 
                 if not (resume and self.store.stage_completed(manifest.run_id, "render") and silent_video.exists()):
                     self._execute("render", manifest, paths, render_operation)
@@ -290,7 +302,12 @@ class DailyVideoPipeline:
 
                 def subtitle_operation() -> Path:
                     cues = write_subtitles(
-                        script, audio_duration, srt_file, ass_file, self.settings
+                        script,
+                        audio_duration,
+                        srt_file,
+                        ass_file,
+                        self.settings,
+                        narration=narration,
                     )
                     paths.write_json("subtitles/cues.json", [cue.model_dump() for cue in cues])
                     return ass_file

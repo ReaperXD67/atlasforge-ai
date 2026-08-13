@@ -9,7 +9,9 @@ This is an engineering guardrail, not legal advice.
 - No cure, treatment, prevention, diagnosis, or guaranteed skincare/supplement result.
 - No invented ingredient, certification, compensation-plan, price, or clinical-study detail.
 - No simulated testimonial presented as real.
-- Atomy appears only after meaningful independent education and is compared with alternatives.
+- General education topics mention Atomy only after meaningful independent value. Explicit Atomy
+  registration or membership topics may name it immediately so the hook answers the stated question,
+  but must remain source-grounded, comparative, and non-coercive.
 - The CTA asks for engagement or further learning, not pressure to buy or join.
 - Disclose AI-generated narration and meaningfully realistic synthetic footage.
 - Mark paid promotion when an applicable relationship or benefit exists.
@@ -29,6 +31,7 @@ Automation can run unattended after setup. Still schedule a non-editing governan
 - weekly: inspect policy/quality reports and viewer feedback;
 - monthly: audit a sample of product/financial claims and source licenses;
 - after provider/model changes: run a private test video before unattended publishing;
+- every 90 days or after an Atomy policy change: refresh the pinned official-source summaries;
 - after YouTube policy changes: update prompts, gates, disclosures, and documentation.
 
 If a quality gate blocks a video, resolve the underlying content or configuration issue. Do not disable `fail_on_quality_gate` merely to maintain the one-video-per-day cadence.

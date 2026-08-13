@@ -21,6 +21,11 @@ def _font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.I
     candidates = [
         Path("C:/Windows/Fonts/segoeuib.ttf" if bold else "C:/Windows/Fonts/segoeui.ttf"),
         Path("C:/Windows/Fonts/arialbd.ttf" if bold else "C:/Windows/Fonts/arial.ttf"),
+        Path(
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+            if bold
+            else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+        ),
     ]
     for candidate in candidates:
         if candidate.exists():
@@ -153,4 +158,3 @@ class SceneImageGenerator:
             except Exception as exc:
                 errors.append(f"{provider.name}: {exc}")
         raise ProviderFailed(f"No image provider could render scene {scene.index}: {' | '.join(errors)}")
-

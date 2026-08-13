@@ -32,11 +32,20 @@ class ResearchItem(BaseModel):
     collected_at: datetime = Field(default_factory=datetime.utcnow)
 
 
+class EvidenceSource(BaseModel):
+    title: str
+    url: str
+    checked_on: date
+    summary: str
+
+
 class ResearchReport(BaseModel):
     query_date: date
     candidates: list[ResearchItem]
     selected_title: str
     selected_angle: str
+    brand_focused: bool = False
+    evidence: list[EvidenceSource] = Field(default_factory=list)
     source_notes: list[str] = Field(default_factory=list)
 
 
@@ -50,6 +59,8 @@ class ScriptDocument(BaseModel):
     estimated_minutes: float
     facts_to_verify: list[str] = Field(default_factory=list)
     disclosures: list[str] = Field(default_factory=list)
+    brand_focused: bool = False
+    source_urls: list[str] = Field(default_factory=list)
     provider: str
 
     @field_validator("word_count")

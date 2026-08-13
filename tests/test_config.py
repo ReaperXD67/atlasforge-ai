@@ -16,3 +16,8 @@ def test_environment_output_override(monkeypatch, tmp_path: Path) -> None:
     settings = load_settings(Path("config/default.yaml"))
     assert settings.output_directory == tmp_path / "custom"
 
+
+def test_environment_model_override(monkeypatch, tmp_path: Path) -> None:
+    monkeypatch.setenv("MODEL_DIRECTORY", str(tmp_path / "models"))
+    settings = load_settings(Path("config/default.yaml"))
+    assert settings.model_directory == tmp_path / "models"

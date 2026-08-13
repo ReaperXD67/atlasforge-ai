@@ -60,6 +60,20 @@ class ScriptGenerator:
             f"- {item.title} ({item.source}; signal score {item.score:.1f})"
             for item in report.candidates[:12]
         )
+        source_context = "\n".join(
+            f"- {source.title} (checked {source.checked_on.isoformat()}): {source.summary}\n"
+            f"  URL: {source.url}"
+            for source in report.evidence
+        ) or "- No pinned official evidence is available. Avoid all specific brand claims."
+        brand_instruction = (
+            "This is a brand-focused topic: name Atomy in the hook and answer the question directly, "
+            "but do not turn the script into a recruitment pitch."
+            if report.brand_focused
+            else (
+                "Do not mention Atomy until roughly "
+                f"{self.settings.script.brand_mention_min_fraction:.0%} through the narration."
+            )
+        )
         target = self.settings.script
         return f"""Create a {target.target_minutes:.0f}-minute YouTube narration.
 
@@ -70,19 +84,31 @@ AUDIENCE: {', '.join(self.settings.channel.audience)}
 CURRENT TOPIC SIGNALS (not factual evidence):
 {candidate_context}
 
+PINNED OFFICIAL / REGULATORY EVIDENCE:
+{source_context}
+
 Structure:
 1. A concrete hook that identifies the viewer's tension without fearmongering.
 2. Five to eight coherent teaching sections with examples, decision criteria, and caveats.
-3. Do not mention Atomy until roughly {target.brand_mention_min_fraction:.0%} through the narration.
+3. {brand_instruction}
 4. Evaluate Atomy as one optional case study alongside non-Atomy alternatives.
 5. A low-pressure CTA asking for a thoughtful comment or subscription, not a purchase.
+
+Use the pinned evidence for specific Atomy or regulatory facts. Do not treat search signals as facts.
+Do not copy source wording. Put any claim not directly supported by the pinned evidence into
+facts_to_verify, and prefer omitting it entirely.
 
 The title must be searchable but honest. Put every externally verifiable statement that may need
 editorial checking into facts_to_verify. Include both the AI-voice disclosure and the educational
 financial/medical disclaimer in disclosures. Do not add citations you cannot verify."""
 
     @staticmethod
-    def _normalize(payload: dict[str, Any], provider: str, words_per_minute: int) -> ScriptDocument:
+    def _normalize(
+        payload: dict[str, Any],
+        provider: str,
+        words_per_minute: int,
+        report: ResearchReport,
+    ) -> ScriptDocument:
         hook = str(payload["hook"]).strip()
         body = [str(part).strip() for part in payload["body"] if str(part).strip()]
         cta = str(payload["cta"]).strip()
@@ -98,6 +124,8 @@ financial/medical disclaimer in disclosures. Do not add citations you cannot ver
             estimated_minutes=round(word_count / words_per_minute, 2),
             facts_to_verify=[str(value) for value in payload.get("facts_to_verify", [])],
             disclosures=[str(value) for value in payload.get("disclosures", [])],
+            brand_focused=report.brand_focused,
+            source_urls=[source.url for source in report.evidence],
             provider=provider,
         )
 
@@ -112,5 +140,8 @@ financial/medical disclaimer in disclosures. Do not add citations you cannot ver
             ),
         )
         return self._normalize(
-            result.value, result.provider, self.settings.script.words_per_minute
+            result.value,
+            result.provider,
+            self.settings.script.words_per_minute,
+            report,
         )

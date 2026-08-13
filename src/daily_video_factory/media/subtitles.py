@@ -4,7 +4,10 @@ import re
 from pathlib import Path
 
 from ..config import Settings
+from ..logging import get_logger
 from ..models import ScriptDocument, SubtitleCue
+
+log = get_logger(component="subtitles")
 
 
 def _timestamp_srt(seconds: float) -> str:
@@ -43,14 +46,76 @@ def build_cues(script: ScriptDocument, duration_seconds: float, max_words: int) 
     return cues
 
 
+def build_whisper_cues(
+    narration: Path,
+    max_words: int,
+    settings: Settings,
+) -> list[SubtitleCue]:
+    """Align captions to synthesized speech locally with faster-whisper word timestamps."""
+    from faster_whisper import WhisperModel
+
+    cfg = settings.subtitles
+    model = WhisperModel(
+        cfg.whisper_model,
+        device=cfg.whisper_device,
+        compute_type=cfg.whisper_compute_type,
+        download_root=str(settings.model_directory / "whisper"),
+    )
+    segments, _info = model.transcribe(
+        str(narration),
+        beam_size=3,
+        vad_filter=True,
+        word_timestamps=True,
+        condition_on_previous_text=False,
+    )
+    timed_words: list[tuple[str, float, float]] = []
+    for segment in segments:
+        for word in getattr(segment, "words", None) or []:
+            text = str(getattr(word, "word", "")).strip()
+            start = getattr(word, "start", None)
+            end = getattr(word, "end", None)
+            if text and start is not None and end is not None:
+                timed_words.append((text, float(start), float(end)))
+    cues: list[SubtitleCue] = []
+    for start_index in range(0, len(timed_words), max_words):
+        group = timed_words[start_index : start_index + max_words]
+        cues.append(
+            SubtitleCue(
+                index=len(cues) + 1,
+                start_seconds=group[0][1],
+                end_seconds=max(group[-1][2], group[0][1] + 0.12),
+                text=" ".join(value[0] for value in group),
+            )
+        )
+    return cues
+
+
 def write_subtitles(
     script: ScriptDocument,
     duration_seconds: float,
     srt_path: Path,
     ass_path: Path,
     settings: Settings,
+    *,
+    narration: Path | None = None,
 ) -> list[SubtitleCue]:
-    cues = build_cues(script, duration_seconds, settings.subtitles.max_words_per_caption)
+    cues: list[SubtitleCue] = []
+    alignment = settings.subtitles.alignment
+    if narration is not None and alignment in {"auto", "whisper"}:
+        try:
+            cues = build_whisper_cues(
+                narration,
+                settings.subtitles.max_words_per_caption,
+                settings,
+            )
+            if not cues:
+                raise RuntimeError("Whisper returned no timed words")
+        except Exception as exc:
+            if alignment == "whisper":
+                raise
+            log.warning("subtitle_alignment_fallback", error=str(exc))
+    if not cues:
+        cues = build_cues(script, duration_seconds, settings.subtitles.max_words_per_caption)
     srt_blocks = [
         f"{cue.index}\n{_timestamp_srt(cue.start_seconds)} --> {_timestamp_srt(cue.end_seconds)}\n{cue.text}"
         for cue in cues
@@ -83,4 +148,3 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         )
     ass_path.write_text(header + "\n".join(dialogue) + "\n", encoding="utf-8-sig")
     return cues
-

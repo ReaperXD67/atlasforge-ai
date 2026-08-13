@@ -11,7 +11,7 @@ import httpx
 
 from .config import Settings
 from .logging import get_logger
-from .models import ResearchItem, ResearchReport
+from .models import EvidenceSource, ResearchItem, ResearchReport
 
 
 class TopicResearcher:
@@ -134,7 +134,7 @@ class TopicResearcher:
             ranked.append(item)
         return sorted(ranked, key=lambda item: item.score, reverse=True)
 
-    def run(self, query_date: date) -> ResearchReport:
+    def run(self, query_date: date, topic_override: str | None = None) -> ResearchReport:
         items = self._youtube_suggestions() + self._google_trends() + self._reddit()
         if not items:
             items = [
@@ -147,18 +147,46 @@ class TopicResearcher:
                 for topic in self.settings.research.seed_topics
             ]
         ranked = self._rank(items)[: self.settings.research.max_candidates]
-        selected = ranked[0]
-        angle = (
-            f"Answer the search intent behind '{selected.title}' with an evidence-aware beginner guide. "
-            "Teach a reusable framework first, then evaluate Atomy neutrally as one optional example."
-        )
+        configured_topics = self.settings.research.editorial_topics
+        if topic_override:
+            selected_title = topic_override
+        elif self.settings.research.rotate_editorial_topics and configured_topics:
+            selected_title = configured_topics[query_date.toordinal() % len(configured_topics)]
+        else:
+            selected_title = ranked[0].title
+        brand_focused = "atomy" in selected_title.lower()
+        if brand_focused:
+            angle = (
+                f"Answer '{selected_title}' directly for a skeptical U.S. beginner. Ground every "
+                "registration, eligibility, product, or compensation statement in the official "
+                "source pack; distinguish consumer and distributor membership; explain tradeoffs; "
+                "and make no earnings or health claims."
+            )
+        else:
+            angle = (
+                f"Answer the search intent behind '{selected_title}' with an evidence-aware beginner "
+                "guide. Teach a reusable framework first, then evaluate Atomy neutrally as one "
+                "optional example."
+            )
+        evidence = [
+            EvidenceSource(
+                title=source.title,
+                url=source.url,
+                checked_on=source.checked_on,
+                summary=source.summary,
+            )
+            for source in self.settings.research.official_sources
+        ]
         return ResearchReport(
             query_date=query_date,
             candidates=ranked,
-            selected_title=selected.title,
+            selected_title=selected_title,
             selected_angle=angle,
+            brand_focused=brand_focused,
+            evidence=evidence,
             source_notes=[
                 "Trends and social posts are topic signals, not verified evidence.",
-                "Any product, financial, supplement, or skincare claim must be verified before publication.",
+                "Official-source summaries are locally pinned and must be refreshed on the configured cadence.",
+                "Any product, financial, supplement, or skincare claim outside the source pack must be verified before publication.",
             ],
         )

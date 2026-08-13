@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+from datetime import date
 from pathlib import Path
 
 from .config import Settings
@@ -13,6 +14,7 @@ PROHIBITED_PATTERNS = {
     "earnings promise": r"\b(earn|make|generate)\s+\$?\d[\d,]*(?:\s*(?:per|a)\s+(?:day|week|month))?\b",
     "income promise": r"\b(passive income|financial freedom)\s+(?:is|will be|becomes)\s+(?:easy|guaranteed|automatic)\b",
     "medical claim": r"\b(cures?|treats?|prevents?|heals?|diagnoses?)\s+(?:cancer|diabetes|disease|illness|acne)\b",
+    "lifestyle income claim": r"\b(quit your job|replace your salary|six[- ]figure income|unlimited income)\b",
 }
 
 
@@ -30,8 +32,21 @@ def validate_script(script: ScriptDocument, settings: Settings) -> list[str]:
     brand_index = lower.find("atomy")
     if brand_index < 0:
         errors.append("Atomy is never discussed; the configured editorial brief requires a neutral case study.")
-    elif brand_index / max(1, len(lower)) < cfg.brand_mention_min_fraction:
+    elif not script.brand_focused and brand_index / max(1, len(lower)) < cfg.brand_mention_min_fraction:
         errors.append("Atomy appears before the education-first portion is complete.")
+    if script.brand_focused:
+        if not script.source_urls:
+            errors.append("Brand-focused scripts require pinned official or regulatory sources.")
+        stale_sources = [
+            source.title
+            for source in settings.research.official_sources
+            if (date.today() - source.checked_on).days
+            > settings.research.max_official_source_age_days
+        ]
+        if stale_sources:
+            errors.append(
+                "Official source summaries are stale: " + ", ".join(stale_sources) + "."
+            )
     disclosure_text = " ".join(script.disclosures).lower()
     if "ai" not in disclosure_text or "voice" not in disclosure_text:
         errors.append("The script package is missing an AI narration disclosure.")
@@ -66,4 +81,3 @@ def validate_final(
     if errors and settings.runtime.fail_on_quality_gate:
         raise QualityGateFailed(" ".join(errors))
     return errors
-

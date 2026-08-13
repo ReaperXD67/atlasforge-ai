@@ -13,32 +13,59 @@ class VideoRenderer:
         self.settings = settings
         self.cfg = settings.video
         self.ffmpeg = ffmpeg
-        self.encoder = self.cfg.codec if ffmpeg.has_encoder(self.cfg.codec) else self.cfg.fallback_codec
+        self.encoder = (
+            self.cfg.codec if ffmpeg.can_encode(self.cfg.codec) else self.cfg.fallback_codec
+        )
+        if not ffmpeg.can_encode(self.encoder):
+            raise RuntimeError(
+                f"Neither {self.cfg.codec} nor {self.cfg.fallback_codec} can encode a test frame"
+            )
 
     def _video_codec_args(self) -> list[str]:
         if self.encoder.endswith("_nvenc"):
             return ["-c:v", self.encoder, "-preset", self.cfg.preset, "-cq", str(self.cfg.crf)]
-        return ["-c:v", self.encoder, "-preset", "medium", "-crf", str(self.cfg.crf)]
+        return [
+            "-c:v",
+            self.encoder,
+            "-preset",
+            self.cfg.fallback_preset,
+            "-crf",
+            str(self.cfg.crf),
+        ]
 
-    def render_scene(self, scene: Scene, image: Path, output: Path) -> Path:
-        frames = max(1, round(scene.duration_seconds * self.cfg.fps))
-        fade_out = max(0.1, scene.duration_seconds - 0.25)
+    def render_scene(
+        self,
+        scene: Scene,
+        image: Path,
+        output: Path,
+        *,
+        duration_seconds: float | None = None,
+    ) -> Path:
+        duration = duration_seconds or scene.duration_seconds
+        frames = max(2, round(duration * self.cfg.fps))
+        progress = f"(0.5-0.5*cos(PI*on/{frames - 1}))"
         direction = 1 if scene.index % 2 else -1
-        x_expr = "iw/2-(iw/zoom/2)" if direction > 0 else "iw/2-(iw/zoom/2)-20*sin(on/90)"
+        x_expr = (
+            f"(iw-iw/zoom)*(0.25+0.5*{progress})"
+            if direction > 0
+            else f"(iw-iw/zoom)*(0.75-0.5*{progress})"
+        )
+        y_expr = f"(ih-ih/zoom)*(0.45+0.1*sin(PI*on/{frames - 1}))"
+        source_width = round(self.cfg.width * 1.25)
+        source_height = round(self.cfg.height * 1.25)
         video_filter = (
-            f"scale={self.cfg.width * 2}:{self.cfg.height * 2}:force_original_aspect_ratio=increase,"
-            f"crop={self.cfg.width * 2}:{self.cfg.height * 2},"
-            f"zoompan=z='min(zoom+0.00045,1.08)':x='{x_expr}':"
-            f"y='ih/2-(ih/zoom/2)':d={frames}:s={self.cfg.width}x{self.cfg.height}:fps={self.cfg.fps},"
-            "format=yuv420p,"
-            f"fade=t=in:st=0:d=0.18,fade=t=out:st={fade_out:.3f}:d=0.25"
+            f"scale={source_width}:{source_height}:force_original_aspect_ratio=increase,"
+            f"crop={source_width}:{source_height},"
+            f"zoompan=z='1+0.075*{progress}':x='{x_expr}':y='{y_expr}':"
+            f"d={frames}:s={self.cfg.width}x{self.cfg.height}:fps={self.cfg.fps},"
+            "format=yuv420p"
         )
         output.parent.mkdir(parents=True, exist_ok=True)
         self.ffmpeg.run(
             [
                 "-loop", "1",
                 "-i", str(image),
-                "-t", f"{scene.duration_seconds:.3f}",
+                "-t", f"{duration:.3f}",
                 "-vf", video_filter,
                 "-an",
                 *self._video_codec_args(),
@@ -48,18 +75,24 @@ class VideoRenderer:
         )
         return output
 
-    def normalize_cloud_scene(self, scene: Scene, source: Path, output: Path) -> Path:
-        fade_out = max(0.1, scene.duration_seconds - 0.25)
+    def normalize_cloud_scene(
+        self,
+        scene: Scene,
+        source: Path,
+        output: Path,
+        *,
+        duration_seconds: float | None = None,
+    ) -> Path:
+        duration = duration_seconds or scene.duration_seconds
         video_filter = (
             f"scale={self.cfg.width}:{self.cfg.height}:force_original_aspect_ratio=increase,"
-            f"crop={self.cfg.width}:{self.cfg.height},fps={self.cfg.fps},format=yuv420p,"
-            f"fade=t=in:st=0:d=0.18,fade=t=out:st={fade_out:.3f}:d=0.25"
+            f"crop={self.cfg.width}:{self.cfg.height},fps={self.cfg.fps},format=yuv420p"
         )
         self.ffmpeg.run(
             [
                 "-stream_loop", "-1",
                 "-i", str(source),
-                "-t", f"{scene.duration_seconds:.3f}",
+                "-t", f"{duration:.3f}",
                 "-vf", video_filter,
                 "-an",
                 *self._video_codec_args(),
@@ -69,9 +102,53 @@ class VideoRenderer:
         )
         return output
 
-    def concatenate(self, scene_videos: list[Path], output: Path) -> Path:
+    def concatenate(
+        self,
+        scene_videos: list[Path],
+        output: Path,
+        scene_durations: list[float] | None = None,
+    ) -> Path:
         if not scene_videos:
             raise ValueError("At least one scene video is required")
+        transition = self.cfg.transition_seconds
+        if scene_durations and len(scene_durations) != len(scene_videos):
+            raise ValueError("scene_durations must match scene_videos")
+        if scene_durations and len(scene_videos) > 1 and transition > 0:
+            inputs = [value for path in scene_videos for value in ("-i", str(path))]
+            filters = [
+                f"[{index}:v]settb=AVTB,setpts=PTS-STARTPTS[v{index}]"
+                for index in range(len(scene_videos))
+            ]
+            previous = "v0"
+            elapsed = 0.0
+            for index in range(1, len(scene_videos)):
+                elapsed += scene_durations[index - 1]
+                output_label = f"x{index}"
+                filters.append(
+                    f"[{previous}][v{index}]xfade=transition=fade:duration={transition:.3f}:"
+                    f"offset={elapsed:.3f}[{output_label}]"
+                )
+                previous = output_label
+            total_duration = sum(scene_durations)
+            fade_out = max(0.0, total_duration - 0.4)
+            filters.append(
+                f"[{previous}]fade=t=in:st=0:d=0.25,"
+                f"fade=t=out:st={fade_out:.3f}:d=0.4[video]"
+            )
+            self.ffmpeg.run(
+                [
+                    *inputs,
+                    "-filter_complex",
+                    ";".join(filters),
+                    "-map",
+                    "[video]",
+                    *self._video_codec_args(),
+                    "-pix_fmt",
+                    "yuv420p",
+                    str(output),
+                ]
+            )
+            return output
         concat_file = output.with_suffix(".concat.txt")
         lines = []
         for path in scene_videos:
@@ -114,4 +191,3 @@ class VideoRenderer:
             ]
         )
         return output
-
