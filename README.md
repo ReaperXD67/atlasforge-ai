@@ -1,4 +1,8 @@
-# AtlasForge AI
+<div align="center">
+
+![AtlasForge AI — animated project overview](./docs/assets/readme/atlasforge-ai-hero.svg)
+
+</div>
 
 **A local-first video production system with cost controls, editorial gates, and provider fallbacks.**
 
