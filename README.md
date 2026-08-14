@@ -1,13 +1,17 @@
 # AtlasForge AI
 
-**Autonomous AI Video Production Pipeline**
+**A local-first video production system with cost controls, editorial gates, and provider fallbacks.**
 
 [![CI](https://github.com/ReaperXD67/atlasforge-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/ReaperXD67/atlasforge-ai/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)](pyproject.toml)
+[![Policy](https://img.shields.io/badge/editorial-policy_gated-16a085)](POLICY.md)
+[![Cost model](https://img.shields.io/badge/costs-explicit-4d8dff)](COSTS.md)
 
 AtlasForge AI is a local-first, production-oriented pipeline that researches, scripts, narrates, storyboards, edits, captions, packages, and can optionally publish one original 6-8 minute YouTube video per day.
 
 It is configured for education-first Atomy content aimed at people researching online business, side hustles, entrepreneurship, wellness, Korean skincare, and productivity. The brand is introduced as one possible case study, never as a guaranteed income or health outcome.
 
+> [!CAUTION]
 > AtlasForge AI automates production, not editorial responsibility. Its gates block obvious earnings promises, medical claims, early sales pitches, missing disclosures, and malformed media. You remain responsible for factual accuracy, licensing, product claims, and channel compliance.
 
 ## Target architecture
