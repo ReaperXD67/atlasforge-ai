@@ -42,6 +42,66 @@ findings, or testimonials. Separate opinions from facts. Return only JSON matchi
 schema."""
 
 
+def _word_count(text: str) -> int:
+    return len(re.findall(r"\b[\w'-]+\b", text))
+
+
+def _trim_to_words(text: str, limit: int) -> str:
+    text = text.strip()
+    if _word_count(text) <= limit:
+        return text.strip()
+    kept: list[str] = []
+    used = 0
+    for token in re.findall(r"\S+", text):
+        token_words = _word_count(token)
+        if used + token_words > limit:
+            break
+        kept.append(token)
+        used += token_words
+    if not kept:
+        kept = re.findall(r"\b[\w'-]+\b", text)[:limit]
+    trimmed = " ".join(kept).rstrip(" ,;:-")
+    return trimmed if trimmed.endswith((".", "!", "?")) else trimmed + "."
+
+
+def _fit_segments_to_budget(segments: list[str], max_words: int) -> list[str]:
+    """Proportionally compact LLM output while preserving every structured section."""
+    counts = [_word_count(segment) for segment in segments]
+    if sum(counts) <= max_words:
+        return segments
+
+    # Preserve a usable hook, every teaching section, and a low-pressure CTA even for
+    # the one-minute Studio setting. Remaining words are distributed proportionally.
+    floors = [min(counts[0], 18)]
+    floors.extend(min(count, 8) for count in counts[1:-1])
+    floors.append(min(counts[-1], 12))
+    if sum(floors) > max_words:
+        floors = [max(1, round(max_words * count / max(1, sum(counts)))) for count in counts]
+
+    allocations = floors[:]
+    remaining = max(0, max_words - sum(allocations))
+    capacities = [count - allocation for count, allocation in zip(counts, allocations, strict=True)]
+    capacity_total = sum(capacities)
+    if remaining and capacity_total:
+        additions = [min(capacity, remaining * capacity // capacity_total) for capacity in capacities]
+        allocations = [
+            allocation + addition
+            for allocation, addition in zip(allocations, additions, strict=True)
+        ]
+        remaining -= sum(additions)
+        for index in sorted(range(len(capacities)), key=capacities.__getitem__, reverse=True):
+            if remaining <= 0:
+                break
+            available = counts[index] - allocations[index]
+            extra = min(available, remaining)
+            allocations[index] += extra
+            remaining -= extra
+    return [
+        _trim_to_words(segment, allocation)
+        for segment, allocation in zip(segments, allocations, strict=True)
+    ]
+
+
 class ScriptGenerator:
     def __init__(self, settings: Settings) -> None:
         self.settings = settings
@@ -105,12 +165,15 @@ Use the pinned evidence for specific brand or regulatory facts. Do not treat sea
 Do not copy source wording. Put any claim not directly supported by the pinned evidence into
 facts_to_verify, and prefer omitting it entirely.
 
+The maximum word count is a hard limit. Count the hook, every body section, and the CTA before
+returning JSON; do not exceed {target.max_words} spoken words.
+
 The title must be searchable but honest. Put every externally verifiable statement that may need
 editorial checking into facts_to_verify. Include the AI-voice disclosure and this channel disclosure
 in disclosures: {self.settings.channel.disclosure}. Do not add citations you cannot verify."""
 
-    @staticmethod
     def _normalize(
+        self,
         payload: dict[str, Any],
         provider: str,
         words_per_minute: int,
@@ -119,8 +182,12 @@ in disclosures: {self.settings.channel.disclosure}. Do not add citations you can
         hook = str(payload["hook"]).strip()
         body = [str(part).strip() for part in payload["body"] if str(part).strip()]
         cta = str(payload["cta"]).strip()
+        fitted = _fit_segments_to_budget(
+            [hook, *body, cta], self.settings.script.max_words
+        )
+        hook, body, cta = fitted[0], fitted[1:-1], fitted[-1]
         full_text = "\n\n".join([hook, *body, cta])
-        word_count = len(re.findall(r"\b[\w'-]+\b", full_text))
+        word_count = _word_count(full_text)
         return ScriptDocument(
             title=str(payload["title"]).strip(),
             hook=hook,

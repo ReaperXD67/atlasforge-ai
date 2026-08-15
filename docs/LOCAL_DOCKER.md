@@ -70,7 +70,8 @@ larger than the normal runtime; normal CPU/GPU image builds do not pay that cost
 CPU-only PyTorch wheel so CUDA framework libraries do not duplicate the GPU driver's NVENC path.
 The English language pipeline is installed in the image so Kokoro never needs elevated runtime
 permissions. Its first run downloads only the Kokoro and Whisper model assets into `models/`.
-Later runs reuse them. If RAM or VRAM is
+Later runs reuse them. The local media dependency layer is cached separately, so ordinary Python
+or frontend changes do not reinstall PyTorch, Kokoro, and Whisper. If RAM or VRAM is
 constrained, set `subtitles.alignment: estimated` or use the CPU-safe service.
 
 ## Useful checks

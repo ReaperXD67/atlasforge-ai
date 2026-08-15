@@ -66,6 +66,25 @@ def create_app(settings: Settings, profile_directory: Path = Path("config/profil
             raise HTTPException(status_code=404, detail="Storyboard is not ready")
         return json.loads(storyboard.read_text(encoding="utf-8"))
 
+    @app.get("/api/runs/{run_id}/scenes/{scene_index}")
+    def get_run_scene(run_id: str, scene_index: int) -> FileResponse:
+        run = store.get_run(run_id)
+        if run is None:
+            raise HTTPException(status_code=404, detail="Run not found")
+        root = Path(str(run["output_root"])).resolve()
+        output_root = settings.output_directory.resolve()
+        image_index = root / "scenes" / "images.json"
+        if output_root not in image_index.parents or not image_index.is_file():
+            raise HTTPException(status_code=404, detail="Scene images are not ready")
+        payload = json.loads(image_index.read_text(encoding="utf-8"))
+        match = next((item for item in payload if int(item.get("scene", -1)) == scene_index), None)
+        if match is None:
+            raise HTTPException(status_code=404, detail="Scene image not found")
+        target = Path(str(match.get("path", ""))).resolve()
+        if output_root not in target.parents or root not in target.parents or not target.is_file():
+            raise HTTPException(status_code=404, detail="Scene image not found")
+        return FileResponse(target, media_type="image/jpeg")
+
     @app.get("/api/profiles")
     def list_profiles() -> list[dict[str, object]]:
         return studio.profiles()

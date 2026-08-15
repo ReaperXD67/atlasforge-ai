@@ -2,7 +2,7 @@
 
 Reference: selected Editorial Timeline Studio mock (`exec-c01feae9-8c0e-4308-886d-83a9231ff821.png`).
 
-Implementation reviewed at 1280×720 and 902×736 against a same-frame reference comparison.
+Implementation reviewed at 1280×720, 902×736, and a 720px responsive viewport against a same-frame reference comparison.
 
 ## Fidelity and layout
 
@@ -17,6 +17,8 @@ Implementation reviewed at 1280×720 and 902×736 against a same-frame reference
 - Reduced minimum preview/timeline heights so the timeline no longer slips behind the provider strip at 720px-tall viewports.
 - Restored log access at tablet widths with a sticky stage-bar control.
 - Corrected final stage-node ordering, profile naming, preview-title contrast, and scrollbar styling.
+- Bound the editor to the finished run's actual 11-scene storyboard, timings, captions, and generated stills instead of leaving design-demo chapters visible.
+- Contained chapter and timeline scrolling at 720px so the header, Generate film action, and editor no longer overflow the viewport.
 
 ## Interaction and accessibility checks
 

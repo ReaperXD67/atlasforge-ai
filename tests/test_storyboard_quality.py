@@ -50,6 +50,19 @@ def test_quality_gate_rejects_earnings_promises(settings) -> None:
         validate_script(make_script(f"{safe_prefix} {unsafe} {tail}"), settings)
 
 
+def test_quality_gate_accepts_explicitly_negated_outcome_claims(settings) -> None:
+    prefix = " ".join(
+        ["Evaluate costs, time, skills, and customer demand before choosing any model."] * 18
+    )
+    disclaimer = (
+        "Results are not guaranteed, and you should not expect to earn $1000 per day."
+    )
+    suffix = " ".join(
+        ["Atomy is one optional example to compare with other practical alternatives."] * 12
+    )
+    assert validate_script(make_script(f"{prefix} {disclaimer} {suffix}"), settings) == []
+
+
 def test_quality_gate_accepts_education_first_script(settings) -> None:
     prefix = " ".join(
         ["Evaluate demand, time, skills, costs, and risk before choosing a model."] * 18

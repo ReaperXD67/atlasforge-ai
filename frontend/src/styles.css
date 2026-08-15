@@ -28,7 +28,8 @@ button { color: inherit; }
 button, select { cursor: pointer; }
 button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
 
-.studio-shell { height: 100vh; min-height: 720px; display: grid; grid-template-rows: 70px 62px minmax(0, 1fr) 70px; background: var(--bg); }
+.studio-shell { height: 100vh; min-height: 720px; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: 70px 62px minmax(0, 1fr) 70px; background: var(--bg); }
+.studio-shell > * { min-width: 0; }
 .topbar { display: flex; align-items: center; gap: 16px; padding: 0 24px; border-bottom: 1px solid var(--line); background: #111213; }
 .menu-button, .top-icon, .transport button, .inspector-head button, .timeline-zoom button { border: 0; background: transparent; display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 6px; color: #b7b4af; }
 .menu-button:hover, .top-icon:hover, .transport button:hover, .inspector-head button:hover, .timeline-zoom button:hover { background: var(--surface-3); color: var(--text); }
@@ -248,14 +249,16 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
 }
 
 @media (max-width: 720px) {
+  .studio-shell { max-width: 100vw; overflow-x: hidden; }
   .topbar { gap: 8px; }
   .brand-mark > span { font-size: 20px; }
   .usecase-select { display: none; }
   .generate-button { margin-left: auto; padding-inline: 12px; }
   .stagebar { padding-inline: 12px; }
-  .editor-grid { display: flex; flex-direction: column; padding: 7px; }
+  .editor-grid { width: 100%; max-width: 100%; min-width: 0; display: flex; flex-direction: column; padding: 7px; }
+  .chapter-panel, .edit-canvas, .inspector { width: 100%; min-width: 0; }
   .chapter-panel { min-height: 215px; }
-  .chapter-scroll { flex-direction: row; }
+  .chapter-scroll { width: 100%; max-width: 100%; flex-direction: row; }
   .chapter-card { min-width: 250px; }
   .edit-canvas { display: flex; flex-direction: column; }
   .preview-card { min-height: 380px; }

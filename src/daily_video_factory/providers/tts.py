@@ -237,8 +237,54 @@ def concatenate_and_normalize(
     return output
 
 
+def _atempo_chain(speed: float) -> str:
+    """Build a valid FFmpeg atempo chain for any positive speed multiplier."""
+    if speed <= 0:
+        raise ValueError("Audio speed must be positive")
+    factors: list[float] = []
+    remaining = speed
+    while remaining > 2.0:
+        factors.append(2.0)
+        remaining /= 2.0
+    while remaining < 0.5:
+        factors.append(0.5)
+        remaining /= 0.5
+    factors.append(remaining)
+    return ",".join(f"atempo={factor:.6f}" for factor in factors)
+
+
+def fit_narration_duration(
+    narration: Path,
+    target_minutes: float,
+    max_duration_ratio: float,
+    ffmpeg: FFmpeg,
+) -> Path:
+    """Cap unexpectedly slow narration while preserving pitch and the original path."""
+    actual_seconds = ffmpeg.duration(narration)
+    maximum_seconds = target_minutes * 60 * max_duration_ratio
+    if actual_seconds <= maximum_seconds:
+        return narration
+    speed = actual_seconds / maximum_seconds
+    fitted = narration.with_name(f"{narration.stem}.duration-fit{narration.suffix}")
+    ffmpeg.run(
+        [
+            "-i",
+            str(narration),
+            "-filter:a",
+            _atempo_chain(speed),
+            "-ar",
+            "48000",
+            str(fitted),
+        ]
+    )
+    fitted.replace(narration)
+    return narration
+
+
 class NarrationGenerator:
     def __init__(self, settings: Settings, ffmpeg: FFmpeg) -> None:
+        self.settings = settings
+        self.ffmpeg = ffmpeg
         providers = {
             "openai": OpenAITTSProvider(settings, ffmpeg),
             "gemini": GeminiTTSProvider(settings, ffmpeg),
@@ -250,7 +296,14 @@ class NarrationGenerator:
         )
 
     def run(self, text: str, output_dir: Path) -> ProviderResult[Path]:
-        return self.chain.run(
+        result = self.chain.run(
             "narration",
             lambda provider: cast(TTSProvider, provider).synthesize(text, output_dir),
         )
+        result.value = fit_narration_duration(
+            result.value,
+            self.settings.script.target_minutes,
+            self.settings.voice.max_duration_ratio,
+            self.ffmpeg,
+        )
+        return result

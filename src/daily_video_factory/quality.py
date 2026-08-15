@@ -17,6 +17,22 @@ PROHIBITED_PATTERNS = {
     "lifestyle income claim": r"\b(quit your job|replace your salary|six[- ]figure income|unlimited income)\b",
 }
 
+NEGATED_CLAIM_CONTEXT = re.compile(
+    r"\b(?:no|not|never|without|cannot|can't|won't|don't|doesn't|isn't|aren't|"
+    r"shouldn't|wouldn't)\b(?:\W+\w+){0,4}\W*$",
+    flags=re.IGNORECASE,
+)
+
+
+def _contains_unqualified_claim(text: str, pattern: str) -> bool:
+    """Return true when a prohibited phrase is asserted rather than explicitly rejected."""
+    for match in re.finditer(pattern, text, flags=re.IGNORECASE):
+        prefix = text[max(0, match.start() - 96) : match.start()]
+        if NEGATED_CLAIM_CONTEXT.search(prefix):
+            continue
+        return True
+    return False
+
 
 def validate_script(script: ScriptDocument, settings: Settings) -> list[str]:
     errors: list[str] = []
@@ -27,7 +43,7 @@ def validate_script(script: ScriptDocument, settings: Settings) -> list[str]:
         )
     lower = script.full_text.lower()
     for label, pattern in PROHIBITED_PATTERNS.items():
-        if re.search(pattern, lower, flags=re.IGNORECASE):
+        if _contains_unqualified_claim(lower, pattern):
             errors.append(f"Potentially prohibited {label} detected.")
     brand = settings.channel.brand_name.strip()
     brand_index = lower.find(brand.lower()) if brand else -1

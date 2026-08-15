@@ -80,6 +80,7 @@ class VoiceConfig(BaseModel):
     kokoro_voice: str
     sample_rate: int = 24000
     target_lufs: int = -16
+    max_duration_ratio: float = Field(default=1.18, ge=1.0, le=1.5)
 
 
 class ImagesConfig(BaseModel):
@@ -166,13 +167,11 @@ class Settings(BaseModel):
 
     @property
     def output_directory(self) -> Path:
-        env_path = os.getenv("OUTPUT_DIRECTORY")
-        return Path(env_path) if env_path else self.runtime.output_directory
+        return self.runtime.output_directory
 
     @property
     def model_directory(self) -> Path:
-        env_path = os.getenv("MODEL_DIRECTORY")
-        return Path(env_path) if env_path else self.runtime.model_directory
+        return self.runtime.model_directory
 
 
 def _deep_merge(base: dict[str, Any], overlay: dict[str, Any]) -> dict[str, Any]:
@@ -223,6 +222,16 @@ def load_settings(
     path = Path(path_value)
     try:
         raw = _read_config(path)
+        runtime_from_environment = {
+            key: value
+            for key, value in {
+                "output_directory": os.getenv("OUTPUT_DIRECTORY"),
+                "model_directory": os.getenv("MODEL_DIRECTORY"),
+            }.items()
+            if value
+        }
+        if runtime_from_environment:
+            raw = _deep_merge(raw, {"runtime": runtime_from_environment})
         if overrides:
             raw = _deep_merge(raw, overrides)
         return Settings.model_validate(raw)

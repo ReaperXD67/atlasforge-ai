@@ -118,6 +118,7 @@ voice:
   kokoro_voice: af_heart
   sample_rate: 24000
   target_lufs: -16
+  max_duration_ratio: 1.18
 
 images:
   providers: [pexels, title_card]

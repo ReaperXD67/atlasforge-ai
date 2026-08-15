@@ -86,12 +86,13 @@ def mix_audio(
     cfg = settings.audio
     filter_graph = (
         f"[0:a]atrim=0:{duration_seconds:.3f},asetpts=PTS-STARTPTS,"
-        "loudnorm=I=-16:TP=-1.5:LRA=11[narr];"
+        "loudnorm=I=-16:TP=-1.5:LRA=11,asplit=2[narr_mix][narr_sidechain];"
         f"[1:a]atrim=0:{duration_seconds:.3f},asetpts=PTS-STARTPTS,volume={cfg.music_volume_db}dB[music];"
-        f"[music][narr]sidechaincompress=threshold=0.025:ratio={cfg.sidechain_ratio}:"
+        f"[music][narr_sidechain]sidechaincompress=threshold=0.025:ratio={cfg.sidechain_ratio}:"
         "attack=20:release=350[ducked];"
         f"[2:a]atrim=0:{duration_seconds:.3f},asetpts=PTS-STARTPTS,volume={cfg.sfx_volume_db}dB[fx];"
-        "[narr][ducked][fx]amix=inputs=3:duration=first:dropout_transition=2,"
+        "[narr_mix][ducked][fx]amix=inputs=3:duration=first:dropout_transition=2:normalize=0,"
+        "loudnorm=I=-16:TP=-1.5:LRA=11,"
         "alimiter=limit=0.95[out]"
     )
     ffmpeg.run(

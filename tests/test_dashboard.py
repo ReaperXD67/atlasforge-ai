@@ -1,3 +1,4 @@
+import json
 from datetime import date
 from pathlib import Path
 
@@ -24,10 +25,18 @@ def test_dashboard_serves_finished_run_artifacts(settings: Settings) -> None:
     run_root = output / "2026-08-15" / "test-run"
     video = run_root / "final" / "video.mp4"
     thumbnail = run_root / "thumbnails" / "thumbnail.jpg"
+    scene = run_root / "scenes" / "scene_001.jpg"
+    scene_index = run_root / "scenes" / "images.json"
     video.parent.mkdir(parents=True)
     thumbnail.parent.mkdir(parents=True)
+    scene.parent.mkdir(parents=True)
     video.write_bytes(b"video")
     thumbnail.write_bytes(b"thumbnail")
+    scene.write_bytes(b"scene")
+    scene_index.write_text(
+        json.dumps([{"scene": 1, "provider": "test", "path": str(scene)}]),
+        encoding="utf-8",
+    )
 
     store = RunStore(output)
     store.save_manifest(
@@ -44,4 +53,6 @@ def test_dashboard_serves_finished_run_artifacts(settings: Settings) -> None:
 
     assert client.get("/api/runs/test-run/video").content == b"video"
     assert client.get("/api/runs/test-run/thumbnail").content == b"thumbnail"
+    assert client.get("/api/runs/test-run/scenes/1").content == b"scene"
+    assert client.get("/api/runs/test-run/scenes/2").status_code == 404
     assert client.get("/api/runs/missing/video").status_code == 404

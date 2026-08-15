@@ -26,6 +26,24 @@ const initialScenes = [
   { id: 5, title: "Complete Registration", caption: "Use the official regional site and verify every field.", duration: 87, image: "/assets/scenes/registration.webp", source: "Pexels lifestyle", motion: "Slow push-in", transition: "Fade out" },
 ];
 
+const sceneFallbackImages = initialScenes.map((scene) => scene.image);
+const storyboardToScenes = (storyboard, runId) => storyboard.scenes.map((scene, position) => {
+  const angle = scene.camera_angle?.toLowerCase() || "";
+  const transition = scene.transition?.toLowerCase() || "";
+  const searchTitle = titleCase(scene.visual_search_query || scene.environment || `Scene ${scene.index}`);
+  return {
+    id: scene.index,
+    title: position === 0 ? storyboard.title : searchTitle,
+    caption: scene.narration,
+    duration: Number(scene.duration_seconds) || 1,
+    image: `/api/runs/${runId}/scenes/${scene.index}`,
+    fallbackImage: sceneFallbackImages[position % sceneFallbackImages.length],
+    source: "Pexels or generated still",
+    motion: angle.includes("locked") ? "Locked frame" : angle.includes("lateral") ? "Gentle drift right" : angle.includes("close") || angle.includes("overhead") ? "Parallax push-in" : "Slow push-in",
+    transition: transition.includes("black") ? "Dip to black" : transition.includes("fade") ? "Fade out" : "Crossfade",
+  };
+});
+
 const productionSteps = [
   { label: "Brief", stages: ["research"] },
   { label: "Script", stages: ["script", "storyboard"] },
@@ -92,13 +110,29 @@ function ChapterRail({ scenes, selectedId, onSelect, activeTab, setActiveTab, on
   </aside>;
 }
 
-function Preview({ scene, playing, setPlaying, playhead, totalDuration, outputUrl }) {
+function Preview({ scene, playing, setPlaying, playhead, setPlayhead, totalDuration, outputUrl }) {
+  const videoRef = useRef(null);
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !outputUrl) return;
+    if (playing) video.play().catch(() => setPlaying(false));
+    else video.pause();
+  }, [playing, outputUrl, setPlaying]);
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video && Math.abs(video.currentTime - playhead) > 1) video.currentTime = playhead;
+  }, [playhead]);
+  const skip = (seconds) => {
+    const next = Math.max(0, Math.min(totalDuration, playhead + seconds));
+    setPlayhead(next);
+    if (videoRef.current) videoRef.current.currentTime = next;
+  };
   return <section className="preview-card panel-surface" aria-label="Video preview">
-    <div className="preview-media">{outputUrl ? <video src={outputUrl} controls preload="metadata" poster={scene.image} /> : <>
-      <AnimatePresence mode="wait"><motion.img key={scene.id} src={scene.image} alt={`Storyboard preview for ${scene.title}`} initial={{ opacity: 0.3, scale: 1.015 }} animate={{ opacity: 1, scale: playing ? 1.035 : 1 }} exit={{ opacity: 0.25 }} transition={{ duration: playing ? 8 : 0.35, ease: "easeOut" }} /></AnimatePresence>
+    <div className="preview-media">{outputUrl ? <video ref={videoRef} src={outputUrl} controls preload="metadata" poster={scene.image} onTimeUpdate={(event) => setPlayhead(event.currentTarget.currentTime)} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onEnded={() => setPlaying(false)} /> : <>
+      <AnimatePresence mode="wait"><motion.img key={scene.id} src={scene.image} onError={(event) => { event.currentTarget.src = scene.fallbackImage || initialScenes[0].image; }} alt={`Storyboard preview for ${scene.title}`} initial={{ opacity: 0.3, scale: 1.015 }} animate={{ opacity: 1, scale: playing ? 1.035 : 1 }} exit={{ opacity: 0.25 }} transition={{ duration: playing ? 8 : 0.35, ease: "easeOut" }} /></AnimatePresence>
       <div className="preview-shade" /><motion.div className="title-safe" key={`copy-${scene.id}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}><h1>{scene.title}</h1><p>{scene.caption}</p></motion.div>
     </>}</div>
-    <div className="transport"><span className="timecode"><strong>{formatClock(playhead)}</strong> / {formatClock(totalDuration)}</span><div className="transport-controls"><button aria-label="Previous scene" title="Previous scene"><CaretLeft weight="bold" /></button><button className="transport-play" onClick={() => setPlaying((value) => !value)} aria-label={playing ? "Pause preview" : "Play preview"}>{playing ? <Pause weight="fill" /> : <Play weight="fill" />}</button><button aria-label="Next scene" title="Next scene"><CaretRight weight="bold" /></button></div><div className="transport-tools"><button title="Preview display" aria-label="Preview display"><Desktop /></button><button title="Volume" aria-label="Volume"><SpeakerHigh /></button><button title="Preview settings" aria-label="Preview settings"><SlidersHorizontal /></button></div></div>
+    <div className="transport"><span className="timecode"><strong>{formatClock(playhead)}</strong> / {formatClock(totalDuration)}</span><div className="transport-controls"><button onClick={() => skip(-10)} aria-label="Back 10 seconds" title="Back 10 seconds"><CaretLeft weight="bold" /></button><button className="transport-play" onClick={() => setPlaying((value) => !value)} aria-label={playing ? "Pause preview" : "Play preview"}>{playing ? <Pause weight="fill" /> : <Play weight="fill" />}</button><button onClick={() => skip(10)} aria-label="Forward 10 seconds" title="Forward 10 seconds"><CaretRight weight="bold" /></button></div><div className="transport-tools"><button title="Preview display" aria-label="Preview display"><Desktop /></button><button title="Volume" aria-label="Volume"><SpeakerHigh /></button><button title="Preview settings" aria-label="Preview settings"><SlidersHorizontal /></button></div></div>
   </section>;
 }
 
@@ -108,7 +142,9 @@ function WaveTrack({ tone, label }) {
 
 function Timeline({ scenes, selectedId, onSelect, playhead, setPlayhead }) {
   const total = scenes.reduce((sum, scene) => sum + scene.duration, 0);
-  const rulerMarks = [0, 60, 120, 180, 240, 300, 360, 420];
+  const rulerInterval = total <= 180 ? 30 : total <= 600 ? 60 : 120;
+  const rulerMarks = Array.from({ length: Math.floor(total / rulerInterval) + 1 }, (_, index) => index * rulerInterval);
+  if (rulerMarks.at(-1) < total) rulerMarks.push(total);
   const trackRef = useRef(null);
   const seek = (event) => {
     const bounds = trackRef.current?.getBoundingClientRect();
@@ -206,6 +242,19 @@ export function App() {
   useEffect(() => { if (!activeJob || !logOpen) return undefined; const loadLog = () => fetchJson(`/api/jobs/${activeJob.job_id}/log`).then((data) => setLog(data.log)).catch(() => {}); loadLog(); const timer = window.setInterval(loadLog, 2000); return () => window.clearInterval(timer); }, [activeJob?.job_id, logOpen]);
   useEffect(() => { if (!toast) return undefined; const timer = window.setTimeout(() => setToast(""), 3200); return () => window.clearTimeout(timer); }, [toast]);
   useEffect(() => { const profile = profiles.find((item) => item.id === form.profile); if (profile && !submitting) setForm((current) => ({ ...current, duration_minutes: profile.duration_minutes || current.duration_minutes, fps: profile.fps || current.fps })); }, [form.profile, profiles]);
+  useEffect(() => {
+    const runId = latestRun?.run_id;
+    if (!runId || !["ready", "published"].includes(latestRun.status)) return undefined;
+    let current = true;
+    fetchJson(`/api/runs/${runId}/storyboard`).then((storyboard) => {
+      if (!current || !storyboard.scenes?.length) return;
+      setScenes(storyboardToScenes(storyboard, runId));
+      setSelectedId(storyboard.scenes[0].index);
+      setPlayhead(0);
+      setPlaying(false);
+    }).catch(() => {});
+    return () => { current = false; };
+  }, [latestRun?.run_id, latestRun?.status]);
 
   const updateScene = (patch) => { setScenes((current) => current.map((scene) => scene.id === selectedId ? { ...scene, ...patch } : scene)); setToast("Scene change saved for the next render"); };
   const startGeneration = async (event) => {
@@ -225,7 +274,7 @@ export function App() {
   return <div className="studio-shell">
     <header className="topbar"><button className="menu-button" aria-label="Open menu"><List /></button><BrandMark /><div className="project-title"><strong>{selectedProfile?.name || "AtlasForge project"}</strong><StatusDot ok /><span>Autosaved</span></div><label className="usecase-select"><span>Use case</span><select value={form.profile} onChange={(event) => setForm({ ...form, profile: event.target.value })}>{profiles.map((profile) => <option value={profile.id} key={profile.id}>{profile.name}</option>)}</select><CaretDown /></label><button className="primary-button generate-button" onClick={() => setSetupOpen(true)} disabled={activeJob?.state === "running"}><Sparkle weight="fill" /> {activeJob?.state === "running" ? "Generating…" : "Generate film"}</button><span className="shortcut"><Command />K</span><button className="top-icon" title="Help" aria-label="Help"><Question /></button><button className="top-icon" title="Notifications" aria-label="Notifications"><Bell /></button><div className="avatar" title="Local owner">AF</div></header>
     <div className="stagebar"><StageRail stages={runDetail?.stages || []} activeJob={activeJob?.state === "running" ? activeJob : null} /><div className="last-run"><span>Last run: {lastRunLabel}</span><button className="secondary-button" onClick={() => setLogOpen(true)}>View log <CaretRight /></button></div></div>
-    <main className="editor-grid"><ChapterRail scenes={scenes} selectedId={selectedId} onSelect={setSelectedId} activeTab={activeTab} setActiveTab={setActiveTab} onAddScene={addScene} /><div className="edit-canvas"><Preview scene={selectedScene} playing={playing} setPlaying={setPlaying} playhead={playhead} totalDuration={totalDuration} outputUrl={outputUrl} /><Timeline scenes={scenes} selectedId={selectedId} onSelect={setSelectedId} playhead={playhead} setPlayhead={setPlayhead} /></div><SceneInspector scene={selectedScene} sceneCount={scenes.length} onChange={updateScene} onRegenerate={() => setSetupOpen(true)} busy={activeJob?.state === "running"} /></main>
+    <main className="editor-grid"><ChapterRail scenes={scenes} selectedId={selectedId} onSelect={setSelectedId} activeTab={activeTab} setActiveTab={setActiveTab} onAddScene={addScene} /><div className="edit-canvas"><Preview scene={selectedScene} playing={playing} setPlaying={setPlaying} playhead={playhead} setPlayhead={setPlayhead} totalDuration={totalDuration} outputUrl={outputUrl} /><Timeline scenes={scenes} selectedId={selectedId} onSelect={setSelectedId} playhead={playhead} setPlayhead={setPlayhead} /></div><SceneInspector scene={selectedScene} sceneCount={scenes.length} onChange={updateScene} onRegenerate={() => setSetupOpen(true)} busy={activeJob?.state === "running"} /></main>
     <ProviderStrip system={system} selectedProfile={selectedProfile} duration={form.duration_minutes} quality={form.quality} />
     <AnimatePresence><GenerateDialog open={setupOpen} onClose={() => setSetupOpen(false)} profiles={profiles} form={form} setForm={setForm} onSubmit={startGeneration} submitting={submitting} system={system} /></AnimatePresence><LogDrawer open={logOpen} onClose={() => setLogOpen(false)} job={activeJob} log={log} onCancel={cancelJob} />
     <AnimatePresence>{toast && <motion.div className="toast" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }}><CheckCircle weight="fill" /> {toast}</motion.div>}</AnimatePresence>
