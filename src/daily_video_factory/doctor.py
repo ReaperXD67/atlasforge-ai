@@ -40,7 +40,9 @@ def run_doctor(settings: Settings) -> list[Check]:
     source_ages = [
         (date.today() - source.checked_on).days for source in settings.research.official_sources
     ]
-    sources_fresh = bool(source_ages) and max(source_ages) <= settings.research.max_official_source_age_days
+    sources_fresh = (
+        bool(source_ages) and max(source_ages) <= settings.research.max_official_source_age_days
+    )
     checks = [
         Check("Python", (3, 11) <= sys.version_info[:2] < (3, 14), platform.python_version()),
         Check("FFmpeg", ffmpeg.available, ffmpeg.executable or "not found"),
@@ -82,7 +84,9 @@ def run_doctor(settings: Settings) -> list[Check]:
         ),
         Check(
             "YouTube OAuth file",
-            os.path.exists(os.getenv("YOUTUBE_CLIENT_SECRETS_FILE", "secrets/youtube_client_secret.json")),
+            os.path.exists(
+                os.getenv("YOUTUBE_CLIENT_SECRETS_FILE", "secrets/youtube_client_secret.json")
+            ),
             "only required when publishing.enabled=true",
             required=settings.publishing.enabled,
         ),

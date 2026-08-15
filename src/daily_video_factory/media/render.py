@@ -63,13 +63,18 @@ class VideoRenderer:
         output.parent.mkdir(parents=True, exist_ok=True)
         self.ffmpeg.run(
             [
-                "-loop", "1",
-                "-i", str(image),
-                "-t", f"{duration:.3f}",
-                "-vf", video_filter,
+                "-loop",
+                "1",
+                "-i",
+                str(image),
+                "-t",
+                f"{duration:.3f}",
+                "-vf",
+                video_filter,
                 "-an",
                 *self._video_codec_args(),
-                "-pix_fmt", "yuv420p",
+                "-pix_fmt",
+                "yuv420p",
                 str(output),
             ]
         )
@@ -90,13 +95,18 @@ class VideoRenderer:
         )
         self.ffmpeg.run(
             [
-                "-stream_loop", "-1",
-                "-i", str(source),
-                "-t", f"{duration:.3f}",
-                "-vf", video_filter,
+                "-stream_loop",
+                "-1",
+                "-i",
+                str(source),
+                "-t",
+                f"{duration:.3f}",
+                "-vf",
+                video_filter,
                 "-an",
                 *self._video_codec_args(),
-                "-pix_fmt", "yuv420p",
+                "-pix_fmt",
+                "yuv420p",
                 str(output),
             ]
         )
@@ -132,8 +142,7 @@ class VideoRenderer:
             total_duration = sum(scene_durations)
             fade_out = max(0.0, total_duration - 0.4)
             filters.append(
-                f"[{previous}]fade=t=in:st=0:d=0.25,"
-                f"fade=t=out:st={fade_out:.3f}:d=0.4[video]"
+                f"[{previous}]fade=t=in:st=0:d=0.25,fade=t=out:st={fade_out:.3f}:d=0.4[video]"
             )
             self.ffmpeg.run(
                 [
@@ -157,10 +166,14 @@ class VideoRenderer:
         atomic_write(concat_file, "\n".join(lines) + "\n")
         self.ffmpeg.run(
             [
-                "-f", "concat",
-                "-safe", "0",
-                "-i", str(concat_file),
-                "-c", "copy",
+                "-f",
+                "concat",
+                "-safe",
+                "0",
+                "-i",
+                str(concat_file),
+                "-c",
+                "copy",
                 str(output),
             ]
         )
@@ -178,14 +191,20 @@ class VideoRenderer:
             filters = ["-vf", f"ass='{self.ffmpeg.filter_path(subtitles_ass)}'"]
         self.ffmpeg.run(
             [
-                "-i", str(silent_video),
-                "-i", str(mixed_audio),
+                "-i",
+                str(silent_video),
+                "-i",
+                str(mixed_audio),
                 *filters,
                 *self._video_codec_args(),
-                "-c:a", "aac",
-                "-b:a", "256k",
-                "-pix_fmt", "yuv420p",
-                "-movflags", "+faststart",
+                "-c:a",
+                "aac",
+                "-b:a",
+                "256k",
+                "-pix_fmt",
+                "yuv420p",
+                "-movflags",
+                "+faststart",
                 "-shortest",
                 str(output),
             ]

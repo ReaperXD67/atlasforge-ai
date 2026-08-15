@@ -54,6 +54,33 @@ services:
       ollama:
         condition: service_healthy
 
+  atlasforge-studio:
+    <<: *atlasforge
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: local-ai
+    profiles: [studio]
+    gpus: all
+    command:
+      - dashboard
+      - --config
+      - /app/config/profiles/atomy-us-openrouter.yaml
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8741"
+    environment:
+      CONFIG_FILE: /app/config/profiles/atomy-us-openrouter.yaml
+      OUTPUT_DIRECTORY: /app/output
+      MODEL_DIRECTORY: /app/models
+      HF_HOME: /app/models/huggingface
+      XDG_CACHE_HOME: /app/models/cache
+      COMFYUI_BASE_URL: ${DOCKER_COMFYUI_BASE_URL:-http://host.docker.internal:8188}
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility,video
+    ports:
+      - 127.0.0.1:8741:8741
+
   ollama:
     image: ollama/ollama:latest
     profiles: [local-ai]

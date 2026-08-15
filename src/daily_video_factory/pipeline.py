@@ -112,7 +112,9 @@ class DailyVideoPipeline:
         factor = audio_duration / storyboard.total_duration_seconds
         for scene in storyboard.scenes:
             scene.duration_seconds = round(scene.duration_seconds * factor, 3)
-        storyboard.total_duration_seconds = round(sum(s.duration_seconds for s in storyboard.scenes), 3)
+        storyboard.total_duration_seconds = round(
+            sum(s.duration_seconds for s in storyboard.scenes), 3
+        )
         return storyboard
 
     def run(
@@ -152,7 +154,13 @@ class DailyVideoPipeline:
                     return report
 
                 research = self._load_or_execute_model(
-                    "research", research_file, ResearchReport, manifest, paths, research_operation, resume
+                    "research",
+                    research_file,
+                    ResearchReport,
+                    manifest,
+                    paths,
+                    research_operation,
+                    resume,
                 )
                 manifest.topic = research.selected_title
 
@@ -188,18 +196,30 @@ class DailyVideoPipeline:
                     return board
 
                 storyboard = self._load_or_execute_model(
-                    "storyboard", storyboard_file, Storyboard, manifest, paths, storyboard_operation, resume
+                    "storyboard",
+                    storyboard_file,
+                    Storyboard,
+                    manifest,
+                    paths,
+                    storyboard_operation,
+                    resume,
                 )
 
                 narration_file = paths.audio / "narration.wav"
                 narration_provider_file = paths.audio / "provider.txt"
 
                 def narration_operation() -> Path:
-                    result = NarrationGenerator(self.settings, self.ffmpeg).run(script.full_text, paths.audio)
+                    result = NarrationGenerator(self.settings, self.ffmpeg).run(
+                        script.full_text, paths.audio
+                    )
                     narration_provider_file.write_text(result.provider, encoding="utf-8")
                     return result.value
 
-                if resume and self.store.stage_completed(manifest.run_id, "narration") and narration_file.exists():
+                if (
+                    resume
+                    and self.store.stage_completed(manifest.run_id, "narration")
+                    and narration_file.exists()
+                ):
                     narration = narration_file
                 else:
                     narration = self._execute("narration", manifest, paths, narration_operation)
@@ -213,9 +233,7 @@ class DailyVideoPipeline:
                     CostEntry(
                         stage="narration",
                         provider=narration_provider,
-                        estimated_usd={"openai": 0.12, "gemini": 0.10}.get(
-                            narration_provider, 0.0
-                        ),
+                        estimated_usd={"openai": 0.12, "gemini": 0.10}.get(narration_provider, 0.0),
                         note="Seven-minute planning estimate; confirm actual provider billing.",
                     ),
                 )
@@ -233,11 +251,17 @@ class DailyVideoPipeline:
                         target = paths.scenes / f"scene_{scene.index:03d}.jpg"
                         provider, generated = generator.run(scene, target)
                         result[scene.index] = generated
-                        index_payload.append({"scene": scene.index, "provider": provider, "path": str(generated)})
+                        index_payload.append(
+                            {"scene": scene.index, "provider": provider, "path": str(generated)}
+                        )
                     paths.write_json("scenes/images.json", index_payload)
                     return result
 
-                if resume and self.store.stage_completed(manifest.run_id, "images") and image_index.exists():
+                if (
+                    resume
+                    and self.store.stage_completed(manifest.run_id, "images")
+                    and image_index.exists()
+                ):
                     payload = json.loads(image_index.read_text(encoding="utf-8"))
                     images = {int(item["scene"]): Path(item["path"]) for item in payload}
                 else:
@@ -256,7 +280,11 @@ class DailyVideoPipeline:
                     return generated
 
                 premium_index = paths.videos / "premium" / "index.json"
-                if resume and self.store.stage_completed(manifest.run_id, "premium_video") and premium_index.exists():
+                if (
+                    resume
+                    and self.store.stage_completed(manifest.run_id, "premium_video")
+                    and premium_index.exists()
+                ):
                     raw = json.loads(premium_index.read_text(encoding="utf-8"))
                     premium = {int(index): Path(path) for index, path in raw.items()}
                 else:
@@ -294,7 +322,11 @@ class DailyVideoPipeline:
                         [scene.duration_seconds for scene in storyboard.scenes],
                     )
 
-                if not (resume and self.store.stage_completed(manifest.run_id, "render") and silent_video.exists()):
+                if not (
+                    resume
+                    and self.store.stage_completed(manifest.run_id, "render")
+                    and silent_video.exists()
+                ):
                     self._execute("render", manifest, paths, render_operation)
 
                 srt_file = paths.subtitles / "subtitles.srt"
@@ -312,7 +344,11 @@ class DailyVideoPipeline:
                     paths.write_json("subtitles/cues.json", [cue.model_dump() for cue in cues])
                     return ass_file
 
-                if not (resume and self.store.stage_completed(manifest.run_id, "subtitles") and ass_file.exists()):
+                if not (
+                    resume
+                    and self.store.stage_completed(manifest.run_id, "subtitles")
+                    and ass_file.exists()
+                ):
                     self._execute("subtitles", manifest, paths, subtitle_operation)
 
                 music_file = paths.music / "original_ambient.wav"
@@ -323,10 +359,20 @@ class DailyVideoPipeline:
                     generate_original_music(audio_duration, music_file)
                     generate_sfx_track(storyboard, audio_duration, sfx_file)
                     return mix_audio(
-                        narration, music_file, sfx_file, audio_duration, mixed_audio, self.settings, self.ffmpeg
+                        narration,
+                        music_file,
+                        sfx_file,
+                        audio_duration,
+                        mixed_audio,
+                        self.settings,
+                        self.ffmpeg,
                     )
 
-                if not (resume and self.store.stage_completed(manifest.run_id, "sound_mix") and mixed_audio.exists()):
+                if not (
+                    resume
+                    and self.store.stage_completed(manifest.run_id, "sound_mix")
+                    and mixed_audio.exists()
+                ):
                     self._execute("sound_mix", manifest, paths, sound_operation)
 
                 metadata_file = paths.metadata / "metadata.json"
@@ -341,7 +387,13 @@ class DailyVideoPipeline:
                     return metadata
 
                 metadata = self._load_or_execute_model(
-                    "metadata", metadata_file, VideoMetadata, manifest, paths, metadata_operation, resume
+                    "metadata",
+                    metadata_file,
+                    VideoMetadata,
+                    manifest,
+                    paths,
+                    metadata_operation,
+                    resume,
                 )
 
                 final_video = paths.final / "video.mp4"
@@ -349,14 +401,26 @@ class DailyVideoPipeline:
                 def finish_operation() -> Path:
                     return renderer.finish(silent_video, mixed_audio, ass_file, final_video)
 
-                if not (resume and self.store.stage_completed(manifest.run_id, "finalize") and final_video.exists()):
+                if not (
+                    resume
+                    and self.store.stage_completed(manifest.run_id, "finalize")
+                    and final_video.exists()
+                ):
                     self._execute("finalize", manifest, paths, finish_operation)
 
                 def quality_operation() -> list[str]:
                     warnings = validate_final(
-                        final_video, thumbnail_file, storyboard, metadata, self.settings, self.ffmpeg
+                        final_video,
+                        thumbnail_file,
+                        storyboard,
+                        metadata,
+                        self.settings,
+                        self.ffmpeg,
                     )
-                    paths.write_json("metadata/quality_report.json", {"warnings": warnings, "passed": not warnings})
+                    paths.write_json(
+                        "metadata/quality_report.json",
+                        {"warnings": warnings, "passed": not warnings},
+                    )
                     return warnings
 
                 warnings = self._execute("quality_gate", manifest, paths, quality_operation)

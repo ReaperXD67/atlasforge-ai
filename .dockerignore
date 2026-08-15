@@ -10,6 +10,8 @@ __pycache__
 .coverage
 build
 dist
+frontend/dist
+frontend/node_modules
 output
 models
 secrets

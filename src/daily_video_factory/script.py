@@ -34,13 +34,12 @@ SCRIPT_SCHEMA: dict[str, Any] = {
 
 
 SYSTEM_PROMPT = """You are an experienced educational YouTube writer and compliance editor.
-Write natural, specific narration for skeptical adults, not existing brand members. Every paragraph
-must teach, demonstrate, compare, or qualify something. Avoid filler, hype, fake urgency, clichés,
-and robotic signposting. Never promise income, passive earnings, health outcomes, cures, guaranteed
-results, or financial freedom. Never invent prices, ingredients, certifications, compensation-plan
-details, research findings, or testimonials. Separate opinions from facts. Mention Atomy only after
-the viewer has received substantial independent value, and present it as one option with tradeoffs.
-Return only JSON matching the requested schema."""
+Write natural, specific narration for skeptical adults. Every paragraph must teach, demonstrate,
+compare, or qualify something. Avoid filler, hype, fake urgency, clichés, and robotic signposting.
+Never promise income, passive earnings, health outcomes, cures, guaranteed results, or financial
+freedom. Never invent prices, ingredients, certifications, compensation-plan details, research
+findings, or testimonials. Separate opinions from facts. Return only JSON matching the requested
+schema."""
 
 
 class ScriptGenerator:
@@ -60,27 +59,35 @@ class ScriptGenerator:
             f"- {item.title} ({item.source}; signal score {item.score:.1f})"
             for item in report.candidates[:12]
         )
-        source_context = "\n".join(
-            f"- {source.title} (checked {source.checked_on.isoformat()}): {source.summary}\n"
-            f"  URL: {source.url}"
-            for source in report.evidence
-        ) or "- No pinned official evidence is available. Avoid all specific brand claims."
-        brand_instruction = (
-            "This is a brand-focused topic: name Atomy in the hook and answer the question directly, "
-            "but do not turn the script into a recruitment pitch."
-            if report.brand_focused
-            else (
-                "Do not mention Atomy until roughly "
-                f"{self.settings.script.brand_mention_min_fraction:.0%} through the narration."
+        source_context = (
+            "\n".join(
+                f"- {source.title} (checked {source.checked_on.isoformat()}): {source.summary}\n"
+                f"  URL: {source.url}"
+                for source in report.evidence
             )
+            or "- No pinned official evidence is available. Avoid all specific brand claims."
         )
+        brand = self.settings.channel.brand_name.strip()
+        if report.brand_focused and brand:
+            brand_instruction = (
+                f"This is a brand-focused topic: name {brand} in the hook and answer the question "
+                "directly, but do not turn the script into a recruitment pitch."
+            )
+        elif self.settings.channel.brand_required and brand:
+            brand_instruction = (
+                f"Do not mention {brand} until roughly "
+                f"{self.settings.script.brand_mention_min_fraction:.0%} through the narration. "
+                f"Evaluate {brand} as one optional case study alongside alternatives."
+            )
+        else:
+            brand_instruction = "Do not force a brand mention or promotional case study."
         target = self.settings.script
         return f"""Create a {target.target_minutes:.0f}-minute YouTube narration.
 
 SEARCH TOPIC: {report.selected_title}
 EDITORIAL ANGLE: {report.selected_angle}
 TARGET LENGTH: {target.min_words}-{target.max_words} spoken words
-AUDIENCE: {', '.join(self.settings.channel.audience)}
+AUDIENCE: {", ".join(self.settings.channel.audience)}
 CURRENT TOPIC SIGNALS (not factual evidence):
 {candidate_context}
 
@@ -91,16 +98,16 @@ Structure:
 1. A concrete hook that identifies the viewer's tension without fearmongering.
 2. Five to eight coherent teaching sections with examples, decision criteria, and caveats.
 3. {brand_instruction}
-4. Evaluate Atomy as one optional case study alongside non-Atomy alternatives.
+4. Clearly separate sourced facts, reasonable interpretations, and unresolved questions.
 5. A low-pressure CTA asking for a thoughtful comment or subscription, not a purchase.
 
-Use the pinned evidence for specific Atomy or regulatory facts. Do not treat search signals as facts.
+Use the pinned evidence for specific brand or regulatory facts. Do not treat search signals as facts.
 Do not copy source wording. Put any claim not directly supported by the pinned evidence into
 facts_to_verify, and prefer omitting it entirely.
 
 The title must be searchable but honest. Put every externally verifiable statement that may need
-editorial checking into facts_to_verify. Include both the AI-voice disclosure and the educational
-financial/medical disclaimer in disclosures. Do not add citations you cannot verify."""
+editorial checking into facts_to_verify. Include the AI-voice disclosure and this channel disclosure
+in disclosures: {self.settings.channel.disclosure}. Do not add citations you cannot verify."""
 
     @staticmethod
     def _normalize(

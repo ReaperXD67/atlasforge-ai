@@ -146,7 +146,9 @@ class PremiumSceneScheduler:
         }
         self.providers = [mapping[name] for name in self.cfg.premium_providers if name in mapping]
 
-    def generate(self, scenes: list[Scene], output_dir: Path) -> tuple[dict[int, Path], list[CostEntry]]:
+    def generate(
+        self, scenes: list[Scene], output_dir: Path
+    ) -> tuple[dict[int, Path], list[CostEntry]]:
         if not self.cfg.enable_premium_scenes or self.cfg.premium_max_scenes_per_video <= 0:
             return {}, []
         selected = sorted(scenes, key=lambda scene: scene.premium_score, reverse=True)

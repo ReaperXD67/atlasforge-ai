@@ -84,7 +84,23 @@ output/YYYY-MM-DD-run-id/
 
 ## Quick start
 
-On Windows PowerShell:
+The lowest-effort path on Windows uses Docker Desktop, your OpenRouter key, free local Kokoro
+narration, local Whisper caption alignment, Pexels stock images, and the RTX 4070 for 1080p60 NVENC
+rendering. Publishing and paid video generation stay off.
+
+```powershell
+git clone https://github.com/ReaperXD67/atlasforge-ai.git
+Set-Location atlasforge-ai
+Copy-Item .env.example .env
+notepad .env # paste OPENROUTER_API_KEY; PEXELS_API_KEY is recommended
+.\scripts\start_studio.ps1
+```
+
+Open `http://127.0.0.1:8741`, select **Atomy USA — Fast Preview** for the first run, and click
+**Generate film**. Stop the service later with `.\scripts\stop_studio.ps1`. The first build installs
+the local voice/caption stack; the first generation can also download model data into `models/`.
+
+For a native Python installation instead:
 
 ```powershell
 git clone https://github.com/ReaperXD67/atlasforge-ai.git
@@ -99,7 +115,7 @@ notepad .env
 
 The installer does not create API credentials or enable billing. Complete [SETUP.md](SETUP.md) before the first production run.
 
-For an isolated GPU/local-AI runtime, use the three Compose profiles in [Local and Docker operation](docs/LOCAL_DOCKER.md).
+For all container modes and diagnostics, see [Local and Docker operation](docs/LOCAL_DOCKER.md).
 
 ## Commands
 
@@ -112,6 +128,9 @@ atlasforge run --upload                   # package and upload/schedule
 atlasforge schedule                       # persistent daily scheduler
 atlasforge dashboard --port 8741          # local progress UI
 ```
+
+The Studio adds reusable use-case profiles, editable scenes, a multitrack timeline, live provider
+readiness, generation logs, cancel controls, and direct playback of completed local renders.
 
 The former `dailyvideo` command remains available as a backward-compatible alias. For unattended Windows operation, run `scripts/register_task.ps1` after a successful dry run.
 

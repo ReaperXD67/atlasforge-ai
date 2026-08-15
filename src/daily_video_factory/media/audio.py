@@ -23,7 +23,9 @@ def _write_wave(path: Path, samples: np.ndarray, sample_rate: int = 48000) -> Pa
     return path
 
 
-def generate_original_music(duration_seconds: float, output: Path, sample_rate: int = 48000) -> Path:
+def generate_original_music(
+    duration_seconds: float, output: Path, sample_rate: int = 48000
+) -> Path:
     """Generate an original restrained ambient bed with no third-party rights dependency."""
     total = max(1, math.ceil(duration_seconds * sample_rate))
     music = np.zeros(total, dtype=np.float32)
@@ -94,14 +96,24 @@ def mix_audio(
     )
     ffmpeg.run(
         [
-            "-i", str(narration),
-            "-stream_loop", "-1", "-i", str(music),
-            "-i", str(sfx),
-            "-filter_complex", filter_graph,
-            "-map", "[out]",
-            "-ar", "48000",
-            "-c:a", "aac",
-            "-b:a", "256k",
+            "-i",
+            str(narration),
+            "-stream_loop",
+            "-1",
+            "-i",
+            str(music),
+            "-i",
+            str(sfx),
+            "-filter_complex",
+            filter_graph,
+            "-map",
+            "[out]",
+            "-ar",
+            "48000",
+            "-c:a",
+            "aac",
+            "-b:a",
+            "256k",
             str(output),
         ]
     )

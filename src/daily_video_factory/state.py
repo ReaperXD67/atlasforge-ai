@@ -99,7 +99,11 @@ class RunStore:
 
     def stage(self, run_id: str, stage: str, status: StageStatus, message: str = "") -> None:
         now = datetime.now(UTC).isoformat()
-        finished = now if status in {StageStatus.completed, StageStatus.skipped, StageStatus.failed} else None
+        finished = (
+            now
+            if status in {StageStatus.completed, StageStatus.skipped, StageStatus.failed}
+            else None
+        )
         with self._connect() as db:
             db.execute(
                 """
@@ -128,6 +132,22 @@ class RunStore:
             ).fetchall()
         return [json.loads(row["manifest_json"]) for row in rows]
 
+    def get_run(self, run_id: str) -> dict[str, object] | None:
+        with self._connect() as db:
+            row = db.execute("SELECT manifest_json FROM runs WHERE run_id=?", (run_id,)).fetchone()
+        return json.loads(row["manifest_json"]) if row else None
+
+    def list_stages(self, run_id: str) -> list[dict[str, object]]:
+        with self._connect() as db:
+            rows = db.execute(
+                """
+                SELECT stage, status, attempt, message, started_at, finished_at
+                FROM stages WHERE run_id=? ORDER BY started_at, rowid
+                """,
+                (run_id,),
+            ).fetchall()
+        return [dict(row) for row in rows]
+
     def latest_resumable(self, publication_date: date) -> RunManifest | None:
         with self._connect() as db:
             row = db.execute(
@@ -139,4 +159,3 @@ class RunStore:
                 (publication_date.isoformat(),),
             ).fetchone()
         return RunManifest.model_validate_json(row["manifest_json"]) if row else None
-

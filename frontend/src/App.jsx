@@ -1,0 +1,233 @@
+import { useEffect, useMemo, useRef, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import {
+  Bell, CaretDown, CaretLeft, CaretRight, Check, CheckCircle, CircleNotch,
+  ClosedCaptioning, Command, Desktop, DotsThree, Eye, FilmReel, FolderOpen,
+  Image as ImageIcon, List, MagnifyingGlassPlus, Microphone, Minus, MusicNotes,
+  Pause, Play, Plus, Question, Queue, SlidersHorizontal, Sparkle, SpeakerHigh,
+  StopCircle, Warning, Waveform, X,
+} from "@phosphor-icons/react";
+import "@fontsource/dm-sans/latin-400.css";
+import "@fontsource/dm-sans/latin-500.css";
+import "@fontsource/dm-sans/latin-600.css";
+import "@fontsource/cormorant-garamond/latin-600.css";
+
+const fallbackProfiles = [
+  { id: "atomy-us-openrouter", name: "Atomy USA — Joining Guide", brand: "Atomy", region: "United States", duration_minutes: 7, text_provider: "openrouter", voice_provider: "kokoro", fps: 60 },
+  { id: "atomy-us-preview", name: "Atomy USA — Fast Preview", brand: "Atomy", region: "United States", duration_minutes: 2, text_provider: "openrouter", voice_provider: "kokoro", fps: 60 },
+  { id: "general-explainer", name: "General Explainer", brand: "", region: "Global", duration_minutes: 5, text_provider: "openrouter", voice_provider: "kokoro", fps: 60 },
+];
+
+const initialScenes = [
+  { id: 1, title: "How to Join Atomy USA", caption: "A clear, practical member-registration guide.", duration: 55, image: "/assets/scenes/city-waterfront.webp", source: "Pexels or generated still", motion: "Slow push-in", transition: "Crossfade" },
+  { id: 2, title: "Before You Begin", caption: "Prepare a sponsor ID and accurate personal details.", duration: 88, image: "/assets/scenes/member-guidance.webp", source: "Pexels people", motion: "Gentle drift right", transition: "Crossfade" },
+  { id: 3, title: "Understand the Products", caption: "Review official product information before deciding.", duration: 96, image: "/assets/scenes/product-education.webp", source: "Product still", motion: "Parallax push-in", transition: "Dip to black" },
+  { id: 4, title: "Know the Model", caption: "Results vary; there are no guaranteed earnings.", duration: 94, image: "/assets/scenes/member-education.webp", source: "Education footage", motion: "Locked frame", transition: "Crossfade" },
+  { id: 5, title: "Complete Registration", caption: "Use the official regional site and verify every field.", duration: 87, image: "/assets/scenes/registration.webp", source: "Pexels lifestyle", motion: "Slow push-in", transition: "Fade out" },
+];
+
+const productionSteps = [
+  { label: "Brief", stages: ["research"] },
+  { label: "Script", stages: ["script", "storyboard"] },
+  { label: "Voice", stages: ["narration", "sound_mix"] },
+  { label: "Visuals", stages: ["images", "premium_video"] },
+  { label: "Edit", stages: ["render", "finalize"] },
+  { label: "Captions", stages: ["subtitles"] },
+  { label: "Quality", stages: ["metadata", "quality_gate"] },
+];
+
+const formatClock = (seconds) => {
+  const safe = Math.max(0, Math.round(seconds));
+  return `${String(Math.floor(safe / 60)).padStart(2, "0")}:${String(safe % 60).padStart(2, "0")}`;
+};
+const formatDuration = (seconds) => `00:${formatClock(seconds)}:00`;
+const titleCase = (value = "") => value.replaceAll("_", " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
+
+async function fetchJson(url, options) {
+  const response = await fetch(url, options);
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(payload.detail || `Request failed (${response.status})`);
+  return payload;
+}
+
+function BrandMark() {
+  return <div className="brand-mark" aria-label="AtlasForge Studio"><FilmReel weight="duotone" aria-hidden="true" /><span>AtlasForge Studio</span><small>LOCAL-FIRST</small></div>;
+}
+
+function StatusDot({ ok, pending = false }) {
+  return <span className={`status-dot ${ok ? "is-ok" : ""} ${pending ? "is-pending" : ""}`} aria-label={pending ? "checking" : ok ? "ready" : "needs setup"} />;
+}
+
+function StageRail({ stages = [], activeJob }) {
+  const stageMap = useMemo(() => new Map(stages.map((stage) => [stage.stage, stage.status])), [stages]);
+  const hasJob = Boolean(activeJob);
+  return <nav className="stage-rail" aria-label="Production stages">{productionSteps.map((step, index) => {
+    const statuses = step.stages.map((stage) => stageMap.get(stage)).filter(Boolean);
+    const complete = statuses.length > 0 && statuses.every((status) => status === "completed");
+    const failed = statuses.some((status) => status === "failed");
+    const running = statuses.some((status) => status === "running");
+    const visualWorkspace = !hasJob && step.label === "Visuals";
+    return <div className={`stage-step ${complete ? "is-complete" : ""} ${running || visualWorkspace ? "is-active" : ""} ${failed ? "is-failed" : ""}`} key={step.label}>
+      <span className="stage-label">{step.label}</span><span className="stage-rule" />
+      <span className="stage-node" aria-label={`${step.label}: ${complete ? "complete" : running ? "running" : failed ? "failed" : "pending"}`}>{complete ? <Check weight="bold" /> : failed ? <X weight="bold" /> : running ? <CircleNotch className="spin" /> : index + 1}</span>
+    </div>;
+  })}</nav>;
+}
+
+function ChapterRail({ scenes, selectedId, onSelect, activeTab, setActiveTab, onAddScene }) {
+  let start = 0;
+  return <aside className="chapter-panel panel-surface">
+    <div className="panel-tabs" role="tablist" aria-label="Storyboard panel"><button className={activeTab === "chapters" ? "active" : ""} onClick={() => setActiveTab("chapters")} role="tab">Chapters</button><button className={activeTab === "assets" ? "active" : ""} onClick={() => setActiveTab("assets")} role="tab">Assets</button></div>
+    {activeTab === "chapters" ? <div className="chapter-scroll">{scenes.map((scene) => {
+      const sceneStart = start;
+      start += scene.duration;
+      return <button className={`chapter-card ${selectedId === scene.id ? "active" : ""}`} key={scene.id} onClick={() => onSelect(scene.id)}><span className="chapter-index">{scene.id}</span><span className="chapter-start">{formatClock(sceneStart)}</span><img src={scene.image} alt="" /><span className="chapter-copy"><strong>{scene.title}</strong><small>{formatClock(scene.duration)}</small></span><DotsThree weight="bold" aria-hidden="true" /></button>;
+    })}</div> : <div className="asset-list">{[
+      [ImageIcon, "5 generated scene stills", "Ready in this project"],
+      [FolderOpen, "Pexels stock search", "API-backed when enabled"],
+      [MusicNotes, "Original ambient score", "Generated locally"],
+      [ClosedCaptioning, "Timed captions", "Whisper alignment"],
+    ].map(([Icon, title, detail]) => <div className="asset-row" key={title}><Icon weight="duotone" /><span><strong>{title}</strong><small>{detail}</small></span><CheckCircle weight="fill" className="ready-icon" /></div>)}</div>}
+    <div className="panel-footer"><button className="secondary-button grow" onClick={onAddScene}><Plus /> Add scene</button><button className="icon-button" title="Open scene queue" aria-label="Open scene queue"><Queue /></button></div>
+  </aside>;
+}
+
+function Preview({ scene, playing, setPlaying, playhead, totalDuration, outputUrl }) {
+  return <section className="preview-card panel-surface" aria-label="Video preview">
+    <div className="preview-media">{outputUrl ? <video src={outputUrl} controls preload="metadata" poster={scene.image} /> : <>
+      <AnimatePresence mode="wait"><motion.img key={scene.id} src={scene.image} alt={`Storyboard preview for ${scene.title}`} initial={{ opacity: 0.3, scale: 1.015 }} animate={{ opacity: 1, scale: playing ? 1.035 : 1 }} exit={{ opacity: 0.25 }} transition={{ duration: playing ? 8 : 0.35, ease: "easeOut" }} /></AnimatePresence>
+      <div className="preview-shade" /><motion.div className="title-safe" key={`copy-${scene.id}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}><h1>{scene.title}</h1><p>{scene.caption}</p></motion.div>
+    </>}</div>
+    <div className="transport"><span className="timecode"><strong>{formatClock(playhead)}</strong> / {formatClock(totalDuration)}</span><div className="transport-controls"><button aria-label="Previous scene" title="Previous scene"><CaretLeft weight="bold" /></button><button className="transport-play" onClick={() => setPlaying((value) => !value)} aria-label={playing ? "Pause preview" : "Play preview"}>{playing ? <Pause weight="fill" /> : <Play weight="fill" />}</button><button aria-label="Next scene" title="Next scene"><CaretRight weight="bold" /></button></div><div className="transport-tools"><button title="Preview display" aria-label="Preview display"><Desktop /></button><button title="Volume" aria-label="Volume"><SpeakerHigh /></button><button title="Preview settings" aria-label="Preview settings"><SlidersHorizontal /></button></div></div>
+  </section>;
+}
+
+function WaveTrack({ tone, label }) {
+  return <div className={`wave-track ${tone}`} aria-label={label}>{Array.from({ length: 18 }, (_, index) => <Waveform key={index} weight="fill" aria-hidden="true" />)}</div>;
+}
+
+function Timeline({ scenes, selectedId, onSelect, playhead, setPlayhead }) {
+  const total = scenes.reduce((sum, scene) => sum + scene.duration, 0);
+  const rulerMarks = [0, 60, 120, 180, 240, 300, 360, 420];
+  const trackRef = useRef(null);
+  const seek = (event) => {
+    const bounds = trackRef.current?.getBoundingClientRect();
+    if (!bounds) return;
+    setPlayhead(Math.min(1, Math.max(0, (event.clientX - bounds.left) / bounds.width)) * total);
+  };
+  return <section className="timeline panel-surface" aria-label="Editorial timeline">
+    <div className="timeline-ruler"><div className="track-label-spacer" /><div className="ruler-marks">{rulerMarks.map((mark) => <span key={mark} style={{ left: `${(mark / total) * 100}%` }}>{formatClock(mark)}</span>)}</div></div>
+    <div className="timeline-body"><div className="track-labels">{[[Eye, "Visuals"], [Microphone, "Voice"], [MusicNotes, "Music"], [Waveform, "SFX"], [ClosedCaptioning, "Captions"]].map(([Icon, label]) => <div className="track-label" key={label}><Icon /><span>{label}</span></div>)}</div>
+      <div className="tracks" ref={trackRef} onClick={seek}><div className="scene-track">{scenes.map((scene) => <button key={scene.id} className={selectedId === scene.id ? "selected" : ""} style={{ width: `${(scene.duration / total) * 100}%` }} onClick={(event) => { event.stopPropagation(); onSelect(scene.id); }} title={scene.title}><img src={scene.image} alt="" /><span>{scene.id}</span></button>)}</div><WaveTrack tone="voice" label="Voice waveform" /><div className="music-track"><MusicNotes weight="fill" /><span>Quiet momentum</span><small>96 BPM · original</small></div><WaveTrack tone="sfx" label="Sound effects waveform" /><div className="caption-track">{scenes.map((scene) => <span key={scene.id} style={{ width: `${(scene.duration / total) * 100}%` }}>{scene.caption}</span>)}</div><div className="playhead" style={{ left: `${(playhead / total) * 100}%` }}><span /></div></div>
+    </div>
+    <div className="timeline-zoom"><button title="Zoom out" aria-label="Zoom out"><Minus /></button><input type="range" min="0" max="100" defaultValue="34" aria-label="Timeline zoom" /><button title="Zoom in" aria-label="Zoom in"><MagnifyingGlassPlus /></button><span>Fit</span></div>
+  </section>;
+}
+
+function SceneInspector({ scene, sceneCount, onChange, onRegenerate, busy }) {
+  return <aside className="inspector panel-surface"><div className="inspector-head"><span><FilmReel /> Scene {scene.id} of {sceneCount}</span><div><button aria-label="Previous scene"><CaretLeft /></button><button aria-label="Next scene"><CaretRight /></button></div></div><img className="inspector-thumb" src={scene.image} alt={`Selected visual for ${scene.title}`} />
+    <label><span>Scene title</span><input value={scene.title} onChange={(event) => onChange({ title: event.target.value })} /></label><label className="duration-field"><span>Duration</span><input value={formatDuration(scene.duration)} readOnly /></label><div className="inspector-divider" />
+    <label><span>Visual source</span><div className="source-select"><img src={scene.image} alt="" /><select value={scene.source} onChange={(event) => onChange({ source: event.target.value })}><option>Pexels or generated still</option><option>Pexels people</option><option>Product still</option><option>Education footage</option><option>Pexels lifestyle</option><option>Local title card</option></select></div></label>
+    <label><span>Motion</span><select value={scene.motion} onChange={(event) => onChange({ motion: event.target.value })}><option>Slow push-in</option><option>Gentle drift right</option><option>Parallax push-in</option><option>Locked frame</option></select></label>
+    <label><span>Transition</span><div className="split-field"><select value={scene.transition} onChange={(event) => onChange({ transition: event.target.value })}><option>Crossfade</option><option>Dip to black</option><option>Fade out</option></select><select defaultValue="0.55"><option value="0.35">0.35s</option><option value="0.55">0.55s</option><option value="0.75">0.75s</option></select></div></label>
+    <button className="secondary-button regenerate" onClick={onRegenerate} disabled={busy}>{busy ? <CircleNotch className="spin" /> : <Sparkle weight="fill" />} Regenerate with this scene</button><p className="inspector-note">Scene edits shape the next full render. Publishing always stays off in Studio.</p>
+  </aside>;
+}
+
+function ProviderStrip({ system, selectedProfile, duration, quality }) {
+  const qualityLabel = quality === "max" ? "Max detail" : quality === "fast" ? "Fast draft" : "Balanced";
+  const providers = [
+    { label: "Local project", detail: "Autosaved", ok: true },
+    { label: "OpenRouter", detail: "Script", ok: Boolean(system.openrouter) },
+    { label: "Kokoro", detail: "Voice", ok: Boolean(system.kokoro) },
+    { label: "Whisper", detail: "Captions · CPU", ok: Boolean(system.whisper) },
+    { label: system.gpu_name || "NVIDIA GPU", detail: system.nvenc ? "NVENC" : "CPU fallback", ok: Boolean(system.gpu || system.ffmpeg) },
+    { label: `${system.width || 1920}×${system.height || 1080}`, detail: `${system.fps || selectedProfile?.fps || 60} fps`, ok: true },
+    { label: `$${(0.03 * Math.max(1, duration / 7)).toFixed(2)}`, detail: `${qualityLabel} estimate`, ok: true },
+  ];
+  return <footer className="provider-strip">{providers.map((provider) => <div className="provider-cell" key={provider.label}><StatusDot ok={provider.ok} /><span><strong>{provider.label}</strong><small>{provider.detail}</small></span></div>)}</footer>;
+}
+
+function GenerateDialog({ open, onClose, profiles, form, setForm, onSubmit, submitting, system }) {
+  if (!open) return null;
+  return <motion.div className="dialog-backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onMouseDown={onClose}><motion.form className="generate-dialog" initial={{ opacity: 0, y: 18, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 10, scale: 0.98 }} onSubmit={onSubmit} onMouseDown={(event) => event.stopPropagation()}>
+    <div className="dialog-head"><div><span className="eyebrow">Production setup</span><h2>Generate a complete film</h2><p>Script in the cloud. Voice, captions, motion, audio mix, and render stay local.</p></div><button type="button" className="icon-button" onClick={onClose} aria-label="Close setup"><X /></button></div>
+    <div className="readiness-line"><span className={system.openrouter ? "ready" : "missing"}>{system.openrouter ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} OpenRouter</span><span className={system.pexels ? "ready" : "missing"}>{system.pexels ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} Pexels</span><span className={system.nvenc ? "ready" : "missing"}>{system.nvenc ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} NVENC</span><span className={system.kokoro ? "ready" : "missing"}>{system.kokoro ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} Kokoro</span></div>
+    <label><span>Use case</span><select value={form.profile} onChange={(event) => setForm({ ...form, profile: event.target.value })}>{profiles.map((profile) => <option key={profile.id} value={profile.id}>{profile.name}</option>)}</select></label>
+    <label><span>Topic or angle <small>optional</small></span><textarea value={form.topic} onChange={(event) => setForm({ ...form, topic: event.target.value })} placeholder="Example: A calm, factual walkthrough of joining Atomy USA" rows="3" /></label>
+    <div className="form-grid"><label><span>Length</span><select value={form.duration_minutes} onChange={(event) => setForm({ ...form, duration_minutes: Number(event.target.value) })}><option value="2">2 min preview</option><option value="5">5 minutes</option><option value="7">7 minutes</option><option value="10">10 minutes</option></select></label><label><span>Frame rate</span><select value={form.fps} onChange={(event) => setForm({ ...form, fps: Number(event.target.value) })}><option value="60">60 fps · smooth</option><option value="30">30 fps · faster</option></select></label><label><span>Render quality</span><select value={form.quality} onChange={(event) => setForm({ ...form, quality: event.target.value })}><option value="fast">Fast draft</option><option value="balanced">Balanced · recommended</option><option value="max">Maximum detail</option></select></label></div>
+    <div className="toggle-row"><button type="button" className={form.stock_images ? "active" : ""} onClick={() => setForm({ ...form, stock_images: !form.stock_images })}><ImageIcon /> Stock visuals <span>{form.stock_images ? "On" : "Off"}</span></button><button type="button" className={form.captions ? "active" : ""} onClick={() => setForm({ ...form, captions: !form.captions })}><ClosedCaptioning /> Burn-in captions <span>{form.captions ? "On" : "Off"}</span></button></div>
+    <div className="dialog-foot"><p><strong>Publishing is disabled.</strong> The finished video and thumbnail stay in your local output folder.</p><button className="primary-button" disabled={submitting || !system.openrouter}>{submitting ? <CircleNotch className="spin" /> : <Sparkle weight="fill" />} Start generation</button></div>
+  </motion.form></motion.div>;
+}
+
+function LogDrawer({ open, onClose, job, log, onCancel }) {
+  return <AnimatePresence>{open && <motion.aside className="log-drawer" initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ type: "spring", damping: 28, stiffness: 280 }}><div className="log-head"><div><span className="eyebrow">Generation log</span><h2>{job ? titleCase(job.state) : "No active job"}</h2></div><button className="icon-button" onClick={onClose} aria-label="Close log"><X /></button></div>{job && <div className="job-meta"><span>Job {job.job_id}</span><span>{job.profile}</span>{job.pid && <span>PID {job.pid}</span>}</div>}<pre>{log || "The log will appear here once generation starts."}</pre>{job?.state === "running" && <button className="danger-button" onClick={onCancel}><StopCircle /> Cancel generation</button>}</motion.aside>}</AnimatePresence>;
+}
+
+export function App() {
+  const [profiles, setProfiles] = useState(fallbackProfiles);
+  const [system, setSystem] = useState({});
+  const [jobs, setJobs] = useState([]);
+  const [runs, setRuns] = useState([]);
+  const [runDetail, setRunDetail] = useState(null);
+  const [scenes, setScenes] = useState(initialScenes);
+  const [selectedId, setSelectedId] = useState(1);
+  const [activeTab, setActiveTab] = useState("chapters");
+  const [playing, setPlaying] = useState(false);
+  const [playhead, setPlayhead] = useState(2);
+  const [setupOpen, setSetupOpen] = useState(false);
+  const [logOpen, setLogOpen] = useState(false);
+  const [log, setLog] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [toast, setToast] = useState("");
+  const [form, setForm] = useState({ profile: "atomy-us-openrouter", topic: "", duration_minutes: 7, fps: 60, quality: "balanced", stock_images: true, captions: true, fresh: true });
+
+  const selectedScene = scenes.find((scene) => scene.id === selectedId) || scenes[0];
+  const selectedProfile = profiles.find((profile) => profile.id === form.profile) || profiles[0];
+  const totalDuration = scenes.reduce((sum, scene) => sum + scene.duration, 0);
+  const activeJob = jobs.find((job) => ["queued", "running"].includes(job.state)) || jobs[0] || null;
+  const latestRun = runs[0] || null;
+  const outputUrl = latestRun && ["ready", "published"].includes(latestRun.status) ? `/api/runs/${latestRun.run_id}/video` : null;
+
+  const refresh = async () => {
+    const results = await Promise.allSettled([fetchJson("/api/profiles"), fetchJson("/api/system"), fetchJson("/api/jobs"), fetchJson("/api/runs")]);
+    if (results[0].status === "fulfilled" && results[0].value.length) setProfiles(results[0].value.filter((item) => !item.error));
+    if (results[1].status === "fulfilled") setSystem(results[1].value);
+    if (results[2].status === "fulfilled") setJobs(results[2].value);
+    if (results[3].status === "fulfilled") {
+      setRuns(results[3].value);
+      if (results[3].value[0]) fetchJson(`/api/runs/${results[3].value[0].run_id}`).then(setRunDetail).catch(() => {});
+    }
+  };
+
+  useEffect(() => { refresh(); const timer = window.setInterval(refresh, 3500); return () => window.clearInterval(timer); }, []);
+  useEffect(() => { if (!playing) return undefined; const timer = window.setInterval(() => setPlayhead((current) => current + 1 >= totalDuration ? 0 : current + 1), 100); return () => window.clearInterval(timer); }, [playing, totalDuration]);
+  useEffect(() => { if (!activeJob || !logOpen) return undefined; const loadLog = () => fetchJson(`/api/jobs/${activeJob.job_id}/log`).then((data) => setLog(data.log)).catch(() => {}); loadLog(); const timer = window.setInterval(loadLog, 2000); return () => window.clearInterval(timer); }, [activeJob?.job_id, logOpen]);
+  useEffect(() => { if (!toast) return undefined; const timer = window.setTimeout(() => setToast(""), 3200); return () => window.clearTimeout(timer); }, [toast]);
+  useEffect(() => { const profile = profiles.find((item) => item.id === form.profile); if (profile && !submitting) setForm((current) => ({ ...current, duration_minutes: profile.duration_minutes || current.duration_minutes, fps: profile.fps || current.fps })); }, [form.profile, profiles]);
+
+  const updateScene = (patch) => { setScenes((current) => current.map((scene) => scene.id === selectedId ? { ...scene, ...patch } : scene)); setToast("Scene change saved for the next render"); };
+  const startGeneration = async (event) => {
+    event.preventDefault(); setSubmitting(true);
+    try {
+      const created = await fetchJson("/api/jobs", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...form, topic: form.topic.trim() || null }) });
+      setJobs((current) => [created, ...current]); setSetupOpen(false); setLogOpen(true); setToast("Generation started — publishing remains off");
+    } catch (error) { setToast(error.message); } finally { setSubmitting(false); }
+  };
+  const cancelJob = async () => {
+    if (!activeJob) return;
+    try { const cancelled = await fetchJson(`/api/jobs/${activeJob.job_id}/cancel`, { method: "POST" }); setJobs((current) => current.map((job) => job.job_id === cancelled.job_id ? cancelled : job)); setToast("Generation cancelled safely"); } catch (error) { setToast(error.message); }
+  };
+  const addScene = () => { const next = { ...initialScenes.at(-1), id: scenes.length + 1, title: "New supporting scene", caption: "Add one clear idea for this moment.", duration: 30 }; setScenes((current) => [...current, next]); setSelectedId(next.id); setToast("Scene added to the working storyboard"); };
+  const lastRunLabel = latestRun ? `${titleCase(latestRun.status)} · ${latestRun.publication_date}` : "No renders yet";
+
+  return <div className="studio-shell">
+    <header className="topbar"><button className="menu-button" aria-label="Open menu"><List /></button><BrandMark /><div className="project-title"><strong>{selectedProfile?.name || "AtlasForge project"}</strong><StatusDot ok /><span>Autosaved</span></div><label className="usecase-select"><span>Use case</span><select value={form.profile} onChange={(event) => setForm({ ...form, profile: event.target.value })}>{profiles.map((profile) => <option value={profile.id} key={profile.id}>{profile.name}</option>)}</select><CaretDown /></label><button className="primary-button generate-button" onClick={() => setSetupOpen(true)} disabled={activeJob?.state === "running"}><Sparkle weight="fill" /> {activeJob?.state === "running" ? "Generating…" : "Generate film"}</button><span className="shortcut"><Command />K</span><button className="top-icon" title="Help" aria-label="Help"><Question /></button><button className="top-icon" title="Notifications" aria-label="Notifications"><Bell /></button><div className="avatar" title="Local owner">AF</div></header>
+    <div className="stagebar"><StageRail stages={runDetail?.stages || []} activeJob={activeJob?.state === "running" ? activeJob : null} /><div className="last-run"><span>Last run: {lastRunLabel}</span><button className="secondary-button" onClick={() => setLogOpen(true)}>View log <CaretRight /></button></div></div>
+    <main className="editor-grid"><ChapterRail scenes={scenes} selectedId={selectedId} onSelect={setSelectedId} activeTab={activeTab} setActiveTab={setActiveTab} onAddScene={addScene} /><div className="edit-canvas"><Preview scene={selectedScene} playing={playing} setPlaying={setPlaying} playhead={playhead} totalDuration={totalDuration} outputUrl={outputUrl} /><Timeline scenes={scenes} selectedId={selectedId} onSelect={setSelectedId} playhead={playhead} setPlayhead={setPlayhead} /></div><SceneInspector scene={selectedScene} sceneCount={scenes.length} onChange={updateScene} onRegenerate={() => setSetupOpen(true)} busy={activeJob?.state === "running"} /></main>
+    <ProviderStrip system={system} selectedProfile={selectedProfile} duration={form.duration_minutes} quality={form.quality} />
+    <AnimatePresence><GenerateDialog open={setupOpen} onClose={() => setSetupOpen(false)} profiles={profiles} form={form} setForm={setForm} onSubmit={startGeneration} submitting={submitting} system={system} /></AnimatePresence><LogDrawer open={logOpen} onClose={() => setLogOpen(false)} job={activeJob} log={log} onCancel={cancelJob} />
+    <AnimatePresence>{toast && <motion.div className="toast" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }}><CheckCircle weight="fill" /> {toast}</motion.div>}</AnimatePresence>
+  </div>;
+}

@@ -76,7 +76,9 @@ class PexelsImageProvider(ImageProvider):
             "photographer_url": photo.get("photographer_url"),
             "photo_url": photo.get("url"),
         }
-        output.with_suffix(".license.json").write_text(json.dumps(attribution, indent=2), encoding="utf-8")
+        output.with_suffix(".license.json").write_text(
+            json.dumps(attribution, indent=2), encoding="utf-8"
+        )
         self._fit(output)
         return output
 
@@ -84,10 +86,14 @@ class PexelsImageProvider(ImageProvider):
         with Image.open(path) as source:
             image = source.convert("RGB")
             ratio = max(self.cfg.width / image.width, self.cfg.height / image.height)
-            image = image.resize((round(image.width * ratio), round(image.height * ratio)), Image.Resampling.LANCZOS)
+            image = image.resize(
+                (round(image.width * ratio), round(image.height * ratio)), Image.Resampling.LANCZOS
+            )
             left = (image.width - self.cfg.width) // 2
             top = (image.height - self.cfg.height) // 2
-            image.crop((left, top, left + self.cfg.width, top + self.cfg.height)).save(path, quality=94)
+            image.crop((left, top, left + self.cfg.width, top + self.cfg.height)).save(
+                path, quality=94
+            )
 
 
 class TitleCardImageProvider(ImageProvider):
@@ -157,4 +163,6 @@ class SceneImageGenerator:
                 return provider.name, provider.generate(scene, output)
             except Exception as exc:
                 errors.append(f"{provider.name}: {exc}")
-        raise ProviderFailed(f"No image provider could render scene {scene.index}: {' | '.join(errors)}")
+        raise ProviderFailed(
+            f"No image provider could render scene {scene.index}: {' | '.join(errors)}"
+        )

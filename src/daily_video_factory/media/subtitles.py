@@ -26,7 +26,9 @@ def _timestamp_ass(seconds: float) -> str:
     return f"{hours}:{minutes:02d}:{secs:02d}.{centis:02d}"
 
 
-def build_cues(script: ScriptDocument, duration_seconds: float, max_words: int) -> list[SubtitleCue]:
+def build_cues(
+    script: ScriptDocument, duration_seconds: float, max_words: int
+) -> list[SubtitleCue]:
     words = re.findall(r"\S+", re.sub(r"\s+", " ", script.full_text).strip())
     if not words:
         return []

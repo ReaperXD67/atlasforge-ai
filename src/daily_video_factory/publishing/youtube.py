@@ -31,7 +31,9 @@ class YouTubePublisher:
 
             return Request, Credentials, InstalledAppFlow, build, MediaFileUpload
         except ImportError as exc:
-            raise ConfigurationError("Install the youtube extra: pip install -e '.[youtube]'") from exc
+            raise ConfigurationError(
+                "Install the youtube extra: pip install -e '.[youtube]'"
+            ) from exc
 
     def authenticate(self, interactive: bool = True):
         Request, Credentials, InstalledAppFlow, build, _ = self._imports()
@@ -48,7 +50,9 @@ class YouTubePublisher:
             credentials.refresh(Request())
         if not credentials or not credentials.valid:
             if not interactive:
-                raise ConfigurationError("YouTube authorization is required; run atlasforge youtube-auth")
+                raise ConfigurationError(
+                    "YouTube authorization is required; run atlasforge youtube-auth"
+                )
             flow = InstalledAppFlow.from_client_secrets_file(
                 str(self.client_secrets), [YOUTUBE_UPLOAD_SCOPE]
             )
@@ -82,7 +86,9 @@ class YouTubePublisher:
                 tzinfo=ZoneInfo(self.settings.channel.timezone),
             )
             if local > datetime.now(ZoneInfo(self.settings.channel.timezone)):
-                status["publishAt"] = local.astimezone(ZoneInfo("UTC")).isoformat().replace("+00:00", "Z")
+                status["publishAt"] = (
+                    local.astimezone(ZoneInfo("UTC")).isoformat().replace("+00:00", "Z")
+                )
         body = {
             "snippet": {
                 "title": metadata.title,
@@ -96,14 +102,18 @@ class YouTubePublisher:
         request = youtube.videos().insert(
             part="snippet,status",
             body=body,
-            media_body=MediaFileUpload(str(video), mimetype="video/mp4", resumable=True, chunksize=8 * 1024 * 1024),
+            media_body=MediaFileUpload(
+                str(video), mimetype="video/mp4", resumable=True, chunksize=8 * 1024 * 1024
+            ),
         )
         response = None
         while response is None:
             _, response = request.next_chunk()
         video_id = response.get("id")
         if not video_id:
-            raise ProviderFailed(f"YouTube upload returned no video id: {json.dumps(response)[:1000]}")
+            raise ProviderFailed(
+                f"YouTube upload returned no video id: {json.dumps(response)[:1000]}"
+            )
         if self.settings.publishing.upload_thumbnail and thumbnail.exists():
             youtube.thumbnails().set(
                 videoId=video_id,

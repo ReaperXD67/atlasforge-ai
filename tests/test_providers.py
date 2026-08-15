@@ -26,4 +26,3 @@ def test_provider_chain_falls_through() -> None:
     )
     assert result.provider == "second"
     assert result.value == "done"
-

@@ -1,0 +1,50 @@
+extends: ../default.yaml
+
+channel:
+  name: "General Explainer"
+  region: "IN"
+  brand_name: ""
+  brand_required: false
+  content_goal: "Create clear, practical explainers that teach one useful idea without hype."
+  audience:
+    - curious beginners
+    - practical learners
+    - professionals
+    - creators
+    - entrepreneurs
+  disclosure: >-
+    This video uses AI-assisted production, including an AI-generated narration voice.
+    It is educational and should be independently verified before acting on it.
+
+research:
+  seed_topics:
+    - practical artificial intelligence for beginners
+    - productivity systems that actually work
+    - how modern online businesses operate
+    - clear technology explainers
+    - decision frameworks for everyday work
+  editorial_topics:
+    - "How to evaluate a new AI tool before adding it to your workflow"
+    - "A practical framework for choosing the right productivity system"
+    - "What makes an online business model sustainable"
+    - "How to learn a technical topic without getting overwhelmed"
+  official_sources: []
+  rotate_editorial_topics: true
+
+script:
+  text_providers: [openrouter]
+
+voice:
+  providers: [kokoro]
+
+subtitles:
+  alignment: auto
+  whisper_model: small.en
+  whisper_device: cpu
+  whisper_compute_type: int8
+
+video:
+  enable_premium_scenes: false
+
+publishing:
+  enabled: false

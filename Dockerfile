@@ -1,4 +1,12 @@
 # syntax=docker/dockerfile:1.7
+FROM node:22-bookworm-slim AS web-builder
+
+WORKDIR /web
+COPY frontend/package.json frontend/package-lock.json ./
+RUN npm ci --prefer-offline --no-audit --no-fund
+COPY frontend ./
+RUN npm run build
+
 FROM python:3.12-slim-bookworm AS base
 
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -24,6 +32,7 @@ RUN python -m venv /opt/venv \
 WORKDIR /app
 COPY pyproject.toml README.md LICENSE ./
 COPY src ./src
+COPY --from=web-builder /web/dist/client ./src/daily_video_factory/web
 RUN pip install "."
 
 COPY config ./config
@@ -43,5 +52,7 @@ CMD ["doctor", "--config", "/app/config/default.yaml"]
 
 FROM base AS local-ai
 USER root
-RUN pip install ".[local-tts,transcription]"
+RUN pip install --index-url https://download.pytorch.org/whl/cpu "torch==2.13.0+cpu" \
+    && pip install ".[local-tts,transcription]" \
+    && python -m spacy download en_core_web_sm
 USER atlasforge

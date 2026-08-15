@@ -3,6 +3,9 @@ channel:
   language: "en"
   region: "US"
   timezone: "Asia/Kolkata"
+  brand_name: "Atomy"
+  brand_required: true
+  content_goal: "Help skeptical beginners evaluate Atomy membership using official sources and no hype."
   audience:
     - passive income
     - online business

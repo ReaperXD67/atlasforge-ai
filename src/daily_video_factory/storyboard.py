@@ -42,7 +42,9 @@ class StoryboardBuilder:
     def run(self, script: ScriptDocument) -> Storyboard:
         cfg = self.settings.storyboard
         sentences = _sentences(script.full_text)
-        target_words = max(25, round(cfg.target_scene_seconds * self.settings.script.words_per_minute / 60))
+        target_words = max(
+            25, round(cfg.target_scene_seconds * self.settings.script.words_per_minute / 60)
+        )
         groups: list[list[str]] = []
         current: list[str] = []
         current_words = 0
@@ -68,12 +70,20 @@ class StoryboardBuilder:
             duration = max(cfg.min_scene_seconds, min(cfg.max_scene_seconds, duration))
             lower = narration.lower()
             is_hook = index == 0
-            is_product = any(word in lower for word in {"atomy", "product", "skincare", "supplement"})
+            brand = self.settings.channel.brand_name.lower().strip()
+            is_product = any(word in lower for word in {"product", "skincare", "supplement"}) or (
+                bool(brand) and brand in lower
+            )
             is_emotional = any(
                 word in lower for word in {"fear", "hope", "freedom", "overwhelmed", "confidence"}
             )
-            has_motion = any(word in lower for word in {"build", "change", "journey", "grow", "move"})
-            premium = min(1.0, 0.2 + 0.35 * is_hook + 0.25 * is_product + 0.15 * is_emotional + 0.1 * has_motion)
+            has_motion = any(
+                word in lower for word in {"build", "change", "journey", "grow", "move"}
+            )
+            premium = min(
+                1.0,
+                0.2 + 0.35 * is_hook + 0.25 * is_product + 0.15 * is_emotional + 0.1 * has_motion,
+            )
             keywords = [
                 word
                 for word in re.findall(r"[a-zA-Z]{4,}", narration)
@@ -103,5 +113,9 @@ class StoryboardBuilder:
                 )
             )
         total = round(sum(scene.duration_seconds for scene in scenes), 2)
-        return Storyboard(title=script.title, total_duration_seconds=total, scenes=scenes, provider="deterministic")
-
+        return Storyboard(
+            title=script.title,
+            total_duration_seconds=total,
+            scenes=scenes,
+            provider="deterministic",
+        )

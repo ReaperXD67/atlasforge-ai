@@ -9,7 +9,9 @@ from daily_video_factory.models import Scene, ScriptDocument, Storyboard
 
 
 def _script() -> ScriptDocument:
-    text = "A clear plan starts with a real customer problem. Compare options before choosing Atomy."
+    text = (
+        "A clear plan starts with a real customer problem. Compare options before choosing Atomy."
+    )
     return ScriptDocument(
         title="A clear decision framework",
         hook=text,

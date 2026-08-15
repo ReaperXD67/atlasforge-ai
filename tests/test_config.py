@@ -21,3 +21,17 @@ def test_environment_model_override(monkeypatch, tmp_path: Path) -> None:
     monkeypatch.setenv("MODEL_DIRECTORY", str(tmp_path / "models"))
     settings = load_settings(Path("config/default.yaml"))
     assert settings.model_directory == tmp_path / "models"
+
+
+def test_profile_inherits_default_configuration() -> None:
+    settings = load_settings(Path("config/profiles/atomy-us-openrouter.yaml"))
+    assert settings.video.fps == 60
+    assert settings.script.text_providers == ["openrouter"]
+    assert settings.voice.providers == ["kokoro"]
+    assert settings.subtitles.whisper_compute_type == "int8"
+
+
+def test_general_profile_disables_required_brand() -> None:
+    settings = load_settings(Path("config/profiles/general-explainer.yaml"))
+    assert settings.channel.brand_required is False
+    assert settings.channel.brand_name == ""

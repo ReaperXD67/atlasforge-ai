@@ -154,19 +154,26 @@ class TopicResearcher:
             selected_title = configured_topics[query_date.toordinal() % len(configured_topics)]
         else:
             selected_title = ranked[0].title
-        brand_focused = "atomy" in selected_title.lower()
+        brand = self.settings.channel.brand_name.strip()
+        brand_focused = bool(brand and brand.lower() in selected_title.lower())
         if brand_focused:
             angle = (
-                f"Answer '{selected_title}' directly for a skeptical U.S. beginner. Ground every "
+                f"Answer '{selected_title}' directly for a skeptical beginner in "
+                f"{self.settings.channel.region}. Ground every "
                 "registration, eligibility, product, or compensation statement in the official "
                 "source pack; distinguish consumer and distributor membership; explain tradeoffs; "
                 "and make no earnings or health claims."
             )
+        elif self.settings.channel.brand_required and brand:
+            angle = (
+                f"Answer the search intent behind '{selected_title}' with an evidence-aware beginner "
+                f"guide. Teach a reusable framework first, then evaluate {brand} neutrally as one "
+                "optional example."
+            )
         else:
             angle = (
                 f"Answer the search intent behind '{selected_title}' with an evidence-aware beginner "
-                "guide. Teach a reusable framework first, then evaluate Atomy neutrally as one "
-                "optional example."
+                "guide. Teach a reusable framework, concrete examples, and honest tradeoffs."
             )
         evidence = [
             EvidenceSource(

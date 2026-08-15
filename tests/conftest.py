@@ -20,4 +20,3 @@ def settings(tmp_path: Path) -> Settings:
             },
         },
     )
-

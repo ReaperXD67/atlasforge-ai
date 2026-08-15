@@ -33,17 +33,17 @@ def _chapter_time(seconds: float) -> str:
     return f"{hours}:{minutes:02d}:{secs:02d}" if hours else f"{minutes}:{secs:02d}"
 
 
-def build_metadata(script: ScriptDocument, storyboard: Storyboard, settings: Settings) -> VideoMetadata:
+def build_metadata(
+    script: ScriptDocument, storyboard: Storyboard, settings: Settings
+) -> VideoMetadata:
     title = script.title[:100].rstrip(" -:,.!")
+    brand = settings.channel.brand_name.strip()
+    audience_tags = [value.lower() for value in settings.channel.audience[:6]]
     tags = list(
         dict.fromkeys(
             [
-                "online business",
-                "side hustle",
-                "entrepreneurship",
-                "business mindset",
-                "Atomy explained",
-                "ethical direct selling",
+                *audience_tags,
+                f"{brand} explained" if brand else "educational explainer",
                 *[
                     value.lower()
                     for value in re.findall(r"\b[A-Za-z][A-Za-z -]{3,24}\b", title)[:5]
@@ -51,7 +51,14 @@ def build_metadata(script: ScriptDocument, storyboard: Storyboard, settings: Set
             ]
         )
     )[:30]
-    chapter_indexes = sorted({0, len(storyboard.scenes) // 4, len(storyboard.scenes) // 2, len(storyboard.scenes) * 3 // 4})
+    chapter_indexes = sorted(
+        {
+            0,
+            len(storyboard.scenes) // 4,
+            len(storyboard.scenes) // 2,
+            len(storyboard.scenes) * 3 // 4,
+        }
+    )
     chapters: list[str] = []
     elapsed = 0.0
     start_times: list[float] = []
@@ -63,27 +70,31 @@ def build_metadata(script: ScriptDocument, storyboard: Storyboard, settings: Set
             continue
         scene = storyboard.scenes[index]
         label_words = re.findall(r"[A-Za-z0-9'-]+", scene.narration)[:7]
-        chapters.append(f"{_chapter_time(start_times[index])} {' '.join(label_words).rstrip('.,:;')}")
+        chapters.append(
+            f"{_chapter_time(start_times[index])} {' '.join(label_words).rstrip('.,:;')}"
+        )
     summary = textwrap.shorten(script.body[0], width=480, placeholder="…")
     sources = ""
     if script.source_urls:
-        sources = "\n\nOFFICIAL SOURCES\n" + "\n".join(
-            f"- {url}" for url in script.source_urls
-        )
+        sources = "\n\nOFFICIAL SOURCES\n" + "\n".join(f"- {url}" for url in script.source_urls)
+    framing = (
+        f"We separate useful principles from hype, then evaluate {brand} as one possible option "
+        "with honest tradeoffs."
+        if settings.channel.brand_required and brand
+        else settings.channel.content_goal
+    )
+    hashtags = [f"#{re.sub(r'[^A-Za-z0-9]', '', value.title())}" for value in audience_tags[:3]]
+    hashtags = [value for value in hashtags if len(value) > 1] or ["#Explainer"]
     description = (
-        f"{summary}\n\n"
-        "In this educational breakdown, we separate useful business and lifestyle principles "
-        "from hype, then look at Atomy as one possible option—not a guaranteed shortcut.\n\n"
-        f"{settings.channel.disclosure}\n\n"
-        "CHAPTERS\n" + "\n".join(chapters) + sources + "\n\n"
-        "#OnlineBusiness #SideHustle #BusinessMindset"
+        f"{summary}\n\n{framing}\n\n{settings.channel.disclosure}\n\n"
+        "CHAPTERS\n" + "\n".join(chapters) + sources + "\n\n" + " ".join(hashtags)
     )
     thumbnail_text = " ".join(re.findall(r"[A-Za-z0-9]+", title)[:6]).upper()
     return VideoMetadata(
         title=title,
         description=description[:5000],
         tags=tags,
-        hashtags=["#OnlineBusiness", "#SideHustle", "#BusinessMindset"],
+        hashtags=hashtags,
         chapters=chapters,
         thumbnail_text=thumbnail_text[:70],
         category_id=settings.publishing.category_id,
@@ -94,7 +105,9 @@ def build_thumbnail(background: Path, metadata: VideoMetadata, output: Path) -> 
     with Image.open(background) as source:
         image = source.convert("RGB")
     ratio = max(1280 / image.width, 720 / image.height)
-    image = image.resize((round(image.width * ratio), round(image.height * ratio)), Image.Resampling.LANCZOS)
+    image = image.resize(
+        (round(image.width * ratio), round(image.height * ratio)), Image.Resampling.LANCZOS
+    )
     left = (image.width - 1280) // 2
     top = (image.height - 720) // 2
     image = image.crop((left, top, left + 1280, top + 720))

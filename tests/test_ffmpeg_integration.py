@@ -36,14 +36,18 @@ def test_real_ffmpeg_render_mix_and_subtitles(tmp_path: Path, monkeypatch) -> No
         Scene(
             index=index,
             duration_seconds=3,
-            narration="Start with a real problem." if index == 1 else "Then compare Atomy with alternatives.",
+            narration="Start with a real problem."
+            if index == 1
+            else "Then compare Atomy with alternatives.",
             video_prompt=f"cinematic planning scene {index}",
             visual_search_query="business planning",
         )
         for index in (1, 2)
     ]
     board = Storyboard(title="Test", total_duration_seconds=6, scenes=scenes, provider="test")
-    script_text = "Start with a real customer problem. Then compare Atomy with practical alternatives."
+    script_text = (
+        "Start with a real customer problem. Then compare Atomy with practical alternatives."
+    )
     script = ScriptDocument(
         title="A grounded comparison",
         hook=script_text,

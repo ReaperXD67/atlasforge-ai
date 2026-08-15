@@ -31,7 +31,9 @@ def run_command(
     topic: str | None = typer.Option(None, help="Override automatic topic research."),
     config: Path = typer.Option(Path("config/default.yaml"), exists=True, dir_okay=False),
     resume: bool = typer.Option(True, "--resume/--fresh", help="Resume a checkpointed run."),
-    upload: bool | None = typer.Option(None, "--upload/--no-upload", help="Override publishing.enabled."),
+    upload: bool | None = typer.Option(
+        None, "--upload/--no-upload", help="Override publishing.enabled."
+    ),
 ) -> None:
     """Run the full pipeline."""
     configure_logging()
@@ -60,7 +62,11 @@ def doctor_command(
     table = Table("Check", "Result", "Detail")
     failed_required = False
     for check in run_doctor(settings):
-        status = "[green]PASS[/]" if check.ok else ("[red]FAIL[/]" if check.required else "[yellow]OPTIONAL[/]")
+        status = (
+            "[green]PASS[/]"
+            if check.ok
+            else ("[red]FAIL[/]" if check.required else "[yellow]OPTIONAL[/]")
+        )
         table.add_row(check.name, status, check.detail)
         failed_required |= check.required and not check.ok
     console.print(table)

@@ -82,7 +82,9 @@ class OpenAITTSProvider(TTSProvider):
             part = output_dir / f"openai_part_{index:03d}.wav"
             self._one(chunk, part)
             parts.append(part)
-        return concatenate_and_normalize(parts, output_dir / "narration.wav", self.cfg.target_lufs, self.ffmpeg)
+        return concatenate_and_normalize(
+            parts, output_dir / "narration.wav", self.cfg.target_lufs, self.ffmpeg
+        )
 
 
 class GeminiTTSProvider(TTSProvider):
@@ -112,9 +114,7 @@ class GeminiTTSProvider(TTSProvider):
                 "model": self.cfg.gemini_model,
                 "input": "Synthesize narration. Spoken transcript begins:\n" + text,
                 "response_format": {"type": "audio"},
-                "generation_config": {
-                    "speech_config": [{"voice": self.cfg.gemini_voice}]
-                },
+                "generation_config": {"speech_config": [{"voice": self.cfg.gemini_voice}]},
             },
             timeout=180,
         )
@@ -140,7 +140,9 @@ class GeminiTTSProvider(TTSProvider):
             part = output_dir / f"gemini_part_{index:03d}.wav"
             self._one(chunk, part)
             parts.append(part)
-        return concatenate_and_normalize(parts, output_dir / "narration.wav", self.cfg.target_lufs, self.ffmpeg)
+        return concatenate_and_normalize(
+            parts, output_dir / "narration.wav", self.cfg.target_lufs, self.ffmpeg
+        )
 
 
 class KokoroTTSProvider(TTSProvider):
@@ -174,7 +176,9 @@ class KokoroTTSProvider(TTSProvider):
             raise ProviderFailed("Kokoro produced no audio")
         raw = output_dir / "kokoro_raw.wav"
         sf.write(raw, np.concatenate(clips), 24000)
-        return concatenate_and_normalize([raw], output_dir / "narration.wav", self.cfg.target_lufs, self.ffmpeg)
+        return concatenate_and_normalize(
+            [raw], output_dir / "narration.wav", self.cfg.target_lufs, self.ffmpeg
+        )
 
 
 class PiperTTSProvider(TTSProvider):
@@ -187,7 +191,9 @@ class PiperTTSProvider(TTSProvider):
         self.model = os.getenv("PIPER_MODEL_PATH", "")
 
     def available(self) -> bool:
-        return Path(self.executable).exists() and Path(self.model).exists() and self.ffmpeg.available
+        return (
+            Path(self.executable).exists() and Path(self.model).exists() and self.ffmpeg.available
+        )
 
     def synthesize(self, text: str, output_dir: Path) -> Path:
         output_dir.mkdir(parents=True, exist_ok=True)
@@ -204,7 +210,9 @@ class PiperTTSProvider(TTSProvider):
         )
         if completed.returncode or not raw.exists():
             raise ProviderFailed(f"Piper failed: {completed.stderr[-1000:]}")
-        return concatenate_and_normalize([raw], output_dir / "narration.wav", self.cfg.target_lufs, self.ffmpeg)
+        return concatenate_and_normalize(
+            [raw], output_dir / "narration.wav", self.cfg.target_lufs, self.ffmpeg
+        )
 
 
 def concatenate_and_normalize(
@@ -223,7 +231,9 @@ def concatenate_and_normalize(
             f"{labels}concat=n={len(parts)}:v=0:a=1[joined];"
             f"[joined]loudnorm=I={target_lufs}:TP=-1.5:LRA=11[out]"
         )
-    ffmpeg.run([*inputs, "-filter_complex", audio_filter, "-map", "[out]", "-ar", "48000", str(output)])
+    ffmpeg.run(
+        [*inputs, "-filter_complex", audio_filter, "-map", "[out]", "-ar", "48000", str(output)]
+    )
     return output
 
 

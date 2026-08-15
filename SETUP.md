@@ -2,6 +2,33 @@
 
 This guide starts from a clean Windows 11 laptop and ends with a tested, scheduled pipeline. Do the credential and channel setup once; no manual editing is required after that, although you should review early runs and periodically audit facts, audience response, and policy compliance.
 
+## Fastest route: Docker Studio
+
+For the RTX 4070 laptop this is the recommended setup. Install Docker Desktop with its WSL 2
+backend, start it, then run these commands from the repository:
+
+```powershell
+Copy-Item .env.example .env
+notepad .env
+.\scripts\start_studio.ps1
+```
+
+Paste the existing OpenRouter key after `OPENROUTER_API_KEY=`. Paste the Pexels key after
+`PEXELS_API_KEY=` for a larger free stock-image pool. Everything else may remain blank: Docker
+includes free local Kokoro narration, local Whisper alignment, FFmpeg, and the web Studio. The
+script builds the image, starts it with GPU access, checks its health, reports the detected render
+path, and opens `http://127.0.0.1:8741/`.
+
+Use **Atomy USA — Fast Preview** first. It creates a short package with publishing and premium
+video providers disabled. After that succeeds, switch to **Atomy USA — Joining Guide** for the full
+6–8 minute 1080p60 render. Generated files persist under `output/`; models persist under `models/`.
+
+What still needs human judgment is deliberately small: provide or approve the exact official
+Atomy registration/sponsor link, fact-check time-sensitive membership claims, verify stock-image
+suitability, and watch the final render before publishing. The free visual path animates licensed
+photos and designed editorial cards with eased camera motion and crossfades; it does not pretend to
+be free long-form generative cinema. Premium cloud clips remain an explicit paid opt-in.
+
 ## 1. Hardware and disk
 
 Recommended for the stated laptop:
@@ -270,9 +297,15 @@ output/<run/manifest.json
 
 The first production-quality 7-minute render may take 15–45 minutes depending on stock downloads, TTS, scene count, and encoder. A local Ollama or Kokoro run may take longer.
 
-## 10. Dashboard and unattended schedule
+## 10. Studio, dashboard, and unattended schedule
 
-Test the dashboard:
+Recommended Docker Studio:
+
+```powershell
+.\scripts\start_studio.ps1
+```
+
+Native dashboard alternative:
 
 ```powershell
 .\.venv\Scripts\atlasforge.exe dashboard

@@ -9,6 +9,8 @@ __pycache__/
 htmlcov/
 build/
 dist/
+frontend/node_modules/
+frontend/dist/
 *.egg-info/
 output/
 models/

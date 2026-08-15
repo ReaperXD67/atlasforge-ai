@@ -17,6 +17,9 @@ class ChannelConfig(BaseModel):
     language: str = "en"
     region: str = "US"
     timezone: str = "UTC"
+    brand_name: str = "Atomy"
+    brand_required: bool = True
+    content_goal: str = "Educational, evidence-aware long-form explainers"
     audience: list[str]
     disclosure: str
 
@@ -182,16 +185,46 @@ def _deep_merge(base: dict[str, Any], overlay: dict[str, Any]) -> dict[str, Any]
     return merged
 
 
-def load_settings(config_file: Path | str | None = None, overrides: dict[str, Any] | None = None) -> Settings:
-    load_dotenv()
-    path_value = config_file if config_file is not None else (os.getenv("CONFIG_FILE") or "config/default.yaml")
-    path = Path(path_value)
-    if not path.exists():
-        raise ConfigurationError(f"Configuration file not found: {path.resolve()}")
+def _read_config(path: Path, seen: set[Path] | None = None) -> dict[str, Any]:
+    resolved = path.resolve()
+    ancestry = set() if seen is None else set(seen)
+    if resolved in ancestry:
+        chain = " -> ".join(str(item) for item in [*ancestry, resolved])
+        raise ConfigurationError(f"Circular configuration inheritance: {chain}")
+    ancestry.add(resolved)
+    if not resolved.exists():
+        raise ConfigurationError(f"Configuration file not found: {resolved}")
     try:
-        raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+        raw = yaml.safe_load(resolved.read_text(encoding="utf-8")) or {}
+    except (OSError, yaml.YAMLError) as exc:
+        raise ConfigurationError(f"Cannot read configuration {resolved}: {exc}") from exc
+    if not isinstance(raw, dict):
+        raise ConfigurationError(f"Configuration root must be an object: {resolved}")
+    parent = raw.pop("extends", None)
+    if parent is None:
+        return raw
+    if not isinstance(parent, str) or not parent.strip():
+        raise ConfigurationError(f"'extends' must be a non-empty path in {resolved}")
+    parent_path = Path(parent)
+    if not parent_path.is_absolute():
+        parent_path = resolved.parent / parent_path
+    return _deep_merge(_read_config(parent_path, ancestry), raw)
+
+
+def load_settings(
+    config_file: Path | str | None = None, overrides: dict[str, Any] | None = None
+) -> Settings:
+    load_dotenv()
+    path_value = (
+        config_file
+        if config_file is not None
+        else (os.getenv("CONFIG_FILE") or "config/default.yaml")
+    )
+    path = Path(path_value)
+    try:
+        raw = _read_config(path)
         if overrides:
             raw = _deep_merge(raw, overrides)
         return Settings.model_validate(raw)
-    except (yaml.YAMLError, ValidationError) as exc:
+    except ValidationError as exc:
         raise ConfigurationError(f"Invalid configuration in {path}: {exc}") from exc
