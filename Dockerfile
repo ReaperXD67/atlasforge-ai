@@ -33,7 +33,7 @@ WORKDIR /app
 
 FROM python-runtime AS local-ai-runtime
 RUN pip install --index-url https://download.pytorch.org/whl/cpu "torch==2.13.0+cpu" \
-    && pip install "kokoro>=0.9,<1" "soundfile>=0.12,<1" "faster-whisper>=1.1,<2" \
+    && pip install "kokoro>=0.9,<1" "soundfile>=0.12,<1" "faster-whisper>=1.1,<2" "transformers>=4.46,<6" \
     && python -m spacy download en_core_web_sm
 
 FROM python-runtime AS base

@@ -43,6 +43,7 @@ youtube = [
 ]
 local-tts = ["kokoro>=0.9,<1", "soundfile>=0.12,<1"]
 transcription = ["faster-whisper>=1.1,<2"]
+visual-ranking = ["torch>=2.4,<3", "transformers>=4.46,<6"]
 dev = [
   "mypy>=1.14,<2",
   "pytest>=8.3,<9",

@@ -39,17 +39,70 @@ compare, or qualify something. Avoid filler, hype, fake urgency, clichés, and r
 Never promise income, passive earnings, health outcomes, cures, guaranteed results, or financial
 freedom. Never invent prices, ingredients, certifications, compensation-plan details, research
 findings, or testimonials. Separate opinions from facts. Return only JSON matching the requested
-schema."""
+schema. For Atomy, write "PV" or "Personal PV" exactly as the official U.S. plan does; never expand
+it as "Point Value" or "Personal Volume." Do not redundantly define the acronym or write awkward
+constructions such as "Personal PV, or PV"; direct viewers to the official plan for its mechanics."""
 
 
 def _word_count(text: str) -> int:
     return len(re.findall(r"\b[\w'-]+\b", text))
 
 
+def _sentences(text: str) -> list[str]:
+    marker = "<prd>"
+
+    def protect(match: re.Match[str]) -> str:
+        return match.group(0).replace(".", marker)
+
+    protected = re.sub(
+        r"\b(?:[A-Za-z]\.){2,}",
+        protect,
+        re.sub(
+            r"\b(?:e\.g|i\.e|Mr|Mrs|Ms|Dr|St)\.",
+            protect,
+            text,
+            flags=re.IGNORECASE,
+        ),
+        flags=re.IGNORECASE,
+    )
+    return [
+        sentence.replace(marker, ".").strip()
+        for sentence in re.split(r"(?<=[.!?])\s+", re.sub(r"\s+", " ", protected))
+        if sentence.strip()
+    ]
+
+
 def _trim_to_words(text: str, limit: int) -> str:
     text = text.strip()
     if _word_count(text) <= limit:
         return text.strip()
+    sentences = _sentences(text)
+    complete: list[str] = []
+    used = 0
+    for sentence in sentences:
+        count = _word_count(sentence)
+        if used + count > limit:
+            break
+        complete.append(sentence)
+        used += count
+    if complete:
+        return " ".join(complete)
+
+    # A single overlong sentence is the only case where a hard word cut is necessary.
+    # Prefer a natural clause boundary before taking that fallback.
+    clauses = [part.strip() for part in re.split(r"(?<=[,;:])\s+", text) if part.strip()]
+    complete_clauses: list[str] = []
+    used = 0
+    for clause in clauses:
+        count = _word_count(clause)
+        if used + count > limit:
+            break
+        complete_clauses.append(clause)
+        used += count
+    if complete_clauses:
+        trimmed_clause = " ".join(complete_clauses).rstrip(" ,;:-")
+        return trimmed_clause if trimmed_clause.endswith((".", "!", "?")) else trimmed_clause + "."
+
     kept: list[str] = []
     used = 0
     for token in re.findall(r"\S+", text):
@@ -83,7 +136,9 @@ def _fit_segments_to_budget(segments: list[str], max_words: int) -> list[str]:
     capacities = [count - allocation for count, allocation in zip(counts, allocations, strict=True)]
     capacity_total = sum(capacities)
     if remaining and capacity_total:
-        additions = [min(capacity, remaining * capacity // capacity_total) for capacity in capacities]
+        additions = [
+            min(capacity, remaining * capacity // capacity_total) for capacity in capacities
+        ]
         allocations = [
             allocation + addition
             for allocation, addition in zip(allocations, additions, strict=True)
@@ -182,9 +237,7 @@ in disclosures: {self.settings.channel.disclosure}. Do not add citations you can
         hook = str(payload["hook"]).strip()
         body = [str(part).strip() for part in payload["body"] if str(part).strip()]
         cta = str(payload["cta"]).strip()
-        fitted = _fit_segments_to_budget(
-            [hook, *body, cta], self.settings.script.max_words
-        )
+        fitted = _fit_segments_to_budget([hook, *body, cta], self.settings.script.max_words)
         hook, body, cta = fitted[0], fitted[1:-1], fitted[-1]
         full_text = "\n\n".join([hook, *body, cta])
         word_count = _word_count(full_text)

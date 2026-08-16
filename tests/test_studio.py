@@ -37,5 +37,7 @@ def test_studio_renders_safe_job_overrides(tmp_path: Path) -> None:
     assert rendered.script.max_words == 313
     assert rendered.video.fps == 30
     assert rendered.video.crf == 23
+    assert rendered.video.stock_video_enabled is False
+    assert rendered.video.local_generation_enabled is False
     assert rendered.images.providers == ["title_card"]
     assert rendered.subtitles.burn_in is False

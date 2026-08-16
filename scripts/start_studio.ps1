@@ -1,7 +1,8 @@
 [CmdletBinding()]
 param(
     [switch]$NoBuild,
-    [switch]$NoBrowser
+    [switch]$NoBrowser,
+    [switch]$NoLocalVideo
 )
 
 $ErrorActionPreference = 'Stop'
@@ -29,6 +30,29 @@ if (-not $OpenRouterConfigured) {
 
 foreach ($Directory in @('output', 'models', 'secrets')) {
     New-Item -ItemType Directory -Path $Directory -Force | Out-Null
+}
+
+if (-not $NoLocalVideo) {
+    $ComfyRoot = "$env:LOCALAPPDATA\AtlasForge\ComfyUI"
+    $ComfyMain = Join-Path $ComfyRoot 'main.py'
+    try {
+        Invoke-RestMethod -Uri 'http://127.0.0.1:8188/system_stats' -TimeoutSec 2 | Out-Null
+    } catch {
+        if (Test-Path -LiteralPath $ComfyMain) {
+            & (Join-Path $PSScriptRoot 'start_comfyui.ps1') -InstallRoot $ComfyRoot
+            Write-Host 'Waiting for the local Wan 2.2 engine...'
+            for ($Attempt = 1; $Attempt -le 60; $Attempt++) {
+                try {
+                    Invoke-RestMethod -Uri 'http://127.0.0.1:8188/system_stats' -TimeoutSec 2 | Out-Null
+                    break
+                } catch {
+                    Start-Sleep -Seconds 2
+                }
+            }
+        } else {
+            Write-Host 'Wan 2.2 is not installed yet; real stock clips and stable local fallbacks remain available.' -ForegroundColor Yellow
+        }
+    }
 }
 
 if ($NoBuild) {
@@ -65,7 +89,7 @@ Write-Host 'AtlasForge Studio is ready.' -ForegroundColor Green
 Write-Host "Studio: $StudioUrl"
 Write-Host "GPU: $($System.gpu_name)"
 Write-Host "Render: $($System.width)x$($System.height) @ $($System.fps) fps using $($System.codec)"
-Write-Host "OpenRouter: $($System.openrouter) | Pexels: $($System.pexels) | Kokoro: $($System.kokoro) | Whisper: $($System.whisper)"
+Write-Host "OpenRouter: $($System.openrouter) | Pexels Video: $($System.pexels) | Wan 2.2: $($System.comfyui) | Kokoro: $($System.kokoro) | Whisper: $($System.whisper)"
 Write-Host 'Publishing remains disabled.'
 
 if (-not $NoBrowser) {

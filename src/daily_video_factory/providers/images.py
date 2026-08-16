@@ -125,18 +125,32 @@ class TitleCardImageProvider(ImageProvider):
             draw.ellipse((x, y, x + size, y + size), fill=color)
         image = image.filter(ImageFilter.GaussianBlur(radius=45))
         draw = ImageDraw.Draw(image, "RGBA")
+        draw.rounded_rectangle(
+            (88, 82, 1832, 998), radius=42, fill=(8, 13, 22, 204), outline=(*accent, 100), width=2
+        )
         draw.rectangle((90, 92, 104, 990), fill=(*accent, 255))
-        draw.text((142, 104), f"SCENE {scene.index:02d}", font=_font(30, True), fill=(*accent, 255))
-        words = scene.visual_search_query.upper().split()[:7]
-        title = "\n".join(textwrap.wrap(" ".join(words), width=18))
-        draw.multiline_text(
-            (142, 220), title, font=_font(86, True), fill=(248, 246, 240, 255), spacing=12
+        draw.text(
+            (148, 124),
+            f"ATOMY USA  /  STEP {scene.index:02d}",
+            font=_font(28, True),
+            fill=(*accent, 255),
         )
-        caption = textwrap.fill(scene.environment, width=44)
+        title_copy = scene.onscreen_title or scene.visual_search_query
+        title = "\n".join(textwrap.wrap(title_copy, width=24))
         draw.multiline_text(
-            (146, 800), caption, font=_font(34), fill=(225, 229, 226, 220), spacing=8
+            (148, 248), title, font=_font(84, True), fill=(248, 246, 240, 255), spacing=10
         )
-        draw.line((142, 950, 890, 950), fill=(*accent, 170), width=3)
+        caption = textwrap.fill(scene.narration, width=66, max_lines=3, placeholder="…")
+        draw.multiline_text(
+            (152, 700), caption, font=_font(34), fill=(225, 229, 226, 220), spacing=11
+        )
+        draw.line((148, 930, 1090, 930), fill=(*accent, 170), width=3)
+        draw.text(
+            (148, 950),
+            "OFFICIAL-SOURCE WALKTHROUGH  •  NO INCOME PROMISES",
+            font=_font(22, True),
+            fill=(176, 185, 192, 210),
+        )
         output.parent.mkdir(parents=True, exist_ok=True)
         image.save(output, quality=95)
         output.with_suffix(".license.json").write_text(
@@ -156,7 +170,10 @@ class SceneImageGenerator:
 
     def run(self, scene: Scene, output: Path) -> tuple[str, Path]:
         errors: list[str] = []
-        for provider in self.providers:
+        providers = self.providers
+        if scene.visual_mode == "information_card":
+            providers = sorted(self.providers, key=lambda provider: provider.name != "title_card")
+        for provider in providers:
             if not provider.available():
                 continue
             try:

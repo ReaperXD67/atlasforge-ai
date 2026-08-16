@@ -84,6 +84,8 @@ class Scene(BaseModel):
     transition: str = "crossfade"
     video_prompt: str
     visual_search_query: str
+    onscreen_title: str = ""
+    visual_mode: str = "documentary_broll"
     premium_score: float = Field(default=0, ge=0, le=1)
     selected_video_provider: str = "local_motion"
 

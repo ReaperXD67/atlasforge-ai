@@ -12,6 +12,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Literal, TextIO
 
+import httpx
 import yaml
 from pydantic import BaseModel, Field
 
@@ -27,6 +28,7 @@ class StudioJobRequest(BaseModel):
     fps: Literal[30, 60] = 60
     quality: Literal["fast", "balanced", "max"] = "balanced"
     stock_images: bool = True
+    local_ai: bool = False
     captions: bool = True
     fresh: bool = True
 
@@ -100,7 +102,16 @@ class StudioManager:
             "nvenc": nvenc,
             "kokoro": importlib.util.find_spec("kokoro") is not None,
             "whisper": importlib.util.find_spec("faster_whisper") is not None,
+            "comfyui": StudioManager._comfyui_available(),
         }
+
+    @staticmethod
+    def _comfyui_available() -> bool:
+        base_url = os.getenv("COMFYUI_BASE_URL", "http://127.0.0.1:8188").rstrip("/")
+        try:
+            return httpx.get(f"{base_url}/system_stats", timeout=2).status_code == 200
+        except httpx.HTTPError:
+            return False
 
     def _profile_path(self, profile: str) -> Path:
         path = (self.profile_directory / f"{profile}.yaml").resolve()
@@ -127,6 +138,7 @@ class StudioManager:
                         "voice_provider": settings.voice.providers[0],
                         "fps": settings.video.fps,
                         "premium_enabled": settings.video.enable_premium_scenes,
+                        "local_ai_enabled": settings.video.local_generation_enabled,
                     }
                 )
             except ConfigurationError as exc:
@@ -175,6 +187,8 @@ class StudioManager:
         settings.images.providers = (
             ["pexels", "title_card"] if request.stock_images else ["title_card"]
         )
+        settings.video.stock_video_enabled = request.stock_images
+        settings.video.local_generation_enabled = request.local_ai
         settings.subtitles.burn_in = request.captions
         settings.publishing.enabled = False
         payload = settings.model_dump(mode="json")
@@ -298,6 +312,7 @@ class StudioManager:
     def status(self) -> dict[str, object]:
         return {
             **self._machine_status,
+            "comfyui": self._comfyui_available(),
             "openrouter": bool(os.getenv("OPENROUTER_API_KEY")),
             "pexels": bool(os.getenv("PEXELS_API_KEY")),
             "openai": bool(os.getenv("OPENAI_API_KEY")),

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 from pathlib import Path
 
 from ..artifacts import atomic_write
@@ -45,18 +46,27 @@ class VideoRenderer:
         frames = max(2, round(duration * self.cfg.fps))
         progress = f"(0.5-0.5*cos(PI*on/{frames - 1}))"
         direction = 1 if scene.index % 2 else -1
-        x_expr = (
-            f"(iw-iw/zoom)*(0.25+0.5*{progress})"
-            if direction > 0
-            else f"(iw-iw/zoom)*(0.75-0.5*{progress})"
-        )
-        y_expr = f"(ih-ih/zoom)*(0.45+0.1*sin(PI*on/{frames - 1}))"
-        source_width = round(self.cfg.width * 1.25)
-        source_height = round(self.cfg.height * 1.25)
+        if scene.visual_mode == "information_card":
+            x_expr = "(iw-iw/zoom)*0.5"
+            zoom_amount = 0.018
+        else:
+            x_expr = (
+                f"(iw-iw/zoom)*(0.25+0.5*{progress})"
+                if direction > 0
+                else f"(iw-iw/zoom)*(0.75-0.5*{progress})"
+            )
+            zoom_amount = 0.045
+        # Render the crop from a 2x supersampled canvas. zoompan rounds crop positions to
+        # source pixels, so the old 1.25x canvas and vertical sine visibly stepped at 60 fps.
+        # A locked optical axis plus 2x sampling makes the fallback feel like a controlled
+        # dolly instead of handheld shake.
+        y_expr = "(ih-ih/zoom)*0.5"
+        source_width = self.cfg.width * 2
+        source_height = self.cfg.height * 2
         video_filter = (
             f"scale={source_width}:{source_height}:force_original_aspect_ratio=increase,"
             f"crop={source_width}:{source_height},"
-            f"zoompan=z='1+0.075*{progress}':x='{x_expr}':y='{y_expr}':"
+            f"zoompan=z='1+{zoom_amount}*{progress}':x='{x_expr}':y='{y_expr}':"
             f"d={frames}:s={self.cfg.width}x{self.cfg.height}:fps={self.cfg.fps},"
             "format=yuv420p"
         )
@@ -80,7 +90,7 @@ class VideoRenderer:
         )
         return output
 
-    def normalize_cloud_scene(
+    def normalize_video_scene(
         self,
         scene: Scene,
         source: Path,
@@ -89,20 +99,47 @@ class VideoRenderer:
         duration_seconds: float | None = None,
     ) -> Path:
         duration = duration_seconds or scene.duration_seconds
-        video_filter = (
-            f"scale={self.cfg.width}:{self.cfg.height}:force_original_aspect_ratio=increase,"
-            f"crop={self.cfg.width}:{self.cfg.height},fps={self.cfg.fps},format=yuv420p"
+        source_duration = self.ffmpeg.duration(source)
+        local_ai = scene.selected_video_provider == "comfyui_wan22"
+        speed_factor = duration / source_duration if source_duration > 0 else 1.0
+        can_retime = local_ai and 1.0 < speed_factor <= 1.75
+        input_args: list[str] = []
+        if source_duration > duration + 0.5:
+            available = source_duration - duration
+            seed = int(hashlib.sha256(str(scene.index).encode()).hexdigest()[:8], 16)
+            input_args.extend(["-ss", f"{(seed % 1000) / 1000 * available:.3f}"])
+        elif source_duration + 0.2 < duration and not can_retime:
+            input_args.extend(["-stream_loop", "-1"])
+
+        filters: list[str] = []
+        if can_retime:
+            filters.append(f"setpts={speed_factor:.6f}*PTS")
+        else:
+            filters.append("setpts=PTS-STARTPTS")
+        if local_ai and self.cfg.interpolate_low_fps_clips:
+            filters.append(
+                f"minterpolate=fps={self.cfg.fps}:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1"
+            )
+        filters.extend(
+            [
+                f"scale={self.cfg.width}:{self.cfg.height}:force_original_aspect_ratio=increase",
+                f"crop={self.cfg.width}:{self.cfg.height}",
+            ]
         )
+        if not (local_ai and self.cfg.interpolate_low_fps_clips):
+            filters.append(f"fps={self.cfg.fps}")
+        if self.cfg.clip_color_grade:
+            filters.extend(["eq=contrast=1.035:saturation=0.94:gamma=0.99", "unsharp=3:3:0.18"])
+        filters.append("format=yuv420p")
         self.ffmpeg.run(
             [
-                "-stream_loop",
-                "-1",
+                *input_args,
                 "-i",
                 str(source),
                 "-t",
                 f"{duration:.3f}",
                 "-vf",
-                video_filter,
+                ",".join(filters),
                 "-an",
                 *self._video_codec_args(),
                 "-pix_fmt",
@@ -111,6 +148,17 @@ class VideoRenderer:
             ]
         )
         return output
+
+    # Backward-compatible name for external integrations created before stock/local clips.
+    def normalize_cloud_scene(
+        self,
+        scene: Scene,
+        source: Path,
+        output: Path,
+        *,
+        duration_seconds: float | None = None,
+    ) -> Path:
+        return self.normalize_video_scene(scene, source, output, duration_seconds=duration_seconds)
 
     def concatenate(
         self,

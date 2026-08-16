@@ -18,8 +18,8 @@
 |---|---|---|
 | Domain | `models.py`, `quality.py` | validated scripts, scenes, metadata, policy gates |
 | Orchestration | `pipeline.py`, `scheduler.py`, `state.py` | checkpoints, locking, retries/fallback, one-run lifecycle |
-| Providers | `providers/` | text, TTS, images, premium cloud video |
-| Media | `media/` | deterministic music/SFX, subtitles, FFmpeg render/mix |
+| Providers | `providers/` | text, TTS, images, Pexels Video, local Wan video, premium cloud video |
+| Media | `media/` | deterministic stereo music/SFX, forced-aligned subtitles, FFmpeg render/mix |
 | Delivery | `publishing/youtube.py` | minimal-scope OAuth upload, thumbnail, optional captions |
 | Operations | `doctor.py`, `dashboard.py`, CLI | preflight, visibility, human controls |
 
@@ -36,8 +36,8 @@ Providers fail closed at their own boundary and fail over only within the same c
 ```text
 script:    Gemini → OpenRouter → Ollama
 narration: OpenAI → Gemini → Kokoro → Piper
-images:    Pexels → locally generated editorial card
-video:     local FFmpeg motion always; optional Veo → MiniMax for selected scenes
+images:    Pexels → locally generated information card
+video:     optional Veo/MiniMax → local Wan 2.2 → CLIP-ranked unique Pexels Video → stable still motion
 ```
 
 The system does not silently replace factual research with model memory. Trend, autocomplete, and Reddit results are explicitly treated as topic/audience signals, not evidence.
@@ -49,7 +49,7 @@ Storyboard scenes receive a `premium_score` from hook position, product relevanc
 - `premium_max_scenes_per_video`
 - `premium_daily_budget_usd`
 
-A failed or over-budget premium scene falls back to local motion from a licensed/source-recorded still. Cost entries are persisted in `manifest.json`.
+A failed or over-budget premium scene falls through to local Wan, a licensed Pexels clip, then stable motion from a licensed/source-recorded still. Cost and provenance entries are persisted with the run.
 
 ## Editorial grounding
 
@@ -60,13 +60,23 @@ and compensation statements are supplied from dated official Atomy summaries, wh
 comes from the FTC. Brand-focused scripts may name Atomy in the hook; general education videos retain
 the late-brand-mention gate. A stale source pack blocks brand-focused scripts.
 
-## Local media path
+## Hybrid local media path
 
-Scenes use eased Ken Burns motion at 60 fps and overlap by the configured crossfade duration. Each
-non-final scene receives enough visual tail padding to keep the finished duration equal to narration
-duration after overlap. Caption timing uses local faster-whisper when available and falls back to
-deterministic word pacing. FFmpeg encoders must successfully encode a real frame; an unusable NVENC
-build automatically yields to `libx264`.
+The storyboard assigns concrete shot intent rather than extracting arbitrary script keywords. Exact
+or sensitive requirements become owned information cards; a brand-safe conceptual opening may use
+Wan 2.2 TI2V 5B while real licensed footage carries product and ordinary instructional scenes;
+most scenes use unique real Pexels footage. A local CLIP pass scores candidate thumbnails against the
+scene brief before download, while creator and asset reuse guards prevent a repeated stock session.
+Source clips are trimmed at deterministic offsets, gently
+graded, normalized to the output canvas, and overlapped by the configured crossfade. A still fallback
+uses a locked optical axis and a 2x supersampled crop, eliminating the integer crop oscillation that
+made the previous image motion appear to shake.
+
+Caption text is never authored by speech recognition. Local faster-whisper supplies word-time anchors,
+then a forced aligner maps the exact script onto those anchors, interpolates missed/mispronounced terms,
+and discards ASR insertions. Therefore names such as Atomy, PV, and FTC stay canonical while retaining
+speech-aware timing. Deterministic word pacing remains the last fallback. FFmpeg encoders must
+successfully encode a real frame; an unusable NVENC build automatically yields to `libx264`.
 
 ## Extension examples
 
@@ -81,5 +91,6 @@ To add a video provider, implement `PremiumVideoProvider.generate(scene, output)
 - Fully automatic fact verification is not equivalent to human editorial review. The writer is instructed to minimize claims; `facts_to_verify` is retained for audit.
 - YouTube monetization depends on originality and channel-level patterns, not only technical compliance. A high-volume templated slideshow can still be ineligible.
 - Preview model IDs and prices change. They are configuration, not hard-coded invariants.
-- Pexels images may include people or marks that make a particular use inappropriate even when API access is allowed.
+- Pexels media may include people or marks that make a particular use inappropriate even when API access is allowed.
+- Wan 2.2 fits this 8 GB GPU through ComfyUI offloading but is not fast enough to synthesize a complete long-form episode every day; the one-shot default is intentional.
 - Consumer Google AI credits and Developer API billing are separate product contexts unless Google explicitly connects them for your account.

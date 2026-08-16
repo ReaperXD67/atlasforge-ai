@@ -110,6 +110,30 @@ class VideoConfig(BaseModel):
     minimax_estimated_usd_per_clip: float = 0.30
     cloud_clip_seconds: int = 8
     transition_seconds: float = 0.35
+    stock_video_enabled: bool = True
+    stock_video_providers: list[str] = Field(default_factory=lambda: ["pexels_video"])
+    stock_video_max_scenes_per_video: int = Field(default=48, ge=0, le=100)
+    stock_video_candidates_per_scene: int = Field(default=15, ge=1, le=80)
+    stock_video_min_width: int = Field(default=1280, ge=320)
+    stock_video_min_duration_seconds: float = Field(default=4.0, ge=1, le=60)
+    stock_video_download_timeout_seconds: int = Field(default=180, ge=15, le=900)
+    stock_video_semantic_ranking: bool = True
+    stock_video_semantic_model: str = "openai/clip-vit-base-patch32"
+    stock_video_semantic_candidates: int = Field(default=12, ge=2, le=40)
+    stock_video_min_visual_relevance: float = Field(default=0.32, ge=0, le=1)
+    local_generation_enabled: bool = False
+    local_generation_providers: list[str] = Field(default_factory=lambda: ["comfyui_wan22"])
+    local_generation_max_scenes_per_video: int = Field(default=1, ge=0, le=8)
+    local_generation_min_score: float = Field(default=0.7, ge=0, le=1)
+    comfyui_width: int = Field(default=832, ge=256, le=1920)
+    comfyui_height: int = Field(default=480, ge=256, le=1080)
+    comfyui_frames: int = Field(default=121, ge=17, le=241)
+    comfyui_fps: int = Field(default=24, ge=8, le=60)
+    comfyui_steps: int = Field(default=20, ge=1, le=60)
+    comfyui_cfg: float = Field(default=5.0, ge=1, le=15)
+    comfyui_timeout_minutes: int = Field(default=60, ge=5, le=240)
+    interpolate_low_fps_clips: bool = True
+    clip_color_grade: bool = True
 
 
 class AudioConfig(BaseModel):
@@ -129,6 +153,16 @@ class SubtitleConfig(BaseModel):
     whisper_model: str = "small.en"
     whisper_device: str = "auto"
     whisper_compute_type: str = "default"
+    glossary: list[str] = Field(
+        default_factory=lambda: [
+            "Atomy",
+            "Atomy USA",
+            "Personal PV",
+            "PV",
+            "Federal Trade Commission",
+            "FTC",
+        ]
+    )
 
 
 class PublishingConfig(BaseModel):

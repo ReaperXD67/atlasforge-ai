@@ -5,7 +5,7 @@ import pytest
 from daily_video_factory.exceptions import QualityGateFailed
 from daily_video_factory.models import ScriptDocument
 from daily_video_factory.quality import validate_script
-from daily_video_factory.storyboard import StoryboardBuilder
+from daily_video_factory.storyboard import StoryboardBuilder, _visual_plan
 
 
 def make_script(text: str, disclosures: list[str] | None = None) -> ScriptDocument:
@@ -37,7 +37,17 @@ def test_storyboard_is_deterministic_and_varied(settings) -> None:
     board = StoryboardBuilder(settings).run(script)
     assert len(board.scenes) >= 3
     assert board.scenes[0].camera_angle != board.scenes[1].camera_angle
+    assert board.scenes[0].visual_mode == "local_ai_candidate"
+    assert "product" not in board.scenes[0].visual_search_query
     assert board.total_duration_seconds > 0
+
+
+def test_sensitive_identity_fact_uses_owned_information_card() -> None:
+    _query, _title, mode = _visual_plan(
+        "Enter your legal name and Social Security details only on the official form.", 2, "Guide"
+    )
+
+    assert mode == "information_card"
 
 
 def test_quality_gate_rejects_earnings_promises(settings) -> None:
@@ -54,9 +64,7 @@ def test_quality_gate_accepts_explicitly_negated_outcome_claims(settings) -> Non
     prefix = " ".join(
         ["Evaluate costs, time, skills, and customer demand before choosing any model."] * 18
     )
-    disclaimer = (
-        "Results are not guaranteed, and you should not expect to earn $1000 per day."
-    )
+    disclaimer = "Results are not guaranteed, and you should not expect to earn $1000 per day."
     suffix = " ".join(
         ["Atomy is one optional example to compare with other practical alternatives."] * 12
     )
@@ -81,6 +89,19 @@ def test_quality_gate_allows_direct_brand_topic_when_grounded(settings) -> None:
     script.brand_focused = True
     script.source_urls = [settings.research.official_sources[0].url]
     assert validate_script(script, settings) == []
+
+
+def test_quality_gate_rejects_invented_atomy_pv_expansion(settings) -> None:
+    text = " ".join(
+        ["Atomy registration should be evaluated carefully against official requirements."] * 20
+    )
+    text += " PV means Point Value."
+    script = make_script(text)
+    script.brand_focused = True
+    script.source_urls = [settings.research.official_sources[0].url]
+
+    with pytest.raises(QualityGateFailed, match="PV expansion"):
+        validate_script(script, settings)
 
 
 def test_quality_gate_supports_brand_free_profiles(settings) -> None:

@@ -7,6 +7,9 @@ def test_loads_default_configuration() -> None:
     settings = load_settings(Path("config/default.yaml"))
     assert settings.video.width == 1920
     assert settings.video.enable_premium_scenes is False
+    assert settings.video.stock_video_enabled is True
+    assert settings.video.stock_video_semantic_ranking is True
+    assert settings.video.local_generation_enabled is True
     assert settings.publishing.enabled is False
     assert settings.script.text_providers[0] == "gemini"
 

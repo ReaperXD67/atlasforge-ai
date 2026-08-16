@@ -20,10 +20,10 @@ The diagram is the product vision. The repository implements the complete core p
 | --- | --- | --- | --- |
 | 1. Research and topic discovery | Implemented | Rotating Atomy editorial calendar, pinned official/regulatory source pack, Google Trends RSS, YouTube autocomplete, and Reddit audience signals | Source summaries intentionally require a periodic human refresh |
 | 2. Script generation | Implemented | Gemini, OpenRouter, or local Ollama; structured hook, chapters, body, CTA, sources, and disclosure | SEO is finalized later in the metadata stage |
-| 3. Storyboard planner | Implemented | Deterministic scene descriptions, timing, camera, environment, characters, emotion, lighting, SFX, transitions, and prompts | Defaults to 8-24 second scenes with a 32-scene cap, not 50-70 scenes |
-| 4. Smart scene scheduler | Implemented | Scores scenes, selects budgeted premium clips, then falls back to local FFmpeg motion | Veo and MiniMax Hailuo are cloud options; "MiniMax H3 local" is not a supported engine |
-| 5. Audio pipeline | Implemented | OpenAI TTS, Gemini TTS, local Kokoro, or local Piper; normalization, original music/SFX, ducking, and mixing | Provider choice is configured through fallback order |
-| 6. Video composition | Mostly implemented | Eased 60 fps push/pan motion, true crossfades, cloud-clip normalization, audio sync, speech-aligned captions, runtime-probed GPU encoding, and FFmpeg final render | No semantic AI color-matching pass yet |
+| 3. Storyboard planner | Implemented | Concrete shot briefs, timing, camera, environment, characters, emotion, lighting, SFX, transitions, and prompts | Defaults to 5-14 second scenes with a 48-scene cap |
+| 4. Smart scene scheduler | Implemented | Routes exact facts to owned information cards, hero shots to local Wan 2.2, and the remaining scenes to locally CLIP-ranked, creator-diverse Pexels clips | Veo and MiniMax remain optional paid overrides |
+| 5. Audio pipeline | Implemented | OpenAI TTS, Gemini TTS, local Kokoro, or local Piper; normalization, original stereo documentary score/SFX, ducking, and mixing | Provider choice is configured through fallback order |
+| 6. Video composition | Implemented | Real-clip trims, subtle color matching, stable supersampled still motion, local-AI interpolation, 60 fps crossfades, audio sync, script-locked captions, runtime-probed GPU encoding, and FFmpeg final render | Editorial suitability still benefits from a final human watch |
 | 7. QA and quality control | Partial | Script-policy validation plus duration, file-size, scene-count, chapter, thumbnail, and media checks | AI visual inspection and comprehensive factual/copyright scanning are roadmap items |
 | 8. SEO and metadata | Implemented | CTR-oriented title, description, tags, hashtags, chapters/timestamps, category, and disclosures | End-screen suggestions are not generated yet |
 | 9. Thumbnail generation | Partial | Automatic 1280x720 local composition from a scene image and generated copy | Flux/Imagen/SD concept generation and CTR ranking are roadmap items |
@@ -38,25 +38,27 @@ flowchart LR
     R["Research signals"] --> S["Script + policy gate"]
     S --> B["Deterministic storyboard"]
     B --> V["Provider-fallback narration"]
-    V --> I["Images + budgeted hero clips"]
-    I --> E["FFmpeg edit + original sound"]
-    E --> Q["Captions, thumbnail, metadata, QA"]
+    V --> I["Wan hero shot + matching real clips + owned cards"]
+    I --> E["Stable 60 fps edit + original stereo sound"]
+    E --> Q["Script-locked captions, thumbnail, metadata, QA"]
     Q -->|publishing enabled| Y["YouTube OAuth upload"]
     Q -->|publishing disabled| P["Upload-ready package"]
 ```
 
 ## Why this architecture
 
-The target diagram proposed "MiniMax H3 running locally" as the standard-scene engine. MiniMax's supported video-generation path is its Hailuo cloud API, while long-form local text-to-video is not practical on an 8 GB laptop GPU. Generating dozens of cloud clips for every episode would also be expensive and fragile.
+The target diagram proposed "MiniMax H3 running locally" as the standard-scene engine. MiniMax's supported video-generation path is its Hailuo cloud API. AtlasForge instead uses the official Wan 2.2 TI2V 5B ComfyUI workflow for a small number of local generated shots. Making every second with diffusion would still be impractically slow and visually inconsistent on an 8 GB laptop GPU, so real footage carries most of the edit.
 
 AtlasForge AI therefore uses:
 
 - free research signals and one structured LLM script call;
 - a rotating Atomy onboarding curriculum grounded in locally pinned official U.S. and FTC sources;
 - provider fallbacks for text and speech generation;
-- Pexels photography or project-owned local editorial cards;
-- eased 60 fps FFmpeg motion, crossfades, Whisper-aligned captions, and runtime-verified hardware encoding;
-- original procedural ambient music and transition SFX;
+- unique Pexels Video b-roll chosen from concrete action-oriented shot briefs and locally reranked from thumbnail content with OpenAI CLIP;
+- Wan 2.2 TI2V 5B for an optional brand-safe conceptual hero shot, with no cloud-video bill;
+- project-owned information cards and rock-steady supersampled still motion as fallbacks;
+- Whisper timing anchored to the exact approved script, so brand spelling never comes from ASR;
+- a locally synthesized stereo documentary score, scene accents, sidechain ducking, and transition SFX;
 - only the configured number of premium Veo or MiniMax clips, behind a hard daily USD budget;
 - checkpointed artifacts and SQLite state so failed runs resume instead of restarting.
 
@@ -70,8 +72,8 @@ output/YYYY-MM-DD-run-id/
 |-- scripts/        structured script and narration text
 |-- storyboards/    original and voice-retimed scene plans
 |-- audio/          provider chunks, normalized voice, final mix
-|-- scenes/         source images and license/provenance records
-|-- videos/         scene renders and optional premium clips
+|-- scenes/         source images, owned cards, and license/provenance records
+|-- videos/         Pexels clips, local-AI shots, normalized scenes, and optional premium clips
 |-- music/          locally generated original music
 |-- sfx/            locally generated transition effects
 |-- subtitles/      SRT, animated ASS, timing JSON
@@ -85,8 +87,8 @@ output/YYYY-MM-DD-run-id/
 ## Quick start
 
 The lowest-effort path on Windows uses Docker Desktop, your OpenRouter key, free local Kokoro
-narration, local Whisper caption alignment, Pexels stock images, and the RTX 4070 for 1080p60 NVENC
-rendering. Publishing and paid video generation stay off.
+narration, script-locked Whisper timing, Pexels stock video, and the RTX 4070 for 1080p60 NVENC.
+Publishing and paid video generation stay off.
 
 ```powershell
 git clone https://github.com/ReaperXD67/atlasforge-ai.git
@@ -95,6 +97,17 @@ Copy-Item .env.example .env
 notepad .env # paste OPENROUTER_API_KEY; PEXELS_API_KEY is recommended
 .\scripts\start_studio.ps1
 ```
+
+For the optional locally generated Wan hero shot, run this once before starting Studio. It installs
+an isolated CUDA ComfyUI runtime and the official Wan 2.2 TI2V 5B files under
+`%LOCALAPPDATA%\AtlasForge\ComfyUI`:
+
+```powershell
+.\scripts\install_comfyui_wan22.ps1
+```
+
+After installation, `start_studio.ps1` starts the local video API automatically. Stock clips and
+owned fallbacks continue to work if Wan is disabled, busy, or unavailable.
 
 Open `http://127.0.0.1:8741`, select **Atomy USA — Fast Preview** for the first run, and click
 **Generate film**. Stop the service later with `.\scripts\stop_studio.ps1`. The first build installs
@@ -155,7 +168,7 @@ The former `dailyvideo` command remains available as a backward-compatible alias
 
 ## Official references
 
-The implementation follows the official documentation for [OpenAI text-to-speech](https://developers.openai.com/api/docs/guides/text-to-speech), [Gemini TTS](https://ai.google.dev/gemini-api/docs/speech-generation), [Veo video generation](https://ai.google.dev/gemini-api/docs/veo), [MiniMax video generation](https://platform.minimax.io/docs/guides/video-generation), [YouTube video resources](https://developers.google.com/youtube/v3/docs/videos), and [YouTube altered/synthetic content disclosure](https://support.google.com/youtube/answer/14328491).
+The implementation follows the official documentation for [Pexels Video API](https://www.pexels.com/api/documentation/), [OpenAI CLIP](https://github.com/openai/CLIP), [ComfyUI Wan 2.2](https://docs.comfy.org/tutorials/video/wan/wan2_2), [Wan 2.2](https://github.com/Wan-Video/Wan2.2), [faster-whisper](https://github.com/SYSTRAN/faster-whisper), [OpenAI text-to-speech](https://developers.openai.com/api/docs/guides/text-to-speech), [Gemini TTS](https://ai.google.dev/gemini-api/docs/speech-generation), [Veo video generation](https://ai.google.dev/gemini-api/docs/veo), [MiniMax video generation](https://platform.minimax.io/docs/guides/video-generation), [YouTube video resources](https://developers.google.com/youtube/v3/docs/videos), and [YouTube altered/synthetic content disclosure](https://support.google.com/youtube/answer/14328491).
 
 ## License
 

@@ -29,7 +29,7 @@ from .models import (
 )
 from .providers.images import SceneImageGenerator
 from .providers.tts import NarrationGenerator
-from .providers.video import PremiumSceneScheduler
+from .providers.video import LocalSceneScheduler, PremiumSceneScheduler, StockVideoScheduler
 from .publishing.youtube import YouTubePublisher
 from .quality import validate_final, validate_script
 from .research import TopicResearcher
@@ -290,6 +290,68 @@ class DailyVideoPipeline:
                 else:
                     premium = self._execute("premium_video", manifest, paths, premium_operation)
 
+                def local_video_operation() -> dict[int, Path]:
+                    generated, costs = LocalSceneScheduler(self.settings).generate(
+                        [scene for scene in storyboard.scenes if scene.index not in premium],
+                        paths.videos / "local_ai",
+                    )
+                    manifest.costs.extend(costs)
+                    paths.write_json(
+                        "videos/local_ai/index.json",
+                        {str(index): str(path) for index, path in generated.items()},
+                    )
+                    paths.write_json("storyboards/storyboard_timed.json", storyboard)
+                    return generated
+
+                local_index = paths.videos / "local_ai" / "index.json"
+                if (
+                    resume
+                    and self.store.stage_completed(manifest.run_id, "local_video")
+                    and local_index.exists()
+                ):
+                    raw = json.loads(local_index.read_text(encoding="utf-8"))
+                    local_video = {int(index): Path(path) for index, path in raw.items()}
+                else:
+                    local_video = self._execute(
+                        "local_video", manifest, paths, local_video_operation
+                    )
+
+                def stock_video_operation() -> dict[int, Path]:
+                    generated = StockVideoScheduler(self.settings).generate(
+                        storyboard.scenes,
+                        paths.videos / "stock",
+                        excluded_scene_ids=set(premium) | set(local_video),
+                    )
+                    if generated:
+                        self._record_cost(
+                            manifest,
+                            CostEntry(
+                                stage="video",
+                                provider="pexels_video",
+                                estimated_usd=0,
+                                note=f"{len(generated)} free stock-video scenes with attribution",
+                            ),
+                        )
+                    paths.write_json(
+                        "videos/stock/index.json",
+                        {str(index): str(path) for index, path in generated.items()},
+                    )
+                    paths.write_json("storyboards/storyboard_timed.json", storyboard)
+                    return generated
+
+                stock_index = paths.videos / "stock" / "index.json"
+                if (
+                    resume
+                    and self.store.stage_completed(manifest.run_id, "stock_video")
+                    and stock_index.exists()
+                ):
+                    raw = json.loads(stock_index.read_text(encoding="utf-8"))
+                    stock_video = {int(index): Path(path) for index, path in raw.items()}
+                else:
+                    stock_video = self._execute(
+                        "stock_video", manifest, paths, stock_video_operation
+                    )
+
                 renderer = VideoRenderer(self.settings, self.ffmpeg)
                 silent_video = paths.videos / "assembled_silent.mp4"
 
@@ -301,10 +363,15 @@ class DailyVideoPipeline:
                         visual_duration = scene.duration_seconds
                         if position < scene_count - 1:
                             visual_duration += self.settings.video.transition_seconds
-                        if scene.index in premium:
-                            renderer.normalize_cloud_scene(
+                        clip = (
+                            premium.get(scene.index)
+                            or local_video.get(scene.index)
+                            or stock_video.get(scene.index)
+                        )
+                        if clip is not None:
+                            renderer.normalize_video_scene(
                                 scene,
-                                premium[scene.index],
+                                clip,
                                 output,
                                 duration_seconds=visual_duration,
                             )

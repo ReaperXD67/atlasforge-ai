@@ -46,6 +46,11 @@ def validate_script(script: ScriptDocument, settings: Settings) -> list[str]:
         if _contains_unqualified_claim(lower, pattern):
             errors.append(f"Potentially prohibited {label} detected.")
     brand = settings.channel.brand_name.strip()
+    if brand.casefold() == "atomy" and re.search(r"\b(?:point value|personal volume)\b", lower):
+        errors.append(
+            "Unsupported Atomy PV expansion detected; use 'PV' or 'Personal PV' as the official "
+            "U.S. plan does."
+        )
     brand_index = lower.find(brand.lower()) if brand else -1
     if settings.channel.brand_required and brand and brand_index < 0:
         errors.append(

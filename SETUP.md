@@ -14,7 +14,7 @@ notepad .env
 ```
 
 Paste the existing OpenRouter key after `OPENROUTER_API_KEY=`. Paste the Pexels key after
-`PEXELS_API_KEY=` for a larger free stock-image pool. Everything else may remain blank: Docker
+`PEXELS_API_KEY=` for matching free stock video. Everything else may remain blank: Docker
 includes free local Kokoro narration, local Whisper alignment, FFmpeg, and the web Studio. The
 script builds the image, starts it with GPU access, checks its health, reports the detected render
 path, and opens `http://127.0.0.1:8741/`.
@@ -24,10 +24,10 @@ video providers disabled. After that succeeds, switch to **Atomy USA — Joining
 6–8 minute 1080p60 render. Generated files persist under `output/`; models persist under `models/`.
 
 What still needs human judgment is deliberately small: provide or approve the exact official
-Atomy registration/sponsor link, fact-check time-sensitive membership claims, verify stock-image
-suitability, and watch the final render before publishing. The free visual path animates licensed
-photos and designed editorial cards with eased camera motion and crossfades; it does not pretend to
-be free long-form generative cinema. Premium cloud clips remain an explicit paid opt-in.
+Atomy registration/sponsor link, fact-check time-sensitive membership claims, verify stock-video
+suitability, and watch the final render before publishing. The free visual path leads with licensed
+real footage, uses one locally generated hero shot when available, and falls back to owned cards or
+stable still motion. Premium cloud clips remain an explicit paid opt-in.
 
 ## 1. Hardware and disk
 
@@ -89,7 +89,7 @@ Set-ExecutionPolicy -Scope Process Bypass
 Copy-Item .env.example .env
 ```
 
-The script creates `.venv`, installs the production package plus Google/YouTube integrations, and creates local `output`, `models`, and `secrets` directories.
+The script creates `.venv`, installs the production package plus Google/YouTube integrations, and creates local `output`, `models`, and `secrets` directories. For a fully native (non-Docker) media stack, use `./scripts/install.ps1 -WithLocalTts -WithTranscription -WithVisualRanking`; Docker Studio already includes all three.
 
 ## 4. Choose text generation
 
@@ -190,9 +190,9 @@ PIPER_MODEL_PATH=C:\full\path\to\en_US-voice-medium.onnx
 
 ## 6. Images and video
 
-### Pexels images (recommended)
+### Pexels matching video clips (recommended)
 
-Why: free editorial/stock visual source with explicit attribution records saved per scene. Optional: yes; the local card provider always works. Cost: free subject to Pexels API terms.
+Why: free real-world b-roll is the primary visual layer and looks more natural than stretching random photos. Each scene uses a concrete action search, clips and creators are not repeated when alternatives exist, and an attribution/provenance JSON file is saved beside every download. A local OpenAI CLIP model inspects Pexels thumbnails, reranks them by visual relevance, and rejects the scene when even the best candidate is too weak. Its first use downloads the model into the persistent model cache. If CLIP is unavailable, duration/resolution ranking remains a safe fallback. Optional: yes; the local card/still provider always works. Cost: free subject to Pexels API terms.
 
 1. Request a key at [Pexels API](https://www.pexels.com/api/).
 2. Add it:
@@ -201,7 +201,25 @@ Why: free editorial/stock visual source with explicit attribution records saved 
 PEXELS_API_KEY=your_key_here
 ```
 
-Always audit whether a specific photo is suitable for commercial use, contains recognizable people, trademarks, or misleading product context.
+Always audit whether a specific clip is suitable for commercial use, contains recognizable people, trademarks, or misleading product context.
+
+### Wan 2.2 local hero shots (optional, free after electricity)
+
+Why: the official Wan 2.2 TI2V 5B model is the strongest practical local generator in this design for an 8 GB RTX 4070. ComfyUI's native offloading lets the 5B workflow fit, but generation is still slow, so AtlasForge uses it for at most one high-value shot by default rather than trying to synthesize an entire episode.
+
+The automated one-time setup needs roughly 30 GB free and places everything outside OneDrive:
+
+```powershell
+.\scripts\install_comfyui_wan22.ps1
+```
+
+The installer clones official ComfyUI, creates an isolated Python 3.11 environment, installs NVIDIA CUDA PyTorch, downloads the official diffusion model, VAE, and text encoder, then verifies that CUDA sees the GPU. Start it manually only when troubleshooting:
+
+```powershell
+.\scripts\start_comfyui.ps1 -Foreground
+```
+
+Normal use requires no extra command: `start_studio.ps1` starts ComfyUI in the background when it is installed. The Studio toggle **Local Wan hero shot** controls whether a run uses it. The API URL is already configured as `http://127.0.0.1:8188` on Windows and `http://host.docker.internal:8188` inside Docker.
 
 ### Veo hero clips (optional, off by default)
 

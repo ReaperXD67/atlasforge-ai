@@ -31,6 +31,13 @@ const storyboardToScenes = (storyboard, runId) => storyboard.scenes.map((scene, 
   const angle = scene.camera_angle?.toLowerCase() || "";
   const transition = scene.transition?.toLowerCase() || "";
   const searchTitle = titleCase(scene.visual_search_query || scene.environment || `Scene ${scene.index}`);
+  const sourceLabel = {
+    pexels_video: "Pexels matching clip",
+    comfyui_wan22: "Wan 2.2 local AI clip",
+    veo: "Veo premium clip",
+    minimax: "MiniMax premium clip",
+    local_motion: scene.visual_mode === "information_card" ? "Local information card" : "Stable photo motion",
+  }[scene.selected_video_provider] || titleCase(scene.selected_video_provider || "Local fallback");
   return {
     id: scene.index,
     title: position === 0 ? storyboard.title : searchTitle,
@@ -38,7 +45,7 @@ const storyboardToScenes = (storyboard, runId) => storyboard.scenes.map((scene, 
     duration: Number(scene.duration_seconds) || 1,
     image: `/api/runs/${runId}/scenes/${scene.index}`,
     fallbackImage: sceneFallbackImages[position % sceneFallbackImages.length],
-    source: "Pexels or generated still",
+    source: sourceLabel,
     motion: angle.includes("locked") ? "Locked frame" : angle.includes("lateral") ? "Gentle drift right" : angle.includes("close") || angle.includes("overhead") ? "Parallax push-in" : "Slow push-in",
     transition: transition.includes("black") ? "Dip to black" : transition.includes("fade") ? "Fade out" : "Crossfade",
   };
@@ -48,7 +55,7 @@ const productionSteps = [
   { label: "Brief", stages: ["research"] },
   { label: "Script", stages: ["script", "storyboard"] },
   { label: "Voice", stages: ["narration", "sound_mix"] },
-  { label: "Visuals", stages: ["images", "premium_video"] },
+  { label: "Visuals", stages: ["images", "premium_video", "local_video", "stock_video"] },
   { label: "Edit", stages: ["render", "finalize"] },
   { label: "Captions", stages: ["subtitles"] },
   { label: "Quality", stages: ["metadata", "quality_gate"] },
@@ -101,8 +108,9 @@ function ChapterRail({ scenes, selectedId, onSelect, activeTab, setActiveTab, on
       start += scene.duration;
       return <button className={`chapter-card ${selectedId === scene.id ? "active" : ""}`} key={scene.id} onClick={() => onSelect(scene.id)}><span className="chapter-index">{scene.id}</span><span className="chapter-start">{formatClock(sceneStart)}</span><img src={scene.image} alt="" /><span className="chapter-copy"><strong>{scene.title}</strong><small>{formatClock(scene.duration)}</small></span><DotsThree weight="bold" aria-hidden="true" /></button>;
     })}</div> : <div className="asset-list">{[
-      [ImageIcon, "5 generated scene stills", "Ready in this project"],
-      [FolderOpen, "Pexels stock search", "API-backed when enabled"],
+      [FilmReel, "Matching scene clips", "Pexels Video first"],
+      [ImageIcon, "Stable still fallbacks", "Supersampled, no camera shake"],
+      [FolderOpen, "Local hero shots", "Wan 2.2 via ComfyUI"],
       [MusicNotes, "Original ambient score", "Generated locally"],
       [ClosedCaptioning, "Timed captions", "Whisper alignment"],
     ].map(([Icon, title, detail]) => <div className="asset-row" key={title}><Icon weight="duotone" /><span><strong>{title}</strong><small>{detail}</small></span><CheckCircle weight="fill" className="ready-icon" /></div>)}</div>}
@@ -163,23 +171,24 @@ function Timeline({ scenes, selectedId, onSelect, playhead, setPlayhead }) {
 function SceneInspector({ scene, sceneCount, onChange, onRegenerate, busy }) {
   return <aside className="inspector panel-surface"><div className="inspector-head"><span><FilmReel /> Scene {scene.id} of {sceneCount}</span><div><button aria-label="Previous scene"><CaretLeft /></button><button aria-label="Next scene"><CaretRight /></button></div></div><img className="inspector-thumb" src={scene.image} alt={`Selected visual for ${scene.title}`} />
     <label><span>Scene title</span><input value={scene.title} onChange={(event) => onChange({ title: event.target.value })} /></label><label className="duration-field"><span>Duration</span><input value={formatDuration(scene.duration)} readOnly /></label><div className="inspector-divider" />
-    <label><span>Visual source</span><div className="source-select"><img src={scene.image} alt="" /><select value={scene.source} onChange={(event) => onChange({ source: event.target.value })}><option>Pexels or generated still</option><option>Pexels people</option><option>Product still</option><option>Education footage</option><option>Pexels lifestyle</option><option>Local title card</option></select></div></label>
+    <label><span>Visual source</span><div className="source-select"><img src={scene.image} alt="" /><select value={scene.source} onChange={(event) => onChange({ source: event.target.value })}><option>Pexels matching clip</option><option>Wan 2.2 local AI clip</option><option>Local information card</option><option>Stable photo motion</option><option>Veo premium clip</option><option>MiniMax premium clip</option><option>Pexels or generated still</option></select></div></label>
     <label><span>Motion</span><select value={scene.motion} onChange={(event) => onChange({ motion: event.target.value })}><option>Slow push-in</option><option>Gentle drift right</option><option>Parallax push-in</option><option>Locked frame</option></select></label>
     <label><span>Transition</span><div className="split-field"><select value={scene.transition} onChange={(event) => onChange({ transition: event.target.value })}><option>Crossfade</option><option>Dip to black</option><option>Fade out</option></select><select defaultValue="0.55"><option value="0.35">0.35s</option><option value="0.55">0.55s</option><option value="0.75">0.75s</option></select></div></label>
     <button className="secondary-button regenerate" onClick={onRegenerate} disabled={busy}>{busy ? <CircleNotch className="spin" /> : <Sparkle weight="fill" />} Regenerate with this scene</button><p className="inspector-note">Scene edits shape the next full render. Publishing always stays off in Studio.</p>
   </aside>;
 }
 
-function ProviderStrip({ system, selectedProfile, duration, quality }) {
+function ProviderStrip({ system, selectedProfile, quality }) {
   const qualityLabel = quality === "max" ? "Max detail" : quality === "fast" ? "Fast draft" : "Balanced";
   const providers = [
     { label: "Local project", detail: "Autosaved", ok: true },
     { label: "OpenRouter", detail: "Script", ok: Boolean(system.openrouter) },
     { label: "Kokoro", detail: "Voice", ok: Boolean(system.kokoro) },
     { label: "Whisper", detail: "Captions · CPU", ok: Boolean(system.whisper) },
+    { label: "Wan 2.2", detail: system.comfyui ? "Local hero shots" : "Optional · offline", ok: Boolean(system.comfyui) },
     { label: system.gpu_name || "NVIDIA GPU", detail: system.nvenc ? "NVENC" : "CPU fallback", ok: Boolean(system.gpu || system.ffmpeg) },
     { label: `${system.width || 1920}×${system.height || 1080}`, detail: `${system.fps || selectedProfile?.fps || 60} fps`, ok: true },
-    { label: `$${(0.03 * Math.max(1, duration / 7)).toFixed(2)}`, detail: `${qualityLabel} estimate`, ok: true },
+    { label: "$0 media API", detail: `${qualityLabel} · local + Pexels`, ok: true },
   ];
   return <footer className="provider-strip">{providers.map((provider) => <div className="provider-cell" key={provider.label}><StatusDot ok={provider.ok} /><span><strong>{provider.label}</strong><small>{provider.detail}</small></span></div>)}</footer>;
 }
@@ -187,12 +196,12 @@ function ProviderStrip({ system, selectedProfile, duration, quality }) {
 function GenerateDialog({ open, onClose, profiles, form, setForm, onSubmit, submitting, system }) {
   if (!open) return null;
   return <motion.div className="dialog-backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onMouseDown={onClose}><motion.form className="generate-dialog" initial={{ opacity: 0, y: 18, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 10, scale: 0.98 }} onSubmit={onSubmit} onMouseDown={(event) => event.stopPropagation()}>
-    <div className="dialog-head"><div><span className="eyebrow">Production setup</span><h2>Generate a complete film</h2><p>Script in the cloud. Voice, captions, motion, audio mix, and render stay local.</p></div><button type="button" className="icon-button" onClick={onClose} aria-label="Close setup"><X /></button></div>
-    <div className="readiness-line"><span className={system.openrouter ? "ready" : "missing"}>{system.openrouter ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} OpenRouter</span><span className={system.pexels ? "ready" : "missing"}>{system.pexels ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} Pexels</span><span className={system.nvenc ? "ready" : "missing"}>{system.nvenc ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} NVENC</span><span className={system.kokoro ? "ready" : "missing"}>{system.kokoro ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} Kokoro</span></div>
+    <div className="dialog-head"><div><span className="eyebrow">Production setup</span><h2>Generate a complete film</h2><p>OpenRouter writes. Matching clips lead. Voice, exact captions, local hero shots, audio, and render stay on your machine.</p></div><button type="button" className="icon-button" onClick={onClose} aria-label="Close setup"><X /></button></div>
+    <div className="readiness-line"><span className={system.openrouter ? "ready" : "missing"}>{system.openrouter ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} OpenRouter</span><span className={system.pexels ? "ready" : "missing"}>{system.pexels ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} Pexels Video</span><span className={system.comfyui ? "ready" : "missing"}>{system.comfyui ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} Wan 2.2</span><span className={system.nvenc ? "ready" : "missing"}>{system.nvenc ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} NVENC</span><span className={system.kokoro ? "ready" : "missing"}>{system.kokoro ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} Kokoro</span></div>
     <label><span>Use case</span><select value={form.profile} onChange={(event) => setForm({ ...form, profile: event.target.value })}>{profiles.map((profile) => <option key={profile.id} value={profile.id}>{profile.name}</option>)}</select></label>
     <label><span>Topic or angle <small>optional</small></span><textarea value={form.topic} onChange={(event) => setForm({ ...form, topic: event.target.value })} placeholder="Example: A calm, factual walkthrough of joining Atomy USA" rows="3" /></label>
     <div className="form-grid"><label><span>Length</span><select value={form.duration_minutes} onChange={(event) => setForm({ ...form, duration_minutes: Number(event.target.value) })}><option value="2">2 min preview</option><option value="5">5 minutes</option><option value="7">7 minutes</option><option value="10">10 minutes</option></select></label><label><span>Frame rate</span><select value={form.fps} onChange={(event) => setForm({ ...form, fps: Number(event.target.value) })}><option value="60">60 fps · smooth</option><option value="30">30 fps · faster</option></select></label><label><span>Render quality</span><select value={form.quality} onChange={(event) => setForm({ ...form, quality: event.target.value })}><option value="fast">Fast draft</option><option value="balanced">Balanced · recommended</option><option value="max">Maximum detail</option></select></label></div>
-    <div className="toggle-row"><button type="button" className={form.stock_images ? "active" : ""} onClick={() => setForm({ ...form, stock_images: !form.stock_images })}><ImageIcon /> Stock visuals <span>{form.stock_images ? "On" : "Off"}</span></button><button type="button" className={form.captions ? "active" : ""} onClick={() => setForm({ ...form, captions: !form.captions })}><ClosedCaptioning /> Burn-in captions <span>{form.captions ? "On" : "Off"}</span></button></div>
+    <div className="toggle-row"><button type="button" className={form.stock_images ? "active" : ""} onClick={() => setForm({ ...form, stock_images: !form.stock_images })}><FilmReel /> Matching stock clips <span>{form.stock_images ? "On" : "Off"}</span></button><button type="button" className={form.local_ai ? "active" : ""} onClick={() => setForm({ ...form, local_ai: !form.local_ai })}><Sparkle weight="fill" /> Local Wan hero shot <span>{form.local_ai ? "On" : "Off"}</span></button><button type="button" className={form.captions ? "active" : ""} onClick={() => setForm({ ...form, captions: !form.captions })}><ClosedCaptioning /> Script-locked captions <span>{form.captions ? "On" : "Off"}</span></button></div>
     <div className="dialog-foot"><p><strong>Publishing is disabled.</strong> The finished video and thumbnail stay in your local output folder.</p><button className="primary-button" disabled={submitting || !system.openrouter}>{submitting ? <CircleNotch className="spin" /> : <Sparkle weight="fill" />} Start generation</button></div>
   </motion.form></motion.div>;
 }
@@ -217,7 +226,7 @@ export function App() {
   const [log, setLog] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [toast, setToast] = useState("");
-  const [form, setForm] = useState({ profile: "atomy-us-openrouter", topic: "", duration_minutes: 7, fps: 60, quality: "balanced", stock_images: true, captions: true, fresh: true });
+  const [form, setForm] = useState({ profile: "atomy-us-openrouter", topic: "", duration_minutes: 7, fps: 60, quality: "balanced", stock_images: true, local_ai: true, captions: true, fresh: true });
 
   const selectedScene = scenes.find((scene) => scene.id === selectedId) || scenes[0];
   const selectedProfile = profiles.find((profile) => profile.id === form.profile) || profiles[0];
@@ -275,7 +284,7 @@ export function App() {
     <header className="topbar"><button className="menu-button" aria-label="Open menu"><List /></button><BrandMark /><div className="project-title"><strong>{selectedProfile?.name || "AtlasForge project"}</strong><StatusDot ok /><span>Autosaved</span></div><label className="usecase-select"><span>Use case</span><select value={form.profile} onChange={(event) => setForm({ ...form, profile: event.target.value })}>{profiles.map((profile) => <option value={profile.id} key={profile.id}>{profile.name}</option>)}</select><CaretDown /></label><button className="primary-button generate-button" onClick={() => setSetupOpen(true)} disabled={activeJob?.state === "running"}><Sparkle weight="fill" /> {activeJob?.state === "running" ? "Generating…" : "Generate film"}</button><span className="shortcut"><Command />K</span><button className="top-icon" title="Help" aria-label="Help"><Question /></button><button className="top-icon" title="Notifications" aria-label="Notifications"><Bell /></button><div className="avatar" title="Local owner">AF</div></header>
     <div className="stagebar"><StageRail stages={runDetail?.stages || []} activeJob={activeJob?.state === "running" ? activeJob : null} /><div className="last-run"><span>Last run: {lastRunLabel}</span><button className="secondary-button" onClick={() => setLogOpen(true)}>View log <CaretRight /></button></div></div>
     <main className="editor-grid"><ChapterRail scenes={scenes} selectedId={selectedId} onSelect={setSelectedId} activeTab={activeTab} setActiveTab={setActiveTab} onAddScene={addScene} /><div className="edit-canvas"><Preview scene={selectedScene} playing={playing} setPlaying={setPlaying} playhead={playhead} setPlayhead={setPlayhead} totalDuration={totalDuration} outputUrl={outputUrl} /><Timeline scenes={scenes} selectedId={selectedId} onSelect={setSelectedId} playhead={playhead} setPlayhead={setPlayhead} /></div><SceneInspector scene={selectedScene} sceneCount={scenes.length} onChange={updateScene} onRegenerate={() => setSetupOpen(true)} busy={activeJob?.state === "running"} /></main>
-    <ProviderStrip system={system} selectedProfile={selectedProfile} duration={form.duration_minutes} quality={form.quality} />
+    <ProviderStrip system={system} selectedProfile={selectedProfile} quality={form.quality} />
     <AnimatePresence><GenerateDialog open={setupOpen} onClose={() => setSetupOpen(false)} profiles={profiles} form={form} setForm={setForm} onSubmit={startGeneration} submitting={submitting} system={system} /></AnimatePresence><LogDrawer open={logOpen} onClose={() => setLogOpen(false)} job={activeJob} log={log} onCancel={cancelJob} />
     <AnimatePresence>{toast && <motion.div className="toast" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }}><CheckCircle weight="fill" /> {toast}</motion.div>}</AnimatePresence>
   </div>;

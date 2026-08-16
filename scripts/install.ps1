@@ -1,7 +1,8 @@
 [CmdletBinding()]
 param(
     [switch]$WithLocalTts,
-    [switch]$WithTranscription
+    [switch]$WithTranscription,
+    [switch]$WithVisualRanking
 )
 
 $ErrorActionPreference = 'Stop'
@@ -30,6 +31,9 @@ if ($WithLocalTts) {
 }
 if ($WithTranscription) {
     & $VenvPython -m pip install -e '.[transcription]'
+}
+if ($WithVisualRanking) {
+    & $VenvPython -m pip install -e '.[visual-ranking]'
 }
 
 foreach ($Directory in @('output', 'models', 'secrets')) {
