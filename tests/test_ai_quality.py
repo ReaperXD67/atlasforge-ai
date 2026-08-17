@@ -1,32 +1,53 @@
 from pathlib import Path
 
+import numpy as np
+from PIL import Image
+
 from daily_video_factory.media.ai_quality import SyntheticClipInspector
 from daily_video_factory.media.ffmpeg import FFmpeg
 
 
-def _clip(ffmpeg: FFmpeg, output: Path, source: str) -> Path:
-    ffmpeg.run(
-        [
-            "-f",
-            "lavfi",
-            "-i",
-            source,
-            "-t",
-            "3",
-            "-pix_fmt",
-            "yuv420p",
-            str(output),
-        ]
-    )
-    return output
+class FrameFixtureFFmpeg(FFmpeg):
+    """Exercise the inspector without requiring an FFmpeg binary on CI runners."""
+
+    def __init__(self, frames: list[Image.Image]) -> None:
+        super().__init__(executable="fixture-ffmpeg", ffprobe="fixture-ffprobe")
+        self.frames = frames
+
+    def duration(self, path: Path) -> float:
+        del path
+        return 3.0
+
+    def run(self, args: list[str], timeout_seconds: int = 3600):
+        del timeout_seconds
+        pattern = str(args[-1])
+        for index, frame in enumerate(self.frames, start=1):
+            frame.save(Path(pattern.replace("%02d", f"{index:02d}")), quality=95)
+
+
+def _moving_frames(*, flash: bool = False) -> list[Image.Image]:
+    frames: list[Image.Image] = []
+    height, width = 640, 360
+    for index in range(9):
+        if flash and index in {4, 5}:
+            array = np.full((height, width, 3), (18, 30, 235), dtype=np.uint8)
+        else:
+            x = np.arange(width, dtype=np.uint16)[None, :]
+            y = np.arange(height, dtype=np.uint16)[:, None]
+            checker = (((x + index * 5) // 24 + y // 24) % 2 * 92 + 74).astype(np.uint8)
+            array = np.stack(
+                [checker, np.roll(checker, index * 3, axis=1), 210 - checker // 2], axis=2
+            )
+        frames.append(Image.fromarray(array, mode="RGB"))
+    return frames
 
 
 def test_synthetic_gate_rejects_blank_frozen_clip(settings, monkeypatch, tmp_path: Path) -> None:
-    ffmpeg = FFmpeg()
+    ffmpeg = FrameFixtureFFmpeg([Image.new("RGB", (360, 640), "black") for _ in range(9)])
     inspector = SyntheticClipInspector(settings, ffmpeg)
     monkeypatch.setattr(inspector, "_clip_realism", lambda _frames: None)
     monkeypatch.setattr(inspector, "_semantic_judge", lambda _frames, prompt: None)
-    frozen = _clip(ffmpeg, tmp_path / "frozen.mp4", "color=c=black:s=360x640:r=24")
+    frozen = tmp_path / "frozen.mp4"
 
     report = inspector.inspect(frozen)
 
@@ -38,7 +59,7 @@ def test_synthetic_gate_rejects_blank_frozen_clip(settings, monkeypatch, tmp_pat
 def test_synthetic_gate_fails_closed_when_semantic_review_rejects(
     settings, monkeypatch, tmp_path: Path
 ) -> None:
-    ffmpeg = FFmpeg()
+    ffmpeg = FrameFixtureFFmpeg(_moving_frames())
     inspector = SyntheticClipInspector(settings, ffmpeg)
     # A misleadingly perfect CLIP camera guess is diagnostic only and cannot overrule the
     # semantic supervisor.
@@ -53,7 +74,7 @@ def test_synthetic_gate_fails_closed_when_semantic_review_rejects(
             "anomalies": ["rubbery rigid geometry"],
         },
     )
-    moving = _clip(ffmpeg, tmp_path / "moving.mp4", "testsrc2=s=360x640:r=24")
+    moving = tmp_path / "moving.mp4"
 
     report = inspector.inspect(moving, prompt="A rigid structure falls under gravity")
 
@@ -67,15 +88,11 @@ def test_synthetic_gate_fails_closed_when_semantic_review_rejects(
 def test_synthetic_gate_detects_short_full_frame_color_flash(
     settings, monkeypatch, tmp_path: Path
 ) -> None:
-    ffmpeg = FFmpeg()
+    ffmpeg = FrameFixtureFFmpeg(_moving_frames(flash=True))
     inspector = SyntheticClipInspector(settings, ffmpeg)
     monkeypatch.setattr(inspector, "_clip_realism", lambda _frames: None)
     monkeypatch.setattr(inspector, "_semantic_judge", lambda _frames, prompt: None)
-    flashed = _clip(
-        ffmpeg,
-        tmp_path / "flash.mp4",
-        "testsrc2=s=360x640:r=24,drawbox=color=blue:t=fill:enable='between(t,1,1.6)'",
-    )
+    flashed = tmp_path / "flash.mp4"
 
     report = inspector.inspect(flashed)
 
