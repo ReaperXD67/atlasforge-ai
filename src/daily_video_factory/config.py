@@ -78,6 +78,13 @@ class VoiceConfig(BaseModel):
     gemini_model: str
     gemini_voice: str
     kokoro_voice: str
+    kokoro_speed: float = Field(default=0.98, ge=0.75, le=1.25)
+    kokoro_language: str = "a"
+    elevenlabs_model: str = "eleven_multilingual_v2"
+    elevenlabs_voice_id: str = "JBFqnCBsd6RMkjVDRZzb"
+    elevenlabs_stability: float = Field(default=0.42, ge=0, le=1)
+    elevenlabs_similarity_boost: float = Field(default=0.78, ge=0, le=1)
+    elevenlabs_style: float = Field(default=0.22, ge=0, le=1)
     sample_rate: int = 24000
     target_lufs: int = -16
     max_duration_ratio: float = Field(default=1.18, ge=1.0, le=1.5)

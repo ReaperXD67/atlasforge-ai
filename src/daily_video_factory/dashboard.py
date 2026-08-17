@@ -2,14 +2,18 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import Annotated
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from starlette.concurrency import run_in_threadpool
 
 from . import __version__
 from .config import Settings
 from .exceptions import ConfigurationError
+from .media.ffmpeg import FFmpeg
+from .music_video import analyze_music
 from .state import RunStore
 from .studio import StudioJob, StudioJobRequest, StudioManager
 
@@ -92,6 +96,50 @@ def create_app(settings: Settings, profile_directory: Path = Path("config/profil
     @app.get("/api/system")
     def system_status() -> dict[str, object]:
         return studio.status()
+
+    @app.post("/api/music/uploads", status_code=201)
+    async def upload_music(file: Annotated[UploadFile, File()]) -> dict[str, object]:
+        try:
+            upload_id, target = studio.reserve_music_upload(file.filename or "track")
+        except ConfigurationError as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+        size = 0
+        try:
+            with target.open("wb") as destination:
+                while chunk := await file.read(1024 * 1024):
+                    size += len(chunk)
+                    if size > 250 * 1024 * 1024:
+                        raise HTTPException(status_code=413, detail="Music uploads are limited to 250 MB")
+                    destination.write(chunk)
+            if size < 4096:
+                raise HTTPException(status_code=400, detail="The uploaded music file is empty")
+            beat_map = await run_in_threadpool(analyze_music, target, FFmpeg())
+            analysis_file = studio.upload_root / f"{upload_id}.json"
+            analysis_file.write_text(beat_map.model_dump_json(indent=2), encoding="utf-8")
+        except HTTPException:
+            target.unlink(missing_ok=True)
+            raise
+        except Exception as exc:
+            target.unlink(missing_ok=True)
+            raise HTTPException(
+                status_code=400, detail=f"Could not decode and analyze this track: {exc}"
+            ) from exc
+        finally:
+            await file.close()
+        return {
+            "upload_id": upload_id,
+            "filename": Path(file.filename or "track").name,
+            "size_bytes": size,
+            "audio_url": f"/api/music/uploads/{upload_id}/audio",
+            "beat_map": beat_map.model_dump(mode="json"),
+        }
+
+    @app.get("/api/music/uploads/{upload_id}/audio")
+    def get_music_upload(upload_id: str) -> FileResponse:
+        target = studio.music_upload_path(upload_id)
+        if target is None:
+            raise HTTPException(status_code=404, detail="Music upload not found")
+        return FileResponse(target)
 
     @app.get("/api/jobs", response_model=list[StudioJob])
     def list_jobs() -> list[StudioJob]:

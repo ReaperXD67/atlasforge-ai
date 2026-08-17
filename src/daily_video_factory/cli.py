@@ -12,6 +12,7 @@ from .config import load_settings
 from .dashboard import create_app
 from .doctor import run_doctor
 from .logging import configure_logging
+from .music_video import MusicVideoPipeline
 from .pipeline import DailyVideoPipeline
 from .publishing.youtube import YouTubePublisher
 from .scheduler import run_scheduler
@@ -72,6 +73,25 @@ def doctor_command(
     console.print(table)
     if failed_required:
         raise typer.Exit(1)
+
+
+@app.command("music-film")
+def music_film_command(
+    track: Path = typer.Option(..., exists=True, dir_okay=False, help="Uploaded master track."),
+    title: str = typer.Option("Sepang Track Experience", help="Event or film title."),
+    seconds: float = typer.Option(60, min=15, max=300, help="Render length in seconds."),
+    config: Path = typer.Option(Path("config/default.yaml"), exists=True, dir_okay=False),
+) -> None:
+    """Build a beat-synchronized faceless music film."""
+    configure_logging()
+    manifest = MusicVideoPipeline(load_settings(config)).run(
+        track,
+        title=title,
+        max_duration_seconds=seconds,
+    )
+    console.print(f"[bold green]Complete:[/] {manifest.status}")
+    console.print(f"Run: {manifest.run_id}")
+    console.print(f"Video: {manifest.final_video}")
 
 
 @app.command("youtube-auth")

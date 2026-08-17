@@ -14,3 +14,4 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - This is a local-first production tool, not a generic SaaS dashboard. The primary action is “Generate film”; live provider and machine readiness must remain visible.
 - Keep all Atomy content factual and compliance-safe. Avoid earnings promises, medical claims, fake endorsements, or hype copy.
 - OpenRouter is the default script provider. Kokoro, Whisper, Pexels, FFmpeg, and NVENC are local/low-cost pipeline components whose states should reflect backend data rather than hard-coded success.
+- Keep a distinct Remotion Lab for music-first faceless films. It should feel like a professional race-event director: uploaded master track, visible BPM/beat evidence, purposeful motorsport shot grammar, deterministic motion preview, and no implication that decorative preview graphics are the final footage.

@@ -87,6 +87,60 @@ class OpenAITTSProvider(TTSProvider):
         )
 
 
+class ElevenLabsTTSProvider(TTSProvider):
+    name = "elevenlabs"
+
+    def __init__(self, settings: Settings, ffmpeg: FFmpeg) -> None:
+        self.cfg = settings.voice
+        self.ffmpeg = ffmpeg
+
+    def available(self) -> bool:
+        return bool(os.getenv("ELEVENLABS_API_KEY")) and self.ffmpeg.available
+
+    @retry(
+        stop=stop_after_attempt(3),
+        wait=wait_exponential_jitter(initial=2, max=20),
+        retry=retry_if_exception_type((httpx.HTTPError, ProviderFailed)),
+        reraise=True,
+    )
+    def _one(self, text: str, path: Path) -> None:
+        response = httpx.post(
+            f"https://api.elevenlabs.io/v1/text-to-speech/{self.cfg.elevenlabs_voice_id}",
+            params={"output_format": "mp3_44100_192"},
+            headers={
+                "xi-api-key": os.environ["ELEVENLABS_API_KEY"],
+                "Content-Type": "application/json",
+            },
+            json={
+                "text": text,
+                "model_id": self.cfg.elevenlabs_model,
+                "voice_settings": {
+                    "stability": self.cfg.elevenlabs_stability,
+                    "similarity_boost": self.cfg.elevenlabs_similarity_boost,
+                    "style": self.cfg.elevenlabs_style,
+                    "use_speaker_boost": True,
+                },
+            },
+            timeout=240,
+        )
+        if response.status_code >= 400:
+            raise ProviderFailed(
+                f"ElevenLabs TTS returned HTTP {response.status_code}: {response.text[:300]}"
+            )
+        path.write_bytes(response.content)
+
+    def synthesize(self, text: str, output_dir: Path) -> Path:
+        output_dir.mkdir(parents=True, exist_ok=True)
+        parts: list[Path] = []
+        for index, chunk in enumerate(split_for_tts(text, max_chars=4500), start=1):
+            part = output_dir / f"elevenlabs_part_{index:03d}.mp3"
+            self._one(chunk, part)
+            parts.append(part)
+        return concatenate_and_normalize(
+            parts, output_dir / "narration.wav", self.cfg.target_lufs, self.ffmpeg
+        )
+
+
 class GeminiTTSProvider(TTSProvider):
     name = "gemini"
 
@@ -168,9 +222,13 @@ class KokoroTTSProvider(TTSProvider):
         except ImportError as exc:
             raise ProviderFailed("Install the local-tts extra to use Kokoro") from exc
         output_dir.mkdir(parents=True, exist_ok=True)
-        pipeline = KPipeline(lang_code="a")
+        pipeline = KPipeline(lang_code=self.cfg.kokoro_language)
         clips: list[np.ndarray] = []
-        for _graphemes, _phonemes, audio in pipeline(text, voice=self.cfg.kokoro_voice):
+        for _graphemes, _phonemes, audio in pipeline(
+            text,
+            voice=self.cfg.kokoro_voice,
+            speed=self.cfg.kokoro_speed,
+        ):
             clips.append(np.asarray(audio, dtype=np.float32))
         if not clips:
             raise ProviderFailed("Kokoro produced no audio")
@@ -287,6 +345,7 @@ class NarrationGenerator:
         self.ffmpeg = ffmpeg
         providers = {
             "openai": OpenAITTSProvider(settings, ffmpeg),
+            "elevenlabs": ElevenLabsTTSProvider(settings, ffmpeg),
             "gemini": GeminiTTSProvider(settings, ffmpeg),
             "kokoro": KokoroTTSProvider(settings, ffmpeg),
             "piper": PiperTTSProvider(settings, ffmpeg),

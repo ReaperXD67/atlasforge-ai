@@ -6,6 +6,11 @@
 
 AtlasForge AI is a local-first, production-oriented pipeline that researches, scripts, narrates, storyboards, edits, captions, packages, and can optionally publish one original 6-8 minute YouTube video per day.
 
+It also includes a separate **Remotion Music Film** workspace: upload a song, analyze its beat and
+energy map locally, preview deterministic beat-reactive graphics, then build a faceless racing/event
+film from CLIP-ranked real footage and an optional local Wan hero shot. See
+[Remotion Music Film workflow](docs/MUSIC_VIDEO.md).
+
 It is configured for education-first Atomy content aimed at people researching online business, side hustles, entrepreneurship, wellness, Korean skincare, and productivity. The brand is introduced as one possible case study, never as a guaranteed income or health outcome.
 
 > AtlasForge AI automates production, not editorial responsibility. Its gates block obvious earnings promises, medical claims, early sales pitches, missing disclosures, and malformed media. You remain responsible for factual accuracy, licensing, product claims, and channel compliance.
@@ -140,6 +145,7 @@ atlasforge youtube-auth                   # one-time browser OAuth
 atlasforge run --upload                   # package and upload/schedule
 atlasforge schedule                       # persistent daily scheduler
 atlasforge dashboard --port 8741          # local progress UI
+atlasforge music-film --track song.mp3 --title "Sepang Track Experience" --seconds 60
 ```
 
 The Studio adds reusable use-case profiles, editable scenes, a multitrack timeline, live provider

@@ -233,7 +233,11 @@ class DailyVideoPipeline:
                     CostEntry(
                         stage="narration",
                         provider=narration_provider,
-                        estimated_usd={"openai": 0.12, "gemini": 0.10}.get(narration_provider, 0.0),
+                        estimated_usd={
+                            "openai": 0.12,
+                            "gemini": 0.10,
+                            "elevenlabs": 0.70,
+                        }.get(narration_provider, 0.0),
                         note="Seven-minute planning estimate; confirm actual provider billing.",
                     ),
                 )

@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import {
   Bell, CaretDown, CaretLeft, CaretRight, Check, CheckCircle, CircleNotch,
   ClosedCaptioning, Command, Desktop, DotsThree, Eye, FilmReel, FolderOpen,
   Image as ImageIcon, List, MagnifyingGlassPlus, Microphone, Minus, MusicNotes,
   Pause, Play, Plus, Question, Queue, SlidersHorizontal, Sparkle, SpeakerHigh,
-  StopCircle, Warning, Waveform, X,
+  StopCircle, UploadSimple, Warning, Waveform, X,
 } from "@phosphor-icons/react";
 import "@fontsource/dm-sans/latin-400.css";
 import "@fontsource/dm-sans/latin-500.css";
@@ -17,6 +17,8 @@ const fallbackProfiles = [
   { id: "atomy-us-preview", name: "Atomy USA — Fast Preview", brand: "Atomy", region: "United States", duration_minutes: 2, text_provider: "openrouter", voice_provider: "kokoro", fps: 60 },
   { id: "general-explainer", name: "General Explainer", brand: "", region: "Global", duration_minutes: 5, text_provider: "openrouter", voice_provider: "kokoro", fps: 60 },
 ];
+
+const RemotionPreview = lazy(() => import("./remotion/RemotionPreview"));
 
 const initialScenes = [
   { id: 1, title: "How to Join Atomy USA", caption: "A clear, practical member-registration guide.", duration: 55, image: "/assets/scenes/city-waterfront.webp", source: "Pexels or generated still", motion: "Slow push-in", transition: "Crossfade" },
@@ -201,9 +203,54 @@ function GenerateDialog({ open, onClose, profiles, form, setForm, onSubmit, subm
     <label><span>Use case</span><select value={form.profile} onChange={(event) => setForm({ ...form, profile: event.target.value })}>{profiles.map((profile) => <option key={profile.id} value={profile.id}>{profile.name}</option>)}</select></label>
     <label><span>Topic or angle <small>optional</small></span><textarea value={form.topic} onChange={(event) => setForm({ ...form, topic: event.target.value })} placeholder="Example: A calm, factual walkthrough of joining Atomy USA" rows="3" /></label>
     <div className="form-grid"><label><span>Length</span><select value={form.duration_minutes} onChange={(event) => setForm({ ...form, duration_minutes: Number(event.target.value) })}><option value="2">2 min preview</option><option value="5">5 minutes</option><option value="7">7 minutes</option><option value="10">10 minutes</option></select></label><label><span>Frame rate</span><select value={form.fps} onChange={(event) => setForm({ ...form, fps: Number(event.target.value) })}><option value="60">60 fps · smooth</option><option value="30">30 fps · faster</option></select></label><label><span>Render quality</span><select value={form.quality} onChange={(event) => setForm({ ...form, quality: event.target.value })}><option value="fast">Fast draft</option><option value="balanced">Balanced · recommended</option><option value="max">Maximum detail</option></select></label></div>
+    <div className="form-grid voice-grid"><label><span>Voice engine</span><select value={form.voice_provider} onChange={(event) => setForm({ ...form, voice_provider: event.target.value })}><option value="kokoro">Kokoro · free local</option><option value="elevenlabs">ElevenLabs · premium jump</option><option value="openai">OpenAI · premium</option><option value="gemini">Gemini · premium</option></select></label><label><span>Voice character</span><select value={form.voice_profile} onChange={(event) => setForm({ ...form, voice_profile: event.target.value })}><option value="warm_documentary">Warm documentary</option><option value="confident_female">Confident female</option><option value="grounded_male">Grounded male</option><option value="editorial_blend">Editorial blend</option></select></label><label><span>Pace · {form.voice_speed.toFixed(2)}×</span><input type="range" min="0.8" max="1.2" step="0.01" value={form.voice_speed} onChange={(event) => setForm({ ...form, voice_speed: Number(event.target.value) })} /></label></div>
     <div className="toggle-row"><button type="button" className={form.stock_images ? "active" : ""} onClick={() => setForm({ ...form, stock_images: !form.stock_images })}><FilmReel /> Matching stock clips <span>{form.stock_images ? "On" : "Off"}</span></button><button type="button" className={form.local_ai ? "active" : ""} onClick={() => setForm({ ...form, local_ai: !form.local_ai })}><Sparkle weight="fill" /> Local Wan hero shot <span>{form.local_ai ? "On" : "Off"}</span></button><button type="button" className={form.captions ? "active" : ""} onClick={() => setForm({ ...form, captions: !form.captions })}><ClosedCaptioning /> Script-locked captions <span>{form.captions ? "On" : "Off"}</span></button></div>
     <div className="dialog-foot"><p><strong>Publishing is disabled.</strong> The finished video and thumbnail stay in your local output folder.</p><button className="primary-button" disabled={submitting || !system.openrouter}>{submitting ? <CircleNotch className="spin" /> : <Sparkle weight="fill" />} Start generation</button></div>
   </motion.form></motion.div>;
+}
+
+function RemotionLab({ form, setForm, system, startGeneration, submitting, activeJob, outputUrl, setToast }) {
+  const [uploading, setUploading] = useState(false);
+  const [music, setMusic] = useState(null);
+  const inputRef = useRef(null);
+  const beatMap = music?.beat_map;
+  const duration = Math.min(form.music_seconds, beatMap?.duration_seconds || 30);
+  const upload = async (file) => {
+    if (!file) return;
+    setUploading(true);
+    const payload = new FormData();
+    payload.append("file", file);
+    try {
+      const result = await fetchJson("/api/music/uploads", { method: "POST", body: payload });
+      setMusic(result);
+      setForm((current) => ({ ...current, mode: "music_film", music_upload_id: result.upload_id, music_seconds: Math.min(60, Math.floor(result.beat_map.duration_seconds)) }));
+      setToast(`Track mapped at ${Math.round(result.beat_map.bpm)} BPM`);
+    } catch (error) { setToast(error.message); } finally { setUploading(false); }
+  };
+  const submit = (event) => {
+    event.preventDefault();
+    if (!music) { inputRef.current?.click(); return; }
+    startGeneration(event);
+  };
+  return <main className="remotion-lab">
+    <section className="remotion-preview panel-surface">
+      <div className="lab-heading"><div><span className="eyebrow">Remotion motion lab</span><h1>Music-led faceless films</h1><p>The live composition reacts to your BPM. The final cut replaces this graphic proof with locally ranked race footage and one optional Wan hero shot.</p></div><span className="remotion-badge">FRAME-DETERMINISTIC</span></div>
+      <div className="player-shell"><Suspense fallback={<div className="player-loading"><CircleNotch className="spin" /> Loading Remotion engine…</div>}><RemotionPreview duration={duration} music={music} title={form.music_title} bpm={beatMap?.bpm} /></Suspense></div>
+      {outputUrl && <a className="latest-output" href={outputUrl} target="_blank" rel="noreferrer"><Play weight="fill" /> Open latest full render</a>}
+    </section>
+    <form className="music-console panel-surface" onSubmit={submit}>
+      <div className="console-head"><div><span className="eyebrow">Master track</span><h2>Race Cut Director</h2></div><MusicNotes weight="duotone" /></div>
+      <input ref={inputRef} className="visually-hidden" type="file" accept="audio/mpeg,audio/wav,audio/x-wav,audio/mp4,audio/flac,audio/ogg,.mp3,.wav,.m4a,.aac,.flac,.ogg" onChange={(event) => upload(event.target.files?.[0])} />
+      <button type="button" className={`drop-track ${music ? "has-track" : ""}`} onClick={() => inputRef.current?.click()} disabled={uploading}>{uploading ? <CircleNotch className="spin" /> : music ? <CheckCircle weight="fill" /> : <UploadSimple />}<span><strong>{uploading ? "Analyzing rhythm…" : music?.filename || "Upload your final song"}</strong><small>{music ? `${Math.round(beatMap.duration_seconds)} sec · ${Math.round(beatMap.bpm)} BPM · ${beatMap.beats_seconds.length} beats` : "MP3, WAV, M4A, FLAC, AAC or OGG · stays local"}</small></span></button>
+      {beatMap && <div className="beat-overview"><div><strong>{Math.round(beatMap.bpm)}</strong><small>BPM</small></div><div><strong>{beatMap.sections.filter((section) => section.label === "peak").length}</strong><small>Peak blocks</small></div><div><strong>{beatMap.downbeats_seconds.length}</strong><small>Downbeats</small></div></div>}
+      <label><span>Event title</span><input value={form.music_title} onChange={(event) => setForm({ ...form, music_title: event.target.value })} /></label>
+      <div className="form-grid music-options"><label><span>Render length</span><select value={form.music_seconds} onChange={(event) => setForm({ ...form, music_seconds: Number(event.target.value) })}><option value="30">30 sec teaser</option><option value="60">60 sec boss sample</option><option value="90">90 sec launch film</option><option value="180">3 min full track</option></select></label><label><span>Output</span><select value={form.fps} onChange={(event) => setForm({ ...form, fps: Number(event.target.value) })}><option value="60">1080p · 60 fps</option><option value="30">1080p · 30 fps draft</option></select></label></div>
+      <div className="shot-stack"><span>Automatic shot grammar</span>{[["01", "Circuit geography", "Aerials and pit-lane orientation"], ["02", "Mechanical tension", "Wheel, brake, cockpit, helmet detail"], ["03", "Velocity release", "Tracking, cornering, side-by-side action"], ["04", "Event payoff", "Crowd, finish line, night-light closure"]].map(([index, title, note]) => <div key={index}><b>{index}</b><span><strong>{title}</strong><small>{note}</small></span></div>)}</div>
+      <div className="toggle-row lab-toggles"><button type="button" className={form.local_ai ? "active" : ""} onClick={() => setForm({ ...form, local_ai: !form.local_ai })}><Sparkle weight="fill" /> Wan hero shot <span>{form.local_ai ? "1" : "0"}</span></button><button type="button" className={form.stock_images ? "active" : ""} onClick={() => setForm({ ...form, stock_images: !form.stock_images })}><FilmReel /> CLIP-ranked footage <span>{form.stock_images ? "On" : "Off"}</span></button></div>
+      <p className="hardware-note"><StatusDot ok={system.nvenc} /> Beat analysis runs on CPU; CLIP ranking uses CPU; only the optional Wan shot occupies GPU VRAM. Final audio is your untouched master encoded at 320 kbps.</p>
+      <button className="primary-button race-render" disabled={submitting || activeJob?.state === "running" || !music}>{submitting || activeJob?.state === "running" ? <CircleNotch className="spin" /> : <FilmReel weight="fill" />} {activeJob?.state === "running" ? "Building race cut…" : "Build beat-synced race film"}</button>
+    </form>
+  </main>;
 }
 
 function LogDrawer({ open, onClose, job, log, onCancel }) {
@@ -226,7 +273,8 @@ export function App() {
   const [log, setLog] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [toast, setToast] = useState("");
-  const [form, setForm] = useState({ profile: "atomy-us-openrouter", topic: "", duration_minutes: 7, fps: 60, quality: "balanced", stock_images: true, local_ai: true, captions: true, fresh: true });
+  const [workspace, setWorkspace] = useState("editor");
+  const [form, setForm] = useState({ profile: "atomy-us-openrouter", topic: "", duration_minutes: 7, fps: 60, quality: "balanced", stock_images: true, local_ai: true, captions: true, fresh: true, mode: "faceless_narrated", music_upload_id: null, music_title: "Sepang Track Experience", music_seconds: 60, voice_provider: "kokoro", voice_profile: "warm_documentary", voice_speed: 0.98 });
 
   const selectedScene = scenes.find((scene) => scene.id === selectedId) || scenes[0];
   const selectedProfile = profiles.find((profile) => profile.id === form.profile) || profiles[0];
@@ -267,7 +315,7 @@ export function App() {
 
   const updateScene = (patch) => { setScenes((current) => current.map((scene) => scene.id === selectedId ? { ...scene, ...patch } : scene)); setToast("Scene change saved for the next render"); };
   const startGeneration = async (event) => {
-    event.preventDefault(); setSubmitting(true);
+    event?.preventDefault(); setSubmitting(true);
     try {
       const created = await fetchJson("/api/jobs", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...form, topic: form.topic.trim() || null }) });
       setJobs((current) => [created, ...current]); setSetupOpen(false); setLogOpen(true); setToast("Generation started — publishing remains off");
@@ -281,9 +329,9 @@ export function App() {
   const lastRunLabel = latestRun ? `${titleCase(latestRun.status)} · ${latestRun.publication_date}` : "No renders yet";
 
   return <div className="studio-shell">
-    <header className="topbar"><button className="menu-button" aria-label="Open menu"><List /></button><BrandMark /><div className="project-title"><strong>{selectedProfile?.name || "AtlasForge project"}</strong><StatusDot ok /><span>Autosaved</span></div><label className="usecase-select"><span>Use case</span><select value={form.profile} onChange={(event) => setForm({ ...form, profile: event.target.value })}>{profiles.map((profile) => <option value={profile.id} key={profile.id}>{profile.name}</option>)}</select><CaretDown /></label><button className="primary-button generate-button" onClick={() => setSetupOpen(true)} disabled={activeJob?.state === "running"}><Sparkle weight="fill" /> {activeJob?.state === "running" ? "Generating…" : "Generate film"}</button><span className="shortcut"><Command />K</span><button className="top-icon" title="Help" aria-label="Help"><Question /></button><button className="top-icon" title="Notifications" aria-label="Notifications"><Bell /></button><div className="avatar" title="Local owner">AF</div></header>
+    <header className="topbar"><button className="menu-button" aria-label="Open menu"><List /></button><BrandMark /><div className="workspace-switch"><button className={workspace === "editor" ? "active" : ""} onClick={() => { setWorkspace("editor"); setForm((current) => ({ ...current, mode: "faceless_narrated" })); }}>Editorial</button><button className={workspace === "remotion" ? "active" : ""} onClick={() => { setWorkspace("remotion"); setForm((current) => ({ ...current, mode: "music_film" })); }}><Waveform /> Remotion Lab</button></div><div className="project-title"><strong>{workspace === "remotion" ? form.music_title : selectedProfile?.name || "AtlasForge project"}</strong><StatusDot ok /><span>Autosaved</span></div>{workspace === "editor" && <label className="usecase-select"><span>Use case</span><select value={form.profile} onChange={(event) => setForm({ ...form, profile: event.target.value })}>{profiles.map((profile) => <option value={profile.id} key={profile.id}>{profile.name}</option>)}</select><CaretDown /></label>}<button className="primary-button generate-button" onClick={() => workspace === "remotion" ? document.querySelector(".drop-track")?.click() : setSetupOpen(true)} disabled={activeJob?.state === "running"}><Sparkle weight="fill" /> {activeJob?.state === "running" ? "Generating…" : workspace === "remotion" ? "Load song" : "Generate film"}</button><span className="shortcut"><Command />K</span><button className="top-icon" title="Help" aria-label="Help"><Question /></button><button className="top-icon" title="Notifications" aria-label="Notifications"><Bell /></button><div className="avatar" title="Local owner">AF</div></header>
     <div className="stagebar"><StageRail stages={runDetail?.stages || []} activeJob={activeJob?.state === "running" ? activeJob : null} /><div className="last-run"><span>Last run: {lastRunLabel}</span><button className="secondary-button" onClick={() => setLogOpen(true)}>View log <CaretRight /></button></div></div>
-    <main className="editor-grid"><ChapterRail scenes={scenes} selectedId={selectedId} onSelect={setSelectedId} activeTab={activeTab} setActiveTab={setActiveTab} onAddScene={addScene} /><div className="edit-canvas"><Preview scene={selectedScene} playing={playing} setPlaying={setPlaying} playhead={playhead} setPlayhead={setPlayhead} totalDuration={totalDuration} outputUrl={outputUrl} /><Timeline scenes={scenes} selectedId={selectedId} onSelect={setSelectedId} playhead={playhead} setPlayhead={setPlayhead} /></div><SceneInspector scene={selectedScene} sceneCount={scenes.length} onChange={updateScene} onRegenerate={() => setSetupOpen(true)} busy={activeJob?.state === "running"} /></main>
+    {workspace === "editor" ? <main className="editor-grid"><ChapterRail scenes={scenes} selectedId={selectedId} onSelect={setSelectedId} activeTab={activeTab} setActiveTab={setActiveTab} onAddScene={addScene} /><div className="edit-canvas"><Preview scene={selectedScene} playing={playing} setPlaying={setPlaying} playhead={playhead} setPlayhead={setPlayhead} totalDuration={totalDuration} outputUrl={outputUrl} /><Timeline scenes={scenes} selectedId={selectedId} onSelect={setSelectedId} playhead={playhead} setPlayhead={setPlayhead} /></div><SceneInspector scene={selectedScene} sceneCount={scenes.length} onChange={updateScene} onRegenerate={() => setSetupOpen(true)} busy={activeJob?.state === "running"} /></main> : <RemotionLab form={form} setForm={setForm} system={system} startGeneration={startGeneration} submitting={submitting} activeJob={activeJob} outputUrl={outputUrl} setToast={setToast} />}
     <ProviderStrip system={system} selectedProfile={selectedProfile} quality={form.quality} />
     <AnimatePresence><GenerateDialog open={setupOpen} onClose={() => setSetupOpen(false)} profiles={profiles} form={form} setForm={setForm} onSubmit={startGeneration} submitting={submitting} system={system} /></AnimatePresence><LogDrawer open={logOpen} onClose={() => setLogOpen(false)} job={activeJob} log={log} onCancel={cancelJob} />
     <AnimatePresence>{toast && <motion.div className="toast" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }}><CheckCircle weight="fill" /> {toast}</motion.div>}</AnimatePresence>

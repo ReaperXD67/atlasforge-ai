@@ -150,12 +150,16 @@ class RunStore:
 
     def latest_resumable(self, publication_date: date) -> RunManifest | None:
         with self._connect() as db:
-            row = db.execute(
+            rows = db.execute(
                 """
                 SELECT manifest_json FROM runs
                 WHERE publication_date=? AND status IN ('queued','running','failed','ready')
-                ORDER BY updated_at DESC LIMIT 1
+                ORDER BY updated_at DESC
                 """,
                 (publication_date.isoformat(),),
-            ).fetchone()
-        return RunManifest.model_validate_json(row["manifest_json"]) if row else None
+            ).fetchall()
+        for row in rows:
+            manifest = RunManifest.model_validate_json(row["manifest_json"])
+            if manifest.pipeline_kind == "narrated":
+                return manifest
+        return None

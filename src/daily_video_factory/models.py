@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import date, datetime
 from enum import StrEnum
 from pathlib import Path
+from typing import Literal
 
 from pydantic import BaseModel, Field, field_validator
 
@@ -84,6 +85,7 @@ class Scene(BaseModel):
     transition: str = "crossfade"
     video_prompt: str
     visual_search_query: str
+    visual_exclusion_terms: list[str] = Field(default_factory=list)
     onscreen_title: str = ""
     visual_mode: str = "documentary_broll"
     premium_score: float = Field(default=0, ge=0, le=1)
@@ -126,6 +128,7 @@ class RunManifest(BaseModel):
     run_id: str
     publication_date: date
     status: RunStatus
+    pipeline_kind: Literal["narrated", "music_film"] = "narrated"
     topic: str = ""
     started_at: datetime = Field(default_factory=datetime.utcnow)
     finished_at: datetime | None = None

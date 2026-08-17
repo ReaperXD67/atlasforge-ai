@@ -95,3 +95,16 @@ def test_pexels_metadata_relevance_understands_budget_planner_synonyms(settings)
 
     assert provider._semantic_ranker is not None
     assert provider._semantic_ranker._metadata_relevance(query, planner) >= 0.6
+
+
+def test_pexels_rejects_explicitly_excluded_vehicle_class(settings) -> None:
+    provider = PexelsStockVideoProvider(settings)
+
+    assert provider._matches_exclusion(
+        {"url": "https://www.pexels.com/video/exciting-night-go-kart-racing-123/"},
+        ["go kart", "motorcycle"],
+    )
+    assert not provider._matches_exclusion(
+        {"url": "https://www.pexels.com/video/sports-car-on-a-circuit-456/"},
+        ["go kart", "motorcycle"],
+    )

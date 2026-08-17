@@ -120,7 +120,12 @@ class LocalClipRanker:
                 matched += 1
         return matched / len(query_tokens)
 
-    def rank(self, query: str, videos: list[dict[str, Any]]) -> dict[int, float]:
+    def rank(
+        self,
+        query: str,
+        videos: list[dict[str, Any]],
+        exclusions: list[str] | None = None,
+    ) -> dict[int, float]:
         loaded = self._load()
         if loaded is None:
             return {}
@@ -143,11 +148,16 @@ class LocalClipRanker:
             return {}
         positive = f"A relevant documentary b-roll frame showing {query}."
         negative = "An unrelated generic stock image about a different activity and subject."
+        text_prompts = [positive, negative]
+        if exclusions:
+            text_prompts.append(
+                "An off-brief stock frame dominated by " + ", ".join(exclusions) + "."
+            )
         try:
             import torch
 
             inputs = processor(
-                text=[positive, negative], images=images, return_tensors="pt", padding=True
+                text=text_prompts, images=images, return_tensors="pt", padding=True
             )
             with torch.inference_mode():
                 probabilities = model(**inputs).logits_per_image.softmax(dim=1)[:, 0].tolist()
@@ -224,6 +234,24 @@ class PexelsStockVideoProvider(StockVideoProvider):
         return min(candidates, key=score)
 
     @staticmethod
+    def _matches_exclusion(video: dict[str, Any], exclusions: list[str]) -> bool:
+        """Reject an explicitly off-brief subject when Pexels exposes it in metadata."""
+        metadata = " ".join(
+            str(value or "")
+            for value in (
+                video.get("url"),
+                video.get("title"),
+                video.get("description"),
+            )
+        ).casefold()
+        metadata_tokens = set(re.findall(r"[a-z0-9]+", metadata))
+        for exclusion in exclusions:
+            exclusion_tokens = set(re.findall(r"[a-z0-9]+", exclusion.casefold()))
+            if exclusion_tokens and exclusion_tokens <= metadata_tokens:
+                return True
+        return False
+
+    @staticmethod
     def _rank_candidates(
         candidates: list[StockCandidate], semantic_scores: dict[int, float]
     ) -> list[StockCandidate]:
@@ -264,6 +292,8 @@ class PexelsStockVideoProvider(StockVideoProvider):
             asset_id = int(video.get("id") or 0)
             if not asset_id or asset_id in used_asset_ids:
                 continue
+            if self._matches_exclusion(video, scene.visual_exclusion_terms):
+                continue
             source = self._best_file(video)
             if source is None:
                 continue
@@ -287,7 +317,9 @@ class PexelsStockVideoProvider(StockVideoProvider):
 
         semantic_scores = (
             self._semantic_ranker.rank(
-                scene.visual_search_query, [candidate[1] for candidate in candidates]
+                scene.visual_search_query,
+                [candidate[1] for candidate in candidates],
+                scene.visual_exclusion_terms,
             )
             if self._semantic_ranker is not None
             else {}

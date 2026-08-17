@@ -26,13 +26,13 @@ RUN apt-get update \
         tini \
     && rm -rf /var/lib/apt/lists/*
 
-RUN python -m venv /opt/venv \
+RUN --mount=type=cache,target=/root/.cache/pip python -m venv /opt/venv \
     && pip install --upgrade pip setuptools wheel
 
 WORKDIR /app
 
 FROM python-runtime AS local-ai-runtime
-RUN pip install --index-url https://download.pytorch.org/whl/cpu "torch==2.13.0+cpu" \
+RUN --mount=type=cache,target=/root/.cache/pip pip install --index-url https://download.pytorch.org/whl/cpu "torch==2.13.0+cpu" \
     && pip install "kokoro>=0.9,<1" "soundfile>=0.12,<1" "faster-whisper>=1.1,<2" "transformers>=4.46,<6" \
     && python -m spacy download en_core_web_sm
 
@@ -40,7 +40,7 @@ FROM python-runtime AS base
 COPY pyproject.toml README.md LICENSE ./
 COPY src ./src
 COPY --from=web-builder /web/dist/client ./src/daily_video_factory/web
-RUN pip install "."
+RUN --mount=type=cache,target=/root/.cache/pip pip install "."
 
 COPY config ./config
 RUN useradd --create-home --uid 1000 atlasforge \
@@ -61,7 +61,7 @@ FROM local-ai-runtime AS local-ai
 COPY pyproject.toml README.md LICENSE ./
 COPY src ./src
 COPY --from=web-builder /web/dist/client ./src/daily_video_factory/web
-RUN pip install "."
+RUN --mount=type=cache,target=/root/.cache/pip pip install "."
 
 COPY config ./config
 RUN useradd --create-home --uid 1000 atlasforge \

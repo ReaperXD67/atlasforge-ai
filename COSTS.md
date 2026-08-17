@@ -11,6 +11,8 @@ Provider prices and free tiers change. The values below are planning assumptions
 | Images | Pexels or local card | $0 |
 | Music/SFX | project-generated waveforms | $0 |
 | Captions/edit/render | FFmpeg/NVENC | electricity only |
+| Song analysis / Remotion preview | Librosa + Remotion Player | $0 |
+| ElevenLabs narration | disabled optional premium voice | about $0.10/minute for Multilingual v2/v3 at current API pricing |
 | Veo 3.1 Lite, 720p | disabled; max one 8s clip | about $0.40 at $0.05/s |
 | MiniMax Hailuo | disabled cloud fallback | package/model dependent |
 | YouTube upload | Data API OAuth | $0; quota applies |

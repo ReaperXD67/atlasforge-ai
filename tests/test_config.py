@@ -10,6 +10,7 @@ def test_loads_default_configuration() -> None:
     assert settings.video.stock_video_enabled is True
     assert settings.video.stock_video_semantic_ranking is True
     assert settings.video.local_generation_enabled is True
+    assert settings.voice.kokoro_speed == 0.98
     assert settings.publishing.enabled is False
     assert settings.script.text_providers[0] == "gemini"
 

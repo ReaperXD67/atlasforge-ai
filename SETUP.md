@@ -29,6 +29,10 @@ suitability, and watch the final render before publishing. The free visual path 
 real footage, uses one locally generated hero shot when available, and falls back to owned cards or
 stable still motion. Premium cloud clips remain an explicit paid opt-in.
 
+For a song-driven racing/event sample, switch to **Remotion Lab**, upload the final track, check the
+detected BPM, and build the 60-second boss sample. The complete upload and premium-upgrade sequence
+is documented in [docs/MUSIC_VIDEO.md](docs/MUSIC_VIDEO.md).
+
 ## 1. Hardware and disk
 
 Recommended for the stated laptop:
@@ -174,6 +178,11 @@ Why: free offline narration with better quality than many lightweight local voic
 ```
 
 Kokoro downloads its model files on first use into the Hugging Face cache. If you require an offline deployment, pre-run a short test while online and preserve that cache. `KOKORO_MODEL_PATH` is reserved for custom adapters; the packaged Kokoro provider currently uses its own cache.
+
+Studio exposes four Kokoro voice characters plus pace control. For the clearest premium jump, add
+`ELEVENLABS_API_KEY=...` to `.env`, choose **ElevenLabs · premium jump**, and set
+`voice.elevenlabs_voice_id` to a voice available to the account. AtlasForge uses the official REST
+endpoint and keeps Kokoro as fallback.
 
 ### Piper local
 
@@ -346,6 +355,7 @@ The task uses the repository's virtual environment and runs with the current use
 | `GOOGLE_API_KEY` | Gemini text/TTS or Veo | Google AI Studio API keys |
 | `OPENROUTER_API_KEY` | OpenRouter text | OpenRouter account keys |
 | `OPENAI_API_KEY` | OpenAI TTS | OpenAI Platform project key |
+| `ELEVENLABS_API_KEY` | ElevenLabs TTS | ElevenLabs API key |
 | `MINIMAX_API_KEY` | MiniMax video | MiniMax API platform |
 | `PEXELS_API_KEY` | Pexels images | Pexels developer API |
 | `OLLAMA_BASE_URL` | local Ollama | normally `http://127.0.0.1:11434` |
