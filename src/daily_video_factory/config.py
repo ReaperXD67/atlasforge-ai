@@ -112,6 +112,8 @@ class VideoConfig(BaseModel):
     premium_daily_budget_usd: float = 0.50
     veo_model: str
     veo_estimated_usd_per_second: float = 0.05
+    gemini_omni_model: str = "gemini-omni-flash-preview"
+    gemini_omni_estimated_usd_per_second: float = 0.10
     minimax_model: str
     minimax_resolution: str = "768P"
     minimax_estimated_usd_per_clip: float = 0.30

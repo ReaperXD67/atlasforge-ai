@@ -148,6 +148,8 @@ video:
   premium_daily_budget_usd: 0.50
   veo_model: veo-3.1-lite-generate-preview
   veo_estimated_usd_per_second: 0.05
+  gemini_omni_model: gemini-omni-flash-preview
+  gemini_omni_estimated_usd_per_second: 0.10
   minimax_model: MiniMax-Hailuo-2.3-Fast
   minimax_resolution: 768P
   minimax_estimated_usd_per_clip: 0.30

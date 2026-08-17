@@ -40,7 +40,7 @@ FROM python-runtime AS base
 COPY pyproject.toml README.md LICENSE ./
 COPY src ./src
 COPY --from=web-builder /web/dist/client ./src/daily_video_factory/web
-RUN --mount=type=cache,target=/root/.cache/pip pip install "."
+RUN --mount=type=cache,target=/root/.cache/pip pip install ".[google]"
 
 COPY config ./config
 RUN useradd --create-home --uid 1000 atlasforge \
@@ -61,7 +61,7 @@ FROM local-ai-runtime AS local-ai
 COPY pyproject.toml README.md LICENSE ./
 COPY src ./src
 COPY --from=web-builder /web/dist/client ./src/daily_video_factory/web
-RUN --mount=type=cache,target=/root/.cache/pip pip install "."
+RUN --mount=type=cache,target=/root/.cache/pip pip install ".[google]"
 
 COPY config ./config
 RUN useradd --create-home --uid 1000 atlasforge \

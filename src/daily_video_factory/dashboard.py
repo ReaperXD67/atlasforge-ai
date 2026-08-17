@@ -7,6 +7,7 @@ from typing import Annotated
 from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from PIL import Image, UnidentifiedImageError
 from starlette.concurrency import run_in_threadpool
 
 from . import __version__
@@ -139,6 +140,58 @@ def create_app(settings: Settings, profile_directory: Path = Path("config/profil
         target = studio.music_upload_path(upload_id)
         if target is None:
             raise HTTPException(status_code=404, detail="Music upload not found")
+        return FileResponse(target)
+
+    @app.post("/api/reference/uploads", status_code=201)
+    async def upload_reference(file: Annotated[UploadFile, File()]) -> dict[str, object]:
+        try:
+            upload_id, target = studio.reserve_reference_upload(file.filename or "reference")
+        except ConfigurationError as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+        size = 0
+        try:
+            with target.open("wb") as destination:
+                while chunk := await file.read(1024 * 1024):
+                    size += len(chunk)
+                    if size > 20 * 1024 * 1024:
+                        raise HTTPException(
+                            status_code=413, detail="Reference images are limited to 20 MB"
+                        )
+                    destination.write(chunk)
+            if size < 1024:
+                raise HTTPException(status_code=400, detail="The reference image is empty")
+            with Image.open(target) as candidate:
+                candidate.verify()
+            with Image.open(target) as candidate:
+                width, height = candidate.size
+                image_format = candidate.format
+            if width < 256 or height < 256:
+                raise HTTPException(
+                    status_code=400, detail="Reference images must be at least 256×256"
+                )
+        except HTTPException:
+            target.unlink(missing_ok=True)
+            raise
+        except (OSError, UnidentifiedImageError, Image.DecompressionBombError) as exc:
+            target.unlink(missing_ok=True)
+            raise HTTPException(status_code=400, detail="This is not a safe, readable image") from exc
+        finally:
+            await file.close()
+        return {
+            "upload_id": upload_id,
+            "filename": Path(file.filename or "reference").name,
+            "size_bytes": size,
+            "width": width,
+            "height": height,
+            "format": image_format,
+            "image_url": f"/api/reference/uploads/{upload_id}/image",
+        }
+
+    @app.get("/api/reference/uploads/{upload_id}/image")
+    def get_reference_upload(upload_id: str) -> FileResponse:
+        target = studio.reference_upload_path(upload_id)
+        if target is None:
+            raise HTTPException(status_code=404, detail="Reference image not found")
         return FileResponse(target)
 
     @app.get("/api/jobs", response_model=list[StudioJob])

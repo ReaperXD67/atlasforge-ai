@@ -31,7 +31,7 @@ class StudioJobRequest(BaseModel):
     local_ai: bool = False
     captions: bool = True
     fresh: bool = True
-    mode: Literal["faceless_narrated", "music_film"] = "faceless_narrated"
+    mode: Literal["faceless_narrated", "music_film", "viral_short"] = "faceless_narrated"
     music_upload_id: str | None = Field(default=None, pattern=r"^[a-f0-9]{16}$")
     music_title: str = Field(default="Sepang Track Experience", min_length=2, max_length=120)
     music_seconds: float = Field(default=60, ge=15, le=300)
@@ -40,13 +40,22 @@ class StudioJobRequest(BaseModel):
         "warm_documentary", "confident_female", "grounded_male", "editorial_blend"
     ] = "warm_documentary"
     voice_speed: float = Field(default=0.98, ge=0.8, le=1.2)
+    viral_recipe: Literal["beat_creature", "talking_duo", "physics_spectacle"] = (
+        "beat_creature"
+    )
+    viral_prompt: str = Field(default="", max_length=1200)
+    viral_provider: Literal["local_wan", "gemini_omni", "veo"] = "local_wan"
+    viral_seconds: float = Field(default=5, ge=3, le=10)
+    reference_upload_id: str | None = Field(default=None, pattern=r"^[a-f0-9]{16}$")
+    dialogue_a: str = Field(default="", max_length=180)
+    dialogue_b: str = Field(default="", max_length=180)
 
 
 class StudioJob(BaseModel):
     job_id: str
     profile: str
     topic: str | None = None
-    mode: Literal["faceless_narrated", "music_film"] = "faceless_narrated"
+    mode: Literal["faceless_narrated", "music_film", "viral_short"] = "faceless_narrated"
     state: Literal["queued", "running", "completed", "failed", "cancelled", "interrupted"]
     created_at: datetime
     started_at: datetime | None = None
@@ -137,6 +146,22 @@ class StudioManager:
             raise ConfigurationError("Use an MP3, WAV, M4A, AAC, FLAC, or OGG music file")
         upload_id = uuid.uuid4().hex[:16]
         return upload_id, self.upload_root / f"{upload_id}{suffix}"
+
+    def reserve_reference_upload(self, filename: str) -> tuple[str, Path]:
+        suffix = Path(filename).suffix.casefold()
+        if suffix not in {".jpg", ".jpeg", ".png", ".webp"}:
+            raise ConfigurationError("Use a JPG, PNG, or WebP reference image")
+        upload_id = uuid.uuid4().hex[:16]
+        return upload_id, self.upload_root / f"{upload_id}{suffix}"
+
+    def reference_upload_path(self, upload_id: str) -> Path | None:
+        if not re.fullmatch(r"[a-f0-9]{16}", upload_id):
+            return None
+        allowed = {".jpg", ".jpeg", ".png", ".webp"}
+        matches = [
+            path for path in self.upload_root.glob(f"{upload_id}.*") if path.suffix in allowed
+        ]
+        return matches[0].resolve() if len(matches) == 1 and matches[0].is_file() else None
 
     def music_upload_path(self, upload_id: str) -> Path | None:
         if not re.fullmatch(r"[a-f0-9]{16}", upload_id):
@@ -239,6 +264,35 @@ class StudioManager:
             settings.video.stock_video_min_duration_seconds = 2
             settings.images.providers = ["title_card"]
             settings.subtitles.burn_in = False
+        if request.mode == "viral_short":
+            settings.video.width = 1080
+            settings.video.height = 1920
+            settings.video.fps = request.fps
+            settings.images.width = 1080
+            settings.images.height = 1920
+            settings.images.pexels_orientation = "portrait"
+            settings.images.providers = ["title_card"]
+            settings.video.transition_seconds = 0.0
+            settings.video.cloud_clip_seconds = round(request.viral_seconds)
+            settings.video.comfyui_width = 480
+            settings.video.comfyui_height = 832
+            settings.video.comfyui_frames = min(
+                241, max(17, 4 * round(request.viral_seconds * 24 / 4) + 1)
+            )
+            settings.video.local_generation_enabled = request.viral_provider == "local_wan"
+            settings.video.local_generation_max_scenes_per_video = 1
+            settings.video.enable_premium_scenes = request.viral_provider != "local_wan"
+            settings.video.premium_providers = [request.viral_provider]
+            estimated_rate = (
+                settings.video.gemini_omni_estimated_usd_per_second
+                if request.viral_provider == "gemini_omni"
+                else settings.video.veo_estimated_usd_per_second
+            )
+            settings.video.premium_daily_budget_usd = max(
+                settings.video.premium_daily_budget_usd,
+                request.viral_seconds * estimated_rate,
+            )
+            settings.subtitles.burn_in = False
         settings.publishing.enabled = False
         payload = settings.model_dump(mode="json")
         atomic_write(destination, yaml.safe_dump(payload, sort_keys=False, allow_unicode=True))
@@ -249,12 +303,26 @@ class StudioManager:
             if any(job.state in {"queued", "running"} for job in self.list_jobs()):
                 raise RuntimeError("A generation is already running on this machine")
             music_path = None
-            if request.mode == "music_film":
-                if request.music_upload_id is None:
-                    raise RuntimeError("Upload a master track before starting a music film")
+            if request.mode in {"music_film", "viral_short"} and request.music_upload_id:
                 music_path = self.music_upload_path(request.music_upload_id)
                 if music_path is None:
                     raise RuntimeError("The selected music upload no longer exists")
+            if request.mode == "music_film" and request.music_upload_id is None:
+                raise RuntimeError("Upload a master track before starting a music film")
+            reference_path = None
+            if request.mode == "viral_short" and request.reference_upload_id:
+                reference_path = self.reference_upload_path(request.reference_upload_id)
+                if reference_path is None:
+                    raise RuntimeError("The selected reference image no longer exists")
+            if request.mode == "viral_short":
+                if not request.viral_prompt.strip():
+                    raise RuntimeError("Describe the action and visual world first")
+                if request.viral_recipe == "beat_creature" and music_path is None:
+                    raise RuntimeError("Beat Creature needs a master music track")
+                if request.viral_recipe == "talking_duo" and request.viral_provider == "local_wan":
+                    raise RuntimeError(
+                        "Talking Duo needs Gemini Omni or Veo for native voice and lip sync"
+                    )
             job_id = uuid.uuid4().hex[:12]
             directory = self.root / job_id
             directory.mkdir(parents=True, exist_ok=False)
@@ -287,6 +355,31 @@ class StudioManager:
                     "--seconds",
                     str(request.music_seconds),
                 ]
+            elif request.mode == "viral_short":
+                command = [
+                    sys.executable,
+                    "-m",
+                    "daily_video_factory.cli",
+                    "viral-film",
+                    "--config",
+                    str(config_file),
+                    "--recipe",
+                    request.viral_recipe,
+                    "--concept",
+                    request.viral_prompt.strip(),
+                    "--provider",
+                    request.viral_provider,
+                    "--seconds",
+                    str(request.viral_seconds),
+                ]
+                if reference_path is not None:
+                    command.extend(["--reference", str(reference_path)])
+                if music_path is not None:
+                    command.extend(["--track", str(music_path)])
+                if request.dialogue_a.strip():
+                    command.extend(["--dialogue-a", request.dialogue_a.strip()])
+                if request.dialogue_b.strip():
+                    command.extend(["--dialogue-b", request.dialogue_b.strip()])
             else:
                 command = [
                     sys.executable,
@@ -390,6 +483,9 @@ class StudioManager:
             "pexels": bool(os.getenv("PEXELS_API_KEY")),
             "openai": bool(os.getenv("OPENAI_API_KEY")),
             "google": bool(os.getenv("GOOGLE_API_KEY")),
+            "gemini_omni": bool(os.getenv("GOOGLE_API_KEY"))
+            and importlib.util.find_spec("google") is not None
+            and importlib.util.find_spec("google.genai") is not None,
             "elevenlabs": bool(os.getenv("ELEVENLABS_API_KEY")),
             "remotion": True,
             "publishing_enabled": self.settings.publishing.enabled,

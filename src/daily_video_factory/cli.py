@@ -16,6 +16,7 @@ from .music_video import MusicVideoPipeline
 from .pipeline import DailyVideoPipeline
 from .publishing.youtube import YouTubePublisher
 from .scheduler import run_scheduler
+from .viral_video import ViralShortPipeline
 
 app = typer.Typer(
     no_args_is_help=True,
@@ -88,6 +89,41 @@ def music_film_command(
         track,
         title=title,
         max_duration_seconds=seconds,
+    )
+    console.print(f"[bold green]Complete:[/] {manifest.status}")
+    console.print(f"Run: {manifest.run_id}")
+    console.print(f"Video: {manifest.final_video}")
+
+
+@app.command("viral-film")
+def viral_film_command(
+    recipe: str = typer.Option(
+        "beat_creature", help="beat_creature, talking_duo, or physics_spectacle."
+    ),
+    concept: str = typer.Option(..., help="The subject, action, environment, and camera idea."),
+    provider: str = typer.Option("local_wan", help="local_wan, gemini_omni, or veo."),
+    seconds: float = typer.Option(5, min=3, max=10),
+    reference: Path | None = typer.Option(None, exists=True, dir_okay=False),
+    track: Path | None = typer.Option(None, exists=True, dir_okay=False),
+    dialogue_a: str = typer.Option(""),
+    dialogue_b: str = typer.Option(""),
+    config: Path = typer.Option(Path("config/default.yaml"), exists=True, dir_okay=False),
+) -> None:
+    """Build one coherent, vertical AI-native social clip."""
+    if recipe not in {"beat_creature", "talking_duo", "physics_spectacle"}:
+        raise typer.BadParameter("--recipe must be beat_creature, talking_duo, or physics_spectacle")
+    if provider not in {"local_wan", "gemini_omni", "veo"}:
+        raise typer.BadParameter("--provider must be local_wan, gemini_omni, or veo")
+    configure_logging()
+    manifest = ViralShortPipeline(load_settings(config)).run(
+        recipe=recipe,  # type: ignore[arg-type]
+        concept=concept,
+        provider_name=provider,  # type: ignore[arg-type]
+        seconds=seconds,
+        reference_image=reference,
+        master_music=track,
+        dialogue_a=dialogue_a,
+        dialogue_b=dialogue_b,
     )
     console.print(f"[bold green]Complete:[/] {manifest.status}")
     console.print(f"Run: {manifest.run_id}")

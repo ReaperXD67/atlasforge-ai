@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import base64
 import hashlib
 import io
 import json
+import mimetypes
 import os
 import re
 import time
@@ -445,7 +447,8 @@ class ComfyUIWan22Provider(LocalVideoProvider):
     name = "comfyui_wan22"
     negative_prompt = (
         "text, subtitles, logo, watermark, static frame, flicker, jitter, camera shake, "
-        "deformed hands, distorted face, low quality, oversaturated, duplicate people"
+        "deformed hands, distorted face, low quality, oversaturated, duplicate people, "
+        "toy, miniature, diorama, plastic, rubber, melting, liquefying, bent architecture"
     )
 
     def __init__(self, settings: Settings) -> None:
@@ -465,7 +468,7 @@ class ComfyUIWan22Provider(LocalVideoProvider):
             "Stable tripod or smooth dolly movement, coherent motion, documentary realism, "
             "cinematic color, physically plausible details."
         )
-        return {
+        workflow: dict[str, dict[str, Any]] = {
             "37": {
                 "class_type": "UNETLoader",
                 "inputs": {
@@ -540,6 +543,31 @@ class ComfyUIWan22Provider(LocalVideoProvider):
                 },
             },
         }
+        if scene.reference_image is not None:
+            workflow["56"] = {
+                "class_type": "LoadImage",
+                "inputs": {"image": self._upload_reference(scene.reference_image)},
+            }
+            workflow["55"]["inputs"]["start_image"] = ["56", 0]
+        return workflow
+
+    def _upload_reference(self, reference: Path) -> str:
+        if not reference.is_file():
+            raise ProviderFailed(f"Reference image does not exist: {reference}")
+        mime = mimetypes.guess_type(reference.name)[0] or "application/octet-stream"
+        with reference.open("rb") as source:
+            response = httpx.post(
+                f"{self.base_url}/upload/image",
+                files={"image": (reference.name, source, mime)},
+                data={"type": "input", "overwrite": "true"},
+                timeout=60,
+            )
+        if response.status_code >= 400:
+            raise ProviderFailed(f"ComfyUI rejected the reference image: {response.text[:500]}")
+        payload = response.json()
+        filename = str(payload.get("name") or reference.name)
+        subfolder = str(payload.get("subfolder") or "").strip("/\\")
+        return f"{subfolder}/{filename}" if subfolder else filename
 
     @staticmethod
     def _output_file(history: dict[str, Any]) -> dict[str, Any] | None:
@@ -593,6 +621,10 @@ class ComfyUIWan22Provider(LocalVideoProvider):
                             "provider": "ComfyUI",
                             "model": "Wan2.2 TI2V 5B",
                             "license": "Apache-2.0",
+                            "synthetic_media": True,
+                            "reference_image": (
+                                str(scene.reference_image) if scene.reference_image else None
+                            ),
                             "prompt_id": prompt_id,
                             "prompt": scene.video_prompt,
                         },
@@ -666,6 +698,86 @@ class PremiumVideoProvider(Provider[Path]):
         pass
 
 
+class GeminiOmniVideoProvider(PremiumVideoProvider):
+    """Generate coherent short-form video with Gemini Omni Flash interactions."""
+
+    name = "gemini_omni"
+
+    def __init__(self, settings: Settings) -> None:
+        self.cfg = settings.video
+        self.estimated_cost_usd = (
+            self.cfg.cloud_clip_seconds * self.cfg.gemini_omni_estimated_usd_per_second
+        )
+
+    def available(self) -> bool:
+        if not os.getenv("GOOGLE_API_KEY"):
+            return False
+        try:
+            from google import genai  # noqa: F401
+
+            return True
+        except ImportError:
+            return False
+
+    @staticmethod
+    def interaction_input(scene: Scene) -> list[dict[str, str]]:
+        inputs: list[dict[str, str]] = []
+        if scene.reference_image is not None:
+            mime = mimetypes.guess_type(scene.reference_image.name)[0] or "image/png"
+            inputs.append(
+                {
+                    "type": "image",
+                    "data": base64.b64encode(scene.reference_image.read_bytes()).decode("ascii"),
+                    "mime_type": mime,
+                }
+            )
+        inputs.append({"type": "text", "text": scene.video_prompt})
+        return inputs
+
+    def generate(self, scene: Scene, output: Path) -> Path:
+        try:
+            from google import genai
+        except ImportError as exc:
+            raise ProviderFailed("Install the google extra to use Gemini Omni") from exc
+        client = genai.Client(api_key=os.environ["GOOGLE_API_KEY"])
+        create_interaction: Any = client.interactions.create
+        interaction = create_interaction(
+            model=self.cfg.gemini_omni_model,
+            input=self.interaction_input(scene),
+            generation_config={
+                "video_config": {
+                    "task": scene.generation_task,
+                }
+            },
+            response_format={"type": "video", "aspect_ratio": scene.aspect_ratio},
+        )
+        video = getattr(interaction, "output_video", None)
+        data = getattr(video, "data", None)
+        if not data:
+            raise ProviderFailed("Gemini Omni returned no video payload")
+        try:
+            payload = base64.b64decode(data) if isinstance(data, str) else bytes(data)
+        except (ValueError, TypeError) as exc:
+            raise ProviderFailed("Gemini Omni returned an invalid video payload") from exc
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_bytes(payload)
+        output.with_suffix(".license.json").write_text(
+            json.dumps(
+                {
+                    "provider": "Google Gemini API",
+                    "model": self.cfg.gemini_omni_model,
+                    "synthetic_media": True,
+                    "task": scene.generation_task,
+                    "reference_image": str(scene.reference_image) if scene.reference_image else None,
+                    "prompt": scene.video_prompt,
+                },
+                indent=2,
+            ),
+            encoding="utf-8",
+        )
+        return output
+
+
 class VeoVideoProvider(PremiumVideoProvider):
     name = "veo"
 
@@ -696,7 +808,7 @@ class VeoVideoProvider(PremiumVideoProvider):
             model=self.cfg.veo_model,
             prompt=scene.video_prompt,
             config=types.GenerateVideosConfig(
-                aspect_ratio="16:9",
+                aspect_ratio=scene.aspect_ratio,
                 resolution="720p",
                 duration_seconds=self.cfg.cloud_clip_seconds,
                 number_of_videos=1,
@@ -716,6 +828,18 @@ class VeoVideoProvider(PremiumVideoProvider):
         client.files.download(file=generated.video)
         output.parent.mkdir(parents=True, exist_ok=True)
         generated.video.save(str(output))
+        output.with_suffix(".license.json").write_text(
+            json.dumps(
+                {
+                    "provider": "Google Gemini API",
+                    "model": self.cfg.veo_model,
+                    "synthetic_media": True,
+                    "prompt": scene.video_prompt,
+                },
+                indent=2,
+            ),
+            encoding="utf-8",
+        )
         return output
 
 
@@ -786,6 +910,7 @@ class PremiumSceneScheduler:
     def __init__(self, settings: Settings) -> None:
         self.cfg = settings.video
         mapping: dict[str, PremiumVideoProvider] = {
+            "gemini_omni": GeminiOmniVideoProvider(settings),
             "veo": VeoVideoProvider(settings),
             "minimax": MiniMaxVideoProvider(settings),
         }

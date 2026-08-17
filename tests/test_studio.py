@@ -76,3 +76,43 @@ def test_studio_resolves_only_supported_music_uploads(tmp_path: Path) -> None:
     (studio.upload_root / f"{upload_id}.json").write_text("{}", encoding="utf-8")
     assert studio.music_upload_path(upload_id) == path.resolve()
     assert studio.music_upload_path("../../escape") is None
+
+
+def test_studio_viral_mode_uses_vertical_local_contract(tmp_path: Path) -> None:
+    settings = load_settings(
+        Path("config/profiles/atomy-us-openrouter.yaml"),
+        overrides={"runtime": {"output_directory": str(tmp_path / "output")}},
+    )
+    studio = StudioManager(settings, Path("config/profiles"))
+    destination = tmp_path / "viral-job.yaml"
+    request = StudioJobRequest(
+        profile="atomy-us-openrouter",
+        mode="viral_short",
+        viral_prompt="A ginger cat dancing in a premium garage",
+        viral_recipe="beat_creature",
+        viral_provider="local_wan",
+        viral_seconds=8,
+    )
+
+    studio._render_job_config(request, destination)
+    rendered = load_settings(destination)
+
+    assert (rendered.video.width, rendered.video.height) == (1080, 1920)
+    assert (rendered.video.comfyui_width, rendered.video.comfyui_height) == (480, 832)
+    assert rendered.video.comfyui_frames == 193
+    assert rendered.video.local_generation_enabled is True
+    assert rendered.video.enable_premium_scenes is False
+    assert rendered.subtitles.burn_in is False
+    assert rendered.publishing.enabled is False
+
+
+def test_studio_resolves_only_supported_reference_uploads(tmp_path: Path) -> None:
+    settings = load_settings(
+        Path("config/profiles/atomy-us-openrouter.yaml"),
+        overrides={"runtime": {"output_directory": str(tmp_path / "output")}},
+    )
+    studio = StudioManager(settings, Path("config/profiles"))
+    upload_id, path = studio.reserve_reference_upload("hero-cat.webp")
+    path.write_bytes(b"image")
+    assert studio.reference_upload_path(upload_id) == path.resolve()
+    assert studio.reference_upload_path("../../escape") is None

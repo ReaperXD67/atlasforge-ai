@@ -11,6 +11,11 @@ energy map locally, preview deterministic beat-reactive graphics, then build a f
 film from CLIP-ranked real footage and an optional local Wan hero shot. See
 [Remotion Music Film workflow](docs/MUSIC_VIDEO.md).
 
+The third workspace, **AI Viral Lab**, creates coherent 3–10 second vertical AI-native shots:
+reference-led character performances synchronized to an uploaded song, native-audio fictional
+dialogue, and physically plausible fictional spectacles. It includes a free Wan 2.2 lane for the
+8 GB RTX 4070 and opt-in Gemini Omni/Veo lanes. See [AI Viral Lab](docs/VIRAL_SHORTS.md).
+
 It is configured for education-first Atomy content aimed at people researching online business, side hustles, entrepreneurship, wellness, Korean skincare, and productivity. The brand is introduced as one possible case study, never as a guaranteed income or health outcome.
 
 > AtlasForge AI automates production, not editorial responsibility. Its gates block obvious earnings promises, medical claims, early sales pitches, missing disclosures, and malformed media. You remain responsible for factual accuracy, licensing, product claims, and channel compliance.
@@ -146,6 +151,7 @@ atlasforge run --upload                   # package and upload/schedule
 atlasforge schedule                       # persistent daily scheduler
 atlasforge dashboard --port 8741          # local progress UI
 atlasforge music-film --track song.mp3 --title "Sepang Track Experience" --seconds 60
+atlasforge viral-film --recipe beat_creature --concept "A cat dances in a pit garage" --provider local_wan --reference cat.png --track song.mp3 --seconds 5
 ```
 
 The Studio adds reusable use-case profiles, editable scenes, a multitrack timeline, live provider
@@ -169,12 +175,13 @@ The former `dailyvideo` command remains available as a backward-compatible alias
 - [Fresh Windows setup](SETUP.md)
 - [Architecture and extension points](ARCHITECTURE.md)
 - [Cost model](COSTS.md)
+- [AI Viral Lab](docs/VIRAL_SHORTS.md)
 - [YouTube and claims policy](POLICY.md)
 - [Contributing](CONTRIBUTING.md)
 
 ## Official references
 
-The implementation follows the official documentation for [Pexels Video API](https://www.pexels.com/api/documentation/), [OpenAI CLIP](https://github.com/openai/CLIP), [ComfyUI Wan 2.2](https://docs.comfy.org/tutorials/video/wan/wan2_2), [Wan 2.2](https://github.com/Wan-Video/Wan2.2), [faster-whisper](https://github.com/SYSTRAN/faster-whisper), [OpenAI text-to-speech](https://developers.openai.com/api/docs/guides/text-to-speech), [Gemini TTS](https://ai.google.dev/gemini-api/docs/speech-generation), [Veo video generation](https://ai.google.dev/gemini-api/docs/veo), [MiniMax video generation](https://platform.minimax.io/docs/guides/video-generation), [YouTube video resources](https://developers.google.com/youtube/v3/docs/videos), and [YouTube altered/synthetic content disclosure](https://support.google.com/youtube/answer/14328491).
+The implementation follows the official documentation for [Pexels Video API](https://www.pexels.com/api/documentation/), [OpenAI CLIP](https://github.com/openai/CLIP), [ComfyUI Wan 2.2](https://docs.comfy.org/tutorials/video/wan/wan2_2), [Wan 2.2](https://github.com/Wan-Video/Wan2.2), [faster-whisper](https://github.com/SYSTRAN/faster-whisper), [OpenAI text-to-speech](https://developers.openai.com/api/docs/guides/text-to-speech), [Gemini TTS](https://ai.google.dev/gemini-api/docs/speech-generation), [Gemini Omni video](https://ai.google.dev/gemini-api/docs/omni), [Veo video generation](https://ai.google.dev/gemini-api/docs/veo), [MiniMax video generation](https://platform.minimax.io/docs/guides/video-generation), [YouTube video resources](https://developers.google.com/youtube/v3/docs/videos), and [YouTube altered/synthetic content disclosure](https://support.google.com/youtube/answer/14328491).
 
 ## License
 

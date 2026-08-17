@@ -90,6 +90,11 @@ class Scene(BaseModel):
     visual_mode: str = "documentary_broll"
     premium_score: float = Field(default=0, ge=0, le=1)
     selected_video_provider: str = "local_motion"
+    aspect_ratio: Literal["16:9", "9:16"] = "16:9"
+    reference_image: Path | None = None
+    generation_task: Literal["text_to_video", "image_to_video", "reference_to_video"] = (
+        "text_to_video"
+    )
 
 
 class Storyboard(BaseModel):
@@ -128,7 +133,7 @@ class RunManifest(BaseModel):
     run_id: str
     publication_date: date
     status: RunStatus
-    pipeline_kind: Literal["narrated", "music_film"] = "narrated"
+    pipeline_kind: Literal["narrated", "music_film", "viral_short"] = "narrated"
     topic: str = ""
     started_at: datetime = Field(default_factory=datetime.utcnow)
     finished_at: datetime | None = None

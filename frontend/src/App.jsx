@@ -19,6 +19,7 @@ const fallbackProfiles = [
 ];
 
 const RemotionPreview = lazy(() => import("./remotion/RemotionPreview"));
+const ViralLab = lazy(() => import("./viral/ViralLab"));
 
 const initialScenes = [
   { id: 1, title: "How to Join Atomy USA", caption: "A clear, practical member-registration guide.", duration: 55, image: "/assets/scenes/city-waterfront.webp", source: "Pexels or generated still", motion: "Slow push-in", transition: "Crossfade" },
@@ -180,7 +181,7 @@ function SceneInspector({ scene, sceneCount, onChange, onRegenerate, busy }) {
   </aside>;
 }
 
-function ProviderStrip({ system, selectedProfile, quality }) {
+function ProviderStrip({ system, selectedProfile, quality, workspace }) {
   const qualityLabel = quality === "max" ? "Max detail" : quality === "fast" ? "Fast draft" : "Balanced";
   const providers = [
     { label: "Local project", detail: "Autosaved", ok: true },
@@ -189,7 +190,7 @@ function ProviderStrip({ system, selectedProfile, quality }) {
     { label: "Whisper", detail: "Captions · CPU", ok: Boolean(system.whisper) },
     { label: "Wan 2.2", detail: system.comfyui ? "Local hero shots" : "Optional · offline", ok: Boolean(system.comfyui) },
     { label: system.gpu_name || "NVIDIA GPU", detail: system.nvenc ? "NVENC" : "CPU fallback", ok: Boolean(system.gpu || system.ffmpeg) },
-    { label: `${system.width || 1920}×${system.height || 1080}`, detail: `${system.fps || selectedProfile?.fps || 60} fps`, ok: true },
+    { label: workspace === "viral" ? "1080×1920" : `${system.width || 1920}×${system.height || 1080}`, detail: `${system.fps || selectedProfile?.fps || 60} fps`, ok: true },
     { label: "$0 media API", detail: `${qualityLabel} · local + Pexels`, ok: true },
   ];
   return <footer className="provider-strip">{providers.map((provider) => <div className="provider-cell" key={provider.label}><StatusDot ok={provider.ok} /><span><strong>{provider.label}</strong><small>{provider.detail}</small></span></div>)}</footer>;
@@ -273,14 +274,19 @@ export function App() {
   const [log, setLog] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [toast, setToast] = useState("");
-  const [workspace, setWorkspace] = useState("editor");
-  const [form, setForm] = useState({ profile: "atomy-us-openrouter", topic: "", duration_minutes: 7, fps: 60, quality: "balanced", stock_images: true, local_ai: true, captions: true, fresh: true, mode: "faceless_narrated", music_upload_id: null, music_title: "Sepang Track Experience", music_seconds: 60, voice_provider: "kokoro", voice_profile: "warm_documentary", voice_speed: 0.98 });
+  const [workspace, setWorkspace] = useState(() => {
+    const requested = new URLSearchParams(window.location.search).get("workspace");
+    return ["editor", "remotion", "viral"].includes(requested) ? requested : "editor";
+  });
+  const [form, setForm] = useState({ profile: "atomy-us-openrouter", topic: "", duration_minutes: 7, fps: 60, quality: "balanced", stock_images: true, local_ai: true, captions: true, fresh: true, mode: "faceless_narrated", music_upload_id: null, music_title: "Sepang Track Experience", music_seconds: 60, voice_provider: "kokoro", voice_profile: "warm_documentary", voice_speed: 0.98, viral_recipe: "beat_creature", viral_prompt: "", viral_provider: "local_wan", viral_seconds: 5, reference_upload_id: null, dialogue_a: "", dialogue_b: "" });
 
   const selectedScene = scenes.find((scene) => scene.id === selectedId) || scenes[0];
   const selectedProfile = profiles.find((profile) => profile.id === form.profile) || profiles[0];
   const totalDuration = scenes.reduce((sum, scene) => sum + scene.duration, 0);
   const activeJob = jobs.find((job) => ["queued", "running"].includes(job.state)) || jobs[0] || null;
-  const latestRun = runs[0] || null;
+  const editorialRun = runs.find((run) => (run.pipeline_kind || "narrated") === "narrated") || null;
+  const desiredPipeline = workspace === "viral" ? "viral_short" : workspace === "remotion" ? "music_film" : "narrated";
+  const latestRun = runs.find((run) => (run.pipeline_kind || "narrated") === desiredPipeline) || null;
   const outputUrl = latestRun && ["ready", "published"].includes(latestRun.status) ? `/api/runs/${latestRun.run_id}/video` : null;
 
   const refresh = async () => {
@@ -290,18 +296,25 @@ export function App() {
     if (results[2].status === "fulfilled") setJobs(results[2].value);
     if (results[3].status === "fulfilled") {
       setRuns(results[3].value);
-      if (results[3].value[0]) fetchJson(`/api/runs/${results[3].value[0].run_id}`).then(setRunDetail).catch(() => {});
     }
   };
 
   useEffect(() => { refresh(); const timer = window.setInterval(refresh, 3500); return () => window.clearInterval(timer); }, []);
+  useEffect(() => {
+    const mode = workspace === "viral" ? "viral_short" : workspace === "remotion" ? "music_film" : "faceless_narrated";
+    setForm((current) => current.mode === mode ? current : { ...current, mode });
+  }, [workspace]);
   useEffect(() => { if (!playing) return undefined; const timer = window.setInterval(() => setPlayhead((current) => current + 1 >= totalDuration ? 0 : current + 1), 100); return () => window.clearInterval(timer); }, [playing, totalDuration]);
   useEffect(() => { if (!activeJob || !logOpen) return undefined; const loadLog = () => fetchJson(`/api/jobs/${activeJob.job_id}/log`).then((data) => setLog(data.log)).catch(() => {}); loadLog(); const timer = window.setInterval(loadLog, 2000); return () => window.clearInterval(timer); }, [activeJob?.job_id, logOpen]);
   useEffect(() => { if (!toast) return undefined; const timer = window.setTimeout(() => setToast(""), 3200); return () => window.clearTimeout(timer); }, [toast]);
+  useEffect(() => {
+    if (!latestRun?.run_id) { setRunDetail(null); return; }
+    fetchJson(`/api/runs/${latestRun.run_id}`).then(setRunDetail).catch(() => setRunDetail(null));
+  }, [latestRun?.run_id]);
   useEffect(() => { const profile = profiles.find((item) => item.id === form.profile); if (profile && !submitting) setForm((current) => ({ ...current, duration_minutes: profile.duration_minutes || current.duration_minutes, fps: profile.fps || current.fps })); }, [form.profile, profiles]);
   useEffect(() => {
-    const runId = latestRun?.run_id;
-    if (!runId || !["ready", "published"].includes(latestRun.status)) return undefined;
+    const runId = editorialRun?.run_id;
+    if (!runId || !["ready", "published"].includes(editorialRun.status)) return undefined;
     let current = true;
     fetchJson(`/api/runs/${runId}/storyboard`).then((storyboard) => {
       if (!current || !storyboard.scenes?.length) return;
@@ -311,7 +324,7 @@ export function App() {
       setPlaying(false);
     }).catch(() => {});
     return () => { current = false; };
-  }, [latestRun?.run_id, latestRun?.status]);
+  }, [editorialRun?.run_id, editorialRun?.status]);
 
   const updateScene = (patch) => { setScenes((current) => current.map((scene) => scene.id === selectedId ? { ...scene, ...patch } : scene)); setToast("Scene change saved for the next render"); };
   const startGeneration = async (event) => {
@@ -329,10 +342,10 @@ export function App() {
   const lastRunLabel = latestRun ? `${titleCase(latestRun.status)} · ${latestRun.publication_date}` : "No renders yet";
 
   return <div className="studio-shell">
-    <header className="topbar"><button className="menu-button" aria-label="Open menu"><List /></button><BrandMark /><div className="workspace-switch"><button className={workspace === "editor" ? "active" : ""} onClick={() => { setWorkspace("editor"); setForm((current) => ({ ...current, mode: "faceless_narrated" })); }}>Editorial</button><button className={workspace === "remotion" ? "active" : ""} onClick={() => { setWorkspace("remotion"); setForm((current) => ({ ...current, mode: "music_film" })); }}><Waveform /> Remotion Lab</button></div><div className="project-title"><strong>{workspace === "remotion" ? form.music_title : selectedProfile?.name || "AtlasForge project"}</strong><StatusDot ok /><span>Autosaved</span></div>{workspace === "editor" && <label className="usecase-select"><span>Use case</span><select value={form.profile} onChange={(event) => setForm({ ...form, profile: event.target.value })}>{profiles.map((profile) => <option value={profile.id} key={profile.id}>{profile.name}</option>)}</select><CaretDown /></label>}<button className="primary-button generate-button" onClick={() => workspace === "remotion" ? document.querySelector(".drop-track")?.click() : setSetupOpen(true)} disabled={activeJob?.state === "running"}><Sparkle weight="fill" /> {activeJob?.state === "running" ? "Generating…" : workspace === "remotion" ? "Load song" : "Generate film"}</button><span className="shortcut"><Command />K</span><button className="top-icon" title="Help" aria-label="Help"><Question /></button><button className="top-icon" title="Notifications" aria-label="Notifications"><Bell /></button><div className="avatar" title="Local owner">AF</div></header>
+    <header className="topbar"><button className="menu-button" aria-label="Open menu"><List /></button><BrandMark /><div className="workspace-switch"><button className={workspace === "editor" ? "active" : ""} onClick={() => { setWorkspace("editor"); setForm((current) => ({ ...current, mode: "faceless_narrated" })); }}>Editorial</button><button className={workspace === "remotion" ? "active" : ""} onClick={() => { setWorkspace("remotion"); setForm((current) => ({ ...current, mode: "music_film" })); }}><Waveform /> Remotion Lab</button><button className={workspace === "viral" ? "active" : ""} onClick={() => { setWorkspace("viral"); setForm((current) => ({ ...current, mode: "viral_short" })); }}><Sparkle weight="fill" /> AI Viral Lab</button></div><div className="project-title"><strong>{workspace === "remotion" ? form.music_title : workspace === "viral" ? "AI-native viral short" : selectedProfile?.name || "AtlasForge project"}</strong><StatusDot ok /><span>Autosaved</span></div>{workspace === "editor" && <label className="usecase-select"><span>Use case</span><select value={form.profile} onChange={(event) => setForm({ ...form, profile: event.target.value })}>{profiles.map((profile) => <option value={profile.id} key={profile.id}>{profile.name}</option>)}</select><CaretDown /></label>}<button className="primary-button generate-button" onClick={() => workspace === "remotion" ? document.querySelector(".drop-track")?.click() : workspace === "viral" ? document.querySelector(".viral-prompt textarea")?.focus() : setSetupOpen(true)} disabled={activeJob?.state === "running"}><Sparkle weight="fill" /> {activeJob?.state === "running" ? "Generating…" : workspace === "remotion" ? "Load song" : workspace === "viral" ? "Direct shot" : "Generate film"}</button><span className="shortcut"><Command />K</span><button className="top-icon" title="Help" aria-label="Help"><Question /></button><button className="top-icon" title="Notifications" aria-label="Notifications"><Bell /></button><div className="avatar" title="Local owner">AF</div></header>
     <div className="stagebar"><StageRail stages={runDetail?.stages || []} activeJob={activeJob?.state === "running" ? activeJob : null} /><div className="last-run"><span>Last run: {lastRunLabel}</span><button className="secondary-button" onClick={() => setLogOpen(true)}>View log <CaretRight /></button></div></div>
-    {workspace === "editor" ? <main className="editor-grid"><ChapterRail scenes={scenes} selectedId={selectedId} onSelect={setSelectedId} activeTab={activeTab} setActiveTab={setActiveTab} onAddScene={addScene} /><div className="edit-canvas"><Preview scene={selectedScene} playing={playing} setPlaying={setPlaying} playhead={playhead} setPlayhead={setPlayhead} totalDuration={totalDuration} outputUrl={outputUrl} /><Timeline scenes={scenes} selectedId={selectedId} onSelect={setSelectedId} playhead={playhead} setPlayhead={setPlayhead} /></div><SceneInspector scene={selectedScene} sceneCount={scenes.length} onChange={updateScene} onRegenerate={() => setSetupOpen(true)} busy={activeJob?.state === "running"} /></main> : <RemotionLab form={form} setForm={setForm} system={system} startGeneration={startGeneration} submitting={submitting} activeJob={activeJob} outputUrl={outputUrl} setToast={setToast} />}
-    <ProviderStrip system={system} selectedProfile={selectedProfile} quality={form.quality} />
+    {workspace === "editor" ? <main className="editor-grid"><ChapterRail scenes={scenes} selectedId={selectedId} onSelect={setSelectedId} activeTab={activeTab} setActiveTab={setActiveTab} onAddScene={addScene} /><div className="edit-canvas"><Preview scene={selectedScene} playing={playing} setPlaying={setPlaying} playhead={playhead} setPlayhead={setPlayhead} totalDuration={totalDuration} outputUrl={outputUrl} /><Timeline scenes={scenes} selectedId={selectedId} onSelect={setSelectedId} playhead={playhead} setPlayhead={setPlayhead} /></div><SceneInspector scene={selectedScene} sceneCount={scenes.length} onChange={updateScene} onRegenerate={() => setSetupOpen(true)} busy={activeJob?.state === "running"} /></main> : workspace === "remotion" ? <RemotionLab form={form} setForm={setForm} system={system} startGeneration={startGeneration} submitting={submitting} activeJob={activeJob} outputUrl={outputUrl} setToast={setToast} /> : <Suspense fallback={<main className="viral-lab"><div className="panel-surface player-loading"><CircleNotch className="spin" /> Loading AI Viral Lab…</div></main>}><ViralLab form={form} setForm={setForm} system={system} startGeneration={startGeneration} submitting={submitting} activeJob={activeJob} outputUrl={outputUrl} setToast={setToast} /></Suspense>}
+    <ProviderStrip system={system} selectedProfile={selectedProfile} quality={form.quality} workspace={workspace} />
     <AnimatePresence><GenerateDialog open={setupOpen} onClose={() => setSetupOpen(false)} profiles={profiles} form={form} setForm={setForm} onSubmit={startGeneration} submitting={submitting} system={system} /></AnimatePresence><LogDrawer open={logOpen} onClose={() => setLogOpen(false)} job={activeJob} log={log} onCancel={cancelJob} />
     <AnimatePresence>{toast && <motion.div className="toast" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }}><CheckCircle weight="fill" /> {toast}</motion.div>}</AnimatePresence>
   </div>;

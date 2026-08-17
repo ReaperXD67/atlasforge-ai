@@ -94,3 +94,27 @@ To add a video provider, implement `PremiumVideoProvider.generate(scene, output)
 - Pexels media may include people or marks that make a particular use inappropriate even when API access is allowed.
 - Wan 2.2 fits this 8 GB GPU through ComfyUI offloading but is not fast enough to synthesize a complete long-form episode every day; the one-shot default is intentional.
 - Consumer Google AI credits and Developer API billing are separate product contexts unless Google explicitly connects them for your account.
+
+## AI-native viral shorts
+
+`ViralShortPipeline` is deliberately separate from the long-form scheduler. It generates one
+continuous shot to minimize identity drift, accepts a validated subject image and analyzed master
+audio, then chooses one explicit lane:
+
+```mermaid
+flowchart LR
+    B["Recipe + one-shot brief"] --> R["Reference image and/or master audio"]
+    R --> L{"Reality lane"}
+    L -->|"Free local"| W["ComfyUI Wan 2.2 TI2V 5B"]
+    L -->|"Native realism"| O["Gemini Omni Flash"]
+    L -->|"Budget native"| V["Veo 3.1 Lite"]
+    W --> M["Vertical normalize + 60 fps interpolation"]
+    O --> M
+    V --> M
+    M --> A["Master audio + provenance manifest"]
+    A --> F["1080x1920 local MP4"]
+```
+
+Talking Duo is blocked on the 5B local lane because it has no native dialogue/lip-sync contract.
+The stronger Wan S2V/Animate models are 14B and are treated as an advanced-hardware upgrade rather
+than silently consuming an 8 GB workstation.

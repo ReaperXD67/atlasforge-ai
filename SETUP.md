@@ -31,7 +31,12 @@ stable still motion. Premium cloud clips remain an explicit paid opt-in.
 
 For a song-driven racing/event sample, switch to **Remotion Lab**, upload the final track, check the
 detected BPM, and build the 60-second boss sample. The complete upload and premium-upgrade sequence
-is documented in [docs/MUSIC_VIDEO.md](docs/MUSIC_VIDEO.md).
+is documented in [Remotion Music Film](docs/MUSIC_VIDEO.md).
+
+For realistic AI-native social clips, switch to **AI Viral Lab**. The free local Beat Creature and
+Physics Spectacle paths use the already installed Wan 2.2 service. Talking Duo and the strongest
+identity/audio coherence require only `GOOGLE_API_KEY` after Docker Studio is installed. Follow
+[AI Viral Lab](docs/VIRAL_SHORTS.md) for the exact inputs, prices, and capability limits.
 
 ## 1. Hardware and disk
 

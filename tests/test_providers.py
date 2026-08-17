@@ -1,9 +1,16 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 from daily_video_factory.exceptions import ProviderFailed
+from daily_video_factory.models import Scene
 from daily_video_factory.providers.base import Provider, ProviderChain
 from daily_video_factory.providers.text import extract_json
-from daily_video_factory.providers.video import PexelsStockVideoProvider
+from daily_video_factory.providers.video import (
+    ComfyUIWan22Provider,
+    GeminiOmniVideoProvider,
+    PexelsStockVideoProvider,
+)
 
 
 class FakeProvider(Provider[str]):
@@ -108,3 +115,44 @@ def test_pexels_rejects_explicitly_excluded_vehicle_class(settings) -> None:
         {"url": "https://www.pexels.com/video/sports-car-on-a-circuit-456/"},
         ["go kart", "motorcycle"],
     )
+
+
+def test_wan_reference_workflow_wires_start_image(settings, monkeypatch, tmp_path: Path) -> None:
+    reference = tmp_path / "cat.png"
+    reference.write_bytes(b"image")
+    scene = Scene(
+        index=1,
+        duration_seconds=5,
+        narration="",
+        video_prompt="A cat performs one stable dance move",
+        visual_search_query="dancing cat",
+        reference_image=reference,
+        generation_task="image_to_video",
+    )
+    provider = ComfyUIWan22Provider(settings)
+    monkeypatch.setattr(provider, "_upload_reference", lambda _path: "atlasforge/cat.png")
+
+    workflow = provider._workflow(scene)
+
+    assert workflow["56"]["class_type"] == "LoadImage"
+    assert workflow["56"]["inputs"]["image"] == "atlasforge/cat.png"
+    assert workflow["55"]["inputs"]["start_image"] == ["56", 0]
+
+
+def test_gemini_omni_input_keeps_reference_before_prompt(tmp_path: Path) -> None:
+    reference = tmp_path / "character.png"
+    reference.write_bytes(b"png-data")
+    scene = Scene(
+        index=1,
+        duration_seconds=5,
+        narration="",
+        video_prompt="Dance exactly on the supplied beat",
+        visual_search_query="beat performance",
+        reference_image=reference,
+        generation_task="reference_to_video",
+    )
+
+    interaction_input = GeminiOmniVideoProvider.interaction_input(scene)
+
+    assert [item["type"] for item in interaction_input] == ["image", "text"]
+    assert interaction_input[-1]["text"] == scene.video_prompt
