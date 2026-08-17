@@ -1,7 +1,7 @@
 import pytest
 
 from daily_video_factory.exceptions import ConfigurationError
-from daily_video_factory.viral_video import compile_viral_prompt
+from daily_video_factory.viral_video import compile_reference_prompt, compile_viral_prompt
 
 
 def test_beat_creature_prompt_locks_identity_and_bpm() -> None:
@@ -35,3 +35,12 @@ def test_physics_prompt_forbids_real_disaster_framing() -> None:
     assert "No people" in prompt
     assert "real landmarks" in prompt
     assert "real disaster" in prompt
+
+
+def test_local_reference_prompt_starts_before_physics_action() -> None:
+    prompt = compile_reference_prompt(
+        "physics_spectacle", "An empty brutalist parking structure fails inward"
+    )
+    assert "intact" in prompt
+    assert "no people, damage, dust, smoke, or debris yet" in prompt
+    assert "clean first frame" in prompt

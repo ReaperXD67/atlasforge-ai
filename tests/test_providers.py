@@ -7,9 +7,11 @@ from daily_video_factory.models import Scene
 from daily_video_factory.providers.base import Provider, ProviderChain
 from daily_video_factory.providers.text import extract_json
 from daily_video_factory.providers.video import (
+    ComfyUISDXLReferenceProvider,
     ComfyUIWan22Provider,
     GeminiOmniVideoProvider,
     PexelsStockVideoProvider,
+    _comfy_model_choices,
 )
 
 
@@ -34,6 +36,18 @@ def test_provider_chain_falls_through() -> None:
     )
     assert result.provider == "second"
     assert result.value == "done"
+
+
+def test_comfy_model_choices_supports_dynamic_combo_schema() -> None:
+    node = {
+        "input": {
+            "required": {
+                "model_name": ["COMBO", {"options": ["rife_v4.26.safetensors"]}]
+            }
+        }
+    }
+
+    assert _comfy_model_choices(node, "model_name") == ["rife_v4.26.safetensors"]
 
 
 def test_pexels_video_prefers_1080p_over_unnecessary_4k(settings) -> None:
@@ -137,6 +151,22 @@ def test_wan_reference_workflow_wires_start_image(settings, monkeypatch, tmp_pat
     assert workflow["56"]["class_type"] == "LoadImage"
     assert workflow["56"]["inputs"]["image"] == "atlasforge/cat.png"
     assert workflow["55"]["inputs"]["start_image"] == ["56", 0]
+    assert workflow["59"]["inputs"]["model_name"] == "rife_v4.26.safetensors"
+    assert workflow["60"]["inputs"]["images"] == ["8", 0]
+    assert workflow["57"]["inputs"]["images"] == ["60", 0]
+    assert workflow["57"]["inputs"]["fps"] == 48
+
+
+def test_sdxl_reference_workflow_uses_full_resolution_plate(settings) -> None:
+    provider = ComfyUISDXLReferenceProvider(settings)
+
+    workflow = provider._workflow("A photoreal cat in a professional pit garage", seed=42)
+
+    assert workflow["1"]["inputs"]["ckpt_name"] == "sd_xl_base_1.0.safetensors"
+    assert workflow["4"]["inputs"] == {"width": 768, "height": 1344, "batch_size": 1}
+    assert workflow["5"]["inputs"]["sampler_name"] == "dpmpp_2m"
+    assert workflow["5"]["inputs"]["steps"] == 28
+    assert workflow["5"]["inputs"]["seed"] == 42
 
 
 def test_gemini_omni_input_keeps_reference_before_prompt(tmp_path: Path) -> None:

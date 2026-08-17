@@ -14,6 +14,7 @@ from .media.render import VideoRenderer
 from .models import CostEntry, RunManifest, RunStatus, Scene, StageStatus, Storyboard
 from .music_video import analyze_music
 from .providers.video import (
+    ComfyUISDXLReferenceProvider,
     ComfyUIWan22Provider,
     GeminiOmniVideoProvider,
     PremiumVideoProvider,
@@ -89,6 +90,36 @@ def compile_viral_prompt(
     )
 
 
+def compile_reference_prompt(recipe: ViralRecipe, concept: str) -> str:
+    """Describe a clean pre-action plate that gives Wan stable geometry and identity."""
+    concept = " ".join(concept.split()).strip()
+    shared = (
+        "A genuinely photoreal editorial photograph captured on a full-frame cinema camera, "
+        "vertical 9:16 composition, natural material micro-texture, realistic skin or surface "
+        "detail, physically correct reflections, plausible scale, straight geometry, sharp "
+        "primary subject, subtle depth of field, motivated practical lighting, restrained color "
+        "science, no motion blur. This is the clean first frame immediately before the action. "
+    )
+    if recipe == "beat_creature":
+        direction = (
+            "Show one complete animal or fictional character in a balanced pre-dance hero pose, "
+            "both feet or paws visibly grounded, anatomically correct limbs, symmetrical eyes, "
+            "detailed fur or skin, enough negative space for movement. "
+        )
+    elif recipe == "physics_spectacle":
+        direction = (
+            "Show the intact unoccupied fictional structure before any failure, in a wide view "
+            "with unambiguous foundations, rigid concrete and steel, straight load-bearing members, "
+            "realistic surrounding scale cues, and no people, damage, dust, smoke, or debris yet. "
+        )
+    else:
+        direction = (
+            "Show two distinct fictional characters in a calm conversational two-shot with clean "
+            "facial anatomy, consistent eye lines, and natural expressions before either speaks. "
+        )
+    return shared + direction + "Visual concept: " + concept
+
+
 class ViralShortPipeline:
     """Render one coherent AI-native shot, then master it for social delivery."""
 
@@ -121,8 +152,10 @@ class ViralShortPipeline:
         return VeoVideoProvider(self.settings)
 
     def _procedural_impact(self, duration: float, output: Path) -> Path:
-        """Create a restrained local rumble when a physics clip has no generated audio."""
-        fade = max(0.1, duration - 1.0)
+        """Create a timed, publish-loud local impact when a physics clip has no source audio."""
+        impact_at = max(0.4, duration * 0.36)
+        rumble_fade = max(0.1, duration - 0.8)
+        delay_ms = round(impact_at * 1000)
         self.ffmpeg.run(
             [
                 "-f",
@@ -132,12 +165,25 @@ class ViralShortPipeline:
                 "-f",
                 "lavfi",
                 "-i",
-                f"sine=frequency=48:sample_rate=48000:duration={duration:.3f}",
+                "sine=frequency=58:sample_rate=48000:duration=0.9",
+                "-f",
+                "lavfi",
+                "-i",
+                "anoisesrc=color=white:amplitude=0.12:sample_rate=48000:duration=0.45",
                 "-filter_complex",
                 (
-                    "[0:a]lowpass=f=260,highpass=f=28,volume=0.5[debris];"
-                    f"[1:a]volume=0.22,afade=t=out:st={fade:.3f}:d=1[impact];"
-                    "[debris][impact]amix=inputs=2:normalize=0,alimiter=limit=0.88,"
+                    f"[0:a]lowpass=f=240,highpass=f=28,volume=0.7,"
+                    f"afade=t=in:st={max(0, impact_at - 0.35):.3f}:d=0.35,"
+                    f"afade=t=out:st={rumble_fade:.3f}:d=0.8[debris];"
+                    f"[1:a]volume=0.9,afade=t=out:st=0.06:d=0.84,"
+                    f"adelay={delay_ms}:all=1[impact];"
+                    f"[2:a]highpass=f=900,lowpass=f=6500,volume=0.32,"
+                    "afade=t=out:st=0.04:d=0.41,haas=side_gain=0.7,"
+                    f"adelay={max(0, delay_ms - 25)}:all=1[crack];"
+                    "[debris][impact][crack]amix=inputs=3:normalize=0,alimiter=limit=0.92,"
+                    # Short-form physics beds contain intentional pre-impact silence, so the
+                    # event itself is mastered hotter to land near -16 LUFS over the whole clip.
+                    "loudnorm=I=-13:TP=-1.0:LRA=7,volume=2dB,alimiter=limit=0.84,"
                     "aformat=sample_fmts=fltp:channel_layouts=stereo[a]"
                 ),
                 "-map",
@@ -179,11 +225,26 @@ class ViralShortPipeline:
         if not concept.strip():
             raise ConfigurationError("Describe the action and visual world for this viral short")
         reference = reference_image.resolve() if reference_image else None
+        reference_origin = "uploaded" if reference is not None else None
         music = master_music.resolve() if master_music else None
         if reference is not None and not reference.is_file():
             raise FileNotFoundError(reference)
         if music is not None and not music.is_file():
             raise FileNotFoundError(music)
+        # Keep the CLI and Studio on the same vertical quality contract. A direct
+        # `viral-film` invocation must never fall back to the landscape daily-video defaults.
+        self.settings.video.width = 1080
+        self.settings.video.height = 1920
+        self.settings.video.fps = 60
+        if provider_name == "local_wan":
+            self.settings.video.comfyui_width = 576
+            self.settings.video.comfyui_height = 1024
+            self.settings.video.comfyui_frames = min(
+                241, max(17, 4 * round(seconds * self.settings.video.comfyui_fps / 4) + 1)
+            )
+            self.settings.video.comfyui_steps = max(28, self.settings.video.comfyui_steps)
+            self.settings.video.comfyui_rife_enabled = True
+            self.settings.video.interpolate_low_fps_clips = False
         provider = self._provider(provider_name)
         if not provider.available():
             requirement = (
@@ -192,6 +253,14 @@ class ViralShortPipeline:
                 else "GOOGLE_API_KEY and the google optional dependency"
             )
             raise ConfigurationError(f"{provider_name} is not ready; it needs {requirement}")
+        reference_provider = None
+        if provider_name == "local_wan" and reference is None:
+            reference_provider = ComfyUISDXLReferenceProvider(self.settings)
+            if not reference_provider.available():
+                raise ConfigurationError(
+                    "The automatic local reference model is missing. Run "
+                    ".\\scripts\\install_comfyui_wan22.ps1 once, then restart Studio."
+                )
         renderer = VideoRenderer(self.settings, self.ffmpeg)
 
         publication_date = date.today()
@@ -206,6 +275,7 @@ class ViralShortPipeline:
             output_root=paths.root,
         )
         self.store.save_manifest(manifest)
+        generation_seed = int(run_id.rsplit("-", 1)[1], 16)
 
         beat_map = None
         if music is not None:
@@ -214,6 +284,31 @@ class ViralShortPipeline:
             )
             paths.write_json("music/audiomap.json", beat_map)
             shutil.copy2(music, paths.music / f"master{music.suffix.lower()}")
+
+        if reference is not None:
+            staged_reference = paths.scenes / f"reference{reference.suffix.lower()}"
+            shutil.copy2(reference, staged_reference)
+            reference = staged_reference
+        elif provider_name == "local_wan":
+            assert reference_provider is not None
+            reference = self._stage(
+                manifest,
+                "reference_generation",
+                lambda: reference_provider.generate(
+                    compile_reference_prompt(recipe, concept),
+                    paths.scenes / "auto_reference.png",
+                    seed=generation_seed,
+                ),
+            )
+            reference_origin = reference_provider.name
+            manifest.costs.append(
+                CostEntry(
+                    stage="reference_image",
+                    provider=reference_provider.name,
+                    estimated_usd=0,
+                    note="Local SDXL identity/geometry plate; electricity only",
+                )
+            )
 
         prompt = compile_viral_prompt(
             recipe,
@@ -251,6 +346,7 @@ class ViralShortPipeline:
             ),
             aspect_ratio="9:16",
             reference_image=reference,
+            generation_seed=generation_seed,
             generation_task=task,
         )
         storyboard = Storyboard(
@@ -267,6 +363,7 @@ class ViralShortPipeline:
                 "recipe": recipe,
                 "provider": provider_name,
                 "reference_image": str(reference) if reference else None,
+                "reference_origin": reference_origin,
                 "master_music": str(music) if music else None,
                 "publishing_enabled": False,
                 "safety": "fictional content; do not present as news or documentary evidence",
@@ -360,7 +457,18 @@ class ViralShortPipeline:
             return thumbnail
 
         self._stage(manifest, "thumbnail", make_thumbnail)
-        paths.write_json("scenes/images.json", [{"scene": 1, "path": str(thumbnail)}])
+        scene_images = [{"scene": 1, "role": "poster", "path": str(thumbnail)}]
+        if reference is not None:
+            scene_images.insert(
+                0,
+                {
+                    "scene": 1,
+                    "role": "generation_reference",
+                    "origin": reference_origin,
+                    "path": str(reference),
+                },
+            )
+        paths.write_json("scenes/images.json", scene_images)
         manifest.final_video = final
         manifest.thumbnail = thumbnail
         manifest.status = RunStatus.ready

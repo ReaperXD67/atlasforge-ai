@@ -10,11 +10,14 @@ spectacle. The final master is 1080×1920, 60 fps, H.264, with publishing disabl
 - secure local JPG/PNG/WebP subject-reference upload and validation;
 - secure local master-song upload, beat/downbeat analysis, and BPM-aware prompt choreography;
 - one-shot prompt contracts that lock identity, anatomy, lighting, camera, and environment;
+- automatic 768×1344 SDXL first-frame generation when no subject image is supplied;
 - reference-image input to the stock ComfyUI Wan 2.2 TI2V 5B workflow;
 - subject-image input to Gemini Omni Flash, with locally derived song timing in the prompt;
 - native-audio preservation for cloud clips and untouched 320 kbps master-song muxing;
-- vertical crop/scale, local-AI motion interpolation, color normalization, and NVENC 60 fps output;
-- a local procedural impact bed for physics clips that have no source audio;
+- 576×1024 local motion generation, built-in RIFE 4.26 interpolation from 24 to 48 real motion
+  frames per second, Lanczos mastering, restrained sharpening, and NVENC 60 fps output;
+- a timed local physics bed with stereo debris width, centered low-frequency impact, and
+  social-ready loudness for clips that have no source audio;
 - deterministic Remotion previsualization, per-clip cost estimates, run logs, and cancel controls;
 - a synthetic-media provenance record in every run; and
 - no upload or publishing action.
@@ -25,8 +28,9 @@ spectacle. The final master is 1080×1920, 60 fps, H.264, with publishing disabl
 2. Choose **Beat Creature**, **Talking Duo**, or **Physics Spectacle**.
 3. Describe one shot, not a montage. Include the subject, action, location, camera, light, and ending
    pose. The UI gives a strong example for each recipe.
-4. Add a clear subject image when identity matters. A three-quarter or full-body source with a clean
-   silhouette and visible feet works best for performance.
+4. Optionally add a clear subject image when a particular identity matters. A three-quarter or
+   full-body source with a clean silhouette and visible feet works best. If you omit it in the free
+   lane, AtlasForge now creates a photoreal local SDXL first frame automatically.
 5. For **Beat Creature**, upload the actual final song. AtlasForge detects its BPM, passes the audio
    locally, places BPM/timing instructions into the video prompt, and replaces the generated
    soundtrack with your untouched master in the final file.
@@ -37,7 +41,7 @@ spectacle. The final master is 1080×1920, 60 fps, H.264, with publishing disabl
 
 | Lane | Best use | This laptop | Audio | Estimated generation price |
 | --- | --- | --- | --- | --- |
-| **Free Local — Wan 2.2 TI2V 5B** | reference-led dancing character; silent/impact spectacle | practical on the RTX 4070 8 GB through ComfyUI offloading | supplied song or local impact design; no honest dialogue lip sync | $0 beyond electricity |
+| **Free Local — SDXL → Wan 2.2 → RIFE** | reference-led dancing character; silent/impact spectacle | practical on the RTX 4070 8 GB through ComfyUI offloading; five seconds is the strongest tier | supplied song or local impact design; no honest dialogue lip sync | $0 beyond electricity |
 | **Native Realism — Gemini Omni Flash** | strongest identity continuity; BPM-directed movement; speaking characters | generated in Google cloud | native synchronized voices/SFX; your supplied song is muxed locally afterward | about $0.10/s at 720p |
 | **Budget Native — Veo 3.1 Lite** | prompt-led native-audio clips at lower cost | generated in Google cloud | native audio | about $0.05/s at 720p |
 
@@ -49,9 +53,10 @@ billing in the [official Gemini API pricing table](https://ai.google.dev/gemini-
 
 ## The only manual setup still required
 
-The free local lane is already installed on the configured machine. You only provide creative
-inputs that AtlasForge cannot invent on your behalf: a legally usable reference image, the song you
-are authorized to use, and the final human review.
+The free local lane is already installed on the configured machine. For a Beat Creature you provide
+the song you are authorized to use; for a specific character you may provide a legally usable
+reference image. Otherwise the first frame is automatic. A final human review is still required
+because no open local model can guarantee correct anatomy or physics on every seed.
 
 For cloud-native voice, lip sync, and the largest realism jump:
 
@@ -100,10 +105,12 @@ atlasforge viral-film `
   --recipe beat_creature `
   --concept "A ginger cat performs crisp footwork in a glossy pit garage" `
   --provider local_wan `
-  --reference .\cat.png `
   --track .\song.mp3 `
   --seconds 5
 ```
+
+`--reference .\cat.png` is now an optional identity override for the local lane. Without it, the
+pipeline generates and preserves `scenes/auto_reference.png` before video inference.
 
 Use `--provider gemini_omni` for the strongest native lane or `--provider veo` for the cheaper
 native-audio lane. Talking Duo also accepts `--dialogue-a` and `--dialogue-b`.

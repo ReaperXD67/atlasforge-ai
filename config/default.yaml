@@ -177,7 +177,15 @@ video:
   comfyui_steps: 20
   comfyui_cfg: 5.0
   comfyui_timeout_minutes: 60
-  interpolate_low_fps_clips: true
+  comfyui_reference_checkpoint: sd_xl_base_1.0.safetensors
+  comfyui_reference_width: 768
+  comfyui_reference_height: 1344
+  comfyui_reference_steps: 28
+  comfyui_reference_cfg: 5.5
+  comfyui_rife_enabled: true
+  comfyui_rife_model: rife_v4.26.safetensors
+  comfyui_rife_multiplier: 2
+  interpolate_low_fps_clips: false
   clip_color_grade: true
 
 audio:

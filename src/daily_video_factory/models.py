@@ -92,6 +92,7 @@ class Scene(BaseModel):
     selected_video_provider: str = "local_motion"
     aspect_ratio: Literal["16:9", "9:16"] = "16:9"
     reference_image: Path | None = None
+    generation_seed: int | None = Field(default=None, ge=0, le=18446744073709551615)
     generation_task: Literal["text_to_video", "image_to_video", "reference_to_video"] = (
         "text_to_video"
     )

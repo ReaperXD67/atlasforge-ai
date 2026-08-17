@@ -98,21 +98,23 @@ To add a video provider, implement `PremiumVideoProvider.generate(scene, output)
 ## AI-native viral shorts
 
 `ViralShortPipeline` is deliberately separate from the long-form scheduler. It generates one
-continuous shot to minimize identity drift, accepts a validated subject image and analyzed master
-audio, then chooses one explicit lane:
+continuous shot to minimize identity drift, accepts a validated subject image or creates a local
+SDXL first frame, analyzes optional master audio, then chooses one explicit lane:
 
 ```mermaid
 flowchart LR
-    B["Recipe + one-shot brief"] --> R["Reference image and/or master audio"]
-    R --> L{"Reality lane"}
-    L -->|"Free local"| W["ComfyUI Wan 2.2 TI2V 5B"]
+    B["Recipe + one-shot brief"] --> I["Reference image and/or master audio"]
+    I --> L{"Reality lane"}
+    L -->|"Free local"| S["SDXL photoreal first frame"]
+    S --> W["ComfyUI Wan 2.2 TI2V 5B"]
     L -->|"Native realism"| O["Gemini Omni Flash"]
     L -->|"Budget native"| V["Veo 3.1 Lite"]
-    W --> M["Vertical normalize + 60 fps interpolation"]
+    W --> Q["RIFE 4.26 neural interpolation"]
+    Q --> M["Lanczos vertical master at 60 fps"]
     O --> M
     V --> M
     M --> A["Master audio + provenance manifest"]
-    A --> F["1080x1920 local MP4"]
+    A --> Z["1080x1920 local MP4"]
 ```
 
 Talking Duo is blocked on the 5B local lane because it has no native dialogue/lip-sync contract.

@@ -141,7 +141,17 @@ class VideoConfig(BaseModel):
     comfyui_steps: int = Field(default=20, ge=1, le=60)
     comfyui_cfg: float = Field(default=5.0, ge=1, le=15)
     comfyui_timeout_minutes: int = Field(default=60, ge=5, le=240)
-    interpolate_low_fps_clips: bool = True
+    comfyui_reference_checkpoint: str = "sd_xl_base_1.0.safetensors"
+    comfyui_reference_width: int = Field(default=768, ge=512, le=1536)
+    comfyui_reference_height: int = Field(default=1344, ge=512, le=2048)
+    comfyui_reference_steps: int = Field(default=28, ge=1, le=60)
+    comfyui_reference_cfg: float = Field(default=5.5, ge=1, le=15)
+    comfyui_rife_enabled: bool = True
+    comfyui_rife_model: str = "rife_v4.26.safetensors"
+    comfyui_rife_multiplier: int = Field(default=2, ge=2, le=4)
+    # Legacy FFmpeg optical flow is deliberately off. It softened the low-resolution
+    # Wan source and created rubbery edge artifacts; RIFE now runs on decoded frames.
+    interpolate_low_fps_clips: bool = False
     clip_color_grade: bool = True
 
 

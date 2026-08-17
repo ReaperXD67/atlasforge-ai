@@ -10,7 +10,9 @@ $Main = Join-Path $InstallRoot "main.py"
 $RequiredModels = @(
     (Join-Path $InstallRoot "models\diffusion_models\wan2.2_ti2v_5B_fp16.safetensors"),
     (Join-Path $InstallRoot "models\vae\wan2.2_vae.safetensors"),
-    (Join-Path $InstallRoot "models\text_encoders\umt5_xxl_fp8_e4m3fn_scaled.safetensors")
+    (Join-Path $InstallRoot "models\text_encoders\umt5_xxl_fp8_e4m3fn_scaled.safetensors"),
+    (Join-Path $InstallRoot "models\checkpoints\sd_xl_base_1.0.safetensors"),
+    (Join-Path $InstallRoot "models\frame_interpolation\rife_v4.26.safetensors")
 )
 
 if (-not (Test-Path -LiteralPath $Python) -or -not (Test-Path -LiteralPath $Main)) {
@@ -18,7 +20,7 @@ if (-not (Test-Path -LiteralPath $Python) -or -not (Test-Path -LiteralPath $Main
 }
 $Missing = $RequiredModels | Where-Object { -not (Test-Path -LiteralPath $_) }
 if ($Missing) {
-    throw "Missing Wan 2.2 models:`n$($Missing -join "`n")"
+    throw "Missing local video quality models:`n$($Missing -join "`n")"
 }
 
 $Arguments = @(

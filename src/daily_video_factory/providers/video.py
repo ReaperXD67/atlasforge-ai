@@ -24,6 +24,17 @@ from .base import Provider
 StockCandidate = tuple[tuple[float, float, float], dict[str, Any], dict[str, Any]]
 
 
+def _comfy_model_choices(node: dict[str, Any], input_name: str) -> list[str]:
+    """Read both legacy list combos and ComfyUI's newer dynamic COMBO schema."""
+    spec = node.get("input", {}).get("required", {}).get(input_name, [])
+    if not isinstance(spec, list) or not spec:
+        return []
+    if spec[0] == "COMBO" and len(spec) > 1 and isinstance(spec[1], dict):
+        options = spec[1].get("options", [])
+        return [str(option) for option in options] if isinstance(options, list) else []
+    return [str(option) for option in spec[0]] if isinstance(spec[0], list) else []
+
+
 class LocalClipRanker:
     """Rerank stock thumbnails locally with CLIP; fail closed to metadata ranking."""
 
@@ -441,6 +452,160 @@ class LocalVideoProvider(Provider[Path]):
         pass
 
 
+class ComfyUISDXLReferenceProvider(Provider[Path]):
+    """Create a sharp local first frame before Wan has to solve temporal motion."""
+
+    name = "comfyui_sdxl_reference"
+    negative_prompt = (
+        "illustration, painting, anime, CGI, 3d render, game asset, miniature, diorama, toy, "
+        "plastic skin, waxy texture, malformed anatomy, extra limbs, duplicate subject, bent "
+        "architecture, impossible perspective, blur, low resolution, oversharpened, text, logo, "
+        "watermark, subtitles"
+    )
+
+    def __init__(self, settings: Settings) -> None:
+        self.cfg = settings.video
+        self.base_url = os.getenv("COMFYUI_BASE_URL", "http://127.0.0.1:8188").rstrip("/")
+
+    def available(self) -> bool:
+        try:
+            response = httpx.get(
+                f"{self.base_url}/object_info/CheckpointLoaderSimple", timeout=5
+            )
+            response.raise_for_status()
+            node = response.json().get("CheckpointLoaderSimple", {})
+            choices = _comfy_model_choices(node, "ckpt_name")
+            return self.cfg.comfyui_reference_checkpoint in choices
+        except (httpx.HTTPError, KeyError, TypeError):
+            return False
+
+    def _workflow(
+        self, prompt: str, seed: int | None = None
+    ) -> dict[str, dict[str, Any]]:
+        seed = seed if seed is not None else int(
+            hashlib.sha256(prompt.encode("utf-8")).hexdigest()[:14], 16
+        )
+        return {
+            "1": {
+                "class_type": "CheckpointLoaderSimple",
+                "inputs": {"ckpt_name": self.cfg.comfyui_reference_checkpoint},
+            },
+            "2": {
+                "class_type": "CLIPTextEncode",
+                "inputs": {"text": prompt, "clip": ["1", 1]},
+            },
+            "3": {
+                "class_type": "CLIPTextEncode",
+                "inputs": {"text": self.negative_prompt, "clip": ["1", 1]},
+            },
+            "4": {
+                "class_type": "EmptyLatentImage",
+                "inputs": {
+                    "width": self.cfg.comfyui_reference_width,
+                    "height": self.cfg.comfyui_reference_height,
+                    "batch_size": 1,
+                },
+            },
+            "5": {
+                "class_type": "KSampler",
+                "inputs": {
+                    "seed": seed,
+                    "steps": self.cfg.comfyui_reference_steps,
+                    "cfg": self.cfg.comfyui_reference_cfg,
+                    "sampler_name": "dpmpp_2m",
+                    "scheduler": "karras",
+                    "denoise": 1,
+                    "model": ["1", 0],
+                    "positive": ["2", 0],
+                    "negative": ["3", 0],
+                    "latent_image": ["4", 0],
+                },
+            },
+            "6": {
+                "class_type": "VAEDecode",
+                "inputs": {"samples": ["5", 0], "vae": ["1", 2]},
+            },
+            "7": {
+                "class_type": "SaveImage",
+                "inputs": {
+                    "images": ["6", 0],
+                    "filename_prefix": "atlasforge/auto_reference",
+                },
+            },
+        }
+
+    @staticmethod
+    def _image_file(history: dict[str, Any]) -> dict[str, Any] | None:
+        for node in history.get("outputs", {}).values():
+            for item in node.get("images", []) if isinstance(node, dict) else []:
+                if str(item.get("filename", "")).lower().endswith((".png", ".jpg", ".webp")):
+                    return item
+        return None
+
+    def generate(self, prompt: str, output: Path, *, seed: int | None = None) -> Path:
+        resolved_seed = seed if seed is not None else int(
+            hashlib.sha256(prompt.encode("utf-8")).hexdigest()[:14], 16
+        )
+        response = httpx.post(
+            f"{self.base_url}/prompt",
+            json={
+                "prompt": self._workflow(prompt, resolved_seed),
+                "client_id": str(uuid.uuid4()),
+            },
+            timeout=30,
+        )
+        if response.status_code >= 400:
+            raise ProviderFailed(f"ComfyUI rejected SDXL workflow: {response.text[:1000]}")
+        prompt_id = response.json().get("prompt_id")
+        if not prompt_id:
+            raise ProviderFailed("ComfyUI returned no prompt_id for the reference image")
+        deadline = time.monotonic() + self.cfg.comfyui_timeout_minutes * 60
+        while time.monotonic() < deadline:
+            history_response = httpx.get(f"{self.base_url}/history/{prompt_id}", timeout=15)
+            history_response.raise_for_status()
+            history = history_response.json().get(prompt_id)
+            if history:
+                item = self._image_file(history)
+                if item is None:
+                    status = history.get("status", {})
+                    if status.get("status_str") == "error":
+                        raise ProviderFailed(f"ComfyUI SDXL generation failed: {status}")
+                    raise ProviderFailed("ComfyUI finished SDXL but returned no image")
+                image_response = httpx.get(
+                    f"{self.base_url}/view",
+                    params={
+                        "filename": item["filename"],
+                        "subfolder": item.get("subfolder", ""),
+                        "type": item.get("type", "output"),
+                    },
+                    timeout=180,
+                    follow_redirects=True,
+                )
+                image_response.raise_for_status()
+                output.parent.mkdir(parents=True, exist_ok=True)
+                output.write_bytes(image_response.content)
+                output.with_suffix(".license.json").write_text(
+                    json.dumps(
+                        {
+                            "provider": "ComfyUI",
+                            "model": "Stable Diffusion XL 1.0 base",
+                            "license": "CreativeML Open RAIL++-M",
+                            "synthetic_media": True,
+                            "prompt_id": prompt_id,
+                            "prompt": prompt,
+                            "seed": resolved_seed,
+                        },
+                        indent=2,
+                    ),
+                    encoding="utf-8",
+                )
+                return output
+            time.sleep(3)
+        raise ProviderFailed(
+            f"ComfyUI SDXL generation timed out after {self.cfg.comfyui_timeout_minutes} minutes"
+        )
+
+
 class ComfyUIWan22Provider(LocalVideoProvider):
     """Call a stock ComfyUI Wan 2.2 TI2V 5B graph with no custom nodes."""
 
@@ -457,12 +622,40 @@ class ComfyUIWan22Provider(LocalVideoProvider):
 
     def available(self) -> bool:
         try:
-            return httpx.get(f"{self.base_url}/system_stats", timeout=3).status_code == 200
-        except httpx.HTTPError:
+            if httpx.get(f"{self.base_url}/system_stats", timeout=3).status_code != 200:
+                return False
+            required = [
+                ("UNETLoader", "unet_name", "wan2.2_ti2v_5B_fp16.safetensors"),
+                ("CLIPLoader", "clip_name", "umt5_xxl_fp8_e4m3fn_scaled.safetensors"),
+                ("VAELoader", "vae_name", "wan2.2_vae.safetensors"),
+            ]
+            if self.cfg.comfyui_rife_enabled:
+                required.append(
+                    (
+                        "FrameInterpolationModelLoader",
+                        "model_name",
+                        self.cfg.comfyui_rife_model,
+                    )
+                )
+            for node_name, input_name, model_name in required:
+                response = httpx.get(f"{self.base_url}/object_info/{node_name}", timeout=5)
+                response.raise_for_status()
+                node = response.json().get(node_name, {})
+                choices = _comfy_model_choices(node, input_name)
+                if model_name not in choices:
+                    return False
+            return True
+        except (httpx.HTTPError, KeyError, TypeError):
             return False
 
+    @staticmethod
+    def _seed(scene: Scene) -> int:
+        if scene.generation_seed is not None:
+            return scene.generation_seed
+        return int(hashlib.sha256(scene.video_prompt.encode("utf-8")).hexdigest()[:14], 16)
+
     def _workflow(self, scene: Scene) -> dict[str, dict[str, Any]]:
-        seed = int(hashlib.sha256(scene.video_prompt.encode("utf-8")).hexdigest()[:14], 16)
+        seed = self._seed(scene)
         prompt = (
             f"{scene.video_prompt}. The subject action is {scene.visual_search_query}. "
             "Stable tripod or smooth dolly movement, coherent motion, documentary realism, "
@@ -543,6 +736,23 @@ class ComfyUIWan22Provider(LocalVideoProvider):
                 },
             },
         }
+        if self.cfg.comfyui_rife_enabled:
+            workflow["59"] = {
+                "class_type": "FrameInterpolationModelLoader",
+                "inputs": {"model_name": self.cfg.comfyui_rife_model},
+            }
+            workflow["60"] = {
+                "class_type": "FrameInterpolate",
+                "inputs": {
+                    "interp_model": ["59", 0],
+                    "images": ["8", 0],
+                    "multiplier": self.cfg.comfyui_rife_multiplier,
+                },
+            }
+            workflow["57"]["inputs"] = {
+                "images": ["60", 0],
+                "fps": self.cfg.comfyui_fps * self.cfg.comfyui_rife_multiplier,
+            }
         if scene.reference_image is not None:
             workflow["56"] = {
                 "class_type": "LoadImage",
@@ -627,6 +837,7 @@ class ComfyUIWan22Provider(LocalVideoProvider):
                             ),
                             "prompt_id": prompt_id,
                             "prompt": scene.video_prompt,
+                            "seed": self._seed(scene),
                         },
                         indent=2,
                     ),

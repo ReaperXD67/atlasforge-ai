@@ -6,6 +6,7 @@ from pathlib import Path
 import pytest
 
 from daily_video_factory.media.audio import generate_original_music, generate_sfx_track, mix_audio
+from daily_video_factory.media.render import VideoRenderer
 from daily_video_factory.media.subtitles import _align_script_words, write_subtitles
 from daily_video_factory.models import Scene, ScriptDocument, Storyboard
 from daily_video_factory.providers.tts import _atempo_chain, fit_narration_duration
@@ -142,3 +143,38 @@ def test_slow_narration_is_pitch_preserving_duration_fitted(tmp_path: Path) -> N
     assert _atempo_chain(5) == "atempo=2.000000,atempo=2.000000,atempo=1.250000"
     with pytest.raises(ValueError, match="positive"):
         _atempo_chain(0)
+
+
+def test_local_video_master_uses_sharp_scale_without_legacy_optical_flow(
+    settings, tmp_path: Path
+) -> None:
+    class RecordingFFmpeg:
+        def __init__(self) -> None:
+            self.args: list[str] = []
+
+        def can_encode(self, _encoder: str) -> bool:
+            return True
+
+        def duration(self, _path: Path) -> float:
+            return 5
+
+        def run(self, args: list[str]) -> None:
+            self.args = args
+
+    scene = Scene(
+        index=1,
+        duration_seconds=5,
+        narration="",
+        video_prompt="photoreal motion",
+        visual_search_query="controlled movement",
+        selected_video_provider="comfyui_wan22",
+    )
+    ffmpeg = RecordingFFmpeg()
+    renderer = VideoRenderer(settings, ffmpeg)  # type: ignore[arg-type]
+
+    renderer.normalize_video_scene(scene, tmp_path / "raw.mp4", tmp_path / "master.mp4")
+
+    video_filter = ffmpeg.args[ffmpeg.args.index("-vf") + 1]
+    assert "minterpolate" not in video_filter
+    assert "flags=lanczos+accurate_rnd+full_chroma_int" in video_filter
+    assert f"fps={settings.video.fps}" in video_filter

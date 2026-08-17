@@ -130,8 +130,30 @@ class StudioManager:
     def _comfyui_available() -> bool:
         base_url = os.getenv("COMFYUI_BASE_URL", "http://127.0.0.1:8188").rstrip("/")
         try:
-            return httpx.get(f"{base_url}/system_stats", timeout=2).status_code == 200
-        except httpx.HTTPError:
+            if httpx.get(f"{base_url}/system_stats", timeout=2).status_code != 200:
+                return False
+            required = (
+                ("UNETLoader", "unet_name", "wan2.2_ti2v_5B_fp16.safetensors"),
+                ("CheckpointLoaderSimple", "ckpt_name", "sd_xl_base_1.0.safetensors"),
+                (
+                    "FrameInterpolationModelLoader",
+                    "model_name",
+                    "rife_v4.26.safetensors",
+                ),
+            )
+            for node_name, input_name, model_name in required:
+                response = httpx.get(f"{base_url}/object_info/{node_name}", timeout=3)
+                response.raise_for_status()
+                node = response.json().get(node_name, {})
+                spec = node.get("input", {}).get("required", {}).get(input_name, [])
+                if isinstance(spec, list) and spec and spec[0] == "COMBO":
+                    choices = spec[1].get("options", []) if len(spec) > 1 else []
+                else:
+                    choices = spec[0] if isinstance(spec, list) and spec else []
+                if model_name not in choices:
+                    return False
+            return True
+        except (httpx.HTTPError, KeyError, TypeError):
             return False
 
     def _profile_path(self, profile: str) -> Path:
@@ -274,11 +296,16 @@ class StudioManager:
             settings.images.providers = ["title_card"]
             settings.video.transition_seconds = 0.0
             settings.video.cloud_clip_seconds = round(request.viral_seconds)
-            settings.video.comfyui_width = 480
-            settings.video.comfyui_height = 832
+            # 576x1024 is the highest practical portrait tier we can sustain on the
+            # target 8 GB RTX 4070 while leaving room for Wan's VAE and RIFE.
+            settings.video.comfyui_width = 576
+            settings.video.comfyui_height = 1024
             settings.video.comfyui_frames = min(
                 241, max(17, 4 * round(request.viral_seconds * 24 / 4) + 1)
             )
+            settings.video.comfyui_steps = 28
+            settings.video.comfyui_rife_enabled = True
+            settings.video.interpolate_low_fps_clips = False
             settings.video.local_generation_enabled = request.viral_provider == "local_wan"
             settings.video.local_generation_max_scenes_per_video = 1
             settings.video.enable_premium_scenes = request.viral_provider != "local_wan"

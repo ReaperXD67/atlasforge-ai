@@ -116,20 +116,21 @@ class VideoRenderer:
             filters.append(f"setpts={speed_factor:.6f}*PTS")
         else:
             filters.append("setpts=PTS-STARTPTS")
-        if local_ai and self.cfg.interpolate_low_fps_clips:
-            filters.append(
-                f"minterpolate=fps={self.cfg.fps}:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1"
-            )
         filters.extend(
             [
-                f"scale={self.cfg.width}:{self.cfg.height}:force_original_aspect_ratio=increase",
+                (
+                    f"scale={self.cfg.width}:{self.cfg.height}:"
+                    "flags=lanczos+accurate_rnd+full_chroma_int:"
+                    "force_original_aspect_ratio=increase"
+                ),
                 f"crop={self.cfg.width}:{self.cfg.height}",
+                f"fps={self.cfg.fps}",
             ]
         )
-        if not (local_ai and self.cfg.interpolate_low_fps_clips):
-            filters.append(f"fps={self.cfg.fps}")
         if self.cfg.clip_color_grade:
-            filters.extend(["eq=contrast=1.035:saturation=0.94:gamma=0.99", "unsharp=3:3:0.18"])
+            filters.extend(
+                ["eq=contrast=1.025:saturation=0.97:gamma=0.995", "unsharp=5:5:0.28:5:5:0"]
+            )
         filters.append("format=yuv420p")
         self.ffmpeg.run(
             [

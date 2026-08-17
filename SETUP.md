@@ -217,9 +217,9 @@ PEXELS_API_KEY=your_key_here
 
 Always audit whether a specific clip is suitable for commercial use, contains recognizable people, trademarks, or misleading product context.
 
-### Wan 2.2 local hero shots (optional, free after electricity)
+### SDXL → Wan 2.2 → RIFE local shots (optional, free after electricity)
 
-Why: the official Wan 2.2 TI2V 5B model is the strongest practical local generator in this design for an 8 GB RTX 4070. ComfyUI's native offloading lets the 5B workflow fit, but generation is still slow, so AtlasForge uses it for at most one high-value shot by default rather than trying to synthesize an entire episode.
+Why: the official Wan 2.2 TI2V 5B model is the strongest practical local video generator in this design for an 8 GB RTX 4070. For AI-native shorts, AtlasForge first creates a sharp SDXL identity/geometry plate, animates it at 576×1024, and uses ComfyUI's built-in RIFE 4.26 model to double true motion frames before 60 fps mastering. ComfyUI offloading lets this chain fit, but generation is still slow, so long-form episodes use it for at most one high-value shot by default.
 
 The automated one-time setup needs roughly 30 GB free and places everything outside OneDrive:
 
@@ -227,7 +227,7 @@ The automated one-time setup needs roughly 30 GB free and places everything outs
 .\scripts\install_comfyui_wan22.ps1
 ```
 
-The installer clones official ComfyUI, creates an isolated Python 3.11 environment, installs NVIDIA CUDA PyTorch, downloads the official diffusion model, VAE, and text encoder, then verifies that CUDA sees the GPU. Start it manually only when troubleshooting:
+The installer clones official ComfyUI, creates an isolated Python 3.11 environment, installs NVIDIA CUDA PyTorch, downloads Wan's diffusion model/VAE/text encoder plus the official SDXL 1.0 checkpoint and Comfy-Org RIFE 4.26 weights, verifies their published SHA-256 hashes where available, then verifies that CUDA sees the GPU. Start it manually only when troubleshooting:
 
 ```powershell
 .\scripts\start_comfyui.ps1 -Foreground

@@ -98,8 +98,11 @@ def test_studio_viral_mode_uses_vertical_local_contract(tmp_path: Path) -> None:
     rendered = load_settings(destination)
 
     assert (rendered.video.width, rendered.video.height) == (1080, 1920)
-    assert (rendered.video.comfyui_width, rendered.video.comfyui_height) == (480, 832)
+    assert (rendered.video.comfyui_width, rendered.video.comfyui_height) == (576, 1024)
     assert rendered.video.comfyui_frames == 193
+    assert rendered.video.comfyui_steps == 28
+    assert rendered.video.comfyui_rife_enabled is True
+    assert rendered.video.interpolate_low_fps_clips is False
     assert rendered.video.local_generation_enabled is True
     assert rendered.video.enable_premium_scenes is False
     assert rendered.subtitles.burn_in is False
