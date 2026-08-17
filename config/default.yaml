@@ -170,6 +170,15 @@ video:
   local_generation_providers: [comfyui_wan22]
   local_generation_max_scenes_per_video: 1
   local_generation_min_score: 0.70
+  local_generation_quality_gate: true
+  local_generation_min_quality_score: 0.62
+  local_generation_min_sharpness: 0.25
+  local_generation_min_reference_similarity: 0.52
+  local_generation_vlm_gate: true
+  local_generation_vlm_model: google/gemini-3-flash-preview
+  local_generation_vlm_min_score: 0.72
+  local_generation_reference_policy: real_first
+  local_generation_candidates: 2
   comfyui_width: 832
   comfyui_height: 480
   comfyui_frames: 121

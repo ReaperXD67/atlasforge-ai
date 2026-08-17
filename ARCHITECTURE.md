@@ -37,7 +37,7 @@ Providers fail closed at their own boundary and fail over only within the same c
 script:    Gemini → OpenRouter → Ollama
 narration: OpenAI → Gemini → Kokoro → Piper
 images:    Pexels → locally generated information card
-video:     optional Veo/MiniMax → local Wan 2.2 → CLIP-ranked unique Pexels Video → stable still motion
+video:     CLIP-ranked unique Pexels Video → optional premium AI → explicit local Wan candidate → stable still motion
 ```
 
 The system does not silently replace factual research with model memory. Trend, autocomplete, and Reddit results are explicitly treated as topic/audience signals, not evidence.
@@ -49,7 +49,10 @@ Storyboard scenes receive a `premium_score` from hook position, product relevanc
 - `premium_max_scenes_per_video`
 - `premium_daily_budget_usd`
 
-A failed or over-budget premium scene falls through to local Wan, a licensed Pexels clip, then stable motion from a licensed/source-recorded still. Cost and provenance entries are persisted with the run.
+A premium scene is considered only when no suitable licensed real clip was selected. A failed or
+over-budget premium scene may reach local Wan only when the storyboard explicitly marks AI as
+necessary and records why; otherwise it falls through to stable motion from a licensed or
+source-recorded still. Cost and provenance entries are persisted with the run.
 
 ## Editorial grounding
 
@@ -63,14 +66,31 @@ the late-brand-mention gate. A stale source pack blocks brand-focused scripts.
 ## Hybrid local media path
 
 The storyboard assigns concrete shot intent rather than extracting arbitrary script keywords. Exact
-or sensitive requirements become owned information cards; a brand-safe conceptual opening may use
-Wan 2.2 TI2V 5B while real licensed footage carries product and ordinary instructional scenes;
-most scenes use unique real Pexels footage. A local CLIP pass scores candidate thumbnails against the
+or sensitive requirements become owned information cards. Real licensed footage carries hooks,
+products, people, and ordinary instructional scenes; local AI is not automatically assigned to the
+opening or any other editorial position. A local CLIP pass scores Pexels candidate thumbnails against the
 scene brief before download, while creator and asset reuse guards prevent a repeated stock session.
 Source clips are trimmed at deterministic offsets, gently
 graded, normalized to the output canvas, and overlapped by the configured crossfade. A still fallback
 uses a locked optical axis and a 2x supersampled crop, eliminating the integer crop oscillation that
 made the previous image motion appear to shake.
+
+## Synthetic-media admission
+
+The `AI Generation` workspace is a quarantine, not another automatic source bin. A local candidate
+requires `ai_generation_required=true` plus a non-empty reason. Its source ladder is a real Pexels
+photograph first and SDXL only when no usable real plate exists. A small OpenRouter vision call picks
+the cleanest plate from a numbered grid, avoiding text, logos, crowds, landmarks, and obstructed
+subjects. Wan then renders 1–3 seeds sequentially so the 8 GB GPU is never overcommitted.
+
+Each candidate is sampled into nine chronological frames. The local gate measures decode health,
+sharpness, exposure, luminance/color flicker, coherent motion, unexpected cuts, and first-frame reference
+preservation. An OpenRouter vision supervisor separately checks rigid geometry, anatomy, contact,
+mass/inertia, reflections, identity, camera behavior, and temporal continuity. Admission fails closed
+when that review is unavailable. CLIP's camera-realism guess is recorded for diagnosis but is not an
+admission signal because calibration found it unreliable on genuine footage. If every seed fails,
+the best candidate remains in `videos/candidates/` with `quality/ai_clip_report.json`, but the
+editorial scheduler receives no clip and uses its stable fallback.
 
 Caption text is never authored by speech recognition. Local faster-whisper supplies word-time anchors,
 then a forced aligner maps the exact script onto those anchors, interpolates missed/mispronounced terms,
@@ -92,7 +112,9 @@ To add a video provider, implement `PremiumVideoProvider.generate(scene, output)
 - YouTube monetization depends on originality and channel-level patterns, not only technical compliance. A high-volume templated slideshow can still be ineligible.
 - Preview model IDs and prices change. They are configuration, not hard-coded invariants.
 - Pexels media may include people or marks that make a particular use inappropriate even when API access is allowed.
-- Wan 2.2 fits this 8 GB GPU through ComfyUI offloading but is not fast enough to synthesize a complete long-form episode every day; the one-shot default is intentional.
+- Wan 2.2 TI2V 5B fits this 8 GB GPU through ComfyUI offloading, but no 5B local model can guarantee
+  real-camera physics. At 640x1136/32 steps the measured workload nearly saturates the laptop, so the
+  one-shot, best-of-two default and conservative motion briefs are intentional.
 - Consumer Google AI credits and Developer API billing are separate product contexts unless Google explicitly connects them for your account.
 
 ## AI-native viral shorts

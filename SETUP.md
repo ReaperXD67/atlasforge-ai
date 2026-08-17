@@ -26,8 +26,8 @@ video providers disabled. After that succeeds, switch to **Atomy USA — Joining
 What still needs human judgment is deliberately small: provide or approve the exact official
 Atomy registration/sponsor link, fact-check time-sensitive membership claims, verify stock-video
 suitability, and watch the final render before publishing. The free visual path leads with licensed
-real footage, uses one locally generated hero shot when available, and falls back to owned cards or
-stable still motion. Premium cloud clips remain an explicit paid opt-in.
+real footage and falls back to owned cards or stable still motion. Local AI is used only for an
+explicitly necessary shot that passes admission. Premium cloud clips remain an explicit paid opt-in.
 
 For a song-driven racing/event sample, switch to **Remotion Lab**, upload the final track, check the
 detected BPM, and build the 60-second boss sample. The complete upload and premium-upgrade sequence
@@ -37,6 +37,10 @@ For realistic AI-native social clips, switch to **AI Viral Lab**. The free local
 Physics Spectacle paths use the already installed Wan 2.2 service. Talking Duo and the strongest
 identity/audio coherence require only `GOOGLE_API_KEY` after Docker Studio is installed. Follow
 [AI Viral Lab](docs/VIRAL_SHORTS.md) for the exact inputs, prices, and capability limits.
+
+For a restrained car, product, or environment insert, switch to **AI Generation**. This workspace
+uses the maximum safe local tier, generates two seeds by default, and labels the output admitted or
+quarantined. A quarantined result is evidence for tuning, not footage approved for the main film.
 
 ## 1. Hardware and disk
 
@@ -217,9 +221,19 @@ PEXELS_API_KEY=your_key_here
 
 Always audit whether a specific clip is suitable for commercial use, contains recognizable people, trademarks, or misleading product context.
 
-### SDXL → Wan 2.2 → RIFE local shots (optional, free after electricity)
+### Real plate → Wan 2.2 → RIFE local candidates (optional, free after electricity)
 
-Why: the official Wan 2.2 TI2V 5B model is the strongest practical local video generator in this design for an 8 GB RTX 4070. For AI-native shorts, AtlasForge first creates a sharp SDXL identity/geometry plate, animates it at 576×1024, and uses ComfyUI's built-in RIFE 4.26 model to double true motion frames before 60 fps mastering. ComfyUI offloading lets this chain fit, but generation is still slow, so long-form episodes use it for at most one high-value shot by default.
+Why: the official Wan 2.2 TI2V 5B model is the practical supported local video lane for this 8 GB
+RTX 4070. AtlasForge now starts from a sharp real Pexels photograph whenever possible, uses SDXL only
+as a fallback, applies one conservative action and camera move, and uses RIFE 4.26 before 60 fps
+mastering. Studio tiers are 512x896/20 steps, 576x1024/28, and a measured laptop ceiling of
+640x1136/32. The last tier can consume nearly all GPU compute and most available system RAM.
+
+The default best-of-two candidates are sampled and checked for blur, exposure, flicker, frozen or
+abrupt motion, scene discontinuity, reference drift, implausible physics/anatomy, identity changes,
+and artificial camera behavior. The semantic part sends one compressed 3x3 contact sheet—not the
+full video—to the configured OpenRouter model using `OPENROUTER_API_KEY`. It is normally a tiny use
+of the existing credit. If the key or review is unavailable, strict admission fails closed.
 
 The automated one-time setup needs roughly 30 GB free and places everything outside OneDrive:
 
@@ -233,7 +247,7 @@ The installer clones official ComfyUI, creates an isolated Python 3.11 environme
 .\scripts\start_comfyui.ps1 -Foreground
 ```
 
-Normal use requires no extra command: `start_studio.ps1` starts ComfyUI in the background when it is installed. The Studio toggle **Local Wan hero shot** controls whether a run uses it. The API URL is already configured as `http://127.0.0.1:8188` on Windows and `http://host.docker.internal:8188` inside Docker.
+Normal use requires no extra command: `start_studio.ps1` starts ComfyUI in the background when it is installed. The Studio toggle **Strict AI fallback** only arms the provider; it does not mark ordinary scenes as AI-required. Use the separate **AI Generation** workspace to direct a candidate deliberately. The API URL is already configured as `http://127.0.0.1:8188` on Windows and `http://host.docker.internal:8188` inside Docker.
 
 ### Veo hero clips (optional, off by default)
 

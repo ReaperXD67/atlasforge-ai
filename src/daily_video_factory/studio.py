@@ -40,12 +40,13 @@ class StudioJobRequest(BaseModel):
         "warm_documentary", "confident_female", "grounded_male", "editorial_blend"
     ] = "warm_documentary"
     voice_speed: float = Field(default=0.98, ge=0.8, le=1.2)
-    viral_recipe: Literal["beat_creature", "talking_duo", "physics_spectacle"] = (
-        "beat_creature"
-    )
+    viral_recipe: Literal[
+        "cinematic_insert", "beat_creature", "talking_duo", "physics_spectacle"
+    ] = "beat_creature"
     viral_prompt: str = Field(default="", max_length=1200)
     viral_provider: Literal["local_wan", "gemini_omni", "veo"] = "local_wan"
     viral_seconds: float = Field(default=5, ge=3, le=10)
+    viral_candidates: Literal[1, 2, 3] = 2
     reference_upload_id: str | None = Field(default=None, pattern=r"^[a-f0-9]{16}$")
     dialogue_a: str = Field(default="", max_length=180)
     dialogue_b: str = Field(default="", max_length=180)
@@ -274,7 +275,11 @@ class StudioManager:
         voice, preset_speed = voice_presets[request.voice_profile]
         settings.voice.providers = [
             request.voice_provider,
-            *[provider for provider in settings.voice.providers if provider != request.voice_provider],
+            *[
+                provider
+                for provider in settings.voice.providers
+                if provider != request.voice_provider
+            ],
         ]
         settings.voice.kokoro_voice = voice
         settings.voice.kokoro_speed = (
@@ -296,18 +301,26 @@ class StudioManager:
             settings.images.providers = ["title_card"]
             settings.video.transition_seconds = 0.0
             settings.video.cloud_clip_seconds = round(request.viral_seconds)
-            # 576x1024 is the highest practical portrait tier we can sustain on the
-            # target 8 GB RTX 4070 while leaving room for Wan's VAE and RIFE.
-            settings.video.comfyui_width = 576
-            settings.video.comfyui_height = 1024
+            local_tier = {
+                "fast": (512, 896, 20),
+                "balanced": (576, 1024, 28),
+                # This is deliberately below 720x1280: it preserves enough headroom for the
+                # 8 GB laptop GPU while giving the isolated AI Lab a real-detail tier.
+                "max": (640, 1136, 32),
+            }[request.quality]
+            (
+                settings.video.comfyui_width,
+                settings.video.comfyui_height,
+                settings.video.comfyui_steps,
+            ) = local_tier
             settings.video.comfyui_frames = min(
                 241, max(17, 4 * round(request.viral_seconds * 24 / 4) + 1)
             )
-            settings.video.comfyui_steps = 28
             settings.video.comfyui_rife_enabled = True
             settings.video.interpolate_low_fps_clips = False
             settings.video.local_generation_enabled = request.viral_provider == "local_wan"
             settings.video.local_generation_max_scenes_per_video = 1
+            settings.video.local_generation_candidates = request.viral_candidates
             settings.video.enable_premium_scenes = request.viral_provider != "local_wan"
             settings.video.premium_providers = [request.viral_provider]
             estimated_rate = (
@@ -398,6 +411,8 @@ class StudioManager:
                     request.viral_provider,
                     "--seconds",
                     str(request.viral_seconds),
+                    "--candidates",
+                    str(request.viral_candidates),
                 ]
                 if reference_path is not None:
                     command.extend(["--reference", str(reference_path)])

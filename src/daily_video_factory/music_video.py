@@ -112,7 +112,9 @@ def analyze_music(track: Path, ffmpeg: FFmpeg) -> BeatMap:
     rms_times = librosa.frames_to_time(np.arange(rms.size), sr=sample_rate, hop_length=hop)
     stride = max(1, round(0.5 * sample_rate / hop))
     energy_curve = [
-        EnergyPoint(time_seconds=round(float(rms_times[index]), 3), energy=round(float(rms[index]), 4))
+        EnergyPoint(
+            time_seconds=round(float(rms_times[index]), 3), energy=round(float(rms[index]), 4)
+        )
         for index in range(0, rms.size, stride)
     ]
 
@@ -125,9 +127,7 @@ def analyze_music(track: Path, ffmpeg: FFmpeg) -> BeatMap:
         means.append(float(np.mean(rms[mask])) if np.any(mask) else 0.0)
     peak = max(means) if means else 1.0
     sections: list[MusicSection] = []
-    for index, (start, end, energy) in enumerate(
-        zip(edges[:-1], edges[1:], means, strict=True)
-    ):
+    for index, (start, end, energy) in enumerate(zip(edges[:-1], edges[1:], means, strict=True)):
         relative = energy / peak if peak else 0
         label: Literal["intro", "build", "drive", "peak", "outro"]
         if index == 0:
@@ -232,10 +232,14 @@ def build_racing_storyboard(
                 index=index + 1,
                 duration_seconds=round(max(2.0, end - start), 3),
                 narration="" if not is_opener else "A music-led motorsport event teaser.",
-                camera_angle="dynamic tracking shot" if section.energy > 0.6 else "locked detail shot",
+                camera_angle="dynamic tracking shot"
+                if section.energy > 0.6
+                else "locked detail shot",
                 environment="professional race circuit and pit lane",
                 character_description="helmeted adult racing driver or pit crew; no visible brands",
-                emotion="controlled anticipation" if section.label in {"intro", "build"} else "adrenaline",
+                emotion="controlled anticipation"
+                if section.label in {"intro", "build"}
+                else "adrenaline",
                 lighting="high-contrast race-event lighting",
                 sound_effects=[],
                 transition="beat_cut",
@@ -257,7 +261,9 @@ def build_racing_storyboard(
             )
         )
     total = round(sum(scene.duration_seconds for scene in scenes), 3)
-    return Storyboard(title=title, total_duration_seconds=total, scenes=scenes, provider="beat-grid")
+    return Storyboard(
+        title=title, total_duration_seconds=total, scenes=scenes, provider="beat-grid"
+    )
 
 
 def _font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
@@ -280,7 +286,12 @@ def render_racing_title(title: str, bpm: float, output: Path, width: int, height
     draw = ImageDraw.Draw(image, "RGBA")
     for offset in range(-height, width, 150):
         draw.polygon(
-            [(offset, 0), (offset + 55, 0), (offset - height + 55, height), (offset - height, height)],
+            [
+                (offset, 0),
+                (offset + 55, 0),
+                (offset - height + 55, height),
+                (offset - height, height),
+            ],
             fill=(255, 83, 29, 16),
         )
     image = image.filter(ImageFilter.GaussianBlur(0.6))
@@ -288,7 +299,9 @@ def render_racing_title(title: str, bpm: float, output: Path, width: int, height
     draw.rectangle((0, 0, width, 18), fill=(255, 80, 24, 255))
     draw.text((105, 94), "BOSSTON  ×  PRAGON", font=_font(31, True), fill=(255, 121, 53, 255))
     wrapped = "\n".join(textwrap.wrap(title.upper(), width=23))
-    draw.multiline_text((105, 260), wrapped, font=_font(96, True), fill=(246, 243, 236, 255), spacing=8)
+    draw.multiline_text(
+        (105, 260), wrapped, font=_font(96, True), fill=(246, 243, 236, 255), spacing=8
+    )
     draw.line((108, height - 210, width - 108, height - 210), fill=(255, 93, 30, 180), width=3)
     draw.text(
         (108, height - 165),
@@ -370,7 +383,11 @@ class MusicVideoPipeline:
                 target = paths.scenes / f"scene_{scene.index:03d}.jpg"
                 if scene.index == 1:
                     images[scene.index] = render_racing_title(
-                        title, beat_map.bpm, target, self.settings.video.width, self.settings.video.height
+                        title,
+                        beat_map.bpm,
+                        target,
+                        self.settings.video.width,
+                        self.settings.video.height,
                     )
                 else:
                     _provider, images[scene.index] = generator.run(scene, target)
@@ -382,32 +399,42 @@ class MusicVideoPipeline:
 
         self._stage(manifest, "images", make_images)
 
-        premium, premium_costs = self._stage(
-            manifest,
-            "premium_video",
-            lambda: PremiumSceneScheduler(self.settings).generate(
-                storyboard.scenes, paths.videos / "premium"
-            ),
-        )
-        manifest.costs.extend(premium_costs)
-        local, local_costs = self._stage(
-            manifest,
-            "local_video",
-            lambda: LocalSceneScheduler(self.settings).generate(
-                [scene for scene in storyboard.scenes if scene.index not in premium],
-                paths.videos / "local_ai",
-            ),
-        )
-        manifest.costs.extend(local_costs)
         stock = self._stage(
             manifest,
             "stock_video",
             lambda: StockVideoScheduler(self.settings).generate(
                 storyboard.scenes,
                 paths.videos / "stock",
-                excluded_scene_ids=set(premium) | set(local),
             ),
         )
+        premium, premium_costs = self._stage(
+            manifest,
+            "premium_video",
+            lambda: PremiumSceneScheduler(self.settings).generate(
+                [scene for scene in storyboard.scenes if scene.index not in stock],
+                paths.videos / "premium",
+            ),
+        )
+        manifest.costs.extend(premium_costs)
+
+        remaining = [
+            scene
+            for scene in storyboard.scenes
+            if scene.index not in stock and scene.index not in premium
+        ]
+        for scene in remaining:
+            if scene.ai_generation_required:
+                scene.reference_image = images[scene.index]
+                scene.generation_task = "image_to_video"
+        local, local_costs = self._stage(
+            manifest,
+            "local_video",
+            lambda: LocalSceneScheduler(self.settings).generate(
+                remaining,
+                paths.videos / "local_ai",
+            ),
+        )
+        manifest.costs.extend(local_costs)
         paths.write_json(
             "videos/selection.json",
             {
@@ -428,7 +455,7 @@ class MusicVideoPipeline:
                 visual_duration = scene.duration_seconds
                 if position < count - 1:
                     visual_duration += self.settings.video.transition_seconds
-                clip = premium.get(scene.index) or local.get(scene.index) or stock.get(scene.index)
+                clip = stock.get(scene.index) or premium.get(scene.index) or local.get(scene.index)
                 if clip:
                     renderer.normalize_video_scene(
                         scene, clip, output, duration_seconds=visual_duration

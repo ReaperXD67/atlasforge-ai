@@ -134,6 +134,15 @@ class VideoConfig(BaseModel):
     local_generation_providers: list[str] = Field(default_factory=lambda: ["comfyui_wan22"])
     local_generation_max_scenes_per_video: int = Field(default=1, ge=0, le=8)
     local_generation_min_score: float = Field(default=0.7, ge=0, le=1)
+    local_generation_quality_gate: bool = True
+    local_generation_min_quality_score: float = Field(default=0.62, ge=0, le=1)
+    local_generation_min_sharpness: float = Field(default=0.25, ge=0, le=1)
+    local_generation_min_reference_similarity: float = Field(default=0.52, ge=0, le=1)
+    local_generation_vlm_gate: bool = True
+    local_generation_vlm_model: str = "google/gemini-3-flash-preview"
+    local_generation_vlm_min_score: float = Field(default=0.72, ge=0, le=1)
+    local_generation_reference_policy: Literal["real_first", "synthetic_only"] = "real_first"
+    local_generation_candidates: int = Field(default=2, ge=1, le=3)
     comfyui_width: int = Field(default=832, ge=256, le=1920)
     comfyui_height: int = Field(default=480, ge=256, le=1080)
     comfyui_frames: int = Field(default=121, ge=17, le=241)

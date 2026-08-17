@@ -274,7 +274,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
 
 .viral-console { min-height: 0; overflow: auto; padding: 20px; scrollbar-width: thin; }
 .viral-console .console-head > svg { color: var(--amber); }
-.recipe-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+.recipe-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; }
 .recipe-grid button { min-height: 104px; padding: 11px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; border: 1px solid #303235; border-radius: 6px; background: #17181a; text-align: left; }
 .recipe-grid button > svg { width: 20px; height: 20px; color: #8d8983; }
 .recipe-grid button span { display: grid; gap: 4px; }
@@ -310,7 +310,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
 .provider-lanes small { min-height: 24px; color: var(--muted); font-size: 7.5px; line-height: 1.4; }
 .lane-status { margin-top: auto; align-self: flex-start; padding: 3px 5px; border: 1px solid #59402f; border-radius: 3px; color: #d29568; font: 7px ui-monospace, monospace; letter-spacing: .06em; }
 .lane-status.ready { border-color: #35533b; color: #73bd78; }
-.viral-master-row { display: grid; grid-template-columns: 1fr 140px; gap: 8px; margin: 13px 0 10px; }
+.viral-master-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin: 13px 0 10px; }
 .cost-meter { padding: 8px 10px; border: 1px solid #333538; border-radius: 5px; background: #111213; display: grid; gap: 1px; }
 .cost-meter span { color: var(--muted); font-size: 8px; }
 .cost-meter strong { color: var(--amber); font: 17px ui-monospace, monospace; }
@@ -324,6 +324,20 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
 .viral-generate { width: 100%; margin-top: 10px; }
 .no-publish { margin: 8px 0 0; display: flex; align-items: flex-start; justify-content: center; gap: 6px; color: var(--faint); font-size: 7.5px; line-height: 1.4; text-align: center; }
 .no-publish svg { width: 12px; flex: none; color: var(--amber); }
+.ai-cost { margin: -3px 0 10px; }
+.admission-panel { margin: 10px 0; padding: 10px; border: 1px solid #34373a; border-radius: 6px; background: #101112; }
+.admission-panel > div { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.admission-panel > div span { display: flex; align-items: center; gap: 5px; padding: 6px; border: 1px solid #303235; border-radius: 4px; color: var(--muted); font-size: 8px; }
+.admission-panel > div span svg { width: 12px; flex: none; }
+.admission-panel > div .pass { color: #80c987; border-color: #31533a; background: #101812; }
+.admission-panel > div .fail { color: #e4a19a; border-color: #633b37; background: #211313; }
+.admission-panel > div .pending { color: #a7a29b; }
+.admission-panel p { margin: 8px 0 0; color: var(--faint); font-size: 7.5px; line-height: 1.5; }
+.admission-chip { margin-top: 10px; display: grid !important; gap: 2px !important; padding: 8px !important; border: 1px solid #59402f !important; border-radius: 4px; }
+.admission-chip strong { font: 9px ui-monospace, monospace; }
+.admission-chip span { color: var(--muted); font-size: 8px; }
+.admission-chip.accepted { border-color: #35533b !important; background: #101812; }
+.admission-chip.quarantined { border-color: #6b3935 !important; background: #211313; }
 
 @media (max-width: 1180px) {
   .viral-lab { grid-template-columns: minmax(450px, 1fr) minmax(420px, .92fr); }

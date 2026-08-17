@@ -5,17 +5,23 @@ the social-video patterns that need temporal consistency rather than a slideshow
 performing to music, two fictional characters speaking, or a physically credible fictional
 spectacle. The final master is 1080×1920, 60 fps, H.264, with publishing disabled.
 
+For restrained inserts that may eventually enter an editorial film, open
+`http://127.0.0.1:8741/?workspace=ai`. **AI Generation** adds the neutral **Cinematic Insert** recipe,
+real-reference-first selection, 1–3 seed comparison, and strict admitted/quarantined reporting.
+AI Viral Lab remains the creative sandbox; AI Generation is the controlled admission workshop.
+
 ## What is already automated
 
 - secure local JPG/PNG/WebP subject-reference upload and validation;
 - secure local master-song upload, beat/downbeat analysis, and BPM-aware prompt choreography;
 - one-shot prompt contracts that lock identity, anatomy, lighting, camera, and environment;
-- automatic 768×1344 SDXL first-frame generation when no subject image is supplied;
+- automatic real Pexels first-frame selection, with 768×1344 SDXL as the fallback;
 - reference-image input to the stock ComfyUI Wan 2.2 TI2V 5B workflow;
 - subject-image input to Gemini Omni Flash, with locally derived song timing in the prompt;
 - native-audio preservation for cloud clips and untouched 320 kbps master-song muxing;
-- 576×1024 local motion generation, built-in RIFE 4.26 interpolation from 24 to 48 real motion
-  frames per second, Lanczos mastering, restrained sharpening, and NVENC 60 fps output;
+- fast 512×896/20-step, balanced 576×1024/28-step, and maximum 640×1136/32-step local tiers,
+  built-in RIFE 4.26 interpolation, Lanczos mastering, restrained sharpening, and NVENC 60 fps output;
+- best-of-1–3 sequential seeds plus local temporal metrics and OpenRouter contact-sheet review;
 - a timed local physics bed with stereo debris width, centered low-frequency impact, and
   social-ready loudness for clips that have no source audio;
 - deterministic Remotion previsualization, per-clip cost estimates, run logs, and cancel controls;
@@ -25,7 +31,8 @@ spectacle. The final master is 1080×1920, 60 fps, H.264, with publishing disabl
 ## Use it
 
 1. Open `http://127.0.0.1:8741/?workspace=viral`.
-2. Choose **Beat Creature**, **Talking Duo**, or **Physics Spectacle**.
+2. Choose **Beat Creature**, **Talking Duo**, **Physics Spectacle**, or use **Cinematic Insert** in
+   the separate AI Generation workspace.
 3. Describe one shot, not a montage. Include the subject, action, location, camera, light, and ending
    pose. The UI gives a strong example for each recipe.
 4. Optionally add a clear subject image when a particular identity matters. A three-quarter or
@@ -34,14 +41,15 @@ spectacle. The final master is 1080×1920, 60 fps, H.264, with publishing disabl
 5. For **Beat Creature**, upload the actual final song. AtlasForge detects its BPM, passes the audio
    locally, places BPM/timing instructions into the video prompt, and replaces the generated
    soundtrack with your untouched master in the final file.
-6. Choose a reality lane and press **Generate viral master**.
-7. Watch the full result before using it. The local file remains under `output/<run>/final/video.mp4`.
+6. Choose a reality lane, quality tier, and candidate count, then press **Generate viral master**.
+7. Check the admission badge and watch the full result before using it. A quarantined file remains
+   inspectable under `output/<run>/final/video.mp4`, but it is not approved for automatic editorial use.
 
 ## Reality lanes
 
 | Lane | Best use | This laptop | Audio | Estimated generation price |
 | --- | --- | --- | --- | --- |
-| **Free Local — SDXL → Wan 2.2 → RIFE** | reference-led dancing character; silent/impact spectacle | practical on the RTX 4070 8 GB through ComfyUI offloading; five seconds is the strongest tier | supplied song or local impact design; no honest dialogue lip sync | $0 beyond electricity |
+| **Free Local — real plate/SDXL → Wan 2.2 → RIFE** | restrained single-subject movement; reference-led experiments | practical on the RTX 4070 8 GB through ComfyUI offloading; five seconds at 640×1136 is the measured ceiling | supplied song or local impact design; no honest dialogue lip sync | $0 beyond electricity plus a tiny OpenRouter review by default |
 | **Native Realism — Gemini Omni Flash** | strongest identity continuity; BPM-directed movement; speaking characters | generated in Google cloud | native synchronized voices/SFX; your supplied song is muxed locally afterward | about $0.10/s at 720p |
 | **Budget Native — Veo 3.1 Lite** | prompt-led native-audio clips at lower cost | generated in Google cloud | native audio | about $0.05/s at 720p |
 
@@ -56,7 +64,21 @@ billing in the [official Gemini API pricing table](https://ai.google.dev/gemini-
 The free local lane is already installed on the configured machine. For a Beat Creature you provide
 the song you are authorized to use; for a specific character you may provide a legally usable
 reference image. Otherwise the first frame is automatic. A final human review is still required
-because no open local model can guarantee correct anatomy or physics on every seed.
+because no open local model or automated gate can guarantee correct anatomy, physics, legal
+suitability, or audience perception on every seed.
+
+## Strict admission policy
+
+Ordinary editorial generation asks for real Pexels video first. It reaches local AI only when the
+scene explicitly records both that generation is necessary and why. The AI Generation workspace is
+the manual place to author that exceptional shot. It prefers a clean real Pexels photo as the image-
+to-video plate, then renders two seeds by default. Nine chronological samples from every seed drive
+local sharpness/exposure/flicker/motion/reference checks and an OpenRouter visual-effects review.
+
+The reviewer fails clips with rubbery rigid objects, melting or morphing, identity drift, broken
+anatomy, sliding contact, impossible mass, inconsistent reflections, or synthetic camera shake. If
+no candidate passes, AtlasForge writes the evidence report and labels the output `quarantined`; the
+main scheduler receives no generated clip. The report is `quality/ai_clip_report.json`.
 
 For cloud-native voice, lip sync, and the largest realism jump:
 
@@ -98,6 +120,15 @@ LTX Desktop is also not the default because its official local requirements curr
 least 16 GB VRAM and about 160 GB of free disk. See
 [LTX Desktop](https://github.com/Lightricks/ltx-desktop).
 
+[HunyuanVideo 1.5's official ComfyUI workflow](https://docs.comfy.org/tutorials/video/hunyuan/hunyuan-video-1-5)
+targets 24 GB VRAM, while the current
+[LTX open-source quick start](https://docs.ltx.io/open-source-model/getting-started/quick-start)
+specifies an NVIDIA GPU with at least 16 GB. [FramePack](https://github.com/lllyasviel/FramePack)
+can run on much smaller cards and is valuable for long image-to-video sequences, but its anti-drift
+design does not remove the short-shot physics failures this gate is built to catch. Wan 2.2 TI2V 5B
+therefore remains the installed 8 GB default; these alternatives are documented upgrade paths, not
+silently downloaded duplicate runtimes.
+
 ## CLI
 
 ```powershell
@@ -107,6 +138,17 @@ atlasforge viral-film `
   --provider local_wan `
   --track .\song.mp3 `
   --seconds 5
+```
+
+For a conservative generated insert:
+
+```powershell
+atlasforge viral-film `
+  --recipe cinematic_insert `
+  --concept "An unbranded GT car stays parked in a clean wet pit lane while light rain moves" `
+  --provider local_wan `
+  --seconds 5 `
+  --candidates 2
 ```
 
 `--reference .\cat.png` is now an optional identity override for the local lane. Without it, the

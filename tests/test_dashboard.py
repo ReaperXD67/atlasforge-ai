@@ -56,3 +56,32 @@ def test_dashboard_serves_finished_run_artifacts(settings: Settings) -> None:
     assert client.get("/api/runs/test-run/scenes/1").content == b"scene"
     assert client.get("/api/runs/test-run/scenes/2").status_code == 404
     assert client.get("/api/runs/missing/video").status_code == 404
+
+
+def test_dashboard_maps_host_paths_to_the_current_output_mount(settings: Settings) -> None:
+    output = settings.output_directory.resolve()
+    run_root = output / "2026-08-15-foreign-run"
+    video = run_root / "final" / "video.mp4"
+    report = run_root / "quality" / "ai_clip_report.json"
+    video.parent.mkdir(parents=True)
+    report.parent.mkdir(parents=True)
+    video.write_bytes(b"portable-video")
+    report.write_text(
+        json.dumps({"decision": "accepted", "selected_score": 0.91}),
+        encoding="utf-8",
+    )
+    store = RunStore(output)
+    store.save_manifest(
+        RunManifest(
+            run_id="foreign-run",
+            publication_date=date(2026, 8, 15),
+            status=RunStatus.ready,
+            output_root=Path(r"C:\host\atlasforge\output\2026-08-15-foreign-run"),
+            final_video=Path(r"C:\host\atlasforge\output\2026-08-15-foreign-run\final\video.mp4"),
+        )
+    )
+    client = TestClient(create_app(settings, Path("config/profiles")))
+
+    payload = client.get("/api/runs/foreign-run").json()
+    assert payload["ai_quality"]["decision"] == "accepted"
+    assert client.get("/api/runs/foreign-run/video").content == b"portable-video"

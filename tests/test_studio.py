@@ -92,6 +92,7 @@ def test_studio_viral_mode_uses_vertical_local_contract(tmp_path: Path) -> None:
         viral_recipe="beat_creature",
         viral_provider="local_wan",
         viral_seconds=8,
+        viral_candidates=3,
     )
 
     studio._render_job_config(request, destination)
@@ -104,6 +105,7 @@ def test_studio_viral_mode_uses_vertical_local_contract(tmp_path: Path) -> None:
     assert rendered.video.comfyui_rife_enabled is True
     assert rendered.video.interpolate_low_fps_clips is False
     assert rendered.video.local_generation_enabled is True
+    assert rendered.video.local_generation_candidates == 3
     assert rendered.video.enable_premium_scenes is False
     assert rendered.subtitles.burn_in is False
     assert rendered.publishing.enabled is False

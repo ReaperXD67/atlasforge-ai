@@ -16,3 +16,6 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - OpenRouter is the default script provider. Kokoro, Whisper, Pexels, FFmpeg, and NVENC are local/low-cost pipeline components whose states should reflect backend data rather than hard-coded success.
 - Keep a distinct Remotion Lab for music-first faceless films. It should feel like a professional race-event director: uploaded master track, visible BPM/beat evidence, purposeful motorsport shot grammar, deterministic motion preview, and no implication that decorative preview graphics are the final footage.
 - Keep AI Viral Lab as a third, clearly distinct one-shot workspace: vertical Remotion previsualization, Beat Creature/Talking Duo/Physics Spectacle recipes, reference and music inputs, provider readiness, honest per-clip costs, and explicit synthetic-media provenance. Never imply the 5B local lane creates exact dialogue lip sync or that a previsualization is generated footage.
+- Keep AI Generation as a separate quarantined candidate workspace. Real footage stays first in
+  Editorial and Remotion; local synthetic footage requires an explicit reason, best-of-seed review,
+  and visible admitted/quarantined evidence before it can be considered for an edit.

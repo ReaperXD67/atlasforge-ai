@@ -7,6 +7,7 @@ import json
 import mimetypes
 import os
 import re
+import shutil
 import time
 import uuid
 from abc import abstractmethod
@@ -14,10 +15,12 @@ from pathlib import Path
 from typing import Any
 
 import httpx
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFilter, ImageOps, ImageStat
 
 from ..config import Settings
 from ..exceptions import ProviderFailed
+from ..media.ai_quality import SyntheticClipInspector
+from ..media.ffmpeg import FFmpeg
 from ..models import CostEntry, Scene
 from .base import Provider
 
@@ -123,7 +126,12 @@ class LocalClipRanker:
             return set(re.findall(r"[a-z0-9]+", value.casefold()))
 
         query_tokens = tokens(query) - generic
-        source_tokens = tokens(str(video.get("url") or "")) - generic
+        source_tokens = (
+            tokens(
+                " ".join(str(video.get(field) or "") for field in ("url", "title", "description"))
+            )
+            - generic
+        )
         if not query_tokens or not source_tokens:
             return 0.0
         matched = 0
@@ -169,14 +177,11 @@ class LocalClipRanker:
         try:
             import torch
 
-            inputs = processor(
-                text=text_prompts, images=images, return_tensors="pt", padding=True
-            )
+            inputs = processor(text=text_prompts, images=images, return_tensors="pt", padding=True)
             with torch.inference_mode():
                 probabilities = model(**inputs).logits_per_image.softmax(dim=1)[:, 0].tolist()
             semantic_scores = {
-                asset_id: float(score)
-                for asset_id, score in zip(ids, probabilities, strict=True)
+                asset_id: float(score) for asset_id, score in zip(ids, probabilities, strict=True)
             }
             by_id = {int(video["id"]): video for video in videos}
             return {
@@ -452,6 +457,237 @@ class LocalVideoProvider(Provider[Path]):
         pass
 
 
+class PexelsReferenceImageProvider(Provider[Path]):
+    """Choose a real portrait plate before asking a local video model to invent pixels."""
+
+    name = "pexels_reference"
+
+    def __init__(self, settings: Settings) -> None:
+        self.cfg = settings.video
+        self._ranker = LocalClipRanker(
+            self.cfg.stock_video_semantic_model,
+            self.cfg.stock_video_semantic_candidates,
+        )
+
+    def available(self) -> bool:
+        return bool(os.getenv("PEXELS_API_KEY"))
+
+    def _vision_pick(
+        self, query: str, candidates: list[tuple[dict[str, Any], float | None, Image.Image]]
+    ) -> int | None:
+        """Pick the cleanest motion-ready real plate from a small numbered contact sheet."""
+        api_key = os.getenv("OPENROUTER_API_KEY")
+        if not api_key:
+            return 0
+        tile_width, tile_height = 220, 390
+        sheet = Image.new("RGB", (tile_width * 3, tile_height * 3), "#111111")
+        draw = ImageDraw.Draw(sheet)
+        for index, (_photo, _score, image) in enumerate(candidates[:9]):
+            tile = ImageOps.fit(
+                image.convert("RGB"),
+                (tile_width, tile_height),
+                method=Image.Resampling.LANCZOS,
+            )
+            x, y = (index % 3) * tile_width, (index // 3) * tile_height
+            sheet.paste(tile, (x, y))
+            draw.rectangle((x + 7, y + 7, x + 37, y + 38), fill="#111111")
+            draw.text((x + 16, y + 12), str(index + 1), fill="white")
+        buffer = io.BytesIO()
+        sheet.save(buffer, format="JPEG", quality=86, optimize=True)
+        encoded = base64.b64encode(buffer.getvalue()).decode("ascii")
+        schema = {
+            "type": "object",
+            "additionalProperties": False,
+            "required": [
+                "selected_index",
+                "usable_for_image_to_video",
+                "has_prominent_text_or_logo",
+                "reason",
+            ],
+            "properties": {
+                "selected_index": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": min(9, len(candidates)),
+                },
+                "usable_for_image_to_video": {"type": "boolean"},
+                "has_prominent_text_or_logo": {"type": "boolean"},
+                "reason": {"type": "string", "maxLength": 300},
+            },
+        }
+        try:
+            response = httpx.post(
+                "https://openrouter.ai/api/v1/chat/completions",
+                headers={
+                    "Authorization": f"Bearer {api_key}",
+                    "Content-Type": "application/json",
+                    "HTTP-Referer": "https://github.com/ReaperXD67/atlasforge-ai",
+                    "X-OpenRouter-Title": "AtlasForge Reference Director",
+                },
+                json={
+                    "model": self.cfg.local_generation_vlm_model,
+                    "temperature": 0,
+                    "messages": [
+                        {
+                            "role": "system",
+                            "content": (
+                                "Choose one real photograph as an image-to-video start frame. "
+                                "Prioritize one clear primary subject, exact query match, simple "
+                                "background, visible ground contact, plausible perspective, clean "
+                                "lighting, and room for subtle motion. Strongly avoid visible text, "
+                                "logos, watermarks, famous landmarks, extra foreground objects, "
+                                "collages, crowds, cropped subjects, and busy compositions. A tiny "
+                                "ordinary manufacturer badge may be tolerable, but large branding, "
+                                "race-livery sponsors, signs, banners, and readable lettering are "
+                                "not. Return selected_index 0 when every option is unsuitable; never "
+                                "pick a least-bad image that violates these rules. Set "
+                                "has_prominent_text_or_logo true when the chosen tile has any "
+                                "lettering or logo large enough to remain readable at social-video "
+                                "size. Set usable_for_image_to_video false for such a tile."
+                            ),
+                        },
+                        {
+                            "role": "user",
+                            "content": [
+                                {"type": "text", "text": f"Reference intent: {query}"},
+                                {
+                                    "type": "image_url",
+                                    "image_url": {"url": f"data:image/jpeg;base64,{encoded}"},
+                                },
+                            ],
+                        },
+                    ],
+                    "response_format": {
+                        "type": "json_schema",
+                        "json_schema": {
+                            "name": "reference_selection",
+                            "strict": True,
+                            "schema": schema,
+                        },
+                    },
+                },
+                timeout=90,
+            )
+            response.raise_for_status()
+            content = json.loads(response.json()["choices"][0]["message"]["content"])
+            selected = int(content["selected_index"])
+            if (
+                selected == 0
+                or not bool(content["usable_for_image_to_video"])
+                or bool(content["has_prominent_text_or_logo"])
+            ):
+                return None
+            return max(0, min(len(candidates) - 1, selected - 1))
+        except Exception:
+            return None
+
+    def generate(self, query: str, output: Path) -> Path:
+        response = httpx.get(
+            "https://api.pexels.com/v1/search",
+            headers={"Authorization": os.environ["PEXELS_API_KEY"]},
+            params={
+                "query": query,
+                "orientation": "portrait",
+                "size": "large",
+                "per_page": min(40, self.cfg.stock_video_candidates_per_scene * 2),
+            },
+            timeout=30,
+        )
+        if response.status_code >= 400:
+            raise ProviderFailed(f"Pexels reference search returned HTTP {response.status_code}")
+        photos = [photo for photo in response.json().get("photos", []) if photo.get("src")]
+        if not photos:
+            raise ProviderFailed(f"Pexels returned no photographic reference for '{query}'")
+        rankable = [
+            {
+                "id": photo.get("id"),
+                "url": photo.get("url"),
+                "title": photo.get("alt"),
+                "video_pictures": [
+                    {"picture": photo["src"].get("medium") or photo["src"].get("portrait")}
+                ],
+            }
+            for photo in photos
+        ]
+        semantic = self._ranker.rank(
+            query,
+            rankable,
+            ["illustration", "render", "toy", "miniature", "watermark"],
+        )
+        by_id = {int(photo["id"]): photo for photo in photos if photo.get("id")}
+        rankable_by_id = {int(item["id"]): item for item in rankable if item.get("id")}
+        ranked_ids = sorted(
+            by_id,
+            key=lambda asset_id: (
+                semantic.get(asset_id, -1),
+                self._ranker._metadata_relevance(query, rankable_by_id[asset_id]),
+            ),
+            reverse=True,
+        )
+        usable: list[tuple[dict[str, Any], float | None, Image.Image]] = []
+        for asset_id in ranked_ids[:8]:
+            candidate = by_id[asset_id]
+            score = semantic.get(asset_id)
+            if score is not None and score < self.cfg.stock_video_min_visual_relevance:
+                continue
+            source = (
+                candidate["src"].get("large2x")
+                or candidate["src"].get("portrait")
+                or candidate["src"].get("original")
+            )
+            try:
+                image_response = httpx.get(str(source), timeout=90, follow_redirects=True)
+                image_response.raise_for_status()
+                with Image.open(io.BytesIO(image_response.content)) as image:
+                    fitted = ImageOps.fit(
+                        image.convert("RGB"),
+                        (
+                            self.cfg.comfyui_reference_width,
+                            self.cfg.comfyui_reference_height,
+                        ),
+                        method=Image.Resampling.LANCZOS,
+                    )
+                gray = fitted.convert("L")
+                mean_luma = float(ImageStat.Stat(gray).mean[0])
+                edge_rms = float(ImageStat.Stat(gray.filter(ImageFilter.FIND_EDGES)).rms[0])
+                histogram = gray.histogram()
+                clipped = sum(histogram[:5] + histogram[-5:]) / max(1, fitted.width * fitted.height)
+                if not 52 <= mean_luma <= 215 or edge_rms < 12 or clipped > 0.28:
+                    continue
+                usable.append((candidate, score, fitted))
+            except Exception:
+                continue
+        if not usable:
+            raise ProviderFailed(f"No sharp, well-exposed real reference passed for '{query}'")
+        selected_index = self._vision_pick(query, usable)
+        if selected_index is None:
+            raise ProviderFailed(
+                f"No clean, unbranded real reference passed visual direction for '{query}'"
+            )
+        selected, selected_score, selected_image = usable[selected_index]
+        output.parent.mkdir(parents=True, exist_ok=True)
+        selected_image.save(output, quality=96, subsampling=0)
+        output.with_suffix(".license.json").write_text(
+            json.dumps(
+                {
+                    "provider": "Pexels",
+                    "media_type": "photo",
+                    "photo_id": selected.get("id"),
+                    "photographer": selected.get("photographer"),
+                    "photographer_url": selected.get("photographer_url"),
+                    "photo_url": selected.get("url"),
+                    "search_query": query,
+                    "visual_relevance_score": selected_score,
+                    "role": "real_generation_reference",
+                    "synthetic_media": False,
+                },
+                indent=2,
+            ),
+            encoding="utf-8",
+        )
+        return output
+
+
 class ComfyUISDXLReferenceProvider(Provider[Path]):
     """Create a sharp local first frame before Wan has to solve temporal motion."""
 
@@ -469,9 +705,7 @@ class ComfyUISDXLReferenceProvider(Provider[Path]):
 
     def available(self) -> bool:
         try:
-            response = httpx.get(
-                f"{self.base_url}/object_info/CheckpointLoaderSimple", timeout=5
-            )
+            response = httpx.get(f"{self.base_url}/object_info/CheckpointLoaderSimple", timeout=5)
             response.raise_for_status()
             node = response.json().get("CheckpointLoaderSimple", {})
             choices = _comfy_model_choices(node, "ckpt_name")
@@ -479,11 +713,11 @@ class ComfyUISDXLReferenceProvider(Provider[Path]):
         except (httpx.HTTPError, KeyError, TypeError):
             return False
 
-    def _workflow(
-        self, prompt: str, seed: int | None = None
-    ) -> dict[str, dict[str, Any]]:
-        seed = seed if seed is not None else int(
-            hashlib.sha256(prompt.encode("utf-8")).hexdigest()[:14], 16
+    def _workflow(self, prompt: str, seed: int | None = None) -> dict[str, dict[str, Any]]:
+        seed = (
+            seed
+            if seed is not None
+            else int(hashlib.sha256(prompt.encode("utf-8")).hexdigest()[:14], 16)
         )
         return {
             "1": {
@@ -543,8 +777,10 @@ class ComfyUISDXLReferenceProvider(Provider[Path]):
         return None
 
     def generate(self, prompt: str, output: Path, *, seed: int | None = None) -> Path:
-        resolved_seed = seed if seed is not None else int(
-            hashlib.sha256(prompt.encode("utf-8")).hexdigest()[:14], 16
+        resolved_seed = (
+            seed
+            if seed is not None
+            else int(hashlib.sha256(prompt.encode("utf-8")).hexdigest()[:14], 16)
         )
         response = httpx.post(
             f"{self.base_url}/prompt",
@@ -852,6 +1088,7 @@ class ComfyUIWan22Provider(LocalVideoProvider):
 
 class LocalSceneScheduler:
     def __init__(self, settings: Settings) -> None:
+        self.settings = settings
         self.cfg = settings.video
         mapping: dict[str, LocalVideoProvider] = {
             "comfyui_wan22": ComfyUIWan22Provider(settings),
@@ -868,31 +1105,122 @@ class LocalSceneScheduler:
             or self.cfg.local_generation_max_scenes_per_video <= 0
         ):
             return {}, []
+        # Synthetic video is not a generic quality upgrade. The upstream source planner only
+        # sends scenes here after real video has failed, and the scene itself must explicitly
+        # explain why generated motion is necessary.
         candidates = [
             scene
             for scene in scenes
-            if scene.visual_mode == "local_ai_candidate"
-            or scene.premium_score >= self.cfg.local_generation_min_score
+            if scene.ai_generation_required
+            and bool(scene.ai_generation_reason.strip())
+            and (
+                scene.visual_mode == "local_ai_candidate"
+                or scene.premium_score >= self.cfg.local_generation_min_score
+            )
         ]
         selected = sorted(candidates, key=lambda scene: scene.premium_score, reverse=True)[
             : self.cfg.local_generation_max_scenes_per_video
         ]
         results: dict[int, Path] = {}
         costs: list[CostEntry] = []
+        inspector = SyntheticClipInspector(self.settings, FFmpeg())
         for scene in selected:
             for provider in self.providers:
                 if not provider.available():
                     continue
                 try:
-                    path = output_dir / f"scene_{scene.index:03d}_{provider.name}.mp4"
-                    results[scene.index] = provider.generate(scene, path)
+                    output_dir.mkdir(parents=True, exist_ok=True)
+                    final_path = output_dir / f"scene_{scene.index:03d}_{provider.name}.mp4"
+                    candidate_total = (
+                        self.cfg.local_generation_candidates
+                        if self.cfg.local_generation_quality_gate
+                        else 1
+                    )
+                    base_seed = scene.generation_seed
+                    if base_seed is None:
+                        base_seed = int(
+                            hashlib.sha256(scene.video_prompt.encode("utf-8")).hexdigest()[:14],
+                            16,
+                        )
+                    candidate_reports: list[dict[str, object]] = []
+                    passed_candidates: list[tuple[float, Path, int]] = []
+                    for candidate_index in range(candidate_total):
+                        seed = (base_seed + candidate_index * 1_000_003) % (2**63 - 1)
+                        candidate_scene = scene.model_copy(
+                            deep=True, update={"generation_seed": seed}
+                        )
+                        candidate_path = output_dir / (
+                            f"scene_{scene.index:03d}_{provider.name}_"
+                            f"candidate_{candidate_index + 1:02d}_{seed}.mp4"
+                        )
+                        try:
+                            generated = provider.generate(candidate_scene, candidate_path)
+                            if self.cfg.local_generation_quality_gate:
+                                report = inspector.inspect(
+                                    generated,
+                                    reference=scene.reference_image,
+                                    prompt=scene.video_prompt,
+                                )
+                                candidate_reports.append(report.model_dump(mode="json"))
+                                if report.passed:
+                                    passed_candidates.append((report.score, generated, seed))
+                            else:
+                                passed_candidates.append((1.0, generated, seed))
+                        except Exception as exc:
+                            candidate_reports.append(
+                                {
+                                    "clip": str(candidate_path),
+                                    "passed": False,
+                                    "score": 0,
+                                    "reasons": [f"Generation failed: {type(exc).__name__}"],
+                                }
+                            )
+                    if not passed_candidates:
+                        final_path.with_suffix(".quality.json").write_text(
+                            json.dumps(
+                                {
+                                    "decision": "quarantined",
+                                    "candidate_count": candidate_total,
+                                    "candidates": candidate_reports,
+                                },
+                                indent=2,
+                            ),
+                            encoding="utf-8",
+                        )
+                        continue
+                    _score, generated, accepted_seed = max(
+                        passed_candidates, key=lambda item: item[0]
+                    )
+                    final_path.with_suffix(".quality.json").write_text(
+                        json.dumps(
+                            {
+                                "decision": "accepted",
+                                "candidate_count": candidate_total,
+                                "selected_clip": str(generated),
+                                "selected_seed": accepted_seed,
+                                "selected_score": _score,
+                                "candidates": candidate_reports,
+                            },
+                            indent=2,
+                        ),
+                        encoding="utf-8",
+                    )
+                    shutil.copy2(generated, final_path)
+                    candidate_license = generated.with_suffix(".license.json")
+                    if candidate_license.is_file():
+                        shutil.copy2(candidate_license, final_path.with_suffix(".license.json"))
+                    scene.generation_seed = accepted_seed
+                    results[scene.index] = final_path
                     scene.selected_video_provider = provider.name
                     costs.append(
                         CostEntry(
                             stage="video",
                             provider=provider.name,
                             estimated_usd=0,
-                            note=f"Local GPU scene {scene.index}; electricity only",
+                            note=(
+                                f"Best-of-{candidate_total} admitted local GPU scene "
+                                f"{scene.index}; electricity only"
+                            ),
                         )
                     )
                     break
@@ -979,7 +1307,9 @@ class GeminiOmniVideoProvider(PremiumVideoProvider):
                     "model": self.cfg.gemini_omni_model,
                     "synthetic_media": True,
                     "task": scene.generation_task,
-                    "reference_image": str(scene.reference_image) if scene.reference_image else None,
+                    "reference_image": str(scene.reference_image)
+                    if scene.reference_image
+                    else None,
                     "prompt": scene.video_prompt,
                 },
                 indent=2,

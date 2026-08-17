@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from typing import Annotated
 
 from fastapi import FastAPI, File, HTTPException, UploadFile
@@ -24,6 +24,17 @@ def create_app(settings: Settings, profile_directory: Path = Path("config/profil
     store = RunStore(settings.output_directory.resolve())
     studio = StudioManager(settings, profile_directory)
 
+    def run_root(run: dict[str, object]) -> Path:
+        """Resolve persisted host paths through the current Docker/native output mount."""
+        output_root = settings.output_directory.resolve()
+        stored = Path(str(run["output_root"])).resolve()
+        if (stored == output_root or output_root in stored.parents) and stored.is_dir():
+            return stored
+        mounted = output_root / f"{run['publication_date']}-{run['run_id']}"
+        if mounted.is_dir():
+            return mounted.resolve()
+        raise HTTPException(status_code=404, detail="Run artifacts are not available")
+
     @app.get("/api/runs")
     def list_runs() -> list[dict[str, object]]:
         return store.list_runs()
@@ -34,6 +45,10 @@ def create_app(settings: Settings, profile_directory: Path = Path("config/profil
         if run is None:
             raise HTTPException(status_code=404, detail="Run not found")
         run["stages"] = store.list_stages(run_id)
+        root = run_root(run)
+        report = root / "quality" / "ai_clip_report.json"
+        if report.is_file():
+            run["ai_quality"] = json.loads(report.read_text(encoding="utf-8"))
         return run
 
     def run_artifact(run_id: str, field: str) -> Path:
@@ -45,9 +60,22 @@ def create_app(settings: Settings, profile_directory: Path = Path("config/profil
             raise HTTPException(
                 status_code=404, detail=f"{field.replace('_', ' ').title()} is not ready"
             )
+        root = run_root(run)
         target = Path(str(value)).resolve()
-        output_root = settings.output_directory.resolve()
-        if output_root not in target.parents or not target.is_file():
+        if root not in target.parents or not target.is_file():
+            relative = {
+                "final_video": Path("final/video.mp4"),
+                "thumbnail": Path("thumbnails/viral-poster.jpg"),
+            }.get(field)
+            if relative is None or not (target := root / relative).is_file():
+                # Narrated/music runs use a generated thumbnail name rather than viral-poster.
+                if field != "thumbnail":
+                    raise HTTPException(status_code=404, detail="Artifact not found")
+                thumbnails = sorted((root / "thumbnails").glob("*.jpg"))
+                if not thumbnails:
+                    raise HTTPException(status_code=404, detail="Artifact not found")
+                target = thumbnails[0]
+        if root not in target.resolve().parents:
             raise HTTPException(status_code=404, detail="Artifact not found")
         return target
 
@@ -64,10 +92,9 @@ def create_app(settings: Settings, profile_directory: Path = Path("config/profil
         run = store.get_run(run_id)
         if run is None:
             raise HTTPException(status_code=404, detail="Run not found")
-        root = Path(str(run["output_root"])).resolve()
-        output_root = settings.output_directory.resolve()
+        root = run_root(run)
         storyboard = root / "storyboards" / "storyboard_timed.json"
-        if output_root not in storyboard.parents or not storyboard.is_file():
+        if not storyboard.is_file():
             raise HTTPException(status_code=404, detail="Storyboard is not ready")
         return json.loads(storyboard.read_text(encoding="utf-8"))
 
@@ -76,17 +103,22 @@ def create_app(settings: Settings, profile_directory: Path = Path("config/profil
         run = store.get_run(run_id)
         if run is None:
             raise HTTPException(status_code=404, detail="Run not found")
-        root = Path(str(run["output_root"])).resolve()
-        output_root = settings.output_directory.resolve()
+        root = run_root(run)
         image_index = root / "scenes" / "images.json"
-        if output_root not in image_index.parents or not image_index.is_file():
+        if not image_index.is_file():
             raise HTTPException(status_code=404, detail="Scene images are not ready")
         payload = json.loads(image_index.read_text(encoding="utf-8"))
         match = next((item for item in payload if int(item.get("scene", -1)) == scene_index), None)
         if match is None:
             raise HTTPException(status_code=404, detail="Scene image not found")
-        target = Path(str(match.get("path", ""))).resolve()
-        if output_root not in target.parents or root not in target.parents or not target.is_file():
+        raw_target = str(match.get("path", ""))
+        target = Path(raw_target).resolve()
+        if root not in target.parents or not target.is_file():
+            filename = (
+                PureWindowsPath(raw_target).name if "\\" in raw_target else Path(raw_target).name
+            )
+            target = (root / "scenes" / filename).resolve()
+        if root not in target.parents or not target.is_file():
             raise HTTPException(status_code=404, detail="Scene image not found")
         return FileResponse(target, media_type="image/jpeg")
 
@@ -110,7 +142,9 @@ def create_app(settings: Settings, profile_directory: Path = Path("config/profil
                 while chunk := await file.read(1024 * 1024):
                     size += len(chunk)
                     if size > 250 * 1024 * 1024:
-                        raise HTTPException(status_code=413, detail="Music uploads are limited to 250 MB")
+                        raise HTTPException(
+                            status_code=413, detail="Music uploads are limited to 250 MB"
+                        )
                     destination.write(chunk)
             if size < 4096:
                 raise HTTPException(status_code=400, detail="The uploaded music file is empty")
@@ -174,7 +208,9 @@ def create_app(settings: Settings, profile_directory: Path = Path("config/profil
             raise
         except (OSError, UnidentifiedImageError, Image.DecompressionBombError) as exc:
             target.unlink(missing_ok=True)
-            raise HTTPException(status_code=400, detail="This is not a safe, readable image") from exc
+            raise HTTPException(
+                status_code=400, detail="This is not a safe, readable image"
+            ) from exc
         finally:
             await file.close()
         return {

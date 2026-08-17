@@ -150,7 +150,7 @@ def _visual_plan(narration: str, index: int, title: str) -> tuple[str, str, str]
         return (
             "confident adult beginning an online learning journey cinematic",
             title,
-            "local_ai_candidate",
+            "documentary_broll",
         )
     return (
         "authentic adult learning and taking notes in calm home office",
@@ -233,11 +233,12 @@ class StoryboardBuilder:
                 narration, index + 1, script.title
             )
             if is_hook and visual_mode != "information_card":
-                # The local generator opens on a brand-safe conceptual scene. Real product
-                # claims and packaging remain licensed footage or owned information cards.
+                # A documentary hook needs believable human footage more than synthetic novelty.
+                # Local AI is reserved for explicitly authored impossible shots in the separate
+                # AI Generation Lab and never selected merely because a scene is first.
                 visual_query = "open notebook smartphone and laptop on clean desk morning light"
                 onscreen_title = script.title
-                visual_mode = "local_ai_candidate"
+                visual_mode = "documentary_broll"
             environment = self.ENVIRONMENTS[index % len(self.ENVIRONMENTS)]
             angle = self.ANGLES[index % len(self.ANGLES)]
             lighting = self.LIGHTING[index % len(self.LIGHTING)]

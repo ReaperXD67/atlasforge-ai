@@ -12,8 +12,9 @@ through the long-form explainer timeline.
 4. Wait for the local analyzer to show BPM, downbeats, and energy sections.
 5. Set the event title and choose a 30, 60, 90, or 180-second cut. Use 60 seconds for the first
    boss review.
-6. Leave **CLIP-ranked footage** on. Enable **Wan hero shot** only if ComfyUI is ready and you can
-   accept the extra local render time.
+6. Leave **Real footage first** on. **Strict AI fallback** only arms the provider; this racing
+   storyboard does not generate a local insert unless a future scene explicitly records why it is
+   necessary and the result passes admission.
 7. Play the Remotion preview. Its orange track pulse and motion are driven by the uploaded master;
    it is a graphics proof, not fake footage.
 8. Click **Build beat-synced race film**. The job downloads real race-circuit footage, rejects weak
@@ -34,8 +35,8 @@ the rhythm or emotional arc of a file it has not received.
   and event closure.
 - Pexels Video supplies real footage. Local CLIP compares the actual candidate thumbnails to the
   shot brief; duration, resolution, creator diversity, and semantic relevance all affect selection.
-- Wan 2.2 is limited to one high-value hero shot. This keeps the RTX 4070 Laptop GPU usable and
-  prevents local diffusion from becoming the bottleneck.
+- Wan 2.2 is outside the default racing storyboard. Any future local insert is limited to one
+  explicitly necessary scene and must pass the same realism gate as the AI Generation workspace.
 - Remotion powers the deterministic live preview and beat-reactive graphics. FFmpeg/NVENC remains
   the final local renderer because it is faster and more reliable for dozens of real clips.
 - The uploaded track remains the master. AtlasForge does not duck it under narration or replace it
@@ -67,8 +68,9 @@ their explicit permission.
    model is `eleven_multilingual_v2`; pricing is usage based. See the
    [ElevenLabs TTS docs](https://elevenlabs.io/docs/overview/capabilities/text-to-speech) and
    [API pricing](https://elevenlabs.io/pricing/api).
-3. **One Veo 3.1 Lite hero shot** — add `GOOGLE_API_KEY`, enable premium scenes, keep the limit at
-   one, and use `veo-3.1-lite-generate-preview`. Google currently lists no free API tier and prices
+3. **One Veo 3.1 Lite fallback shot** — add `GOOGLE_API_KEY`, enable premium scenes, keep the limit at
+   one, and use `veo-3.1-lite-generate-preview`. It is considered only when licensed footage was not
+   selected. Google currently lists no free API tier and prices
    720p Lite at $0.05/second, so an eight-second shot is about $0.40. See the
    [official Veo guide](https://ai.google.dev/gemini-api/docs/veo) and
    [live pricing](https://ai.google.dev/gemini-api/docs/pricing).

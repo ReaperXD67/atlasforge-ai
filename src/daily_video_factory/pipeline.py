@@ -271,60 +271,10 @@ class DailyVideoPipeline:
                 else:
                     images = self._execute("images", manifest, paths, image_operation)
 
-                def premium_operation() -> dict[int, Path]:
-                    generated, costs = PremiumSceneScheduler(self.settings).generate(
-                        storyboard.scenes, paths.videos / "premium"
-                    )
-                    manifest.costs.extend(costs)
-                    paths.write_json(
-                        "videos/premium/index.json",
-                        {str(index): str(path) for index, path in generated.items()},
-                    )
-                    paths.write_json("storyboards/storyboard_timed.json", storyboard)
-                    return generated
-
-                premium_index = paths.videos / "premium" / "index.json"
-                if (
-                    resume
-                    and self.store.stage_completed(manifest.run_id, "premium_video")
-                    and premium_index.exists()
-                ):
-                    raw = json.loads(premium_index.read_text(encoding="utf-8"))
-                    premium = {int(index): Path(path) for index, path in raw.items()}
-                else:
-                    premium = self._execute("premium_video", manifest, paths, premium_operation)
-
-                def local_video_operation() -> dict[int, Path]:
-                    generated, costs = LocalSceneScheduler(self.settings).generate(
-                        [scene for scene in storyboard.scenes if scene.index not in premium],
-                        paths.videos / "local_ai",
-                    )
-                    manifest.costs.extend(costs)
-                    paths.write_json(
-                        "videos/local_ai/index.json",
-                        {str(index): str(path) for index, path in generated.items()},
-                    )
-                    paths.write_json("storyboards/storyboard_timed.json", storyboard)
-                    return generated
-
-                local_index = paths.videos / "local_ai" / "index.json"
-                if (
-                    resume
-                    and self.store.stage_completed(manifest.run_id, "local_video")
-                    and local_index.exists()
-                ):
-                    raw = json.loads(local_index.read_text(encoding="utf-8"))
-                    local_video = {int(index): Path(path) for index, path in raw.items()}
-                else:
-                    local_video = self._execute(
-                        "local_video", manifest, paths, local_video_operation
-                    )
-
                 def stock_video_operation() -> dict[int, Path]:
                     generated = StockVideoScheduler(self.settings).generate(
                         storyboard.scenes,
                         paths.videos / "stock",
-                        excluded_scene_ids=set(premium) | set(local_video),
                     )
                     if generated:
                         self._record_cost(
@@ -356,6 +306,71 @@ class DailyVideoPipeline:
                         "stock_video", manifest, paths, stock_video_operation
                     )
 
+                def premium_operation() -> dict[int, Path]:
+                    # Premium synthetic media is still a fallback. A matching real clip always
+                    # wins, even when the premium lane is enabled.
+                    remaining = [
+                        scene for scene in storyboard.scenes if scene.index not in stock_video
+                    ]
+                    generated, costs = PremiumSceneScheduler(self.settings).generate(
+                        remaining, paths.videos / "premium"
+                    )
+                    manifest.costs.extend(costs)
+                    paths.write_json(
+                        "videos/premium/index.json",
+                        {str(index): str(path) for index, path in generated.items()},
+                    )
+                    paths.write_json("storyboards/storyboard_timed.json", storyboard)
+                    return generated
+
+                premium_index = paths.videos / "premium" / "index.json"
+                if (
+                    resume
+                    and self.store.stage_completed(manifest.run_id, "premium_video")
+                    and premium_index.exists()
+                ):
+                    raw = json.loads(premium_index.read_text(encoding="utf-8"))
+                    premium = {int(index): Path(path) for index, path in raw.items()}
+                else:
+                    premium = self._execute("premium_video", manifest, paths, premium_operation)
+
+                def local_video_operation() -> dict[int, Path]:
+                    remaining = [
+                        scene
+                        for scene in storyboard.scenes
+                        if scene.index not in stock_video and scene.index not in premium
+                    ]
+                    # If an explicitly necessary local shot reaches this stage, animate the real
+                    # image already selected for it instead of inventing a first frame from text.
+                    for scene in remaining:
+                        if scene.ai_generation_required:
+                            scene.reference_image = images[scene.index]
+                            scene.generation_task = "image_to_video"
+                    generated, costs = LocalSceneScheduler(self.settings).generate(
+                        remaining,
+                        paths.videos / "local_ai",
+                    )
+                    manifest.costs.extend(costs)
+                    paths.write_json(
+                        "videos/local_ai/index.json",
+                        {str(index): str(path) for index, path in generated.items()},
+                    )
+                    paths.write_json("storyboards/storyboard_timed.json", storyboard)
+                    return generated
+
+                local_index = paths.videos / "local_ai" / "index.json"
+                if (
+                    resume
+                    and self.store.stage_completed(manifest.run_id, "local_video")
+                    and local_index.exists()
+                ):
+                    raw = json.loads(local_index.read_text(encoding="utf-8"))
+                    local_video = {int(index): Path(path) for index, path in raw.items()}
+                else:
+                    local_video = self._execute(
+                        "local_video", manifest, paths, local_video_operation
+                    )
+
                 renderer = VideoRenderer(self.settings, self.ffmpeg)
                 silent_video = paths.videos / "assembled_silent.mp4"
 
@@ -368,9 +383,9 @@ class DailyVideoPipeline:
                         if position < scene_count - 1:
                             visual_duration += self.settings.video.transition_seconds
                         clip = (
-                            premium.get(scene.index)
+                            stock_video.get(scene.index)
+                            or premium.get(scene.index)
                             or local_video.get(scene.index)
-                            or stock_video.get(scene.index)
                         )
                         if clip is not None:
                             renderer.normalize_video_scene(

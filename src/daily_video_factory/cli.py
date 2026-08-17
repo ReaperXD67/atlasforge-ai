@@ -98,11 +98,13 @@ def music_film_command(
 @app.command("viral-film")
 def viral_film_command(
     recipe: str = typer.Option(
-        "beat_creature", help="beat_creature, talking_duo, or physics_spectacle."
+        "beat_creature",
+        help="cinematic_insert, beat_creature, talking_duo, or physics_spectacle.",
     ),
     concept: str = typer.Option(..., help="The subject, action, environment, and camera idea."),
     provider: str = typer.Option("local_wan", help="local_wan, gemini_omni, or veo."),
     seconds: float = typer.Option(5, min=3, max=10),
+    candidates: int = typer.Option(2, min=1, max=3, help="Local seeds to generate and rank."),
     reference: Path | None = typer.Option(None, exists=True, dir_okay=False),
     track: Path | None = typer.Option(None, exists=True, dir_okay=False),
     dialogue_a: str = typer.Option(""),
@@ -110,8 +112,15 @@ def viral_film_command(
     config: Path = typer.Option(Path("config/default.yaml"), exists=True, dir_okay=False),
 ) -> None:
     """Build one coherent, vertical AI-native social clip."""
-    if recipe not in {"beat_creature", "talking_duo", "physics_spectacle"}:
-        raise typer.BadParameter("--recipe must be beat_creature, talking_duo, or physics_spectacle")
+    if recipe not in {
+        "cinematic_insert",
+        "beat_creature",
+        "talking_duo",
+        "physics_spectacle",
+    }:
+        raise typer.BadParameter(
+            "--recipe must be cinematic_insert, beat_creature, talking_duo, or physics_spectacle"
+        )
     if provider not in {"local_wan", "gemini_omni", "veo"}:
         raise typer.BadParameter("--provider must be local_wan, gemini_omni, or veo")
     configure_logging()
@@ -124,6 +133,7 @@ def viral_film_command(
         master_music=track,
         dialogue_a=dialogue_a,
         dialogue_b=dialogue_b,
+        candidate_count=candidates,
     )
     console.print(f"[bold green]Complete:[/] {manifest.status}")
     console.print(f"Run: {manifest.run_id}")
