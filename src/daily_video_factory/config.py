@@ -68,6 +68,8 @@ class StoryboardConfig(BaseModel):
     min_scene_seconds: int = 8
     max_scene_seconds: int = 24
     max_scenes: int = 32
+    engagement_mode: Literal["classic", "retention"] = "retention"
+    pattern_interrupt_seconds: int = Field(default=18, ge=8, le=45)
 
 
 class VoiceConfig(BaseModel):
@@ -82,6 +84,14 @@ class VoiceConfig(BaseModel):
     kokoro_language: str = "a"
     kokoro_sentence_pause_ms: int = Field(default=90, ge=0, le=1000)
     kokoro_paragraph_pause_ms: int = Field(default=300, ge=0, le=2000)
+    chatterbox_reference_audio: Path | None = None
+    chatterbox_exaggeration: float = Field(default=0.68, ge=0.25, le=1.25)
+    chatterbox_cfg_weight: float = Field(default=0.32, ge=0, le=1)
+    chatterbox_temperature: float = Field(default=0.78, ge=0.2, le=1.5)
+    chatterbox_speed: float = Field(default=1.0, ge=0.75, le=1.2)
+    chatterbox_target_wpm: int = Field(default=165, ge=125, le=210)
+    chatterbox_sentence_pause_ms: int = Field(default=105, ge=0, le=1000)
+    chatterbox_paragraph_pause_ms: int = Field(default=320, ge=0, le=2000)
     pronunciations: dict[str, str] = Field(default_factory=dict)
     elevenlabs_model: str = "eleven_multilingual_v2"
     elevenlabs_voice_id: str = "JBFqnCBsd6RMkjVDRZzb"

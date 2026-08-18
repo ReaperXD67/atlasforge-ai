@@ -21,7 +21,7 @@ from ..config import Settings
 from ..exceptions import ProviderFailed
 from ..media.ai_quality import SyntheticClipInspector
 from ..media.ffmpeg import FFmpeg
-from ..models import CostEntry, Scene
+from ..models import OWNED_VISUAL_MODES, CostEntry, Scene
 from .base import Provider
 
 StockCandidate = tuple[tuple[float, float, float], dict[str, Any], dict[str, Any]]
@@ -429,7 +429,7 @@ class StockVideoScheduler:
         eligible = [
             scene
             for scene in scenes
-            if scene.index not in excluded and scene.visual_mode != "information_card"
+            if scene.index not in excluded and scene.visual_mode not in OWNED_VISUAL_MODES
         ]
         for scene in eligible[: self.cfg.stock_video_max_scenes_per_video]:
             for provider in self.providers:

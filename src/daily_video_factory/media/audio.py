@@ -24,9 +24,12 @@ def _write_wave(path: Path, samples: np.ndarray, sample_rate: int = 48000) -> Pa
 
 
 def generate_original_music(
-    duration_seconds: float, output: Path, sample_rate: int = 48000
+    duration_seconds: float,
+    output: Path,
+    sample_rate: int = 48000,
+    storyboard: Storyboard | None = None,
 ) -> Path:
-    """Generate an original stereo documentary score with no third-party rights dependency."""
+    """Generate an original score with a hook, evolving energy, and editorial punctuation."""
     total = max(1, math.ceil(duration_seconds * sample_rate))
     music = np.zeros((total, 2), dtype=np.float32)
     chord_roots = [110.0, 130.81, 98.0, 146.83]
@@ -85,10 +88,43 @@ def generate_original_music(
             ) * np.exp(-2.2 * bell_time)
             music[start + bell_start : start + bell_start + bell_length, 0] += bell * 0.025
             music[start + bell_start : start + bell_start + bell_length, 1] += bell * 0.032
-    fade = min(total // 2, sample_rate * 3)
-    if fade:
-        music[:fade] *= np.linspace(0, 1, fade, dtype=np.float32)[:, None]
-        music[-fade:] *= np.linspace(1, 0, fade, dtype=np.float32)[:, None]
+    # A quiet low-frequency heartbeat makes the first seconds feel intentional immediately.
+    hook_length = min(total, round(8 * sample_rate))
+    for beat_start_seconds in np.arange(0.12, hook_length / sample_rate, 60 / 96):
+        start = round(beat_start_seconds * sample_rate)
+        length = min(round(0.34 * sample_rate), hook_length - start)
+        if length <= 0:
+            continue
+        t = np.arange(length, dtype=np.float32) / sample_rate
+        pulse = np.sin(2 * np.pi * 54 * t) * np.exp(-11 * t) * 0.045
+        music[start : start + length, :] += pulse[:, None]
+
+    # Build across the film instead of looping one unchanging bed. Owned card moments dip for
+    # a fraction of a second, then recover, leaving room for the narration and sound accent.
+    timeline = np.arange(total, dtype=np.float32) / sample_rate
+    progress = np.clip(timeline / max(duration_seconds, 1), 0, 1)
+    energy = 0.78 + 0.16 * progress + 0.05 * np.sin(np.pi * progress)
+    if storyboard is not None:
+        cursor = 0.0
+        for scene in storyboard.scenes:
+            if scene.visual_mode in {
+                "information_card",
+                "kinetic_statement",
+                "step_card",
+                "proof_card",
+                "comparison_card",
+            }:
+                delta = timeline - cursor
+                energy *= 1 - 0.16 * np.exp(-np.square(delta / 0.16))
+            cursor += scene.duration_seconds
+    music *= energy[:, None]
+
+    fade_in = min(total // 2, round(sample_rate * 0.35))
+    fade_out = min(total // 2, round(sample_rate * 1.6))
+    if fade_in:
+        music[:fade_in] *= np.linspace(0, 1, fade_in, dtype=np.float32)[:, None]
+    if fade_out:
+        music[-fade_out:] *= np.linspace(1, 0, fade_out, dtype=np.float32)[:, None]
     return _write_wave(output, music * 0.72, sample_rate)
 
 
@@ -116,8 +152,19 @@ def generate_sfx_track(storyboard: Storyboard, duration_seconds: float, output: 
                 smooth = np.convolve(noise, np.ones(72, dtype=np.float32) / 72, mode="same")
                 whoosh = smooth * np.sin(np.pi * np.minimum(1, t / 0.55)) * 0.28
                 impact = np.sin(2 * np.pi * 72 * t) * np.exp(-9 * t) * 0.08
-                if scene.visual_mode == "information_card":
-                    accent = np.sin(2 * np.pi * 440 * t) * np.exp(-5.5 * t) * 0.035
+                if scene.visual_mode in {"information_card", "proof_card"}:
+                    accent = np.sin(2 * np.pi * 660 * t) * np.exp(-6.5 * t) * 0.04
+                elif scene.visual_mode == "kinetic_statement":
+                    accent = np.sin(2 * np.pi * 92 * t) * np.exp(-11 * t) * 0.095
+                elif scene.visual_mode == "step_card":
+                    accent = np.sin(2 * np.pi * 520 * t) * np.exp(-9 * t) * 0.04
+                elif scene.visual_mode == "comparison_card":
+                    accent = (
+                        np.sin(2 * np.pi * 480 * t) * np.exp(-12 * t)
+                        + np.sin(2 * np.pi * 620 * np.maximum(0, t - 0.11))
+                        * np.exp(-12 * np.maximum(0, t - 0.11))
+                        * (t >= 0.11)
+                    ) * 0.028
                 else:
                     accent = np.zeros_like(t)
                 track[start : start + length] += whoosh + impact + accent

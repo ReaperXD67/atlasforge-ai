@@ -24,21 +24,37 @@ script:
   text_providers: [openrouter]
   words_per_minute: 140
 
+storyboard:
+  target_scene_seconds: 6
+  min_scene_seconds: 4
+  max_scene_seconds: 9
+  max_scenes: 80
+  engagement_mode: retention
+  pattern_interrupt_seconds: 18
+
 voice:
-  providers: [kokoro]
+  providers: [chatterbox, kokoro]
   kokoro_voice: af_heart
   kokoro_speed: 0.96
   kokoro_sentence_pause_ms: 100
   kokoro_paragraph_pause_ms: 320
+  chatterbox_exaggeration: 0.72
+  chatterbox_cfg_weight: 0.30
+  chatterbox_temperature: 0.78
+  chatterbox_speed: 1.0
+  chatterbox_target_wpm: 165
+  chatterbox_sentence_pause_ms: 105
+  chatterbox_paragraph_pause_ms: 330
   pronunciations:
     Atomy: A-tomy
 
 audio:
-  music_volume_db: -29
-  sfx_volume_db: -22
-  sidechain_ratio: 10
+  music_volume_db: -26
+  sfx_volume_db: -20
+  sidechain_ratio: 12
 
 subtitles:
+  max_words_per_caption: 4
   alignment: auto
   whisper_model: small.en
   whisper_device: cpu

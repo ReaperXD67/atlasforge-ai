@@ -442,7 +442,7 @@ class DailyVideoPipeline:
                 mixed_audio = paths.audio / "final_mix.m4a"
 
                 def sound_operation() -> Path:
-                    generate_original_music(audio_duration, music_file)
+                    generate_original_music(audio_duration, music_file, storyboard=storyboard)
                     generate_sfx_track(storyboard, audio_duration, sfx_file)
                     return mix_audio(
                         narration,

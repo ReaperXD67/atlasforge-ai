@@ -13,9 +13,9 @@ import "@fontsource/dm-sans/latin-600.css";
 import "@fontsource/cormorant-garamond/latin-600.css";
 
 const fallbackProfiles = [
-  { id: "atomy-us-openrouter", name: "Atomy USA — Joining Guide", brand: "Atomy", region: "United States", duration_minutes: 7, text_provider: "openrouter", voice_provider: "kokoro", fps: 60 },
-  { id: "atomy-us-preview", name: "Atomy USA — Fast Preview", brand: "Atomy", region: "United States", duration_minutes: 2, text_provider: "openrouter", voice_provider: "kokoro", fps: 60 },
-  { id: "general-explainer", name: "General Explainer", brand: "", region: "Global", duration_minutes: 5, text_provider: "openrouter", voice_provider: "kokoro", fps: 60 },
+  { id: "atomy-us-openrouter", name: "Atomy USA — Joining Guide", brand: "Atomy", region: "United States", duration_minutes: 7, text_provider: "openrouter", voice_provider: "chatterbox", fps: 60 },
+  { id: "atomy-us-preview", name: "Atomy USA — Fast Preview", brand: "Atomy", region: "United States", duration_minutes: 2, text_provider: "openrouter", voice_provider: "chatterbox", fps: 60 },
+  { id: "general-explainer", name: "General Explainer", brand: "", region: "Global", duration_minutes: 5, text_provider: "openrouter", voice_provider: "chatterbox", fps: 60 },
 ];
 
 const RemotionPreview = lazy(() => import("./remotion/RemotionPreview"));
@@ -187,7 +187,7 @@ function ProviderStrip({ system, selectedProfile, quality, workspace }) {
   const providers = [
     { label: "Local project", detail: "Autosaved", ok: true },
     { label: "OpenRouter", detail: "Script", ok: Boolean(system.openrouter) },
-    { label: "Kokoro", detail: "Voice", ok: Boolean(system.kokoro) },
+    { label: system.chatterbox ? "Chatterbox" : "Kokoro", detail: system.chatterbox ? "Expressive local voice" : "Fast voice fallback", ok: Boolean(system.chatterbox || system.kokoro) },
     { label: "Whisper", detail: "Captions · CPU", ok: Boolean(system.whisper) },
     { label: "Wan 2.2", detail: system.comfyui ? "Quarantined candidates" : "Optional · offline", ok: Boolean(system.comfyui) },
     { label: system.gpu_name || "NVIDIA GPU", detail: system.nvenc ? "NVENC" : "CPU fallback", ok: Boolean(system.gpu || system.ffmpeg) },
@@ -198,14 +198,34 @@ function ProviderStrip({ system, selectedProfile, quality, workspace }) {
 }
 
 function GenerateDialog({ open, onClose, profiles, form, setForm, onSelectProfile, onSubmit, submitting, system }) {
+  const [uploadingVoice, setUploadingVoice] = useState(false);
+  const [voiceReference, setVoiceReference] = useState(null);
+  const voiceInputRef = useRef(null);
+  const uploadVoice = async (file) => {
+    if (!file) return;
+    setUploadingVoice(true);
+    const payload = new FormData();
+    payload.append("file", file);
+    try {
+      const result = await fetchJson("/api/voice/uploads", { method: "POST", body: payload });
+      setVoiceReference(result);
+      setForm((current) => ({ ...current, voice_provider: "chatterbox", voice_upload_id: result.upload_id }));
+    } catch (error) {
+      setVoiceReference({ error: error.message });
+    } finally {
+      setUploadingVoice(false);
+    }
+  };
   if (!open) return null;
   return <motion.div className="dialog-backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onMouseDown={onClose}><motion.form className="generate-dialog" initial={{ opacity: 0, y: 18, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 10, scale: 0.98 }} onSubmit={onSubmit} onMouseDown={(event) => event.stopPropagation()}>
     <div className="dialog-head"><div><span className="eyebrow">Production setup</span><h2>Generate a complete film</h2><p>OpenRouter writes. Licensed matching footage leads. Local AI is a quarantined last resort, never a default hero shot.</p></div><button type="button" className="icon-button" onClick={onClose} aria-label="Close setup"><X /></button></div>
-    <div className="readiness-line"><span className={system.openrouter ? "ready" : "missing"}>{system.openrouter ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} OpenRouter</span><span className={system.pexels ? "ready" : "missing"}>{system.pexels ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} Pexels Video</span><span className={system.comfyui ? "ready" : "missing"}>{system.comfyui ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} Wan 2.2</span><span className={system.nvenc ? "ready" : "missing"}>{system.nvenc ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} NVENC</span><span className={system.kokoro ? "ready" : "missing"}>{system.kokoro ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} Kokoro</span></div>
+    <div className="readiness-line"><span className={system.openrouter ? "ready" : "missing"}>{system.openrouter ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} OpenRouter</span><span className={system.pexels ? "ready" : "missing"}>{system.pexels ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} Pexels Video</span><span className={system.chatterbox ? "ready" : "missing"}>{system.chatterbox ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} Chatterbox</span><span className={system.nvenc ? "ready" : "missing"}>{system.nvenc ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} NVENC</span><span className={system.kokoro ? "ready" : "missing"}>{system.kokoro ? <CheckCircle weight="fill" /> : <Warning weight="fill" />} Kokoro fallback</span></div>
     <label><span>Use case</span><select value={form.profile} onChange={(event) => onSelectProfile(event.target.value)}>{profiles.map((profile) => <option key={profile.id} value={profile.id}>{profile.name}</option>)}</select></label>
     <label><span>Topic or angle <small>optional</small></span><textarea value={form.topic} onChange={(event) => setForm({ ...form, topic: event.target.value })} placeholder="Example: A calm, factual walkthrough of joining Atomy USA" rows="3" /></label>
     <div className="form-grid"><label><span>Length</span><select value={form.duration_minutes} onChange={(event) => setForm({ ...form, duration_minutes: Number(event.target.value) })}><option value="2">2 min preview</option><option value="5">5 minutes</option><option value="7">7 minutes</option><option value="10">10 minutes</option></select></label><label><span>Frame rate</span><select value={form.fps} onChange={(event) => setForm({ ...form, fps: Number(event.target.value) })}><option value="60">60 fps · smooth</option><option value="30">30 fps · faster</option></select></label><label><span>Render quality</span><select value={form.quality} onChange={(event) => setForm({ ...form, quality: event.target.value })}><option value="fast">Fast draft</option><option value="balanced">Balanced · recommended</option><option value="max">Maximum detail</option></select></label></div>
-    <div className="form-grid voice-grid"><label><span>Voice engine</span><select value={form.voice_provider} onChange={(event) => setForm({ ...form, voice_provider: event.target.value })}><option value="kokoro">Kokoro · free local</option><option value="elevenlabs">ElevenLabs · premium jump</option><option value="openai">OpenAI · premium</option><option value="gemini">Gemini · premium</option></select></label><label><span>Voice character</span><select value={form.voice_profile} onChange={(event) => setForm({ ...form, voice_profile: event.target.value })}><option value="warm_documentary">Warm documentary</option><option value="confident_female">Confident female</option><option value="grounded_male">Grounded male</option><option value="editorial_blend">Editorial blend</option></select></label><label><span>Pace · {form.voice_speed.toFixed(2)}×</span><input type="range" min="0.8" max="1.2" step="0.01" value={form.voice_speed} onChange={(event) => setForm({ ...form, voice_speed: Number(event.target.value) })} /></label></div>
+    <div className="form-grid voice-grid"><label><span>Voice engine</span><select value={form.voice_provider} onChange={(event) => { const provider = event.target.value; setForm({ ...form, voice_provider: provider, voice_speed: provider === "kokoro" ? 0.98 : 1.0 }); }}><option value="chatterbox">Chatterbox · expressive GPU local</option><option value="kokoro">Kokoro · fast local fallback</option><option value="elevenlabs">ElevenLabs · premium jump</option><option value="openai">OpenAI · premium</option><option value="gemini">Gemini · premium</option></select></label><label><span>Performance</span><select value={form.voice_profile} onChange={(event) => setForm({ ...form, voice_profile: event.target.value })}><option value="dynamic_host">Dynamic host · recommended</option><option value="warm_documentary">Warm documentary</option><option value="confident_female">Confident female</option><option value="grounded_male">Grounded male</option><option value="editorial_blend">Editorial blend</option></select></label><label><span>Pace · {form.voice_speed.toFixed(2)}×</span><input type="range" min="0.75" max="1.2" step="0.01" value={form.voice_speed} onChange={(event) => setForm({ ...form, voice_speed: Number(event.target.value) })} /></label></div>
+    <div className="form-grid editorial-controls"><label><span>Edit rhythm</span><select value={form.engagement_mode} onChange={(event) => setForm({ ...form, engagement_mode: event.target.value })}><option value="retention">Retention cut · recommended</option><option value="classic">Calm classic explainer</option></select></label><div className="retention-contract"><strong>Retention cut</strong><small>Cold open, early promise, 4–9 sec beats, re-hooks, proof cards, and a resolved payoff.</small></div></div>
+    {form.voice_provider === "chatterbox" && <div className="voice-reference"><input ref={voiceInputRef} className="visually-hidden" type="file" accept="audio/mpeg,audio/wav,audio/x-wav,audio/mp4,audio/flac,audio/ogg,.mp3,.wav,.m4a,.aac,.flac,.ogg" onChange={(event) => uploadVoice(event.target.files?.[0])} /><button type="button" className={`drop-track ${voiceReference?.upload_id ? "has-track" : ""}`} onClick={() => voiceInputRef.current?.click()} disabled={uploadingVoice}>{uploadingVoice ? <CircleNotch className="spin" /> : voiceReference?.upload_id ? <CheckCircle weight="fill" /> : <Microphone />}<span><strong>{uploadingVoice ? "Preparing voice identity…" : voiceReference?.filename || "Optional: add your real voice character"}</strong><small>{voiceReference?.upload_id ? `${voiceReference.duration_seconds}s clean reference · stored locally` : voiceReference?.error || "5–30 sec, one speaker, no music · only a voice you own or have permission to use"}</small></span></button></div>}
     <div className="toggle-row"><button type="button" className={form.stock_images ? "active" : ""} onClick={() => setForm({ ...form, stock_images: !form.stock_images })}><FilmReel /> Matching real clips first <span>{form.stock_images ? "On" : "Off"}</span></button><button type="button" className={form.local_ai ? "active" : ""} onClick={() => setForm({ ...form, local_ai: !form.local_ai })}><Sparkle weight="fill" /> Strict AI fallback <span>{form.local_ai ? "Armed" : "Off"}</span></button><button type="button" className={form.captions ? "active" : ""} onClick={() => setForm({ ...form, captions: !form.captions })}><ClosedCaptioning /> Script-locked captions <span>{form.captions ? "On" : "Off"}</span></button></div>
     <div className="dialog-foot"><p><strong>Publishing is disabled.</strong> The finished video and thumbnail stay in your local output folder.</p><button className="primary-button" disabled={submitting || !system.openrouter}>{submitting ? <CircleNotch className="spin" /> : <Sparkle weight="fill" />} Start generation</button></div>
   </motion.form></motion.div>;
@@ -279,7 +299,7 @@ export function App() {
     const requested = new URLSearchParams(window.location.search).get("workspace");
     return ["editor", "remotion", "viral", "ai"].includes(requested) ? requested : "editor";
   });
-  const [form, setForm] = useState({ profile: "atomy-us-openrouter", topic: "", duration_minutes: 7, fps: 60, quality: "balanced", stock_images: true, local_ai: false, captions: true, fresh: true, mode: "faceless_narrated", music_upload_id: null, music_title: "Sepang Track Experience", music_seconds: 60, voice_provider: "kokoro", voice_profile: "warm_documentary", voice_speed: 0.98, viral_recipe: "beat_creature", viral_prompt: "", viral_provider: "local_wan", viral_seconds: 5, viral_candidates: 2, reference_upload_id: null, dialogue_a: "", dialogue_b: "" });
+  const [form, setForm] = useState({ profile: "atomy-us-openrouter", topic: "", duration_minutes: 7, fps: 60, quality: "balanced", stock_images: true, local_ai: false, captions: true, fresh: true, mode: "faceless_narrated", music_upload_id: null, music_title: "Sepang Track Experience", music_seconds: 60, voice_provider: "chatterbox", voice_profile: "dynamic_host", voice_speed: 1.0, voice_upload_id: null, engagement_mode: "retention", viral_recipe: "beat_creature", viral_prompt: "", viral_provider: "local_wan", viral_seconds: 5, viral_candidates: 2, reference_upload_id: null, dialogue_a: "", dialogue_b: "" });
 
   const selectedScene = scenes.find((scene) => scene.id === selectedId) || scenes[0];
   const selectedProfile = profiles.find((profile) => profile.id === form.profile) || profiles[0];
@@ -340,6 +360,7 @@ export function App() {
       profile: profileId,
       duration_minutes: profile?.duration_minutes || current.duration_minutes,
       fps: profile?.fps || current.fps,
+      voice_provider: profile?.voice_provider || current.voice_provider,
     }));
   };
   const startGeneration = async (event) => {

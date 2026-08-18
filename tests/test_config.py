@@ -31,7 +31,7 @@ def test_profile_inherits_default_configuration() -> None:
     settings = load_settings(Path("config/profiles/atomy-us-openrouter.yaml"))
     assert settings.video.fps == 60
     assert settings.script.text_providers == ["openrouter"]
-    assert settings.voice.providers == ["kokoro"]
+    assert settings.voice.providers == ["chatterbox", "kokoro"]
     assert settings.subtitles.whisper_compute_type == "int8"
 
 

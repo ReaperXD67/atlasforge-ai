@@ -19,3 +19,9 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Keep AI Generation as a separate quarantined candidate workspace. Real footage stays first in
   Editorial and Remotion; local synthetic footage requires an explicit reason, best-of-seed review,
   and visible admitted/quarantined evidence before it can be considered for an edit.
+- Editorial generation is retention-first without becoming hype: use a human-tension cold open,
+  an early concrete promise, 4–9 second visual beats, periodic re-hooks, varied matching real-footage
+  roles, owned proof/comparison/step cards, an earned payoff, and a low-pressure invitation.
+- Chatterbox is the expressive free-local narration default on a capable NVIDIA GPU, with an optional
+  5–30 second consented voice reference that stays local. Kokoro remains the automatic fast fallback;
+  never imply that voice cloning is permitted without the speaker's authorization.

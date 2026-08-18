@@ -37,10 +37,12 @@ def test_storyboard_is_deterministic_and_varied(settings) -> None:
     board = StoryboardBuilder(settings).run(script)
     assert len(board.scenes) >= 3
     assert board.scenes[0].camera_angle != board.scenes[1].camera_angle
-    assert board.scenes[0].visual_mode == "documentary_broll"
+    assert board.scenes[0].visual_mode == "cold_open"
+    assert board.scenes[1].visual_mode == "kinetic_statement"
     assert board.scenes[0].ai_generation_required is False
     assert "product" not in board.scenes[0].visual_search_query
     assert board.total_duration_seconds > 0
+    assert any(scene.visual_mode in {"step_card", "comparison_card"} for scene in board.scenes)
 
 
 def test_sensitive_identity_fact_uses_owned_information_card() -> None:

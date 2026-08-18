@@ -211,6 +211,9 @@ class StoryboardBuilder:
             groups[-1].extend(tail)
 
         scenes: list[Scene] = []
+        interrupt_every = max(
+            2, round(cfg.pattern_interrupt_seconds / max(1, cfg.target_scene_seconds))
+        )
         for index, group in enumerate(groups):
             narration = " ".join(group)
             words = len(narration.split())
@@ -232,11 +235,27 @@ class StoryboardBuilder:
             visual_query, onscreen_title, visual_mode = _visual_plan(
                 narration, index + 1, script.title
             )
-            if is_hook and visual_mode != "information_card":
-                # A documentary hook needs believable human footage more than synthetic novelty.
-                # Local AI is reserved for explicitly authored impossible shots in the separate
-                # AI Generation Lab and never selected merely because a scene is first.
-                visual_query = "open notebook smartphone and laptop on clean desk morning light"
+            if cfg.engagement_mode == "retention":
+                if is_hook:
+                    # Start on human tension, not anonymous desk furniture. The promise card that
+                    # follows provides the first visual interruption without pretending to be footage.
+                    visual_query = (
+                        "thoughtful adult hesitating before online registration laptop close up "
+                        "natural reaction cinematic"
+                    )
+                    onscreen_title = script.title
+                    visual_mode = "cold_open"
+                elif index == 1:
+                    visual_mode = "kinetic_statement"
+                elif visual_mode == "information_card":
+                    visual_mode = "proof_card"
+                elif index >= 4 and (index + 1) % interrupt_every == 0:
+                    if any(word in lower for word in {"consumer", "distributor", "compare", "option"}):
+                        visual_mode = "comparison_card"
+                    else:
+                        visual_mode = "step_card"
+            elif is_hook and visual_mode != "information_card":
+                visual_query = "confident adult beginning an online learning journey cinematic"
                 onscreen_title = script.title
                 visual_mode = "documentary_broll"
             environment = self.ENVIRONMENTS[index % len(self.ENVIRONMENTS)]
@@ -252,8 +271,25 @@ class StoryboardBuilder:
                     character_description="authentic adult learner or independent professional",
                     emotion="curious and grounded" if not is_emotional else "quietly reflective",
                     lighting=lighting,
-                    sound_effects=["soft_whoosh"] if index else ["cinematic_rise"],
-                    transition="crossfade" if index else "fade_from_black",
+                    sound_effects=(
+                        ["cinematic_rise", "low_impact"]
+                        if is_hook
+                        else [
+                            {
+                                "kinetic_statement": "text_hit",
+                                "step_card": "step_tick",
+                                "proof_card": "proof_ping",
+                                "comparison_card": "decision_ticks",
+                            }.get(visual_mode, "soft_whoosh")
+                        ]
+                    ),
+                    transition=(
+                        "fade_from_black"
+                        if is_hook
+                        else "clean_cut"
+                        if cfg.engagement_mode == "retention" and visual_mode != "documentary_broll"
+                        else "crossfade"
+                    ),
                     video_prompt=(
                         f"Cinematic documentary b-roll of {visual_query}, {environment}, "
                         f"{angle}, {lighting}, "

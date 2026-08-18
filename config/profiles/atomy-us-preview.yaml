@@ -9,10 +9,10 @@ script:
   max_words: 360
 
 storyboard:
-  target_scene_seconds: 8
-  min_scene_seconds: 5
-  max_scene_seconds: 11
-  max_scenes: 20
+  target_scene_seconds: 6
+  min_scene_seconds: 4
+  max_scene_seconds: 9
+  max_scenes: 30
 
 runtime:
   keep_intermediates: true

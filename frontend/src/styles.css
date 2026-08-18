@@ -192,6 +192,12 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
 .generate-dialog textarea { resize: vertical; min-height: 72px; }
 .generate-dialog input[type="range"] { padding: 0; accent-color: var(--amber); }
 .form-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.editorial-controls { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); align-items: stretch; }
+.retention-contract { min-height: 62px; display: grid; align-content: center; gap: 4px; margin-bottom: 16px; padding: 10px 12px; border: 1px solid #4f3b27; border-radius: 5px; background: linear-gradient(135deg, #211a13, #171819); }
+.retention-contract strong { color: #ead9c5; font-size: 11px; }
+.retention-contract small { color: var(--muted); font-size: 9px; line-height: 1.45; }
+.voice-reference { margin: 0 0 16px; }
+.voice-reference .drop-track { min-height: 68px; }
 .toggle-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .toggle-row button { min-height: 48px; display: flex; align-items: center; gap: 9px; border: 1px solid #333538; background: #18191b; border-radius: 5px; color: #bcb8b2; padding: 0 12px; }
 .toggle-row button.active { border-color: #6c4b28; background: #211a13; color: #e2d7c9; }

@@ -6,6 +6,7 @@ import re
 import subprocess
 import wave
 from abc import abstractmethod
+from contextlib import suppress
 from pathlib import Path
 from typing import cast
 
@@ -47,6 +48,24 @@ def apply_pronunciations(text: str, pronunciations: dict[str, str]) -> str:
             flags=re.IGNORECASE,
         )
     return spoken
+
+
+def split_for_expressive_tts(text: str, max_chars: int = 280) -> list[tuple[str, bool]]:
+    """Create short, paragraph-aware performance beats instead of one flat TTS pass."""
+    beats: list[tuple[str, bool]] = []
+    paragraphs = [part.strip() for part in re.split(r"\n\s*\n", text) if part.strip()]
+    for paragraph in paragraphs:
+        sentences = re.split(r"(?<=[.!?])\s+(?=[A-Z0-9])", re.sub(r"\s+", " ", paragraph))
+        current = ""
+        for sentence in sentences:
+            if current and len(current) + len(sentence) + 1 > max_chars:
+                beats.append((current, False))
+                current = sentence
+            else:
+                current = f"{current} {sentence}".strip()
+        if current:
+            beats.append((current, True))
+    return beats
 
 
 class TTSProvider(Provider[Path]):
@@ -272,6 +291,110 @@ class KokoroTTSProvider(TTSProvider):
         )
 
 
+class ChatterboxTTSProvider(TTSProvider):
+    """Expressive local narration with stable identity and optional consented voice reference."""
+
+    name = "chatterbox"
+
+    def __init__(self, settings: Settings, ffmpeg: FFmpeg) -> None:
+        self.cfg = settings.voice
+        self.ffmpeg = ffmpeg
+
+    def available(self) -> bool:
+        try:
+            import chatterbox.tts  # noqa: F401
+            import soundfile  # noqa: F401
+            import torch  # noqa: F401
+
+            return self.ffmpeg.available
+        except ImportError:
+            return False
+
+    def synthesize(self, text: str, output_dir: Path) -> Path:
+        try:
+            import soundfile as sf
+            import torch
+            from chatterbox.tts import ChatterboxTTS
+        except ImportError as exc:
+            raise ProviderFailed("Install Chatterbox TTS to use expressive local narration") from exc
+
+        output_dir.mkdir(parents=True, exist_ok=True)
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        reference = self.cfg.chatterbox_reference_audio
+        if reference is not None and not reference.is_file():
+            raise ProviderFailed(f"Chatterbox voice reference is missing: {reference}")
+
+        try:
+            model = ChatterboxTTS.from_pretrained(device=device)
+            if reference is not None:
+                model.prepare_conditionals(
+                    str(reference), exaggeration=self.cfg.chatterbox_exaggeration
+                )
+            spoken_text = apply_pronunciations(text, self.cfg.pronunciations)
+            beats = split_for_expressive_tts(spoken_text)
+            clips: list[np.ndarray] = []
+            sample_rate = int(model.sr)
+            sentence_pause = np.zeros(
+                round(sample_rate * self.cfg.chatterbox_sentence_pause_ms / 1000),
+                dtype=np.float32,
+            )
+            paragraph_pause = np.zeros(
+                round(sample_rate * self.cfg.chatterbox_paragraph_pause_ms / 1000),
+                dtype=np.float32,
+            )
+            for index, (beat, paragraph_end) in enumerate(beats):
+                # Give the cold open, periodic re-hooks, and final invitation a little more
+                # intention while keeping ordinary explanation restrained and credible.
+                lift = 0.08 if index == 0 or index == len(beats) - 1 else 0.04 if index % 4 == 0 else -0.03
+                exaggeration = min(1.1, max(0.25, self.cfg.chatterbox_exaggeration + lift))
+                generated = model.generate(
+                    beat,
+                    exaggeration=exaggeration,
+                    cfg_weight=self.cfg.chatterbox_cfg_weight,
+                    temperature=self.cfg.chatterbox_temperature,
+                )
+                audio = generated.squeeze().detach().cpu().numpy().astype(np.float32)
+                clips.append(audio)
+                if index < len(beats) - 1:
+                    clips.append(paragraph_pause if paragraph_end else sentence_pause)
+            if not clips:
+                raise ProviderFailed("Chatterbox produced no audio")
+            raw = output_dir / "chatterbox_raw.wav"
+            sf.write(raw, np.concatenate(clips), sample_rate)
+            mastered_source = raw
+            word_count = len(re.findall(r"\b[\w'-]+\b", spoken_text))
+            raw_duration = self.ffmpeg.duration(raw)
+            target_wpm = self.cfg.chatterbox_target_wpm * self.cfg.chatterbox_speed
+            target_duration = max(1.0, word_count / target_wpm * 60)
+            tempo = min(1.2, max(0.7, raw_duration / target_duration))
+            if abs(tempo - 1.0) > 0.005:
+                mastered_source = output_dir / "chatterbox_paced.wav"
+                self.ffmpeg.run(
+                    [
+                        "-i",
+                        str(raw),
+                        "-filter:a",
+                        _atempo_chain(tempo),
+                        "-ar",
+                        str(sample_rate),
+                        str(mastered_source),
+                    ]
+                )
+            return concatenate_and_normalize(
+                [mastered_source],
+                output_dir / "narration.wav",
+                self.cfg.target_lufs,
+                self.ffmpeg,
+            )
+        except ProviderFailed:
+            raise
+        except (RuntimeError, OSError, ValueError, AssertionError) as exc:
+            if device == "cuda" and "out of memory" in str(exc).casefold():
+                with suppress(RuntimeError):
+                    torch.cuda.empty_cache()
+            raise ProviderFailed(f"Chatterbox narration failed on {device}: {exc}") from exc
+
+
 class PiperTTSProvider(TTSProvider):
     name = "piper"
 
@@ -388,6 +511,7 @@ class NarrationGenerator:
             "elevenlabs": ElevenLabsTTSProvider(settings, ffmpeg),
             "gemini": GeminiTTSProvider(settings, ffmpeg),
             "kokoro": KokoroTTSProvider(settings, ffmpeg),
+            "chatterbox": ChatterboxTTSProvider(settings, ffmpeg),
             "piper": PiperTTSProvider(settings, ffmpeg),
         }
         self.chain: ProviderChain[Path] = ProviderChain(

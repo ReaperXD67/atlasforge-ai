@@ -5,7 +5,7 @@ from pathlib import Path
 
 from ..artifacts import atomic_write
 from ..config import Settings
-from ..models import Scene
+from ..models import OWNED_VISUAL_MODES, Scene
 from .ffmpeg import FFmpeg
 
 
@@ -46,9 +46,9 @@ class VideoRenderer:
         frames = max(2, round(duration * self.cfg.fps))
         progress = f"(0.5-0.5*cos(PI*on/{frames - 1}))"
         direction = 1 if scene.index % 2 else -1
-        if scene.visual_mode == "information_card":
+        if scene.visual_mode in OWNED_VISUAL_MODES:
             x_expr = "(iw-iw/zoom)*0.5"
-            zoom_amount = 0.018
+            zoom_amount = 0.012 if scene.visual_mode == "kinetic_statement" else 0.018
         else:
             x_expr = (
                 f"(iw-iw/zoom)*(0.25+0.5*{progress})"

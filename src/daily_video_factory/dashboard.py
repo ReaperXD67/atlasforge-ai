@@ -176,6 +176,64 @@ def create_app(settings: Settings, profile_directory: Path = Path("config/profil
             raise HTTPException(status_code=404, detail="Music upload not found")
         return FileResponse(target)
 
+    @app.post("/api/voice/uploads", status_code=201)
+    async def upload_voice_reference(file: Annotated[UploadFile, File()]) -> dict[str, object]:
+        try:
+            upload_id, target = studio.reserve_voice_upload(file.filename or "voice-reference")
+        except ConfigurationError as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+        size = 0
+        normalized = target.with_suffix(".voice.wav")
+        try:
+            with target.open("wb") as destination:
+                while chunk := await file.read(1024 * 1024):
+                    size += len(chunk)
+                    if size > 30 * 1024 * 1024:
+                        raise HTTPException(
+                            status_code=413, detail="Voice references are limited to 30 MB"
+                        )
+                    destination.write(chunk)
+            if size < 4096:
+                raise HTTPException(status_code=400, detail="The voice reference is empty")
+            ffmpeg = FFmpeg()
+            duration = await run_in_threadpool(ffmpeg.duration, target)
+            if not 5 <= duration <= 30:
+                raise HTTPException(
+                    status_code=400,
+                    detail="Use 5–30 seconds of one clean, consented voice with no music",
+                )
+            await run_in_threadpool(
+                ffmpeg.run,
+                ["-i", str(target), "-ac", "1", "-ar", "24000", str(normalized)],
+            )
+            target.unlink(missing_ok=True)
+        except HTTPException:
+            target.unlink(missing_ok=True)
+            normalized.unlink(missing_ok=True)
+            raise
+        except Exception as exc:
+            target.unlink(missing_ok=True)
+            normalized.unlink(missing_ok=True)
+            raise HTTPException(
+                status_code=400, detail=f"Could not decode this voice reference: {exc}"
+            ) from exc
+        finally:
+            await file.close()
+        return {
+            "upload_id": upload_id,
+            "filename": Path(file.filename or "voice-reference").name,
+            "size_bytes": normalized.stat().st_size,
+            "duration_seconds": round(duration, 2),
+            "audio_url": f"/api/voice/uploads/{upload_id}/audio",
+        }
+
+    @app.get("/api/voice/uploads/{upload_id}/audio")
+    def get_voice_reference(upload_id: str) -> FileResponse:
+        target = studio.voice_upload_path(upload_id)
+        if target is None:
+            raise HTTPException(status_code=404, detail="Voice reference not found")
+        return FileResponse(target, media_type="audio/wav")
+
     @app.post("/api/reference/uploads", status_code=201)
     async def upload_reference(file: Annotated[UploadFile, File()]) -> dict[str, object]:
         try:

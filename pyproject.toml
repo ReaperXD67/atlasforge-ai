@@ -44,6 +44,7 @@ youtube = [
   "google-auth-oauthlib>=1.2,<2",
 ]
 local-tts = ["kokoro>=0.9,<1", "soundfile>=0.12,<1"]
+expressive-tts = ["chatterbox-tts==0.1.7", "setuptools<81"]
 transcription = ["faster-whisper>=1.1,<2"]
 visual-ranking = ["torch>=2.4,<3", "transformers>=4.46,<6"]
 dev = [

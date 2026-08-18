@@ -32,9 +32,12 @@ RUN --mount=type=cache,target=/root/.cache/pip python -m venv /opt/venv \
 WORKDIR /app
 
 FROM python-runtime AS local-ai-runtime
-RUN --mount=type=cache,target=/root/.cache/pip pip install --index-url https://download.pytorch.org/whl/cpu "torch==2.13.0+cpu" \
-    && pip install "kokoro>=0.9,<1" "soundfile>=0.12,<1" "faster-whisper>=1.1,<2" "transformers>=4.46,<6" \
+RUN --mount=type=cache,target=/root/.cache/pip pip install --index-url https://download.pytorch.org/whl/cu124 "torch==2.6.0" "torchaudio==2.6.0" \
+    && pip install "chatterbox-tts==0.1.7" "kokoro>=0.9,<1" "soundfile>=0.12,<1" "faster-whisper>=1.1,<2" \
     && python -m spacy download en_core_web_sm
+# Perth 1.0.x still imports pkg_resources; setuptools 81+ removed that compatibility module.
+# Keep the watermark enabled instead of bypassing it when Chatterbox initializes.
+RUN pip install "setuptools==80.9.0"
 
 FROM python-runtime AS base
 COPY pyproject.toml README.md LICENSE ./

@@ -35,11 +35,19 @@ class StudioJobRequest(BaseModel):
     music_upload_id: str | None = Field(default=None, pattern=r"^[a-f0-9]{16}$")
     music_title: str = Field(default="Sepang Track Experience", min_length=2, max_length=120)
     music_seconds: float = Field(default=60, ge=15, le=300)
-    voice_provider: Literal["kokoro", "elevenlabs", "openai", "gemini"] = "kokoro"
+    voice_provider: Literal["chatterbox", "kokoro", "elevenlabs", "openai", "gemini"] = (
+        "chatterbox"
+    )
     voice_profile: Literal[
-        "warm_documentary", "confident_female", "grounded_male", "editorial_blend"
-    ] = "warm_documentary"
-    voice_speed: float = Field(default=0.98, ge=0.8, le=1.2)
+        "dynamic_host",
+        "warm_documentary",
+        "confident_female",
+        "grounded_male",
+        "editorial_blend",
+    ] = "dynamic_host"
+    voice_speed: float = Field(default=0.98, ge=0.7, le=1.2)
+    voice_upload_id: str | None = Field(default=None, pattern=r"^[a-f0-9]{16}$")
+    engagement_mode: Literal["retention", "classic"] = "retention"
     viral_recipe: Literal[
         "cinematic_insert", "beat_creature", "talking_duo", "physics_spectacle"
     ] = "beat_creature"
@@ -123,6 +131,7 @@ class StudioManager:
             "gpu_name": gpu_name,
             "nvenc": nvenc,
             "kokoro": importlib.util.find_spec("kokoro") is not None,
+            "chatterbox": importlib.util.find_spec("chatterbox") is not None,
             "whisper": importlib.util.find_spec("faster_whisper") is not None,
             "comfyui": StudioManager._comfyui_available(),
         }
@@ -177,6 +186,13 @@ class StudioManager:
         upload_id = uuid.uuid4().hex[:16]
         return upload_id, self.upload_root / f"{upload_id}{suffix}"
 
+    def reserve_voice_upload(self, filename: str) -> tuple[str, Path]:
+        suffix = Path(filename).suffix.casefold()
+        if suffix not in {".mp3", ".wav", ".m4a", ".aac", ".flac", ".ogg"}:
+            raise ConfigurationError("Use an MP3, WAV, M4A, AAC, FLAC, or OGG voice sample")
+        upload_id = uuid.uuid4().hex[:16]
+        return upload_id, self.upload_root / f"{upload_id}{suffix}"
+
     def reference_upload_path(self, upload_id: str) -> Path | None:
         if not re.fullmatch(r"[a-f0-9]{16}", upload_id):
             return None
@@ -187,6 +203,15 @@ class StudioManager:
         return matches[0].resolve() if len(matches) == 1 and matches[0].is_file() else None
 
     def music_upload_path(self, upload_id: str) -> Path | None:
+        if not re.fullmatch(r"[a-f0-9]{16}", upload_id):
+            return None
+        allowed = {".mp3", ".wav", ".m4a", ".aac", ".flac", ".ogg"}
+        matches = [
+            path for path in self.upload_root.glob(f"{upload_id}.*") if path.suffix in allowed
+        ]
+        return matches[0].resolve() if len(matches) == 1 and matches[0].is_file() else None
+
+    def voice_upload_path(self, upload_id: str) -> Path | None:
         if not re.fullmatch(r"[a-f0-9]{16}", upload_id):
             return None
         allowed = {".mp3", ".wav", ".m4a", ".aac", ".flac", ".ogg"}
@@ -266,13 +291,26 @@ class StudioManager:
         settings.video.stock_video_enabled = request.stock_images
         settings.video.local_generation_enabled = request.local_ai
         settings.subtitles.burn_in = request.captions
+        settings.storyboard.engagement_mode = request.engagement_mode
+        if request.engagement_mode == "retention":
+            settings.storyboard.target_scene_seconds = 6
+            settings.storyboard.min_scene_seconds = 4
+            settings.storyboard.max_scene_seconds = 9
+            settings.storyboard.max_scenes = max(settings.storyboard.max_scenes, 80)
+            settings.video.transition_seconds = min(settings.video.transition_seconds, 0.25)
+            settings.subtitles.max_words_per_caption = min(
+                settings.subtitles.max_words_per_caption, 4
+            )
         voice_presets = {
-            "warm_documentary": ("af_heart", 0.97),
-            "confident_female": ("af_bella", 1.0),
-            "grounded_male": ("am_michael", 0.96),
-            "editorial_blend": ("af_heart,af_bella", 0.98),
+            "dynamic_host": ("af_bella", 1.02, 1.0, 0.72, 0.30, 0.78),
+            "warm_documentary": ("af_heart", 0.97, 0.92, 0.60, 0.38, 0.74),
+            "confident_female": ("af_bella", 1.0, 1.03, 0.69, 0.32, 0.76),
+            "grounded_male": ("am_michael", 0.96, 0.90, 0.58, 0.40, 0.72),
+            "editorial_blend": ("af_heart,af_bella", 0.98, 0.96, 0.65, 0.34, 0.75),
         }
-        voice, preset_speed = voice_presets[request.voice_profile]
+        voice, kokoro_speed, chatterbox_speed, exaggeration, cfg_weight, temperature = voice_presets[
+            request.voice_profile
+        ]
         settings.voice.providers = [
             request.voice_provider,
             *[
@@ -283,8 +321,23 @@ class StudioManager:
         ]
         settings.voice.kokoro_voice = voice
         settings.voice.kokoro_speed = (
-            request.voice_speed if request.voice_speed != 0.98 else preset_speed
+            request.voice_speed
+            if request.voice_provider == "kokoro" and request.voice_speed != 0.98
+            else kokoro_speed
         )
+        settings.voice.chatterbox_speed = (
+            request.voice_speed
+            if request.voice_provider == "chatterbox" and request.voice_speed != 0.98
+            else chatterbox_speed
+        )
+        settings.voice.chatterbox_exaggeration = exaggeration
+        settings.voice.chatterbox_cfg_weight = cfg_weight
+        settings.voice.chatterbox_temperature = temperature
+        if request.voice_upload_id:
+            reference_voice = self.voice_upload_path(request.voice_upload_id)
+            if reference_voice is None:
+                raise ConfigurationError("The selected voice reference no longer exists")
+            settings.voice.chatterbox_reference_audio = reference_voice
         if request.mode == "music_film":
             settings.video.transition_seconds = 0.0
             settings.video.stock_video_max_scenes_per_video = 64
@@ -349,6 +402,12 @@ class StudioManager:
                     raise RuntimeError("The selected music upload no longer exists")
             if request.mode == "music_film" and request.music_upload_id is None:
                 raise RuntimeError("Upload a master track before starting a music film")
+            if (
+                request.mode == "faceless_narrated"
+                and request.voice_upload_id
+                and self.voice_upload_path(request.voice_upload_id) is None
+            ):
+                raise RuntimeError("The selected voice reference no longer exists")
             reference_path = None
             if request.mode == "viral_short" and request.reference_upload_id:
                 reference_path = self.reference_upload_path(request.reference_upload_id)

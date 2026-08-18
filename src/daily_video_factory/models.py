@@ -7,6 +7,10 @@ from typing import Literal
 
 from pydantic import BaseModel, Field, field_validator
 
+OWNED_VISUAL_MODES = frozenset(
+    {"information_card", "kinetic_statement", "step_card", "proof_card", "comparison_card"}
+)
+
 
 class RunStatus(StrEnum):
     queued = "queued"

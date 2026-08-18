@@ -330,7 +330,7 @@ class SyntheticClipInspector:
         )
         semantic_minimum = (
             float(semantic_minimum_value)
-            if isinstance(semantic_minimum_value, (int, float))
+            if isinstance(semantic_minimum_value, int | float)
             else 0.0
         )
         components: list[tuple[float, float]] = [
