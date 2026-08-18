@@ -13,7 +13,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 from ..config import Settings
 from ..exceptions import ProviderFailed
-from ..models import Scene
+from ..models import OWNED_VISUAL_MODES, Scene
 from .base import Provider
 
 
@@ -21,11 +21,27 @@ def _font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.I
     candidates = [
         Path("C:/Windows/Fonts/segoeuib.ttf" if bold else "C:/Windows/Fonts/segoeui.ttf"),
         Path("C:/Windows/Fonts/arialbd.ttf" if bold else "C:/Windows/Fonts/arial.ttf"),
+        Path(
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+            if bold
+            else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+        ),
     ]
     for candidate in candidates:
         if candidate.exists():
             return ImageFont.truetype(str(candidate), size=size)
     return ImageFont.load_default()
+
+
+def _wrap_text(text: str, width: int, max_lines: int | None = None) -> str:
+    """Wrap display copy without splitting readable compounds such as “trade-offs”."""
+    lines = textwrap.wrap(
+        text,
+        width=width,
+        break_long_words=False,
+        break_on_hyphens=False,
+    )
+    return "\n".join(lines if max_lines is None else lines[:max_lines])
 
 
 class ImageProvider(Provider[Path]):
@@ -71,7 +87,9 @@ class PexelsImageProvider(ImageProvider):
             "photographer_url": photo.get("photographer_url"),
             "photo_url": photo.get("url"),
         }
-        output.with_suffix(".license.json").write_text(json.dumps(attribution, indent=2), encoding="utf-8")
+        output.with_suffix(".license.json").write_text(
+            json.dumps(attribution, indent=2), encoding="utf-8"
+        )
         self._fit(output)
         return output
 
@@ -79,10 +97,14 @@ class PexelsImageProvider(ImageProvider):
         with Image.open(path) as source:
             image = source.convert("RGB")
             ratio = max(self.cfg.width / image.width, self.cfg.height / image.height)
-            image = image.resize((round(image.width * ratio), round(image.height * ratio)), Image.Resampling.LANCZOS)
+            image = image.resize(
+                (round(image.width * ratio), round(image.height * ratio)), Image.Resampling.LANCZOS
+            )
             left = (image.width - self.cfg.width) // 2
             top = (image.height - self.cfg.height) // 2
-            image.crop((left, top, left + self.cfg.width, top + self.cfg.height)).save(path, quality=94)
+            image.crop((left, top, left + self.cfg.width, top + self.cfg.height)).save(
+                path, quality=94
+            )
 
 
 class TitleCardImageProvider(ImageProvider):
@@ -114,18 +136,55 @@ class TitleCardImageProvider(ImageProvider):
             draw.ellipse((x, y, x + size, y + size), fill=color)
         image = image.filter(ImageFilter.GaussianBlur(radius=45))
         draw = ImageDraw.Draw(image, "RGBA")
-        draw.rectangle((90, 92, 104, 990), fill=(*accent, 255))
-        draw.text((142, 104), f"SCENE {scene.index:02d}", font=_font(30, True), fill=(*accent, 255))
-        words = scene.visual_search_query.upper().split()[:7]
-        title = "\n".join(textwrap.wrap(" ".join(words), width=18))
-        draw.multiline_text(
-            (142, 220), title, font=_font(86, True), fill=(248, 246, 240, 255), spacing=12
+        title_copy = scene.onscreen_title or scene.visual_search_query
+        draw.rounded_rectangle(
+            (88, 82, 1832, 998),
+            radius=42,
+            fill=(8, 13, 22, 218),
+            outline=(*accent, 112),
+            width=2,
         )
-        caption = textwrap.fill(scene.environment, width=44)
-        draw.multiline_text(
-            (146, 800), caption, font=_font(34), fill=(225, 229, 226, 220), spacing=8
-        )
-        draw.line((142, 950, 890, 950), fill=(*accent, 170), width=3)
+        draw.text((142, 122), "ATOMY USA  /  RETENTION CUT", font=_font(26, True), fill=(*accent, 255))
+        draw.text((1660, 122), f"{scene.index:02d}", font=_font(30, True), fill=(210, 214, 216, 210))
+
+        if scene.visual_mode == "kinetic_statement":
+            draw.rounded_rectangle((138, 242, 362, 316), radius=36, fill=(*accent, 255))
+            draw.text((180, 260), "THE PROMISE", font=_font(24, True), fill=(8, 13, 22, 255))
+            title = _wrap_text(title_copy, width=25, max_lines=3)
+            draw.multiline_text((142, 382), title, font=_font(100, True), fill=(250, 248, 242, 255), spacing=9)
+            draw.rectangle((142, 790, 930, 804), fill=(*accent, 235))
+        elif scene.visual_mode == "step_card":
+            draw.text((128, 230), f"{scene.index:02d}", font=_font(270, True), fill=(*accent, 238))
+            draw.line((620, 260, 620, 820), fill=(*accent, 150), width=3)
+            draw.text((704, 270), "NEXT DECISION", font=_font(30, True), fill=(*accent, 255))
+            title = _wrap_text(title_copy, width=20, max_lines=4)
+            draw.multiline_text((704, 370), title, font=_font(76, True), fill=(250, 248, 242, 255), spacing=10)
+        elif scene.visual_mode == "comparison_card":
+            title = _wrap_text(title_copy, width=34, max_lines=2)
+            draw.multiline_text((142, 220), title, font=_font(72, True), fill=(250, 248, 242, 255), spacing=8)
+            for left, label, note in (
+                (142, "CONSUMER", "Product access and informed use"),
+                (986, "DISTRIBUTOR", "Responsibilities, costs, and goals"),
+            ):
+                draw.rounded_rectangle((left, 520, left + 704, 820), radius=28, fill=(18, 25, 34, 238), outline=(*accent, 112), width=2)
+                draw.text((left + 42, 570), label, font=_font(36, True), fill=(*accent, 255))
+                note_copy = _wrap_text(note, width=27)
+                draw.multiline_text((left + 42, 650), note_copy, font=_font(30), fill=(226, 230, 228, 225), spacing=7)
+        elif scene.visual_mode == "proof_card":
+            draw.rounded_rectangle((142, 230, 390, 306), radius=38, fill=(*accent, 255))
+            draw.text((190, 249), "VERIFY", font=_font(28, True), fill=(8, 13, 22, 255))
+            title = _wrap_text(title_copy, width=27, max_lines=3)
+            draw.multiline_text((142, 380), title, font=_font(88, True), fill=(250, 248, 242, 255), spacing=9)
+            draw.rounded_rectangle((142, 740, 1460, 828), radius=16, fill=(21, 30, 39, 245), outline=(*accent, 88), width=2)
+            draw.text((178, 766), "OFFICIAL PAGE  →  READ THE CURRENT REQUIREMENTS", font=_font(25, True), fill=(222, 228, 226, 230))
+        else:
+            draw.rectangle((90, 92, 104, 990), fill=(*accent, 255))
+            title = _wrap_text(title_copy, width=24, max_lines=4)
+            draw.multiline_text((148, 290), title, font=_font(88, True), fill=(248, 246, 240, 255), spacing=10)
+
+        # Keep the subtitle-safe lower band visually quiet. Burned captions own that area.
+        draw.line((142, 910, 1778, 910), fill=(*accent, 112), width=2)
+        draw.text((142, 942), "CLEAR STEPS  •  OFFICIAL SOURCES  •  NO HYPE", font=_font(21, True), fill=(176, 185, 192, 210))
         output.parent.mkdir(parents=True, exist_ok=True)
         image.save(output, quality=95)
         output.with_suffix(".license.json").write_text(
@@ -145,12 +204,16 @@ class SceneImageGenerator:
 
     def run(self, scene: Scene, output: Path) -> tuple[str, Path]:
         errors: list[str] = []
-        for provider in self.providers:
+        providers = self.providers
+        if scene.visual_mode in OWNED_VISUAL_MODES:
+            providers = sorted(self.providers, key=lambda provider: provider.name != "title_card")
+        for provider in providers:
             if not provider.available():
                 continue
             try:
                 return provider.name, provider.generate(scene, output)
             except Exception as exc:
                 errors.append(f"{provider.name}: {exc}")
-        raise ProviderFailed(f"No image provider could render scene {scene.index}: {' | '.join(errors)}")
-
+        raise ProviderFailed(
+            f"No image provider could render scene {scene.index}: {' | '.join(errors)}"
+        )

@@ -3,6 +3,9 @@ channel:
   language: "en"
   region: "US"
   timezone: "Asia/Kolkata"
+  brand_name: "Atomy"
+  brand_required: true
+  content_goal: "Help skeptical beginners evaluate Atomy membership using official sources and no hype."
   audience:
     - passive income
     - online business
@@ -36,6 +39,51 @@ research:
     - ethical network marketing
     - financial freedom habits
     - work from home systems
+  editorial_topics:
+    - "How to join Atomy USA: consumer vs distributor registration"
+    - "What an Atomy sponsor does and what to check before registering"
+    - "The Atomy compensation plan explained without income hype"
+    - "Atomy consumer membership: a practical first-time walkthrough"
+    - "How to decide whether Atomy fits your goals, budget, and time"
+    - "Questions to ask before joining Atomy as a distributor"
+    - "Atomy membership requirements, verification, and common registration mistakes"
+    - "How to read Atomy PV and commissions without confusing revenue with profit"
+  rotate_editorial_topics: true
+  max_official_source_age_days: 90
+  official_sources:
+    - title: Atomy USA Membership Registration User Guide
+      url: https://us.atomy.com/cst/userGuide/24100000001691
+      checked_on: 2026-08-12
+      summary: >-
+        The U.S. guide separates Consumer and Distributor registration. Both flows include
+        membership selection, acceptance of terms, U.S. mobile verification, personal
+        information, sponsor designation, review, and confirmation. Distributor registration
+        additionally requests Social Security and bank information. A sponsor may be selected
+        automatically or manually.
+    - title: Atomy America Member Agreement
+      url: https://us.atomy.com/common/footerTermsInfo?isHtml=Y&tabIndex=1
+      checked_on: 2026-08-12
+      summary: >-
+        The agreement says applicants must be legal U.S. residents who are at least 18,
+        apply under their legal name with valid identification, provide accurate information,
+        and receive company approval. Members are independent participants rather than company
+        employees and are responsible for their own taxes and expenses.
+    - title: Atomy USA Compensation Plan
+      url: https://us.atomy.com/cst/marketingPlan
+      checked_on: 2026-08-12
+      summary: >-
+        The official plan describes PV-based dealership classes, qualification thresholds,
+        general commissions, and mastership bonuses. Qualification and incentive figures are
+        conditional and subject to plan rules, sales activity, exchange rates, and change; the
+        page does not establish what a typical individual will earn after expenses.
+    - title: FTC Business Guidance Concerning Multi-Level Marketing
+      url: https://www.ftc.gov/business-guidance/resources/business-guidance-concerning-multi-level-marketing
+      checked_on: 2026-08-12
+      summary: >-
+        FTC staff guidance says earnings and lifestyle claims must be truthful, substantiated,
+        and representative of what the intended audience is likely to achieve after typical
+        expenses. A generic results-vary disclaimer does not repair a misleading claim, and
+        testimonials or limited-hours claims need reliable evidence.
   reddit_subreddits: [Entrepreneur, sidehustle, productivity, SkincareAddiction]
   max_candidates: 40
   request_timeout_seconds: 15
@@ -53,13 +101,15 @@ script:
   ollama_model: "qwen2.5:7b-instruct-q4_K_M"
 
 storyboard:
-  target_scene_seconds: 16
-  min_scene_seconds: 8
-  max_scene_seconds: 24
-  max_scenes: 32
+  target_scene_seconds: 9
+  min_scene_seconds: 5
+  max_scene_seconds: 14
+  max_scenes: 48
+  engagement_mode: retention
+  pattern_interrupt_seconds: 18
 
 voice:
-  providers: [openai, gemini, kokoro, piper]
+  providers: [openai, gemini, chatterbox, kokoro, piper]
   openai_model: gpt-4o-mini-tts
   openai_voice: coral
   openai_instructions: >-
@@ -68,8 +118,24 @@ voice:
   gemini_model: gemini-2.5-flash-preview-tts
   gemini_voice: Kore
   kokoro_voice: af_heart
+  kokoro_speed: 0.98
+  kokoro_language: a
+  chatterbox_reference_audio: null
+  chatterbox_exaggeration: 0.68
+  chatterbox_cfg_weight: 0.32
+  chatterbox_temperature: 0.78
+  chatterbox_speed: 1.0
+  chatterbox_target_wpm: 165
+  chatterbox_sentence_pause_ms: 105
+  chatterbox_paragraph_pause_ms: 320
+  elevenlabs_model: eleven_multilingual_v2
+  elevenlabs_voice_id: JBFqnCBsd6RMkjVDRZzb
+  elevenlabs_stability: 0.42
+  elevenlabs_similarity_boost: 0.78
+  elevenlabs_style: 0.22
   sample_rate: 24000
   target_lufs: -16
+  max_duration_ratio: 1.18
 
 images:
   providers: [pexels, title_card]
@@ -80,35 +146,84 @@ images:
 video:
   width: 1920
   height: 1080
-  fps: 30
+  fps: 60
   codec: h264_nvenc
   fallback_codec: libx264
   crf: 19
   preset: p5
+  fallback_preset: fast
   premium_providers: [veo, minimax]
   enable_premium_scenes: false
   premium_max_scenes_per_video: 1
   premium_daily_budget_usd: 0.50
   veo_model: veo-3.1-lite-generate-preview
   veo_estimated_usd_per_second: 0.05
+  gemini_omni_model: gemini-omni-flash-preview
+  gemini_omni_estimated_usd_per_second: 0.10
   minimax_model: MiniMax-Hailuo-2.3-Fast
   minimax_resolution: 768P
   minimax_estimated_usd_per_clip: 0.30
   cloud_clip_seconds: 8
-  transition_seconds: 0.35
+  transition_seconds: 0.55
+  stock_video_enabled: true
+  stock_video_providers: [pexels_video]
+  stock_video_max_scenes_per_video: 48
+  stock_video_candidates_per_scene: 15
+  stock_video_min_width: 1280
+  stock_video_min_duration_seconds: 4
+  stock_video_download_timeout_seconds: 180
+  stock_video_semantic_ranking: true
+  stock_video_semantic_model: openai/clip-vit-base-patch32
+  stock_video_semantic_candidates: 12
+  stock_video_min_visual_relevance: 0.32
+  local_generation_enabled: true
+  local_generation_providers: [comfyui_wan22]
+  local_generation_max_scenes_per_video: 1
+  local_generation_min_score: 0.70
+  local_generation_quality_gate: true
+  local_generation_min_quality_score: 0.62
+  local_generation_min_sharpness: 0.25
+  local_generation_min_reference_similarity: 0.52
+  local_generation_vlm_gate: true
+  local_generation_vlm_model: google/gemini-3-flash-preview
+  local_generation_vlm_min_score: 0.72
+  local_generation_reference_policy: real_first
+  local_generation_candidates: 2
+  comfyui_width: 832
+  comfyui_height: 480
+  comfyui_frames: 121
+  comfyui_fps: 24
+  comfyui_steps: 20
+  comfyui_cfg: 5.0
+  comfyui_timeout_minutes: 60
+  comfyui_reference_checkpoint: sd_xl_base_1.0.safetensors
+  comfyui_reference_width: 768
+  comfyui_reference_height: 1344
+  comfyui_reference_steps: 28
+  comfyui_reference_cfg: 5.5
+  comfyui_rife_enabled: true
+  comfyui_rife_model: rife_v4.26.safetensors
+  comfyui_rife_multiplier: 2
+  interpolate_low_fps_clips: false
+  clip_color_grade: true
 
 audio:
-  music_volume_db: -27
-  sfx_volume_db: -19
+  music_volume_db: -24
+  sfx_volume_db: -17
   generate_original_music: true
   sidechain_ratio: 8
 
 subtitles:
   burn_in: true
-  max_words_per_caption: 7
+  max_words_per_caption: 6
   font_name: Segoe UI Semibold
   font_size: 56
   highlight_color: "&H0037E6FF"
+  alignment: auto
+  whisper_model: small.en
+  whisper_device: auto
+  whisper_compute_type: default
+  glossary: [Atomy, Atomy USA, Personal PV, PV, Federal Trade Commission, FTC]
 
 publishing:
   enabled: false
@@ -120,6 +235,7 @@ publishing:
 
 runtime:
   output_directory: output
+  model_directory: models
   retries: 3
   retry_min_seconds: 2
   retry_max_seconds: 30

@@ -1,0 +1,113 @@
+name: atlasforge-ai
+
+x-atlasforge: &atlasforge
+  build:
+    context: .
+    dockerfile: Dockerfile
+    target: base
+  env_file:
+    - path: .env
+      required: false
+  environment:
+    CONFIG_FILE: /app/config/default.yaml
+    OUTPUT_DIRECTORY: /app/output
+    MODEL_DIRECTORY: /app/models
+    HF_HOME: /app/models/huggingface
+    XDG_CACHE_HOME: /app/models/cache
+    OLLAMA_BASE_URL: ${DOCKER_OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+    COMFYUI_BASE_URL: ${DOCKER_COMFYUI_BASE_URL:-http://host.docker.internal:8188}
+    NVIDIA_DRIVER_CAPABILITIES: compute,utility,video
+  extra_hosts:
+    - host.docker.internal:host-gateway
+  volumes:
+    - ./config:/app/config:ro
+    - ./output:/app/output
+    - ./models:/app/models
+    - ./secrets:/app/secrets:ro
+
+services:
+  atlasforge:
+    <<: *atlasforge
+
+  atlasforge-gpu:
+    <<: *atlasforge
+    profiles: [gpu]
+    gpus: all
+
+  atlasforge-local:
+    <<: *atlasforge
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: local-ai
+    profiles: [local-ai]
+    gpus: all
+    environment:
+      CONFIG_FILE: /app/config/default.yaml
+      OUTPUT_DIRECTORY: /app/output
+      MODEL_DIRECTORY: /app/models
+      HF_HOME: /app/models/huggingface
+      XDG_CACHE_HOME: /app/models/cache
+      OLLAMA_BASE_URL: http://ollama:11434
+      COMFYUI_BASE_URL: ${DOCKER_COMFYUI_BASE_URL:-http://host.docker.internal:8188}
+    depends_on:
+      ollama:
+        condition: service_healthy
+
+  atlasforge-studio:
+    <<: *atlasforge
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: local-ai
+    profiles: [studio]
+    gpus: all
+    command:
+      - dashboard
+      - --config
+      - /app/config/profiles/atomy-us-openrouter.yaml
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8741"
+    environment:
+      CONFIG_FILE: /app/config/profiles/atomy-us-openrouter.yaml
+      OUTPUT_DIRECTORY: /app/output
+      MODEL_DIRECTORY: /app/models
+      HF_HOME: /app/models/huggingface
+      XDG_CACHE_HOME: /app/models/cache
+      COMFYUI_BASE_URL: ${DOCKER_COMFYUI_BASE_URL:-http://host.docker.internal:8188}
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility,video
+    ports:
+      - 127.0.0.1:8741:8741
+
+  ollama:
+    image: ollama/ollama:latest
+    profiles: [local-ai]
+    gpus: all
+    environment:
+      OLLAMA_KEEP_ALIVE: "0"
+    volumes:
+      - ollama-models:/root/.ollama
+    healthcheck:
+      test: [CMD, ollama, list]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+    restart: unless-stopped
+
+  ollama-pull:
+    image: ollama/ollama:latest
+    profiles: [local-ai]
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-qwen2.5:7b-instruct-q4_K_M}
+    entrypoint: [sh, -c]
+    command: ["ollama pull $$OLLAMA_MODEL"]
+    depends_on:
+      ollama:
+        condition: service_healthy
+
+volumes:
+  ollama-models:

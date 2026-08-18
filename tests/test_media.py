@@ -3,13 +3,19 @@ from __future__ import annotations
 import wave
 from pathlib import Path
 
-from daily_video_factory.media.audio import generate_original_music, generate_sfx_track
-from daily_video_factory.media.subtitles import write_subtitles
+import pytest
+
+from daily_video_factory.media.audio import generate_original_music, generate_sfx_track, mix_audio
+from daily_video_factory.media.render import VideoRenderer
+from daily_video_factory.media.subtitles import _align_script_words, write_subtitles
 from daily_video_factory.models import Scene, ScriptDocument, Storyboard
+from daily_video_factory.providers.tts import _atempo_chain, fit_narration_duration
 
 
 def _script() -> ScriptDocument:
-    text = "A clear plan starts with a real customer problem. Compare options before choosing Atomy."
+    text = (
+        "A clear plan starts with a real customer problem. Compare options before choosing Atomy."
+    )
     return ScriptDocument(
         title="A clear decision framework",
         hook=text,
@@ -53,4 +59,122 @@ def test_subtitle_outputs(settings, tmp_path: Path) -> None:
     )
     assert cues[0].start_seconds == 0
     assert abs(cues[-1].end_seconds - 10) < 0.001
-    assert "Dialogue:" in (tmp_path / "captions.ass").read_text(encoding="utf-8-sig")
+    ass = (tmp_path / "captions.ass").read_text(encoding="utf-8-sig")
+    assert "Dialogue:" in ass
+    assert r"{\c&H0037E6FF&}Atomy{\c&H00FFFFFF&}" in ass
+
+
+def test_script_locked_alignment_corrects_brand_and_discards_asr_insertions() -> None:
+    canonical = ["Join", "Atomy", "USA", "after", "reviewing", "the", "official", "guide."]
+    recognized = [
+        ("Join", 0.0, 0.25),
+        ("ADAMI", 0.25, 0.62),
+        ("USA", 0.62, 0.88),
+        ("however", 0.88, 1.0),
+        ("after", 1.0, 1.22),
+        ("reviewing", 1.22, 1.62),
+        ("the", 1.62, 1.75),
+        ("official", 1.75, 2.05),
+        ("guide", 2.05, 2.4),
+    ]
+
+    aligned = _align_script_words(canonical, recognized)
+
+    assert [word for word, _start, _end in aligned] == canonical
+    assert "ADAMI" not in {word for word, _start, _end in aligned}
+    assert "however" not in {word for word, _start, _end in aligned}
+    assert all(right[1] >= left[2] for left, right in zip(aligned, aligned[1:], strict=False))
+
+
+def test_audio_mix_splits_narration_before_sidechain(settings, tmp_path: Path) -> None:
+    class RecordingFFmpeg:
+        def __init__(self) -> None:
+            self.args: list[str] = []
+
+        def run(self, args: list[str]) -> None:
+            self.args = args
+
+    ffmpeg = RecordingFFmpeg()
+    output = tmp_path / "mixed.m4a"
+    mix_audio(
+        tmp_path / "narration.wav",
+        tmp_path / "music.wav",
+        tmp_path / "sfx.wav",
+        10,
+        output,
+        settings,
+        ffmpeg,  # type: ignore[arg-type]
+    )
+
+    filter_graph = ffmpeg.args[ffmpeg.args.index("-filter_complex") + 1]
+    assert "asplit=2[narr_mix][narr_sidechain]" in filter_graph
+    assert "[music][narr_sidechain]sidechaincompress" in filter_graph
+    assert "[narr_mix][ducked][fx]amix" in filter_graph
+    assert "normalize=0,loudnorm=I=-16:TP=-1.5:LRA=11" in filter_graph
+    assert filter_graph.count("aformat=channel_layouts=stereo") == 3
+
+
+def test_slow_narration_is_pitch_preserving_duration_fitted(tmp_path: Path) -> None:
+    class RecordingFFmpeg:
+        def __init__(self) -> None:
+            self.args: list[str] = []
+
+        def duration(self, _path: Path) -> float:
+            return 180
+
+        def run(self, args: list[str]) -> None:
+            self.args = args
+            Path(args[-1]).write_bytes(b"fitted")
+
+    narration = tmp_path / "narration.wav"
+    narration.write_bytes(b"original")
+    ffmpeg = RecordingFFmpeg()
+
+    result = fit_narration_duration(
+        narration,
+        target_minutes=2,
+        max_duration_ratio=1.18,
+        ffmpeg=ffmpeg,  # type: ignore[arg-type]
+    )
+
+    assert result == narration
+    assert narration.read_bytes() == b"fitted"
+    assert ffmpeg.args[ffmpeg.args.index("-filter:a") + 1] == "atempo=1.271186"
+    assert _atempo_chain(5) == "atempo=2.000000,atempo=2.000000,atempo=1.250000"
+    with pytest.raises(ValueError, match="positive"):
+        _atempo_chain(0)
+
+
+def test_local_video_master_uses_sharp_scale_without_legacy_optical_flow(
+    settings, tmp_path: Path
+) -> None:
+    class RecordingFFmpeg:
+        def __init__(self) -> None:
+            self.args: list[str] = []
+
+        def can_encode(self, _encoder: str) -> bool:
+            return True
+
+        def duration(self, _path: Path) -> float:
+            return 5
+
+        def run(self, args: list[str]) -> None:
+            self.args = args
+
+    scene = Scene(
+        index=1,
+        duration_seconds=5,
+        narration="",
+        video_prompt="photoreal motion",
+        visual_search_query="controlled movement",
+        selected_video_provider="comfyui_wan22",
+    )
+    ffmpeg = RecordingFFmpeg()
+    renderer = VideoRenderer(settings, ffmpeg)  # type: ignore[arg-type]
+
+    renderer.normalize_video_scene(scene, tmp_path / "raw.mp4", tmp_path / "master.mp4")
+
+    video_filter = ffmpeg.args[ffmpeg.args.index("-vf") + 1]
+    assert "minterpolate" not in video_filter
+    assert "flags=lanczos+accurate_rnd+full_chroma_int" in video_filter
+    assert f"fps={settings.video.fps}" in video_filter

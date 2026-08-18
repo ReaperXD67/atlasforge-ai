@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+from datetime import date
 from pathlib import Path
 
 from .config import Settings
@@ -13,7 +14,24 @@ PROHIBITED_PATTERNS = {
     "earnings promise": r"\b(earn|make|generate)\s+\$?\d[\d,]*(?:\s*(?:per|a)\s+(?:day|week|month))?\b",
     "income promise": r"\b(passive income|financial freedom)\s+(?:is|will be|becomes)\s+(?:easy|guaranteed|automatic)\b",
     "medical claim": r"\b(cures?|treats?|prevents?|heals?|diagnoses?)\s+(?:cancer|diabetes|disease|illness|acne)\b",
+    "lifestyle income claim": r"\b(quit your job|replace your salary|six[- ]figure income|unlimited income)\b",
 }
+
+NEGATED_CLAIM_CONTEXT = re.compile(
+    r"\b(?:no|not|never|without|cannot|can't|won't|don't|doesn't|isn't|aren't|"
+    r"shouldn't|wouldn't)\b(?:\W+\w+){0,4}\W*$",
+    flags=re.IGNORECASE,
+)
+
+
+def _contains_unqualified_claim(text: str, pattern: str) -> bool:
+    """Return true when a prohibited phrase is asserted rather than explicitly rejected."""
+    for match in re.finditer(pattern, text, flags=re.IGNORECASE):
+        prefix = text[max(0, match.start() - 96) : match.start()]
+        if NEGATED_CLAIM_CONTEXT.search(prefix):
+            continue
+        return True
+    return False
 
 
 def validate_script(script: ScriptDocument, settings: Settings) -> list[str]:
@@ -25,13 +43,37 @@ def validate_script(script: ScriptDocument, settings: Settings) -> list[str]:
         )
     lower = script.full_text.lower()
     for label, pattern in PROHIBITED_PATTERNS.items():
-        if re.search(pattern, lower, flags=re.IGNORECASE):
+        if _contains_unqualified_claim(lower, pattern):
             errors.append(f"Potentially prohibited {label} detected.")
-    brand_index = lower.find("atomy")
-    if brand_index < 0:
-        errors.append("Atomy is never discussed; the configured editorial brief requires a neutral case study.")
-    elif brand_index / max(1, len(lower)) < cfg.brand_mention_min_fraction:
-        errors.append("Atomy appears before the education-first portion is complete.")
+    brand = settings.channel.brand_name.strip()
+    if brand.casefold() == "atomy" and re.search(r"\b(?:point value|personal volume)\b", lower):
+        errors.append(
+            "Unsupported Atomy PV expansion detected; use 'PV' or 'Personal PV' as the official "
+            "U.S. plan does."
+        )
+    brand_index = lower.find(brand.lower()) if brand else -1
+    if settings.channel.brand_required and brand and brand_index < 0:
+        errors.append(
+            f"{brand} is never discussed; the configured editorial brief requires a neutral case study."
+        )
+    elif (
+        settings.channel.brand_required
+        and brand
+        and not script.brand_focused
+        and brand_index / max(1, len(lower)) < cfg.brand_mention_min_fraction
+    ):
+        errors.append(f"{brand} appears before the education-first portion is complete.")
+    if script.brand_focused:
+        if not script.source_urls:
+            errors.append("Brand-focused scripts require pinned official or regulatory sources.")
+        stale_sources = [
+            source.title
+            for source in settings.research.official_sources
+            if (date.today() - source.checked_on).days
+            > settings.research.max_official_source_age_days
+        ]
+        if stale_sources:
+            errors.append("Official source summaries are stale: " + ", ".join(stale_sources) + ".")
     disclosure_text = " ".join(script.disclosures).lower()
     if "ai" not in disclosure_text or "voice" not in disclosure_text:
         errors.append("The script package is missing an AI narration disclosure.")
@@ -55,15 +97,21 @@ def validate_final(
         errors.append("Final MP4 is missing or implausibly small.")
     else:
         duration = ffmpeg.duration(video)
-        if not 5.5 * 60 <= duration <= 8.5 * 60:
-            errors.append(f"Final duration is {duration / 60:.2f} minutes; expected approximately 6-8.")
+        target = settings.script.target_minutes
+        minimum = max(0.5, target * 0.75)
+        maximum = max(minimum + 0.25, target * 1.3)
+        if not minimum * 60 <= duration <= maximum * 60:
+            errors.append(
+                f"Final duration is {duration / 60:.2f} minutes; expected approximately "
+                f"{minimum:.1f}-{maximum:.1f}."
+            )
     if not thumbnail.exists() or thumbnail.stat().st_size < 20_000:
         errors.append("Thumbnail is missing or implausibly small.")
     if not metadata.chapters or not metadata.chapters[0].startswith("0:00"):
         errors.append("YouTube chapters must begin at 0:00.")
-    if len(storyboard.scenes) < 12:
+    minimum_scenes = max(3, round(settings.script.target_minutes * 1.7))
+    if len(storyboard.scenes) < minimum_scenes:
         errors.append("Storyboard has too little visual variation for long-form video.")
     if errors and settings.runtime.fail_on_quality_gate:
         raise QualityGateFailed(" ".join(errors))
     return errors
-

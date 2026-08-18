@@ -7,8 +7,156 @@ from .models import Scene, ScriptDocument, Storyboard
 
 
 def _sentences(text: str) -> list[str]:
-    parts = re.split(r"(?<=[.!?])\s+(?=[A-Z0-9])", re.sub(r"\s+", " ", text).strip())
-    return [part.strip() for part in parts if part.strip()]
+    marker = "<prd>"
+
+    def protect(match: re.Match[str]) -> str:
+        return match.group(0).replace(".", marker)
+
+    protected = re.sub(
+        r"\b(?:[A-Za-z]\.){2,}",
+        protect,
+        re.sub(
+            r"\b(?:e\.g|i\.e|Mr|Mrs|Ms|Dr|St)\.",
+            protect,
+            text,
+            flags=re.IGNORECASE,
+        ),
+    )
+    parts = re.split(r"(?<=[.!?])\s+(?=[A-Z0-9])", re.sub(r"\s+", " ", protected).strip())
+    return [part.replace(marker, ".").strip() for part in parts if part.strip()]
+
+
+def _visual_plan(narration: str, index: int, title: str) -> tuple[str, str, str]:
+    """Turn narration into a concrete, stock-searchable shot instead of keyword soup."""
+    lower = narration.lower()
+    plans = [
+        (
+            {"register", "registration", "application", "website", "sign-up"},
+            (
+                "person completing online registration on laptop close up",
+                "hands typing secure online application form on laptop",
+            ),
+            "Registration walkthrough",
+        ),
+        (
+            {"phone", "mobile", "verification", "code"},
+            (
+                "smartphone verification code hands close up",
+                "person receiving secure mobile code at home",
+            ),
+            "Verify your mobile number",
+        ),
+        (
+            {"sponsor", "mentor", "guidance"},
+            (
+                "business mentor meeting adult learner with laptop",
+                "adult taking notes during online coaching session on laptop",
+            ),
+            "Choose a sponsor carefully",
+        ),
+        (
+            {"consumer", "distributor", "membership", "member"},
+            (
+                "two adults comparing options and taking notes at desk",
+                "person comparing a checklist of choices in notebook",
+            ),
+            "Consumer or distributor?",
+        ),
+        (
+            {
+                "bank",
+                "social security",
+                "identity",
+                "legal name",
+                "identification",
+                "resident",
+                "18 years",
+            },
+            (
+                "adult checking passport identification before online registration",
+                "hands holding passport identification beside laptop close up",
+            ),
+            "Use accurate legal details",
+        ),
+        (
+            {"product", "skincare", "supplement", "wellness"},
+            (
+                "skincare products on clean shelf cinematic",
+                "woman applying skincare serum at mirror natural light",
+                "skincare serum bottle on clean vanity close up",
+            ),
+            "Understand the products",
+        ),
+        (
+            {
+                "pv",
+                "commission",
+                "income",
+                "expense",
+                "profit",
+                "compensation",
+                "tax",
+                "independent participant",
+            },
+            (
+                "small business owner reviewing calculator and expenses",
+                "receipts notebook and budget planning overhead close up",
+            ),
+            "Revenue is not profit",
+        ),
+        (
+            {"risk", "claim", "ftc", "evidence", "official", "verify"},
+            (
+                "professional fact checking trusted information on laptop and notebook",
+                "consumer carefully reviewing terms on tablet at home",
+            ),
+            "Check the official source",
+        ),
+        (
+            {"goal", "budget", "time", "decision", "compare"},
+            (
+                "thoughtful person planning budget and goals in notebook",
+                "person comparing priorities on sticky notes at home",
+            ),
+            "Compare the trade-offs",
+        ),
+    ]
+    ranked = sorted(
+        (
+            (sum(signal in lower for signal in signals), signals, queries, card_title)
+            for signals, queries, card_title in plans
+        ),
+        key=lambda match: match[0],
+        reverse=True,
+    )
+    if ranked and ranked[0][0] > 0:
+        _score, signals, queries, card_title = ranked[0]
+        matched_signals = {signal for signal in signals if signal in lower}
+        exact_fact = matched_signals & {
+            "pv",
+            "commission",
+            "social security",
+            "legal name",
+            "ftc",
+        }
+        must_own_visual = matched_signals & {"social security", "legal name", "ftc"}
+        mode = (
+            "information_card"
+            if must_own_visual or (exact_fact and index % 3 == 0)
+            else "documentary_broll"
+        )
+        return queries[(index - 1) % len(queries)], card_title, mode
+    if index == 1:
+        return (
+            "confident adult beginning an online learning journey cinematic",
+            title,
+            "documentary_broll",
+        )
+    return (
+        "authentic adult learning and taking notes in calm home office",
+        "A practical next step",
+        "documentary_broll",
+    )
 
 
 class StoryboardBuilder:
@@ -42,7 +190,9 @@ class StoryboardBuilder:
     def run(self, script: ScriptDocument) -> Storyboard:
         cfg = self.settings.storyboard
         sentences = _sentences(script.full_text)
-        target_words = max(25, round(cfg.target_scene_seconds * self.settings.script.words_per_minute / 60))
+        target_words = max(
+            25, round(cfg.target_scene_seconds * self.settings.script.words_per_minute / 60)
+        )
         groups: list[list[str]] = []
         current: list[str] = []
         current_words = 0
@@ -61,6 +211,9 @@ class StoryboardBuilder:
             groups[-1].extend(tail)
 
         scenes: list[Scene] = []
+        interrupt_every = max(
+            2, round(cfg.pattern_interrupt_seconds / max(1, cfg.target_scene_seconds))
+        )
         for index, group in enumerate(groups):
             narration = " ".join(group)
             words = len(narration.split())
@@ -68,17 +221,43 @@ class StoryboardBuilder:
             duration = max(cfg.min_scene_seconds, min(cfg.max_scene_seconds, duration))
             lower = narration.lower()
             is_hook = index == 0
-            is_product = any(word in lower for word in {"atomy", "product", "skincare", "supplement"})
+            is_product = any(word in lower for word in {"product", "skincare", "supplement"})
             is_emotional = any(
                 word in lower for word in {"fear", "hope", "freedom", "overwhelmed", "confidence"}
             )
-            has_motion = any(word in lower for word in {"build", "change", "journey", "grow", "move"})
-            premium = min(1.0, 0.2 + 0.35 * is_hook + 0.25 * is_product + 0.15 * is_emotional + 0.1 * has_motion)
-            keywords = [
-                word
-                for word in re.findall(r"[a-zA-Z]{4,}", narration)
-                if word.lower() not in {"that", "this", "with", "from", "your", "have", "will"}
-            ][:5]
+            has_motion = any(
+                word in lower for word in {"build", "change", "journey", "grow", "move"}
+            )
+            premium = min(
+                1.0,
+                0.2 + 0.35 * is_hook + 0.25 * is_product + 0.15 * is_emotional + 0.1 * has_motion,
+            )
+            visual_query, onscreen_title, visual_mode = _visual_plan(
+                narration, index + 1, script.title
+            )
+            if cfg.engagement_mode == "retention":
+                if is_hook:
+                    # Start on human tension, not anonymous desk furniture. The promise card that
+                    # follows provides the first visual interruption without pretending to be footage.
+                    visual_query = (
+                        "thoughtful adult hesitating before online registration laptop close up "
+                        "natural reaction cinematic"
+                    )
+                    onscreen_title = script.title
+                    visual_mode = "cold_open"
+                elif index == 1:
+                    visual_mode = "kinetic_statement"
+                elif visual_mode == "information_card":
+                    visual_mode = "proof_card"
+                elif index >= 4 and (index + 1) % interrupt_every == 0:
+                    if any(word in lower for word in {"consumer", "distributor", "compare", "option"}):
+                        visual_mode = "comparison_card"
+                    else:
+                        visual_mode = "step_card"
+            elif is_hook and visual_mode != "information_card":
+                visual_query = "confident adult beginning an online learning journey cinematic"
+                onscreen_title = script.title
+                visual_mode = "documentary_broll"
             environment = self.ENVIRONMENTS[index % len(self.ENVIRONMENTS)]
             angle = self.ANGLES[index % len(self.ANGLES)]
             lighting = self.LIGHTING[index % len(self.LIGHTING)]
@@ -92,16 +271,40 @@ class StoryboardBuilder:
                     character_description="authentic adult learner or independent professional",
                     emotion="curious and grounded" if not is_emotional else "quietly reflective",
                     lighting=lighting,
-                    sound_effects=["soft_whoosh"] if index else ["cinematic_rise"],
-                    transition="crossfade" if index else "fade_from_black",
+                    sound_effects=(
+                        ["cinematic_rise", "low_impact"]
+                        if is_hook
+                        else [
+                            {
+                                "kinetic_statement": "text_hit",
+                                "step_card": "step_tick",
+                                "proof_card": "proof_ping",
+                                "comparison_card": "decision_ticks",
+                            }.get(visual_mode, "soft_whoosh")
+                        ]
+                    ),
+                    transition=(
+                        "fade_from_black"
+                        if is_hook
+                        else "clean_cut"
+                        if cfg.engagement_mode == "retention" and visual_mode != "documentary_broll"
+                        else "crossfade"
+                    ),
                     video_prompt=(
-                        f"Cinematic documentary b-roll, {environment}, {angle}, {lighting}, "
+                        f"Cinematic documentary b-roll of {visual_query}, {environment}, "
+                        f"{angle}, {lighting}, "
                         "natural human movement, realistic textures, no logos, no text, 16:9"
                     ),
-                    visual_search_query=" ".join(keywords) or script.title,
+                    visual_search_query=visual_query,
+                    onscreen_title=onscreen_title,
+                    visual_mode=visual_mode,
                     premium_score=round(premium, 2),
                 )
             )
         total = round(sum(scene.duration_seconds for scene in scenes), 2)
-        return Storyboard(title=script.title, total_duration_seconds=total, scenes=scenes, provider="deterministic")
-
+        return Storyboard(
+            title=script.title,
+            total_duration_seconds=total,
+            scenes=scenes,
+            provider="deterministic",
+        )

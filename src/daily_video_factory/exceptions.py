@@ -20,4 +20,3 @@ class QualityGateFailed(DailyVideoError):
 
 class AlreadyPublished(DailyVideoError):
     """The requested publication date already has a completed upload."""
-
