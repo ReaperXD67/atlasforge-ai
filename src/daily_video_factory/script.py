@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import re
 from typing import Any, cast
 
@@ -201,6 +202,7 @@ class ScriptGenerator:
 
 SEARCH TOPIC: {report.selected_title}
 EDITORIAL ANGLE: {report.selected_angle}
+CONTENT GOAL: {self.settings.channel.content_goal}
 TARGET LENGTH: {target.min_words}-{target.max_words} spoken words
 AUDIENCE: {", ".join(self.settings.channel.audience)}
 CURRENT TOPIC SIGNALS (not factual evidence):
@@ -226,6 +228,17 @@ returning JSON; do not exceed {target.max_words} spoken words.
 The title must be searchable but honest. Put every externally verifiable statement that may need
 editorial checking into facts_to_verify. Include the AI-voice disclosure and this channel disclosure
 in disclosures: {self.settings.channel.disclosure}. Do not add citations you cannot verify."""
+
+    def _repair_prompt(self, payload: dict[str, Any], preferred_min_words: int) -> str:
+        target = self.settings.script
+        return f"""Revise the JSON narration below so its spoken narration contains between
+{preferred_min_words} and {target.max_words} words. Preserve its title, factual restraint,
+disclosures, and low-pressure intent. Add useful clarification, examples, or decision guidance;
+never pad with repetition, hype, invented details, earnings claims, or health claims. Keep five to
+eight body sections and return only JSON matching the original schema.
+
+ORIGINAL JSON:
+{json.dumps(payload, ensure_ascii=False)}"""
 
     def _normalize(
         self,
@@ -266,9 +279,46 @@ in disclosures: {self.settings.channel.disclosure}. Do not add citations you can
                 temperature=0.65,
             ),
         )
-        return self._normalize(
+        document = self._normalize(
             result.value,
             result.provider,
             self.settings.script.words_per_minute,
             report,
         )
+        target = self.settings.script
+        preferred_min_words = min(
+            target.max_words,
+            max(
+                target.min_words,
+                round(target.target_minutes * target.words_per_minute * 0.90),
+            ),
+        )
+        if document.word_count >= preferred_min_words:
+            return document
+
+        # Model word counts vary slightly even with a precise prompt. One focused repair gives
+        # the writer a chance to reach the intended runtime, while the original remains a safe
+        # fallback whenever it already clears the hard quality floor.
+        try:
+            repaired = self.chain.run(
+                "script_length_repair",
+                lambda provider: cast(TextProvider, provider).generate_json(
+                    system=SYSTEM_PROMPT,
+                    prompt=self._repair_prompt(result.value, preferred_min_words),
+                    schema=SCRIPT_SCHEMA,
+                    temperature=0.25,
+                ),
+            )
+            repaired_document = self._normalize(
+                repaired.value,
+                repaired.provider,
+                target.words_per_minute,
+                report,
+            )
+            if repaired_document.word_count >= document.word_count:
+                return repaired_document
+        except Exception:
+            # ProviderChain already records the concrete provider failure. The downstream quality
+            # gate still rejects a result below the hard floor; a usable original is never lost.
+            pass
+        return document

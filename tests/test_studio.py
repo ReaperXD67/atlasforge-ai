@@ -33,8 +33,8 @@ def test_studio_renders_safe_job_overrides(tmp_path: Path) -> None:
     studio._render_job_config(request, destination)
     rendered = load_settings(destination)
     assert rendered.script.target_minutes == 2
-    assert rendered.script.min_words == 246
-    assert rendered.script.max_words == 313
+    assert rendered.script.min_words == 224
+    assert rendered.script.max_words == 308
     assert rendered.video.fps == 30
     assert rendered.video.crf == 23
     assert rendered.video.stock_video_enabled is False

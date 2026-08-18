@@ -80,6 +80,9 @@ class VoiceConfig(BaseModel):
     kokoro_voice: str
     kokoro_speed: float = Field(default=0.98, ge=0.75, le=1.25)
     kokoro_language: str = "a"
+    kokoro_sentence_pause_ms: int = Field(default=90, ge=0, le=1000)
+    kokoro_paragraph_pause_ms: int = Field(default=300, ge=0, le=2000)
+    pronunciations: dict[str, str] = Field(default_factory=dict)
     elevenlabs_model: str = "eleven_multilingual_v2"
     elevenlabs_voice_id: str = "JBFqnCBsd6RMkjVDRZzb"
     elevenlabs_stability: float = Field(default=0.42, ge=0, le=1)

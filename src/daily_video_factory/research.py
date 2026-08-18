@@ -135,18 +135,32 @@ class TopicResearcher:
         return sorted(ranked, key=lambda item: item.score, reverse=True)
 
     def run(self, query_date: date, topic_override: str | None = None) -> ResearchReport:
-        items = self._youtube_suggestions() + self._google_trends() + self._reddit()
-        if not items:
-            items = [
+        topic_override = (topic_override or "").strip() or None
+        if topic_override:
+            # The user has already supplied the editorial intent. Treat it as the highest-value
+            # signal and skip broad trend/social discovery, which adds latency and can pull a
+            # tightly scoped brand video toward unrelated side-hustle topics.
+            ranked = [
                 ResearchItem(
-                    title=topic,
-                    source="configured_seed",
-                    score=1,
-                    rationale="Network research unavailable; used configured evergreen seed",
+                    title=topic_override,
+                    source="user_topic",
+                    score=100,
+                    rationale="Explicit Studio topic; broad discovery intentionally skipped",
                 )
-                for topic in self.settings.research.seed_topics
             ]
-        ranked = self._rank(items)[: self.settings.research.max_candidates]
+        else:
+            items = self._youtube_suggestions() + self._google_trends() + self._reddit()
+            if not items:
+                items = [
+                    ResearchItem(
+                        title=topic,
+                        source="configured_seed",
+                        score=1,
+                        rationale="Network research unavailable; used configured evergreen seed",
+                    )
+                    for topic in self.settings.research.seed_topics
+                ]
+            ranked = self._rank(items)[: self.settings.research.max_candidates]
         configured_topics = self.settings.research.editorial_topics
         if topic_override:
             selected_title = topic_override
@@ -192,7 +206,12 @@ class TopicResearcher:
             brand_focused=brand_focused,
             evidence=evidence,
             source_notes=[
-                "Trends and social posts are topic signals, not verified evidence.",
+                (
+                    "The explicit Studio topic was used as editorial intent; broad trend and "
+                    "social discovery was skipped."
+                    if topic_override
+                    else "Trends and social posts are topic signals, not verified evidence."
+                ),
                 "Official-source summaries are locally pinned and must be refreshed on the configured cadence.",
                 "Any product, financial, supplement, or skincare claim outside the source pack must be verified before publication.",
             ],

@@ -34,6 +34,21 @@ def split_for_tts(text: str, max_chars: int = 4500) -> list[str]:
     return chunks
 
 
+def apply_pronunciations(text: str, pronunciations: dict[str, str]) -> str:
+    """Apply speech-only pronunciation hints without changing script or caption truth."""
+    spoken = text
+    for written, replacement in sorted(pronunciations.items(), key=lambda item: len(item[0]), reverse=True):
+        if not written.strip() or not replacement.strip():
+            continue
+        spoken = re.sub(
+            rf"(?<!\w){re.escape(written.strip())}(?!\w)",
+            replacement.strip(),
+            spoken,
+            flags=re.IGNORECASE,
+        )
+    return spoken
+
+
 class TTSProvider(Provider[Path]):
     @abstractmethod
     def synthesize(self, text: str, output_dir: Path) -> Path:
@@ -223,17 +238,35 @@ class KokoroTTSProvider(TTSProvider):
             raise ProviderFailed("Install the local-tts extra to use Kokoro") from exc
         output_dir.mkdir(parents=True, exist_ok=True)
         pipeline = KPipeline(lang_code=self.cfg.kokoro_language)
+        spoken_text = apply_pronunciations(text, self.cfg.pronunciations)
+        paragraphs = [part.strip() for part in re.split(r"\n\s*\n", spoken_text) if part.strip()]
         clips: list[np.ndarray] = []
-        for _graphemes, _phonemes, audio in pipeline(
-            text,
-            voice=self.cfg.kokoro_voice,
-            speed=self.cfg.kokoro_speed,
-        ):
-            clips.append(np.asarray(audio, dtype=np.float32))
+        sample_rate = 24000
+        sentence_pause = np.zeros(
+            round(sample_rate * self.cfg.kokoro_sentence_pause_ms / 1000), dtype=np.float32
+        )
+        paragraph_pause = np.zeros(
+            round(sample_rate * self.cfg.kokoro_paragraph_pause_ms / 1000), dtype=np.float32
+        )
+        for paragraph_index, paragraph in enumerate(paragraphs):
+            generated = [
+                np.asarray(audio, dtype=np.float32)
+                for _graphemes, _phonemes, audio in pipeline(
+                    paragraph,
+                    voice=self.cfg.kokoro_voice,
+                    speed=self.cfg.kokoro_speed,
+                )
+            ]
+            for clip_index, audio in enumerate(generated):
+                clips.append(audio)
+                if clip_index < len(generated) - 1 and sentence_pause.size:
+                    clips.append(sentence_pause)
+            if paragraph_index < len(paragraphs) - 1 and paragraph_pause.size:
+                clips.append(paragraph_pause)
         if not clips:
             raise ProviderFailed("Kokoro produced no audio")
         raw = output_dir / "kokoro_raw.wav"
-        sf.write(raw, np.concatenate(clips), 24000)
+        sf.write(raw, np.concatenate(clips), sample_rate)
         return concatenate_and_normalize(
             [raw], output_dir / "narration.wav", self.cfg.target_lufs, self.ffmpeg
         )
@@ -281,13 +314,20 @@ def concatenate_and_normalize(
     inputs: list[str] = []
     for part in parts:
         inputs.extend(["-i", str(part)])
+    mastering = (
+        "highpass=f=70,"
+        "equalizer=f=220:t=q:w=1:g=-1.2,"
+        "equalizer=f=3000:t=q:w=1:g=1.0,"
+        "acompressor=threshold=0.125:ratio=2:attack=20:release=180:makeup=1.15:knee=2.828,"
+        f"loudnorm=I={target_lufs}:TP=-1.5:LRA=7"
+    )
     if len(parts) == 1:
-        audio_filter = f"[0:a]loudnorm=I={target_lufs}:TP=-1.5:LRA=11[out]"
+        audio_filter = f"[0:a]{mastering}[out]"
     else:
         labels = "".join(f"[{index}:a]" for index in range(len(parts)))
         audio_filter = (
             f"{labels}concat=n={len(parts)}:v=0:a=1[joined];"
-            f"[joined]loudnorm=I={target_lufs}:TP=-1.5:LRA=11[out]"
+            f"[joined]{mastering}[out]"
         )
     ffmpeg.run(
         [*inputs, "-filter_complex", audio_filter, "-map", "[out]", "-ar", "48000", str(output)]

@@ -249,9 +249,9 @@ class StudioManager:
             target_words = round(request.duration_minutes * settings.script.words_per_minute)
             # Keep the generated copy close to the requested runtime. The narration
             # layer provides a final pitch-preserving duration safeguard.
-            settings.script.min_words = max(120, round(target_words * 0.85))
+            settings.script.min_words = max(120, round(target_words * 0.80))
             settings.script.max_words = max(
-                settings.script.min_words + 40, round(target_words * 1.08)
+                settings.script.min_words + 40, round(target_words * 1.10)
             )
         settings.video.fps = request.fps
         quality = {
