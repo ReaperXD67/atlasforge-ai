@@ -166,8 +166,9 @@ video:
   cloud_clip_seconds: 8
   transition_seconds: 0.55
   stock_video_enabled: true
-  stock_video_providers: [pexels_video]
-  stock_video_max_scenes_per_video: 48
+  stock_video_providers: [pexels_video, pixabay_video]
+  stock_video_max_scenes_per_video: 64
+  stock_video_require_all_music_scenes: false
   stock_video_candidates_per_scene: 15
   stock_video_min_width: 1280
   stock_video_min_duration_seconds: 4
@@ -206,6 +207,21 @@ video:
   comfyui_rife_multiplier: 2
   interpolate_low_fps_clips: false
   clip_color_grade: true
+  # Recurring music-video performers. Off globally; the Studio's Malaysian Duet lane arms it.
+  performance_generation_enabled: false
+  performance_provider: fal_wan_s2v
+  performance_mix_ratio: 0.25
+  performance_max_scenes_per_video: 15
+  performance_daily_budget_usd: 12.0
+  performance_estimated_usd_per_second: 0.20
+  performance_resolution: 720p
+  performance_frames_per_second: 16
+  performance_inference_steps: 27
+  performance_timeout_minutes: 20
+  performance_quality_gate: true
+  performance_preflight_enabled: true
+  performance_require_all_scenes: true
+  performance_stem_analysis: true
 
 audio:
   music_volume_db: -24

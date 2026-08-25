@@ -15,6 +15,10 @@ PROHIBITED_PATTERNS = {
     "income promise": r"\b(passive income|financial freedom)\s+(?:is|will be|becomes)\s+(?:easy|guaranteed|automatic)\b",
     "medical claim": r"\b(cures?|treats?|prevents?|heals?|diagnoses?)\s+(?:cancer|diabetes|disease|illness|acne)\b",
     "lifestyle income claim": r"\b(quit your job|replace your salary|six[- ]figure income|unlimited income)\b",
+    "unsubstantiated effort-to-earnings claim": (
+        r"\b(?:earnings?|income|results?)\b.{0,90}\b(?:depend(?:s|ed)? on|come from|follow)\b"
+        r".{0,60}\b(?:effort|hard work|persistence|commitment)\b"
+    ),
 }
 
 NEGATED_CLAIM_CONTEXT = re.compile(
@@ -51,6 +55,22 @@ def validate_script(script: ScriptDocument, settings: Settings) -> list[str]:
             "Unsupported Atomy PV expansion detected; use 'PV' or 'Personal PV' as the official "
             "U.S. plan does."
         )
+    if brand.casefold() == "atomy":
+        pinned_context = " ".join(
+            source.summary.casefold() for source in settings.research.official_sources
+        )
+        gated_details = {
+            "Group PV": r"\bgroup pv\b",
+            "downline compensation mechanics": r"\bdownline\b",
+            "direct-deposit compensation mechanics": r"\bdirect deposit\b",
+            "member pricing": r"\bmember pricing\b",
+        }
+        for detail, pattern in gated_details.items():
+            if re.search(pattern, lower) and re.search(pattern, pinned_context) is None:
+                errors.append(
+                    f"Unsupported Atomy detail detected ({detail}); add it to the dated pinned "
+                    "source summary or remove it from the script."
+                )
     brand_index = lower.find(brand.lower()) if brand else -1
     if settings.channel.brand_required and brand and brand_index < 0:
         errors.append(

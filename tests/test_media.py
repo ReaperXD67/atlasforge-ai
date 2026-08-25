@@ -178,3 +178,129 @@ def test_local_video_master_uses_sharp_scale_without_legacy_optical_flow(
     assert "minterpolate" not in video_filter
     assert "flags=lanczos+accurate_rnd+full_chroma_int" in video_filter
     assert f"fps={settings.video.fps}" in video_filter
+
+
+def test_normalize_video_scene_applies_authored_source_reframe(settings, tmp_path: Path) -> None:
+    class RecordingFFmpeg:
+        def __init__(self) -> None:
+            self.args: list[str] = []
+
+        def can_encode(self, _encoder: str) -> bool:
+            return True
+
+        def duration(self, _path: Path) -> float:
+            return 3.5
+
+        def run(self, args: list[str]) -> None:
+            self.args = args
+
+    scene = Scene(
+        index=1,
+        duration_seconds=3.5,
+        narration="",
+        video_prompt="adult smoker at night",
+        visual_search_query="adult smoker at night",
+        source_reframe_zoom=1.35,
+        source_reframe_x=0.5,
+        source_reframe_y=0.0,
+    )
+    ffmpeg = RecordingFFmpeg()
+    renderer = VideoRenderer(settings, ffmpeg)  # type: ignore[arg-type]
+
+    renderer.normalize_video_scene(scene, tmp_path / "raw.mp4", tmp_path / "master.mp4")
+
+    video_filter = ffmpeg.args[ffmpeg.args.index("-vf") + 1]
+    assert "scale=2592:1458" in video_filter
+    assert "crop=1920:1080:(iw-ow)*0.5000:(ih-oh)*0.0000" in video_filter
+
+
+def test_normalize_video_scene_honors_authored_source_inpoint(settings, tmp_path: Path) -> None:
+    class RecordingFFmpeg:
+        def __init__(self) -> None:
+            self.args: list[str] = []
+
+        def can_encode(self, _encoder: str) -> bool:
+            return True
+
+        def duration(self, _path: Path) -> float:
+            return 12
+
+        def run(self, args: list[str]) -> None:
+            self.args = args
+
+    scene = Scene(
+        index=1,
+        duration_seconds=3.5,
+        narration="",
+        video_prompt="adult smoker at night",
+        visual_search_query="adult smoker at night",
+        source_inpoint_seconds=0.25,
+    )
+    ffmpeg = RecordingFFmpeg()
+    renderer = VideoRenderer(settings, ffmpeg)  # type: ignore[arg-type]
+
+    renderer.normalize_video_scene(scene, tmp_path / "raw.mp4", tmp_path / "master.mp4")
+
+    assert ffmpeg.args[ffmpeg.args.index("-ss") + 1] == "0.250"
+
+
+def test_zero_transition_concat_trims_scene_padding_on_storyboard_clock(
+    settings, tmp_path: Path
+) -> None:
+    class RecordingFFmpeg:
+        def __init__(self) -> None:
+            self.args: list[str] = []
+
+        def can_encode(self, _encoder: str) -> bool:
+            return True
+
+        def run(self, args: list[str]) -> None:
+            self.args = args
+
+    ffmpeg = RecordingFFmpeg()
+    renderer = VideoRenderer(settings, ffmpeg)  # type: ignore[arg-type]
+    scenes = [tmp_path / "scene_001.mp4", tmp_path / "scene_002.mp4"]
+
+    renderer.concatenate(
+        scenes,
+        tmp_path / "hard-cut.mp4",
+        [2.033, 5.667],
+        transition_seconds=0.0,
+    )
+
+    graph = ffmpeg.args[ffmpeg.args.index("-filter_complex") + 1]
+    assert "trim=end_frame=122" in graph
+    assert "trim=end_frame=340" in graph
+    assert "concat=n=2:v=1:a=0[joined]" in graph
+    assert "[joined]fps=60,settb=1/60,setpts=N[video]" in graph
+    assert "xfade" not in graph
+
+
+def test_transition_concat_is_frame_normalized_and_capped_to_storyboard_duration(
+    settings, tmp_path: Path
+) -> None:
+    class RecordingFFmpeg:
+        def __init__(self) -> None:
+            self.args: list[str] = []
+
+        def can_encode(self, _encoder: str) -> bool:
+            return True
+
+        def run(self, args: list[str]) -> None:
+            self.args = args
+
+    ffmpeg = RecordingFFmpeg()
+    renderer = VideoRenderer(settings, ffmpeg)  # type: ignore[arg-type]
+    scenes = [tmp_path / "scene_001.mp4", tmp_path / "scene_002.mp4"]
+
+    renderer.concatenate(
+        scenes,
+        tmp_path / "smooth.mp4",
+        [2.0, 3.0],
+        transition_seconds=4 / 60,
+    )
+
+    graph = ffmpeg.args[ffmpeg.args.index("-filter_complex") + 1]
+    assert "xfade=transition=fade:duration=0.067:offset=2.000" in graph
+    assert "fps=60,settb=1/60,setpts=N[video]" in graph
+    assert ffmpeg.args[ffmpeg.args.index("-frames:v") + 1] == "300"

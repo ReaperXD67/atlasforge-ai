@@ -58,14 +58,105 @@ def test_studio_music_mode_is_beat_cut_and_keeps_publishing_off(tmp_path: Path) 
         mode="music_film",
         music_upload_id="0123456789abcdef",
         local_ai=True,
+        music_gap_provider="local_wan",
+        music_visual_direction="Adult smokers in a neon race garage with wet asphalt",
+        music_hook_words="LIGHT IT UP, REDLINE",
+        music_edit_style="flash_editorial",
     )
+    assert request.music_visual_direction.startswith("Adult smokers")
+    assert request.music_hook_words == "LIGHT IT UP, REDLINE"
+    assert request.music_edit_style == "flash_editorial"
     studio._render_job_config(request, destination)
     rendered = load_settings(destination)
-    assert rendered.video.transition_seconds == 0.0
+    assert rendered.video.transition_seconds == 4 / rendered.video.fps
     assert rendered.video.stock_video_max_scenes_per_video == 64
     assert rendered.images.providers == ["title_card"]
     assert rendered.subtitles.burn_in is False
+    assert rendered.video.local_generation_enabled is True
+    assert rendered.video.local_generation_max_scenes_per_video == 2
+    assert rendered.video.enable_premium_scenes is False
     assert rendered.publishing.enabled is False
+
+
+def test_studio_music_mode_can_arm_cloud_gap_rescue(tmp_path: Path) -> None:
+    settings = load_settings(
+        Path("config/profiles/atomy-us-openrouter.yaml"),
+        overrides={"runtime": {"output_directory": str(tmp_path / "output")}},
+    )
+    studio = StudioManager(settings, Path("config/profiles"))
+    destination = tmp_path / "music-cloud-job.yaml"
+    studio._render_job_config(
+        StudioJobRequest(
+            profile="atomy-us-openrouter",
+            mode="music_film",
+            music_upload_id="0123456789abcdef",
+            local_ai=True,
+            music_gap_provider="gemini_omni",
+        ),
+        destination,
+    )
+    rendered = load_settings(destination)
+
+    assert rendered.video.enable_premium_scenes is True
+    assert rendered.video.premium_providers == ["gemini_omni"]
+    assert rendered.video.premium_max_scenes_per_video == 2
+    assert rendered.video.local_generation_enabled is False
+
+
+def test_studio_music_mode_arms_fail_closed_malaysian_duet(tmp_path: Path) -> None:
+    settings = load_settings(
+        Path("config/profiles/atomy-us-openrouter.yaml"),
+        overrides={"runtime": {"output_directory": str(tmp_path / "output")}},
+    )
+    studio = StudioManager(settings, Path("config/profiles"))
+    destination = tmp_path / "malaysian-duet.yaml"
+
+    studio._render_job_config(
+        StudioJobRequest(
+            profile="atomy-us-openrouter",
+            mode="music_film",
+            music_upload_id="0123456789abcdef",
+            music_performer_mode="malaysian_duet",
+            music_performer_mix=0.3,
+            music_performer_budget_usd=9,
+        ),
+        destination,
+    )
+    rendered = load_settings(destination)
+
+    assert rendered.video.performance_generation_enabled is True
+    assert rendered.video.performance_mix_ratio == 0.3
+    assert rendered.video.performance_daily_budget_usd == 9
+    assert rendered.video.performance_preflight_enabled is True
+    assert rendered.video.performance_require_all_scenes is True
+
+
+def test_studio_refuses_paid_duet_before_job_when_fal_key_is_missing(
+    tmp_path: Path, monkeypatch
+) -> None:
+    monkeypatch.delenv("FAL_KEY", raising=False)
+    settings = load_settings(
+        Path("config/profiles/atomy-us-openrouter.yaml"),
+        overrides={"runtime": {"output_directory": str(tmp_path / "output")}},
+    )
+    studio = StudioManager(settings, Path("config/profiles"))
+    upload_id, music = studio.reserve_music_upload("song.wav")
+    music.write_bytes(b"not-decoded-because-create-only")
+    request = StudioJobRequest(
+        profile="atomy-us-openrouter",
+        mode="music_film",
+        music_upload_id=upload_id,
+        music_performer_mode="malaysian_duet",
+    )
+
+    try:
+        studio.create(request)
+    except RuntimeError as exc:
+        assert "no paid generation was started" in str(exc)
+    else:
+        raise AssertionError("A missing FAL key must stop before process creation")
+
+    assert studio.list_jobs() == []
 
 
 def test_studio_resolves_only_supported_music_uploads(tmp_path: Path) -> None:

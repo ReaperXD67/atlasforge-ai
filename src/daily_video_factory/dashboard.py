@@ -49,6 +49,18 @@ def create_app(settings: Settings, profile_directory: Path = Path("config/profil
         report = root / "quality" / "ai_clip_report.json"
         if report.is_file():
             run["ai_quality"] = json.loads(report.read_text(encoding="utf-8"))
+        music_artifacts = {
+            "music_sync": root / "music" / "sync_report.json",
+            "audio_map": root / "music" / "audiomap.json",
+            "vocal_brand_cues": root / "music" / "vocal_brand_cues.json",
+            "performer_plan": root / "music" / "performer_plan.json",
+            "performance_stems": root / "music" / "performance_stems.json",
+            "lyric_timing": root / "music" / "lyrics_timing.json",
+            "video_selection": root / "videos" / "selection.json",
+        }
+        for field, artifact in music_artifacts.items():
+            if artifact.is_file():
+                run[field] = json.loads(artifact.read_text(encoding="utf-8"))
         return run
 
     def run_artifact(run_id: str, field: str) -> Path:
@@ -81,7 +93,11 @@ def create_app(settings: Settings, profile_directory: Path = Path("config/profil
 
     @app.get("/api/runs/{run_id}/video")
     def get_run_video(run_id: str) -> FileResponse:
-        return FileResponse(run_artifact(run_id, "final_video"), media_type="video/mp4")
+        return FileResponse(
+            run_artifact(run_id, "final_video"),
+            media_type="video/mp4",
+            headers={"Cache-Control": "private, max-age=3600, immutable"},
+        )
 
     @app.get("/api/runs/{run_id}/thumbnail")
     def get_run_thumbnail(run_id: str) -> FileResponse:
@@ -130,6 +146,24 @@ def create_app(settings: Settings, profile_directory: Path = Path("config/profil
     def system_status() -> dict[str, object]:
         return studio.status()
 
+    @app.get("/api/assets/performers/{role}")
+    def performer_reference(role: str) -> FileResponse:
+        filenames = {
+            "male": "malaysian-male-lead.png",
+            "female": "malaysian-female-lead.png",
+        }
+        filename = filenames.get(role)
+        if filename is None:
+            raise HTTPException(status_code=404, detail="Performer reference not found")
+        target = Path(__file__).resolve().parents[2] / "assets/pragon/performers" / filename
+        if not target.is_file():
+            raise HTTPException(status_code=404, detail="Performer reference not found")
+        return FileResponse(
+            target,
+            media_type="image/png",
+            headers={"Cache-Control": "private, max-age=3600, immutable"},
+        )
+
     @app.post("/api/music/uploads", status_code=201)
     async def upload_music(file: Annotated[UploadFile, File()]) -> dict[str, object]:
         try:
@@ -174,7 +208,10 @@ def create_app(settings: Settings, profile_directory: Path = Path("config/profil
         target = studio.music_upload_path(upload_id)
         if target is None:
             raise HTTPException(status_code=404, detail="Music upload not found")
-        return FileResponse(target)
+        return FileResponse(
+            target,
+            headers={"Cache-Control": "private, max-age=3600, immutable"},
+        )
 
     @app.post("/api/voice/uploads", status_code=201)
     async def upload_voice_reference(file: Annotated[UploadFile, File()]) -> dict[str, object]:

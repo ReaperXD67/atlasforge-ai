@@ -154,9 +154,15 @@ class TitleCardImageProvider(ImageProvider):
             draw.multiline_text((142, 382), title, font=_font(100, True), fill=(250, 248, 242, 255), spacing=9)
             draw.rectangle((142, 790, 930, 804), fill=(*accent, 235))
         elif scene.visual_mode == "step_card":
-            draw.text((128, 230), f"{scene.index:02d}", font=_font(270, True), fill=(*accent, 238))
+            draw.ellipse((166, 310, 506, 650), outline=(*accent, 238), width=18)
+            draw.line(
+                (248, 478, 326, 556, 454, 390),
+                fill=(*accent, 255),
+                width=28,
+                joint="curve",
+            )
             draw.line((620, 260, 620, 820), fill=(*accent, 150), width=3)
-            draw.text((704, 270), "NEXT DECISION", font=_font(30, True), fill=(*accent, 255))
+            draw.text((704, 270), "ACTION STEP", font=_font(30, True), fill=(*accent, 255))
             title = _wrap_text(title_copy, width=20, max_lines=4)
             draw.multiline_text((704, 370), title, font=_font(76, True), fill=(250, 248, 242, 255), spacing=10)
         elif scene.visual_mode == "comparison_card":

@@ -46,6 +46,7 @@ COPY --from=web-builder /web/dist/client ./src/daily_video_factory/web
 RUN --mount=type=cache,target=/root/.cache/pip pip install ".[google]"
 
 COPY config ./config
+COPY assets ./assets
 RUN useradd --create-home --uid 1000 atlasforge \
     && mkdir -p /app/output /app/models /app/secrets \
     && chown -R atlasforge:atlasforge /app
@@ -64,9 +65,10 @@ FROM local-ai-runtime AS local-ai
 COPY pyproject.toml README.md LICENSE ./
 COPY src ./src
 COPY --from=web-builder /web/dist/client ./src/daily_video_factory/web
-RUN --mount=type=cache,target=/root/.cache/pip pip install ".[google]"
+RUN --mount=type=cache,target=/root/.cache/pip pip install ".[google,music-analysis,visual-ranking,performance]"
 
 COPY config ./config
+COPY assets ./assets
 RUN useradd --create-home --uid 1000 atlasforge \
     && mkdir -p /app/output /app/models /app/secrets \
     && chown -R atlasforge:atlasforge /app

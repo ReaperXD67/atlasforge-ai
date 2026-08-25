@@ -18,6 +18,12 @@ def test_dashboard_health_and_system_status(settings: Settings) -> None:
     assert status["width"] == 1920
     assert status["height"] == 1080
     assert status["profiles"] >= 3
+    assert "fal_wan_s2v" in status
+    male = client.get("/api/assets/performers/male")
+    female = client.get("/api/assets/performers/female")
+    assert male.status_code == 200 and male.headers["content-type"] == "image/png"
+    assert female.status_code == 200 and female.headers["content-type"] == "image/png"
+    assert client.get("/api/assets/performers/other").status_code == 404
 
 
 def test_dashboard_serves_finished_run_artifacts(settings: Settings) -> None:
@@ -51,7 +57,12 @@ def test_dashboard_serves_finished_run_artifacts(settings: Settings) -> None:
     )
     client = TestClient(create_app(settings, Path("config/profiles")))
 
-    assert client.get("/api/runs/test-run/video").content == b"video"
+    video_response = client.get("/api/runs/test-run/video")
+    assert video_response.content == b"video"
+    assert video_response.headers["accept-ranges"] == "bytes"
+    partial = client.get("/api/runs/test-run/video", headers={"Range": "bytes=1-2"})
+    assert partial.status_code == 206
+    assert partial.content == b"id"
     assert client.get("/api/runs/test-run/thumbnail").content == b"thumbnail"
     assert client.get("/api/runs/test-run/scenes/1").content == b"scene"
     assert client.get("/api/runs/test-run/scenes/2").status_code == 404

@@ -141,8 +141,31 @@ def test_local_engagement_guard_repairs_remaining_model_misses() -> None:
 
     assert _engagement_issues(polished) == []
     assert polished["hook"].startswith("The easiest-looking Atomy choice")
+    assert "next two minutes" not in " ".join(polished["body"])
     assert "Personal PV, or PV" not in " ".join(polished["body"])
     assert polished["cta"].startswith("If you want help")
+
+
+def test_local_engagement_guard_uses_duration_neutral_promise() -> None:
+    payload = {
+        "hook": (
+            "Choose the wrong Atomy account, and the registration form can create avoidable "
+            "friction before you understand the trade-off."
+        ),
+        "body": [
+            "The official guide separates two registration paths.",
+            "A sponsor appears in both paths.",
+            "The member agreement explains responsibilities.",
+            "The compensation plan needs careful review.",
+            "The final decision should match your actual goal.",
+        ],
+        "cta": "Ask for a guided walkthrough if you want help checking the official sources.",
+    }
+
+    polished = _enforce_engagement_structure(payload, "Atomy")
+
+    assert "By the end, you'll know" in polished["body"][0]
+    assert "next two minutes" not in polished["body"][0]
 
 
 def test_retention_anchors_survive_hard_word_budget() -> None:
@@ -175,6 +198,19 @@ def test_short_script_gets_one_focused_length_repair(settings) -> None:
 
         return {
             "title": "A careful Atomy registration walkthrough",
+            "title_variants": [
+                "Atomy Registration: What to Check First",
+                "Before Joining Atomy, Verify These Details",
+            ],
+            "thumbnail_text_options": ["BEFORE YOU JOIN", "CHECK THIS FIRST", "TWO PATHS"],
+            "packaging_hypothesis": "The pairing targets high-intent viewers comparing account paths.",
+            "description_summary": "A concise summary of the membership decision and official sources.",
+            "chapter_titles": [
+                "Two Membership Paths",
+                "Registration Requirements",
+                "Sponsor Choice",
+                "Questions Before You Join",
+            ],
             "hook": words("hook", hook_words),
             "body": [words(f"body{section}", body_words) for section in range(5)],
             "cta": words("cta", cta_words),
@@ -207,3 +243,46 @@ def test_short_script_gets_one_focused_length_repair(settings) -> None:
 
     assert generator.chain.calls == ["script_generation", "script_length_repair"]
     assert 260 <= document.word_count <= settings.script.max_words
+
+
+def test_script_normalization_honors_approved_packaging(settings) -> None:
+    settings.script.title_override = "Atomy in 2026: What to Know Before You Join"
+    settings.script.title_variants = ["Before Joining Atomy in 2026, Watch This"]
+    settings.script.thumbnail_text_options = ["BEFORE YOU JOIN"]
+    settings.script.packaging_hypothesis = "A researched launch package is locked for production."
+    generator = ScriptGenerator.__new__(ScriptGenerator)
+    generator.settings = settings
+    payload = {
+        "title": "A weaker model title",
+        "title_variants": ["Another generated title"],
+        "thumbnail_text_options": ["MODEL COPY"],
+        "packaging_hypothesis": "A model-generated packaging idea.",
+        "hook": (
+            "Choose the wrong account first, and you may create avoidable friction. "
+            "Three checks separate the paths before registration."
+        ),
+        "body": [
+            "By the end, you'll know what to decide and verify before submitting the form.",
+            "What are you joining for? Start with the intended outcome.",
+            "But the account type is only the first trade-off.",
+            "Here's the useful part: read the official agreement.",
+            "If details remain unclear, pause before confirming.",
+        ],
+        "cta": "Ask for a guided walkthrough if you want help checking the official sources.",
+        "facts_to_verify": [],
+        "disclosures": [],
+    }
+    report = ResearchReport(
+        query_date=date(2026, 8, 25),
+        candidates=[],
+        selected_title="Atomy in 2026",
+        selected_angle="A decision guide",
+        brand_focused=True,
+    )
+
+    document = generator._normalize(payload, "test", 145, report)
+
+    assert document.title == settings.script.title_override
+    assert document.title_variants == settings.script.title_variants
+    assert document.thumbnail_text_options == settings.script.thumbnail_text_options
+    assert document.packaging_hypothesis == settings.script.packaging_hypothesis

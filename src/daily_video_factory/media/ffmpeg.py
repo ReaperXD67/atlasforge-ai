@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import shutil
 import subprocess
 from pathlib import Path
@@ -67,6 +68,88 @@ class FFmpeg:
         if completed.returncode:
             raise ProviderFailed(f"ffprobe failed for {path}: {completed.stderr[-1000:]}")
         return float(json.loads(completed.stdout)["format"]["duration"])
+
+    def video_motion_profile(
+        self,
+        path: Path,
+        *,
+        sample_fps: int = 4,
+        width: int = 160,
+        height: int = 90,
+    ) -> list[float]:
+        """Measure frame-to-frame visual change cheaply without adding OpenCV."""
+        self.require()
+        try:
+            completed = subprocess.run(
+                [
+                    self.executable,
+                    "-hide_banner",
+                    "-nostdin",
+                    "-loglevel",
+                    "error",
+                    "-i",
+                    str(path),
+                    "-an",
+                    "-vf",
+                    f"fps={sample_fps},scale={width}:{height}:flags=fast_bilinear,format=gray",
+                    "-pix_fmt",
+                    "gray",
+                    "-f",
+                    "rawvideo",
+                    "pipe:1",
+                ],
+                capture_output=True,
+                timeout=180,
+                check=False,
+            )
+        except (OSError, subprocess.TimeoutExpired):
+            return []
+        frame_size = width * height
+        if completed.returncode or len(completed.stdout) < frame_size * 2:
+            return []
+        import numpy as np
+
+        raw = np.frombuffer(completed.stdout, dtype=np.uint8)
+        frame_count = raw.size // frame_size
+        frames = raw[: frame_count * frame_size].reshape(frame_count, frame_size).astype(np.int16)
+        differences = np.mean(np.abs(np.diff(frames, axis=0)), axis=1) / 255
+        return [0.0, *[float(value) for value in differences]]
+
+    def video_scene_boundaries(self, path: Path, *, threshold: float = 0.38) -> list[float]:
+        """Return hard-cut timestamps so an extracted window does not straddle two source shots."""
+        self.require()
+        try:
+            completed = subprocess.run(
+                [
+                    self.executable,
+                    "-hide_banner",
+                    "-nostdin",
+                    "-loglevel",
+                    "info",
+                    "-i",
+                    str(path),
+                    "-an",
+                    "-vf",
+                    f"select=gt(scene\\,{threshold:.3f}),showinfo",
+                    "-f",
+                    "null",
+                    "-",
+                ],
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+                timeout=180,
+                check=False,
+            )
+        except (OSError, subprocess.TimeoutExpired):
+            return []
+        if completed.returncode:
+            return []
+        return [
+            float(value)
+            for value in re.findall(r"\bpts_time:([0-9]+(?:\.[0-9]+)?)", completed.stderr)
+        ]
 
     def has_encoder(self, encoder: str) -> bool:
         if not self.executable:

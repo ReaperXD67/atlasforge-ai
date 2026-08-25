@@ -9,6 +9,10 @@ from daily_video_factory.exceptions import ProviderFailed
 from daily_video_factory.media.ai_quality import AIClipQualityReport
 from daily_video_factory.models import Scene
 from daily_video_factory.providers.base import Provider, ProviderChain
+from daily_video_factory.providers.performance import (
+    FalWanS2VProvider,
+    PerformanceSceneScheduler,
+)
 from daily_video_factory.providers.text import extract_json
 from daily_video_factory.providers.video import (
     ComfyUISDXLReferenceProvider,
@@ -17,6 +21,8 @@ from daily_video_factory.providers.video import (
     LocalSceneScheduler,
     PexelsReferenceImageProvider,
     PexelsStockVideoProvider,
+    PixabayStockVideoProvider,
+    StockVideoScheduler,
     _comfy_model_choices,
 )
 
@@ -84,6 +90,36 @@ def test_pexels_video_prefers_1080p_over_unnecessary_4k(settings) -> None:
 
     assert selected is not None
     assert selected["width"] == 1920
+
+
+def test_pixabay_video_prefers_matching_1080p_source(settings) -> None:
+    provider = PixabayStockVideoProvider(settings)
+    selected = provider._best_file(
+        {
+            "videos": {
+                "large": {
+                    "url": "https://example.test/4k.mp4",
+                    "width": 3840,
+                    "height": 2160,
+                },
+                "medium": {
+                    "url": "https://example.test/1080.mp4",
+                    "width": 1920,
+                    "height": 1080,
+                },
+            }
+        }
+    )
+
+    assert selected is not None
+    assert selected["width"] == 1920
+
+
+def test_stock_scheduler_can_fall_through_from_pexels_to_pixabay(settings) -> None:
+    assert [provider.name for provider in StockVideoScheduler(settings).providers] == [
+        "pexels_video",
+        "pixabay_video",
+    ]
 
 
 def test_pexels_video_semantic_score_beats_metadata_order(settings) -> None:
@@ -221,6 +257,54 @@ def test_local_scheduler_requires_explicit_necessity(settings, tmp_path: Path) -
 
     assert generated == {}
     assert costs == []
+
+
+def test_performer_reference_plate_and_frame_contract(settings, tmp_path: Path) -> None:
+    reference = tmp_path / "malaysian-lead.png"
+    Image.new("RGB", (512, 896), "#17323a").save(reference)
+    scene = Scene(
+        index=2,
+        duration_seconds=3.1,
+        narration="",
+        video_prompt="the exact same fictional adult Malaysian singer",
+        visual_search_query="",
+        performer_role="male_lead",
+        performance_action="lip_sync",
+        performer_generation_required=True,
+        performer_reference=reference,
+    )
+    provider = FalWanS2VProvider(settings)
+
+    plate = provider._prepare_reference(scene, tmp_path / "plate.jpg")
+
+    with Image.open(plate) as image:
+        assert image.size == (1280, 720)
+    assert provider._frame_count(scene.duration_seconds) % 4 == 0
+    assert 40 <= provider._frame_count(scene.duration_seconds) <= 120
+
+
+def test_performer_scheduler_fails_closed_without_paid_provider(
+    settings, monkeypatch, tmp_path: Path
+) -> None:
+    monkeypatch.delenv("FAL_KEY", raising=False)
+    settings.video.performance_generation_enabled = True
+    scene = Scene(
+        index=2,
+        duration_seconds=3,
+        narration="",
+        video_prompt="locked fictional adult Malaysian performer",
+        visual_search_query="",
+        performer_role="female_lead",
+        performance_action="lip_sync",
+        performer_generation_required=True,
+    )
+
+    try:
+        PerformanceSceneScheduler(settings).generate([scene], tmp_path)
+    except ProviderFailed as exc:
+        assert "FAL_KEY" in str(exc)
+    else:
+        raise AssertionError("Recurring performer scenes must never fall back to stock people")
 
 
 def test_local_scheduler_selects_only_a_passing_best_of_candidate(

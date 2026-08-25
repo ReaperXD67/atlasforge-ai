@@ -61,6 +61,11 @@ class ScriptConfig(BaseModel):
     openrouter_model: str
     gemini_model: str
     ollama_model: str
+    title_override: str | None = Field(default=None, max_length=100)
+    title_variants: list[str] = Field(default_factory=list, max_length=2)
+    thumbnail_text_options: list[str] = Field(default_factory=list, max_length=3)
+    packaging_hypothesis: str = Field(default="", max_length=240)
+    script_override: Path | None = None
 
 
 class StoryboardConfig(BaseModel):
@@ -108,6 +113,7 @@ class ImagesConfig(BaseModel):
     width: int = 1920
     height: int = 1080
     pexels_orientation: str = "landscape"
+    thumbnail_background: Path | None = None
 
 
 class VideoConfig(BaseModel):
@@ -133,8 +139,11 @@ class VideoConfig(BaseModel):
     cloud_clip_seconds: int = 8
     transition_seconds: float = 0.35
     stock_video_enabled: bool = True
-    stock_video_providers: list[str] = Field(default_factory=lambda: ["pexels_video"])
-    stock_video_max_scenes_per_video: int = Field(default=48, ge=0, le=100)
+    stock_video_providers: list[str] = Field(
+        default_factory=lambda: ["pexels_video", "pixabay_video"]
+    )
+    stock_video_max_scenes_per_video: int = Field(default=64, ge=0, le=100)
+    stock_video_require_all_music_scenes: bool = False
     stock_video_candidates_per_scene: int = Field(default=15, ge=1, le=80)
     stock_video_min_width: int = Field(default=1280, ge=320)
     stock_video_min_duration_seconds: float = Field(default=4.0, ge=1, le=60)
@@ -175,6 +184,20 @@ class VideoConfig(BaseModel):
     # Wan source and created rubbery edge artifacts; RIFE now runs on decoded frames.
     interpolate_low_fps_clips: bool = False
     clip_color_grade: bool = True
+    performance_generation_enabled: bool = False
+    performance_provider: Literal["fal_wan_s2v"] = "fal_wan_s2v"
+    performance_mix_ratio: float = Field(default=0.25, ge=0.1, le=0.6)
+    performance_max_scenes_per_video: int = Field(default=15, ge=1, le=32)
+    performance_daily_budget_usd: float = Field(default=12.0, ge=0, le=100)
+    performance_estimated_usd_per_second: float = Field(default=0.20, ge=0)
+    performance_resolution: Literal["480p", "580p", "720p"] = "720p"
+    performance_frames_per_second: int = Field(default=16, ge=4, le=60)
+    performance_inference_steps: int = Field(default=27, ge=1, le=60)
+    performance_timeout_minutes: int = Field(default=20, ge=5, le=90)
+    performance_quality_gate: bool = True
+    performance_preflight_enabled: bool = True
+    performance_require_all_scenes: bool = True
+    performance_stem_analysis: bool = True
 
 
 class AudioConfig(BaseModel):

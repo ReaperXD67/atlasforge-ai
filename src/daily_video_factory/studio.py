@@ -19,6 +19,7 @@ from pydantic import BaseModel, Field
 from .artifacts import atomic_write
 from .config import Settings, load_settings
 from .exceptions import ConfigurationError
+from .models import MusicEditStyle
 
 
 class StudioJobRequest(BaseModel):
@@ -34,10 +35,24 @@ class StudioJobRequest(BaseModel):
     mode: Literal["faceless_narrated", "music_film", "viral_short"] = "faceless_narrated"
     music_upload_id: str | None = Field(default=None, pattern=r"^[a-f0-9]{16}$")
     music_title: str = Field(default="Sepang Track Experience", min_length=2, max_length=120)
+    music_brand: str = Field(default="PRAGON", min_length=2, max_length=32)
     music_seconds: float = Field(default=60, ge=15, le=300)
-    voice_provider: Literal["chatterbox", "kokoro", "elevenlabs", "openai", "gemini"] = (
-        "chatterbox"
+    music_visual_direction: str = Field(default="", max_length=1200)
+    music_hook_words: str = Field(default="", max_length=300)
+    music_lyrics: str = Field(default="", max_length=12000)
+    music_lyrics_language: str = Field(default="auto", pattern=r"^(auto|[a-z]{2})$")
+    music_edit_style: MusicEditStyle = "smoke_velocity"
+    music_gap_provider: Literal["auto", "gemini_omni", "veo", "local_wan"] = "auto"
+    music_performer_mode: Literal["stock_mix", "malaysian_duet"] = "stock_mix"
+    music_male_reference_upload_id: str | None = Field(
+        default=None, pattern=r"^[a-f0-9]{16}$"
     )
+    music_female_reference_upload_id: str | None = Field(
+        default=None, pattern=r"^[a-f0-9]{16}$"
+    )
+    music_performer_mix: float = Field(default=0.25, ge=0.15, le=0.45)
+    music_performer_budget_usd: float = Field(default=12.0, ge=1, le=50)
+    voice_provider: Literal["chatterbox", "kokoro", "elevenlabs", "openai", "gemini"] = "chatterbox"
     voice_profile: Literal[
         "dynamic_host",
         "warm_documentary",
@@ -308,9 +323,9 @@ class StudioManager:
             "grounded_male": ("am_michael", 0.96, 0.90, 0.58, 0.40, 0.72),
             "editorial_blend": ("af_heart,af_bella", 0.98, 0.96, 0.65, 0.34, 0.75),
         }
-        voice, kokoro_speed, chatterbox_speed, exaggeration, cfg_weight, temperature = voice_presets[
-            request.voice_profile
-        ]
+        voice, kokoro_speed, chatterbox_speed, exaggeration, cfg_weight, temperature = (
+            voice_presets[request.voice_profile]
+        )
         settings.voice.providers = [
             request.voice_provider,
             *[
@@ -339,11 +354,40 @@ class StudioManager:
                 raise ConfigurationError("The selected voice reference no longer exists")
             settings.voice.chatterbox_reference_audio = reference_voice
         if request.mode == "music_film":
-            settings.video.transition_seconds = 0.0
+            settings.video.transition_seconds = 4 / settings.video.fps
             settings.video.stock_video_max_scenes_per_video = 64
             settings.video.stock_video_min_duration_seconds = 2
             settings.images.providers = ["title_card"]
             settings.subtitles.burn_in = False
+            settings.video.enable_premium_scenes = False
+            settings.video.performance_generation_enabled = (
+                request.music_performer_mode == "malaysian_duet"
+            )
+            settings.video.performance_mix_ratio = request.music_performer_mix
+            settings.video.performance_daily_budget_usd = request.music_performer_budget_usd
+            settings.video.performance_preflight_enabled = True
+            settings.video.performance_require_all_scenes = True
+            if request.local_ai:
+                gap_provider = request.music_gap_provider
+                if gap_provider == "auto":
+                    gap_provider = "gemini_omni" if os.getenv("GOOGLE_API_KEY") else "local_wan"
+                if gap_provider == "local_wan":
+                    settings.video.local_generation_enabled = True
+                    settings.video.local_generation_max_scenes_per_video = 2
+                else:
+                    settings.video.local_generation_enabled = False
+                    settings.video.enable_premium_scenes = True
+                    settings.video.premium_providers = [gap_provider]
+                    settings.video.premium_max_scenes_per_video = 2
+                    estimated_rate = (
+                        settings.video.gemini_omni_estimated_usd_per_second
+                        if gap_provider == "gemini_omni"
+                        else settings.video.veo_estimated_usd_per_second
+                    )
+                    settings.video.premium_daily_budget_usd = max(
+                        settings.video.premium_daily_budget_usd,
+                        settings.video.cloud_clip_seconds * estimated_rate * 2,
+                    )
         if request.mode == "viral_short":
             settings.video.width = 1080
             settings.video.height = 1920
@@ -413,6 +457,33 @@ class StudioManager:
                 reference_path = self.reference_upload_path(request.reference_upload_id)
                 if reference_path is None:
                     raise RuntimeError("The selected reference image no longer exists")
+            male_performer_reference = None
+            female_performer_reference = None
+            if request.mode == "music_film" and request.music_performer_mode == "malaysian_duet":
+                if not os.getenv("FAL_KEY"):
+                    raise RuntimeError(
+                        "Malaysian Duet needs FAL_KEY; no paid generation was started"
+                    )
+                if not os.getenv("OPENROUTER_API_KEY"):
+                    raise RuntimeError(
+                        "Malaysian Duet needs OPENROUTER_API_KEY for fail-closed visual QC; "
+                        "no paid generation was started"
+                    )
+                project_root = Path(__file__).resolve().parents[2]
+                male_performer_reference = (
+                    self.reference_upload_path(request.music_male_reference_upload_id)
+                    if request.music_male_reference_upload_id
+                    else project_root / "assets/pragon/performers/malaysian-male-lead.png"
+                )
+                female_performer_reference = (
+                    self.reference_upload_path(request.music_female_reference_upload_id)
+                    if request.music_female_reference_upload_id
+                    else project_root / "assets/pragon/performers/malaysian-female-lead.png"
+                )
+                if male_performer_reference is None or not male_performer_reference.is_file():
+                    raise RuntimeError("The selected male performer identity reference is missing")
+                if female_performer_reference is None or not female_performer_reference.is_file():
+                    raise RuntimeError("The selected female performer identity reference is missing")
             if request.mode == "viral_short":
                 if not request.viral_prompt.strip():
                     raise RuntimeError("Describe the action and visual world first")
@@ -451,9 +522,38 @@ class StudioManager:
                     str(music_path),
                     "--title",
                     request.music_title.strip(),
+                    "--brand",
+                    request.music_brand.strip(),
                     "--seconds",
                     str(request.music_seconds),
+                    "--visual-direction",
+                    request.music_visual_direction.strip(),
+                    "--hook-words",
+                    request.music_hook_words.strip(),
+                    "--edit-style",
+                    request.music_edit_style,
+                    "--performer-mode",
+                    request.music_performer_mode,
                 ]
+                if male_performer_reference is not None:
+                    command.extend(
+                        ["--male-performer-reference", str(male_performer_reference.resolve())]
+                    )
+                if female_performer_reference is not None:
+                    command.extend(
+                        ["--female-performer-reference", str(female_performer_reference.resolve())]
+                    )
+                if request.music_lyrics.strip():
+                    lyrics_file = directory / "lyrics.txt"
+                    atomic_write(lyrics_file, request.music_lyrics.strip() + "\n")
+                    command.extend(
+                        [
+                            "--lyrics-file",
+                            str(lyrics_file),
+                            "--lyrics-language",
+                            request.music_lyrics_language,
+                        ]
+                    )
             elif request.mode == "viral_short":
                 command = [
                     sys.executable,
@@ -582,12 +682,14 @@ class StudioManager:
             "comfyui": self._comfyui_available(),
             "openrouter": bool(os.getenv("OPENROUTER_API_KEY")),
             "pexels": bool(os.getenv("PEXELS_API_KEY")),
+            "pixabay": bool(os.getenv("PIXABAY_API_KEY")),
             "openai": bool(os.getenv("OPENAI_API_KEY")),
             "google": bool(os.getenv("GOOGLE_API_KEY")),
             "gemini_omni": bool(os.getenv("GOOGLE_API_KEY"))
             and importlib.util.find_spec("google") is not None
             and importlib.util.find_spec("google.genai") is not None,
             "elevenlabs": bool(os.getenv("ELEVENLABS_API_KEY")),
+            "fal_wan_s2v": bool(os.getenv("FAL_KEY")),
             "remotion": True,
             "publishing_enabled": self.settings.publishing.enabled,
             "output_directory": str(self.settings.output_directory.resolve()),

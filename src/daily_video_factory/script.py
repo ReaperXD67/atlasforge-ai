@@ -5,6 +5,7 @@ import re
 from typing import Any, cast
 
 from .config import Settings
+from .exceptions import ConfigurationError
 from .models import ResearchReport, ScriptDocument
 from .providers.base import ProviderChain
 from .providers.text import (
@@ -17,9 +18,41 @@ from .providers.text import (
 SCRIPT_SCHEMA: dict[str, Any] = {
     "type": "object",
     "additionalProperties": False,
-    "required": ["title", "hook", "body", "cta", "facts_to_verify", "disclosures"],
+    "required": [
+        "title",
+        "title_variants",
+        "thumbnail_text_options",
+        "packaging_hypothesis",
+        "description_summary",
+        "chapter_titles",
+        "hook",
+        "body",
+        "cta",
+        "facts_to_verify",
+        "disclosures",
+    ],
     "properties": {
         "title": {"type": "string", "minLength": 20, "maxLength": 100},
+        "title_variants": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {"type": "string", "minLength": 20, "maxLength": 100},
+        },
+        "thumbnail_text_options": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {"type": "string", "minLength": 3, "maxLength": 28},
+        },
+        "packaging_hypothesis": {"type": "string", "minLength": 20, "maxLength": 240},
+        "description_summary": {"type": "string", "minLength": 40, "maxLength": 600},
+        "chapter_titles": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 6,
+            "items": {"type": "string", "minLength": 3, "maxLength": 70},
+        },
         "hook": {"type": "string", "minLength": 80},
         "body": {
             "type": "array",
@@ -42,7 +75,9 @@ freedom. Never invent prices, ingredients, certifications, compensation-plan det
 findings, or testimonials. Separate opinions from facts. Return only JSON matching the requested
 schema. For Atomy, write "PV" or "Personal PV" exactly as the official U.S. plan does; never expand
 it as "Point Value" or "Personal Volume." Do not redundantly define the acronym or write awkward
-constructions such as "Personal PV, or PV"; direct viewers to the official plan for its mechanics."""
+constructions such as "Personal PV, or PV"; direct viewers to the official plan for its mechanics.
+Do not imply that effort, persistence, recruiting, or following the plan makes earnings likely or
+determines results unless representative net-earnings evidence directly supports that statement."""
 
 
 def _word_count(text: str) -> int:
@@ -104,8 +139,8 @@ def _enforce_engagement_structure(payload: dict[str, Any], brand: str = "") -> d
     first_75 = " ".join(re.findall(r"\S+", " ".join([hook, *body]))[:75])
     if body and VIEWER_PROMISE.search(first_75) is None:
         body[0] = (
-            "In the next two minutes, you'll know what to decide, what to verify, and what to "
-            f"do next. {body[0]}"
+            "By the end, you'll know what to decide, what to verify, and what to do next. "
+            f"{body[0]}"
         )
 
     dynamic_starts = sum(_has_dynamic_start(section) for section in body)
@@ -388,7 +423,21 @@ facts_to_verify, and prefer omitting it entirely.
 The maximum word count is a hard limit. Count the hook, every body section, and the CTA before
 returning JSON; do not exceed {target.max_words} spoken words.
 
-The title must be searchable but honest. Put every externally verifiable statement that may need
+        Packaging is part of the editorial work, not an afterthought:
+        - Make title the strongest primary option and add two genuinely different title_variants.
+          Put the search subject near the front, keep each option honest and specific, and prefer
+          45-70 characters when the idea fits. A current year is allowed only when the topic itself
+          is current. Do not use all caps, fake controversy, or promised earnings.
+        - Add three thumbnail_text_options of two to four short words each. They must complement
+          rather than repeat the title, remain legible on a phone, and create an honest information
+          gap without insults, fearmongering, money imagery, or unsupported claims.
+        - packaging_hypothesis must explain in one sentence which viewer intent and curiosity gap
+          the primary title/thumbnail pairing is designed to earn.
+        - description_summary is a concise one- or two-sentence search description of the actual
+          viewer value. chapter_titles contains four to six short semantic section labels, not
+          sentence fragments copied from the narration.
+
+        Put every externally verifiable statement that may need
         editorial checking into facts_to_verify. Include the synthetic-voice disclosure and this channel disclosure
 in disclosures: {self.settings.channel.disclosure}. Do not add citations you cannot verify."""
 
@@ -458,8 +507,33 @@ ORIGINAL JSON:
         )
         full_text = "\n\n".join([hook, *body, cta])
         word_count = _word_count(full_text)
+        configured_title = self.settings.script.title_override
+        configured_variants = self.settings.script.title_variants
+        configured_thumbnails = self.settings.script.thumbnail_text_options
+        configured_hypothesis = self.settings.script.packaging_hypothesis
         return ScriptDocument(
-            title=str(payload["title"]).strip(),
+            title=(configured_title or str(payload["title"])).strip(),
+            title_variants=[
+                str(value).strip()
+                for value in (configured_variants or payload.get("title_variants", []))[:2]
+                if str(value).strip()
+            ],
+            thumbnail_text_options=[
+                str(value).strip().upper()
+                for value in (
+                    configured_thumbnails or payload.get("thumbnail_text_options", [])
+                )[:3]
+                if str(value).strip()
+            ],
+            packaging_hypothesis=(
+                configured_hypothesis or str(payload.get("packaging_hypothesis", ""))
+            ).strip(),
+            description_summary=str(payload.get("description_summary", "")).strip(),
+            chapter_titles=[
+                str(value).strip()
+                for value in payload.get("chapter_titles", [])[:6]
+                if str(value).strip()
+            ],
             hook=hook,
             body=body,
             cta=cta,
@@ -474,6 +548,21 @@ ORIGINAL JSON:
         )
 
     def run(self, report: ResearchReport) -> ScriptDocument:
+        override = self.settings.script.script_override
+        if override is not None:
+            try:
+                payload = json.loads(override.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError) as exc:
+                raise ConfigurationError(f"Cannot read approved script override {override}: {exc}") from exc
+            if not isinstance(payload, dict):
+                raise ConfigurationError(f"Approved script override must contain a JSON object: {override}")
+            return self._normalize(
+                payload,
+                "editorial_override",
+                self.settings.script.words_per_minute,
+                report,
+            )
+
         result = self.chain.run(
             "script_generation",
             lambda provider: cast(TextProvider, provider).generate_json(

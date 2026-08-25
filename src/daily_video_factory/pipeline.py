@@ -469,7 +469,10 @@ class DailyVideoPipeline:
                     paths.write_json("metadata/metadata.json", metadata)
                     paths.write_text("metadata/title.txt", metadata.title)
                     paths.write_text("metadata/description.txt", metadata.description)
-                    build_thumbnail(images[1], metadata, thumbnail_file)
+                    thumbnail_background = self.settings.images.thumbnail_background
+                    if thumbnail_background is None:
+                        thumbnail_background = images[min(1, len(images) - 1)]
+                    build_thumbnail(thumbnail_background, metadata, thumbnail_file)
                     return metadata
 
                 metadata = self._load_or_execute_model(

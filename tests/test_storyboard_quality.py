@@ -74,6 +74,15 @@ def test_quality_gate_accepts_explicitly_negated_outcome_claims(settings) -> Non
     assert validate_script(make_script(f"{prefix} {disclaimer} {suffix}"), settings) == []
 
 
+def test_quality_gate_rejects_effort_as_an_earnings_explanation(settings) -> None:
+    prefix = " ".join(["Compare the official requirements before deciding."] * 20)
+    unsafe = "Your income results depend on your effort, persistence, and commitment."
+    suffix = " ".join(["Atomy is one optional example to evaluate carefully."] * 20)
+
+    with pytest.raises(QualityGateFailed, match="effort-to-earnings"):
+        validate_script(make_script(f"{prefix} {unsafe} {suffix}"), settings)
+
+
 def test_quality_gate_accepts_education_first_script(settings) -> None:
     prefix = " ".join(
         ["Evaluate demand, time, skills, costs, and risk before choosing a model."] * 18
@@ -104,6 +113,19 @@ def test_quality_gate_rejects_invented_atomy_pv_expansion(settings) -> None:
     script.source_urls = [settings.research.official_sources[0].url]
 
     with pytest.raises(QualityGateFailed, match="PV expansion"):
+        validate_script(script, settings)
+
+
+def test_quality_gate_rejects_unpinned_atomy_compensation_details(settings) -> None:
+    text = " ".join(
+        ["Atomy registration should be evaluated carefully against official requirements."] * 20
+    )
+    text += " Group PV from a downline determines a direct deposit."
+    script = make_script(text)
+    script.brand_focused = True
+    script.source_urls = [settings.research.official_sources[0].url]
+
+    with pytest.raises(QualityGateFailed, match="Unsupported Atomy detail"):
         validate_script(script, settings)
 
 

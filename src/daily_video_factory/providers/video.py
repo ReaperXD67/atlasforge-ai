@@ -8,6 +8,7 @@ import mimetypes
 import os
 import re
 import shutil
+import tempfile
 import time
 import uuid
 from abc import abstractmethod
@@ -192,6 +193,26 @@ class LocalClipRanker:
         except Exception:
             return {}
 
+    def visible_people_probability(self, images: list[Image.Image]) -> float | None:
+        """Return the strongest visible-person score across a support clip's timeline."""
+        loaded = self._load()
+        if loaded is None or not images:
+            return None
+        model, processor = loaded
+        try:
+            import torch
+
+            prompts = [
+                "an empty race car, cockpit, mechanical macro, road or circuit with no people",
+                "a clearly visible human person, face, portrait, model, singer, driver or crowd",
+            ]
+            inputs = processor(text=prompts, images=images, return_tensors="pt", padding=True)
+            with torch.inference_mode():
+                probabilities = model(**inputs).logits_per_image.softmax(dim=1)[:, 1]
+            return float(torch.max(probabilities).item())
+        except Exception:
+            return None
+
 
 class StockVideoProvider(Provider[Path]):
     @abstractmethod
@@ -214,6 +235,7 @@ class PexelsStockVideoProvider(StockVideoProvider):
 
     def __init__(self, settings: Settings) -> None:
         self.cfg = settings.video
+        self._cache_dir = (settings.model_directory / "stock_video" / self.name).resolve()
         self._semantic_ranker = (
             LocalClipRanker(
                 self.cfg.stock_video_semantic_model,
@@ -268,6 +290,32 @@ class PexelsStockVideoProvider(StockVideoProvider):
             if exclusion_tokens and exclusion_tokens <= metadata_tokens:
                 return True
         return False
+
+    def _support_clip_people_probability(self, clip: Path) -> float | None:
+        if self._semantic_ranker is None:
+            return None
+        ffmpeg = FFmpeg()
+        duration = ffmpeg.duration(clip)
+        with tempfile.TemporaryDirectory(prefix="atlasforge-stock-people-") as temporary:
+            pattern = Path(temporary) / "frame_%02d.jpg"
+            ffmpeg.run(
+                [
+                    "-i",
+                    str(clip),
+                    "-vf",
+                    f"fps={6 / max(duration, 0.1):.8f},scale=320:-2:flags=lanczos",
+                    "-frames:v",
+                    "6",
+                    "-q:v",
+                    "3",
+                    str(pattern),
+                ]
+            )
+            frames: list[Image.Image] = []
+            for path in sorted(Path(temporary).glob("frame_*.jpg")):
+                with Image.open(path) as source:
+                    frames.append(source.convert("RGB").copy())
+        return self._semantic_ranker.visible_people_probability(frames)
 
     @staticmethod
     def _rank_candidates(
@@ -358,19 +406,38 @@ class PexelsStockVideoProvider(StockVideoProvider):
         for _score, video, source in self._rank_candidates(candidates, semantic_scores):
             try:
                 output.parent.mkdir(parents=True, exist_ok=True)
-                with httpx.stream(
-                    "GET",
-                    str(source["link"]),
-                    timeout=self.cfg.stock_video_download_timeout_seconds,
-                    follow_redirects=True,
-                ) as download:
-                    download.raise_for_status()
-                    with output.open("wb") as destination:
-                        for chunk in download.iter_bytes(1024 * 1024):
-                            destination.write(chunk)
+                asset_id = int(video["id"])
+                cached_clip = self._cache_dir / f"{asset_id}.mp4"
+                cache_hit = cached_clip.is_file() and cached_clip.stat().st_size >= 100_000
+                if cache_hit:
+                    shutil.copy2(cached_clip, output)
+                else:
+                    with httpx.stream(
+                        "GET",
+                        str(source["link"]),
+                        timeout=self.cfg.stock_video_download_timeout_seconds,
+                        follow_redirects=True,
+                    ) as download:
+                        download.raise_for_status()
+                        with output.open("wb") as destination:
+                            for chunk in download.iter_bytes(1024 * 1024):
+                                destination.write(chunk)
                 if output.stat().st_size < 100_000:
                     raise ProviderFailed("downloaded clip is implausibly small")
-                asset_id = int(video["id"])
+                people_probability: float | None = None
+                if scene.performance_action == "car_action":
+                    people_probability = self._support_clip_people_probability(output)
+                    if people_probability is None:
+                        raise ProviderFailed(
+                            "No local people detector is available for a cast-protected support shot"
+                        )
+                    if people_probability > 0.48:
+                        raise ProviderFailed(
+                            f"Support clip contains visible unrelated people ({people_probability:.2f})"
+                        )
+                if not cache_hit:
+                    self._cache_dir.mkdir(parents=True, exist_ok=True)
+                    shutil.copy2(output, cached_clip)
                 used_asset_ids.add(asset_id)
                 creator_name = str((video.get("user") or {}).get("name") or "").strip()
                 if creator_name:
@@ -391,6 +458,8 @@ class PexelsStockVideoProvider(StockVideoProvider):
                     "source_height": source.get("height"),
                     "source_fps": source.get("fps"),
                     "source_duration_seconds": video.get("duration"),
+                    "visible_people_probability": people_probability,
+                    "cache_hit": cache_hit,
                 }
                 output.with_suffix(".license.json").write_text(
                     json.dumps(attribution, indent=2), encoding="utf-8"
@@ -402,11 +471,188 @@ class PexelsStockVideoProvider(StockVideoProvider):
         raise ProviderFailed("Pexels video downloads failed: " + " | ".join(errors[:3]))
 
 
+class PixabayStockVideoProvider(PexelsStockVideoProvider):
+    """Second licensed stock pool used when Pexels cannot satisfy a directed scene."""
+
+    name = "pixabay_video"
+
+    def available(self) -> bool:
+        return bool(os.getenv("PIXABAY_API_KEY"))
+
+    def _best_file(self, video: dict[str, Any]) -> dict[str, Any] | None:
+        candidates = [
+            item
+            for item in (video.get("videos") or {}).values()
+            if isinstance(item, dict)
+            and item.get("url")
+            and int(item.get("width") or 0) >= self.cfg.stock_video_min_width
+            and int(item.get("height") or 0) > 0
+        ]
+        if not candidates:
+            return None
+        target_ratio = self.cfg.width / self.cfg.height
+
+        def score(item: dict[str, Any]) -> tuple[float, float]:
+            width = int(item.get("width") or 0)
+            height = int(item.get("height") or 1)
+            return (abs(width / height - target_ratio), abs(width - self.cfg.width))
+
+        return min(candidates, key=score)
+
+    @staticmethod
+    def _rankable_video(video: dict[str, Any], source: dict[str, Any]) -> dict[str, Any]:
+        normalized = dict(video)
+        normalized["url"] = video.get("pageURL")
+        normalized["title"] = video.get("tags")
+        normalized["description"] = video.get("tags")
+        thumbnail = source.get("thumbnail")
+        normalized["video_pictures"] = [{"picture": thumbnail}] if thumbnail else []
+        return normalized
+
+    def generate(
+        self,
+        scene: Scene,
+        output: Path,
+        *,
+        used_asset_ids: set[int],
+        used_creators: set[str],
+        target_duration: float,
+    ) -> Path:
+        response = httpx.get(
+            "https://pixabay.com/api/videos/",
+            params={
+                "key": os.environ["PIXABAY_API_KEY"],
+                "q": scene.visual_search_query[:100],
+                "video_type": "film",
+                "safesearch": "true",
+                "per_page": max(3, self.cfg.stock_video_candidates_per_scene),
+            },
+            timeout=30,
+        )
+        if response.status_code >= 400:
+            raise ProviderFailed(f"Pixabay video search returned HTTP {response.status_code}")
+        fresh_creator_candidates: list[StockCandidate] = []
+        reuse_creator_candidates: list[StockCandidate] = []
+        for hit in response.json().get("hits", []):
+            asset_id = int(hit.get("id") or 0)
+            if not asset_id or asset_id in used_asset_ids:
+                continue
+            source = self._best_file(hit)
+            if source is None:
+                continue
+            video = self._rankable_video(hit, source)
+            if self._matches_exclusion(video, scene.visual_exclusion_terms):
+                continue
+            duration = float(hit.get("duration") or 0)
+            if duration < self.cfg.stock_video_min_duration_seconds:
+                continue
+            covers_scene = 0.0 if duration >= target_duration else target_duration - duration
+            excess = abs(duration - target_duration)
+            candidate = ((covers_scene, excess, 0.0), video, source)
+            creator = str(hit.get("user") or "").casefold().strip()
+            if creator and creator in used_creators:
+                reuse_creator_candidates.append(candidate)
+            else:
+                fresh_creator_candidates.append(candidate)
+        candidates = fresh_creator_candidates or reuse_creator_candidates
+        if not candidates:
+            raise ProviderFailed(
+                f"Pixabay returned no usable video for '{scene.visual_search_query}'"
+            )
+
+        semantic_scores = (
+            self._semantic_ranker.rank(
+                scene.visual_search_query,
+                [candidate[1] for candidate in candidates],
+                scene.visual_exclusion_terms,
+            )
+            if self._semantic_ranker is not None
+            else {}
+        )
+        if semantic_scores:
+            candidates = [
+                candidate
+                for candidate in candidates
+                if semantic_scores.get(int(candidate[1].get("id") or 0), -1)
+                >= self.cfg.stock_video_min_visual_relevance
+            ]
+            if not candidates:
+                raise ProviderFailed(
+                    f"No Pixabay clip passed local visual relevance for "
+                    f"'{scene.visual_search_query}'"
+                )
+        errors: list[str] = []
+        for _score, video, source in self._rank_candidates(candidates, semantic_scores):
+            try:
+                output.parent.mkdir(parents=True, exist_ok=True)
+                with httpx.stream(
+                    "GET",
+                    str(source["url"]),
+                    timeout=self.cfg.stock_video_download_timeout_seconds,
+                    follow_redirects=True,
+                ) as download:
+                    download.raise_for_status()
+                    with output.open("wb") as destination:
+                        for chunk in download.iter_bytes(1024 * 1024):
+                            destination.write(chunk)
+                if output.stat().st_size < 100_000:
+                    raise ProviderFailed("downloaded clip is implausibly small")
+                people_probability: float | None = None
+                if scene.performance_action == "car_action":
+                    people_probability = self._support_clip_people_probability(output)
+                    if people_probability is None:
+                        raise ProviderFailed(
+                            "No local people detector is available for a cast-protected support shot"
+                        )
+                    if people_probability > 0.48:
+                        raise ProviderFailed(
+                            f"Support clip contains visible unrelated people ({people_probability:.2f})"
+                        )
+                asset_id = int(video["id"])
+                used_asset_ids.add(asset_id)
+                creator_name = str(video.get("user") or "").strip()
+                if creator_name:
+                    used_creators.add(creator_name.casefold())
+                creator_id = int(video.get("user_id") or 0)
+                creator_slug = re.sub(r"[^a-z0-9-]+", "-", creator_name.casefold()).strip("-")
+                attribution = {
+                    "provider": "Pixabay",
+                    "media_type": "video",
+                    "video_id": asset_id,
+                    "creator": creator_name,
+                    "creator_url": (
+                        f"https://pixabay.com/users/{creator_slug}-{creator_id}/"
+                        if creator_slug and creator_id
+                        else None
+                    ),
+                    "video_url": video.get("pageURL"),
+                    "search_query": scene.visual_search_query,
+                    "visual_relevance_score": semantic_scores.get(asset_id),
+                    "visual_ranking_model": (
+                        self.cfg.stock_video_semantic_model if semantic_scores else None
+                    ),
+                    "source_width": source.get("width"),
+                    "source_height": source.get("height"),
+                    "source_duration_seconds": video.get("duration"),
+                    "visible_people_probability": people_probability,
+                    "license": "Pixabay Content License",
+                }
+                output.with_suffix(".license.json").write_text(
+                    json.dumps(attribution, indent=2), encoding="utf-8"
+                )
+                return output
+            except Exception as exc:
+                output.unlink(missing_ok=True)
+                errors.append(f"{video.get('id')}: {exc}")
+        raise ProviderFailed("Pixabay video downloads failed: " + " | ".join(errors[:3]))
+
+
 class StockVideoScheduler:
     def __init__(self, settings: Settings) -> None:
         self.cfg = settings.video
         mapping: dict[str, StockVideoProvider] = {
             "pexels_video": PexelsStockVideoProvider(settings),
+            "pixabay_video": PixabayStockVideoProvider(settings),
         }
         self.providers = [
             mapping[name] for name in self.cfg.stock_video_providers if name in mapping
