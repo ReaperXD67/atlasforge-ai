@@ -43,7 +43,7 @@ FROM python-runtime AS base
 COPY pyproject.toml README.md LICENSE ./
 COPY src ./src
 COPY --from=web-builder /web/dist/client ./src/daily_video_factory/web
-RUN --mount=type=cache,target=/root/.cache/pip pip install ".[google]"
+RUN --mount=type=cache,target=/root/.cache/pip pip install ".[google,youtube]"
 
 COPY config ./config
 COPY assets ./assets
@@ -65,7 +65,7 @@ FROM local-ai-runtime AS local-ai
 COPY pyproject.toml README.md LICENSE ./
 COPY src ./src
 COPY --from=web-builder /web/dist/client ./src/daily_video_factory/web
-RUN --mount=type=cache,target=/root/.cache/pip pip install ".[google,music-analysis,visual-ranking,performance]"
+RUN --mount=type=cache,target=/root/.cache/pip pip install ".[google,youtube,music-analysis,visual-ranking,performance]"
 
 COPY config ./config
 COPY assets ./assets

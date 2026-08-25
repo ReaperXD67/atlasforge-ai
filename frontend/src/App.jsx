@@ -1,11 +1,11 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import {
-  Bell, CaretDown, CaretLeft, CaretRight, Check, CheckCircle, CircleNotch,
+  ArrowSquareOut, Bell, CalendarBlank, CaretDown, CaretLeft, CaretRight, Check, CheckCircle, CircleNotch,
   ClosedCaptioning, Command, Desktop, DotsThree, Eye, FilmReel, FolderOpen,
-  Image as ImageIcon, List, MagnifyingGlassPlus, Microphone, Minus, MusicNotes,
+  Image as ImageIcon, List, LockKey, MagnifyingGlassPlus, Microphone, Minus, MusicNotes,
   Pause, Play, Plus, Question, Queue, SlidersHorizontal, Sparkle, SpeakerHigh,
-  StopCircle, UploadSimple, Warning, Waveform, X,
+  StopCircle, UploadSimple, Warning, Waveform, X, YoutubeLogo,
 } from "@phosphor-icons/react";
 import "@fontsource/dm-sans/latin-400.css";
 import "@fontsource/dm-sans/latin-500.css";
@@ -143,6 +143,7 @@ const productionSteps = [
   { label: "Edit", stages: ["render", "finalize"] },
   { label: "Captions", stages: ["subtitles"] },
   { label: "Quality", stages: ["metadata", "quality_gate"] },
+  { label: "Publish", stages: ["publish"] },
 ];
 
 const formatClock = (seconds) => {
@@ -167,12 +168,12 @@ function StatusDot({ ok, pending = false }) {
   return <span className={`status-dot ${ok ? "is-ok" : ""} ${pending ? "is-pending" : ""}`} aria-label={pending ? "checking" : ok ? "ready" : "needs setup"} />;
 }
 
-function StageRail({ stages = [], activeJob }) {
+function StageRail({ stages = [], activeJob, published = false }) {
   const stageMap = useMemo(() => new Map(stages.map((stage) => [stage.stage, stage.status])), [stages]);
   const hasJob = Boolean(activeJob);
   return <nav className="stage-rail" aria-label="Production stages">{productionSteps.map((step, index) => {
     const statuses = step.stages.map((stage) => stageMap.get(stage)).filter(Boolean);
-    const complete = statuses.length > 0 && statuses.every((status) => status === "completed");
+    const complete = step.label === "Publish" ? published : statuses.length > 0 && statuses.every((status) => status === "completed");
     const failed = statuses.some((status) => status === "failed");
     const running = statuses.some((status) => status === "running");
     const visualWorkspace = !hasJob && step.label === "Visuals";
@@ -304,7 +305,7 @@ function SceneInspector({ scene, sceneCount, onChange, onRegenerate, busy }) {
     <label><span>Visual source</span><div className="source-select"><img src={scene.image} alt="" /><select value={scene.source} onChange={(event) => onChange({ source: event.target.value })}><option>Pexels matching clip</option><option>AI Generation candidate · admission required</option><option>Local information card</option><option>Stable photo motion</option><option>Veo premium clip</option><option>MiniMax premium clip</option><option>Pexels or generated still</option></select></div></label>
     <label><span>Motion</span><select value={scene.motion} onChange={(event) => onChange({ motion: event.target.value })}><option>Slow push-in</option><option>Gentle drift right</option><option>Parallax push-in</option><option>Locked frame</option></select></label>
     <label><span>Transition</span><div className="split-field"><select value={scene.transition} onChange={(event) => onChange({ transition: event.target.value })}><option>Crossfade</option><option>Dip to black</option><option>Fade out</option></select><select defaultValue="0.55"><option value="0.35">0.35s</option><option value="0.55">0.55s</option><option value="0.75">0.75s</option></select></div></label>
-    <button className="secondary-button regenerate" onClick={onRegenerate} disabled={busy}>{busy ? <CircleNotch className="spin" /> : <Sparkle weight="fill" />} Regenerate with this scene</button><p className="inspector-note">Scene edits shape the next full render. Publishing always stays off in Studio.</p>
+    <button className="secondary-button regenerate" onClick={onRegenerate} disabled={busy}>{busy ? <CircleNotch className="spin" /> : <Sparkle weight="fill" />} Regenerate with this scene</button><p className="inspector-note">Scene edits shape the next full render. The result stays local until you explicitly use Upload all.</p>
   </aside>;
 }
 
@@ -354,7 +355,7 @@ function GenerateDialog({ open, onClose, profiles, form, setForm, onSelectProfil
     <div className="form-grid editorial-controls"><label><span>Edit rhythm</span><select value={form.engagement_mode} onChange={(event) => setForm({ ...form, engagement_mode: event.target.value })}><option value="retention">Retention cut · recommended</option><option value="classic">Calm classic explainer</option></select></label><div className="retention-contract"><strong>Retention cut</strong><small>Cold open, early promise, 4–9 sec beats, re-hooks, proof cards, and a resolved payoff.</small></div></div>
     {form.voice_provider === "chatterbox" && <div className="voice-reference"><input ref={voiceInputRef} className="visually-hidden" type="file" accept="audio/mpeg,audio/wav,audio/x-wav,audio/mp4,audio/flac,audio/ogg,.mp3,.wav,.m4a,.aac,.flac,.ogg" onChange={(event) => uploadVoice(event.target.files?.[0])} /><button type="button" className={`drop-track ${voiceReference?.upload_id ? "has-track" : ""}`} onClick={() => voiceInputRef.current?.click()} disabled={uploadingVoice}>{uploadingVoice ? <CircleNotch className="spin" /> : voiceReference?.upload_id ? <CheckCircle weight="fill" /> : <Microphone />}<span><strong>{uploadingVoice ? "Preparing voice identity…" : voiceReference?.filename || "Optional: add your real voice character"}</strong><small>{voiceReference?.upload_id ? `${voiceReference.duration_seconds}s clean reference · stored locally` : voiceReference?.error || "5–30 sec, one speaker, no music · only a voice you own or have permission to use"}</small></span></button></div>}
     <div className="toggle-row"><button type="button" className={form.stock_images ? "active" : ""} onClick={() => setForm({ ...form, stock_images: !form.stock_images })}><FilmReel /> Matching real clips first <span>{form.stock_images ? "On" : "Off"}</span></button><button type="button" className={form.local_ai ? "active" : ""} onClick={() => setForm({ ...form, local_ai: !form.local_ai })}><Sparkle weight="fill" /> Strict AI fallback <span>{form.local_ai ? "Armed" : "Off"}</span></button><button type="button" className={form.captions ? "active" : ""} onClick={() => setForm({ ...form, captions: !form.captions })}><ClosedCaptioning /> Script-locked captions <span>{form.captions ? "On" : "Off"}</span></button></div>
-    <div className="dialog-foot"><p><strong>Publishing is disabled.</strong> The finished video and thumbnail stay in your local output folder.</p><button className="primary-button" disabled={submitting || !system.openrouter}>{submitting ? <CircleNotch className="spin" /> : <Sparkle weight="fill" />} Start generation</button></div>
+    <div className="dialog-foot"><p><strong>Generation never auto-publishes.</strong> The finished package stays local until you review and use Upload all.</p><button className="primary-button" disabled={submitting || !system.openrouter}>{submitting ? <CircleNotch className="spin" /> : <Sparkle weight="fill" />} Start generation</button></div>
   </motion.form></motion.div>;
 }
 
@@ -441,6 +442,89 @@ function LogDrawer({ open, onClose, job, log, onCancel }) {
   return <AnimatePresence>{open && <motion.aside className="log-drawer" initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ type: "spring", damping: 28, stiffness: 280 }}><div className="log-head"><div><span className="eyebrow">Generation log</span><h2>{job ? titleCase(job.state) : "No active job"}</h2></div><button className="icon-button" onClick={onClose} aria-label="Close log"><X /></button></div>{job && <div className="job-meta"><span>Job {job.job_id}</span><span>{job.profile}</span>{job.pid && <span>PID {job.pid}</span>}</div>}<pre>{log || "The log will appear here once generation starts."}</pre>{job?.state === "running" && <button className="danger-button" onClick={onCancel}><StopCircle /> Cancel generation</button>}</motion.aside>}</AnimatePresence>;
 }
 
+const prettyBytes = (bytes = 0) => bytes >= 1024 ** 3 ? `${(bytes / 1024 ** 3).toFixed(2)} GB` : `${Math.max(0, bytes / 1024 ** 2).toFixed(1)} MB`;
+
+function PublishDrawer({ open, onClose, run, onPublished, setToast }) {
+  const [packageData, setPackageData] = useState(null);
+  const [publishForm, setPublishForm] = useState({ title: "", description: "", tags: "", privacy: "private", schedule: false, publishAt: "", uploadThumbnail: true, uploadCaptions: true, confirmPublic: false });
+  const [publishJob, setPublishJob] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const loadPackage = async ({ preserve = false } = {}) => {
+    if (!run?.run_id) return;
+    try {
+      const payload = await fetchJson(`/api/runs/${run.run_id}/publish-package`);
+      setPackageData(payload);
+      if (!preserve) setPublishForm({ title: payload.title, description: payload.description, tags: payload.tags.join(", "), privacy: "private", schedule: false, publishAt: "", uploadThumbnail: true, uploadCaptions: payload.captions_available, confirmPublic: false });
+    } catch (error) { setToast(error.message); }
+  };
+
+  useEffect(() => {
+    if (!open || !run?.run_id) return;
+    setPackageData(null); setPublishJob(null); loadPackage();
+  }, [open, run?.run_id]);
+  useEffect(() => {
+    if (!open || !packageData?.client_configured || packageData.authorized) return undefined;
+    const timer = window.setInterval(() => loadPackage({ preserve: true }), 2200);
+    return () => window.clearInterval(timer);
+  }, [open, packageData?.client_configured, packageData?.authorized, run?.run_id]);
+  useEffect(() => {
+    const connected = (event) => { if (event.origin === window.location.origin && event.data?.type === "atlasforge-youtube-connected") loadPackage({ preserve: true }); };
+    window.addEventListener("message", connected);
+    return () => window.removeEventListener("message", connected);
+  }, [run?.run_id]);
+  useEffect(() => {
+    if (!publishJob || !["queued", "running"].includes(publishJob.state)) return undefined;
+    const check = () => fetchJson(`/api/publishing/jobs/${publishJob.publish_id}`).then((next) => {
+      setPublishJob(next);
+      if (next.state === "completed") { setToast("Complete YouTube package uploaded"); loadPackage({ preserve: true }); onPublished(); }
+      if (next.state === "failed") setToast("Upload paused safely — retry will resume");
+    }).catch((error) => setToast(error.message));
+    const timer = window.setInterval(check, 1200); check();
+    return () => window.clearInterval(timer);
+  }, [publishJob?.publish_id, publishJob?.state]);
+
+  const authorize = async () => {
+    try {
+      const payload = await fetchJson("/api/publishing/oauth/start", { method: "POST" });
+      window.open(payload.authorization_url, "atlasforge-youtube-oauth", "popup,width=620,height=760");
+      setToast("Finish YouTube authorization in the opened window");
+    } catch (error) { setToast(error.message); }
+  };
+  const submitPackage = async () => {
+    if (!packageData) return;
+    setLoading(true);
+    try {
+      const tags = publishForm.tags.split(",").map((tag) => tag.trim()).filter(Boolean).slice(0, 30);
+      const publishAt = publishForm.schedule && publishForm.publishAt ? new Date(publishForm.publishAt).toISOString() : null;
+      const job = await fetchJson(`/api/runs/${run.run_id}/publish`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ title: publishForm.title, description: publishForm.description, tags, privacy: publishForm.privacy, publish_at: publishAt, upload_thumbnail: publishForm.uploadThumbnail, upload_captions: publishForm.uploadCaptions, confirm_public: publishForm.privacy === "public" && publishForm.confirmPublic }) });
+      setPublishJob(job); setToast("YouTube package upload started");
+    } catch (error) { setToast(error.message); } finally { setLoading(false); }
+  };
+  const busy = loading || ["queued", "running"].includes(publishJob?.state);
+  const hardBlockers = packageData?.blockers.filter((item) => item !== "YouTube is not authorized") || [];
+  const publicReady = publishForm.privacy !== "public" || publishForm.confirmPublic;
+  const scheduledReady = !publishForm.schedule || Boolean(publishForm.publishAt);
+
+  return <AnimatePresence>{open && <><motion.button className="publish-scrim" aria-label="Close publishing" onClick={onClose} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} /><motion.aside className="publish-drawer" initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ type: "spring", damping: 30, stiffness: 280 }}>
+    <div className="publish-head"><div><span className="eyebrow">One-click YouTube package</span><h2>{publishJob ? titleCase(publishJob.state) : "Review once. Upload everything."}</h2><p>Final video, metadata, thumbnail, captions, visibility, and synthetic-media disclosure travel together.</p></div><button className="icon-button" onClick={onClose} aria-label="Close publishing"><X /></button></div>
+    {!packageData ? <div className="publish-loading"><CircleNotch className="spin" /> Assembling the upload package…</div> : <div className="publish-scroll">
+      <section className="publish-hero"><img src={packageData.thumbnail_url} alt="YouTube thumbnail" /><div><span className="release-chip"><LockKey /> Private by default</span><strong>{prettyBytes(packageData.video_bytes)} final master</strong><small>{packageData.existing_video_id ? `YouTube ID ${packageData.existing_video_id}` : "No upload has started"}</small>{packageData.youtube_url && <a href={packageData.youtube_url} target="_blank" rel="noreferrer">Open on YouTube <ArrowSquareOut /></a>}</div></section>
+      <section className="package-checks" aria-label="Package readiness">
+        {[["Final MP4", packageData.video_bytes > 0, prettyBytes(packageData.video_bytes)], ["Thumbnail", packageData.thumbnail_bytes > 0, prettyBytes(packageData.thumbnail_bytes)], ["Timed captions", packageData.captions_available, packageData.captions_available ? "SRT ready" : "Not generated"], ["Quality gate", packageData.quality_state !== "failed", titleCase(packageData.quality_state)]].map(([label, ready, detail]) => <div className={ready ? "ready" : "blocked"} key={label}>{ready ? <CheckCircle weight="fill" /> : <Warning weight="fill" />}<span><strong>{label}</strong><small>{detail}</small></span></div>)}
+      </section>
+      <section className={`youtube-connection ${packageData.authorized ? "connected" : ""}`}><YoutubeLogo weight="fill" /><div><strong>{packageData.authorized ? "YouTube connected" : packageData.client_configured ? "Connect your channel once" : "OAuth file required once"}</strong><small>{packageData.client_configured ? packageData.auth_detail : "Save a Desktop OAuth JSON as secrets/youtube_client_secret.json, then restart Studio."}</small></div>{!packageData.authorized && packageData.client_configured && <button className="secondary-button" type="button" onClick={authorize}>Authorize</button>}</section>
+      <div className="publish-fields"><label><span>Title <b>{publishForm.title.length}/100</b></span><input value={publishForm.title} maxLength={100} onChange={(event) => setPublishForm({ ...publishForm, title: event.target.value })} /></label><label><span>Description <b>{publishForm.description.length}/5000</b></span><textarea value={publishForm.description} maxLength={5000} onChange={(event) => setPublishForm({ ...publishForm, description: event.target.value })} /></label><label><span>Tags <b>{publishForm.tags.split(",").filter(Boolean).length}/30</b></span><input value={publishForm.tags} onChange={(event) => setPublishForm({ ...publishForm, tags: event.target.value })} placeholder="Atomy, joining guide, membership" /></label></div>
+      <section className="release-controls"><label><span>Visibility</span><select value={publishForm.privacy} onChange={(event) => setPublishForm({ ...publishForm, privacy: event.target.value, schedule: event.target.value === "private" ? publishForm.schedule : false, confirmPublic: false })}><option value="private">Private · safest review</option><option value="unlisted">Unlisted · anyone with link</option><option value="public">Public · release immediately</option></select></label><button type="button" className={publishForm.schedule ? "active" : ""} disabled={publishForm.privacy !== "private"} onClick={() => setPublishForm({ ...publishForm, schedule: !publishForm.schedule })}><CalendarBlank /> Schedule release</button>{publishForm.schedule && <label><span>Local publish time</span><input type="datetime-local" value={publishForm.publishAt} onChange={(event) => setPublishForm({ ...publishForm, publishAt: event.target.value })} /></label>}</section>
+      <section className="package-toggles"><label><input type="checkbox" checked={publishForm.uploadThumbnail} onChange={(event) => setPublishForm({ ...publishForm, uploadThumbnail: event.target.checked })} /><ImageIcon /> Custom thumbnail</label><label className={!packageData.captions_available ? "disabled" : ""}><input type="checkbox" disabled={!packageData.captions_available} checked={publishForm.uploadCaptions} onChange={(event) => setPublishForm({ ...publishForm, uploadCaptions: event.target.checked })} /><ClosedCaptioning /> Caption track</label></section>
+      {publishForm.privacy === "public" && <label className="public-confirm"><input type="checkbox" checked={publishForm.confirmPublic} onChange={(event) => setPublishForm({ ...publishForm, confirmPublic: event.target.checked })} /><span><strong>I reviewed this package</strong><small>Public uploads can become visible immediately. Private is recommended for the first review.</small></span></label>}
+      {hardBlockers.length > 0 && <div className="publish-blockers"><Warning weight="fill" /><div><strong>Upload blocked</strong>{hardBlockers.map((item) => <small key={item}>{item}</small>)}</div></div>}
+      {publishJob && <section className={`publish-progress ${publishJob.state}`}><div><span>{titleCase(publishJob.stage)}</span><strong>{publishJob.progress}%</strong></div><div className="progress-track"><i style={{ width: `${publishJob.progress}%` }} /></div><p>{publishJob.message}</p>{publishJob.youtube_url && <a href={publishJob.youtube_url} target="_blank" rel="noreferrer">View uploaded video <ArrowSquareOut /></a>}</section>}
+    </div>}
+    {packageData && <div className="publish-foot"><div><strong>No duplicate uploads</strong><small>If thumbnail or captions fail, Retry resumes from that step.</small></div><button className="primary-button" onClick={submitPackage} disabled={busy || !packageData.authorized || hardBlockers.length > 0 || !publishForm.title.trim() || !publishForm.description.trim() || !publicReady || !scheduledReady}>{busy ? <CircleNotch className="spin" /> : <UploadSimple weight="bold" />} {busy ? `${titleCase(publishJob?.stage || "uploading")}…` : publishJob?.state === "failed" || packageData.existing_video_id ? "Resume / sync package" : "Upload complete package"}</button></div>}
+  </motion.aside></>}</AnimatePresence>;
+}
+
 export function App() {
   const [profiles, setProfiles] = useState(fallbackProfiles);
   const [system, setSystem] = useState({});
@@ -454,6 +538,7 @@ export function App() {
   const [playhead, setPlayhead] = useState(2);
   const [setupOpen, setSetupOpen] = useState(false);
   const [logOpen, setLogOpen] = useState(false);
+  const [publishOpen, setPublishOpen] = useState(false);
   const [log, setLog] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [toast, setToast] = useState("");
@@ -530,7 +615,7 @@ export function App() {
     event?.preventDefault(); setSubmitting(true);
     try {
       const created = await fetchJson("/api/jobs", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...form, topic: form.topic.trim() || null }) });
-      setJobs((current) => [created, ...current]); setSetupOpen(false); setLogOpen(true); setToast("Generation started — publishing remains off");
+      setJobs((current) => [created, ...current]); setSetupOpen(false); setLogOpen(true); setToast("Generation started — no automatic upload");
     } catch (error) { setToast(error.message); } finally { setSubmitting(false); }
   };
   const cancelJob = async () => {
@@ -541,11 +626,11 @@ export function App() {
   const lastRunLabel = latestRun ? `${titleCase(latestRun.status)} · ${latestRun.publication_date}` : "No renders yet";
 
   return <div className="studio-shell">
-    <header className="topbar"><button className="menu-button" aria-label="Open menu"><List /></button><BrandMark /><div className="workspace-switch"><button className={workspace === "editor" ? "active" : ""} onClick={() => { setWorkspace("editor"); setForm((current) => ({ ...current, mode: "faceless_narrated" })); }}>Editorial</button><button className={workspace === "remotion" ? "active" : ""} onClick={() => { setWorkspace("remotion"); setForm((current) => ({ ...current, mode: "music_film" })); }}><Waveform /> Remotion Lab</button><button className={workspace === "viral" ? "active" : ""} onClick={() => { setWorkspace("viral"); setForm((current) => ({ ...current, mode: "viral_short" })); }}><Sparkle weight="fill" /> AI Viral Lab</button><button className={workspace === "ai" ? "active" : ""} onClick={() => { setWorkspace("ai"); setForm((current) => ({ ...current, mode: "viral_short", quality: "max", viral_recipe: "cinematic_insert" })); }}><FilmReel weight="fill" /> AI Generation</button></div><div className="project-title"><strong>{workspace === "remotion" ? form.music_title : workspace === "viral" ? "AI-native viral short" : workspace === "ai" ? "Quarantined AI candidate workshop" : selectedProfile?.name || "AtlasForge project"}</strong><StatusDot ok /><span>Autosaved</span></div>{workspace === "editor" && <label className="usecase-select"><span>Use case</span><select value={form.profile} onChange={(event) => selectProfile(event.target.value)}>{profiles.map((profile) => <option value={profile.id} key={profile.id}>{profile.name}</option>)}</select><CaretDown /></label>}<button className="primary-button generate-button" onClick={() => workspace === "remotion" ? document.querySelector(".drop-track")?.click() : ["viral", "ai"].includes(workspace) ? document.querySelector(".viral-prompt textarea")?.focus() : setSetupOpen(true)} disabled={activeJob?.state === "running"}><Sparkle weight="fill" /> {activeJob?.state === "running" ? "Generating…" : workspace === "remotion" ? "Load song" : workspace === "viral" ? "Direct shot" : workspace === "ai" ? "New candidate" : "Generate film"}</button><span className="shortcut"><Command />K</span><button className="top-icon" title="Help" aria-label="Help"><Question /></button><button className="top-icon" title="Notifications" aria-label="Notifications"><Bell /></button><div className="avatar" title="Local owner">AF</div></header>
-    <div className="stagebar"><StageRail stages={runDetail?.stages || []} activeJob={activeJob?.state === "running" ? activeJob : null} /><div className="last-run"><span>Last run: {lastRunLabel}</span><button className="secondary-button" onClick={() => setLogOpen(true)}>View log <CaretRight /></button></div></div>
+    <header className="topbar"><button className="menu-button" aria-label="Open menu"><List /></button><BrandMark /><div className="workspace-switch"><button className={workspace === "editor" ? "active" : ""} onClick={() => { setWorkspace("editor"); setForm((current) => ({ ...current, mode: "faceless_narrated" })); }}>Editorial</button><button className={workspace === "remotion" ? "active" : ""} onClick={() => { setWorkspace("remotion"); setForm((current) => ({ ...current, mode: "music_film" })); }}><Waveform /> Remotion Lab</button><button className={workspace === "viral" ? "active" : ""} onClick={() => { setWorkspace("viral"); setForm((current) => ({ ...current, mode: "viral_short" })); }}><Sparkle weight="fill" /> AI Viral Lab</button><button className={workspace === "ai" ? "active" : ""} onClick={() => { setWorkspace("ai"); setForm((current) => ({ ...current, mode: "viral_short", quality: "max", viral_recipe: "cinematic_insert" })); }}><FilmReel weight="fill" /> AI Generation</button></div><div className="project-title"><strong>{workspace === "remotion" ? form.music_title : workspace === "viral" ? "AI-native viral short" : workspace === "ai" ? "Quarantined AI candidate workshop" : selectedProfile?.name || "AtlasForge project"}</strong><StatusDot ok /><span>Autosaved</span></div>{workspace === "editor" && <label className="usecase-select"><span>Use case</span><select value={form.profile} onChange={(event) => selectProfile(event.target.value)}>{profiles.map((profile) => <option value={profile.id} key={profile.id}>{profile.name}</option>)}</select><CaretDown /></label>}<button className="primary-button generate-button" onClick={() => workspace === "remotion" ? document.querySelector(".drop-track")?.click() : ["viral", "ai"].includes(workspace) ? document.querySelector(".viral-prompt textarea")?.focus() : setSetupOpen(true)} disabled={activeJob?.state === "running"}><Sparkle weight="fill" /> {activeJob?.state === "running" ? "Generating…" : workspace === "remotion" ? "Load song" : workspace === "viral" ? "Direct shot" : workspace === "ai" ? "New candidate" : "Generate film"}</button>{latestRun && ["ready", "published"].includes(latestRun.status) && <button className={`publish-button ${latestRun.status === "published" ? "is-published" : ""}`} onClick={() => setPublishOpen(true)}><YoutubeLogo weight="fill" /> {latestRun.status === "published" ? "Published" : "Upload all"}</button>}<span className="shortcut"><Command />K</span><button className="top-icon" title="Help" aria-label="Help"><Question /></button><button className="top-icon" title="Notifications" aria-label="Notifications"><Bell /></button><div className="avatar" title="Local owner">AF</div></header>
+    <div className="stagebar"><StageRail stages={runDetail?.stages || []} activeJob={activeJob?.state === "running" ? activeJob : null} published={latestRun?.status === "published"} /><div className="last-run"><span>Last run: {lastRunLabel}</span><button className="secondary-button" onClick={() => setLogOpen(true)}>View log <CaretRight /></button></div></div>
     {workspace === "editor" ? <main className="editor-grid"><ChapterRail scenes={scenes} selectedId={selectedId} onSelect={setSelectedId} activeTab={activeTab} setActiveTab={setActiveTab} onAddScene={addScene} /><div className="edit-canvas"><Preview scene={selectedScene} playing={playing} setPlaying={setPlaying} playhead={playhead} setPlayhead={setPlayhead} totalDuration={totalDuration} outputUrl={outputUrl} /><Timeline scenes={scenes} selectedId={selectedId} onSelect={setSelectedId} playhead={playhead} setPlayhead={setPlayhead} /></div><SceneInspector scene={selectedScene} sceneCount={scenes.length} onChange={updateScene} onRegenerate={() => setSetupOpen(true)} busy={activeJob?.state === "running"} /></main> : workspace === "remotion" ? <RemotionLab form={form} setForm={setForm} system={system} startGeneration={startGeneration} submitting={submitting} activeJob={activeJob} outputUrl={outputUrl} posterUrl={posterUrl} setToast={setToast} runDetail={runDetail} /> : <Suspense fallback={<main className="viral-lab"><div className="panel-surface player-loading"><CircleNotch className="spin" /> Loading generation workspace…</div></main>}>{workspace === "ai" ? <AIGenerationLab form={form} setForm={setForm} system={system} startGeneration={startGeneration} submitting={submitting} activeJob={activeJob} outputUrl={outputUrl} setToast={setToast} runDetail={runDetail} /> : <ViralLab form={form} setForm={setForm} system={system} startGeneration={startGeneration} submitting={submitting} activeJob={activeJob} outputUrl={outputUrl} setToast={setToast} runDetail={runDetail} />}</Suspense>}
     <ProviderStrip system={system} selectedProfile={selectedProfile} quality={form.quality} workspace={workspace} />
-    <AnimatePresence><GenerateDialog open={setupOpen} onClose={() => setSetupOpen(false)} profiles={profiles} form={form} setForm={setForm} onSelectProfile={selectProfile} onSubmit={startGeneration} submitting={submitting} system={system} /></AnimatePresence><LogDrawer open={logOpen} onClose={() => setLogOpen(false)} job={activeJob} log={log} onCancel={cancelJob} />
+    <AnimatePresence><GenerateDialog open={setupOpen} onClose={() => setSetupOpen(false)} profiles={profiles} form={form} setForm={setForm} onSelectProfile={selectProfile} onSubmit={startGeneration} submitting={submitting} system={system} /></AnimatePresence><LogDrawer open={logOpen} onClose={() => setLogOpen(false)} job={activeJob} log={log} onCancel={cancelJob} /><PublishDrawer open={publishOpen} onClose={() => setPublishOpen(false)} run={latestRun} onPublished={refresh} setToast={setToast} />
     <AnimatePresence>{toast && <motion.div className="toast" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }}><CheckCircle weight="fill" /> {toast}</motion.div>}</AnimatePresence>
   </div>;
 }

@@ -69,6 +69,57 @@ def test_dashboard_serves_finished_run_artifacts(settings: Settings) -> None:
     assert client.get("/api/runs/missing/video").status_code == 404
 
 
+def test_dashboard_exposes_publish_package_without_uploading(settings: Settings) -> None:
+    output = settings.output_directory.resolve()
+    run_root = output / "2026-08-15-publish-preview"
+    video = run_root / "final" / "video.mp4"
+    thumbnail = run_root / "thumbnails" / "thumbnail.jpg"
+    metadata = run_root / "metadata" / "metadata.json"
+    quality = run_root / "metadata" / "quality_report.json"
+    video.parent.mkdir(parents=True)
+    thumbnail.parent.mkdir(parents=True)
+    metadata.parent.mkdir(parents=True)
+    video.write_bytes(b"video")
+    thumbnail.write_bytes(b"thumbnail")
+    metadata.write_text(
+        json.dumps(
+            {
+                "title": "Upload-ready Atomy guide",
+                "description": "Description",
+                "tags": ["Atomy"],
+                "hashtags": ["#Atomy"],
+                "chapters": [],
+                "thumbnail_text": "ATOMY GUIDE",
+                "category_id": "27",
+            }
+        ),
+        encoding="utf-8",
+    )
+    quality.write_text(json.dumps({"passed": True}), encoding="utf-8")
+    RunStore(output).save_manifest(
+        RunManifest(
+            run_id="publish-preview",
+            publication_date=date(2026, 8, 15),
+            status=RunStatus.ready,
+            output_root=run_root,
+            final_video=video,
+            thumbnail=thumbnail,
+        )
+    )
+
+    response = TestClient(create_app(settings, Path("config/profiles"))).get(
+        "/api/runs/publish-preview/publish-package"
+    )
+
+    assert response.status_code == 200
+    package = response.json()
+    assert package["title"] == "Upload-ready Atomy guide"
+    assert package["quality_state"] == "passed"
+    assert package["video_bytes"] == 5
+    assert package["can_publish"] is False
+    assert "YouTube OAuth client is not configured" in package["blockers"]
+
+
 def test_dashboard_maps_host_paths_to_the_current_output_mount(settings: Settings) -> None:
     output = settings.output_directory.resolve()
     run_root = output / "2026-08-15-foreign-run"

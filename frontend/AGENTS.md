@@ -29,3 +29,7 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Chatterbox is the expressive free-local narration default on a capable NVIDIA GPU, with an optional
   5–30 second consented voice reference that stays local. Kokoro remains the automatic fast fallback;
   never imply that voice cloning is permitted without the speaker's authorization.
+- Publishing is explicit and reviewable: present the final MP4, title, description, tags, thumbnail,
+  captions, quality result, visibility, and OAuth readiness as one package. Default to Private, never
+  publish automatically after a render, require deliberate confirmation for Public, and show durable
+  resumable progress. A retry after thumbnail or caption failure must reuse the existing YouTube video.

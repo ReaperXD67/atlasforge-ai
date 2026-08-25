@@ -520,10 +520,21 @@ class DailyVideoPipeline:
 
                 should_upload = self.settings.publishing.enabled if upload is None else upload
                 upload_receipt = paths.metadata / "youtube_video_id.txt"
-                if upload_receipt.exists() and not manifest.youtube_video_id:
+                publish_receipt = paths.metadata / "youtube_publish.json"
+                package_completed = False
+                if publish_receipt.is_file():
+                    try:
+                        package_completed = bool(
+                            json.loads(publish_receipt.read_text(encoding="utf-8")).get(
+                                "package_completed"
+                            )
+                        )
+                    except (OSError, json.JSONDecodeError):
+                        package_completed = False
+                if upload_receipt.exists() and not manifest.youtube_video_id and package_completed:
                     manifest.youtube_video_id = upload_receipt.read_text(encoding="utf-8").strip()
                     manifest.status = RunStatus.published
-                if should_upload and not manifest.youtube_video_id:
+                if should_upload and (not manifest.youtube_video_id or not package_completed):
 
                     def upload_operation() -> str:
                         uploaded_id = YouTubePublisher(self.settings).upload(

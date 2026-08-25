@@ -42,7 +42,7 @@ The diagram is the product vision. The repository implements the complete core p
 | 7. QA and quality control | Partial | Script-policy validation, media checks, deterministic synthetic-clip metrics, and an OpenRouter contact-sheet realism supervisor | Comprehensive factual and copyright scanning remain roadmap items |
 | 8. SEO and metadata | Implemented | CTR-oriented title, description, tags, hashtags, chapters/timestamps, category, and disclosures | End-screen suggestions are not generated yet |
 | 9. Thumbnail generation | Partial | Automatic 1280x720 local composition from a scene image and generated copy | Flux/Imagen/SD concept generation and CTR ranking are roadmap items |
-| 10. Publishing automation | Partial | YouTube OAuth upload, scheduling, privacy, thumbnail, and optional captions | Cards, community posts, and analytics ingestion are roadmap items |
+| 10. Publishing automation | Implemented | One-click Studio package for the final MP4, editable title/description/tags, privacy or scheduling, custom thumbnail, timed captions, synthetic-media disclosure, browser OAuth, progress, and duplicate-safe retry | Cards, community posts, and analytics ingestion are roadmap items |
 
 The diagram's PostgreSQL, Redis, cloud-backup, notification, and model-manager boxes are also roadmap items. The current single-workstation design uses SQLite, filesystem artifacts, structured logs, retries, checkpoints, an overlap lock, and per-run cost records. That is simpler and less expensive for one daily job; PostgreSQL and Redis become useful when the system is distributed across multiple workers. Docker profiles now provide CPU-safe, GPU-render, and fully local Ollama execution without introducing distributed infrastructure.
 
@@ -58,8 +58,9 @@ flowchart LR
     A -->|"admission pass"| E
     I --> E["Stable 60 fps edit + original stereo sound"]
     E --> Q["Script-locked captions, thumbnail, metadata, QA"]
-    Q -->|publishing enabled| Y["YouTube OAuth upload"]
-    Q -->|publishing disabled| P["Upload-ready package"]
+    Q --> P["Reviewable upload package"]
+    P -->|explicit Studio click| Y["Checkpointed YouTube upload"]
+    P -->|keep local| L["Upload-ready local artifacts"]
 ```
 
 ## Why this architecture
@@ -97,6 +98,7 @@ output/YYYY-MM-DD-run-id/
 |-- subtitles/      SRT, animated ASS, timing JSON
 |-- thumbnails/     1280x720 thumbnail
 |-- metadata/       title, description, tags, chapters, QA report
+|                   and duplicate-safe YouTube publish receipt
 |-- final/          upload-ready MP4
 |-- logs/           structured JSON logs
 `-- manifest.json   status, costs, warnings, output locations
@@ -133,6 +135,38 @@ Open `http://127.0.0.1:8741`, select **Atomy USA — Fast Preview** for the firs
 **Generate film**. Stop the service later with `.\scripts\stop_studio.ps1`. The first build installs
 the local voice/caption stack; the first generation can also download model data into `models/`.
 
+### One-click YouTube upload
+
+The finished render exposes an **Upload all** action in Studio. It assembles and previews the final
+MP4, title, description, tags, thumbnail, timed caption track, quality result, visibility, schedule,
+and synthetic-media disclosure before anything leaves the laptop. The default is **Private**.
+
+YouTube requires one unavoidable account setup before the first click:
+
+1. In [Google Cloud Console](https://console.cloud.google.com/), create or select a project and enable
+   **YouTube Data API v3**.
+2. Configure the OAuth consent screen, then create an OAuth client with application type
+   **Desktop app**. Download its JSON file.
+3. Create the local `secrets` folder if it is absent and save the file exactly as
+   `secrets/youtube_client_secret.json`. Do not paste a YouTube API key into `.env`; uploads require
+   OAuth permission to your channel.
+4. Restart Studio, open a completed render, click **Upload all**, then **Authorize**. Google opens once
+   in the browser and the refresh token stays locally under `output/.studio/youtube_token.json` in
+   Docker mode.
+5. Review the package, keep **Private** for the first upload, and click **Upload complete package**.
+   AtlasForge uploads the video, metadata, thumbnail, and captions as one visible job.
+
+Each successful stage writes `metadata/youtube_publish.json`. If the network, thumbnail, or caption
+step fails after the main MP4 upload, **Resume / sync package** continues from that receipt and reuses
+the existing YouTube video ID. It does not upload a duplicate. Changing metadata after the MP4 exists
+updates the existing video. Scheduling is accepted only for a future time with Private visibility;
+Public requires an explicit review checkbox.
+
+Google restricts uploads from some unverified API projects to Private. That is a YouTube project
+policy, not an AtlasForge failure; use YouTube Studio or complete Google's API audit when broader
+visibility is required. The final human work is therefore limited to the one-time OAuth-client setup,
+the Google consent click, and deciding when a reviewed Private upload should become visible.
+
 For a native Python installation instead:
 
 ```powershell
@@ -166,13 +200,15 @@ atlasforge viral-film --recipe cinematic_insert --concept "An unbranded GT car s
 ```
 
 The Studio adds reusable use-case profiles, editable scenes, a multitrack timeline, live provider
-readiness, generation logs, cancel controls, and direct playback of completed local renders.
+readiness, generation logs, cancel controls, direct playback of completed local renders, and a
+reviewable one-click YouTube package with browser authorization and resumable progress.
 
 The former `dailyvideo` command remains available as a backward-compatible alias. For unattended Windows operation, run `scripts/register_task.ps1` after a successful dry run.
 
 ## Safety defaults
 
-- YouTube publishing is disabled.
+- Automatic YouTube publishing is disabled.
+- A render never auto-publishes; upload starts only from an explicit Studio or CLI action.
 - Premium video generation is disabled.
 - Upload privacy is `private`.
 - Realistic synthetic media is declared through `status.containsSyntheticMedia`.
@@ -181,6 +217,7 @@ The former `dailyvideo` command remains available as a backward-compatible alias
 - One SQLite lock prevents overlapping daily runs.
 - A failed provider falls through; a failed compliance or media-quality gate stops publishing.
 - A rejected synthetic clip remains inspectable in its run folder but is not admitted to editorial.
+- YouTube accessory-stage retries reuse the checkpointed video ID instead of creating a duplicate.
 
 ## Documentation
 
@@ -193,7 +230,7 @@ The former `dailyvideo` command remains available as a backward-compatible alias
 
 ## Official references
 
-The implementation follows the official documentation for [Pexels API](https://www.pexels.com/api/documentation/), [OpenAI CLIP](https://github.com/openai/CLIP), [VBench](https://github.com/Vchitect/VBench), [DOVER](https://github.com/VQAssessment/DOVER), [SDXL 1.0](https://github.com/Stability-AI/generative-models), [ComfyUI image upscaling and enhancement](https://docs.comfy.org/tutorials/utility/image-upscale), [ComfyUI Wan 2.2](https://docs.comfy.org/tutorials/video/wan/wan2_2), [Wan 2.2](https://github.com/Wan-Video/Wan2.2), [RIFE](https://github.com/hzwer/ECCV2022-RIFE), [faster-whisper](https://github.com/SYSTRAN/faster-whisper), [OpenRouter chat completions](https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request), [OpenAI text-to-speech](https://developers.openai.com/api/docs/guides/text-to-speech), [Gemini TTS](https://ai.google.dev/gemini-api/docs/speech-generation), [Gemini Omni video](https://ai.google.dev/gemini-api/docs/omni), [Veo video generation](https://ai.google.dev/gemini-api/docs/veo), [MiniMax video generation](https://platform.minimax.io/docs/guides/video-generation), [YouTube video resources](https://developers.google.com/youtube/v3/docs/videos), and [YouTube altered/synthetic content disclosure](https://support.google.com/youtube/answer/14328491).
+The implementation follows the official documentation for [Pexels API](https://www.pexels.com/api/documentation/), [OpenAI CLIP](https://github.com/openai/CLIP), [VBench](https://github.com/Vchitect/VBench), [DOVER](https://github.com/VQAssessment/DOVER), [SDXL 1.0](https://github.com/Stability-AI/generative-models), [ComfyUI image upscaling and enhancement](https://docs.comfy.org/tutorials/utility/image-upscale), [ComfyUI Wan 2.2](https://docs.comfy.org/tutorials/video/wan/wan2_2), [Wan 2.2](https://github.com/Wan-Video/Wan2.2), [RIFE](https://github.com/hzwer/ECCV2022-RIFE), [faster-whisper](https://github.com/SYSTRAN/faster-whisper), [OpenRouter chat completions](https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request), [OpenAI text-to-speech](https://developers.openai.com/api/docs/guides/text-to-speech), [Gemini TTS](https://ai.google.dev/gemini-api/docs/speech-generation), [Gemini Omni video](https://ai.google.dev/gemini-api/docs/omni), [Veo video generation](https://ai.google.dev/gemini-api/docs/veo), [MiniMax video generation](https://platform.minimax.io/docs/guides/video-generation), [YouTube video resources](https://developers.google.com/youtube/v3/docs/videos), [resumable uploads](https://developers.google.com/youtube/v3/guides/using_resumable_upload_protocol), [caption uploads](https://developers.google.com/youtube/v3/docs/captions/insert), [desktop browser OAuth](https://developers.google.com/identity/protocols/oauth2/native-app), and [YouTube altered/synthetic content disclosure](https://support.google.com/youtube/answer/14328491).
 
 ## License
 

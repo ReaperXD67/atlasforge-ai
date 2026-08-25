@@ -16,6 +16,8 @@ x-atlasforge: &atlasforge
     XDG_CACHE_HOME: /app/models/cache
     OLLAMA_BASE_URL: ${DOCKER_OLLAMA_BASE_URL:-http://host.docker.internal:11434}
     COMFYUI_BASE_URL: ${DOCKER_COMFYUI_BASE_URL:-http://host.docker.internal:8188}
+    YOUTUBE_CLIENT_SECRETS_FILE: /app/secrets/youtube_client_secret.json
+    YOUTUBE_TOKEN_FILE: /app/output/.studio/youtube_token.json
     NVIDIA_DRIVER_CAPABILITIES: compute,utility,video
   extra_hosts:
     - host.docker.internal:host-gateway
@@ -50,6 +52,8 @@ services:
       XDG_CACHE_HOME: /app/models/cache
       OLLAMA_BASE_URL: http://ollama:11434
       COMFYUI_BASE_URL: ${DOCKER_COMFYUI_BASE_URL:-http://host.docker.internal:8188}
+      YOUTUBE_CLIENT_SECRETS_FILE: /app/secrets/youtube_client_secret.json
+      YOUTUBE_TOKEN_FILE: /app/output/.studio/youtube_token.json
     depends_on:
       ollama:
         condition: service_healthy
@@ -77,6 +81,8 @@ services:
       HF_HOME: /app/models/huggingface
       XDG_CACHE_HOME: /app/models/cache
       COMFYUI_BASE_URL: ${DOCKER_COMFYUI_BASE_URL:-http://host.docker.internal:8188}
+      YOUTUBE_CLIENT_SECRETS_FILE: /app/secrets/youtube_client_secret.json
+      YOUTUBE_TOKEN_FILE: /app/output/.studio/youtube_token.json
       NVIDIA_DRIVER_CAPABILITIES: compute,utility,video
     ports:
       - 127.0.0.1:8741:8741

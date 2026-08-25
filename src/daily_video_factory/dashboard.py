@@ -4,7 +4,7 @@ import json
 from pathlib import Path, PureWindowsPath
 from typing import Annotated
 
-from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi import FastAPI, File, HTTPException, Request, UploadFile
 from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from PIL import Image, UnidentifiedImageError
@@ -15,6 +15,7 @@ from .config import Settings
 from .exceptions import ConfigurationError
 from .media.ffmpeg import FFmpeg
 from .music_video import analyze_music
+from .publishing import PublishJob, PublishManager, PublishPreview, PublishSubmission
 from .state import RunStore
 from .studio import StudioJob, StudioJobRequest, StudioManager
 
@@ -23,6 +24,7 @@ def create_app(settings: Settings, profile_directory: Path = Path("config/profil
     app = FastAPI(title="AtlasForge AI", version=__version__)
     store = RunStore(settings.output_directory.resolve())
     studio = StudioManager(settings, profile_directory)
+    publishing = PublishManager(settings, store)
 
     def run_root(run: dict[str, object]) -> Path:
         """Resolve persisted host paths through the current Docker/native output mount."""
@@ -102,6 +104,69 @@ def create_app(settings: Settings, profile_directory: Path = Path("config/profil
     @app.get("/api/runs/{run_id}/thumbnail")
     def get_run_thumbnail(run_id: str) -> FileResponse:
         return FileResponse(run_artifact(run_id, "thumbnail"), media_type="image/jpeg")
+
+    @app.get(
+        "/api/runs/{run_id}/publish-package",
+        response_model=PublishPreview,
+    )
+    def get_publish_package(run_id: str) -> PublishPreview:
+        run = store.get_run(run_id)
+        if run is None:
+            raise HTTPException(status_code=404, detail="Run not found")
+        try:
+            return publishing.preview(run, run_root(run))
+        except (ConfigurationError, OSError, ValueError) as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    @app.post("/api/publishing/oauth/start")
+    def start_youtube_oauth(request: Request) -> dict[str, str]:
+        redirect_uri = str(request.url_for("youtube_oauth_callback"))
+        try:
+            return publishing.begin_authorization(redirect_uri)
+        except ConfigurationError as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    @app.get(
+        "/api/publishing/oauth/callback",
+        response_class=HTMLResponse,
+        name="youtube_oauth_callback",
+    )
+    def youtube_oauth_callback(request: Request, state: str) -> str:
+        try:
+            publishing.finish_authorization(state, str(request.url))
+        except Exception as exc:
+            raise HTTPException(status_code=400, detail=f"YouTube authorization failed: {exc}") from exc
+        return """
+        <!doctype html><html><head><title>YouTube connected</title></head>
+        <body style="margin:0;background:#111;color:#eee;font:16px system-ui;display:grid;place-items:center;min-height:100vh">
+          <main style="max-width:420px;padding:32px;text-align:center"><h1>YouTube connected</h1>
+          <p>You can close this tab and return to AtlasForge Studio.</p></main>
+          <script>if (window.opener) window.opener.postMessage({type:'atlasforge-youtube-connected'}, window.location.origin); setTimeout(() => window.close(), 1200);</script>
+        </body></html>
+        """
+
+    @app.post(
+        "/api/runs/{run_id}/publish",
+        response_model=PublishJob,
+        status_code=202,
+    )
+    def publish_run(run_id: str, submission: PublishSubmission) -> PublishJob:
+        run = store.get_run(run_id)
+        if run is None:
+            raise HTTPException(status_code=404, detail="Run not found")
+        try:
+            return publishing.create(run, run_root(run), submission)
+        except ConfigurationError as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+        except RuntimeError as exc:
+            raise HTTPException(status_code=409, detail=str(exc)) from exc
+
+    @app.get("/api/publishing/jobs/{publish_id}", response_model=PublishJob)
+    def get_publish_job(publish_id: str) -> PublishJob:
+        job = publishing.get_job(publish_id)
+        if job is None:
+            raise HTTPException(status_code=404, detail="Publishing job not found")
+        return job
 
     @app.get("/api/runs/{run_id}/storyboard")
     def get_run_storyboard(run_id: str) -> dict[str, object]:
