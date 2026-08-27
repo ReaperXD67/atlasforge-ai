@@ -23,9 +23,9 @@ not a dashboard or presentation deck. Large condensed display typography carries
 hook; Segoe UI carries explanations; Consolas labels sources and numeric units.
 
 Nexa Toon is a credible adult guide, not a children's mascot. Keep her between 28% and
-40% of the frame when present. Her lip-sync mouth is deliberately graphic and clean,
-supported by blink, eyebrow, hand, and body drift so the performance does not feel like
-a mouth pasted onto a still.
+40% of the frame when present. Preserve the original illustrated face without a separate
+animated mouth layer. Gentle full-character drift supplies life while keeping the expression
+consistent with the source artwork.
 
 Each chapter keeps three layers: warm radial glow and faint topology lines in the
 background; the explanatory object in the midground; source labels, registration marks,

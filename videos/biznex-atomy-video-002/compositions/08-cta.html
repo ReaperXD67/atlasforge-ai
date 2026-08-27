@@ -94,10 +94,6 @@
     border: 2px solid rgba(244,185,66,.25);
   }
   .host-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 28px 30px rgba(0,0,0,.55)); }
-  .mouth-rig { position: absolute; left: 52.85%; top: 28.18%; width: 8.15%; height: 3.45%; }
-  .mouth-rig svg { width: 100%; height: 100%; overflow: visible; }
-  .mouth-skin { fill: #eb9853; stroke: #b95d35; stroke-width: 1.4; }
-  .mouth-path { fill: #661f22; stroke: #3a1114; stroke-width: 2.3; stroke-linejoin: round; }
   .name-plate {
     position: absolute; left: 110px; bottom: 118px; padding: 12px 20px;
     border-radius: 14px; background: #f4b942; color: #0b0a0a;
@@ -127,12 +123,6 @@
   <div class="host-shell" id="s8-host">
     <div class="host-halo" data-layout-ignore></div>
     <img class="host-image" src="assets/nexa-toon-v2.png" alt="Nexa, BizNex AI host" />
-    <div class="mouth-rig" data-layout-ignore>
-      <svg viewBox="0 0 100 50" aria-hidden="true">
-        <ellipse class="mouth-skin" cx="50" cy="25" rx="45" ry="20"></ellipse>
-        <path class="mouth-path" d="M20 25 Q50 29 80 25 Q50 32 20 25 Z"></path>
-      </svg>
-    </div>
     <div class="name-plate">NEXA // AI HOST</div>
   </div>
         <div class="cta-copy">
@@ -163,11 +153,6 @@
       tl.to(q(".host-shell"), { y:1, rotate:-.16, duration:7, ease:"sine.inOut" }, 6);
       tl.to(q(".host-shell"), { y:-5, rotate:.18, duration:8.334, ease:"sine.inOut" }, 13);
       tl.to(q(".subscribe"), { boxShadow:"0 0 55px rgba(244,185,66,.5)", duration:17.334, ease:"sine.inOut" }, 4);
-
-    const mouthShapes = {"A":"M18 25 Q50 31 82 25 Q50 37 18 25 Z","B":"M16 24 Q50 31 84 24 Q50 34 16 24 Z","C":"M18 21 Q50 7 82 21 Q50 46 18 21 Z","D":"M27 17 Q50 4 73 17 Q76 38 50 44 Q24 38 27 17 Z","E":"M19 20 Q50 9 81 20 Q50 41 19 20 Z","F":"M16 22 Q50 11 84 22 Q50 35 16 22 Z","G":"M31 13 Q50 5 69 13 Q77 26 69 40 Q50 48 31 40 Q23 26 31 13 Z","H":"M28 17 Q50 9 72 17 Q72 34 50 39 Q28 34 28 17 Z","X":"M20 25 Q50 29 80 25 Q50 32 20 25 Z"};
-    const mouthCues = [{"start":0,"value":"G"},{"start":0.013,"value":"C"},{"start":0.223,"value":"A"},{"start":0.303,"value":"C"},{"start":0.563,"value":"B"},{"start":0.773,"value":"X"},{"start":1.903,"value":"F"},{"start":1.953,"value":"B"},{"start":1.993,"value":"A"},{"start":2.073,"value":"D"},{"start":2.213,"value":"F"},{"start":2.423,"value":"B"},{"start":2.493,"value":"C"},{"start":2.703,"value":"B"},{"start":2.843,"value":"C"},{"start":3.053,"value":"A"},{"start":3.133,"value":"C"},{"start":3.623,"value":"B"},{"start":4.543,"value":"E"},{"start":4.683,"value":"B"},{"start":4.823,"value":"A"},{"start":4.923,"value":"B"},{"start":4.983,"value":"E"},{"start":5.183,"value":"B"},{"start":5.253,"value":"C"},{"start":5.393,"value":"A"},{"start":5.503,"value":"B"},{"start":5.703,"value":"X"},{"start":5.953,"value":"B"},{"start":6.113,"value":"C"},{"start":6.183,"value":"B"},{"start":6.393,"value":"A"},{"start":6.473,"value":"C"},{"start":6.583,"value":"B"},{"start":6.863,"value":"F"},{"start":6.933,"value":"D"},{"start":7.003,"value":"C"},{"start":7.073,"value":"G"},{"start":7.143,"value":"C"},{"start":7.353,"value":"B"},{"start":7.493,"value":"C"},{"start":7.983,"value":"E"},{"start":8.053,"value":"B"},{"start":8.123,"value":"C"},{"start":8.313,"value":"E"},{"start":8.363,"value":"F"},{"start":8.543,"value":"B"},{"start":8.613,"value":"G"},{"start":8.683,"value":"C"},{"start":8.753,"value":"F"},{"start":8.963,"value":"C"},{"start":9.033,"value":"B"},{"start":9.243,"value":"A"},{"start":9.333,"value":"B"},{"start":9.683,"value":"C"},{"start":9.753,"value":"H"},{"start":9.823,"value":"C"},{"start":10.033,"value":"B"},{"start":10.103,"value":"C"},{"start":10.313,"value":"B"},{"start":10.453,"value":"X"},{"start":10.913,"value":"C"},{"start":11.003,"value":"D"},{"start":11.143,"value":"C"},{"start":11.213,"value":"A"},{"start":11.293,"value":"C"},{"start":11.423,"value":"B"},{"start":11.493,"value":"F"},{"start":11.633,"value":"C"},{"start":11.703,"value":"B"},{"start":11.843,"value":"E"},{"start":11.913,"value":"F"},{"start":12.053,"value":"B"},{"start":12.813,"value":"A"},{"start":12.933,"value":"B"},{"start":13.153,"value":"C"},{"start":13.363,"value":"B"},{"start":13.503,"value":"F"},{"start":13.923,"value":"B"},{"start":13.993,"value":"A"},{"start":14.103,"value":"E"},{"start":14.173,"value":"F"},{"start":14.233,"value":"B"},{"start":14.443,"value":"F"},{"start":14.513,"value":"C"},{"start":14.583,"value":"B"},{"start":14.863,"value":"F"},{"start":14.933,"value":"C"},{"start":15.003,"value":"B"},{"start":15.143,"value":"C"},{"start":15.283,"value":"G"},{"start":15.353,"value":"B"},{"start":15.423,"value":"C"},{"start":15.703,"value":"B"},{"start":15.983,"value":"E"},{"start":16.123,"value":"F"},{"start":16.333,"value":"B"},{"start":16.403,"value":"A"},{"start":16.483,"value":"H"},{"start":16.603,"value":"C"},{"start":16.743,"value":"E"},{"start":16.953,"value":"C"},{"start":17.303,"value":"B"},{"start":17.373,"value":"F"},{"start":17.443,"value":"B"},{"start":17.513,"value":"F"},{"start":17.583,"value":"B"},{"start":17.793,"value":"E"},{"start":17.863,"value":"F"},{"start":17.933,"value":"B"},{"start":18.073,"value":"C"},{"start":18.353,"value":"B"},{"start":18.423,"value":"C"},{"start":18.493,"value":"B"},{"start":18.563,"value":"D"},{"start":18.873,"value":"C"},{"start":19.023,"value":"B"},{"start":19.443,"value":"C"},{"start":19.513,"value":"B"},{"start":19.583,"value":"C"},{"start":19.653,"value":"A"},{"start":19.733,"value":"B"},{"start":20.293,"value":"E"},{"start":20.573,"value":"F"},{"start":20.853,"value":"X"}];
-    mouthCues.forEach((cue) => tl.set(q(".mouth-path"), { attr: { d: mouthShapes[cue.value] || mouthShapes.X } }, cue.start));
-
 
         window.__timelines["scene-08-cta"] = tl;
       </script>

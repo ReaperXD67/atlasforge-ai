@@ -18,8 +18,8 @@ motion: waterfall-entry + ambient-glow-bloom
 
 The viewer enters a charcoal stage where two giant gold-edged doors split the frame:
 CONSUMER and DISTRIBUTOR. The words “TWO LEGS / ONE SMALLER SIDE” arrive as a tight
-waterfall, then Nexa Toon steps into the seam and introduces herself. Her mouth follows
-the real narration cues while her body drifts minimally and an `AI HOST` label stays visible.
+waterfall, then Nexa Toon steps into the seam and introduces herself. Her original illustrated
+expression stays fixed while her body drifts minimally and an `AI HOST` label stays visible.
 
 ## Frame 02 — Build the two-leg machine
 status: outline
@@ -92,4 +92,4 @@ motion: spring-pop-entrance + sine-wave-loop
 
 Nexa returns full height and asks viewers to choose one of three next episodes. The three
 buttons land in sequence, then the BizNex lockup closes the frame with the promise that the
-channel will also show its own AI-growth data. Lip-sync remains active through the CTA.
+channel will also show its own AI-growth data. Nexa's illustrated expression stays unchanged.

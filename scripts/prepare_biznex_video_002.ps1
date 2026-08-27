@@ -23,9 +23,8 @@ if (-not $RunRoot) {
 
 $resolvedRun = (Resolve-Path -LiteralPath $RunRoot).Path
 $narration = Join-Path $resolvedRun "audio\narration.wav"
-$dialog = Join-Path $resolvedRun "scripts\narration.txt"
 $timedStoryboard = Join-Path $resolvedRun "storyboards\storyboard_timed.json"
-foreach ($required in @($narration, $dialog, $timedStoryboard)) {
+foreach ($required in @($narration, $timedStoryboard)) {
     if (-not (Test-Path -LiteralPath $required -PathType Leaf)) {
         throw "Required Video 002 source is missing: $required"
     }
@@ -34,22 +33,6 @@ foreach ($required in @($narration, $dialog, $timedStoryboard)) {
 $projectAssets = Join-Path $project "assets"
 New-Item -ItemType Directory -Path $projectAssets -Force | Out-Null
 Copy-Item -LiteralPath $narration -Destination (Join-Path $projectAssets "narration.wav") -Force
-
-$rhubarb = Join-Path $repository "models\rhubarb-1.14.0\Rhubarb-Lip-Sync-1.14.0-Windows\rhubarb.exe"
-if (-not (Test-Path -LiteralPath $rhubarb -PathType Leaf)) {
-    throw "Rhubarb 1.14.0 is not installed at $rhubarb"
-}
-
-& $rhubarb `
-    --recognizer pocketSphinx `
-    --dialogFile $dialog `
-    --extendedShapes GHX `
-    --exportFormat json `
-    --output (Join-Path $projectAssets "lip-sync.json") `
-    (Join-Path $projectAssets "narration.wav")
-if ($LASTEXITCODE -ne 0) {
-    throw "Rhubarb failed with exit code $LASTEXITCODE"
-}
 
 if (-not $MusicSource) {
     $musicCandidate = Get-ChildItem -LiteralPath (Join-Path $repository "output") -Directory |

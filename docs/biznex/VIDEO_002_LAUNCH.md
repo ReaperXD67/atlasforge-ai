@@ -84,7 +84,7 @@ series grows.
 ## Creative system delivered
 
 - Original recurring presenter: **Nexa**, visibly labeled as an AI host.
-- Free, offline lip sync: **Rhubarb Lip Sync 1.14.0**, using 1,965 cues derived from the final voice.
+- Nexa retains her original illustrated expression without an animated mouth overlay.
 - Eight purpose-built animated chapters rather than stock-footage repetition.
 - 101 timed, high-contrast caption beats.
 - Original diagram language for two legs, PV, ranks, allocation pools, and evidence boundaries.

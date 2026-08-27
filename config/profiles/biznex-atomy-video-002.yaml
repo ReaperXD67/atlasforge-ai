@@ -68,7 +68,7 @@ images:
   presenter_name: Nexa
 
 lip_sync:
-  enabled: true
+  enabled: false
   provider: rhubarb
   executable: models/rhubarb-1.14.0/Rhubarb-Lip-Sync-1.14.0-Windows/rhubarb.exe
   recognizer: pocketSphinx

@@ -28,10 +28,10 @@ The tone is human, calm, curious, and precise without income hype.
 
 ## Customizations
 
-- Free local Rhubarb phoneme-to-viseme lip-sync for every shot where Nexa is visibly speaking.
+- Nexa keeps the original illustrated facial expression; no animated mouth overlay is used.
 - Original animated two-leg map, PV tokens, dealership ladder, allocation pools, and mechanics-versus-outcomes comparison.
 - Large editorial captions and chapter labels; visual pattern interruption every 6–12 seconds inside the longer chapters.
-- Reusable cartoon-presenter and lip-sync plumbing for future daily episodes.
+- Reusable cartoon-presenter plumbing for future daily episodes; lip-sync remains optional in the wider pipeline.
 
 ## Notes
 

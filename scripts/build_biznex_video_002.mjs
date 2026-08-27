@@ -10,9 +10,6 @@ const runRoot = process.env.BIZNEX_VIDEO_002_RUN_ROOT
   : path.join(repo, "output", "2026-08-26-2026-08-26-fd928400");
 const timedPath = path.join(runRoot, "storyboards", "storyboard_timed.json");
 const timed = JSON.parse(fs.readFileSync(timedPath, "utf8"));
-const lipSync = JSON.parse(
-  fs.readFileSync(path.join(project, "assets", "lip-sync.json"), "utf8"),
-);
 
 const duration = 325.041;
 const sceneStarts = [0, 32.145, 64.29, 101.161, 155.985, 216.798, 260.943, 303.707];
@@ -174,10 +171,6 @@ const sharedCss = `
     border: 2px solid rgba(244,185,66,.25);
   }
   .host-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 28px 30px rgba(0,0,0,.55)); }
-  .mouth-rig { position: absolute; left: 52.85%; top: 28.18%; width: 8.15%; height: 3.45%; }
-  .mouth-rig svg { width: 100%; height: 100%; overflow: visible; }
-  .mouth-skin { fill: #eb9853; stroke: #b95d35; stroke-width: 1.4; }
-  .mouth-path { fill: #661f22; stroke: #3a1114; stroke-width: 2.3; stroke-linejoin: round; }
   .name-plate {
     position: absolute; left: 110px; bottom: 118px; padding: 12px 20px;
     border-radius: 14px; background: #f4b942; color: #0b0a0a;
@@ -187,47 +180,12 @@ const sharedCss = `
   .tiny-rule { height: 2px; background: linear-gradient(90deg,#f4b942,transparent); }
 `;
 
-const mouthShapePaths = {
-  A: "M18 25 Q50 31 82 25 Q50 37 18 25 Z",
-  B: "M16 24 Q50 31 84 24 Q50 34 16 24 Z",
-  C: "M18 21 Q50 7 82 21 Q50 46 18 21 Z",
-  D: "M27 17 Q50 4 73 17 Q76 38 50 44 Q24 38 27 17 Z",
-  E: "M19 20 Q50 9 81 20 Q50 41 19 20 Z",
-  F: "M16 22 Q50 11 84 22 Q50 35 16 22 Z",
-  G: "M31 13 Q50 5 69 13 Q77 26 69 40 Q50 48 31 40 Q23 26 31 13 Z",
-  H: "M28 17 Q50 9 72 17 Q72 34 50 39 Q28 34 28 17 Z",
-  X: "M20 25 Q50 29 80 25 Q50 32 20 25 Z",
-};
-
-const cueSlice = (start, end) =>
-  lipSync.mouthCues
-    .filter((cue) => cue.start < end && cue.end > start)
-    .map((cue) => ({
-      start: Number(Math.max(0, cue.start - start).toFixed(3)),
-      value: cue.value,
-    }));
-
 const hostMarkup = (prefix) => `
   <div class="host-shell" id="${prefix}-host">
     <div class="host-halo" data-layout-ignore></div>
     <img class="host-image" src="assets/nexa-toon-v2.png" alt="Nexa, BizNex AI host" />
-    <div class="mouth-rig" data-layout-ignore>
-      <svg viewBox="0 0 100 50" aria-hidden="true">
-        <ellipse class="mouth-skin" cx="50" cy="25" rx="45" ry="20"></ellipse>
-        <path class="mouth-path" d="${mouthShapePaths.X}"></path>
-      </svg>
-    </div>
     <div class="name-plate">NEXA // AI HOST</div>
   </div>`;
-
-const mouthScript = (start, end) => {
-  const cues = cueSlice(start, end);
-  return `
-    const mouthShapes = ${JSON.stringify(mouthShapePaths)};
-    const mouthCues = ${JSON.stringify(cues)};
-    mouthCues.forEach((cue) => tl.set(q(".mouth-path"), { attr: { d: mouthShapes[cue.value] || mouthShapes.X } }, cue.start));
-  `;
-};
 
 const sceneDefinitions = [
   {
@@ -275,7 +233,6 @@ const sceneDefinitions = [
       tl.to(q(".host-shell"), { y:1, rotate:-.18, duration:7, ease:"sine.inOut" }, 6);
       tl.to(q(".host-shell"), { y:-9, rotate:.32, duration:8, ease:"sine.inOut" }, 13);
       tl.to(q(".host-shell"), { y:-2, rotate:0, duration:${sceneDurations[0]-21}, ease:"sine.inOut" }, 21);
-      ${mouthScript(sceneStarts[0], sceneStarts[0] + sceneDurations[0])}
     `,
   },
   {
@@ -426,7 +383,6 @@ const sceneDefinitions = [
       tl.to(q(".host-shell"), { y:1, rotate:-.16, duration:12, ease:"sine.inOut" }, 11);
       tl.to(q(".host-shell"), { y:-7, rotate:.2, duration:14, ease:"sine.inOut" }, 23);
       tl.to(q(".host-shell"), { y:-2, rotate:0, duration:${sceneDurations[3]-37}, ease:"sine.inOut" }, 37);
-      ${mouthScript(sceneStarts[3], sceneStarts[3] + sceneDurations[3])}
     `,
   },
   {
@@ -604,7 +560,6 @@ const sceneDefinitions = [
       tl.to(q(".host-shell"), { y:1, rotate:-.16, duration:7, ease:"sine.inOut" }, 6);
       tl.to(q(".host-shell"), { y:-5, rotate:.18, duration:${sceneDurations[7]-13}, ease:"sine.inOut" }, 13);
       tl.to(q(".subscribe"), { boxShadow:"0 0 55px rgba(244,185,66,.5)", duration:${sceneDurations[7]-4}, ease:"sine.inOut" }, 4);
-      ${mouthScript(sceneStarts[7], sceneStarts[7] + sceneDurations[7])}
     `,
   },
 ];
@@ -766,4 +721,4 @@ const motion = {
 };
 fs.writeFileSync(path.join(project, "index.motion.json"), JSON.stringify(motion, null, 2) + "\n");
 
-console.log(`Built ${sceneDefinitions.length} scenes, ${captions.length} caption clips, and ${lipSync.mouthCues.length} lip cues.`);
+console.log(`Built ${sceneDefinitions.length} scenes and ${captions.length} caption clips.`);
