@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+
+  @font-face { font-family: Impact; src: local("Impact"); }
+  @font-face { font-family: "Arial Narrow"; src: local("Arial Narrow"); }
+  * { box-sizing: border-box; }
+  #root {
+    position: absolute;
+    inset: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background: #0b0a0a;
+    color: #fff4dd;
+    font-family: "Segoe UI", Arial, sans-serif;
+  }
+  .backdrop {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 78% 22%, rgba(244,185,66,.17), transparent 34%),
+      radial-gradient(circle at 12% 78%, rgba(117,214,156,.08), transparent 28%),
+      linear-gradient(135deg, #0b0a0a 0%, #17120c 52%, #080808 100%);
+  }
+  .grid {
+    position: absolute;
+    inset: -100px;
+    opacity: .16;
+    background-image: linear-gradient(rgba(244,185,66,.22) 1px, transparent 1px), linear-gradient(90deg, rgba(244,185,66,.22) 1px, transparent 1px);
+    background-size: 86px 86px;
+    transform: rotate(-6deg) translateY(180px) scale(1.32);
+    transform-origin: center;
+  }
+  .grain {
+    position: absolute;
+    inset: 0;
+    opacity: .09;
+    background-image: radial-gradient(rgba(255,255,255,.8) .8px, transparent .8px);
+    background-size: 6px 6px;
+  }
+  .ambient {
+    position: absolute;
+    width: 760px;
+    height: 760px;
+    border: 2px solid rgba(244,185,66,.16);
+    border-radius: 50%;
+    right: -260px;
+    top: -300px;
+    box-shadow: 0 0 100px rgba(244,185,66,.11), inset 0 0 80px rgba(244,185,66,.05);
+  }
+  .stage { position: absolute; inset: 0; padding: 94px 92px 178px; }
+  .eyebrow {
+    color: #f4b942;
+    font: 700 24px/1 Consolas, monospace;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+  .headline {
+    margin-top: 16px;
+    font-family: Impact, "Arial Narrow", sans-serif;
+    font-size: 116px;
+    line-height: .92;
+    letter-spacing: .012em;
+    text-transform: uppercase;
+  }
+  .headline .gold { color: #f4b942; }
+  .subhead { color: #c8bda7; font-size: 31px; line-height: 1.34; max-width: 920px; }
+  .panel {
+    border: 1px solid rgba(244,185,66,.28);
+    background: linear-gradient(145deg, rgba(31,27,22,.96), rgba(12,11,10,.9));
+    border-radius: 28px;
+    box-shadow: 0 26px 80px rgba(0,0,0,.42), inset 0 1px rgba(255,255,255,.05);
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(244,185,66,.38);
+    color: #f4b942;
+    font: 700 19px/1 Consolas, monospace;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .host-shell { position: absolute; width: 760px; height: 810px; }
+  .host-halo {
+    position: absolute; width: 610px; height: 610px; border-radius: 50%; left: 92px; top: 75px;
+    background: radial-gradient(circle, rgba(244,185,66,.24), transparent 68%);
+    border: 2px solid rgba(244,185,66,.25);
+  }
+  .host-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 28px 30px rgba(0,0,0,.55)); }
+  .mouth-rig { position: absolute; left: 52.85%; top: 28.18%; width: 8.15%; height: 3.45%; }
+  .mouth-rig svg { width: 100%; height: 100%; overflow: visible; }
+  .mouth-skin { fill: #eb9853; stroke: #b95d35; stroke-width: 1.4; }
+  .mouth-path { fill: #661f22; stroke: #3a1114; stroke-width: 2.3; stroke-linejoin: round; }
+  .name-plate {
+    position: absolute; left: 110px; bottom: 118px; padding: 12px 20px;
+    border-radius: 14px; background: #f4b942; color: #0b0a0a;
+    font: 900 24px/1 "Segoe UI", sans-serif; letter-spacing: .12em;
+  }
+  .source-chip { color: #c8bda7; font: 600 19px/1.2 Consolas, monospace; }
+  .tiny-rule { height: 2px; background: linear-gradient(90deg,#f4b942,transparent); }
+
+
+      .headline { font-size:112px; }
+      .not-equal { display:inline-block; color:#ff6b5e; }
+      .compare { position:absolute; left:150px; right:150px; top:355px; display:grid; grid-template-columns:1fr 150px 1fr; align-items:stretch; }
+      .compare section { height:450px; padding:38px 44px; }
+      .compare section>span { color:#c8bda7; font:700 17px Consolas,monospace; letter-spacing:.1em; }
+      .compare section>b { display:block; margin:12px 0 22px; font:900 55px Impact,sans-serif; }
+      .compare ul { list-style:none; display:grid; gap:15px; }
+      .compare li { color:#c8bda7; font-size:23px; padding-left:28px; position:relative; }
+      .compare li::before { content:"•"; position:absolute; left:0; color:#f4b942; }
+      .icon { position:absolute; right:34px; top:28px; width:68px; height:68px; display:grid; place-items:center; border-radius:50%; background:#75d69c; color:#0b0a0a; font:900 36px Impact,sans-serif; }
+      .unknown { border-color:#ff6b5e; }
+      .unknown .icon { background:#ff6b5e; }
+      .unknown li::before { color:#ff6b5e; }
+      .boundary { display:grid; place-items:center; }
+      .boundary::before { content:""; position:absolute; height:440px; width:3px; background:linear-gradient(transparent,#ff6b5e,transparent); }
+      .boundary span { z-index:2; padding:13px; background:#0b0a0a; color:#ff6b5e; font:900 15px/1.1 Consolas,monospace; text-align:center; }
+      .decision { position:absolute; right:150px; bottom:145px; }
+
+      </style>
+      <div id="root" data-composition-id="scene-06-outcomes" data-start="0" data-duration="44.145" data-width="1920" data-height="1080">
+
+      <div class="backdrop"></div><div class="grid" data-layout-ignore></div><div class="grain" data-layout-ignore></div><div class="ambient" data-layout-ignore></div>
+      <div class="stage">
+        <div class="eyebrow">THE LINE MOST EXPLAINERS BLUR</div>
+        <h2 class="headline">STRUCTURE <span class="not-equal">≠</span> OUTCOME</h2>
+        <div class="compare">
+          <section class="panel fact"><div class="icon">✓</div><span>THE PLAN CAN DESCRIBE</span><b>MECHANICS</b><ul><li>PV thresholds</li><li>Dealership classes</li><li>Score conditions</li><li>Company allocation pools</li></ul></section>
+          <div class="boundary"><span>KEEP<br>SEPARATE</span></div>
+          <section class="panel unknown"><div class="icon">?</div><span>THE CHART DOES NOT PREDICT</span><b>YOUR RESULT</b><ul><li>Typical participant earnings</li><li>Typical expenses</li><li>Time to reach a level</li><li>Your net outcome</li></ul></section>
+        </div>
+        <div class="decision tag">BASIC DECISION HYGIENE</div>
+      </div>
+      </div>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const root = document.querySelector('[data-composition-id="scene-06-outcomes"]');
+        const q = gsap.utils.selector(root);
+        const tl = gsap.timeline({ paused: true });
+        tl.to(q(".ambient"), { rotation:18, scale:1.13, duration:44.145, ease:"none" }, 0);
+        tl.to(q(".grain"), { backgroundPosition:"32px 18px", duration:44.145, ease:"none" }, 0);
+
+      tl.fromTo(q(".eyebrow,.headline"), { opacity:0, y:-38 }, { opacity:1, y:0, duration:.7, stagger:.17 }, .1);
+      tl.fromTo(q(".not-equal"), { opacity:0, scale:2.4, rotate:25 }, { opacity:1, scale:1, rotate:0, duration:.55, ease:"back.out(1.8)" }, 1.1);
+      tl.fromTo(q(".fact"), { opacity:0, x:-150, rotate:-1 }, { opacity:1, x:0, rotate:0, duration:.85, ease:"power4.out" }, 1.5);
+      tl.fromTo(q(".unknown"), { opacity:0, x:150, rotate:1 }, { opacity:1, x:0, rotate:0, duration:.85, ease:"power4.out" }, 1.7);
+      tl.fromTo(q(".boundary"), { opacity:0, scaleY:0 }, { opacity:1, scaleY:1, duration:.75 }, 2.2);
+      tl.fromTo(q("li"), { opacity:0, x:-22 }, { opacity:1, x:0, duration:.35, stagger:.18 }, 2.7);
+      tl.fromTo(q(".decision"), { opacity:0, y:30 }, { opacity:1, y:0, duration:.55 }, 5.1);
+      tl.to(q(".not-equal"), { color:"#f4b942", scale:1.12, duration:38.145, ease:"sine.inOut" }, 6);
+
+        window.__timelines["scene-06-outcomes"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

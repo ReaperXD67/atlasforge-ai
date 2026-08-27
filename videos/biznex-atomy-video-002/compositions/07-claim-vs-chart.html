@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+
+  @font-face { font-family: Impact; src: local("Impact"); }
+  @font-face { font-family: "Arial Narrow"; src: local("Arial Narrow"); }
+  * { box-sizing: border-box; }
+  #root {
+    position: absolute;
+    inset: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background: #0b0a0a;
+    color: #fff4dd;
+    font-family: "Segoe UI", Arial, sans-serif;
+  }
+  .backdrop {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 78% 22%, rgba(244,185,66,.17), transparent 34%),
+      radial-gradient(circle at 12% 78%, rgba(117,214,156,.08), transparent 28%),
+      linear-gradient(135deg, #0b0a0a 0%, #17120c 52%, #080808 100%);
+  }
+  .grid {
+    position: absolute;
+    inset: -100px;
+    opacity: .16;
+    background-image: linear-gradient(rgba(244,185,66,.22) 1px, transparent 1px), linear-gradient(90deg, rgba(244,185,66,.22) 1px, transparent 1px);
+    background-size: 86px 86px;
+    transform: rotate(-6deg) translateY(180px) scale(1.32);
+    transform-origin: center;
+  }
+  .grain {
+    position: absolute;
+    inset: 0;
+    opacity: .09;
+    background-image: radial-gradient(rgba(255,255,255,.8) .8px, transparent .8px);
+    background-size: 6px 6px;
+  }
+  .ambient {
+    position: absolute;
+    width: 760px;
+    height: 760px;
+    border: 2px solid rgba(244,185,66,.16);
+    border-radius: 50%;
+    right: -260px;
+    top: -300px;
+    box-shadow: 0 0 100px rgba(244,185,66,.11), inset 0 0 80px rgba(244,185,66,.05);
+  }
+  .stage { position: absolute; inset: 0; padding: 94px 92px 178px; }
+  .eyebrow {
+    color: #f4b942;
+    font: 700 24px/1 Consolas, monospace;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+  .headline {
+    margin-top: 16px;
+    font-family: Impact, "Arial Narrow", sans-serif;
+    font-size: 116px;
+    line-height: .92;
+    letter-spacing: .012em;
+    text-transform: uppercase;
+  }
+  .headline .gold { color: #f4b942; }
+  .subhead { color: #c8bda7; font-size: 31px; line-height: 1.34; max-width: 920px; }
+  .panel {
+    border: 1px solid rgba(244,185,66,.28);
+    background: linear-gradient(145deg, rgba(31,27,22,.96), rgba(12,11,10,.9));
+    border-radius: 28px;
+    box-shadow: 0 26px 80px rgba(0,0,0,.42), inset 0 1px rgba(255,255,255,.05);
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(244,185,66,.38);
+    color: #f4b942;
+    font: 700 19px/1 Consolas, monospace;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .host-shell { position: absolute; width: 760px; height: 810px; }
+  .host-halo {
+    position: absolute; width: 610px; height: 610px; border-radius: 50%; left: 92px; top: 75px;
+    background: radial-gradient(circle, rgba(244,185,66,.24), transparent 68%);
+    border: 2px solid rgba(244,185,66,.25);
+  }
+  .host-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 28px 30px rgba(0,0,0,.55)); }
+  .mouth-rig { position: absolute; left: 52.85%; top: 28.18%; width: 8.15%; height: 3.45%; }
+  .mouth-rig svg { width: 100%; height: 100%; overflow: visible; }
+  .mouth-skin { fill: #eb9853; stroke: #b95d35; stroke-width: 1.4; }
+  .mouth-path { fill: #661f22; stroke: #3a1114; stroke-width: 2.3; stroke-linejoin: round; }
+  .name-plate {
+    position: absolute; left: 110px; bottom: 118px; padding: 12px 20px;
+    border-radius: 14px; background: #f4b942; color: #0b0a0a;
+    font: 900 24px/1 "Segoe UI", sans-serif; letter-spacing: .12em;
+  }
+  .source-chip { color: #c8bda7; font: 600 19px/1.2 Consolas, monospace; }
+  .tiny-rule { height: 2px; background: linear-gradient(90deg,#f4b942,transparent); }
+
+
+      .headline { font-size:88px; }
+      .evidence-row { position:absolute; left:120px; right:120px; top:360px; display:grid; grid-template-columns:1fr 120px 1fr; align-items:center; }
+      .evidence-row>div.panel { height:285px; padding:38px; position:relative; }
+      .evidence-row span { color:#c8bda7; font:700 16px Consolas,monospace; letter-spacing:.12em; }
+      .evidence-row b { display:block; margin-top:17px; font:900 46px/1.08 Impact,sans-serif; }
+      .claim-card { border-color:#ff6b5e; }
+      .strike { position:absolute; left:25px; right:25px; height:10px; top:150px; background:#ff6b5e; transform:rotate(-7deg); transform-origin:left; }
+      .arrow-large { text-align:center; color:#f4b942; font-size:72px; }
+      .chart-card { border-color:#75d69c; }
+      .chart-card small { display:block; color:#c8bda7; font-size:20px; margin-top:12px; }
+      .verified { position:absolute; right:28px; bottom:22px; color:#0b0a0a; background:#75d69c; padding:9px 12px; font:900 14px Consolas,monospace; transform:rotate(-2deg); }
+      .mental-model { position:absolute; left:120px; right:120px; bottom:160px; display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+      .mental-model>div { min-height:130px; padding:22px; border-top:4px solid #f4b942; background:rgba(24,21,18,.94); }
+      .mental-model i { color:#f4b942; font:700 15px Consolas,monospace; font-style:normal; }
+      .mental-model b { display:block; margin-top:8px; font:900 28px Impact,sans-serif; }
+      .mental-model span { color:#c8bda7; font-size:18px; }
+
+      </style>
+      <div id="root" data-composition-id="scene-07-evidence" data-start="0" data-duration="42.764" data-width="1920" data-height="1080">
+
+      <div class="backdrop"></div><div class="grid" data-layout-ignore></div><div class="grain" data-layout-ignore></div><div class="ambient" data-layout-ignore></div>
+      <div class="stage">
+        <div class="eyebrow">A CLEAN RESEARCH HABIT</div>
+        <h2 class="headline">SEPARATE THE <span class="gold">CLAIM</span><br>FROM THE CHART</h2>
+        <div class="evidence-row">
+          <div class="claim-card panel"><span>SOMEONE SAYS</span><b>“THIS MEANS<br>YOU WILL EARN…”</b><div class="strike"></div></div>
+          <div class="arrow-large">→</div>
+          <div class="chart-card panel"><span>OFFICIAL SOURCE</span><b>WHAT THE PLAN<br>ACTUALLY STATES</b><small>Mechanics, thresholds, conditions</small><div class="verified">SOURCE CHECKED ✓</div></div>
+        </div>
+        <div class="mental-model">
+          <div><i>01</i><b>PV</b><span>tracking language</span></div>
+          <div><i>02</i><b>CLASS</b><span>qualification</span></div>
+          <div><i>03</i><b>TWO LEGS</b><span>structure</span></div>
+          <div><i>04</i><b>POOLS</b><span>allocation, not forecast</span></div>
+        </div>
+      </div>
+      </div>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const root = document.querySelector('[data-composition-id="scene-07-evidence"]');
+        const q = gsap.utils.selector(root);
+        const tl = gsap.timeline({ paused: true });
+        tl.to(q(".ambient"), { rotation:18, scale:1.13, duration:42.764, ease:"none" }, 0);
+        tl.to(q(".grain"), { backgroundPosition:"32px 18px", duration:42.764, ease:"none" }, 0);
+
+      tl.fromTo(q(".eyebrow,.headline"), { opacity:0, x:-65 }, { opacity:1, x:0, duration:.65, stagger:.17 }, .1);
+      tl.fromTo(q(".claim-card"), { opacity:0, x:-120 }, { opacity:1, x:0, duration:.75, ease:"power4.out" }, 1);
+      tl.fromTo(q(".strike"), { scaleX:0 }, { scaleX:1, duration:.5, ease:"power3.out" }, 2);
+      tl.fromTo(q(".arrow-large"), { opacity:0, scale:.2 }, { opacity:1, scale:1, duration:.45, ease:"back.out(2)" }, 2.3);
+      tl.fromTo(q(".chart-card"), { opacity:0, x:120 }, { opacity:1, x:0, duration:.75, ease:"power4.out" }, 2.5);
+      tl.fromTo(q(".verified"), { opacity:0, scale:1.6, rotate:9 }, { opacity:1, scale:1, rotate:-2, duration:.5, ease:"back.out(1.8)" }, 3.6);
+      tl.fromTo(q(".mental-model>div"), { opacity:0, y:70 }, { opacity:1, y:0, duration:.55, stagger:.25, ease:"power3.out" }, 4.1);
+      tl.to(q(".mental-model>div"), { borderTopWidth:12, stagger:.25, duration:36.764, ease:"sine.inOut" }, 6);
+
+        window.__timelines["scene-07-evidence"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

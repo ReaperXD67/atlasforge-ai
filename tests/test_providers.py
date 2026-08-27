@@ -9,6 +9,7 @@ from daily_video_factory.exceptions import ProviderFailed
 from daily_video_factory.media.ai_quality import AIClipQualityReport
 from daily_video_factory.models import Scene
 from daily_video_factory.providers.base import Provider, ProviderChain
+from daily_video_factory.providers.images import TitleCardImageProvider
 from daily_video_factory.providers.performance import (
     FalWanS2VProvider,
     PerformanceSceneScheduler,
@@ -90,6 +91,34 @@ def test_pexels_video_prefers_1080p_over_unnecessary_4k(settings) -> None:
 
     assert selected is not None
     assert selected["width"] == 1920
+
+
+def test_presenter_card_composites_avatar(settings, tmp_path: Path) -> None:
+    avatar = tmp_path / "host.png"
+    host = Image.new("RGBA", (400, 700), (0, 0, 0, 0))
+    for y in range(90, 700):
+        for x in range(80, 320):
+            host.putpixel((x, y), (220, 180, 130, 255))
+    host.save(avatar)
+    settings.images.presenter_avatar = avatar
+    settings.images.presenter_name = "Nexa"
+    settings.channel.name = "BizNex"
+    scene = Scene(
+        index=1,
+        duration_seconds=6,
+        narration="The Atomy business plan begins with two legs.",
+        video_prompt="Presenter explains a two-leg plan.",
+        visual_search_query="presenter",
+        onscreen_title="Atomy Business Plan 2026",
+        visual_mode="presenter_card",
+    )
+    output = tmp_path / "presenter-card.jpg"
+
+    TitleCardImageProvider(settings).generate(scene, output)
+
+    with Image.open(output) as rendered:
+        assert rendered.size == (settings.images.width, settings.images.height)
+        assert rendered.convert("RGB").getpixel((1700, 600)) != (9, 10, 11)
 
 
 def test_pixabay_video_prefers_matching_1080p_source(settings) -> None:

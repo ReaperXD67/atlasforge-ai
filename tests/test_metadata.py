@@ -1,5 +1,5 @@
 from daily_video_factory.metadata import _thumbnail_copy, build_metadata
-from daily_video_factory.models import ScriptDocument, Storyboard
+from daily_video_factory.models import Scene, ScriptDocument, Storyboard
 
 
 def _script(**overrides) -> ScriptDocument:
@@ -57,3 +57,41 @@ def test_thumbnail_copy_has_topic_sensitive_fallback() -> None:
 
     assert primary == "BEFORE YOU JOIN"
     assert variants == ["BEFORE YOU JOIN"]
+
+
+def test_metadata_uses_all_supplied_semantic_chapters(settings) -> None:
+    script = _script(
+        chapter_titles=["Picture", "PV", "Smaller Leg", "Pools", "Reality Check"]
+    )
+    scenes = [
+        Scene(
+            index=index,
+            duration_seconds=12,
+            narration=f"Scene {index}",
+            video_prompt=f"Scene {index}",
+            visual_search_query=f"scene {index}",
+        )
+        for index in range(1, 11)
+    ]
+    storyboard = Storyboard(
+        title="test",
+        total_duration_seconds=120,
+        scenes=scenes,
+        provider="test",
+    )
+
+    metadata = build_metadata(script, storyboard, settings)
+
+    assert len(metadata.chapters) == 5
+    assert [chapter.split(" ", 1)[1] for chapter in metadata.chapters] == script.chapter_titles
+
+
+def test_compensation_profile_uses_specific_hashtags(settings) -> None:
+    settings.research.seed_topics = ["atomy compensation plan 2026"]
+    metadata = build_metadata(
+        _script(),
+        Storyboard(title="test", total_duration_seconds=0, scenes=[], provider="test"),
+        settings,
+    )
+
+    assert metadata.hashtags == ["#Atomy", "#AtomyBusiness", "#CompensationPlan"]

@@ -75,6 +75,7 @@ class StoryboardConfig(BaseModel):
     max_scenes: int = 32
     engagement_mode: Literal["classic", "retention"] = "retention"
     pattern_interrupt_seconds: int = Field(default=18, ge=8, le=45)
+    presenter_interval_scenes: int = Field(default=0, ge=0, le=20)
 
 
 class VoiceConfig(BaseModel):
@@ -114,6 +115,19 @@ class ImagesConfig(BaseModel):
     height: int = 1080
     pexels_orientation: str = "landscape"
     thumbnail_background: Path | None = None
+    presenter_avatar: Path | None = None
+    presenter_name: str = Field(default="AI HOST", max_length=32)
+
+
+class LipSyncConfig(BaseModel):
+    enabled: bool = False
+    provider: Literal["rhubarb"] = "rhubarb"
+    executable: Path = Path(
+        "models/rhubarb-1.14.0/Rhubarb-Lip-Sync-1.14.0-Windows/rhubarb.exe"
+    )
+    recognizer: Literal["pocketSphinx", "phonetic"] = "pocketSphinx"
+    extended_shapes: str = Field(default="GHX", pattern=r"^[GHX]*$")
+    timeout_seconds: int = Field(default=600, ge=30, le=3600)
 
 
 class VideoConfig(BaseModel):
@@ -257,6 +271,7 @@ class Settings(BaseModel):
     storyboard: StoryboardConfig
     voice: VoiceConfig
     images: ImagesConfig
+    lip_sync: LipSyncConfig = Field(default_factory=LipSyncConfig)
     video: VideoConfig
     audio: AudioConfig
     subtitles: SubtitleConfig

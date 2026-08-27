@@ -3,7 +3,7 @@ from __future__ import annotations
 import re
 
 from .config import Settings
-from .models import Scene, ScriptDocument, Storyboard
+from .models import OWNED_VISUAL_MODES, Scene, ScriptDocument, Storyboard
 
 
 def _sentences(text: str) -> list[str]:
@@ -29,6 +29,29 @@ def _sentences(text: str) -> list[str]:
 def _visual_plan(narration: str, index: int, title: str) -> tuple[str, str, str]:
     """Turn narration into a concrete, stock-searchable shot instead of keyword soup."""
     lower = narration.lower()
+    if any(phrase in lower for phrase in {"smaller leg", "small leg", "left leg", "right leg"}):
+        return "two branch network plan diagram", "The smaller leg matters", "binary_plan_card"
+    rank_terms = {"sales rep", "agent", "special agent", "dealer", "exclusive distributor"}
+    if sum(term in lower for term in rank_terms) >= 2:
+        return "five level business rank ladder", "Five dealership classes", "atomy_rank_card"
+    allocation_terms = {
+        "44%",
+        "20%",
+        "6%",
+        "forty-four percent",
+        "twenty percent",
+        "six percent",
+    }
+    if any(value in lower for value in allocation_terms):
+        return "commission allocation diagram", "Where the plan allocates PV", "atomy_allocation_card"
+    if "personal pv" in lower or re.search(r"\bpv\b", lower):
+        return "business tracking unit diagram", "PV is the tracking language", "information_card"
+    if any(phrase in lower for phrase in {"typical outcome", "typical result", "net result"}):
+        return "person separating two evidence columns in notebook", "Mechanics are not outcomes", "information_card"
+    if any(phrase in lower for phrase in {"mental model", "complete map", "redraw that map"}):
+        return "person finishing a clear hand drawn business map", "The complete mental model", "information_card"
+    if any(word in lower for word in {"qualification", "condition", "current rules"}):
+        return "professional checking qualification rules on official document", "Check the qualification", "information_card"
     plans = [
         (
             {"register", "registration", "application", "website", "sign-up"},
@@ -55,7 +78,7 @@ def _visual_plan(narration: str, index: int, title: str) -> tuple[str, str, str]
             "Choose a sponsor carefully",
         ),
         (
-            {"consumer", "distributor", "membership", "member"},
+            {"consumer", "membership", "member"},
             (
                 "two adults comparing options and taking notes at desk",
                 "person comparing a checklist of choices in notebook",
@@ -235,16 +258,39 @@ class StoryboardBuilder:
             visual_query, onscreen_title, visual_mode = _visual_plan(
                 narration, index + 1, script.title
             )
+            if (
+                scenes
+                and visual_mode
+                in {"binary_plan_card", "atomy_rank_card", "atomy_allocation_card"}
+                and scenes[-1].visual_mode == visual_mode
+            ):
+                visual_mode = "documentary_broll"
+                visual_query = "professional sketching a simple business plan on a whiteboard"
+            if (
+                visual_mode in OWNED_VISUAL_MODES
+                and any(previous.onscreen_title == onscreen_title for previous in scenes[-2:])
+            ):
+                visual_mode = "documentary_broll"
+                visual_query = (
+                    "professional reviewing simple business metrics on paper and laptop"
+                    if "PV" in onscreen_title
+                    else "professional sketching a simple business plan on a whiteboard"
+                )
             if cfg.engagement_mode == "retention":
                 if is_hook:
-                    # Start on human tension, not anonymous desk furniture. The promise card that
-                    # follows provides the first visual interruption without pretending to be footage.
-                    visual_query = (
-                        "thoughtful adult hesitating before online registration laptop close up "
-                        "natural reaction cinematic"
-                    )
-                    onscreen_title = script.title
-                    visual_mode = "cold_open"
+                    if self.settings.images.presenter_avatar:
+                        visual_query = "recurring AI presenter introducing a practical explainer"
+                        onscreen_title = script.title
+                        visual_mode = "presenter_card"
+                    else:
+                        # Start on human tension, not anonymous desk furniture. The promise card that
+                        # follows provides the first visual interruption without pretending to be footage.
+                        visual_query = (
+                            "thoughtful adult hesitating before online registration laptop close up "
+                            "natural reaction cinematic"
+                        )
+                        onscreen_title = script.title
+                        visual_mode = "cold_open"
                 elif index == 1:
                     visual_mode = "kinetic_statement"
                 elif visual_mode == "information_card":
@@ -254,6 +300,15 @@ class StoryboardBuilder:
                         visual_mode = "comparison_card"
                     else:
                         visual_mode = "step_card"
+                presenter_interval = cfg.presenter_interval_scenes
+                if (
+                    presenter_interval
+                    and self.settings.images.presenter_avatar
+                    and (index + 1) % presenter_interval == 0
+                    and visual_mode
+                    not in {"binary_plan_card", "atomy_rank_card", "atomy_allocation_card"}
+                ):
+                    visual_mode = "presenter_card"
             elif is_hook and visual_mode != "information_card":
                 visual_query = "confident adult beginning an online learning journey cinematic"
                 onscreen_title = script.title

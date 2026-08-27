@@ -8,7 +8,17 @@ from typing import Literal
 from pydantic import BaseModel, Field, field_validator
 
 OWNED_VISUAL_MODES = frozenset(
-    {"information_card", "kinetic_statement", "step_card", "proof_card", "comparison_card"}
+    {
+        "information_card",
+        "kinetic_statement",
+        "step_card",
+        "proof_card",
+        "comparison_card",
+        "presenter_card",
+        "binary_plan_card",
+        "atomy_rank_card",
+        "atomy_allocation_card",
+    }
 )
 MUSIC_EDIT_STYLES = frozenset(
     {

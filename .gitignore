@@ -23,7 +23,10 @@ youtube_token.json
 *.mp4
 *.wav
 *.mp3
+*.m4a
 *.webm
 *.part
+videos/**/renders/
+videos/**/snapshots/
 .DS_Store
 Thumbs.db

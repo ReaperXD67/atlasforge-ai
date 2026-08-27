@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+
+  @font-face { font-family: Impact; src: local("Impact"); }
+  @font-face { font-family: "Arial Narrow"; src: local("Arial Narrow"); }
+  * { box-sizing: border-box; }
+  #root {
+    position: absolute;
+    inset: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background: #0b0a0a;
+    color: #fff4dd;
+    font-family: "Segoe UI", Arial, sans-serif;
+  }
+  .backdrop {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 78% 22%, rgba(244,185,66,.17), transparent 34%),
+      radial-gradient(circle at 12% 78%, rgba(117,214,156,.08), transparent 28%),
+      linear-gradient(135deg, #0b0a0a 0%, #17120c 52%, #080808 100%);
+  }
+  .grid {
+    position: absolute;
+    inset: -100px;
+    opacity: .16;
+    background-image: linear-gradient(rgba(244,185,66,.22) 1px, transparent 1px), linear-gradient(90deg, rgba(244,185,66,.22) 1px, transparent 1px);
+    background-size: 86px 86px;
+    transform: rotate(-6deg) translateY(180px) scale(1.32);
+    transform-origin: center;
+  }
+  .grain {
+    position: absolute;
+    inset: 0;
+    opacity: .09;
+    background-image: radial-gradient(rgba(255,255,255,.8) .8px, transparent .8px);
+    background-size: 6px 6px;
+  }
+  .ambient {
+    position: absolute;
+    width: 760px;
+    height: 760px;
+    border: 2px solid rgba(244,185,66,.16);
+    border-radius: 50%;
+    right: -260px;
+    top: -300px;
+    box-shadow: 0 0 100px rgba(244,185,66,.11), inset 0 0 80px rgba(244,185,66,.05);
+  }
+  .stage { position: absolute; inset: 0; padding: 94px 92px 178px; }
+  .eyebrow {
+    color: #f4b942;
+    font: 700 24px/1 Consolas, monospace;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+  .headline {
+    margin-top: 16px;
+    font-family: Impact, "Arial Narrow", sans-serif;
+    font-size: 116px;
+    line-height: .92;
+    letter-spacing: .012em;
+    text-transform: uppercase;
+  }
+  .headline .gold { color: #f4b942; }
+  .subhead { color: #c8bda7; font-size: 31px; line-height: 1.34; max-width: 920px; }
+  .panel {
+    border: 1px solid rgba(244,185,66,.28);
+    background: linear-gradient(145deg, rgba(31,27,22,.96), rgba(12,11,10,.9));
+    border-radius: 28px;
+    box-shadow: 0 26px 80px rgba(0,0,0,.42), inset 0 1px rgba(255,255,255,.05);
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(244,185,66,.38);
+    color: #f4b942;
+    font: 700 19px/1 Consolas, monospace;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .host-shell { position: absolute; width: 760px; height: 810px; }
+  .host-halo {
+    position: absolute; width: 610px; height: 610px; border-radius: 50%; left: 92px; top: 75px;
+    background: radial-gradient(circle, rgba(244,185,66,.24), transparent 68%);
+    border: 2px solid rgba(244,185,66,.25);
+  }
+  .host-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 28px 30px rgba(0,0,0,.55)); }
+  .mouth-rig { position: absolute; left: 52.85%; top: 28.18%; width: 8.15%; height: 3.45%; }
+  .mouth-rig svg { width: 100%; height: 100%; overflow: visible; }
+  .mouth-skin { fill: #eb9853; stroke: #b95d35; stroke-width: 1.4; }
+  .mouth-path { fill: #661f22; stroke: #3a1114; stroke-width: 2.3; stroke-linejoin: round; }
+  .name-plate {
+    position: absolute; left: 110px; bottom: 118px; padding: 12px 20px;
+    border-radius: 14px; background: #f4b942; color: #0b0a0a;
+    font: 900 24px/1 "Segoe UI", sans-serif; letter-spacing: .12em;
+  }
+  .source-chip { color: #c8bda7; font: 600 19px/1.2 Consolas, monospace; }
+  .tiny-rule { height: 2px; background: linear-gradient(90deg,#f4b942,transparent); }
+
+
+      .copy { width: 1080px; position: relative; z-index: 3; }
+      .subhead { margin-top: 26px; }
+      .door-row { display: flex; align-items: center; gap: 20px; margin-top: 48px; }
+      .door { width: 345px; height: 150px; padding: 25px 28px; position: relative; overflow: hidden; }
+      .door::after { content:""; position:absolute; inset:0; border-top:4px solid #f4b942; transform-origin:left; }
+      .door span { display:block; color:#c8bda7; font:700 18px Consolas,monospace; letter-spacing:.12em; }
+      .door strong { display:inline-block; margin-top:8px; font:900 46px/1 "Segoe UI",sans-serif; }
+      .door small { margin-left:10px; color:#f4b942; font:700 17px Consolas,monospace; }
+      .door.small { border-color:#f4b942; box-shadow:0 0 45px rgba(244,185,66,.2); }
+      .versus { font:900 26px Consolas,monospace; color:#f4b942; }
+      .host-shell { right:-18px; bottom:95px; z-index:4; }
+      .hook-stamp { position:absolute; right:80px; top:100px; transform:rotate(3deg); color:#0b0a0a; background:#f4b942; padding:15px 21px; font:900 21px/1.12 Consolas,monospace; z-index:6; box-shadow:8px 8px 0 #fff4dd; }
+
+      </style>
+      <div id="root" data-composition-id="scene-01-hook" data-start="0" data-duration="32.145" data-width="1920" data-height="1080">
+
+      <div class="backdrop"></div><div class="grid" data-layout-ignore></div><div class="grain" data-layout-ignore></div><div class="ambient" data-layout-ignore></div>
+      <div class="stage">
+        <div class="copy">
+          <div class="eyebrow">THE ATOMY PLAN — FROM ZERO</div>
+          <h1 class="headline"><span class="word" data-layout-allow-overlap>TWO LEGS.</span><br><span class="word gold" data-layout-allow-overlap>ONE SMALLER SIDE.</span></h1>
+          <p class="subhead">The single picture that makes the official numbers understandable.</p>
+          <div class="door-row">
+            <div class="door panel big"><span>LEFT</span><strong>1,900,000</strong><small>PV</small></div>
+            <div class="versus">VS</div>
+            <div class="door panel small"><span>RIGHT</span><strong>700,000</strong><small>PV · SMALLER</small></div>
+          </div>
+        </div>
+
+  <div class="host-shell" id="s1-host">
+    <div class="host-halo" data-layout-ignore></div>
+    <img class="host-image" src="assets/nexa-toon-v2.png" alt="Nexa, BizNex AI host" />
+    <div class="mouth-rig" data-layout-ignore>
+      <svg viewBox="0 0 100 50" aria-hidden="true">
+        <ellipse class="mouth-skin" cx="50" cy="25" rx="45" ry="20"></ellipse>
+        <path class="mouth-path" d="M20 25 Q50 29 80 25 Q50 32 20 25 Z"></path>
+      </svg>
+    </div>
+    <div class="name-plate">NEXA // AI HOST</div>
+  </div>
+        <div class="hook-stamp">WHY THIS SIDE<br>KEEPS MATTERING ↗</div>
+      </div>
+      </div>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const root = document.querySelector('[data-composition-id="scene-01-hook"]');
+        const q = gsap.utils.selector(root);
+        const tl = gsap.timeline({ paused: true });
+        tl.to(q(".ambient"), { rotation:18, scale:1.13, duration:32.145, ease:"none" }, 0);
+        tl.to(q(".grain"), { backgroundPosition:"32px 18px", duration:32.145, ease:"none" }, 0);
+
+      tl.fromTo(q(".eyebrow"), { opacity:0, y:-24 }, { opacity:1, y:0, duration:.45, ease:"power3.out" }, 0.08);
+      tl.fromTo(q(".word"), { opacity:0, x:-80 }, { opacity:1, x:0, duration:.7, stagger:.25, ease:"power4.out" }, .3);
+      tl.fromTo(q(".subhead"), { opacity:0, y:24 }, { opacity:1, y:0, duration:.55 }, 1.1);
+      tl.fromTo(q(".door"), { opacity:0, y:70, rotate:-2 }, { opacity:1, y:0, rotate:0, duration:.75, stagger:.18, ease:"back.out(1.2)" }, 1.55);
+      tl.fromTo(q(".versus"), { opacity:0, scale:.4 }, { opacity:1, scale:1, duration:.38, ease:"back.out(2)" }, 2.2);
+      tl.fromTo(q(".host-shell"), { opacity:0, x:130 }, { opacity:1, x:0, duration:.9, ease:"power4.out" }, .6);
+      tl.fromTo(q(".hook-stamp"), { opacity:0, scale:1.8, rotate:12 }, { opacity:1, scale:1, rotate:3, duration:.5, ease:"back.out(1.6)" }, 2.7);
+      tl.to(q(".host-shell"), { y:-7, rotate:.25, duration:6, ease:"sine.inOut" }, 0);
+      tl.to(q(".host-shell"), { y:1, rotate:-.18, duration:7, ease:"sine.inOut" }, 6);
+      tl.to(q(".host-shell"), { y:-9, rotate:.32, duration:8, ease:"sine.inOut" }, 13);
+      tl.to(q(".host-shell"), { y:-2, rotate:0, duration:11.145000000000003, ease:"sine.inOut" }, 21);
+
+    const mouthShapes = {"A":"M18 25 Q50 31 82 25 Q50 37 18 25 Z","B":"M16 24 Q50 31 84 24 Q50 34 16 24 Z","C":"M18 21 Q50 7 82 21 Q50 46 18 21 Z","D":"M27 17 Q50 4 73 17 Q76 38 50 44 Q24 38 27 17 Z","E":"M19 20 Q50 9 81 20 Q50 41 19 20 Z","F":"M16 22 Q50 11 84 22 Q50 35 16 22 Z","G":"M31 13 Q50 5 69 13 Q77 26 69 40 Q50 48 31 40 Q23 26 31 13 Z","H":"M28 17 Q50 9 72 17 Q72 34 50 39 Q28 34 28 17 Z","X":"M20 25 Q50 29 80 25 Q50 32 20 25 Z"};
+    const mouthCues = [{"start":0,"value":"X"},{"start":0.19,"value":"F"},{"start":0.46,"value":"E"},{"start":0.54,"value":"H"},{"start":0.61,"value":"C"},{"start":0.82,"value":"B"},{"start":1.3,"value":"F"},{"start":1.42,"value":"C"},{"start":1.63,"value":"B"},{"start":1.77,"value":"A"},{"start":1.85,"value":"E"},{"start":2.12,"value":"B"},{"start":2.26,"value":"D"},{"start":2.4,"value":"B"},{"start":2.61,"value":"X"},{"start":3,"value":"C"},{"start":3.07,"value":"B"},{"start":3.2,"value":"C"},{"start":3.27,"value":"A"},{"start":3.35,"value":"C"},{"start":3.5,"value":"B"},{"start":3.64,"value":"D"},{"start":3.71,"value":"A"},{"start":3.79,"value":"B"},{"start":3.87,"value":"C"},{"start":4.01,"value":"B"},{"start":4.29,"value":"G"},{"start":4.36,"value":"B"},{"start":4.5,"value":"A"},{"start":4.58,"value":"B"},{"start":4.64,"value":"C"},{"start":4.83,"value":"A"},{"start":4.91,"value":"B"},{"start":4.97,"value":"C"},{"start":5.02,"value":"B"},{"start":5.09,"value":"A"},{"start":5.17,"value":"B"},{"start":5.5,"value":"E"},{"start":5.85,"value":"X"},{"start":6.45,"value":"B"},{"start":6.5,"value":"G"},{"start":6.55,"value":"C"},{"start":6.76,"value":"B"},{"start":6.9,"value":"D"},{"start":7.04,"value":"C"},{"start":7.11,"value":"A"},{"start":7.19,"value":"B"},{"start":7.27,"value":"A"},{"start":7.39,"value":"B"},{"start":7.44,"value":"C"},{"start":7.49,"value":"B"},{"start":7.56,"value":"C"},{"start":7.63,"value":"B"},{"start":7.7,"value":"C"},{"start":7.84,"value":"B"},{"start":7.98,"value":"C"},{"start":8.05,"value":"E"},{"start":8.26,"value":"F"},{"start":8.54,"value":"B"},{"start":8.61,"value":"C"},{"start":8.68,"value":"B"},{"start":9.14,"value":"C"},{"start":9.21,"value":"B"},{"start":9.49,"value":"F"},{"start":9.7,"value":"G"},{"start":9.77,"value":"E"},{"start":9.98,"value":"B"},{"start":10.33,"value":"X"},{"start":10.51,"value":"B"},{"start":10.62,"value":"C"},{"start":10.69,"value":"B"},{"start":10.76,"value":"A"},{"start":10.84,"value":"H"},{"start":10.94,"value":"C"},{"start":11.08,"value":"B"},{"start":11.36,"value":"A"},{"start":11.46,"value":"B"},{"start":11.56,"value":"A"},{"start":11.58,"value":"B"},{"start":11.64,"value":"A"},{"start":11.69,"value":"B"},{"start":11.96,"value":"D"},{"start":12.03,"value":"B"},{"start":12.38,"value":"A"},{"start":12.46,"value":"B"},{"start":12.73,"value":"X"},{"start":13.84,"value":"C"},{"start":13.9,"value":"A"},{"start":13.98,"value":"C"},{"start":14.12,"value":"B"},{"start":14.26,"value":"D"},{"start":14.47,"value":"C"},{"start":14.55,"value":"A"},{"start":14.59,"value":"B"},{"start":14.77,"value":"C"},{"start":14.91,"value":"B"},{"start":15.33,"value":"C"},{"start":15.4,"value":"B"},{"start":15.47,"value":"C"},{"start":15.61,"value":"B"},{"start":15.68,"value":"E"},{"start":15.89,"value":"F"},{"start":16.03,"value":"B"},{"start":16.17,"value":"X"},{"start":16.71,"value":"H"},{"start":16.78,"value":"B"},{"start":16.98,"value":"A"},{"start":17.06,"value":"B"},{"start":17.38,"value":"C"},{"start":17.59,"value":"B"},{"start":17.66,"value":"D"},{"start":17.8,"value":"C"},{"start":17.87,"value":"A"},{"start":17.95,"value":"B"},{"start":18.03,"value":"A"},{"start":18.11,"value":"B"},{"start":18.43,"value":"A"},{"start":18.51,"value":"H"},{"start":18.66,"value":"C"},{"start":18.87,"value":"G"},{"start":18.94,"value":"B"},{"start":19.01,"value":"A"},{"start":19.12,"value":"F"},{"start":19.17,"value":"C"},{"start":19.28,"value":"B"},{"start":19.49,"value":"A"},{"start":19.52,"value":"B"},{"start":19.6,"value":"A"},{"start":19.68,"value":"B"},{"start":19.96,"value":"E"},{"start":20.17,"value":"C"},{"start":20.52,"value":"B"},{"start":20.59,"value":"C"},{"start":20.87,"value":"B"},{"start":21.15,"value":"G"},{"start":21.29,"value":"B"},{"start":21.43,"value":"C"},{"start":21.64,"value":"A"},{"start":21.72,"value":"E"},{"start":21.91,"value":"B"},{"start":22.05,"value":"E"},{"start":22.12,"value":"B"},{"start":22.47,"value":"C"},{"start":22.75,"value":"B"},{"start":22.89,"value":"A"},{"start":22.97,"value":"C"},{"start":23.03,"value":"F"},{"start":23.22,"value":"B"},{"start":23.43,"value":"G"},{"start":23.57,"value":"X"},{"start":24.09,"value":"A"},{"start":24.21,"value":"C"},{"start":24.32,"value":"B"},{"start":24.53,"value":"C"},{"start":24.74,"value":"B"},{"start":24.94,"value":"C"},{"start":25.09,"value":"E"},{"start":25.13,"value":"F"},{"start":25.32,"value":"C"},{"start":25.39,"value":"B"},{"start":25.6,"value":"C"},{"start":25.74,"value":"B"},{"start":25.88,"value":"G"},{"start":26.02,"value":"C"},{"start":26.16,"value":"B"},{"start":26.65,"value":"A"},{"start":26.73,"value":"H"},{"start":26.88,"value":"C"},{"start":26.95,"value":"B"},{"start":27.7,"value":"F"},{"start":27.77,"value":"B"},{"start":28.05,"value":"A"},{"start":28.13,"value":"E"},{"start":28.41,"value":"H"},{"start":28.48,"value":"C"},{"start":28.62,"value":"B"},{"start":28.83,"value":"A"},{"start":28.92,"value":"B"},{"start":28.96,"value":"A"},{"start":29.04,"value":"B"},{"start":29.91,"value":"E"},{"start":29.98,"value":"B"},{"start":30.05,"value":"A"},{"start":30.13,"value":"C"},{"start":30.19,"value":"B"},{"start":30.45,"value":"A"},{"start":30.53,"value":"B"},{"start":30.76,"value":"A"},{"start":30.84,"value":"F"},{"start":31.09,"value":"B"},{"start":31.23,"value":"G"},{"start":31.3,"value":"B"},{"start":31.79,"value":"X"},{"start":31.94,"value":"B"},{"start":32.06,"value":"C"},{"start":32.13,"value":"F"}];
+    mouthCues.forEach((cue) => tl.set(q(".mouth-path"), { attr: { d: mouthShapes[cue.value] || mouthShapes.X } }, cue.start));
+
+
+        window.__timelines["scene-01-hook"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

@@ -14,6 +14,7 @@ BRAND_LOGO = Path("assets/biznex/biznex-logo-mark-v2.png")
 
 def _font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
     choices = [
+        Path("assets/fonts/BarlowCondensed-Black.ttf" if bold else "assets/fonts/Barlow-Regular.ttf"),
         Path("C:/Windows/Fonts/segoeuib.ttf" if bold else "C:/Windows/Fonts/segoeui.ttf"),
         Path("C:/Windows/Fonts/arialbd.ttf" if bold else "C:/Windows/Fonts/arial.ttf"),
         Path(
@@ -82,13 +83,17 @@ def build_metadata(
             ]
         )
     )[:30]
-    chapter_indexes = sorted(
-        {
-            0,
-            len(storyboard.scenes) // 4,
-            len(storyboard.scenes) // 2,
-            len(storyboard.scenes) * 3 // 4,
-        }
+    requested_chapters = len(script.chapter_titles) if script.chapter_titles else 4
+    chapter_count = min(len(storyboard.scenes), max(4, requested_chapters))
+    chapter_indexes = (
+        sorted(
+            {
+                round(number * (len(storyboard.scenes) - 1) / max(1, chapter_count - 1))
+                for number in range(chapter_count)
+            }
+        )
+        if storyboard.scenes
+        else []
     )
     chapters: list[str] = []
     elapsed = 0.0
@@ -120,15 +125,21 @@ def build_metadata(
         if settings.channel.brand_required and brand
         else settings.channel.content_goal
     )
-    hashtags = (
-        [
+    search_context = " ".join(settings.research.seed_topics).casefold()
+    if brand and any(term in search_context for term in {"business plan", "compensation plan"}):
+        hashtags = [
+            f"#{re.sub(r'[^A-Za-z0-9]', '', brand)}",
+            f"#{re.sub(r'[^A-Za-z0-9]', '', brand)}Business",
+            "#CompensationPlan",
+        ]
+    elif brand:
+        hashtags = [
             f"#{re.sub(r'[^A-Za-z0-9]', '', brand)}",
             f"#{re.sub(r'[^A-Za-z0-9]', '', brand)}USA",
             "#NetworkMarketing",
         ]
-        if brand
-        else ["#Explainer"]
-    )
+    else:
+        hashtags = ["#Explainer"]
     description = (
         f"{summary}\n\n{framing}\n\n{settings.channel.disclosure}\n\n"
         "CHAPTERS\n" + "\n".join(chapters) + sources + "\n\n" + " ".join(hashtags)

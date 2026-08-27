@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 import pytest
 
 from daily_video_factory.exceptions import QualityGateFailed
@@ -51,6 +53,46 @@ def test_sensitive_identity_fact_uses_owned_information_card() -> None:
     )
 
     assert mode == "information_card"
+
+
+@pytest.mark.parametrize(
+    ("narration", "expected_mode"),
+    [
+        ("The smaller leg determines the score used by the plan.", "binary_plan_card"),
+        (
+            "The classes move from Sales Rep to Agent, Special Agent, Dealer, and Exclusive Distributor.",
+            "atomy_rank_card",
+        ),
+        (
+            "The page lists 44% for general commission, 20% for mastership, and 6% for centers.",
+            "atomy_allocation_card",
+        ),
+    ],
+)
+def test_compensation_terms_use_owned_diagrams(narration: str, expected_mode: str) -> None:
+    _query, _title, mode = _visual_plan(narration, 3, "Plan")
+
+    assert mode == expected_mode
+
+
+def test_presenter_profile_starts_on_owned_host_card(settings) -> None:
+    settings.images.presenter_avatar = Path("assets/biznex/nexa-host-v1.png")
+    settings.storyboard.presenter_interval_scenes = 4
+    script = make_script(
+        " ".join(
+            [
+                "Two legs and one smaller side make the Atomy plan easier to understand.",
+                "We will draw the structure before discussing any commission.",
+            ]
+            * 22
+        )
+    )
+    script.title = "Atomy Business Plan 2026 Explained in English"
+    script.brand_focused = True
+
+    board = StoryboardBuilder(settings).run(script)
+
+    assert board.scenes[0].visual_mode == "presenter_card"
 
 
 def test_quality_gate_rejects_earnings_promises(settings) -> None:

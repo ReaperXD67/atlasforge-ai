@@ -14,6 +14,7 @@ from .config import Settings
 from .logging import configure_logging, get_logger
 from .media.audio import generate_original_music, generate_sfx_track, mix_audio
 from .media.ffmpeg import FFmpeg
+from .media.lipsync import RhubarbLipSyncGenerator
 from .media.render import VideoRenderer
 from .media.subtitles import write_subtitles
 from .metadata import build_metadata, build_thumbnail
@@ -244,6 +245,32 @@ class DailyVideoPipeline:
                 audio_duration = self.ffmpeg.duration(narration)
                 storyboard = self._retime_storyboard(storyboard, audio_duration)
                 paths.write_json("storyboards/storyboard_timed.json", storyboard)
+
+                if self.settings.lip_sync.enabled:
+                    lip_sync_file = paths.audio / "lip_sync.json"
+
+                    def lip_sync_operation() -> Path:
+                        return RhubarbLipSyncGenerator(self.settings.lip_sync).run(
+                            narration,
+                            paths.scripts / "narration.txt",
+                            lip_sync_file,
+                        )
+
+                    if not (
+                        resume
+                        and self.store.stage_completed(manifest.run_id, "lip_sync")
+                        and lip_sync_file.exists()
+                    ):
+                        self._execute("lip_sync", manifest, paths, lip_sync_operation)
+                    self._record_cost(
+                        manifest,
+                        CostEntry(
+                            stage="lip_sync",
+                            provider="rhubarb",
+                            estimated_usd=0,
+                            note="Local MIT-licensed phoneme-to-mouth-cue generation.",
+                        ),
+                    )
 
                 image_index = paths.scenes / "images.json"
 

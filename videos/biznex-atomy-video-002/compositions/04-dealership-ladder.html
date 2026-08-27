@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+
+  @font-face { font-family: Impact; src: local("Impact"); }
+  @font-face { font-family: "Arial Narrow"; src: local("Arial Narrow"); }
+  * { box-sizing: border-box; }
+  #root {
+    position: absolute;
+    inset: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background: #0b0a0a;
+    color: #fff4dd;
+    font-family: "Segoe UI", Arial, sans-serif;
+  }
+  .backdrop {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 78% 22%, rgba(244,185,66,.17), transparent 34%),
+      radial-gradient(circle at 12% 78%, rgba(117,214,156,.08), transparent 28%),
+      linear-gradient(135deg, #0b0a0a 0%, #17120c 52%, #080808 100%);
+  }
+  .grid {
+    position: absolute;
+    inset: -100px;
+    opacity: .16;
+    background-image: linear-gradient(rgba(244,185,66,.22) 1px, transparent 1px), linear-gradient(90deg, rgba(244,185,66,.22) 1px, transparent 1px);
+    background-size: 86px 86px;
+    transform: rotate(-6deg) translateY(180px) scale(1.32);
+    transform-origin: center;
+  }
+  .grain {
+    position: absolute;
+    inset: 0;
+    opacity: .09;
+    background-image: radial-gradient(rgba(255,255,255,.8) .8px, transparent .8px);
+    background-size: 6px 6px;
+  }
+  .ambient {
+    position: absolute;
+    width: 760px;
+    height: 760px;
+    border: 2px solid rgba(244,185,66,.16);
+    border-radius: 50%;
+    right: -260px;
+    top: -300px;
+    box-shadow: 0 0 100px rgba(244,185,66,.11), inset 0 0 80px rgba(244,185,66,.05);
+  }
+  .stage { position: absolute; inset: 0; padding: 94px 92px 178px; }
+  .eyebrow {
+    color: #f4b942;
+    font: 700 24px/1 Consolas, monospace;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+  .headline {
+    margin-top: 16px;
+    font-family: Impact, "Arial Narrow", sans-serif;
+    font-size: 116px;
+    line-height: .92;
+    letter-spacing: .012em;
+    text-transform: uppercase;
+  }
+  .headline .gold { color: #f4b942; }
+  .subhead { color: #c8bda7; font-size: 31px; line-height: 1.34; max-width: 920px; }
+  .panel {
+    border: 1px solid rgba(244,185,66,.28);
+    background: linear-gradient(145deg, rgba(31,27,22,.96), rgba(12,11,10,.9));
+    border-radius: 28px;
+    box-shadow: 0 26px 80px rgba(0,0,0,.42), inset 0 1px rgba(255,255,255,.05);
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(244,185,66,.38);
+    color: #f4b942;
+    font: 700 19px/1 Consolas, monospace;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .host-shell { position: absolute; width: 760px; height: 810px; }
+  .host-halo {
+    position: absolute; width: 610px; height: 610px; border-radius: 50%; left: 92px; top: 75px;
+    background: radial-gradient(circle, rgba(244,185,66,.24), transparent 68%);
+    border: 2px solid rgba(244,185,66,.25);
+  }
+  .host-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 28px 30px rgba(0,0,0,.55)); }
+  .mouth-rig { position: absolute; left: 52.85%; top: 28.18%; width: 8.15%; height: 3.45%; }
+  .mouth-rig svg { width: 100%; height: 100%; overflow: visible; }
+  .mouth-skin { fill: #eb9853; stroke: #b95d35; stroke-width: 1.4; }
+  .mouth-path { fill: #661f22; stroke: #3a1114; stroke-width: 2.3; stroke-linejoin: round; }
+  .name-plate {
+    position: absolute; left: 110px; bottom: 118px; padding: 12px 20px;
+    border-radius: 14px; background: #f4b942; color: #0b0a0a;
+    font: 900 24px/1 "Segoe UI", sans-serif; letter-spacing: .12em;
+  }
+  .source-chip { color: #c8bda7; font: 600 19px/1.2 Consolas, monospace; }
+  .tiny-rule { height: 2px; background: linear-gradient(90deg,#f4b942,transparent); }
+
+
+      .headline { font-size:88px; }
+      .ladder { position:absolute; left:92px; top:340px; width:1120px; display:grid; gap:13px; }
+      .rank { height:92px; display:grid; grid-template-columns:85px 1fr 260px; align-items:center; padding:0 28px; border:1px solid rgba(244,185,66,.25); border-left:7px solid #f4b942; border-radius:18px; background:rgba(22,19,15,.94); box-shadow:0 12px 35px rgba(0,0,0,.23); }
+      .rank i { color:#f4b942; font:700 20px Consolas,monospace; font-style:normal; }
+      .rank b { font:900 30px Impact,sans-serif; letter-spacing:.04em; }
+      .rank span { color:#c8bda7; font:700 24px Consolas,monospace; text-align:right; }
+      .not-salary { position:absolute; left:930px; bottom:180px; width:350px; padding:22px; transform:rotate(-2deg); border-color:#ff6b5e; z-index:5; }
+      .not-salary span { color:#ff6b5e; font:700 16px Consolas,monospace; }
+      .not-salary b { display:block; font:900 34px Impact,sans-serif; margin-top:4px; }
+      .not-salary small { display:block; color:#c8bda7; margin-top:8px; font-size:18px; }
+      .host-shell { right:-70px; bottom:65px; width:720px; height:760px; }
+
+      </style>
+      <div id="root" data-composition-id="scene-04-classes" data-start="0" data-duration="54.824" data-width="1920" data-height="1080">
+
+      <div class="backdrop"></div><div class="grid" data-layout-ignore></div><div class="grain" data-layout-ignore></div><div class="ambient" data-layout-ignore></div>
+      <div class="stage">
+        <div class="eyebrow">THE FIVE DEALERSHIP CLASSES</div>
+        <h2 class="headline">A <span class="gold">QUALIFICATION</span> LADDER</h2>
+        <div class="ladder">
+          <div class="rank"><i>01</i><b>SALES REP</b><span>10K–299,999 PV</span></div>
+          <div class="rank"><i>02</i><b>AGENT</b><span>300K+ PV</span></div>
+          <div class="rank"><i>03</i><b>SPECIAL AGENT</b><span>700K+ PV</span></div>
+          <div class="rank"><i>04</i><b>DEALER</b><span>1.5M+ PV</span></div>
+          <div class="rank"><i>05</i><b>EXCLUSIVE DISTRIBUTOR</b><span>2.4M+ PV</span></div>
+        </div>
+        <div class="not-salary panel"><span>RANK NAME</span><b>≠ SALARY LABEL</b><small>Class can change monthly.</small></div>
+
+  <div class="host-shell" id="s4-host">
+    <div class="host-halo" data-layout-ignore></div>
+    <img class="host-image" src="assets/nexa-toon-v2.png" alt="Nexa, BizNex AI host" />
+    <div class="mouth-rig" data-layout-ignore>
+      <svg viewBox="0 0 100 50" aria-hidden="true">
+        <ellipse class="mouth-skin" cx="50" cy="25" rx="45" ry="20"></ellipse>
+        <path class="mouth-path" d="M20 25 Q50 29 80 25 Q50 32 20 25 Z"></path>
+      </svg>
+    </div>
+    <div class="name-plate">NEXA // AI HOST</div>
+  </div>
+      </div>
+      </div>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const root = document.querySelector('[data-composition-id="scene-04-classes"]');
+        const q = gsap.utils.selector(root);
+        const tl = gsap.timeline({ paused: true });
+        tl.to(q(".ambient"), { rotation:18, scale:1.13, duration:54.824, ease:"none" }, 0);
+        tl.to(q(".grain"), { backgroundPosition:"32px 18px", duration:54.824, ease:"none" }, 0);
+
+      tl.fromTo(q(".eyebrow,.headline"), { opacity:0, y:-30 }, { opacity:1, y:0, duration:.6, stagger:.14 }, .1);
+      tl.fromTo(q(".rank"), { opacity:0, x:-110 }, { opacity:1, x:0, duration:.62, stagger:.48, ease:"power4.out" }, 1);
+      tl.fromTo(q(".host-shell"), { opacity:0, x:120 }, { opacity:1, x:0, duration:.9, ease:"power4.out" }, 2.1);
+      tl.fromTo(q(".not-salary"), { opacity:0, scale:1.5, rotate:8 }, { opacity:1, scale:1, rotate:-2, duration:.55, ease:"back.out(1.7)" }, 5.2);
+      tl.to(q(".rank"), { borderLeftWidth:16, stagger:.35, duration:47.824, ease:"sine.inOut" }, 7);
+      tl.to(q(".host-shell"), { y:-8, rotate:.24, duration:11, ease:"sine.inOut" }, 0);
+      tl.to(q(".host-shell"), { y:1, rotate:-.16, duration:12, ease:"sine.inOut" }, 11);
+      tl.to(q(".host-shell"), { y:-7, rotate:.2, duration:14, ease:"sine.inOut" }, 23);
+      tl.to(q(".host-shell"), { y:-2, rotate:0, duration:17.823999999999998, ease:"sine.inOut" }, 37);
+
+    const mouthShapes = {"A":"M18 25 Q50 31 82 25 Q50 37 18 25 Z","B":"M16 24 Q50 31 84 24 Q50 34 16 24 Z","C":"M18 21 Q50 7 82 21 Q50 46 18 21 Z","D":"M27 17 Q50 4 73 17 Q76 38 50 44 Q24 38 27 17 Z","E":"M19 20 Q50 9 81 20 Q50 41 19 20 Z","F":"M16 22 Q50 11 84 22 Q50 35 16 22 Z","G":"M31 13 Q50 5 69 13 Q77 26 69 40 Q50 48 31 40 Q23 26 31 13 Z","H":"M28 17 Q50 9 72 17 Q72 34 50 39 Q28 34 28 17 Z","X":"M20 25 Q50 29 80 25 Q50 32 20 25 Z"};
+    const mouthCues = [{"start":0,"value":"E"},{"start":0.109,"value":"F"},{"start":0.319,"value":"C"},{"start":0.389,"value":"B"},{"start":0.459,"value":"A"},{"start":0.539,"value":"H"},{"start":0.629,"value":"C"},{"start":0.769,"value":"B"},{"start":1.189,"value":"C"},{"start":1.259,"value":"B"},{"start":1.539,"value":"C"},{"start":1.609,"value":"A"},{"start":1.769,"value":"B"},{"start":1.789,"value":"A"},{"start":1.869,"value":"B"},{"start":1.929,"value":"C"},{"start":2.199,"value":"B"},{"start":2.269,"value":"C"},{"start":2.339,"value":"E"},{"start":2.409,"value":"B"},{"start":2.479,"value":"C"},{"start":2.549,"value":"B"},{"start":2.729,"value":"F"},{"start":3.159,"value":"B"},{"start":3.369,"value":"C"},{"start":3.509,"value":"B"},{"start":3.719,"value":"C"},{"start":3.859,"value":"B"},{"start":4.069,"value":"C"},{"start":4.139,"value":"E"},{"start":4.209,"value":"B"},{"start":4.279,"value":"C"},{"start":4.489,"value":"B"},{"start":4.839,"value":"C"},{"start":4.979,"value":"B"},{"start":5.189,"value":"C"},{"start":5.259,"value":"B"},{"start":5.329,"value":"A"},{"start":5.409,"value":"B"},{"start":5.629,"value":"G"},{"start":5.699,"value":"B"},{"start":6.419,"value":"C"},{"start":6.459,"value":"B"},{"start":6.989,"value":"C"},{"start":7.129,"value":"B"},{"start":7.479,"value":"C"},{"start":7.549,"value":"E"},{"start":7.619,"value":"B"},{"start":7.829,"value":"A"},{"start":7.909,"value":"E"},{"start":8.179,"value":"B"},{"start":8.319,"value":"X"},{"start":8.479,"value":"B"},{"start":8.559,"value":"A"},{"start":8.639,"value":"C"},{"start":8.729,"value":"B"},{"start":8.799,"value":"C"},{"start":8.869,"value":"H"},{"start":9.009,"value":"C"},{"start":9.079,"value":"B"},{"start":9.149,"value":"C"},{"start":9.219,"value":"B"},{"start":9.289,"value":"C"},{"start":9.359,"value":"B"},{"start":9.569,"value":"C"},{"start":9.639,"value":"G"},{"start":9.709,"value":"B"},{"start":10.129,"value":"C"},{"start":10.199,"value":"E"},{"start":10.269,"value":"B"},{"start":10.409,"value":"E"},{"start":10.479,"value":"A"},{"start":10.569,"value":"E"},{"start":10.809,"value":"B"},{"start":11.319,"value":"E"},{"start":11.529,"value":"B"},{"start":11.669,"value":"F"},{"start":11.739,"value":"C"},{"start":11.809,"value":"A"},{"start":11.889,"value":"E"},{"start":12.029,"value":"B"},{"start":12.169,"value":"G"},{"start":12.309,"value":"C"},{"start":12.379,"value":"B"},{"start":12.449,"value":"G"},{"start":12.519,"value":"A"},{"start":12.599,"value":"B"},{"start":12.839,"value":"C"},{"start":12.909,"value":"E"},{"start":12.979,"value":"A"},{"start":13.069,"value":"E"},{"start":13.369,"value":"X"},{"start":13.759,"value":"B"},{"start":14.019,"value":"F"},{"start":14.229,"value":"B"},{"start":14.719,"value":"A"},{"start":14.809,"value":"B"},{"start":14.879,"value":"E"},{"start":15.089,"value":"B"},{"start":15.159,"value":"F"},{"start":15.369,"value":"A"},{"start":15.449,"value":"E"},{"start":15.619,"value":"B"},{"start":15.759,"value":"G"},{"start":15.829,"value":"E"},{"start":15.969,"value":"A"},{"start":16.049,"value":"B"},{"start":16.289,"value":"C"},{"start":16.359,"value":"E"},{"start":16.429,"value":"A"},{"start":16.519,"value":"E"},{"start":16.739,"value":"X"},{"start":17.359,"value":"A"},{"start":17.479,"value":"C"},{"start":17.729,"value":"B"},{"start":17.869,"value":"E"},{"start":18.149,"value":"B"},{"start":18.219,"value":"E"},{"start":18.289,"value":"F"},{"start":18.359,"value":"B"},{"start":18.429,"value":"C"},{"start":18.499,"value":"B"},{"start":18.919,"value":"A"},{"start":18.999,"value":"H"},{"start":19.199,"value":"C"},{"start":19.339,"value":"B"},{"start":19.619,"value":"C"},{"start":19.829,"value":"B"},{"start":19.969,"value":"C"},{"start":20.039,"value":"B"},{"start":20.249,"value":"A"},{"start":20.349,"value":"B"},{"start":20.609,"value":"A"},{"start":20.689,"value":"C"},{"start":20.789,"value":"B"},{"start":20.929,"value":"D"},{"start":21.029,"value":"C"},{"start":21.069,"value":"A"},{"start":21.149,"value":"E"},{"start":21.359,"value":"B"},{"start":21.499,"value":"C"},{"start":21.779,"value":"B"},{"start":22.059,"value":"A"},{"start":22.139,"value":"B"},{"start":22.259,"value":"C"},{"start":22.329,"value":"B"},{"start":22.609,"value":"X"},{"start":23.469,"value":"C"},{"start":23.549,"value":"B"},{"start":23.619,"value":"C"},{"start":23.969,"value":"B"},{"start":24.039,"value":"A"},{"start":24.119,"value":"B"},{"start":24.319,"value":"C"},{"start":24.459,"value":"B"},{"start":24.529,"value":"G"},{"start":24.599,"value":"B"},{"start":24.669,"value":"C"},{"start":24.739,"value":"B"},{"start":24.809,"value":"F"},{"start":24.879,"value":"D"},{"start":24.949,"value":"H"},{"start":25.019,"value":"C"},{"start":25.299,"value":"B"},{"start":25.439,"value":"C"},{"start":25.649,"value":"B"},{"start":25.789,"value":"E"},{"start":25.929,"value":"B"},{"start":26.519,"value":"D"},{"start":26.579,"value":"B"},{"start":26.849,"value":"C"},{"start":26.989,"value":"E"},{"start":27.129,"value":"B"},{"start":27.199,"value":"H"},{"start":27.269,"value":"C"},{"start":27.339,"value":"A"},{"start":27.449,"value":"B"},{"start":27.609,"value":"X"},{"start":28.679,"value":"B"},{"start":29.049,"value":"A"},{"start":29.129,"value":"D"},{"start":29.259,"value":"B"},{"start":29.399,"value":"A"},{"start":29.479,"value":"E"},{"start":29.529,"value":"F"},{"start":29.649,"value":"A"},{"start":29.749,"value":"B"},{"start":29.789,"value":"C"},{"start":29.829,"value":"B"},{"start":29.899,"value":"C"},{"start":29.969,"value":"B"},{"start":30.039,"value":"C"},{"start":30.179,"value":"B"},{"start":30.529,"value":"C"},{"start":30.669,"value":"B"},{"start":30.879,"value":"X"},{"start":31.189,"value":"B"},{"start":31.319,"value":"C"},{"start":31.459,"value":"B"},{"start":31.599,"value":"A"},{"start":31.679,"value":"B"},{"start":31.859,"value":"C"},{"start":32.349,"value":"X"},{"start":32.529,"value":"B"},{"start":32.669,"value":"G"},{"start":32.739,"value":"B"},{"start":32.879,"value":"A"},{"start":32.959,"value":"C"},{"start":33.139,"value":"B"},{"start":33.349,"value":"C"},{"start":33.489,"value":"B"},{"start":33.559,"value":"G"},{"start":33.629,"value":"E"},{"start":33.699,"value":"B"},{"start":33.839,"value":"G"},{"start":33.909,"value":"E"},{"start":33.979,"value":"A"},{"start":34.079,"value":"B"},{"start":34.219,"value":"C"},{"start":34.289,"value":"B"},{"start":34.429,"value":"E"},{"start":34.569,"value":"B"},{"start":34.919,"value":"C"},{"start":34.989,"value":"B"},{"start":35.199,"value":"A"},{"start":35.279,"value":"B"},{"start":35.559,"value":"G"},{"start":35.629,"value":"B"},{"start":36.329,"value":"A"},{"start":36.419,"value":"B"},{"start":36.629,"value":"A"},{"start":36.709,"value":"C"},{"start":36.809,"value":"B"},{"start":36.949,"value":"F"},{"start":37.019,"value":"D"},{"start":37.089,"value":"C"},{"start":37.159,"value":"G"},{"start":37.299,"value":"B"},{"start":37.369,"value":"A"},{"start":37.439,"value":"C"},{"start":37.509,"value":"A"},{"start":37.579,"value":"E"},{"start":37.709,"value":"B"},{"start":38.129,"value":"F"},{"start":38.199,"value":"B"},{"start":38.409,"value":"E"},{"start":38.619,"value":"B"},{"start":38.759,"value":"F"},{"start":38.899,"value":"B"},{"start":38.969,"value":"C"},{"start":39.039,"value":"B"},{"start":39.389,"value":"C"},{"start":39.459,"value":"B"},{"start":39.759,"value":"C"},{"start":39.939,"value":"X"},{"start":40.189,"value":"B"},{"start":40.339,"value":"C"},{"start":40.479,"value":"A"},{"start":40.589,"value":"C"},{"start":40.639,"value":"H"},{"start":40.679,"value":"C"},{"start":40.959,"value":"B"},{"start":41.309,"value":"E"},{"start":41.449,"value":"B"},{"start":41.519,"value":"A"},{"start":41.599,"value":"H"},{"start":41.819,"value":"C"},{"start":41.959,"value":"B"},{"start":42.099,"value":"C"},{"start":42.169,"value":"B"},{"start":42.239,"value":"C"},{"start":42.519,"value":"B"},{"start":42.869,"value":"A"},{"start":42.949,"value":"E"},{"start":43.189,"value":"H"},{"start":43.259,"value":"C"},{"start":43.329,"value":"B"},{"start":43.399,"value":"E"},{"start":43.609,"value":"B"},{"start":43.679,"value":"F"},{"start":43.959,"value":"E"},{"start":44.169,"value":"B"},{"start":44.239,"value":"H"},{"start":44.309,"value":"C"},{"start":44.379,"value":"G"},{"start":44.449,"value":"B"},{"start":44.589,"value":"X"},{"start":45.169,"value":"B"},{"start":45.209,"value":"A"},{"start":45.289,"value":"H"},{"start":45.429,"value":"C"},{"start":45.499,"value":"B"},{"start":46.219,"value":"A"},{"start":46.299,"value":"H"},{"start":46.449,"value":"C"},{"start":46.519,"value":"B"},{"start":46.729,"value":"C"},{"start":46.799,"value":"D"},{"start":46.869,"value":"B"},{"start":47.079,"value":"A"},{"start":47.159,"value":"B"},{"start":47.299,"value":"C"},{"start":47.439,"value":"B"},{"start":47.859,"value":"C"},{"start":48.279,"value":"E"},{"start":48.349,"value":"A"},{"start":48.429,"value":"C"},{"start":48.539,"value":"B"},{"start":48.819,"value":"E"},{"start":48.959,"value":"F"},{"start":49.029,"value":"C"},{"start":49.169,"value":"B"},{"start":49.239,"value":"F"},{"start":49.309,"value":"E"},{"start":49.379,"value":"F"},{"start":49.729,"value":"X"},{"start":50.239,"value":"B"},{"start":50.469,"value":"E"},{"start":50.609,"value":"B"},{"start":50.679,"value":"E"},{"start":50.749,"value":"F"},{"start":50.819,"value":"C"},{"start":50.959,"value":"B"},{"start":51.699,"value":"F"},{"start":51.769,"value":"B"},{"start":51.899,"value":"F"},{"start":51.969,"value":"D"},{"start":52.039,"value":"C"},{"start":52.109,"value":"G"},{"start":52.179,"value":"C"},{"start":52.389,"value":"B"},{"start":52.529,"value":"C"},{"start":52.599,"value":"A"},{"start":52.719,"value":"H"},{"start":52.779,"value":"D"},{"start":52.899,"value":"B"},{"start":53.249,"value":"C"},{"start":53.389,"value":"B"},{"start":53.459,"value":"F"},{"start":53.529,"value":"B"},{"start":53.599,"value":"C"},{"start":53.739,"value":"A"},{"start":53.849,"value":"B"},{"start":53.909,"value":"D"},{"start":54.029,"value":"C"},{"start":54.099,"value":"B"},{"start":54.239,"value":"A"},{"start":54.319,"value":"E"},{"start":54.559,"value":"B"},{"start":54.699,"value":"C"}];
+    mouthCues.forEach((cue) => tl.set(q(".mouth-path"), { attr: { d: mouthShapes[cue.value] || mouthShapes.X } }, cue.start));
+
+
+        window.__timelines["scene-04-classes"] = tl;
+      </script>
+    </template>
+  </body>
+</html>
