@@ -63,7 +63,7 @@ const highlightCaption = (text) => {
 };
 
 let narrationCursor = 0;
-const captions = [];
+const rawCaptions = [];
 for (const segment of timed.scenes) {
   const chunks = splitCaption(segment.narration);
   const weights = chunks.map((chunk) => Math.max(18, chunk.length));
@@ -71,7 +71,7 @@ for (const segment of timed.scenes) {
   let local = 0;
   chunks.forEach((chunk, index) => {
     const part = segment.duration_seconds * (weights[index] / totalWeight);
-    captions.push({
+    rawCaptions.push({
       start: narrationCursor + local,
       duration: Math.max(1.05, part - 0.05),
       text: highlightCaption(chunk),
@@ -79,6 +79,40 @@ for (const segment of timed.scenes) {
     local += part;
   });
   narrationCursor += segment.duration_seconds;
+}
+
+// Video 002 correction: a complete thought must remain readable for at least five
+// seconds. Merge short neighbouring fragments while retaining their narration anchors.
+const captions = [];
+let pendingCaptions = [];
+for (const caption of rawCaptions) {
+  pendingCaptions.push(caption);
+  const span = caption.start + caption.duration - pendingCaptions[0].start;
+  if (span >= 5) {
+    captions.push({
+      start: pendingCaptions[0].start,
+      duration: span,
+      text: pendingCaptions.map((item) => item.text).join(" "),
+    });
+    pendingCaptions = [];
+  }
+}
+if (pendingCaptions.length) {
+  const tailEnd = pendingCaptions.at(-1).start + pendingCaptions.at(-1).duration;
+  if (captions.length) {
+    const previous = captions.pop();
+    captions.push({
+      start: previous.start,
+      duration: tailEnd - previous.start,
+      text: [previous.text, ...pendingCaptions.map((item) => item.text)].join(" "),
+    });
+  } else {
+    captions.push({
+      start: pendingCaptions[0].start,
+      duration: tailEnd - pendingCaptions[0].start,
+      text: pendingCaptions.map((item) => item.text).join(" "),
+    });
+  }
 }
 
 const sharedCss = `
@@ -720,5 +754,27 @@ const motion = {
   ],
 };
 fs.writeFileSync(path.join(project, "index.motion.json"), JSON.stringify(motion, null, 2) + "\n");
+
+const srtTimestamp = (seconds) => {
+  const milliseconds = Math.max(0, Math.round(seconds * 1000));
+  const hours = Math.floor(milliseconds / 3_600_000);
+  const minutes = Math.floor((milliseconds % 3_600_000) / 60_000);
+  const secs = Math.floor((milliseconds % 60_000) / 1000);
+  const millis = milliseconds % 1000;
+  return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")},${String(millis).padStart(3, "0")}`;
+};
+const captionOutput = path.join(repo, "output", "biznex-video-002");
+fs.mkdirSync(captionOutput, { recursive: true });
+const captionSrt = captions.map((caption, index) => {
+  const plainText = caption.text
+    .replace(/<[^>]+>/g, "")
+    .replaceAll("&#039;", "'")
+    .replaceAll("&quot;", '"')
+    .replaceAll("&gt;", ">")
+    .replaceAll("&lt;", "<")
+    .replaceAll("&amp;", "&");
+  return `${index + 1}\n${srtTimestamp(caption.start)} --> ${srtTimestamp(caption.start + caption.duration)}\n${plainText}`;
+}).join("\n\n") + "\n";
+fs.writeFileSync(path.join(captionOutput, "video-002-five-second-captions.srt"), captionSrt);
 
 console.log(`Built ${sceneDefinitions.length} scenes and ${captions.length} caption clips.`);

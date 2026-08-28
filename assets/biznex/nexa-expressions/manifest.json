@@ -1,0 +1,133 @@
+{
+  "version": 2,
+  "character": "Nexa",
+  "default": "neutral",
+  "minimum_hold_seconds": 5.0,
+  "generation": {
+    "mode": "built-in image generation, identity-preserving edits",
+    "reference": "nexa-v2-neutral.png",
+    "invariants": "Static transparent illustration; closed mouth; no lip animation; same identity, wardrobe, hairstyle, lapel pin, framing, and editorial-cartoon style."
+  },
+  "expressions": [
+    {
+      "name": "neutral",
+      "file": "nexa-v2-neutral.png",
+      "triggers": [],
+      "description": "Default calm presenter pose."
+    },
+    {
+      "name": "questioning",
+      "file": "nexa-v2-questioning.png",
+      "triggers": ["why", "how", "what if", "question"],
+      "description": "Raised brow and open-palm question."
+    },
+    {
+      "name": "approving",
+      "file": "nexa-v2-approving.png",
+      "triggers": ["approved", "pass", "correct", "verified"],
+      "description": "Warm approval with a thumbs-up."
+    },
+    {
+      "name": "confused",
+      "file": "nexa-v2-confused.png",
+      "triggers": ["confused", "unclear", "messy", "does not add up"],
+      "description": "Professional confusion with a questioning palm."
+    },
+    {
+      "name": "idea",
+      "file": "nexa-v2-idea.png",
+      "triggers": ["idea", "solution", "instead", "here is the plan"],
+      "description": "Bright idea with raised index finger."
+    },
+    {
+      "name": "skeptical",
+      "file": "nexa-v2-skeptical.png",
+      "triggers": ["claim", "skeptical", "doubt", "not enough evidence"],
+      "description": "Careful, evidence-minded skepticism."
+    },
+    {
+      "name": "concerned",
+      "file": "nexa-v2-concerned.png",
+      "triggers": ["risk", "failure", "lost customer", "harm"],
+      "description": "Concerned, attentive expression."
+    },
+    {
+      "name": "surprised",
+      "file": "nexa-v2-surprised.png",
+      "triggers": ["surprising", "unexpected", "wow", "suddenly"],
+      "description": "Pleasant professional surprise."
+    },
+    {
+      "name": "explaining",
+      "file": "nexa-v2-explaining.png",
+      "triggers": ["explains", "means", "works", "step by step"],
+      "description": "Teacher-like two-point explanation."
+    },
+    {
+      "name": "celebrating",
+      "file": "nexa-v2-celebrating.png",
+      "triggers": ["success", "recovered", "win", "complete"],
+      "description": "Restrained professional celebration."
+    },
+    {
+      "name": "warning",
+      "file": "nexa-v2-warning.png",
+      "triggers": ["warning", "never", "do not", "stop", "boundary"],
+      "description": "Calm caution with a raised palm."
+    },
+    {
+      "name": "thinking",
+      "file": "nexa-v2-thinking.png",
+      "triggers": ["think", "consider", "evaluate", "reason"],
+      "description": "Reflective thinking pose."
+    },
+    {
+      "name": "empathetic",
+      "file": "nexa-v2-empathetic.png",
+      "triggers": ["trust", "customer", "care", "friction"],
+      "description": "Warm empathy with a hand over the heart."
+    },
+    {
+      "name": "focused",
+      "file": "nexa-v2-focused.png",
+      "triggers": ["technical", "implementation", "runtime", "exact"],
+      "description": "Focused technical precision."
+    },
+    {
+      "name": "curious",
+      "file": "nexa-v2-curious.png",
+      "triggers": ["discover", "inspect", "look closer", "learn"],
+      "description": "Inviting curiosity and attention."
+    },
+    {
+      "name": "analytical",
+      "file": "nexa-v2-analytical.png",
+      "triggers": ["compare", "versus", "evidence", "measure"],
+      "description": "Weighing two options analytically."
+    },
+    {
+      "name": "reassuring",
+      "file": "nexa-v2-reassuring.png",
+      "triggers": ["safe", "guardrail", "protected", "reassuring"],
+      "description": "Steady reassurance with an open palm."
+    },
+    {
+      "name": "urgent",
+      "file": "nexa-v2-urgent.png",
+      "triggers": ["urgent", "now", "at risk today", "priority"],
+      "description": "Controlled urgency and decisive direction."
+    },
+    {
+      "name": "confident",
+      "file": "nexa-v2-confident.png",
+      "triggers": ["confident", "ship", "built", "operational"],
+      "description": "Executive confidence."
+    },
+    {
+      "name": "closing",
+      "file": "nexa-v2-closing.png",
+      "triggers": ["thank you", "this is", "close", "subscribe"],
+      "description": "Warm polished closing wave."
+    }
+  ]
+}

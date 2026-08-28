@@ -178,6 +178,52 @@ def _caption_groups(
     return groups
 
 
+def _merge_short_cues(cues: list[SubtitleCue], minimum_seconds: float) -> list[SubtitleCue]:
+    """Keep readable text on screen long enough to register without desynchronizing it.
+
+    Consecutive short cues are merged, preserving their original start and end anchors. The
+    final short cue is folded into the preceding cue so the track remains continuous.
+    """
+    if minimum_seconds <= 1.0 or len(cues) < 2:
+        return cues
+    merged: list[SubtitleCue] = []
+    pending: list[SubtitleCue] = []
+    for cue in cues:
+        pending.append(cue)
+        span = pending[-1].end_seconds - pending[0].start_seconds
+        if span >= minimum_seconds:
+            merged.append(
+                SubtitleCue(
+                    index=len(merged) + 1,
+                    start_seconds=pending[0].start_seconds,
+                    end_seconds=pending[-1].end_seconds,
+                    text=" ".join(item.text for item in pending),
+                )
+            )
+            pending = []
+    if pending:
+        if merged:
+            previous = merged.pop()
+            merged.append(
+                SubtitleCue(
+                    index=len(merged) + 1,
+                    start_seconds=previous.start_seconds,
+                    end_seconds=pending[-1].end_seconds,
+                    text=" ".join([previous.text, *(item.text for item in pending)]),
+                )
+            )
+        else:
+            merged.append(
+                SubtitleCue(
+                    index=1,
+                    start_seconds=pending[0].start_seconds,
+                    end_seconds=pending[-1].end_seconds,
+                    text=" ".join(item.text for item in pending),
+                )
+            )
+    return merged
+
+
 def _ass_caption_text(text: str, settings: Settings) -> str:
     escaped = text.replace("{", r"\{").replace("}", r"\}").replace("\n", r"\N")
     glossary = sorted(settings.subtitles.glossary, key=len, reverse=True)
@@ -218,6 +264,7 @@ def write_subtitles(
             log.warning("subtitle_alignment_fallback", error=str(exc))
     if not cues:
         cues = build_cues(script, duration_seconds, settings.subtitles.max_words_per_caption)
+    cues = _merge_short_cues(cues, settings.subtitles.minimum_caption_seconds)
     srt_blocks = [
         f"{cue.index}\n{_timestamp_srt(cue.start_seconds)} --> {_timestamp_srt(cue.end_seconds)}\n{cue.text}"
         for cue in cues

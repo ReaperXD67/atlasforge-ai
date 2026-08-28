@@ -90,6 +90,10 @@ class VoiceConfig(BaseModel):
     kokoro_language: str = "a"
     kokoro_sentence_pause_ms: int = Field(default=90, ge=0, le=1000)
     kokoro_paragraph_pause_ms: int = Field(default=300, ge=0, le=2000)
+    edge_voice: str = "en-IN-NeerjaNeural"
+    edge_rate: str = "-4%"
+    edge_pitch: str = "+0Hz"
+    edge_volume: str = "+0%"
     chatterbox_reference_audio: Path | None = None
     chatterbox_exaggeration: float = Field(default=0.68, ge=0.25, le=1.25)
     chatterbox_cfg_weight: float = Field(default=0.32, ge=0, le=1)
@@ -117,6 +121,9 @@ class ImagesConfig(BaseModel):
     thumbnail_background: Path | None = None
     presenter_avatar: Path | None = None
     presenter_name: str = Field(default="AI HOST", max_length=32)
+    presenter_expression_manifest: Path | None = None
+    presenter_default_expression: str = Field(default="neutral", max_length=40)
+    presenter_expression_min_hold_seconds: float = Field(default=5.0, ge=1.0, le=30.0)
 
 
 class LipSyncConfig(BaseModel):
@@ -224,6 +231,7 @@ class AudioConfig(BaseModel):
 class SubtitleConfig(BaseModel):
     burn_in: bool = True
     max_words_per_caption: int = 7
+    minimum_caption_seconds: float = Field(default=1.0, ge=0.5, le=12.0)
     font_name: str = "Segoe UI Semibold"
     font_size: int = 56
     highlight_color: str = "&H0037E6FF"

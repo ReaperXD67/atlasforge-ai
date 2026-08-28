@@ -9,13 +9,16 @@ import uvicorn
 from rich.console import Console
 from rich.table import Table
 
+from .browser_capture import BrowserCaptureRecipe, PlaywrightCliCaptureRunner
 from .config import load_settings
 from .dashboard import create_app
 from .doctor import run_doctor
 from .logging import configure_logging
+from .media.ffmpeg import FFmpeg
 from .models import MUSIC_EDIT_STYLES, MusicEditStyle
 from .music_video import MusicVideoPipeline
 from .pipeline import DailyVideoPipeline
+from .providers.tts import NarrationGenerator
 from .publishing.youtube import YouTubePublisher
 from .scheduler import run_scheduler
 from .viral_video import ViralShortPipeline
@@ -25,6 +28,35 @@ app = typer.Typer(
     help="AtlasForge AI builds one complete, policy-aware YouTube video per day.",
 )
 console = Console()
+
+
+@app.command("browser-capture")
+def browser_capture_command(
+    recipe: Path = typer.Option(..., exists=True, dir_okay=False),
+    output: Path = typer.Option(..., file_okay=False),
+) -> None:
+    """Capture a safe, declarative browser evidence recipe."""
+    capture_recipe = BrowserCaptureRecipe.from_yaml(recipe)
+    manifest = PlaywrightCliCaptureRunner(capture_recipe, output).run()
+    console.print(f"[bold green]Capture complete:[/] {manifest}")
+
+
+@app.command("narrate")
+def narrate_command(
+    text_file: Path = typer.Option(..., exists=True, dir_okay=False),
+    output: Path = typer.Option(..., file_okay=False),
+    config: Path = typer.Option(Path("config/default.yaml"), exists=True, dir_okay=False),
+) -> None:
+    """Generate mastered narration from an authored text file using the provider chain."""
+    configure_logging()
+    settings = load_settings(config)
+    ffmpeg = FFmpeg()
+    result = NarrationGenerator(settings, ffmpeg).run(
+        text_file.read_text(encoding="utf-8"), output
+    )
+    console.print(f"[bold green]Narration complete:[/] {result.value}")
+    console.print(f"Provider: {result.provider}")
+    console.print(f"Duration: {ffmpeg.duration(result.value):.3f}s")
 
 
 @app.command("run")

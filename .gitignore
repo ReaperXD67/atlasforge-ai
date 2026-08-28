@@ -28,5 +28,7 @@ youtube_token.json
 *.part
 videos/**/renders/
 videos/**/snapshots/
+videos/biznex-revive-pitch-001/assets/
+videos/biznex-revive-pitch-001/thumbnail/assets/
 .DS_Store
 Thumbs.db

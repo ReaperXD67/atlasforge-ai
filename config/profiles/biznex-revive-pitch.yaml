@@ -1,0 +1,88 @@
+extends: general-explainer.yaml
+
+channel:
+  name: BizNex
+  language: en
+  region: IN
+  timezone: Asia/Calcutta
+  brand_name: Revive
+  brand_required: false
+  content_goal: Product demonstrations built from inspectable evidence and honest boundaries.
+  audience:
+    - Razorpay AI Buildathon judges
+    - fintech product leaders
+    - senior software engineers
+    - technical recruiters
+  disclosure: Product metrics and customer records are simulated; hosted API and storage evidence are live.
+
+script:
+  target_minutes: 5.0
+  words_per_minute: 140
+  min_words: 580
+  max_words: 760
+  script_override: docs/biznex/revive-pitch-narration.txt
+  title_override: "Revive: Autonomous Revenue Recovery That Retains Trust"
+
+voice:
+  providers: [edge, kokoro]
+  openai_instructions: >-
+    Warm, precise Indian-English. Speak like a calm product engineer presenting to judges:
+    conversational, confident, technically exact, with restrained emphasis and natural breaths.
+  kokoro_voice: af_heart
+  kokoro_speed: 0.96
+  kokoro_sentence_pause_ms: 115
+  kokoro_paragraph_pause_ms: 390
+  edge_voice: en-IN-NeerjaNeural
+  edge_rate: "+4%"
+  edge_pitch: "+0Hz"
+  edge_volume: "+0%"
+  chatterbox_target_wpm: 140
+  chatterbox_sentence_pause_ms: 120
+  chatterbox_paragraph_pause_ms: 400
+  pronunciations:
+    Revive: Re-vive
+    Razorpay: Razor-pay
+    Vercel: Ver-sell
+    HMAC: H-mack
+    UPI: U P I
+    AutoPay: Auto Pay
+    sin-one: sin one
+
+images:
+  presenter_avatar: assets/biznex/nexa-expressions/nexa-v2-neutral.png
+  presenter_expression_manifest: assets/biznex/nexa-expressions/manifest.json
+  presenter_default_expression: neutral
+  presenter_expression_min_hold_seconds: 5.0
+  presenter_name: Nexa
+
+lip_sync:
+  enabled: false
+
+storyboard:
+  target_scene_seconds: 20
+  min_scene_seconds: 10
+  max_scene_seconds: 40
+  max_scenes: 18
+  engagement_mode: retention
+  pattern_interrupt_seconds: 18
+  presenter_interval_scenes: 2
+
+video:
+  fps: 30
+  stock_video_enabled: false
+  enable_premium_scenes: false
+
+audio:
+  music_volume_db: -29
+  sfx_volume_db: -21
+  sidechain_ratio: 12
+
+subtitles:
+  burn_in: false
+  max_words_per_caption: 12
+  minimum_caption_seconds: 5.0
+  alignment: estimated
+  glossary: [Revive, Razorpay, Vercel, Vercel Functions, HMAC, UPI AutoPay, Decision Lab]
+
+publishing:
+  enabled: false

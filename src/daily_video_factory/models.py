@@ -161,6 +161,7 @@ class Scene(BaseModel):
     visual_exclusion_terms: list[str] = Field(default_factory=list)
     onscreen_title: str = ""
     visual_mode: str = "documentary_broll"
+    presenter_expression: str = Field(default="", max_length=40)
     premium_score: float = Field(default=0, ge=0, le=1)
     selected_video_provider: str = "local_motion"
     aspect_ratio: Literal["16:9", "9:16"] = "16:9"

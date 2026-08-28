@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 import base64
 import os
 import re
@@ -291,6 +292,48 @@ class KokoroTTSProvider(TTSProvider):
         )
 
 
+class EdgeTTSProvider(TTSProvider):
+    """Natural no-key neural narration with an explicit offline-provider fallback."""
+
+    name = "edge"
+
+    def __init__(self, settings: Settings, ffmpeg: FFmpeg) -> None:
+        self.cfg = settings.voice
+        self.ffmpeg = ffmpeg
+
+    def available(self) -> bool:
+        try:
+            import edge_tts  # noqa: F401
+
+            return self.ffmpeg.available
+        except ImportError:
+            return False
+
+    async def _save(self, text: str, path: Path) -> None:
+        from edge_tts import Communicate
+
+        communication = Communicate(
+            text,
+            self.cfg.edge_voice,
+            rate=self.cfg.edge_rate,
+            pitch=self.cfg.edge_pitch,
+            volume=self.cfg.edge_volume,
+        )
+        await communication.save(str(path))
+
+    def synthesize(self, text: str, output_dir: Path) -> Path:
+        output_dir.mkdir(parents=True, exist_ok=True)
+        spoken_text = apply_pronunciations(text, self.cfg.pronunciations)
+        parts: list[Path] = []
+        for index, chunk in enumerate(split_for_tts(spoken_text, max_chars=3800), start=1):
+            part = output_dir / f"edge_part_{index:03d}.mp3"
+            asyncio.run(self._save(chunk, part))
+            parts.append(part)
+        return concatenate_and_normalize(
+            parts, output_dir / "narration.wav", self.cfg.target_lufs, self.ffmpeg
+        )
+
+
 class ChatterboxTTSProvider(TTSProvider):
     """Expressive local narration with stable identity and optional consented voice reference."""
 
@@ -511,6 +554,7 @@ class NarrationGenerator:
             "elevenlabs": ElevenLabsTTSProvider(settings, ffmpeg),
             "gemini": GeminiTTSProvider(settings, ffmpeg),
             "kokoro": KokoroTTSProvider(settings, ffmpeg),
+            "edge": EdgeTTSProvider(settings, ffmpeg),
             "chatterbox": ChatterboxTTSProvider(settings, ffmpeg),
             "piper": PiperTTSProvider(settings, ffmpeg),
         }

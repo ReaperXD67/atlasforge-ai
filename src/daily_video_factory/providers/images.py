@@ -14,6 +14,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 from ..config import Settings
 from ..exceptions import ProviderFailed
 from ..models import OWNED_VISUAL_MODES, Scene
+from ..presenter import PresenterExpressionLibrary
 from .base import Provider
 
 
@@ -120,9 +121,24 @@ class TitleCardImageProvider(ImageProvider):
     def __init__(self, settings: Settings) -> None:
         self.cfg = settings.images
         self.channel_name = settings.channel.name
+        self.expression_library = (
+            PresenterExpressionLibrary(self.cfg.presenter_expression_manifest)
+            if self.cfg.presenter_expression_manifest
+            else None
+        )
 
-    def _paste_presenter(self, image: Image.Image, *, height: int = 850) -> None:
+    def _paste_presenter(
+        self, image: Image.Image, scene: Scene, *, height: int = 850
+    ) -> None:
         avatar_path = self.cfg.presenter_avatar
+        if self.expression_library:
+            expression = self.expression_library.choose(
+                scene.emotion,
+                scene.narration,
+                scene.onscreen_title,
+                preferred=scene.presenter_expression or self.cfg.presenter_default_expression,
+            )
+            avatar_path = self.expression_library.resolve(expression)
         if avatar_path is None or not avatar_path.exists():
             return
         with Image.open(avatar_path) as source:
@@ -184,7 +200,7 @@ class TitleCardImageProvider(ImageProvider):
                 spacing=7,
             )
             draw.rectangle((142, 790, 920, 802), fill=(*accent, 235))
-            self._paste_presenter(image)
+            self._paste_presenter(image, scene)
             draw = ImageDraw.Draw(image, "RGBA")
         elif scene.visual_mode == "binary_plan_card":
             title = _wrap_text(title_copy, width=30, max_lines=2)

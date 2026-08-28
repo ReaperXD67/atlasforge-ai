@@ -100,5 +100,10 @@ audio:
   sfx_volume_db: -19
   sidechain_ratio: 12
 
+subtitles:
+  # Keep each complete thought visible while Nexa explains it. This prevents the copy
+  # from disappearing before a viewer can connect the spoken point to the graphic.
+  minimum_caption_seconds: 5.0
+
 publishing:
   enabled: false
