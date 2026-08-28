@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import base64
+import json
 import os
 import re
 import subprocess
@@ -18,6 +19,11 @@ from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_ex
 from ..config import Settings
 from ..exceptions import ProviderFailed
 from ..media.ffmpeg import FFmpeg
+from ..media.subtitles import (
+    scale_exact_caption_sidecars,
+    write_exact_caption_sidecars,
+    write_forced_aligned_caption_sidecars,
+)
 from .base import Provider, ProviderChain, ProviderResult
 
 
@@ -309,29 +315,126 @@ class EdgeTTSProvider(TTSProvider):
         except ImportError:
             return False
 
-    async def _save(self, text: str, path: Path) -> None:
+    async def _save(
+        self, text: str, path: Path, *, rate: str, pitch: str
+    ) -> list[tuple[str, float, float]]:
         from edge_tts import Communicate
 
-        communication = Communicate(
-            text,
-            self.cfg.edge_voice,
-            rate=self.cfg.edge_rate,
-            pitch=self.cfg.edge_pitch,
-            volume=self.cfg.edge_volume,
-        )
-        await communication.save(str(path))
+        last_error: Exception | None = None
+        for attempt in range(3):
+            try:
+                communication = Communicate(
+                    text,
+                    self.cfg.edge_voice,
+                    rate=rate,
+                    pitch=pitch,
+                    volume=self.cfg.edge_volume,
+                    boundary="WordBoundary",
+                )
+                audio = bytearray()
+                words: list[tuple[str, float, float]] = []
+                async for event in communication.stream():
+                    if event["type"] == "audio":
+                        audio.extend(event["data"])
+                    elif event["type"] == "WordBoundary":
+                        start = float(event["offset"]) / 10_000_000
+                        end = start + float(event["duration"]) / 10_000_000
+                        words.append((str(event["text"]), start, end))
+                if not audio or not words:
+                    raise RuntimeError("no usable audio or word boundaries")
+                path.write_bytes(audio)
+                return words
+            except Exception as exc:  # Edge transport errors vary across aiohttp releases.
+                last_error = exc
+                if attempt < 2:
+                    await asyncio.sleep(1.5 * (2**attempt))
+        raise ProviderFailed(f"Edge TTS failed after three attempts: {last_error}")
+
+    @staticmethod
+    def _adjust_signed(value: str, delta: int, suffix: str) -> str:
+        match = re.fullmatch(r"([+-]?)(\d+)(?:%|Hz)", value.strip())
+        if not match:
+            raise ProviderFailed(f"Invalid Edge prosody value: {value}")
+        number = int(match.group(2)) * (-1 if match.group(1) == "-" else 1)
+        return f"{number + delta:+d}{suffix}"
 
     def synthesize(self, text: str, output_dir: Path) -> Path:
         output_dir.mkdir(parents=True, exist_ok=True)
-        spoken_text = apply_pronunciations(text, self.cfg.pronunciations)
+        if self.cfg.edge_expressive:
+            beats = split_for_expressive_tts(text, max_chars=self.cfg.edge_beat_max_chars)
+        else:
+            chunks = split_for_tts(text, max_chars=3800)
+            beats = [(chunk, index == len(chunks) - 1) for index, chunk in enumerate(chunks)]
         parts: list[Path] = []
-        for index, chunk in enumerate(split_for_tts(spoken_text, max_chars=3800), start=1):
+        pauses_ms: list[int] = []
+        timed_words: list[tuple[str, float, float]] = []
+        cursor = 0.0
+        rate_pattern = (-1, 0, 1, 0, -1, 1)
+        pitch_pattern = (1, 0, -1, 0, 1, -1)
+        for index, (beat, paragraph_end) in enumerate(beats, start=1):
+            spoken_beat = apply_pronunciations(beat, self.cfg.pronunciations)
+            rate_delta = (
+                rate_pattern[(index - 1) % len(rate_pattern)]
+                * self.cfg.edge_rate_variation_pct
+            )
+            pitch_delta = (
+                pitch_pattern[(index - 1) % len(pitch_pattern)]
+                * self.cfg.edge_pitch_variation_hz
+            )
+            if beat.rstrip().endswith("?"):
+                rate_delta -= self.cfg.edge_rate_variation_pct
+                pitch_delta += self.cfg.edge_pitch_variation_hz
+            rate = self._adjust_signed(self.cfg.edge_rate, rate_delta, "%")
+            pitch = self._adjust_signed(self.cfg.edge_pitch, pitch_delta, "Hz")
             part = output_dir / f"edge_part_{index:03d}.mp3"
-            asyncio.run(self._save(chunk, part))
+            boundaries = asyncio.run(
+                self._save(spoken_beat, part, rate=rate, pitch=pitch)
+            )
             parts.append(part)
-        return concatenate_and_normalize(
-            parts, output_dir / "narration.wav", self.cfg.target_lufs, self.ffmpeg
+            timed_words.extend(
+                (word, cursor + start, cursor + end) for word, start, end in boundaries
+            )
+            pause_ms = 0
+            if index < len(beats):
+                pause_ms = (
+                    self.cfg.edge_paragraph_pause_ms
+                    if paragraph_end
+                    else self.cfg.edge_sentence_pause_ms
+                )
+            pauses_ms.append(pause_ms)
+            cursor += self.ffmpeg.duration(part) + pause_ms / 1000
+        narration = concatenate_and_normalize(
+            parts,
+            output_dir / "narration.wav",
+            self.cfg.target_lufs,
+            self.ffmpeg,
+            pauses_ms=pauses_ms,
         )
+        write_exact_caption_sidecars(
+            text,
+            timed_words,
+            output_dir,
+            max_words=self.cfg.edge_caption_max_words,
+            minimum_seconds=self.cfg.edge_caption_min_seconds,
+        )
+        (output_dir / "narration.performance.json").write_text(
+            json.dumps(
+                {
+                    "voice": self.cfg.edge_voice,
+                    "expressive": self.cfg.edge_expressive,
+                    "beats": len(beats),
+                    "base_rate": self.cfg.edge_rate,
+                    "rate_variation_pct": self.cfg.edge_rate_variation_pct,
+                    "pitch_variation_hz": self.cfg.edge_pitch_variation_hz,
+                    "sentence_pause_ms": self.cfg.edge_sentence_pause_ms,
+                    "paragraph_pause_ms": self.cfg.edge_paragraph_pause_ms,
+                },
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+        return narration
 
 
 class ChatterboxTTSProvider(TTSProvider):
@@ -473,7 +576,12 @@ class PiperTTSProvider(TTSProvider):
 
 
 def concatenate_and_normalize(
-    parts: list[Path], output: Path, target_lufs: int, ffmpeg: FFmpeg
+    parts: list[Path],
+    output: Path,
+    target_lufs: int,
+    ffmpeg: FFmpeg,
+    *,
+    pauses_ms: list[int] | None = None,
 ) -> Path:
     if not parts:
         raise ProviderFailed("No audio parts to concatenate")
@@ -487,12 +595,20 @@ def concatenate_and_normalize(
         "acompressor=threshold=0.125:ratio=2:attack=20:release=180:makeup=1.15:knee=2.828,"
         f"loudnorm=I={target_lufs}:TP=-1.5:LRA=7"
     )
-    if len(parts) == 1:
+    if pauses_ms is not None and len(pauses_ms) != len(parts):
+        raise ValueError("One pause value is required for each narration part")
+    if len(parts) == 1 and not pauses_ms:
         audio_filter = f"[0:a]{mastering}[out]"
     else:
-        labels = "".join(f"[{index}:a]" for index in range(len(parts)))
+        prepared: list[str] = []
+        labels = ""
+        for index in range(len(parts)):
+            pause_seconds = (pauses_ms or [0] * len(parts))[index] / 1000
+            prepared.append(f"[{index}:a]apad=pad_dur={pause_seconds:.3f}[part{index}]")
+            labels += f"[part{index}]"
         audio_filter = (
-            f"{labels}concat=n={len(parts)}:v=0:a=1[joined];"
+            ";".join(prepared)
+            + f";{labels}concat=n={len(parts)}:v=0:a=1[joined];"
             f"[joined]{mastering}[out]"
         )
     ffmpeg.run(
@@ -542,6 +658,32 @@ def fit_narration_duration(
         ]
     )
     fitted.replace(narration)
+    scale_exact_caption_sidecars(narration.parent, maximum_seconds / actual_seconds)
+    return narration
+
+
+def fit_narration_to_seconds(narration: Path, target_seconds: float, ffmpeg: FFmpeg) -> Path:
+    """Fit narration and its exact timing sidecars to a known edit duration."""
+    if target_seconds <= 0:
+        raise ValueError("Target narration duration must be positive")
+    actual_seconds = ffmpeg.duration(narration)
+    if abs(actual_seconds - target_seconds) <= 0.02:
+        return narration
+    speed = actual_seconds / target_seconds
+    fitted = narration.with_name(f"{narration.stem}.exact-fit{narration.suffix}")
+    ffmpeg.run(
+        [
+            "-i",
+            str(narration),
+            "-filter:a",
+            _atempo_chain(speed),
+            "-ar",
+            "48000",
+            str(fitted),
+        ]
+    )
+    fitted.replace(narration)
+    scale_exact_caption_sidecars(narration.parent, target_seconds / actual_seconds)
     return narration
 
 
@@ -562,15 +704,36 @@ class NarrationGenerator:
             providers[name] for name in settings.voice.providers if name in providers
         )
 
-    def run(self, text: str, output_dir: Path) -> ProviderResult[Path]:
+    def run(
+        self, text: str, output_dir: Path, *, target_seconds: float | None = None
+    ) -> ProviderResult[Path]:
+        output_dir.mkdir(parents=True, exist_ok=True)
+        for name in (
+            "narration.words.json",
+            "narration.captions.json",
+            "narration.exact.srt",
+            "narration.caption-verification.json",
+            "narration.performance.json",
+        ):
+            with suppress(FileNotFoundError):
+                (output_dir / name).unlink()
         result = self.chain.run(
             "narration",
             lambda provider: cast(TTSProvider, provider).synthesize(text, output_dir),
         )
+        if not (output_dir / "narration.words.json").is_file():
+            write_forced_aligned_caption_sidecars(
+                text,
+                result.value,
+                output_dir,
+                self.settings,
+            )
         result.value = fit_narration_duration(
             result.value,
             self.settings.script.target_minutes,
             self.settings.voice.max_duration_ratio,
             self.ffmpeg,
         )
+        if target_seconds is not None:
+            result.value = fit_narration_to_seconds(result.value, target_seconds, self.ffmpeg)
         return result

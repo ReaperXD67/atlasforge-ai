@@ -85,7 +85,18 @@ storyboard:
   presenter_interval_scenes: 8
 
 voice:
-  providers: [chatterbox, kokoro]
+  providers: [edge, kokoro]
+  edge_voice: en-IN-NeerjaNeural
+  edge_rate: "+18%"
+  edge_pitch: "+0Hz"
+  edge_expressive: true
+  edge_beat_max_chars: 600
+  edge_sentence_pause_ms: 95
+  edge_paragraph_pause_ms: 240
+  edge_rate_variation_pct: 2
+  edge_pitch_variation_hz: 1
+  edge_caption_max_words: 12
+  edge_caption_min_seconds: 4.0
   kokoro_voice: af_heart
   kokoro_speed: 0.99
   kokoro_sentence_pause_ms: 82

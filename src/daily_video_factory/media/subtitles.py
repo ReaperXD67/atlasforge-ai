@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import difflib
+import hashlib
+import json
 import re
 from pathlib import Path
+from typing import Any
 
 from ..config import Settings
 from ..logging import get_logger
@@ -56,6 +59,28 @@ def build_whisper_cues(
     settings: Settings,
 ) -> list[SubtitleCue]:
     """Use Whisper for timing while keeping the authored script as caption truth."""
+    timed_words = transcribe_timed_words(narration, settings)
+    if not timed_words:
+        return []
+    canonical = re.findall(r"\S+", re.sub(r"\s+", " ", script.full_text).strip())
+    aligned = _align_script_words(canonical, timed_words)
+    cues: list[SubtitleCue] = []
+    for group in _caption_groups(aligned, max_words):
+        cues.append(
+            SubtitleCue(
+                index=len(cues) + 1,
+                start_seconds=group[0][1],
+                end_seconds=max(group[-1][2], group[0][1] + 0.12),
+                text=" ".join(value[0] for value in group),
+            )
+        )
+    return cues
+
+
+def transcribe_timed_words(
+    narration: Path, settings: Settings
+) -> list[tuple[str, float, float]]:
+    """Return ASR word anchors for providers that do not expose synthesis boundaries."""
     from faster_whisper import WhisperModel
 
     cfg = settings.subtitles
@@ -82,21 +107,26 @@ def build_whisper_cues(
             end = getattr(word, "end", None)
             if text and start is not None and end is not None:
                 timed_words.append((text, float(start), float(end)))
+    return timed_words
+
+
+def write_forced_aligned_caption_sidecars(
+    canonical_text: str,
+    narration: Path,
+    output_dir: Path,
+    settings: Settings,
+) -> list[SubtitleCue]:
+    """Create canonical caption sidecars using ASR only as a timing reference."""
+    timed_words = transcribe_timed_words(narration, settings)
     if not timed_words:
-        return []
-    canonical = re.findall(r"\S+", re.sub(r"\s+", " ", script.full_text).strip())
-    aligned = _align_script_words(canonical, timed_words)
-    cues: list[SubtitleCue] = []
-    for group in _caption_groups(aligned, max_words):
-        cues.append(
-            SubtitleCue(
-                index=len(cues) + 1,
-                start_seconds=group[0][1],
-                end_seconds=max(group[-1][2], group[0][1] + 0.12),
-                text=" ".join(value[0] for value in group),
-            )
-        )
-    return cues
+        raise RuntimeError("Whisper returned no word timing anchors")
+    return write_exact_caption_sidecars(
+        canonical_text,
+        timed_words,
+        output_dir,
+        max_words=settings.voice.edge_caption_max_words,
+        minimum_seconds=settings.voice.edge_caption_min_seconds,
+    )
 
 
 def _normalize_word(value: str) -> str:
@@ -176,6 +206,198 @@ def _caption_groups(
     if current:
         groups.append(current)
     return groups
+
+
+def _timed_caption_groups(
+    words: list[tuple[str, float, float]],
+    *,
+    max_words: int,
+    target_seconds: float,
+    max_seconds: float = 6.5,
+) -> list[list[tuple[str, float, float]]]:
+    """Build readable, strictly bounded phrases without moving real word anchors."""
+    groups: list[list[tuple[str, float, float]]] = []
+    current: list[tuple[str, float, float]] = []
+    for word in words:
+        if current and (
+            len(current) >= max_words or word[2] - current[0][1] > max_seconds
+        ):
+            groups.append(current)
+            current = []
+        current.append(word)
+        duration = current[-1][2] - current[0][1]
+        sentence_break = word[0].endswith((".", "?", "!", ";", ":"))
+        if (
+            len(current) >= max_words
+            or duration >= max_seconds
+            or (sentence_break and duration >= target_seconds)
+        ):
+            groups.append(current)
+            current = []
+    if current:
+        tail_duration = current[-1][2] - current[0][1]
+        if (
+            groups
+            and tail_duration < 1.25
+            and len(groups[-1]) + len(current) <= max_words
+            and current[-1][2] - groups[-1][0][1] <= max_seconds
+        ):
+            groups[-1].extend(current)
+        else:
+            groups.append(current)
+    return groups
+
+
+def write_exact_caption_sidecars(
+    canonical_text: str,
+    timed_words: list[tuple[str, float, float]],
+    output_dir: Path,
+    *,
+    max_words: int,
+    minimum_seconds: float,
+) -> list[SubtitleCue]:
+    """Persist authored captions anchored to real synthesis or ASR word timings."""
+    canonical = re.findall(r"\S+", re.sub(r"\s+", " ", canonical_text).strip())
+    aligned = _align_script_words(canonical, timed_words)
+    cues = [
+        SubtitleCue(
+            index=index,
+            start_seconds=group[0][1],
+            end_seconds=max(group[-1][2], group[0][1] + 0.12),
+            text=" ".join(value[0] for value in group),
+        )
+        for index, group in enumerate(
+            _timed_caption_groups(
+                aligned,
+                max_words=max_words,
+                target_seconds=minimum_seconds,
+            ),
+            start=1,
+        )
+    ]
+    output_dir.mkdir(parents=True, exist_ok=True)
+    word_payload = [
+        {"text": text, "start": round(start, 4), "end": round(end, 4)}
+        for text, start, end in aligned
+    ]
+    cue_payload = [
+        {
+            "index": cue.index,
+            "start": round(cue.start_seconds, 4),
+            "end": round(cue.end_seconds, 4),
+            "duration": round(cue.end_seconds - cue.start_seconds, 4),
+            "text": cue.text,
+        }
+        for cue in cues
+    ]
+    (output_dir / "narration.words.json").write_text(
+        json.dumps(word_payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
+    (output_dir / "narration.captions.json").write_text(
+        json.dumps(cue_payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
+    exact_text = " ".join(item["text"] for item in word_payload) == " ".join(canonical)
+    monotonic = all(
+        float(current["start"]) >= float(previous["end"])
+        for previous, current in zip(word_payload, word_payload[1:], strict=False)
+    )
+    verification = {
+        "exact_authored_text": exact_text,
+        "monotonic_word_timings": monotonic,
+        "script_sha256": hashlib.sha256(canonical_text.encode("utf-8")).hexdigest(),
+        "word_count": len(word_payload),
+        "cue_count": len(cue_payload),
+        "maximum_words_per_cue": max(
+            (len(str(item["text"]).split()) for item in cue_payload), default=0
+        ),
+        "first_word_start": word_payload[0]["start"] if word_payload else None,
+        "last_word_end": word_payload[-1]["end"] if word_payload else None,
+    }
+    if not exact_text or not monotonic:
+        raise RuntimeError(f"Exact caption verification failed: {verification}")
+    (output_dir / "narration.caption-verification.json").write_text(
+        json.dumps(verification, indent=2) + "\n", encoding="utf-8"
+    )
+    blocks = [
+        f"{cue.index}\n{_timestamp_srt(cue.start_seconds)} --> {_timestamp_srt(cue.end_seconds)}\n{cue.text}"
+        for cue in cues
+    ]
+    (output_dir / "narration.exact.srt").write_text(
+        "\n\n".join(blocks) + "\n", encoding="utf-8"
+    )
+    return cues
+
+
+def rebuild_exact_caption_sidecars(
+    canonical_text: str,
+    output_dir: Path,
+    *,
+    max_words: int,
+    minimum_seconds: float,
+) -> list[SubtitleCue]:
+    """Reflow an existing exact word track without synthesizing the voice again."""
+    words_path = output_dir / "narration.words.json"
+    if not words_path.is_file():
+        raise FileNotFoundError(f"Exact word timing file not found: {words_path}")
+    payload: list[dict[str, Any]] = json.loads(words_path.read_text(encoding="utf-8"))
+    timed_words = [
+        (str(item["text"]), float(item["start"]), float(item["end"])) for item in payload
+    ]
+    return write_exact_caption_sidecars(
+        canonical_text,
+        timed_words,
+        output_dir,
+        max_words=max_words,
+        minimum_seconds=minimum_seconds,
+    )
+
+
+def scale_exact_caption_sidecars(output_dir: Path, factor: float) -> None:
+    """Scale exact timing sidecars after pitch-preserving duration fitting."""
+    if factor <= 0:
+        raise ValueError("Caption timing scale must be positive")
+    words_path = output_dir / "narration.words.json"
+    captions_path = output_dir / "narration.captions.json"
+    if not words_path.is_file() or not captions_path.is_file():
+        return
+    words: list[dict[str, Any]] = json.loads(words_path.read_text(encoding="utf-8"))
+    captions: list[dict[str, Any]] = json.loads(captions_path.read_text(encoding="utf-8"))
+    for item in words:
+        item["start"] = round(float(item["start"]) * factor, 4)
+        item["end"] = round(float(item["end"]) * factor, 4)
+    for item in captions:
+        item["start"] = round(float(item["start"]) * factor, 4)
+        item["end"] = round(float(item["end"]) * factor, 4)
+        item["duration"] = round(float(item["end"]) - float(item["start"]), 4)
+    words_path.write_text(
+        json.dumps(words, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
+    captions_path.write_text(
+        json.dumps(captions, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
+    blocks = [
+        f"{index}\n{_timestamp_srt(float(item['start']))} --> {_timestamp_srt(float(item['end']))}\n{item['text']}"
+        for index, item in enumerate(captions, start=1)
+    ]
+    (output_dir / "narration.exact.srt").write_text(
+        "\n\n".join(blocks) + "\n", encoding="utf-8"
+    )
+    verification_path = output_dir / "narration.caption-verification.json"
+    if verification_path.is_file():
+        verification: dict[str, Any] = json.loads(
+            verification_path.read_text(encoding="utf-8")
+        )
+        if verification.get("first_word_start") is not None:
+            verification["first_word_start"] = round(
+                float(verification["first_word_start"]) * factor, 4
+            )
+        if verification.get("last_word_end") is not None:
+            verification["last_word_end"] = round(
+                float(verification["last_word_end"]) * factor, 4
+            )
+        verification_path.write_text(
+            json.dumps(verification, indent=2) + "\n", encoding="utf-8"
+        )
 
 
 def _merge_short_cues(cues: list[SubtitleCue], minimum_seconds: float) -> list[SubtitleCue]:

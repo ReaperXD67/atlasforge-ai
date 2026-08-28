@@ -46,17 +46,23 @@ def narrate_command(
     text_file: Path = typer.Option(..., exists=True, dir_okay=False),
     output: Path = typer.Option(..., file_okay=False),
     config: Path = typer.Option(Path("config/default.yaml"), exists=True, dir_okay=False),
+    target_seconds: float | None = typer.Option(
+        None, min=1, help="Fit narration and exact captions to this edit duration."
+    ),
 ) -> None:
     """Generate mastered narration from an authored text file using the provider chain."""
     configure_logging()
     settings = load_settings(config)
     ffmpeg = FFmpeg()
     result = NarrationGenerator(settings, ffmpeg).run(
-        text_file.read_text(encoding="utf-8"), output
+        text_file.read_text(encoding="utf-8"), output, target_seconds=target_seconds
     )
     console.print(f"[bold green]Narration complete:[/] {result.value}")
     console.print(f"Provider: {result.provider}")
     console.print(f"Duration: {ffmpeg.duration(result.value):.3f}s")
+    exact_srt = output / "narration.exact.srt"
+    if exact_srt.is_file():
+        console.print(f"Exact captions: {exact_srt}")
 
 
 @app.command("run")

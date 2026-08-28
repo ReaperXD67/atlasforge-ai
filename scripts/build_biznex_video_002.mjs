@@ -8,8 +8,17 @@ const project = path.join(repo, "videos", "biznex-atomy-video-002");
 const runRoot = process.env.BIZNEX_VIDEO_002_RUN_ROOT
   ? path.resolve(process.env.BIZNEX_VIDEO_002_RUN_ROOT)
   : path.join(repo, "output", "2026-08-26-2026-08-26-fd928400");
-const timedPath = path.join(runRoot, "storyboards", "storyboard_timed.json");
-const timed = JSON.parse(fs.readFileSync(timedPath, "utf8"));
+const humanVoiceRoot = process.env.BIZNEX_VIDEO_002_AUDIO_ROOT
+  ? path.resolve(process.env.BIZNEX_VIDEO_002_AUDIO_ROOT)
+  : path.join(repo, "output", "biznex-video-002", "human-voice");
+const narrationSource = path.join(humanVoiceRoot, "narration.wav");
+const captionTimingSource = path.join(humanVoiceRoot, "narration.captions.json");
+for (const required of [narrationSource, captionTimingSource]) {
+  if (!fs.existsSync(required)) throw new Error(`Missing exact narration source: ${required}`);
+}
+const assetsDir = path.join(project, "assets");
+fs.mkdirSync(assetsDir, { recursive: true });
+fs.copyFileSync(narrationSource, path.join(assetsDir, "narration.wav"));
 
 const duration = 325.041;
 const sceneStarts = [0, 32.145, 64.29, 101.161, 155.985, 216.798, 260.943, 303.707];
@@ -28,32 +37,6 @@ const escapeHtml = (value) =>
 
 const normalizeGeneratedText = (value) => value.replace(/[ \t]+$/gm, "");
 
-const splitCaption = (text, max = 68) => {
-  const clauses = text.split(/(?<=[.!?;:])\s+|(?<=,)\s+/);
-  const chunks = [];
-  let current = "";
-  for (const clause of clauses) {
-    if (!current) current = clause;
-    else if (`${current} ${clause}`.length <= max) current += ` ${clause}`;
-    else {
-      chunks.push(current);
-      current = clause;
-    }
-  }
-  if (current) chunks.push(current);
-  return chunks.flatMap((chunk) => {
-    if (chunk.length <= max + 20) return [chunk];
-    const words = chunk.split(/\s+/);
-    const halves = [""];
-    for (const word of words) {
-      const last = halves.length - 1;
-      if ((halves[last] + " " + word).trim().length > max) halves.push(word);
-      else halves[last] = (halves[last] + " " + word).trim();
-    }
-    return halves;
-  });
-};
-
 const highlightCaption = (text) => {
   const safe = escapeHtml(text);
   return safe.replace(
@@ -62,58 +45,13 @@ const highlightCaption = (text) => {
   );
 };
 
-let narrationCursor = 0;
-const rawCaptions = [];
-for (const segment of timed.scenes) {
-  const chunks = splitCaption(segment.narration);
-  const weights = chunks.map((chunk) => Math.max(18, chunk.length));
-  const totalWeight = weights.reduce((sum, value) => sum + value, 0);
-  let local = 0;
-  chunks.forEach((chunk, index) => {
-    const part = segment.duration_seconds * (weights[index] / totalWeight);
-    rawCaptions.push({
-      start: narrationCursor + local,
-      duration: Math.max(1.05, part - 0.05),
-      text: highlightCaption(chunk),
-    });
-    local += part;
-  });
-  narrationCursor += segment.duration_seconds;
-}
-
-// Video 002 correction: a complete thought must remain readable for at least five
-// seconds. Merge short neighbouring fragments while retaining their narration anchors.
-const captions = [];
-let pendingCaptions = [];
-for (const caption of rawCaptions) {
-  pendingCaptions.push(caption);
-  const span = caption.start + caption.duration - pendingCaptions[0].start;
-  if (span >= 5) {
-    captions.push({
-      start: pendingCaptions[0].start,
-      duration: span,
-      text: pendingCaptions.map((item) => item.text).join(" "),
-    });
-    pendingCaptions = [];
-  }
-}
-if (pendingCaptions.length) {
-  const tailEnd = pendingCaptions.at(-1).start + pendingCaptions.at(-1).duration;
-  if (captions.length) {
-    const previous = captions.pop();
-    captions.push({
-      start: previous.start,
-      duration: tailEnd - previous.start,
-      text: [previous.text, ...pendingCaptions.map((item) => item.text)].join(" "),
-    });
-  } else {
-    captions.push({
-      start: pendingCaptions[0].start,
-      duration: tailEnd - pendingCaptions[0].start,
-      text: pendingCaptions.map((item) => item.text).join(" "),
-    });
-  }
-}
+// Use true neural word boundaries instead of allocating text across storyboard lengths.
+// The authored narration remains the text source of truth; only its timing is synthesized.
+const captions = JSON.parse(fs.readFileSync(captionTimingSource, "utf8")).map((cue) => ({
+  start: cue.start,
+  duration: cue.end - cue.start,
+  text: highlightCaption(cue.text),
+}));
 
 const sharedCss = `
   @font-face { font-family: Impact; src: local("Impact"); }
@@ -776,5 +714,6 @@ const captionSrt = captions.map((caption, index) => {
   return `${index + 1}\n${srtTimestamp(caption.start)} --> ${srtTimestamp(caption.start + caption.duration)}\n${plainText}`;
 }).join("\n\n") + "\n";
 fs.writeFileSync(path.join(captionOutput, "video-002-five-second-captions.srt"), captionSrt);
+fs.writeFileSync(path.join(captionOutput, "video-002-exact-captions.srt"), captionSrt);
 
 console.log(`Built ${sceneDefinitions.length} scenes and ${captions.length} caption clips.`);

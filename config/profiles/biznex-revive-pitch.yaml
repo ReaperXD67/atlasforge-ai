@@ -36,6 +36,14 @@ voice:
   edge_rate: "+4%"
   edge_pitch: "+0Hz"
   edge_volume: "+0%"
+  edge_expressive: true
+  edge_beat_max_chars: 650
+  edge_sentence_pause_ms: 120
+  edge_paragraph_pause_ms: 320
+  edge_rate_variation_pct: 2
+  edge_pitch_variation_hz: 1
+  edge_caption_max_words: 12
+  edge_caption_min_seconds: 4.0
   chatterbox_target_wpm: 140
   chatterbox_sentence_pause_ms: 120
   chatterbox_paragraph_pause_ms: 400
@@ -81,7 +89,7 @@ subtitles:
   burn_in: false
   max_words_per_caption: 12
   minimum_caption_seconds: 5.0
-  alignment: estimated
+  alignment: auto
   glossary: [Revive, Razorpay, Vercel, Vercel Functions, HMAC, UPI AutoPay, Decision Lab]
 
 publishing:

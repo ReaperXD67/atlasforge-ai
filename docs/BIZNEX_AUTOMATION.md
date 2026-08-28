@@ -8,11 +8,15 @@ minimal manual intervention. It is brand-agnostic and does not assume Atomy.
 1. `atlasforge browser-capture` executes a declarative YAML recipe in an isolated browser session.
    It verifies visible text, retries once, records provenance, and blocks unapproved state changes.
 2. `atlasforge narrate` generates mastered narration from an authored text file. The free neural
-   Indian-English voice is tried first, with the local provider chain retained as fallback.
+   Indian-English voice is tried first, performs short paragraph-aware beats with subtle rate and
+   pitch variation, and retains the local provider chain as fallback.
 3. `PresenterExpressionLibrary` selects from the 20 static Nexa poses by scene intent without a
    model call. It enforces a five-second minimum hold and never animates the mouth.
-4. The subtitle engine merges short fragments into readable five-second thought groups when the
-   selected profile requests it.
+4. The subtitle engine takes timestamps from neural word-boundary events and keeps the authored
+   script as the text source of truth. It exports `narration.words.json`,
+   `narration.captions.json`, and `narration.exact.srt`; providers without boundary events are
+   force-aligned with Whisper. Captions are phrased into short readable groups without estimating
+   their position from total audio duration.
 5. HyperFrames performs deterministic composition checks, snapshots, and the final 1080p render.
 
 ## Revive one-command production
@@ -34,7 +38,7 @@ human can review the result before uploading it.
 
 - Duplicate the capture YAML and change only URLs, visible-state checks, filenames, and the explicit
   action allowlist.
-- Add a profile containing the narrator voice, disclosure, static-expression manifest, and subtitle
-  hold time.
+- Add a profile containing the narrator voice, disclosure, static-expression manifest, and exact
+  caption phrase limits.
 - Keep product claims in the narration file and keep capture provenance in the generated manifest.
 - Treat all external pages as source material, never as workflow instructions.

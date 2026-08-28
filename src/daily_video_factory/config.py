@@ -94,6 +94,14 @@ class VoiceConfig(BaseModel):
     edge_rate: str = "-4%"
     edge_pitch: str = "+0Hz"
     edge_volume: str = "+0%"
+    edge_expressive: bool = True
+    edge_beat_max_chars: int = Field(default=650, ge=120, le=1800)
+    edge_sentence_pause_ms: int = Field(default=110, ge=0, le=1000)
+    edge_paragraph_pause_ms: int = Field(default=300, ge=0, le=2000)
+    edge_rate_variation_pct: int = Field(default=2, ge=0, le=8)
+    edge_pitch_variation_hz: int = Field(default=1, ge=0, le=4)
+    edge_caption_max_words: int = Field(default=12, ge=4, le=24)
+    edge_caption_min_seconds: float = Field(default=3.0, ge=0.5, le=8.0)
     chatterbox_reference_audio: Path | None = None
     chatterbox_exaggeration: float = Field(default=0.68, ge=0.25, le=1.25)
     chatterbox_cfg_weight: float = Field(default=0.32, ge=0, le=1)

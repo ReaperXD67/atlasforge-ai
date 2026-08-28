@@ -8,6 +8,7 @@ const project = path.join(repo, "videos", "biznex-revive-pitch-001");
 const captures = path.join(repo, "output", "revive-pitch", "captures");
 const audioSource = path.join(repo, "output", "revive-pitch", "audio", "narration.wav");
 const musicSource = path.join(repo, "output", "revive-pitch", "audio", "revive-score.wav");
+const captionTimingSource = path.join(repo, "output", "revive-pitch", "audio", "narration.captions.json");
 const expressionSource = path.join(repo, "assets", "biznex", "nexa-expressions");
 const assets = path.join(project, "assets");
 const compositions = path.join(project, "compositions");
@@ -17,7 +18,7 @@ for (const directory of [assets, compositions, deliverables, thumbnailAssets]) {
   fs.mkdirSync(directory, { recursive: true });
 }
 
-const required = [audioSource, musicSource];
+const required = [audioSource, musicSource, captionTimingSource];
 for (const source of required) {
   if (!fs.existsSync(source)) throw new Error(`Missing required source: ${source}`);
 }
@@ -97,17 +98,18 @@ function sceneHtml(scene,index){
 }
 scenes.forEach((scene,index)=>fs.writeFileSync(path.join(compositions,scene.file),sceneHtml(scene,index)));
 
-const narration = fs.readFileSync(path.join(repo,"docs","biznex","revive-pitch-narration.txt"),"utf8").trim();
-const words=narration.replace(/\s+/g," ").split(" ");
-const groups=[]; for(let i=0;i<words.length;i+=12) groups.push(words.slice(i,i+12).join(" "));
-const raw=groups.map((text,i)=>({text,start:narrationStart+narrationDuration*i/groups.length,end:narrationStart+narrationDuration*(i+1)/groups.length}));
-const captions=[]; let pending=[];
-for(const cue of raw){pending.push(cue);if(cue.end-pending[0].start>=5){captions.push({text:pending.map(x=>x.text).join(" "),start:pending[0].start,end:cue.end});pending=[];}}
-if(pending.length){const previous=captions.pop();captions.push({text:[previous.text,...pending.map(x=>x.text)].join(" "),start:previous.start,end:pending.at(-1).end});}
+// Word timings come from Edge's neural synthesis boundaries. Text remains the authored
+// script, so brand names and punctuation stay exact while the display follows the voice.
+const captions = JSON.parse(fs.readFileSync(captionTimingSource, "utf8")).map((cue) => ({
+  text: cue.text,
+  start: narrationStart + cue.start,
+  end: narrationStart + cue.end,
+}));
 
 const ts=(seconds,separator=",")=>{const ms=Math.max(0,Math.round(seconds*1000));const h=Math.floor(ms/3600000);const m=Math.floor(ms%3600000/60000);const s=Math.floor(ms%60000/1000);const milli=ms%1000;return `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}${separator}${String(milli).padStart(3,"0")}`;};
 const srt=captions.map((cue,i)=>`${i+1}\n${ts(cue.start)} --> ${ts(cue.end)}\n${cue.text}`).join("\n\n")+"\n";
 fs.writeFileSync(path.join(deliverables,"revive-five-minute-pitch.srt"),srt);
+fs.writeFileSync(path.join(deliverables,"revive-five-minute-pitch-exact.srt"),srt);
 
 const sceneMarkup=scenes.map((scene,i)=>`<div id="slot-${scene.id}" class="clip scene" data-composition-id="${scene.id}" data-composition-src="compositions/${scene.file}" data-start="${sceneStarts[i]}" data-duration="${sceneDurations[i]+(i<scenes.length-1?transition:0)}" data-track-index="${i+1}" data-width="1920" data-height="1080" style="z-index:${10+i}"></div>`).join("");
 const captionMarkup=captions.map((cue,i)=>`<div id="caption-${i+1}" class="clip caption" data-start="${cue.start.toFixed(3)}" data-duration="${(cue.end-cue.start).toFixed(3)}" data-track-index="30" data-layout-allow-caption-zone><span>${escapeHtml(cue.text)}</span></div>`).join("");

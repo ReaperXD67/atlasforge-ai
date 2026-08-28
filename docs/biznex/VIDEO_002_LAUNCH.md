@@ -2,7 +2,7 @@
 
 ## Delivered files
 
-- Master video: `output/biznex-video-002/BizNex-Atomy-Business-Plan-2026.mp4`
+- Master video: `output/biznex-video-002/BizNex-Atomy-Business-Plan-2026-human-voice-exact-captions.mp4`
 - Upload thumbnail: `output/biznex-video-002/BizNex-Video-002-Thumbnail.jpg`
 - Tracked thumbnail source: `assets/biznex/video-002-thumbnail-final.jpg`
 - Render project: `videos/biznex-atomy-video-002/`
@@ -86,7 +86,7 @@ series grows.
 - Original recurring presenter: **Nexa**, visibly labeled as an AI host.
 - Nexa retains her original illustrated expression without an animated mouth overlay.
 - Eight purpose-built animated chapters rather than stock-footage repetition.
-- 101 timed, high-contrast caption beats.
+- Exact authored captions anchored to the neural narrator's word boundaries.
 - Original diagram language for two legs, PV, ranks, allocation pools, and evidence boundaries.
 - Custom 16:9 thumbnail that uses the same host and “smaller side” visual hook.
 

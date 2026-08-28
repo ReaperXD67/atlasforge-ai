@@ -1,12 +1,15 @@
 param(
     [string]$RunRoot = "",
-    [string]$MusicSource = ""
+    [string]$MusicSource = "",
+    [switch]$SkipNarration
 )
 
 $ErrorActionPreference = "Stop"
 $scriptDirectory = Split-Path -Parent $MyInvocation.MyCommand.Path
 $repository = Split-Path -Parent $scriptDirectory
 $project = Join-Path $repository "videos\biznex-atomy-video-002"
+$atlasforge = Join-Path $repository ".venv\Scripts\atlasforge.exe"
+$humanVoiceOutput = Join-Path $repository "output\biznex-video-002\human-voice"
 
 if (-not $RunRoot) {
     $candidate = Get-ChildItem -LiteralPath (Join-Path $repository "output") -Directory |
@@ -22,11 +25,28 @@ if (-not $RunRoot) {
 }
 
 $resolvedRun = (Resolve-Path -LiteralPath $RunRoot).Path
-$narration = Join-Path $resolvedRun "audio\narration.wav"
+$script = Join-Path $resolvedRun "scripts\narration.txt"
 $timedStoryboard = Join-Path $resolvedRun "storyboards\storyboard_timed.json"
-foreach ($required in @($narration, $timedStoryboard)) {
+foreach ($required in @($script, $timedStoryboard)) {
     if (-not (Test-Path -LiteralPath $required -PathType Leaf)) {
         throw "Required Video 002 source is missing: $required"
+    }
+}
+
+if (-not $SkipNarration) {
+    & $atlasforge narrate `
+        --text-file $script `
+        --output $humanVoiceOutput `
+        --config (Join-Path $repository "config\profiles\biznex-atomy-video-002.yaml") `
+        --target-seconds 325.03
+    if ($LASTEXITCODE -ne 0) { throw "Human narration and exact caption generation failed." }
+}
+
+$narration = Join-Path $humanVoiceOutput "narration.wav"
+$captionTimings = Join-Path $humanVoiceOutput "narration.captions.json"
+foreach ($required in @($narration, $captionTimings)) {
+    if (-not (Test-Path -LiteralPath $required -PathType Leaf)) {
+        throw "Required exact narration source is missing: $required"
     }
 }
 
@@ -58,6 +78,7 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 $env:BIZNEX_VIDEO_002_RUN_ROOT = $resolvedRun
+$env:BIZNEX_VIDEO_002_AUDIO_ROOT = $humanVoiceOutput
 & node (Join-Path $scriptDirectory "build_biznex_video_002.mjs")
 if ($LASTEXITCODE -ne 0) {
     throw "The Video 002 HyperFrames source build failed."

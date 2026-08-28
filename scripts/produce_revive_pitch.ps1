@@ -25,7 +25,8 @@ if (-not $SkipNarration) {
     & $atlasforge narrate `
         --text-file (Join-Path $repository "docs\biznex\revive-pitch-narration.txt") `
         --output $audioOutput `
-        --config (Join-Path $repository "config\profiles\biznex-revive-pitch.yaml")
+        --config (Join-Path $repository "config\profiles\biznex-revive-pitch.yaml") `
+        --target-seconds 294.384
     if ($LASTEXITCODE -ne 0) { throw "Narration generation failed." }
 }
 
