@@ -74,7 +74,8 @@ class StoryboardConfig(BaseModel):
     max_scene_seconds: int = 24
     max_scenes: int = 32
     engagement_mode: Literal["classic", "retention"] = "retention"
-    pattern_interrupt_seconds: int = Field(default=18, ge=8, le=45)
+    # Shorts need faster resets than long-form explainers; profiles can now opt down to 3s.
+    pattern_interrupt_seconds: int = Field(default=18, ge=3, le=45)
     presenter_interval_scenes: int = Field(default=0, ge=0, le=20)
 
 
@@ -100,6 +101,9 @@ class VoiceConfig(BaseModel):
     edge_paragraph_pause_ms: int = Field(default=300, ge=0, le=2000)
     edge_rate_variation_pct: int = Field(default=2, ge=0, le=8)
     edge_pitch_variation_hz: int = Field(default=1, ge=0, le=4)
+    edge_hook_slowdown_pct: int = Field(default=1, ge=0, le=8)
+    edge_hook_pitch_lift_hz: int = Field(default=1, ge=0, le=4)
+    edge_closing_slowdown_pct: int = Field(default=1, ge=0, le=8)
     edge_caption_max_words: int = Field(default=12, ge=4, le=24)
     edge_caption_min_seconds: float = Field(default=3.0, ge=0.5, le=8.0)
     chatterbox_reference_audio: Path | None = None

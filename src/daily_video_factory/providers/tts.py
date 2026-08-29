@@ -381,7 +381,12 @@ class EdgeTTSProvider(TTSProvider):
                 pitch_pattern[(index - 1) % len(pitch_pattern)]
                 * self.cfg.edge_pitch_variation_hz
             )
-            if beat.rstrip().endswith("?"):
+            if index == 1:
+                rate_delta -= self.cfg.edge_hook_slowdown_pct
+                pitch_delta += self.cfg.edge_hook_pitch_lift_hz
+            if index == len(beats):
+                rate_delta -= self.cfg.edge_closing_slowdown_pct
+            if "?" in beat:
                 rate_delta -= self.cfg.edge_rate_variation_pct
                 pitch_delta += self.cfg.edge_pitch_variation_hz
             rate = self._adjust_signed(self.cfg.edge_rate, rate_delta, "%")
@@ -426,6 +431,9 @@ class EdgeTTSProvider(TTSProvider):
                     "base_rate": self.cfg.edge_rate,
                     "rate_variation_pct": self.cfg.edge_rate_variation_pct,
                     "pitch_variation_hz": self.cfg.edge_pitch_variation_hz,
+                    "hook_slowdown_pct": self.cfg.edge_hook_slowdown_pct,
+                    "hook_pitch_lift_hz": self.cfg.edge_hook_pitch_lift_hz,
+                    "closing_slowdown_pct": self.cfg.edge_closing_slowdown_pct,
                     "sentence_pause_ms": self.cfg.edge_sentence_pause_ms,
                     "paragraph_pause_ms": self.cfg.edge_paragraph_pause_ms,
                 },

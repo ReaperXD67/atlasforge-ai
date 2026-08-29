@@ -1,0 +1,44 @@
+[
+  {
+    "id": "01-half-the-packs",
+    "start": 0,
+    "duration": 7.174,
+    "end": 7.174
+  },
+  {
+    "id": "02-thirty-pack",
+    "start": 7.174,
+    "duration": 6.906,
+    "end": 14.08
+  },
+  {
+    "id": "03-sixty-pack",
+    "start": 14.08,
+    "duration": 6.858,
+    "end": 20.938
+  },
+  {
+    "id": "04-pv-density",
+    "start": 20.938,
+    "duration": 7.722,
+    "end": 28.66
+  },
+  {
+    "id": "05-price-twist",
+    "start": 28.66,
+    "duration": 9.858,
+    "end": 38.518
+  },
+  {
+    "id": "06-two-scoreboards",
+    "start": 38.518,
+    "duration": 12.45,
+    "end": 50.968
+  },
+  {
+    "id": "07-loop-cta",
+    "start": 50.968,
+    "duration": 6.508,
+    "end": 57.476
+  }
+]

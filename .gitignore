@@ -28,6 +28,9 @@ youtube_token.json
 *.part
 videos/**/renders/
 videos/**/snapshots/
+videos/**/snapshots*/
+videos/**/.hyperframes/frame-packets/
+videos/**/.hyperframes/caption-skin.html
 videos/biznex-revive-pitch-001/assets/
 videos/biznex-revive-pitch-001/thumbnail/assets/
 .DS_Store

@@ -5,7 +5,12 @@ from pathlib import Path
 
 import pytest
 
-from daily_video_factory.media.audio import generate_original_music, generate_sfx_track, mix_audio
+from daily_video_factory.media.audio import (
+    generate_original_music,
+    generate_sfx_track,
+    generate_short_sfx_set,
+    mix_audio,
+)
 from daily_video_factory.media.render import VideoRenderer
 from daily_video_factory.media.subtitles import _align_script_words, write_subtitles
 from daily_video_factory.models import Scene, ScriptDocument, Storyboard
@@ -51,6 +56,21 @@ def test_procedural_audio_has_expected_duration(tmp_path: Path) -> None:
         assert source.getnframes() == 2 * source.getframerate()
     with wave.open(str(sfx), "rb") as source:
         assert source.getnframes() == 6 * source.getframerate()
+
+
+def test_short_sfx_kit_is_complete_and_reproducible(tmp_path: Path) -> None:
+    first = generate_short_sfx_set(tmp_path / "first")
+    second = generate_short_sfx_set(tmp_path / "second")
+
+    assert {path.name for path in first} == {
+        "chime.wav",
+        "click-soft.wav",
+        "error.wav",
+        "impact-bass-1.wav",
+        "pop.wav",
+        "whoosh-short.wav",
+    }
+    assert [path.read_bytes() for path in first] == [path.read_bytes() for path in second]
 
 
 def test_subtitle_outputs(settings, tmp_path: Path) -> None:

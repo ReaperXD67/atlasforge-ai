@@ -1,0 +1,40 @@
+<template>
+  <style>
+  @font-face{font-family:BizImpact;src:local("Impact");font-weight:400 900}
+  @font-face{font-family:BizSans;src:local("Segoe UI");font-weight:400 900}
+  *{box-sizing:border-box}
+  #root{position:absolute;inset:0;width:1080px;height:1920px;overflow:hidden;color:#fff4dd;font-family:BizSans,Arial,sans-serif;container-type:size}
+  .clip{position:absolute;inset:0}
+  .ground{background:#0b0a0a;overflow:hidden}
+  .ground::before{content:"";position:absolute;inset:-100px;background-image:linear-gradient(rgba(244,185,66,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(244,185,66,.1) 1px,transparent 1px);background-size:62px 62px;opacity:.65}
+  .ground::after{content:"";position:absolute;left:-160px;top:260px;width:920px;height:920px;border:1px solid rgba(244,185,66,.18);border-radius:50%}
+  .stage{position:absolute;inset:0;padding:150px 68px 350px;overflow:hidden}
+  .label{font:800 20px/1.2 Consolas,monospace;letter-spacing:.12em;text-transform:uppercase;color:#f4b942}
+  .hero{font:900 150px/.86 BizImpact,Impact,sans-serif;letter-spacing:-.035em;text-transform:lowercase}
+  .hero .caps,.caps{text-transform:uppercase}
+  .gold{color:#f4b942}.coral{color:#ff6b5e}.ivory{color:#fff4dd}.ink{color:#0b0a0a}
+  .hairline{height:1px;background:#282726}
+  .pack{position:relative;width:340px;height:430px;border:5px solid currentColor;color:#f4b942;padding:34px 28px;background:#111}
+  .pack::before{content:"";position:absolute;left:26px;right:26px;top:96px;height:230px;background:repeating-linear-gradient(90deg,currentColor 0 5px,transparent 5px 15px);opacity:.5}
+  .pack strong{font:900 120px/.8 BizImpact,Impact,sans-serif}.pack span{position:absolute;left:28px;bottom:28px;font:900 43px/1 BizImpact,Impact,sans-serif;text-transform:uppercase}
+  .stat{font:900 132px/.84 BizImpact,Impact,sans-serif;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+  .unit{font:800 25px/1 Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}
+  .source{font:700 17px/1.35 Consolas,monospace;letter-spacing:.08em;color:#fff4dd;border-top:1px solid #504d48;padding-top:16px}
+  .bar{height:24px;border-left:1px solid #504d48;background:#1a1918;overflow:hidden}.bar>i{display:block;height:100%;background:#f4b942;transform-origin:left}
+  .nexa{position:absolute;width:520px;height:660px;object-fit:contain;filter:drop-shadow(0 24px 18px rgba(0,0,0,.55));z-index:8}
+  .stamp{display:inline-block;padding:16px 20px;background:#f4b942;color:#0b0a0a;font:900 31px/1 BizImpact,Impact,sans-serif;text-transform:uppercase}
+  .reaction{position:absolute;z-index:10;font:900 46px/1 BizImpact,Impact,sans-serif;text-transform:uppercase;padding:14px 18px;background:#ff6b5e;color:#0b0a0a}
+.boards{position:absolute;left:70px;right:70px;top:650px;display:grid;gap:38px;perspective:1600px}.board{height:310px;border:1px solid #504d48;padding:35px;background:#0b0a0a;transform-style:preserve-3d}.board.orange{background:#f4b942;color:#0b0a0a}.board-main{font:900 75px/.95 BizImpact,Impact,sans-serif;text-transform:lowercase;margin-top:30px}.warning{position:absolute;left:70px;right:70px;top:1250px;background:#ff6b5e;color:#0b0a0a;padding:22px 30px}.warning b{display:block;font:900 56px/1 BizImpact,Impact,sans-serif;text-transform:lowercase}.warning>span{display:block;margin-top:12px;font:800 23px Consolas,monospace;text-transform:uppercase}.b-nexa{right:-160px;top:1010px;width:380px;height:500px}</style>
+  <div id="root" data-composition-id="06-two-scoreboards" data-start="0" data-duration="12.45" data-width="1080" data-height="1920">
+    <div id="frame-06-two-scoreboards-ground" class="clip ground" data-start="0" data-duration="12.45" data-track-index="1"></div><div class="stage"><div id="b-family" class="label" style="margin-top:90px">SAME PRODUCT FAMILY</div><div id="b-title" class="hero" style="margin-top:28px">two<br/><span class="gold">scoreboards.</span></div><div class="boards"><div id="b-shop" class="board"><div class="label">shopping value</div><div class="board-main">cost / packet</div><div class="stat gold">$1.75</div></div><div id="b-plan" class="board orange"><div class="label ink">plan tracking</div><div class="board-main ink"><span class="caps">PV</span></div><div class="unit ink">market-specific</div></div></div><div id="b-warning" class="warning"><b><span class="caps">PV</span> is not cash</b><span>or guaranteed income</span></div><div id="b-market" class="source" style="position:absolute;left:70px;right:70px;top:1430px">MARKET + LISTING CAN CHANGE · VERIFY CURRENT LOCAL MATERIAL</div><img class="nexa b-nexa" src="public/nexa-v2-warning.png" alt="Nexa, BizNex AI host"/></div>
+  </div>
+  <script>
+    window.__timelines=window.__timelines||{};
+    const tl=gsap.timeline({paused:true});
+    tl.fromTo("#b-family",{opacity:0,y:-30},{opacity:1,y:0,duration:.5,ease:"power3.out"},.1);tl.fromTo("#b-title",{opacity:0,x:-100},{opacity:1,x:0,duration:.75,ease:"power3.out"},.55);
+      tl.fromTo("#b-shop",{opacity:0,x:-500,rotateY:24,scale:.88},{opacity:1,x:0,rotateY:8,scale:1,duration:.9,ease:"power3.out"},2.05);tl.fromTo("#b-plan",{opacity:0,x:500,rotateY:-24,scale:.88},{opacity:.78,x:0,rotateY:-8,scale:1,duration:.9,ease:"power3.out"},2.25);
+      tl.to("#b-shop",{borderColor:"#f4b942",duration:.45,ease:"power3.out"},4.65);tl.to("#b-plan",{opacity:1,duration:.5,ease:"power3.out"},7.25);
+      tl.fromTo("#b-warning",{opacity:0,x:900,rotation:6},{opacity:1,x:0,rotation:-1,duration:.7,ease:"power3.out"},9.55);tl.fromTo(".b-nexa",{opacity:0,x:140},{opacity:1,x:0,duration:.65,ease:"power3.out"},9.75);tl.fromTo("#b-market",{opacity:0,y:40},{opacity:1,y:0,duration:.45,ease:"power3.out"},11.35);
+    window.__timelines["06-two-scoreboards"]=tl;
+  </script>
+</template>

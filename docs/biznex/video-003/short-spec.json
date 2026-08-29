@@ -1,0 +1,50 @@
+{
+  "project": "videos/biznex-atomy-video-003-short",
+  "episode_label": "EP. 03 · SOURCE CHECK",
+  "source_label": "ATOMY USA · CHECKED 2026-08-28",
+  "tail_seconds": 0.8,
+  "scenes": [
+    {
+      "id": "01-half-the-packs",
+      "kind": "hook",
+      "expression": "nexa-v2-surprised.png",
+      "sfx": ["impact-bass-1.wav", "pop.wav"]
+    },
+    {
+      "id": "02-thirty-pack",
+      "kind": "thirty_pack",
+      "expression": "nexa-v2-analytical.png",
+      "sfx": ["whoosh-short.wav", "click-soft.wav"]
+    },
+    {
+      "id": "03-sixty-pack",
+      "kind": "sixty_pack",
+      "expression": "nexa-v2-questioning.png",
+      "sfx": ["whoosh-short.wav", "error.wav"]
+    },
+    {
+      "id": "04-pv-density",
+      "kind": "pv_density",
+      "expression": "nexa-v2-idea.png",
+      "sfx": ["chime.wav", "click-soft.wav"]
+    },
+    {
+      "id": "05-price-twist",
+      "kind": "price_twist",
+      "expression": "nexa-v2-confused.png",
+      "sfx": ["impact-bass-1.wav", "error.wav"]
+    },
+    {
+      "id": "06-two-scoreboards",
+      "kind": "scoreboards",
+      "expression": "nexa-v2-warning.png",
+      "sfx": ["whoosh-short.wav", "error.wav"]
+    },
+    {
+      "id": "07-loop-cta",
+      "kind": "loop_cta",
+      "expression": "nexa-v2-closing.png",
+      "sfx": ["chime.wav", "pop.wav"]
+    }
+  ]
+}

@@ -172,6 +172,59 @@ def generate_sfx_track(storyboard: Storyboard, duration_seconds: float, output: 
     return _write_wave(output, track, sample_rate)
 
 
+def generate_short_sfx_set(output: Path, sample_rate: int = 48000) -> list[Path]:
+    """Create a deterministic, royalty-free micro-SFX kit for social edits."""
+    output.mkdir(parents=True, exist_ok=True)
+    rng = np.random.default_rng(20260828)
+
+    def timeline(seconds: float) -> np.ndarray:
+        return np.arange(max(1, round(seconds * sample_rate)), dtype=np.float32) / sample_rate
+
+    def smooth_noise(length: int, window: int = 72) -> np.ndarray:
+        noise = rng.standard_normal(length).astype(np.float32)
+        return np.convolve(noise, np.ones(window, dtype=np.float32) / window, mode="same")
+
+    sounds: dict[str, np.ndarray] = {}
+    t = timeline(0.72)
+    sounds["whoosh-short.wav"] = (
+        smooth_noise(len(t), 88) * np.sin(np.pi * np.minimum(1, t / 0.72)) * 0.46
+        + np.sin(2 * np.pi * (70 + 170 * t) * t) * np.exp(-4 * t) * 0.045
+    )
+    t = timeline(0.37)
+    sounds["pop.wav"] = (
+        np.sin(2 * np.pi * (180 - 90 * t) * t) * np.exp(-18 * t) * 0.42
+        + smooth_noise(len(t), 12) * np.exp(-35 * t) * 0.09
+    )
+    t = timeline(0.23)
+    sounds["click-soft.wav"] = (
+        np.sin(2 * np.pi * 980 * t) * np.exp(-45 * t) * 0.18
+        + smooth_noise(len(t), 8) * np.exp(-65 * t) * 0.045
+    )
+    t = timeline(0.57)
+    sounds["chime.wav"] = (
+        np.sin(2 * np.pi * 740 * t)
+        + 0.42 * np.sin(2 * np.pi * 1110 * t + 0.15)
+        + 0.18 * np.sin(2 * np.pi * 1483 * t + 0.3)
+    ) * np.exp(-5.8 * t) * 0.18
+    t = timeline(0.82)
+    sounds["impact-bass-1.wav"] = (
+        np.sin(2 * np.pi * (82 - 30 * t) * t) * np.exp(-6.2 * t) * 0.48
+        + smooth_noise(len(t), 24) * np.exp(-22 * t) * 0.12
+    )
+    t = timeline(0.64)
+    sounds["error.wav"] = (
+        np.sin(2 * np.pi * 240 * t) + 0.72 * np.sin(2 * np.pi * 181 * t + 0.2)
+    ) * np.exp(-4.8 * t) * 0.16
+
+    paths: list[Path] = []
+    for name, samples in sounds.items():
+        fade = min(round(0.025 * sample_rate), len(samples) // 2)
+        if fade:
+            samples[-fade:] *= np.linspace(1, 0, fade, dtype=np.float32)
+        paths.append(_write_wave(output / name, samples, sample_rate))
+    return paths
+
+
 def mix_audio(
     narration: Path,
     music: Path,

@@ -14,6 +14,7 @@ from .config import load_settings
 from .dashboard import create_app
 from .doctor import run_doctor
 from .logging import configure_logging
+from .media.audio import generate_original_music, generate_short_sfx_set
 from .media.ffmpeg import FFmpeg
 from .models import MUSIC_EDIT_STYLES, MusicEditStyle
 from .music_video import MusicVideoPipeline
@@ -21,6 +22,7 @@ from .pipeline import DailyVideoPipeline
 from .providers.tts import NarrationGenerator
 from .publishing.youtube import YouTubePublisher
 from .scheduler import run_scheduler
+from .shorts import extract_hyperframes_narration, write_short_experiment_manifest
 from .viral_video import ViralShortPipeline
 
 app = typer.Typer(
@@ -63,6 +65,58 @@ def narrate_command(
     exact_srt = output / "narration.exact.srt"
     if exact_srt.is_file():
         console.print(f"Exact captions: {exact_srt}")
+
+
+@app.command("narrate-script")
+def narrate_script_command(
+    script: Path = typer.Option(..., exists=True, dir_okay=False, help="HyperFrames SCRIPT.md"),
+    output: Path = typer.Option(..., file_okay=False),
+    config: Path = typer.Option(Path("config/default.yaml"), exists=True, dir_okay=False),
+    target_seconds: float | None = typer.Option(
+        None, min=1, help="Optionally fit narration and exact captions to this duration."
+    ),
+) -> None:
+    """Narrate the spoken blocks in SCRIPT.md without maintaining a duplicate text file."""
+    configure_logging()
+    settings = load_settings(config)
+    ffmpeg = FFmpeg()
+    narration = extract_hyperframes_narration(script.read_text(encoding="utf-8"))
+    result = NarrationGenerator(settings, ffmpeg).run(
+        narration, output, target_seconds=target_seconds
+    )
+    console.print(f"[bold green]Narration complete:[/] {result.value}")
+    console.print(f"Provider: {result.provider}")
+    console.print(f"Duration: {ffmpeg.duration(result.value):.3f}s")
+    console.print(f"Exact captions: {output / 'narration.exact.srt'}")
+
+
+@app.command("short-manifest")
+def short_manifest_command(
+    spec: Path = typer.Option(..., exists=True, dir_okay=False),
+    output: Path = typer.Option(..., dir_okay=False),
+) -> None:
+    """Validate a Shorts growth experiment and write its measurement manifest."""
+    result = write_short_experiment_manifest(spec, output)
+    console.print(f"[bold green]Short experiment ready:[/] {result}")
+
+
+@app.command("original-music")
+def original_music_command(
+    duration: float = typer.Option(..., min=1, max=3600),
+    output: Path = typer.Option(..., dir_okay=False),
+) -> None:
+    """Generate a deterministic, original, narration-safe music bed."""
+    result = generate_original_music(duration, output)
+    console.print(f"[bold green]Original music ready:[/] {result}")
+
+
+@app.command("short-sfx")
+def short_sfx_command(
+    output: Path = typer.Option(..., file_okay=False, help="Directory for generated WAV cues."),
+) -> None:
+    """Generate the deterministic, royalty-free micro-SFX kit used by Shorts."""
+    results = generate_short_sfx_set(output)
+    console.print(f"[bold green]Short SFX kit ready:[/] {len(results)} cues in {output}")
 
 
 @app.command("run")

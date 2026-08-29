@@ -1,0 +1,67 @@
+extends: biznex-atomy-video-002.yaml
+
+script:
+  target_minutes: 0.9
+  words_per_minute: 154
+  min_words: 90
+  max_words: 150
+  script_override: null
+  title_override: "Why Does HALF the HemoHIM Box Have MORE PV?"
+  title_variants:
+    - "Atomy HemoHIM's PV Math Makes No Sense… Until This"
+    - "30 Packs, 75K PV vs 60 Packs, 66K PV — Why?"
+  thumbnail_text_options:
+    - "HALF THE PACKS. MORE PV?"
+    - "30 PACKS > 60?"
+    - "THE PV TWIST"
+  packaging_hypothesis: >-
+    A source-backed contradiction involving Atomy's best-known product creates a stronger curiosity
+    gap than a generic business-plan explanation, while the under-one-minute format lowers commitment.
+
+storyboard:
+  target_scene_seconds: 7
+  min_scene_seconds: 4
+  max_scene_seconds: 10
+  max_scenes: 8
+  engagement_mode: retention
+  pattern_interrupt_seconds: 5
+  presenter_interval_scenes: 2
+
+voice:
+  providers: [edge, kokoro]
+  edge_voice: en-IN-NeerjaNeural
+  edge_rate: "+14%"
+  edge_pitch: "+0Hz"
+  edge_expressive: true
+  edge_beat_max_chars: 180
+  edge_sentence_pause_ms: 115
+  edge_paragraph_pause_ms: 210
+  edge_rate_variation_pct: 2
+  edge_pitch_variation_hz: 1
+  edge_hook_slowdown_pct: 3
+  edge_hook_pitch_lift_hz: 2
+  edge_closing_slowdown_pct: 2
+  edge_caption_max_words: 5
+  edge_caption_min_seconds: 0.65
+  max_duration_ratio: 1.5
+  pronunciations:
+    Atomy: A-tomy
+    Nexa: Neck-suh
+    HemoHIM: Hemo Him
+    PV: P V
+
+audio:
+  music_volume_db: -30
+  sfx_volume_db: -20
+  sidechain_ratio: 14
+
+subtitles:
+  minimum_caption_seconds: 0.65
+
+video:
+  width: 1080
+  height: 1920
+  fps: 30
+
+publishing:
+  enabled: false
