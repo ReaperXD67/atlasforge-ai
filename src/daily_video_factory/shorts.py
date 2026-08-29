@@ -33,6 +33,7 @@ class ShortExperimentSpec(BaseModel):
     episode: str = Field(min_length=3, max_length=80)
     title: str = Field(min_length=10, max_length=100)
     aspect: str = "1080x1920"
+    thumbnail_aspect: str = "1080x1920"
     target_duration_seconds: float = Field(gt=0, le=180)
     hook_delivery_seconds: float = Field(gt=0, le=3)
     pattern_interrupt_seconds: float = Field(gt=0, le=8)
@@ -48,12 +49,16 @@ class ShortExperimentSpec(BaseModel):
 
     @model_validator(mode="after")
     def validate_vertical_delivery(self) -> ShortExperimentSpec:
-        match = re.fullmatch(r"(\d+)x(\d+)", self.aspect)
-        if not match:
-            raise ValueError("aspect must use WIDTHxHEIGHT")
-        width, height = (int(value) for value in match.groups())
-        if width >= height:
-            raise ValueError("Shorts experiments must use a vertical canvas")
+        for field_name in ("aspect", "thumbnail_aspect"):
+            value = getattr(self, field_name)
+            match = re.fullmatch(r"(\d+)x(\d+)", value)
+            if not match:
+                raise ValueError(f"{field_name} must use WIDTHxHEIGHT")
+            width, height = (int(part) for part in match.groups())
+            if width >= height:
+                raise ValueError(f"Shorts {field_name} must use a vertical canvas")
+            if field_name == "thumbnail_aspect" and width * 16 != height * 9:
+                raise ValueError("Shorts thumbnails must use an exact 9:16 canvas")
         return self
 
 
@@ -65,6 +70,7 @@ def build_short_experiment_manifest(spec: ShortExperimentSpec) -> dict[str, obje
         "youtube_short_eligible": spec.target_duration_seconds <= 180,
         "delivery": {
             "aspect": spec.aspect,
+            "thumbnail_aspect": spec.thumbnail_aspect,
             "target_duration_seconds": spec.target_duration_seconds,
             "hook_delivery_seconds": spec.hook_delivery_seconds,
             "pattern_interrupt_seconds": spec.pattern_interrupt_seconds,

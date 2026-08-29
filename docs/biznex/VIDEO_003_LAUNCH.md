@@ -42,7 +42,9 @@ HALF THE PACKS.
 
 MORE PV?
 
-Supporting stamp: THIS LOOKS BACKWARDS
+Proof badge: +9,000 PV
+
+Format: true 9:16 portrait, 1080 × 1920
 
 ## Upload settings
 
@@ -52,7 +54,7 @@ Supporting stamp: THIS LOOKS BACKWARDS
 - Audience: Not made for kids
 - Altered/synthetic content: Disclose the AI-created presenter and production where YouTube requests it
 - Filename: `BizNex-Video-003-HemoHIM-PV-Short.mp4`
-- Thumbnail: `BizNex-Video-003-Thumbnail.png`
+- Thumbnail: `BizNex-Video-003-Thumbnail-9x16.png`
 - Captions: upload `narration.exact.srt`; it is generated from the final authored narration timing
 
 ## Measurement plan

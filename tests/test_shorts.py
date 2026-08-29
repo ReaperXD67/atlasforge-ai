@@ -47,6 +47,24 @@ def test_short_experiment_rejects_landscape() -> None:
         )
 
 
+def test_short_experiment_rejects_non_9x16_thumbnail() -> None:
+    with pytest.raises(ValidationError, match="exact 9:16"):
+        ShortExperimentSpec(
+            episode="video-003",
+            title="A sufficiently useful title",
+            thumbnail_aspect="1000x1600",
+            target_duration_seconds=50,
+            hook_delivery_seconds=1.2,
+            pattern_interrupt_seconds=5,
+            hypothesis="A strong curiosity gap should increase completed views.",
+            primary_metric="average_percentage_viewed",
+            secondary_metrics=["engaged_views"],
+            packaging={"hook": "Half the packs"},
+            success_thresholds={"average_percentage_viewed": 80},
+            sources=["https://example.com/source"],
+        )
+
+
 def test_short_manifest_is_deterministic_and_written(tmp_path: Path) -> None:
     payload = {
         "episode": "video-003",
@@ -69,4 +87,5 @@ def test_short_manifest_is_deterministic_and_written(tmp_path: Path) -> None:
     direct = build_short_experiment_manifest(ShortExperimentSpec.model_validate(payload))
     assert written == direct
     assert written["youtube_short_eligible"] is True
+    assert written["delivery"]["thumbnail_aspect"] == "1080x1920"
     assert written["measurement"]["checkpoints_hours"] == [24, 72]
