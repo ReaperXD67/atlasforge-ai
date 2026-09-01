@@ -354,7 +354,7 @@ class StudioManager:
                 raise ConfigurationError("The selected voice reference no longer exists")
             settings.voice.chatterbox_reference_audio = reference_voice
         if request.mode == "music_film":
-            settings.video.transition_seconds = 4 / settings.video.fps
+            settings.video.transition_seconds = 0.0
             settings.video.stock_video_max_scenes_per_video = 64
             settings.video.stock_video_min_duration_seconds = 2
             settings.images.providers = ["title_card"]

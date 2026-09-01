@@ -1,0 +1,38 @@
+USER REQUEST (verbatim)
+
+Ok the last video you created was a youtube shorts only got 11 views I want it be quite viral its not working like that please research and make something which really attracts a lot of audience take all you time also we liked the female voice that you created in the first video for the atomy the new one os rubbish do something abt it and even improve that to another level
+
+RESEARCHED SOURCE MATERIAL
+
+Atomy Masstige Times — “Atomy’s Global Favorites!”
+Published: December 2025
+URL: https://mt.atomy.com/content/153?langCode=en&mainType=N
+
+- Based on global sales revenue, HemoHIM (including HemoHIM G) was Atomy’s top product and generated more than KRW 300 billion.
+- By units sold, Evening Care ranked first with nearly 5 million sets.
+- Toothpaste+ followed with 4.6 million sets.
+- HemoHIM sold 3 million boxes.
+- The point of the Short is that “number one” changes depending on whether the scoreboard is revenue or units sold.
+
+CURRENT SHORTS CREATIVE SIGNALS
+
+- YouTube’s July 2026 creator guidance recommends hooking viewers in the first couple of seconds and using low-friction quiz or poll interactions to keep viewers engaged.
+- YouTube’s Shorts ABCD guidance recommends tight framing, clear messaging, coordinated sight and sound, and making the main subject unavoidable.
+- YouTube retention guidance recommends moving compelling later moments earlier because audience size typically declines over time.
+
+CREATIVE DIAGNOSIS OF VIDEO 003
+
+- The topic required viewers to understand PV, narrowing the addressable audience.
+- The full payoff took too long for a cold-feed viewer.
+- The 57-second edit carried seven proof beats and a long disclaimer section.
+- The visual system stayed dark and report-like for too much of the runtime.
+- The narrator changed from the warmer Kokoro af_heart voice used in Video 001 to Edge en-IN-NeerjaNeural.
+
+NEW DIRECTION
+
+- Use a 26-second quiz with three visible answer choices.
+- Deliver the trick answer before five seconds.
+- Use broad product categories and no PV jargon.
+- Restore Kokoro af_heart and direct it as warm, playful, and conversational.
+- Use a bright neobrutalist candy-poster system with a visual change every two to three seconds.
+- Close with a direct “Did you guess it?” interaction and a clean audio/visual loop.

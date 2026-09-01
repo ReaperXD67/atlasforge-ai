@@ -41,17 +41,30 @@ def select_motion_window(
         early = float(np.mean(sample[: max(1, sample_fps)]))
         variation = float(np.std(sample))
         abruptness = max(0.0, float(np.max(sample) - np.percentile(sample, 75)) - 0.35)
+        # A usable music-video shot can be energetic without vibrating. Penalize rapid
+        # high/low alternation in frame motion so action is preferred over camera jitter.
+        motion_jerk = float(np.mean(np.abs(np.diff(sample)))) if len(sample) > 1 else 0.0
+        spike = max(0.0, float(np.percentile(sample, 95) - np.median(sample)) - 0.25)
         # A high-motion cut should arrive alive; a calm phrase should stay controlled.
         arrival_bonus = early * (0.18 if target_energy >= 0.55 else 0.05)
         coherence_penalty = variation * (0.08 if target_energy >= 0.55 else 0.6)
-        score = 1 - abs(average - desired) + arrival_bonus - coherence_penalty - abruptness * 0.35
+        jitter_penalty = motion_jerk * (0.45 if target_energy >= 0.55 else 0.85)
+        score = (
+            1
+            - abs(average - desired)
+            + arrival_bonus
+            - coherence_penalty
+            - abruptness * 0.35
+            - jitter_penalty
+            - spike * 0.30
+        )
         if score > best_score:
             best_score = score
             best_index = index
         start_seconds = index / sample_fps
         end_seconds = start_seconds + target_duration
         crosses_cut = any(
-            start_seconds + 0.12 < boundary < end_seconds - 0.12
+            start_seconds + 0.02 < boundary < end_seconds - 0.02
             for boundary in (scene_boundaries or [])
         )
         if not crosses_cut and score > best_safe_score:
@@ -106,9 +119,16 @@ def music_video_filters(
         value for value in scene.beat_accents_seconds[:3] if 0 <= value < max(0, duration - 0.03)
     ]
     filters: list[str] = []
-    if accents and scene.visual_mode != "information_card":
+    if (
+        accents
+        and scene.visual_mode != "information_card"
+        and scene.music_camera_motion == "pulse"
+    ):
         pulse_parts = [
-            (f"if(between(t,{value:.3f},{value + 0.14:.3f}),0.018*(1-(t-{value:.3f})/0.14),0)")
+            (
+                f"if(between(t,{value:.3f},{value + 0.18:.3f}),"
+                f"0.009*sin(PI*(t-{value:.3f})/0.18),0)"
+            )
             for value in accents
         ]
         pulse = "+".join(pulse_parts)
@@ -130,8 +150,8 @@ def music_video_filters(
         filters.append("noise=alls=2:allf=t+u")
     if scene.music_treatment == "shutter_trail":
         for accent_index, value in enumerate(accents[:2]):
-            trail_end = min(duration, value + 0.18)
-            shift = 5 if accent_index % 2 == 0 else -5
+            trail_end = min(duration, value + 0.14)
+            shift = 3 if accent_index % 2 == 0 else -3
             filters.append(
                 f"chromashift=cbh={-shift}:crh={shift}:edge=smear:"
                 f"enable='between(t,{value:.3f},{trail_end:.3f})'"
@@ -143,7 +163,7 @@ def music_video_filters(
     elif scene.music_treatment == "neon_flash":
         for accent_index, value in enumerate(accents[:2]):
             split_end = min(duration, value + 3 / fps)
-            shift = 4 if accent_index % 2 == 0 else -4
+            shift = 2 if accent_index % 2 == 0 else -2
             filters.append(
                 f"chromashift=cbh={-shift}:crh={shift}:edge=smear:"
                 f"enable='between(t,{value:.3f},{split_end:.3f})'"
@@ -313,33 +333,44 @@ class VideoRenderer:
     ) -> Path:
         duration = duration_seconds or scene.duration_seconds
         frames = max(2, round(duration * self.cfg.fps))
-        progress = f"(0.5-0.5*cos(PI*on/{frames - 1}))"
-        direction = 1 if scene.index % 2 else -1
-        if scene.visual_mode in OWNED_VISUAL_MODES:
-            x_expr = "(iw-iw/zoom)*0.5"
-            zoom_amount = 0.012 if scene.visual_mode == "kinetic_statement" else 0.018
+        if scene.music_section and scene.music_camera_motion == "none":
+            # Music-film stills are held like a locked-off plate. The former zoompan treatment
+            # restarted at every scene and read as a brief camera refocus on large displays.
+            filters = [
+                (
+                    f"scale={self.cfg.width}:{self.cfg.height}:"
+                    "flags=lanczos+accurate_rnd+full_chroma_int:"
+                    "force_original_aspect_ratio=increase"
+                ),
+                f"crop={self.cfg.width}:{self.cfg.height}",
+                f"fps={self.cfg.fps}",
+                "setsar=1",
+            ]
         else:
-            x_expr = (
-                f"(iw-iw/zoom)*(0.25+0.5*{progress})"
-                if direction > 0
-                else f"(iw-iw/zoom)*(0.75-0.5*{progress})"
-            )
-            zoom_amount = 0.045
-        # Render the crop from a 2x supersampled canvas. zoompan rounds crop positions to
-        # source pixels, so the old 1.25x canvas and vertical sine visibly stepped at 60 fps.
-        # A locked optical axis plus 2x sampling makes the fallback feel like a controlled
-        # dolly instead of handheld shake.
-        y_expr = "(ih-ih/zoom)*0.5"
-        source_width = self.cfg.width * 2
-        source_height = self.cfg.height * 2
-        filters = [
-            f"scale={source_width}:{source_height}:force_original_aspect_ratio=increase",
-            f"crop={source_width}:{source_height}",
-            (
-                f"zoompan=z='1+{zoom_amount}*{progress}':x='{x_expr}':y='{y_expr}':"
-                f"d={frames}:s={self.cfg.width}x{self.cfg.height}:fps={self.cfg.fps}"
-            ),
-        ]
+            progress = f"(0.5-0.5*cos(PI*on/{frames - 1}))"
+            direction = 1 if scene.index % 2 else -1
+            if scene.visual_mode in OWNED_VISUAL_MODES:
+                x_expr = "(iw-iw/zoom)*0.5"
+                zoom_amount = 0.012 if scene.visual_mode == "kinetic_statement" else 0.018
+            else:
+                x_expr = (
+                    f"(iw-iw/zoom)*(0.25+0.5*{progress})"
+                    if direction > 0
+                    else f"(iw-iw/zoom)*(0.75-0.5*{progress})"
+                )
+                zoom_amount = 0.045
+            # Non-music image sequences retain the controlled 2x supersampled camera move.
+            y_expr = "(ih-ih/zoom)*0.5"
+            source_width = self.cfg.width * 2
+            source_height = self.cfg.height * 2
+            filters = [
+                f"scale={source_width}:{source_height}:force_original_aspect_ratio=increase",
+                f"crop={source_width}:{source_height}",
+                (
+                    f"zoompan=z='1+{zoom_amount}*{progress}':x='{x_expr}':y='{y_expr}':"
+                    f"d={frames}:s={self.cfg.width}x{self.cfg.height}:fps={self.cfg.fps}"
+                ),
+            ]
         filters.extend(
             music_video_filters(
                 scene,
@@ -388,8 +419,26 @@ class VideoRenderer:
         if source_duration > duration + 0.5:
             if scene.source_inpoint_seconds is not None:
                 inpoint = scene.source_inpoint_seconds
+                if not scene.source_inpoint_locked:
+                    boundaries = self.ffmpeg.video_scene_boundaries(source)
+                    crosses_cut = any(
+                        inpoint + 0.02 < boundary < inpoint + duration - 0.02
+                        for boundary in boundaries
+                    )
+                    if crosses_cut:
+                        sample_fps = 8
+                        profile = self.ffmpeg.video_motion_profile(source, sample_fps=sample_fps)
+                        if profile:
+                            inpoint = select_motion_window(
+                                profile,
+                                sample_fps=sample_fps,
+                                target_duration=duration,
+                                target_energy=scene.music_energy,
+                                source_duration=source_duration,
+                                scene_boundaries=boundaries,
+                            )
             else:
-                sample_fps = 4
+                sample_fps = 8
                 profile = self.ffmpeg.video_motion_profile(source, sample_fps=sample_fps)
                 if profile:
                     boundaries = self.ffmpeg.video_scene_boundaries(source)
@@ -422,6 +471,10 @@ class VideoRenderer:
             filters.append(f"setpts={speed_factor:.6f}*PTS")
         else:
             filters.append("setpts=PTS-STARTPTS")
+        if scene.source_stabilization == "light":
+            filters.append(
+                "deshake=rx=4:ry=4:blocksize=8:contrast=125:search=less:edge=mirror"
+            )
         reframe_width = round(self.cfg.width * scene.source_reframe_zoom / 2) * 2
         reframe_height = round(self.cfg.height * scene.source_reframe_zoom / 2) * 2
         filters.extend(
@@ -500,7 +553,10 @@ class VideoRenderer:
         if scene_durations and len(scene_videos) > 1 and transition > 0:
             inputs = [value for path in scene_videos for value in ("-i", str(path))]
             filters = [
-                f"[{index}:v]fps={self.cfg.fps},settb=AVTB,setpts=PTS-STARTPTS[v{index}]"
+                (
+                    f"[{index}:v]fps={self.cfg.fps},setsar=1,"
+                    f"settb=AVTB,setpts=PTS-STARTPTS[v{index}]"
+                )
                 for index in range(len(scene_videos))
             ]
             previous = "v0"
@@ -543,7 +599,10 @@ class VideoRenderer:
             inputs = [value for path in scene_videos for value in ("-i", str(path))]
             scene_frames = [max(1, round(duration * self.cfg.fps)) for duration in scene_durations]
             filters = [
-                f"[{index}:v]trim=end_frame={frames},settb=AVTB,setpts=PTS-STARTPTS[v{index}]"
+                (
+                    f"[{index}:v]trim=end_frame={frames},setsar=1,"
+                    f"settb=AVTB,setpts=PTS-STARTPTS[v{index}]"
+                )
                 for index, frames in enumerate(scene_frames)
             ]
             joined = "".join(f"[v{index}]" for index in range(len(scene_videos)))

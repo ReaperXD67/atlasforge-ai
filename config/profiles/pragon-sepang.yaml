@@ -12,7 +12,7 @@ channel:
 
 video:
   fps: 60
-  transition_seconds: 0.067
+  transition_seconds: 0.0
   stock_video_providers: [pexels_video, pixabay_video]
   stock_video_max_scenes_per_video: 64
   stock_video_candidates_per_scene: 40

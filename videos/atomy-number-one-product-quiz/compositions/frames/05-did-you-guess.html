@@ -1,0 +1,53 @@
+<template>
+  <style>
+    @font-face{font-family:Inter;src:url("assets/fonts/Inter-Variable.ttf") format("truetype");font-weight:100 900;font-style:normal}
+    @font-face{font-family:SpaceGrotesk;src:url("assets/fonts/SpaceGrotesk-Variable.ttf") format("truetype");font-weight:300 700;font-style:normal}
+    *{box-sizing:border-box}
+    #root{position:absolute;inset:0;width:1080px;height:1920px;overflow:hidden;color:#000;font-family:Inter,sans-serif;container-type:size}
+    .clip{position:absolute;inset:0}
+    .f05-ground{background:#000;overflow:hidden}
+    .f05-ground::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.9) 1.5px,transparent 1.5px);background-size:30px 30px;opacity:.13}
+    .f05-stage{position:absolute;inset:0;padding:76px 58px 330px}
+    .f05-same{position:absolute;left:82px;top:495px;width:900px;height:480px;border:6px solid #fff;box-shadow:16px 16px 0 #f7cb46;display:grid;place-items:center;color:#fff;text-align:center;font:900 150px/.85 Inter,sans-serif;letter-spacing:-.06em;text-transform:uppercase}
+    .f05-two{position:absolute;left:60px;top:500px;width:960px;text-align:center;font:900 130px/.84 Inter,sans-serif;letter-spacing:-.055em;text-transform:uppercase}
+    .f05-two span{display:block;background:#fff;border:6px solid #000;box-shadow:12px 12px 0 #000;padding:42px 24px}
+    .f05-final{position:absolute;inset:0}
+    .f05-quick{position:absolute;left:62px;top:82px;padding:14px 24px;background:#fe90e8;border:3px solid #000;border-radius:999px;box-shadow:5px 5px 0 #000;font:800 24px/1 SpaceGrotesk,sans-serif;letter-spacing:.11em;text-transform:uppercase}
+    .f05-question{position:absolute;left:62px;top:285px;width:956px;font:900 142px/.82 Inter,sans-serif;letter-spacing:-.062em;text-transform:uppercase;text-align:center}
+    .f05-question span{display:block;color:#fff;-webkit-text-stroke:4px #000;text-shadow:8px 8px 0 #000}
+    .f05-choices{position:absolute;left:70px;top:895px;display:flex;gap:34px;z-index:7}
+    .f05-choice{width:435px;height:260px;border:6px solid #000;box-shadow:12px 12px 0 #000;display:flex;flex-direction:column;align-items:center;justify-content:center;font:900 114px/.8 Inter,sans-serif;letter-spacing:-.055em;text-transform:uppercase}
+    .f05-choice small{margin-top:30px;font:700 21px/1 SpaceGrotesk,sans-serif;letter-spacing:.11em}
+    .f05-yes{background:#99e885}.f05-no{background:#c0f7fe}
+    .f05-nexa{position:absolute;right:-20px;top:1080px;width:400px;height:515px;object-fit:contain;object-position:center bottom;filter:drop-shadow(9px 9px 0 #000);z-index:8}
+    .f05-logo-card{position:absolute;left:65px;top:1370px;width:520px;height:190px;background:#fff;border:5px solid #000;box-shadow:10px 10px 0 #f7cb46;display:flex;align-items:center;padding:28px 36px;z-index:9}
+    .f05-logo{width:210px;max-height:105px;object-fit:contain}
+    .f05-logo-copy{margin-left:27px;padding-left:27px;border-left:4px solid #000;font:800 21px/1.2 SpaceGrotesk,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+    .f05-star{position:absolute;right:50px;top:170px;width:170px;height:170px;background:#f7cb46;border:5px solid #000;box-shadow:8px 8px 0 #000;clip-path:polygon(50% 0,61% 33%,85% 15%,67% 39%,100% 50%,67% 61%,85% 85%,61% 67%,50% 100%,39% 67%,15% 85%,33% 61%,0 50%,33% 39%,15% 15%,39% 33%)}
+  </style>
+  <div data-hf-id="hf-v1mi" id="root" data-composition-id="05-did-you-guess" data-start="0" data-duration="2.965" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-t9ur" id="f05-ground" class="clip f05-ground" data-start="0" data-duration="2.965" data-track-index="1"></div>
+    <div data-hf-id="hf-ef2e" class="f05-stage">
+      <div data-hf-id="hf-h8kp" id="f05-same" class="f05-same">Same<br data-hf-id="hf-x5px">brand</div>
+      <div data-hf-id="hf-wajm" id="f05-two" class="f05-two"><span data-hf-id="hf-4sqg">Two<br data-hf-id="hf-rsrt">scoreboards</span></div>
+      <div data-hf-id="hf-shbw" class="f05-final"><div data-hf-id="hf-j62p" id="f05-quick" class="f05-quick">Quick—</div><div data-hf-id="hf-qrjo" class="f05-star"></div><div data-hf-id="hf-z5hs" id="f05-question" class="f05-question">Did you <span data-hf-id="hf-dpx4">guess it?</span></div><div data-hf-id="hf-rkks" class="f05-choices"><div data-hf-id="hf-axnu" id="f05-yes" class="f05-choice f05-yes">Yes<small data-hf-id="hf-ply0">Comment below</small></div><div data-hf-id="hf-gg5u" id="f05-no" class="f05-choice f05-no">No<small data-hf-id="hf-ztfu">Now you know</small></div></div><img data-hf-id="hf-p3h4" id="f05-nexa" class="f05-nexa" src="assets/nexa-closing.png" alt="Nexa inviting the viewer to answer"><div data-hf-id="hf-npw2" id="f05-logo-card" class="f05-logo-card"><img data-hf-id="hf-qplp" class="f05-logo" src="assets/biznex-logo.png" alt="BizNex"><div data-hf-id="hf-6fd2" class="f05-logo-copy">Fast facts.<br data-hf-id="hf-szow">Clear answers.</div></div></div>
+    </div>
+  </div>
+  <script>
+    window.__timelines=window.__timelines||{};
+    const f05tl=gsap.timeline({paused:true});
+    f05tl.fromTo("#f05-same",{opacity:0,scale:1.18},{opacity:1,scale:1,duration:.34,ease:"power3.out"},.02);
+    f05tl.set("#f05-ground",{backgroundColor:"#fe90e8"},.58);
+    f05tl.set("#f05-same",{opacity:0},.58);
+    f05tl.fromTo("#f05-two",{opacity:0,scale:1.12,y:22},{opacity:1,scale:1,y:0,duration:.38,ease:"power3.out"},.59);
+    f05tl.set("#f05-ground",{backgroundColor:"#ffdc8b"},1.28);
+    f05tl.set("#f05-two",{opacity:0},1.28);
+    f05tl.fromTo("#f05-question",{opacity:0,scale:1.1,y:38},{opacity:1,scale:1,y:0,duration:.38,ease:"power3.out"},1.29);
+    f05tl.fromTo("#f05-yes",{opacity:0,x:-90,scale:.9},{opacity:1,x:0,scale:1,duration:.42,ease:"power3.out"},1.58);
+    f05tl.fromTo("#f05-no",{opacity:0,x:90,scale:.9},{opacity:1,x:0,scale:1,duration:.42,ease:"power3.out"},1.7);
+    f05tl.fromTo("#f05-nexa",{opacity:0,x:110,y:60},{opacity:1,x:0,y:0,duration:.48,ease:"power3.out"},1.84);
+    f05tl.fromTo("#f05-logo-card",{opacity:0,y:70},{opacity:1,y:0,duration:.38,ease:"power3.out"},2.28);
+    f05tl.fromTo("#f05-quick",{opacity:0,x:-40},{opacity:1,x:0,duration:.32,ease:"power3.out"},2.35);
+    window.__timelines["05-did-you-guess"]=f05tl;
+  </script>
+</template>

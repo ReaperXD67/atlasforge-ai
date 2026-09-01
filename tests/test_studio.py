@@ -68,7 +68,7 @@ def test_studio_music_mode_is_beat_cut_and_keeps_publishing_off(tmp_path: Path) 
     assert request.music_edit_style == "flash_editorial"
     studio._render_job_config(request, destination)
     rendered = load_settings(destination)
-    assert rendered.video.transition_seconds == 4 / rendered.video.fps
+    assert rendered.video.transition_seconds == 0.0
     assert rendered.video.stock_video_max_scenes_per_video == 64
     assert rendered.images.providers == ["title_card"]
     assert rendered.subtitles.burn_in is False

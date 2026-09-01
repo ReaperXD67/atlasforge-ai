@@ -1,0 +1,16 @@
+extends: biznex-atomy-launch.yaml
+
+voice:
+  providers: [kokoro]
+  kokoro_voice: af_heart
+  kokoro_speed: 1.03
+  kokoro_sentence_pause_ms: 105
+  kokoro_paragraph_pause_ms: 235
+  target_lufs: -15
+  pronunciations:
+    Atomy: A-tomy
+    HemoHIM: Hemo Him
+    BizNex: Biz Nex
+
+subtitles:
+  minimum_caption_seconds: 0.55

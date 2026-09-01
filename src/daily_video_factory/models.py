@@ -179,12 +179,19 @@ class Scene(BaseModel):
     music_pacing: Literal["beat_cut", "phrase_flow"] = "phrase_flow"
     edit_intent: str = ""
     source_inpoint_seconds: float | None = Field(default=None, ge=0)
+    # Authored in-points are normally checked against cuts detected in the source. Lock only
+    # when a director deliberately wants a source edit to remain inside this storyboard scene.
+    source_inpoint_locked: bool = False
+    source_stabilization: Literal["none", "light"] = "none"
     source_reframe_zoom: float = Field(default=1.0, ge=1.0, le=2.0)
     source_reframe_x: float = Field(default=0.5, ge=0, le=1)
     source_reframe_y: float = Field(default=0.5, ge=0, le=1)
     visual_direction: str = Field(default="", max_length=1200)
     music_edit_style: MusicEditStyle = "clean"
     music_treatment: MusicTreatment = "clean_hold"
+    # Camera-like scale motion is opt-in. Hard-cut music edits default to a locked frame so
+    # transitions never resemble autofocus hunting or a Ken Burns push.
+    music_camera_motion: Literal["none", "pulse"] = "none"
     beat_accents_seconds: list[float] = Field(default_factory=list)
     motion_text_cues: list[MotionTextCue] = Field(default_factory=list)
     # Optional recurring-performer contract used by music films. Performer scenes are generated

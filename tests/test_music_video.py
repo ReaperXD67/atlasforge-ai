@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 from PIL import Image
@@ -15,7 +16,22 @@ from daily_video_factory.music_video import (
     build_racing_storyboard,
     build_sync_report,
     match_vocal_brand_words,
+    render_pragon_outro,
 )
+
+
+def test_pragon_outro_uses_the_approved_script_wordmark(tmp_path: Path) -> None:
+    output = render_pragon_outro(
+        "PRAGON",
+        tmp_path / "outro.jpg",
+        960,
+        540,
+        title="PRA-GON · SELAMANYA",
+    )
+    license_data = json.loads(output.with_suffix(".license.json").read_text(encoding="utf-8"))
+
+    assert output.exists()
+    assert license_data["wordmark"].endswith("pragon-script-logo-white.png")
 
 
 def test_racing_storyboard_quantizes_cuts_and_uses_specific_shots() -> None:
@@ -113,7 +129,17 @@ def test_custom_direction_drives_retrieval_generation_and_beat_typography() -> N
     assert any(value.startswith("drawtext=") for value in filters)
     assert any(value.startswith("drawbox=") for value in filters)
     assert not any(value.startswith("drawbox=x=0:y=0:w=iw:h=ih:") for value in filters)
-    assert any("eval=frame" in value for value in filters)
+    assert not any("0.009*sin(PI*" in value for value in filters)
+    assert not any("0.018*(1-" in value for value in filters)
+
+    pulse_filters = music_video_filters(
+        treated_scene.model_copy(update={"music_camera_motion": "pulse"}),
+        duration=treated_scene.duration_seconds,
+        width=1920,
+        height=1080,
+        fps=60,
+    )
+    assert any("0.009*sin(PI*" in value for value in pulse_filters)
 
     shutter_filters = music_video_filters(
         treated_scene.model_copy(update={"music_treatment": "shutter_trail"}),
@@ -250,6 +276,33 @@ def test_motion_window_avoids_crossing_a_source_cut() -> None:
     )
 
     assert selected >= 3.5
+
+
+def test_motion_window_rejects_a_cut_near_the_window_tail() -> None:
+    selected = select_motion_window(
+        [0.55] * 48,
+        sample_fps=8,
+        target_duration=3.0,
+        target_energy=0.7,
+        source_duration=6.0,
+        scene_boundaries=[2.94],
+    )
+
+    assert selected >= 3.0
+
+
+def test_motion_window_prefers_continuous_action_over_jitter() -> None:
+    smooth_action = [0.50, 0.52, 0.48, 0.51] * 3
+    jitter = [0.10, 0.90] * 6
+    selected = select_motion_window(
+        smooth_action + jitter,
+        sample_fps=4,
+        target_duration=3,
+        target_energy=0.7,
+        source_duration=6,
+    )
+
+    assert selected < 2.0
 
 
 def test_unprompted_vocal_matching_accepts_pragon_misrecognition_but_rejects_noise() -> None:

@@ -2353,33 +2353,70 @@ def render_pragon_outro(
 
     draw = ImageDraw.Draw(base, "RGBA")
 
-    wordmark = " ".join(_clean_hook_word(brand) or "PRAGON")
-    display_font = _font(round(height * 0.19), True, True)
-    bounds = draw.textbbox((0, 0), wordmark, font=display_font)
-    text_width = bounds[2] - bounds[0]
-    text_y = int(height * 0.25)
-    text_x = (width - text_width) // 2
-    for offset, color in ((-7, (33, 229, 255, 105)), (7, (255, 42, 91, 100))):
-        draw.text((text_x + offset, text_y), wordmark, font=display_font, fill=color)
-    draw.text(
-        (text_x, text_y),
-        wordmark,
-        font=display_font,
-        fill=(247, 245, 238, 255),
-        stroke_width=2,
-        stroke_fill=(10, 13, 18, 255),
+    # The supplied Pragon artwork is the typography source of truth.  It is composited as
+    # artwork instead of approximated with a font so the distinctive P, terminals and long
+    # g descender remain pixel-for-pixel faithful to the client's mark.
+    logo_candidates = (
+        Path("assets/pragon/branding/pragon-script-logo-white.png"),
+        project_root / "assets/pragon/branding/pragon-script-logo-white.png",
+        Path("/app/assets/pragon/branding/pragon-script-logo-white.png"),
     )
+    logo_path = next((path for path in logo_candidates if path.exists()), None)
+    if logo_path:
+        with Image.open(logo_path) as supplied_logo:
+            logo = supplied_logo.convert("RGBA")
+        target_width = round(width * 0.54)
+        scale = target_width / logo.width
+        logo = logo.resize(
+            (target_width, max(1, round(logo.height * scale))),
+            Image.Resampling.LANCZOS,
+        )
+        logo_x = (width - logo.width) // 2
+        logo_y = round(height * 0.14)
+        logo_alpha = logo.getchannel("A")
+
+        shadow = Image.new("RGBA", logo.size, (0, 0, 0, 0))
+        shadow.putalpha(logo_alpha.point(lambda value: round(value * 0.76)))
+        shadow = shadow.filter(ImageFilter.GaussianBlur(max(2, round(height * 0.008))))
+        base.alpha_composite(shadow, (logo_x, logo_y + round(height * 0.013)))
+
+        for offset, color, opacity in (
+            (-6, (33, 229, 255), 0.40),
+            (6, (255, 42, 91), 0.38),
+        ):
+            ghost = Image.new("RGBA", logo.size, (*color, 0))
+            ghost.putalpha(logo_alpha.point(lambda value, alpha=opacity: round(value * alpha)))
+            base.alpha_composite(ghost, (logo_x + offset, logo_y))
+        base.alpha_composite(logo, (logo_x, logo_y))
+    else:
+        # Portable fallback for deployments that have not yet mounted the approved artwork.
+        wordmark = " ".join(_clean_hook_word(brand) or "PRAGON")
+        display_font = _font(round(height * 0.19), True, True)
+        bounds = draw.textbbox((0, 0), wordmark, font=display_font)
+        text_width = bounds[2] - bounds[0]
+        text_y = int(height * 0.25)
+        text_x = (width - text_width) // 2
+        for offset, color in ((-7, (33, 229, 255, 105)), (7, (255, 42, 91, 100))):
+            draw.text((text_x + offset, text_y), wordmark, font=display_font, fill=color)
+        draw.text(
+            (text_x, text_y),
+            wordmark,
+            font=display_font,
+            fill=(247, 245, 238, 255),
+            stroke_width=2,
+            stroke_fill=(10, 13, 18, 255),
+        )
     subtitle_font = _font(round(height * 0.026), True)
     subtitle = f"{title.upper()}  /  MALAYSIA"
     subtitle_bounds = draw.textbbox((0, 0), subtitle, font=subtitle_font)
     draw.text(
-        ((width - (subtitle_bounds[2] - subtitle_bounds[0])) // 2, int(height * 0.55)),
+        ((width - (subtitle_bounds[2] - subtitle_bounds[0])) // 2, int(height * 0.59)),
         subtitle,
         font=subtitle_font,
         fill=(109, 224, 235, 225),
     )
     draw.line(
-        (width * 0.34, height * 0.61, width * 0.66, height * 0.61),
+        (width * 0.34, height * 0.65, width * 0.66, height * 0.65),
         fill=(255, 64, 32, 180),
         width=3,
     )
@@ -2398,7 +2435,11 @@ def render_pragon_outro(
                     background_path and background_path.name == "pragon-ember-ai-v1.png"
                 ),
                 "synthetic_scope": "final PRAGON ember resolve only",
-                "font": "Barlow / SIL Open Font License 1.1",
+                "wordmark": (
+                    str(logo_path)
+                    if logo_path
+                    else "Barlow fallback / SIL Open Font License 1.1"
+                ),
                 "background": str(background_path) if background_path else "procedural-fallback",
             },
             indent=2,
@@ -2757,10 +2798,9 @@ class MusicVideoPipeline:
 
         renderer = VideoRenderer(self.settings, self.ffmpeg)
         silent = paths.videos / "assembled_silent.mp4"
-        music_transition = min(
-            self.settings.video.transition_seconds,
-            4 / self.settings.video.fps,
-        )
+        # Music-film scene boundaries are already locked to the analyzed beat grid. Blending
+        # adjacent focal planes creates a focus-hunt/refocus artifact, so assemble hard cuts.
+        music_transition = 0.0
 
         def render() -> Path:
             rendered: list[Path] = []
@@ -2805,9 +2845,12 @@ class MusicVideoPipeline:
                     "music_energy": scene.music_energy,
                     "music_edit_style": scene.music_edit_style,
                     "music_treatment": scene.music_treatment,
+                    "music_camera_motion": scene.music_camera_motion,
                     "beat_accents_seconds": scene.beat_accents_seconds,
                     "motion_text_cues": [cue.model_dump() for cue in scene.motion_text_cues],
                     "source_inpoint_seconds": scene.source_inpoint_seconds,
+                    "source_inpoint_locked": scene.source_inpoint_locked,
+                    "source_stabilization": scene.source_stabilization,
                     "source_reframe_zoom": scene.source_reframe_zoom,
                     "source_reframe_x": scene.source_reframe_x,
                     "source_reframe_y": scene.source_reframe_y,

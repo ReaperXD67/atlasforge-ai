@@ -1,0 +1,213 @@
+<template id="captions-template" data-composition-id="captions" data-width="1080" data-height="1920">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+
+
+<style data-brand-tokens="">
+      @font-face { font-family: 'Inter'; src: url('assets/fonts/Inter-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: block; }
+      @font-face { font-family: 'Inter'; src: url('assets/fonts/Inter-700.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: block; }
+      :root {
+      --black: #000000;
+      --white: #FFFFFF;
+      --offwhite: #FFFDF5;
+      --pink: #FE90E8;
+      --blue: #C0F7FE;
+      --green: #99E885;
+      --yellow: #F7CB46;
+      --cream: #FFDC8B;
+      --cap-ink: #000000;
+      --cap-canvas: #FFFFFF;
+      --cap-accent: #F7CB46;
+      --cap-accent-2: #FFDC8B;
+      --font-display: "Inter", system-ui, serif;
+      --font-body: "Inter", system-ui, sans-serif;
+      --cap-band-top: 1600px;
+      --cap-band-height: 320px;
+      }
+    </style>
+
+<style>
+  #captions-root {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .caption-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
+  }
+  /* the keep-out band, from captionBand(H) — frame content stays above it */
+  .caption-stage {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--cap-band-top, 900px);
+    height: var(--cap-band-height, 180px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .caption-group {
+    /* every group is absolutely stacked over the SAME band — exactly one shown at a
+       time via opacity. Must be absolute: in-flow groups would lay out side-by-side. */
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+  }
+
+  /* THE bordered card — 4px black border + 8px hard offset shadow (solid black,
+     zero blur, bottom-right — blockframe's sacred depth), square corners */
+  .caption-pill {
+    max-width: 80%;
+    padding: 18px 40px 22px;
+    background: var(--cap-canvas, #ffffff);
+    border: 4px solid var(--cap-ink, #000000);
+    border-radius: 0;
+    box-shadow: 8px 8px 0 var(--cap-ink, #000000);
+  }
+  .caption-line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.12em 0.32em;
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(38px, 4.2vw, 56px);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+
+  /* upcoming — faded black ink, no stamp */
+  .caption-word {
+    display: inline-block;
+    padding: 0 0.1em;
+    color: color-mix(in srgb, var(--cap-ink, #000000) 40%, var(--cap-canvas, #ffffff));
+  }
+  /* current word — THE yellow stamp-block (box-shadow spread = a hard square block
+     w/o layout shift; no blur), black ink reading on top — blockframe's signature stamp */
+  .caption-word.is-active {
+    color: var(--cap-ink, #000000);
+    background: var(--cap-accent, #f7cb46);
+    box-shadow: 0 0 0 0.08em var(--cap-accent, #f7cb46);
+  }
+  /* already spoken — solid black ink, stamp cleared */
+  .caption-word.is-spoken {
+    color: var(--cap-ink, #000000);
+    background: transparent;
+    box-shadow: none;
+  }
+
+  /* optional per-word accents (dormant until a word-classer tags them) */
+  /* brand / key term — heavier ink weight, blockframe's display is already 900 */
+  .caption-word.cap-brand {
+    color: var(--cap-ink, #000000);
+  }
+  /* numerals / data — the body voice, slightly recessed */
+  .caption-word.cap-num {
+    font-family: "Inter", ui-monospace, monospace;
+    color: color-mix(in srgb, var(--cap-ink, #000000) 74%, var(--cap-canvas, #ffffff));
+  }
+  /* emphasis — a cream hard underline bar (the second-chroma accent) */
+  .caption-word.cap-cta {
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+    text-decoration-color: var(--cap-accent-2, #ffdc8b);
+    text-underline-offset: 0.12em;
+  }
+
+  @media (max-aspect-ratio: 9/16) {
+    .caption-pill {
+      max-width: 92%;
+    }
+    .caption-line {
+      font-size: clamp(34px, 5.4vw, 48px);
+    }
+  }
+</style>
+
+<div data-hf-id="hf-2ut4" id="captions-root" data-composition-id="captions" data-timeline-locked="" data-start="0" data-duration="21.739" data-fps="30" data-width="1080" data-height="1920">
+  <div data-hf-id="hf-9flp" class="caption-layer" aria-hidden="true">
+    <div data-hf-id="hf-ajrg" id="caption-stage" class="caption-stage"></div>
+  </div>
+</div>
+
+<script>
+  // captions.mjs injects the engine's scene-aware groups + real duration here.
+  var GROUPS = [{"id":"caption-group-0","frame":1,"start":0.05,"end":2.391,"text":"Quick—what’s Atomy’s number-one product:","words":[{"id":"caption-word-0-0","text":"Quick—what’s","start":0.05,"end":0.658},{"id":"caption-word-0-1","text":"Atomy’s","start":0.693,"end":1.182},{"id":"caption-word-0-2","text":"number-one","start":1.217,"end":1.798},{"id":"caption-word-0-3","text":"product:","start":1.833,"end":2.356}]},{"id":"caption-group-1","frame":1,"start":2.391,"end":2.948,"text":"HemoHIM,","words":[{"id":"caption-word-1-0","text":"HemoHIM,","start":2.391,"end":2.913}]},{"id":"caption-group-2","frame":1,"start":2.948,"end":3.59,"text":"toothpaste,","words":[{"id":"caption-word-2-0","text":"toothpaste,","start":2.948,"end":3.555}]},{"id":"caption-group-3","frame":1,"start":3.59,"end":4.617,"text":"or skincare?","words":[{"id":"caption-word-3-0","text":"or","start":3.59,"end":3.91},{"id":"caption-word-3-1","text":"skincare?","start":3.945,"end":4.497}]},{"id":"caption-group-4","frame":2,"start":4.637,"end":5.366,"text":"Trick question.","words":[{"id":"caption-word-4-0","text":"Trick","start":4.637,"end":4.934},{"id":"caption-word-4-1","text":"question.","start":4.969,"end":5.331}]},{"id":"caption-group-5","frame":2,"start":5.366,"end":5.976,"text":"There are","words":[{"id":"caption-word-5-0","text":"There","start":5.366,"end":5.663},{"id":"caption-word-5-1","text":"are","start":5.698,"end":5.941}]},{"id":"caption-group-6","frame":2,"start":5.976,"end":7.092,"text":"two correct answers.","words":[{"id":"caption-word-6-0","text":"two","start":5.976,"end":6.219},{"id":"caption-word-6-1","text":"correct","start":6.254,"end":6.595},{"id":"caption-word-6-2","text":"answers.","start":6.63,"end":6.972}]},{"id":"caption-group-7","frame":3,"start":7.112,"end":7.853,"text":"By revenue,","words":[{"id":"caption-word-7-0","text":"By","start":7.112,"end":7.366},{"id":"caption-word-7-1","text":"revenue,","start":7.401,"end":7.818}]},{"id":"caption-group-8","frame":3,"start":7.853,"end":9.145,"text":"HemoHIM wins—more than","words":[{"id":"caption-word-8-0","text":"HemoHIM","start":7.853,"end":8.269},{"id":"caption-word-8-1","text":"wins—more","start":8.304,"end":8.744},{"id":"caption-word-8-2","text":"than","start":8.779,"end":9.11}]},{"id":"caption-group-9","frame":3,"start":9.145,"end":10.445,"text":"three hundred billion","words":[{"id":"caption-word-9-0","text":"three","start":9.145,"end":9.508},{"id":"caption-word-9-1","text":"hundred","start":9.543,"end":9.959},{"id":"caption-word-9-2","text":"billion","start":9.994,"end":10.41}]},{"id":"caption-group-10","frame":3,"start":10.445,"end":11.359,"text":"won worldwide.","words":[{"id":"caption-word-10-0","text":"won","start":10.445,"end":10.741},{"id":"caption-word-10-1","text":"worldwide.","start":10.776,"end":11.239}]},{"id":"caption-group-11","frame":4,"start":11.379,"end":12.09,"text":"By units,","words":[{"id":"caption-word-11-0","text":"By","start":11.379,"end":11.643},{"id":"caption-word-11-1","text":"units,","start":11.678,"end":12.055}]},{"id":"caption-group-12","frame":4,"start":12.09,"end":13.476,"text":"Evening Care wins—nearly","words":[{"id":"caption-word-12-0","text":"Evening","start":12.09,"end":12.523},{"id":"caption-word-12-1","text":"Care","start":12.558,"end":12.903},{"id":"caption-word-12-2","text":"wins—nearly","start":12.938,"end":13.441}]},{"id":"caption-group-13","frame":4,"start":13.476,"end":14.703,"text":"five million sets.","words":[{"id":"caption-word-13-0","text":"five","start":13.476,"end":13.821},{"id":"caption-word-13-1","text":"million","start":13.856,"end":14.289},{"id":"caption-word-13-2","text":"sets.","start":14.324,"end":14.668}]},{"id":"caption-group-14","frame":4,"start":14.703,"end":15.964,"text":"Toothpaste Plus was","words":[{"id":"caption-word-14-0","text":"Toothpaste","start":14.703,"end":15.207},{"id":"caption-word-14-1","text":"Plus","start":15.242,"end":15.586},{"id":"caption-word-14-2","text":"was","start":15.621,"end":15.929}]},{"id":"caption-group-15","frame":4,"start":15.964,"end":17.117,"text":"right behind at","words":[{"id":"caption-word-15-0","text":"right","start":15.964,"end":16.341},{"id":"caption-word-15-1","text":"behind","start":16.376,"end":16.782},{"id":"caption-word-15-2","text":"at","start":16.817,"end":17.082}]},{"id":"caption-group-16","frame":4,"start":17.117,"end":18.251,"text":"four point six","words":[{"id":"caption-word-16-0","text":"four","start":17.117,"end":17.461},{"id":"caption-word-16-1","text":"point","start":17.496,"end":17.873},{"id":"caption-word-16-2","text":"six","start":17.908,"end":18.216}]},{"id":"caption-group-17","frame":4,"start":18.251,"end":18.804,"text":"million.","words":[{"id":"caption-word-17-0","text":"million.","start":18.251,"end":18.684}]},{"id":"caption-group-18","frame":5,"start":18.824,"end":19.491,"text":"Same brand.","words":[{"id":"caption-word-18-0","text":"Same","start":18.824,"end":19.109},{"id":"caption-word-18-1","text":"brand.","start":19.144,"end":19.456}]},{"id":"caption-group-19","frame":5,"start":19.491,"end":20.25,"text":"Two scoreboards.","words":[{"id":"caption-word-19-0","text":"Two","start":19.491,"end":19.746},{"id":"caption-word-19-1","text":"scoreboards.","start":19.781,"end":20.215}]},{"id":"caption-group-20","frame":5,"start":20.25,"end":20.794,"text":"So… did","words":[{"id":"caption-word-20-0","text":"So…","start":20.25,"end":20.469},{"id":"caption-word-20-1","text":"did","start":20.504,"end":20.759}]},{"id":"caption-group-21","frame":5,"start":20.794,"end":21.769,"text":"you guess it?","words":[{"id":"caption-word-21-0","text":"you","start":20.794,"end":21.048},{"id":"caption-word-21-1","text":"guess","start":21.083,"end":21.395},{"id":"caption-word-21-2","text":"it?","start":21.43,"end":21.649}]}];
+  var DURATION = 21.739;
+
+  (function () {
+    var stage = document.getElementById("caption-stage");
+
+    // build DOM: one .caption-group per group, .caption-word per word
+    GROUPS.forEach(function (group, g) {
+      var groupEl = document.createElement("div");
+      groupEl.className = "caption-group";
+      groupEl.id = "caption-group-" + g;
+      var pill = document.createElement("div");
+      pill.className = "caption-pill";
+      var line = document.createElement("div");
+      line.className = "caption-line";
+      (group.words || []).forEach(function (w, i) {
+        var span = document.createElement("span");
+        span.className = "caption-word";
+        span.id = "caption-word-" + g + "-" + i;
+        span.textContent = String(w.text);
+        line.appendChild(span);
+      });
+      pill.appendChild(line);
+      groupEl.appendChild(pill);
+      stage.appendChild(groupEl);
+    });
+
+    window.__timelines = window.__timelines || {};
+    var tl = gsap.timeline({ paused: true });
+
+    GROUPS.forEach(function (group, g) {
+      var groupEl = document.getElementById("caption-group-" + g);
+      var words = group.words || [];
+      var next = GROUPS[g + 1];
+      var isLast = g === GROUPS.length - 1;
+      var start = Math.max(0, Number(group.start));
+      var end = isLast ? DURATION : Math.min(Number(next.start), Number(group.end) + 0.3);
+      if (end <= start) end = start + 0.01;
+
+      // group on/off — exactly one group visible at a time
+      tl.set(groupEl, { opacity: 1 }, start);
+      tl.set(groupEl, { opacity: 0 }, end);
+
+      // 3-state karaoke via className SETS — seek-safe (gsap.set applies on the
+      // engine's frame-by-frame seek; .call callbacks would NOT fire).
+      words.forEach(function (w, i) {
+        var el = document.getElementById("caption-word-" + g + "-" + i);
+        var at = Math.max(start, Number(w.start));
+        tl.set(el, { className: "caption-word" }, start); // upcoming (also resets on reverse-seek)
+        tl.set(el, { className: "caption-word is-active" }, at); // current
+        tl.fromTo(el, { scale: 0.86 }, { scale: 1, duration: 0.2, ease: "back.out(2.4)" }, at);
+        if (i + 1 < words.length) {
+          var nextAt = Math.max(start, Number(words[i + 1].start));
+          tl.set(el, { className: "caption-word is-spoken" }, nextAt); // demote when next activates
+        }
+      });
+      if (words.length) {
+        var lastEl = document.getElementById("caption-word-" + g + "-" + (words.length - 1));
+        var lastSpoken = Math.min(end, Number(words[words.length - 1].end) + 0.1);
+        tl.set(lastEl, { className: "caption-word is-spoken" }, lastSpoken);
+      }
+    });
+
+    // full-span anchor so the sub-comp timeline spans the whole video
+    tl.to({}, { duration: DURATION }, 0);
+    window.__timelines["captions"] = tl;
+  })();
+</script>
+
+<style>
+  .caption-line { line-height: 1.1 !important; }
+</style>
+</template>

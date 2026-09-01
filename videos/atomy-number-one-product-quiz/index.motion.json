@@ -1,0 +1,20 @@
+{
+  "duration": 21.739,
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#f01-title",
+      "bySec": 0.5
+    },
+    {
+      "kind": "appearsBy",
+      "selector": "#f01-card-a",
+      "bySec": 1.5
+    },
+    {
+      "kind": "keepsMoving",
+      "withinSelector": "#root",
+      "maxStaticSec": 2.2
+    }
+  ]
+}

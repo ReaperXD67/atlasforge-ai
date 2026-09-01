@@ -200,6 +200,38 @@ def test_local_video_master_uses_sharp_scale_without_legacy_optical_flow(
     assert f"fps={settings.video.fps}" in video_filter
 
 
+def test_music_film_still_uses_locked_frame_without_zoompan(settings, tmp_path: Path) -> None:
+    class RecordingFFmpeg:
+        def __init__(self) -> None:
+            self.args: list[str] = []
+
+        def can_encode(self, _encoder: str) -> bool:
+            return True
+
+        def run(self, args: list[str]) -> None:
+            self.args = args
+
+    scene = Scene(
+        index=1,
+        duration_seconds=4,
+        narration="",
+        video_prompt="locked music outro",
+        visual_search_query="locked music outro",
+        music_section="outro",
+        music_edit_style="pragon_neon",
+        music_camera_motion="none",
+    )
+    ffmpeg = RecordingFFmpeg()
+    renderer = VideoRenderer(settings, ffmpeg)  # type: ignore[arg-type]
+
+    renderer.render_scene(scene, tmp_path / "outro.jpg", tmp_path / "outro.mp4")
+
+    video_filter = ffmpeg.args[ffmpeg.args.index("-vf") + 1]
+    assert "zoompan=" not in video_filter
+    assert "scale=1920:1080" in video_filter
+    assert f"fps={settings.video.fps}" in video_filter
+
+
 def test_normalize_video_scene_applies_authored_source_reframe(settings, tmp_path: Path) -> None:
     class RecordingFFmpeg:
         def __init__(self) -> None:
@@ -245,6 +277,9 @@ def test_normalize_video_scene_honors_authored_source_inpoint(settings, tmp_path
         def duration(self, _path: Path) -> float:
             return 12
 
+        def video_scene_boundaries(self, _path: Path) -> list[float]:
+            return []
+
         def run(self, args: list[str]) -> None:
             self.args = args
 
@@ -262,6 +297,39 @@ def test_normalize_video_scene_honors_authored_source_inpoint(settings, tmp_path
     renderer.normalize_video_scene(scene, tmp_path / "raw.mp4", tmp_path / "master.mp4")
 
     assert ffmpeg.args[ffmpeg.args.index("-ss") + 1] == "0.250"
+
+
+def test_normalize_video_scene_stabilizes_only_authored_light_scenes(
+    settings, tmp_path: Path
+) -> None:
+    class RecordingFFmpeg:
+        def __init__(self) -> None:
+            self.args: list[str] = []
+
+        def can_encode(self, _encoder: str) -> bool:
+            return True
+
+        def duration(self, _path: Path) -> float:
+            return 3.5
+
+        def run(self, args: list[str]) -> None:
+            self.args = args
+
+    ffmpeg = RecordingFFmpeg()
+    renderer = VideoRenderer(settings, ffmpeg)  # type: ignore[arg-type]
+    scene = Scene(
+        index=1,
+        duration_seconds=3.5,
+        narration="",
+        video_prompt="stable night portrait",
+        visual_search_query="stable night portrait",
+        source_stabilization="light",
+    )
+
+    renderer.normalize_video_scene(scene, tmp_path / "raw.mp4", tmp_path / "master.mp4")
+
+    video_filter = ffmpeg.args[ffmpeg.args.index("-vf") + 1]
+    assert "deshake=rx=4:ry=4" in video_filter
 
 
 def test_zero_transition_concat_trims_scene_padding_on_storyboard_clock(
@@ -291,6 +359,7 @@ def test_zero_transition_concat_trims_scene_padding_on_storyboard_clock(
     graph = ffmpeg.args[ffmpeg.args.index("-filter_complex") + 1]
     assert "trim=end_frame=122" in graph
     assert "trim=end_frame=340" in graph
+    assert graph.count("setsar=1") == 2
     assert "concat=n=2:v=1:a=0[joined]" in graph
     assert "[joined]fps=60,settb=1/60,setpts=N[video]" in graph
     assert "xfade" not in graph
@@ -317,10 +386,11 @@ def test_transition_concat_is_frame_normalized_and_capped_to_storyboard_duration
         scenes,
         tmp_path / "smooth.mp4",
         [2.0, 3.0],
-        transition_seconds=4 / 60,
+        transition_seconds=6 / 60,
     )
 
     graph = ffmpeg.args[ffmpeg.args.index("-filter_complex") + 1]
-    assert "xfade=transition=fade:duration=0.067:offset=2.000" in graph
+    assert "xfade=transition=fade:duration=0.100:offset=2.000" in graph
+    assert graph.count("setsar=1") == 2
     assert "fps=60,settb=1/60,setpts=N[video]" in graph
     assert ffmpeg.args[ffmpeg.args.index("-frames:v") + 1] == "300"

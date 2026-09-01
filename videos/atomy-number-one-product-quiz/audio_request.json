@@ -1,0 +1,42 @@
+{
+  "lines": [
+    {
+      "id": "01",
+      "sfx": [
+        "impact-bass-1",
+        "pop"
+      ]
+    },
+    {
+      "id": "02",
+      "sfx": [
+        "impact-bass-1",
+        "click-soft"
+      ]
+    },
+    {
+      "id": "03",
+      "sfx": [
+        "whoosh-short",
+        "click-soft"
+      ]
+    },
+    {
+      "id": "04",
+      "sfx": [
+        "whoosh-short",
+        "chime"
+      ]
+    },
+    {
+      "id": "05",
+      "sfx": [
+        "impact-bass-1",
+        "pop"
+      ]
+    }
+  ],
+  "bgm": {
+    "mode": "none"
+  }
+}

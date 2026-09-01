@@ -1,0 +1,68 @@
+<template>
+  <style>
+    @font-face{font-family:Inter;src:url("assets/fonts/Inter-Variable.ttf") format("truetype");font-weight:100 900;font-style:normal}
+    @font-face{font-family:SpaceGrotesk;src:url("assets/fonts/SpaceGrotesk-Variable.ttf") format("truetype");font-weight:300 700;font-style:normal}
+    *{box-sizing:border-box}
+    #root{position:absolute;inset:0;width:1080px;height:1920px;overflow:hidden;color:#000;font-family:Inter,sans-serif;container-type:size;perspective:1500px}
+    .clip{position:absolute;inset:0}
+    .f04-ground{background:#c0f7fe;overflow:hidden}
+    .f04-ground::before{content:"";position:absolute;inset:0;background-image:radial-gradient(#000 1.5px,transparent 1.5px);background-size:30px 30px;opacity:.12}
+    .f04-ground::after{content:"";position:absolute;right:-75px;top:570px;width:240px;height:640px;background:repeating-linear-gradient(45deg,#f7cb46 0 18px,#000 18px 23px);border:5px solid #000}
+    .f04-stage{position:absolute;inset:0;padding:72px 56px 330px}
+    .f04-tab{position:absolute;left:60px;top:75px;padding:20px 34px;background:#000;color:#fff;border:4px solid #000;box-shadow:8px 8px 0 #f7cb46;font:800 29px/1 SpaceGrotesk,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+    .f04-kicker{position:absolute;right:58px;top:88px;padding:13px 22px;background:#fe90e8;border:3px solid #000;border-radius:999px;box-shadow:5px 5px 0 #000;font:700 21px/1 SpaceGrotesk,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+    .f04-winner-entry{position:absolute;left:58px;top:250px;width:920px;height:610px;transform-style:preserve-3d}
+    .f04-runner-entry{position:absolute;right:62px;top:1010px;width:805px;height:430px;transform-style:preserve-3d}
+    .f04-card{position:absolute;inset:0;border:6px solid #000;box-shadow:14px 14px 0 #000;padding:58px 52px;background:#fff;overflow:hidden;transform-style:preserve-3d}
+    .f04-winner-card{background:#ffdc8b;transform:rotateY(4deg)}
+    .f04-runner-card{background:#fe90e8;transform:rotateY(-4deg)}
+    .f04-rank{position:absolute;right:34px;top:30px;width:165px;height:125px;background:#000;color:#fff;border:5px solid #000;box-shadow:8px 8px 0 #fff;display:grid;place-items:center;font:900 72px/1 Inter,sans-serif;letter-spacing:-.04em}
+    .f04-name{font:900 65px/.91 Inter,sans-serif;letter-spacing:-.05em;text-transform:uppercase;max-width:640px}
+    .f04-winner-card .f04-name{font-size:83px;max-width:650px}
+    .f04-value{position:absolute;left:48px;bottom:78px;font:900 150px/.82 Inter,sans-serif;letter-spacing:-.065em;font-variant-numeric:tabular-nums}
+    .f04-value small{display:block;margin-top:20px;font:800 24px/1 SpaceGrotesk,sans-serif;letter-spacing:.11em;text-transform:uppercase}
+    .f04-runner-card .f04-value{font-size:116px;bottom:48px}
+    .f04-pack-art{position:absolute;right:55px;bottom:62px;width:210px;height:285px;background:#fff;border:5px solid #000;box-shadow:9px 9px 0 #000;padding:28px 20px;font:800 25px/.95 Inter,sans-serif;text-transform:uppercase;display:flex;align-items:flex-end}
+    .f04-pack-art::before{content:"";position:absolute;left:20px;right:20px;top:25px;height:150px;background:repeating-linear-gradient(90deg,#000 0 5px,transparent 5px 14px);opacity:.78}
+    .f04-runner-card .f04-pack-art{width:155px;height:230px;right:42px;bottom:36px;font-size:18px}
+    .f04-arrow{position:absolute;left:420px;top:852px;width:270px;height:165px;z-index:8}
+    .f04-arrow svg{width:100%;height:100%;overflow:visible}
+    .f04-arrow path{fill:none;stroke:#000;stroke-width:10;stroke-linecap:square;stroke-linejoin:miter}
+    .f04-close{position:absolute;left:392px;top:905px;z-index:9;padding:13px 22px;background:#99e885;border:4px solid #000;box-shadow:7px 7px 0 #000;font:800 24px/1 SpaceGrotesk,sans-serif;letter-spacing:.11em;text-transform:uppercase;white-space:nowrap}
+    .f04-source{position:absolute;left:59px;top:1494px;width:695px;padding:18px 25px;background:#000;color:#fff;border:4px solid #000;box-shadow:8px 8px 0 #f7cb46;font:700 22px/1 SpaceGrotesk,sans-serif;letter-spacing:.09em;text-transform:uppercase}
+    .f04-confetti{position:absolute;left:550px;top:540px;width:26px;height:26px;background:#f7cb46;border:3px solid #000;z-index:12}
+    .f04-c1{background:#f7cb46}.f04-c2{background:#fe90e8}.f04-c3{background:#99e885}.f04-c4{background:#fff}.f04-c5{background:#f7cb46}.f04-c6{background:#fe90e8}.f04-c7{background:#99e885}.f04-c8{background:#fff}
+  </style>
+  <div data-hf-id="hf-3tc7" id="root" data-composition-id="04-units-winner" data-start="0" data-duration="7.445" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-itsl" id="f04-ground" class="clip f04-ground" data-start="0" data-duration="7.445" data-track-index="1"></div>
+    <div data-hf-id="hf-51oz" class="f04-stage">
+      <div data-hf-id="hf-kpfk" id="f04-tab" class="f04-tab">By units</div><div data-hf-id="hf-edlg" class="f04-kicker">Scoreboard 2</div>
+      <div data-hf-id="hf-1wam" id="f04-winner-entry" class="f04-winner-entry"><div data-hf-id="hf-0tyw" class="f04-card f04-winner-card"><div data-hf-id="hf-rf61" id="f04-rank1" class="f04-rank">1ST</div><div data-hf-id="hf-jkef" class="f04-name">Evening<br data-hf-id="hf-x5px">Care</div><div data-hf-id="hf-ilze" id="f04-value1" class="f04-value">0.0M<small data-hf-id="hf-dzld">sets sold</small></div><div data-hf-id="hf-3tap" class="f04-pack-art">4-step set</div></div></div>
+      <div data-hf-id="hf-witu" id="f04-arrow" class="f04-arrow"><svg data-hf-id="hf-ykr5" viewBox="0 0 270 165" aria-hidden="true"><path data-hf-id="hf-y4v5" id="f04-arrow-path" d="M18 30 C110 20 160 42 174 104 L230 104 M205 75 L235 104 L205 135" /></svg></div><div data-hf-id="hf-brk5" id="f04-close" class="f04-close">Close race</div>
+      <div data-hf-id="hf-00aq" id="f04-runner-entry" class="f04-runner-entry"><div data-hf-id="hf-091t" class="f04-card f04-runner-card"><div data-hf-id="hf-b97o" id="f04-rank2" class="f04-rank">2ND</div><div data-hf-id="hf-yvx4" class="f04-name">Toothpaste+</div><div data-hf-id="hf-9jc5" id="f04-value2" class="f04-value">0.0M<small data-hf-id="hf-5f37">units sold</small></div><div data-hf-id="hf-0lyq" class="f04-pack-art">Daily care</div></div></div>
+      <div data-hf-id="hf-0ipu" id="f04-source" class="f04-source">Source: Atomy official reporting</div>
+      <div data-hf-id="hf-5r5j" id="f04-c1" class="f04-confetti f04-c1"></div><div data-hf-id="hf-mld3" id="f04-c2" class="f04-confetti f04-c2"></div><div data-hf-id="hf-btav" id="f04-c3" class="f04-confetti f04-c3"></div><div data-hf-id="hf-xnbr" id="f04-c4" class="f04-confetti f04-c4"></div><div data-hf-id="hf-1n8v" id="f04-c5" class="f04-confetti f04-c5"></div><div data-hf-id="hf-qpbz" id="f04-c6" class="f04-confetti f04-c6"></div><div data-hf-id="hf-pkxr" id="f04-c7" class="f04-confetti f04-c7"></div><div data-hf-id="hf-eo3j" id="f04-c8" class="f04-confetti f04-c8"></div>
+    </div>
+  </div>
+  <script>
+    window.__timelines=window.__timelines||{};
+    const f04tl=gsap.timeline({paused:true});
+    f04tl.fromTo("#f04-tab",{opacity:0,y:-60,rotationX:-70},{opacity:1,y:0,rotationX:0,duration:.52,ease:"power3.out"},.04);
+    f04tl.fromTo("#f04-winner-entry",{opacity:0,x:-230,scale:.86},{opacity:1,x:0,scale:1,duration:.8,ease:"power3.out"},.68);
+    f04tl.fromTo("#f04-rank1",{opacity:0,scale:.2,rotation:-20},{opacity:1,scale:1,rotation:3,duration:.42,ease:"back.out(1.45)"},1.18);
+    const f04winner={value:0};
+    f04tl.to(f04winner,{value:5,duration:1.05,ease:"power2.out",onUpdate:()=>{document.getElementById("f04-value1").firstChild.nodeValue="~"+f04winner.value.toFixed(1)+"M";}},1.38);
+    f04tl.fromTo("#f04-runner-entry",{opacity:0,x:240,scale:.86},{opacity:1,x:0,scale:1,duration:.82,ease:"power3.out"},2.45);
+    f04tl.fromTo("#f04-rank2",{opacity:0,scale:.2,rotation:18},{opacity:1,scale:1,rotation:-3,duration:.42,ease:"back.out(1.45)"},3.02);
+    const f04runner={value:0};
+    f04tl.to(f04runner,{value:4.6,duration:1.1,ease:"power2.out",onUpdate:()=>{document.getElementById("f04-value2").firstChild.nodeValue=f04runner.value.toFixed(1)+"M";}},3.36);
+    const f04path=document.getElementById("f04-arrow-path"),f04len=f04path.getTotalLength();
+    gsap.set(f04path,{strokeDasharray:f04len,strokeDashoffset:f04len});
+    f04tl.to(f04path,{strokeDashoffset:0,duration:.86,ease:"power3.out"},4.55);
+    f04tl.fromTo("#f04-close",{opacity:0,scale:.65,rotation:8},{opacity:1,scale:1,rotation:-2,duration:.4,ease:"back.out(1.45)"},5.13);
+    f04tl.fromTo("#f04-source",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:.5,ease:"power3.out"},6.48);
+    const f04bursts=[[-420,-420,-24],[-185,-350,20],[10,-390,-14],[240,-320,28],[340,-150,-20],[-350,50,18],[300,80,-28],[-40,-300,12]];
+    f04bursts.forEach((v,i)=>f04tl.fromTo("#f04-c"+(i+1),{opacity:0,scale:.2,x:0,y:0,rotation:0},{opacity:1,scale:1,x:v[0],y:v[1],rotation:v[2],duration:.54,ease:"power3.out"},6.57+i*.035));
+    window.__timelines["04-units-winner"]=f04tl;
+  </script>
+</template>
