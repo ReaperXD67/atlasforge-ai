@@ -1,0 +1,9 @@
+{"id":"bgm_001","type":"bgm","path":"assets/bgm/track.wav","source":"existing","description":"track","duration":21.7,"provenance":{"provider":"local","adopted":true}}
+{"id":"image_001","type":"image","path":"assets/biznex-logo.png","source":"existing","description":"biznex logo","width":1254,"height":1254,"provenance":{"provider":"local","adopted":true}}
+{"id":"image_002","type":"image","path":"assets/nexa-analytical.png","source":"existing","description":"nexa analytical","width":1199,"height":1312,"provenance":{"provider":"local","adopted":true}}
+{"id":"image_003","type":"image","path":"assets/nexa-closing.png","source":"existing","description":"nexa closing","width":1159,"height":1358,"provenance":{"provider":"local","adopted":true}}
+{"id":"image_004","type":"image","path":"assets/nexa-surprised.png","source":"existing","description":"nexa surprised","width":1206,"height":1305,"provenance":{"provider":"local","adopted":true}}
+{"id":"sfx_001","type":"sfx","path":"assets/sfx/click-soft.mp3","source":"existing","description":"click soft","duration":0.4,"provenance":{"provider":"local","adopted":true}}
+{"id":"sfx_002","type":"sfx","path":"assets/sfx/impact-bass-1.mp3","source":"existing","description":"impact bass 1","duration":2.1,"provenance":{"provider":"local","adopted":true}}
+{"id":"sfx_003","type":"sfx","path":"assets/sfx/pop.mp3","source":"existing","description":"pop","duration":0.7,"provenance":{"provider":"local","adopted":true}}
+{"id":"sfx_004","type":"sfx","path":"assets/sfx/whoosh-short.mp3","source":"existing","description":"whoosh short","duration":0.6,"provenance":{"provider":"local","adopted":true}}

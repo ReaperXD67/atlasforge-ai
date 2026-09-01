@@ -1,0 +1,11 @@
+{
+  "duration": 13.952,
+  "maxStaticSec": 1.5,
+  "assertions": [
+    { "kind": "appearsBy", "selector": "#f1-pause", "bySec": 0.5 },
+    { "kind": "before", "a": "[data-f2-word=\"deep\"]", "b": "[data-f2-word=\"foam\"]" },
+    { "kind": "before", "a": "[class~=\"03-finish-routine-card-three\"]", "b": "[class~=\"03-finish-routine-card-four\"]" },
+    { "kind": "before", "a": "[data-f4-chip=\"1\"]", "b": "[data-f4=\"save-card\"]" },
+    { "kind": "keepsMoving" }
+  ]
+}
