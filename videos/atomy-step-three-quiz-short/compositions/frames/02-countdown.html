@@ -1,0 +1,51 @@
+<template>
+  <style>
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-700.woff2") format("woff2"); font-weight: 700 900; font-style: normal; }
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-Variable.ttf") format("truetype"); font-weight: 300 700; font-style: normal; }
+    #root { position: relative; width: 100%; height: 100%; overflow: hidden; container-type: size; color: #000; font-family: "Inter"; }
+    #f2-ground { position: absolute; inset: 0; background: #c0f7fe; }
+    #f2-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,0,0,.13) 4px, transparent 4px), linear-gradient(90deg, rgba(0,0,0,.13) 4px, transparent 4px); background-size: 88px 88px; }
+    #f2-stage { position: absolute; inset: 0; padding: 96px 64px 320px; }
+    #f2-label { display: inline-block; padding: 18px 30px; border: 4px solid #000; border-radius: 999px; background: #fff; box-shadow: 8px 8px 0 #000; font: 700 32px/1 "Space Grotesk"; letter-spacing: .12em; }
+    #f2-clock { position: relative; margin: 170px auto 0; width: 780px; height: 780px; display: grid; place-items: center; border: 8px solid #000; background: #f7cb46; box-shadow: 20px 20px 0 #000; }
+    .f2-num { position: absolute; font-size: 560px; font-weight: 900; line-height: .75; letter-spacing: -.08em; }
+    #f2-ring { position: absolute; inset: 70px; border: 10px solid #000; border-radius: 50%; }
+    #f2-ring::before, #f2-ring::after { content: ""; position: absolute; left: 50%; top: -58px; width: 10px; height: 108px; background: #000; }
+    #f2-ring::after { top: 50%; left: -58px; width: 108px; height: 10px; }
+    #f2-chips { margin-top: 120px; display: flex; justify-content: center; gap: 22px; }
+    .f2-chip { padding: 26px 24px; border: 4px solid #000; background: #fff; box-shadow: 7px 7px 0 #000; font: 900 28px/1 "Inter"; letter-spacing: -.02em; }
+    #f2-badge { position: absolute; right: 58px; top: 1280px; padding: 22px 28px; border: 4px solid #000; background: #fe90e8; box-shadow: 8px 8px 0 #000; font: 900 36px/1 "Inter"; }
+  </style>
+  <div id="root" data-composition-id="02-countdown" data-start="0" data-duration="1.851" data-width="1080" data-height="1920">
+    <div id="f2-ground" class="clip" data-start="0" data-duration="1.851" data-track-index="0"></div>
+    <div id="f2-grid" class="clip" data-start="0" data-duration="1.851" data-track-index="1"></div>
+    <div id="f2-stage" class="clip" data-start="0" data-duration="1.851" data-track-index="2">
+      <div id="f2-label">LOCK IT IN</div>
+      <div id="f2-clock">
+        <div id="f2-ring"></div>
+        <div id="f2-three" class="f2-num">3</div>
+        <div id="f2-two" class="f2-num">2</div>
+        <div id="f2-one" class="f2-num">1</div>
+      </div>
+      <div id="f2-chips"><span class="f2-chip">A</span><span class="f2-chip">B</span><span class="f2-chip">C</span></div>
+      <div id="f2-badge">YOUR ANSWER?</div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#f2-label", { x: -100, opacity: 0 }, { x: 0, opacity: 1, duration: .25, ease: "power3.out" }, 0)
+        .fromTo("#f2-clock", { scale: .78, rotation: -5, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: .32, ease: "power3.out" }, 0)
+        .fromTo("#f2-three", { scale: .5, opacity: 0 }, { scale: 1, opacity: 1, duration: .22, ease: "power3.out" }, .04)
+        .to("#f2-three", { scale: 1.35, opacity: 0, duration: .14, ease: "power3.in" }, .36)
+        .fromTo("#f2-two", { scale: .5, opacity: 0 }, { scale: 1, opacity: 1, duration: .2, ease: "power3.out" }, .45)
+        .to("#f2-two", { scale: 1.35, opacity: 0, duration: .14, ease: "power3.in" }, .8)
+        .fromTo("#f2-one", { scale: .5, opacity: 0 }, { scale: 1, opacity: 1, duration: .22, ease: "power3.out" }, .88)
+        .fromTo("#f2-chips", { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: .32, ease: "power3.out" }, .92)
+        .fromTo("#f2-badge", { x: 90, opacity: 0 }, { x: 0, opacity: 1, duration: .28, ease: "power3.out" }, 1.08)
+        .to({}, { duration: 1.451 }, 0);
+      window.__timelines["02-countdown"] = tl;
+    })();
+  </script>
+</template>

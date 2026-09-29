@@ -1,0 +1,271 @@
+{
+  "total_duration_s": 7.467,
+  "width": 1080,
+  "height": 1920,
+  "groups": [
+    {
+      "id": "caption-group-0",
+      "frame": 1,
+      "start": 0.04,
+      "end": 0.629,
+      "text": "Quick quiz.",
+      "words": [
+        {
+          "id": "caption-word-0-0",
+          "text": "Quick",
+          "start": 0.04,
+          "end": 0.316
+        },
+        {
+          "id": "caption-word-0-1",
+          "text": "quiz.",
+          "start": 0.346,
+          "end": 0.599
+        }
+      ]
+    },
+    {
+      "id": "caption-group-1",
+      "frame": 1,
+      "start": 0.629,
+      "end": 1.241,
+      "text": "Which Atomy",
+      "words": [
+        {
+          "id": "caption-word-1-0",
+          "text": "Which",
+          "start": 0.629,
+          "end": 0.905
+        },
+        {
+          "id": "caption-word-1-1",
+          "text": "Atomy",
+          "start": 0.935,
+          "end": 1.211
+        }
+      ]
+    },
+    {
+      "id": "caption-group-2",
+      "frame": 1,
+      "start": 1.241,
+      "end": 1.871,
+      "text": "Evening Care",
+      "words": [
+        {
+          "id": "caption-word-2-0",
+          "text": "Evening",
+          "start": 1.241,
+          "end": 1.559
+        },
+        {
+          "id": "caption-word-2-1",
+          "text": "Care",
+          "start": 1.589,
+          "end": 1.841
+        }
+      ]
+    },
+    {
+      "id": "caption-group-3",
+      "frame": 1,
+      "start": 1.871,
+      "end": 2.46,
+      "text": "step comes",
+      "words": [
+        {
+          "id": "caption-word-3-0",
+          "text": "step",
+          "start": 1.871,
+          "end": 2.124
+        },
+        {
+          "id": "caption-word-3-1",
+          "text": "comes",
+          "start": 2.154,
+          "end": 2.43
+        }
+      ]
+    },
+    {
+      "id": "caption-group-4",
+      "frame": 1,
+      "start": 2.46,
+      "end": 2.856,
+      "text": "third?",
+      "words": [
+        {
+          "id": "caption-word-4-0",
+          "text": "third?",
+          "start": 2.46,
+          "end": 2.736
+        }
+      ]
+    },
+    {
+      "id": "caption-group-5",
+      "frame": 2,
+      "start": 2.856,
+      "end": 3.369,
+      "text": "Three...",
+      "words": [
+        {
+          "id": "caption-word-5-0",
+          "text": "Three...",
+          "start": 2.856,
+          "end": 3.339
+        }
+      ]
+    },
+    {
+      "id": "caption-group-6",
+      "frame": 2,
+      "start": 3.369,
+      "end": 3.793,
+      "text": "two...",
+      "words": [
+        {
+          "id": "caption-word-6-0",
+          "text": "two...",
+          "start": 3.369,
+          "end": 3.763
+        }
+      ]
+    },
+    {
+      "id": "caption-group-7",
+      "frame": 2,
+      "start": 3.793,
+      "end": 4.307,
+      "text": "one...",
+      "words": [
+        {
+          "id": "caption-word-7-0",
+          "text": "one...",
+          "start": 3.793,
+          "end": 4.187
+        }
+      ]
+    },
+    {
+      "id": "caption-group-8",
+      "frame": 3,
+      "start": 4.307,
+      "end": 4.919,
+      "text": "Peeling Gel.",
+      "words": [
+        {
+          "id": "caption-word-8-0",
+          "text": "Peeling",
+          "start": 4.307,
+          "end": 4.63
+        },
+        {
+          "id": "caption-word-8-1",
+          "text": "Gel.",
+          "start": 4.66,
+          "end": 4.889
+        }
+      ]
+    },
+    {
+      "id": "caption-group-9",
+      "frame": 3,
+      "start": 4.919,
+      "end": 5.437,
+      "text": "Did you",
+      "words": [
+        {
+          "id": "caption-word-9-0",
+          "text": "Did",
+          "start": 4.919,
+          "end": 5.148
+        },
+        {
+          "id": "caption-word-9-1",
+          "text": "you",
+          "start": 5.178,
+          "end": 5.407
+        }
+      ]
+    },
+    {
+      "id": "caption-group-10",
+      "frame": 3,
+      "start": 5.437,
+      "end": 5.922,
+      "text": "get it",
+      "words": [
+        {
+          "id": "caption-word-10-0",
+          "text": "get",
+          "start": 5.437,
+          "end": 5.665
+        },
+        {
+          "id": "caption-word-10-1",
+          "text": "it",
+          "start": 5.695,
+          "end": 5.892
+        }
+      ]
+    },
+    {
+      "id": "caption-group-11",
+      "frame": 3,
+      "start": 5.922,
+      "end": 6.232,
+      "text": "right?",
+      "words": [
+        {
+          "id": "caption-word-11-0",
+          "text": "right?",
+          "start": 5.922,
+          "end": 6.202
+        }
+      ]
+    },
+    {
+      "id": "caption-group-12",
+      "frame": 3,
+      "start": 6.232,
+      "end": 6.805,
+      "text": "Save this",
+      "words": [
+        {
+          "id": "caption-word-12-0",
+          "text": "Save",
+          "start": 6.232,
+          "end": 6.489
+        },
+        {
+          "id": "caption-word-12-1",
+          "text": "this",
+          "start": 6.519,
+          "end": 6.775
+        }
+      ]
+    },
+    {
+      "id": "caption-group-13",
+      "frame": 3,
+      "start": 6.805,
+      "end": 7.507,
+      "text": "for tonight.",
+      "words": [
+        {
+          "id": "caption-word-13-0",
+          "text": "for",
+          "start": 6.805,
+          "end": 7.034
+        },
+        {
+          "id": "caption-word-13-1",
+          "text": "tonight.",
+          "start": 7.064,
+          "end": 7.387
+        }
+      ]
+    }
+  ]
+}

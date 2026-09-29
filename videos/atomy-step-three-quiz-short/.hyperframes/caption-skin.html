@@ -1,29 +1,36 @@
-<template id="captions-template" data-composition-id="captions" data-width="1080" data-height="1920">
+<!--
+  BlockFrame — caption skin (preset-local source).
+
+  This is the preset's own lower-third karaoke caption look. product-launch-video's
+  Step 2 copies it into the project as caption-skin.html; captions.mjs then fills the
+  three reserved holes, wraps the fragment in a <template>, and writes
+  compositions/captions.html:
+    · the empty GROUPS array            → the engine's scene-aware word groups
+    · the 0 duration + 0 width/height   → real total + canvas size
+    · the empty data-brand-tokens style → :root tokens derived from the project's frame.md
+
+  Token contract — reference ONLY this fixed vocab (captions.mjs injects it from
+  frame.md, so the Step-2 brand overlay flows through; each var has a blockframe literal
+  fallback for standalone preview):
+    --cap-ink · --cap-canvas · --cap-accent · --cap-accent-2 · --font-display ·
+    --font-body · --cap-band-top · --cap-band-height
+  Hooks (do not rename): .caption-group / .caption-word + states .is-active / .is-spoken,
+  root data-composition-id="captions", timeline at window.__timelines["captions"].
+  State changes use gsap.set({className}) (applied on the engine's frame-by-frame seek);
+  never tl.call() callbacks (seek does not fire them → wrong state on render).
+
+  Visual: a white card carved by a 4px black border with an 8px hard offset shadow
+  (solid black, zero blur, bottom-right — blockframe's sacred depth), square corners.
+  Inter 900, UPPERCASE, negative-tracked. Upcoming words sit in faded ink; the current
+  word gets a saturated-yellow stamp-block — a hard square highlight (box-shadow spread,
+  no blur) with black ink reading on top, blockframe's signature stamp gesture; spoken
+  words settle to solid black ink, stamp cleared. The word pops in with a snappy
+  back.out overshoot — loud, a little crooked.
+-->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
 
-
-<style data-brand-tokens="">
-      @font-face { font-family: 'Inter'; src: url('assets/fonts/Inter-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: block; }
-      @font-face { font-family: 'Inter'; src: url('assets/fonts/Inter-700.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: block; }
-      :root {
-      --black: #000000;
-      --white: #FFFFFF;
-      --offwhite: #FFFDF5;
-      --pink: #FE90E8;
-      --blue: #C0F7FE;
-      --green: #99E885;
-      --yellow: #F7CB46;
-      --cream: #FFDC8B;
-      --cap-ink: #000000;
-      --cap-canvas: #FFFFFF;
-      --cap-accent: #F7CB46;
-      --cap-accent-2: #FFDC8B;
-      --font-display: "Inter", system-ui, serif;
-      --font-body: "Inter", system-ui, sans-serif;
-      --cap-band-top: 1600px;
-      --cap-band-height: 320px;
-      }
-    </style>
+<!-- captions.mjs injects the project's :root tokens here -->
+<style data-brand-tokens></style>
 
 <style>
   #captions-root {
@@ -74,7 +81,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.12em 0.32em;
-    font-family: "Inter", system-ui, sans-serif;
+    font-family: var(--font-display, "Inter"), system-ui, sans-serif;
     font-weight: 900;
     text-transform: uppercase;
     font-size: clamp(38px, 4.2vw, 56px);
@@ -109,7 +116,7 @@
   }
   /* numerals / data — the body voice, slightly recessed */
   .caption-word.cap-num {
-    font-family: "Inter", ui-monospace, monospace;
+    font-family: var(--font-body, "Inter"), ui-monospace, monospace;
     color: color-mix(in srgb, var(--cap-ink, #000000) 74%, var(--cap-canvas, #ffffff));
   }
   /* emphasis — a cream hard underline bar (the second-chroma accent) */
@@ -130,16 +137,25 @@
   }
 </style>
 
-<div data-hf-id="hf-8xgc" id="captions-root" data-composition-id="captions" data-timeline-locked="" data-start="0" data-duration="13.952" data-fps="30" data-width="1080" data-height="1920">
-  <div data-hf-id="hf-9flp" class="caption-layer" aria-hidden="true">
-    <div data-hf-id="hf-ajrg" id="caption-stage" class="caption-stage"></div>
+<div
+  id="captions-root"
+  data-composition-id="captions"
+  data-timeline-locked
+  data-start="0"
+  data-duration="0"
+  data-fps="30"
+  data-width="0"
+  data-height="0"
+>
+  <div class="caption-layer" aria-hidden="true">
+    <div id="caption-stage" class="caption-stage"></div>
   </div>
 </div>
 
 <script>
   // captions.mjs injects the engine's scene-aware groups + real duration here.
-  var GROUPS = [{"id":"caption-group-0","frame":1,"start":0.04,"end":0.336,"text":"Pause.","words":[{"id":"caption-word-0-0","text":"Pause.","start":0.04,"end":0.306}]},{"id":"caption-group-1","frame":1,"start":0.336,"end":0.83,"text":"Are you","words":[{"id":"caption-word-1-0","text":"Are","start":0.336,"end":0.553},{"id":"caption-word-1-1","text":"you","start":0.583,"end":0.8}]},{"id":"caption-group-2","frame":1,"start":0.83,"end":1.422,"text":"using Atomy","words":[{"id":"caption-word-2-0","text":"using","start":0.83,"end":1.096},{"id":"caption-word-2-1","text":"Atomy","start":1.126,"end":1.392}]},{"id":"caption-group-3","frame":1,"start":1.422,"end":2.031,"text":"Evening Care","words":[{"id":"caption-word-3-0","text":"Evening","start":1.422,"end":1.728},{"id":"caption-word-3-1","text":"Care","start":1.758,"end":2.001}]},{"id":"caption-group-4","frame":1,"start":2.031,"end":2.494,"text":"in the","words":[{"id":"caption-word-4-0","text":"in","start":2.031,"end":2.217},{"id":"caption-word-4-1","text":"the","start":2.247,"end":2.464}]},{"id":"caption-group-5","frame":1,"start":2.494,"end":3.176,"text":"right order?","words":[{"id":"caption-word-5-0","text":"right","start":2.494,"end":2.76},{"id":"caption-word-5-1","text":"order?","start":2.79,"end":3.056}]},{"id":"caption-group-6","frame":2,"start":3.176,"end":3.917,"text":"Step one:","words":[{"id":"caption-word-6-0","text":"Step","start":3.176,"end":3.536},{"id":"caption-word-6-1","text":"one:","start":3.566,"end":3.887}]},{"id":"caption-group-7","frame":2,"start":3.917,"end":4.817,"text":"Deep Cleanser.","words":[{"id":"caption-word-7-0","text":"Deep","start":3.917,"end":4.277},{"id":"caption-word-7-1","text":"Cleanser.","start":4.307,"end":4.787}]},{"id":"caption-group-8","frame":2,"start":4.817,"end":5.558,"text":"Step two:","words":[{"id":"caption-word-8-0","text":"Step","start":4.817,"end":5.176},{"id":"caption-word-8-1","text":"two:","start":5.206,"end":5.528}]},{"id":"caption-group-9","frame":2,"start":5.558,"end":6.547,"text":"Foam Cleanser.","words":[{"id":"caption-word-9-0","text":"Foam","start":5.558,"end":5.918},{"id":"caption-word-9-1","text":"Cleanser.","start":5.948,"end":6.427}]},{"id":"caption-group-10","frame":3,"start":6.547,"end":7.345,"text":"Step three:","words":[{"id":"caption-word-10-0","text":"Step","start":6.547,"end":6.9},{"id":"caption-word-10-1","text":"three:","start":6.93,"end":7.315}]},{"id":"caption-group-11","frame":3,"start":7.345,"end":8.164,"text":"Peeling Gel.","words":[{"id":"caption-word-11-0","text":"Peeling","start":7.345,"end":7.789},{"id":"caption-word-11-1","text":"Gel.","start":7.819,"end":8.134}]},{"id":"caption-group-12","frame":3,"start":8.164,"end":8.929,"text":"Step four:","words":[{"id":"caption-word-12-0","text":"Step","start":8.164,"end":8.516},{"id":"caption-word-12-1","text":"four:","start":8.546,"end":8.899}]},{"id":"caption-group-13","frame":3,"start":8.929,"end":9.875,"text":"Peel-Off Mask.","words":[{"id":"caption-word-13-0","text":"Peel-Off","start":8.929,"end":9.372},{"id":"caption-word-13-1","text":"Mask.","start":9.402,"end":9.755}]},{"id":"caption-group-14","frame":4,"start":9.875,"end":10.335,"text":"Cleanse,","words":[{"id":"caption-word-14-0","text":"Cleanse,","start":9.875,"end":10.305}]},{"id":"caption-group-15","frame":4,"start":10.335,"end":10.707,"text":"foam,","words":[{"id":"caption-word-15-0","text":"foam,","start":10.335,"end":10.677}]},{"id":"caption-group-16","frame":4,"start":10.707,"end":11.215,"text":"exfoliate,","words":[{"id":"caption-word-16-0","text":"exfoliate,","start":10.707,"end":11.185}]},{"id":"caption-group-17","frame":4,"start":11.215,"end":11.959,"text":"then mask.","words":[{"id":"caption-word-17-0","text":"then","start":11.215,"end":11.557},{"id":"caption-word-17-1","text":"mask.","start":11.587,"end":11.929}]},{"id":"caption-group-18","frame":4,"start":11.959,"end":13.107,"text":"Save this order","words":[{"id":"caption-word-18-0","text":"Save","start":11.959,"end":12.301},{"id":"caption-word-18-1","text":"this","start":12.331,"end":12.673},{"id":"caption-word-18-2","text":"order","start":12.703,"end":13.077}]},{"id":"caption-group-19","frame":4,"start":13.107,"end":13.992,"text":"for tonight.","words":[{"id":"caption-word-19-0","text":"for","start":13.107,"end":13.412},{"id":"caption-word-19-1","text":"tonight.","start":13.442,"end":13.872}]}];
-  var DURATION = 13.952;
+  var GROUPS = [];
+  var DURATION = 0;
 
   (function () {
     var stage = document.getElementById("caption-stage");
@@ -206,8 +222,3 @@
     window.__timelines["captions"] = tl;
   })();
 </script>
-
-<style>
-  .caption-line { line-height: 1.1 !important; }
-</style>
-</template>

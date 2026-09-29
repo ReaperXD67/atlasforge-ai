@@ -1,0 +1,15 @@
+{
+  "provider": "kokoro",
+  "lang": "en-us",
+  "speed": 1.04,
+  "voice": "af_heart",
+  "lines": [
+    { "id": "1", "text": "Quick quiz. Which Atomy Evening Care step comes third?" },
+    { "id": "2", "text": "Three... two... one..." },
+    { "id": "3", "text": "Peeling Gel. Did you get it right? Save this for tonight." }
+  ],
+  "bgm": {
+    "mode": "reuse",
+    "prompt": "upbeat playful editorial pulse, light percussion, no vocals"
+  }
+}
