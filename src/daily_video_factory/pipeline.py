@@ -14,6 +14,7 @@ from .config import Settings
 from .logging import configure_logging, get_logger
 from .media.audio import generate_original_music, generate_sfx_track, mix_audio
 from .media.ffmpeg import FFmpeg
+from .media.lipsync import RhubarbLipSyncGenerator
 from .media.render import VideoRenderer
 from .media.subtitles import write_subtitles
 from .metadata import build_metadata, build_thumbnail
@@ -29,7 +30,7 @@ from .models import (
 )
 from .providers.images import SceneImageGenerator
 from .providers.tts import NarrationGenerator
-from .providers.video import PremiumSceneScheduler
+from .providers.video import LocalSceneScheduler, PremiumSceneScheduler, StockVideoScheduler
 from .publishing.youtube import YouTubePublisher
 from .quality import validate_final, validate_script
 from .research import TopicResearcher
@@ -112,7 +113,9 @@ class DailyVideoPipeline:
         factor = audio_duration / storyboard.total_duration_seconds
         for scene in storyboard.scenes:
             scene.duration_seconds = round(scene.duration_seconds * factor, 3)
-        storyboard.total_duration_seconds = round(sum(s.duration_seconds for s in storyboard.scenes), 3)
+        storyboard.total_duration_seconds = round(
+            sum(s.duration_seconds for s in storyboard.scenes), 3
+        )
         return storyboard
 
     def run(
@@ -147,18 +150,18 @@ class DailyVideoPipeline:
                 research_file = paths.research / "research.json"
 
                 def research_operation() -> ResearchReport:
-                    report = TopicResearcher(self.settings).run(publication_date)
-                    if topic_override:
-                        report.selected_title = topic_override
-                        report.selected_angle = (
-                            f"Create an education-first, skeptical beginner guide about '{topic_override}', "
-                            "using Atomy only as a neutral optional example."
-                        )
+                    report = TopicResearcher(self.settings).run(publication_date, topic_override)
                     paths.write_json("research/research.json", report)
                     return report
 
                 research = self._load_or_execute_model(
-                    "research", research_file, ResearchReport, manifest, paths, research_operation, resume
+                    "research",
+                    research_file,
+                    ResearchReport,
+                    manifest,
+                    paths,
+                    research_operation,
+                    resume,
                 )
                 manifest.topic = research.selected_title
 
@@ -194,18 +197,30 @@ class DailyVideoPipeline:
                     return board
 
                 storyboard = self._load_or_execute_model(
-                    "storyboard", storyboard_file, Storyboard, manifest, paths, storyboard_operation, resume
+                    "storyboard",
+                    storyboard_file,
+                    Storyboard,
+                    manifest,
+                    paths,
+                    storyboard_operation,
+                    resume,
                 )
 
                 narration_file = paths.audio / "narration.wav"
                 narration_provider_file = paths.audio / "provider.txt"
 
                 def narration_operation() -> Path:
-                    result = NarrationGenerator(self.settings, self.ffmpeg).run(script.full_text, paths.audio)
+                    result = NarrationGenerator(self.settings, self.ffmpeg).run(
+                        script.full_text, paths.audio
+                    )
                     narration_provider_file.write_text(result.provider, encoding="utf-8")
                     return result.value
 
-                if resume and self.store.stage_completed(manifest.run_id, "narration") and narration_file.exists():
+                if (
+                    resume
+                    and self.store.stage_completed(manifest.run_id, "narration")
+                    and narration_file.exists()
+                ):
                     narration = narration_file
                 else:
                     narration = self._execute("narration", manifest, paths, narration_operation)
@@ -219,15 +234,43 @@ class DailyVideoPipeline:
                     CostEntry(
                         stage="narration",
                         provider=narration_provider,
-                        estimated_usd={"openai": 0.12, "gemini": 0.10}.get(
-                            narration_provider, 0.0
-                        ),
+                        estimated_usd={
+                            "openai": 0.12,
+                            "gemini": 0.10,
+                            "elevenlabs": 0.70,
+                        }.get(narration_provider, 0.0),
                         note="Seven-minute planning estimate; confirm actual provider billing.",
                     ),
                 )
                 audio_duration = self.ffmpeg.duration(narration)
                 storyboard = self._retime_storyboard(storyboard, audio_duration)
                 paths.write_json("storyboards/storyboard_timed.json", storyboard)
+
+                if self.settings.lip_sync.enabled:
+                    lip_sync_file = paths.audio / "lip_sync.json"
+
+                    def lip_sync_operation() -> Path:
+                        return RhubarbLipSyncGenerator(self.settings.lip_sync).run(
+                            narration,
+                            paths.scripts / "narration.txt",
+                            lip_sync_file,
+                        )
+
+                    if not (
+                        resume
+                        and self.store.stage_completed(manifest.run_id, "lip_sync")
+                        and lip_sync_file.exists()
+                    ):
+                        self._execute("lip_sync", manifest, paths, lip_sync_operation)
+                    self._record_cost(
+                        manifest,
+                        CostEntry(
+                            stage="lip_sync",
+                            provider="rhubarb",
+                            estimated_usd=0,
+                            note="Local MIT-licensed phoneme-to-mouth-cue generation.",
+                        ),
+                    )
 
                 image_index = paths.scenes / "images.json"
 
@@ -239,19 +282,65 @@ class DailyVideoPipeline:
                         target = paths.scenes / f"scene_{scene.index:03d}.jpg"
                         provider, generated = generator.run(scene, target)
                         result[scene.index] = generated
-                        index_payload.append({"scene": scene.index, "provider": provider, "path": str(generated)})
+                        index_payload.append(
+                            {"scene": scene.index, "provider": provider, "path": str(generated)}
+                        )
                     paths.write_json("scenes/images.json", index_payload)
                     return result
 
-                if resume and self.store.stage_completed(manifest.run_id, "images") and image_index.exists():
+                if (
+                    resume
+                    and self.store.stage_completed(manifest.run_id, "images")
+                    and image_index.exists()
+                ):
                     payload = json.loads(image_index.read_text(encoding="utf-8"))
                     images = {int(item["scene"]): Path(item["path"]) for item in payload}
                 else:
                     images = self._execute("images", manifest, paths, image_operation)
 
+                def stock_video_operation() -> dict[int, Path]:
+                    generated = StockVideoScheduler(self.settings).generate(
+                        storyboard.scenes,
+                        paths.videos / "stock",
+                    )
+                    if generated:
+                        self._record_cost(
+                            manifest,
+                            CostEntry(
+                                stage="video",
+                                provider="pexels_video",
+                                estimated_usd=0,
+                                note=f"{len(generated)} free stock-video scenes with attribution",
+                            ),
+                        )
+                    paths.write_json(
+                        "videos/stock/index.json",
+                        {str(index): str(path) for index, path in generated.items()},
+                    )
+                    paths.write_json("storyboards/storyboard_timed.json", storyboard)
+                    return generated
+
+                stock_index = paths.videos / "stock" / "index.json"
+                if (
+                    resume
+                    and self.store.stage_completed(manifest.run_id, "stock_video")
+                    and stock_index.exists()
+                ):
+                    raw = json.loads(stock_index.read_text(encoding="utf-8"))
+                    stock_video = {int(index): Path(path) for index, path in raw.items()}
+                else:
+                    stock_video = self._execute(
+                        "stock_video", manifest, paths, stock_video_operation
+                    )
+
                 def premium_operation() -> dict[int, Path]:
+                    # Premium synthetic media is still a fallback. A matching real clip always
+                    # wins, even when the premium lane is enabled.
+                    remaining = [
+                        scene for scene in storyboard.scenes if scene.index not in stock_video
+                    ]
                     generated, costs = PremiumSceneScheduler(self.settings).generate(
-                        storyboard.scenes, paths.videos / "premium"
+                        remaining, paths.videos / "premium"
                     )
                     manifest.costs.extend(costs)
                     paths.write_json(
@@ -262,27 +351,95 @@ class DailyVideoPipeline:
                     return generated
 
                 premium_index = paths.videos / "premium" / "index.json"
-                if resume and self.store.stage_completed(manifest.run_id, "premium_video") and premium_index.exists():
+                if (
+                    resume
+                    and self.store.stage_completed(manifest.run_id, "premium_video")
+                    and premium_index.exists()
+                ):
                     raw = json.loads(premium_index.read_text(encoding="utf-8"))
                     premium = {int(index): Path(path) for index, path in raw.items()}
                 else:
                     premium = self._execute("premium_video", manifest, paths, premium_operation)
+
+                def local_video_operation() -> dict[int, Path]:
+                    remaining = [
+                        scene
+                        for scene in storyboard.scenes
+                        if scene.index not in stock_video and scene.index not in premium
+                    ]
+                    # If an explicitly necessary local shot reaches this stage, animate the real
+                    # image already selected for it instead of inventing a first frame from text.
+                    for scene in remaining:
+                        if scene.ai_generation_required:
+                            scene.reference_image = images[scene.index]
+                            scene.generation_task = "image_to_video"
+                    generated, costs = LocalSceneScheduler(self.settings).generate(
+                        remaining,
+                        paths.videos / "local_ai",
+                    )
+                    manifest.costs.extend(costs)
+                    paths.write_json(
+                        "videos/local_ai/index.json",
+                        {str(index): str(path) for index, path in generated.items()},
+                    )
+                    paths.write_json("storyboards/storyboard_timed.json", storyboard)
+                    return generated
+
+                local_index = paths.videos / "local_ai" / "index.json"
+                if (
+                    resume
+                    and self.store.stage_completed(manifest.run_id, "local_video")
+                    and local_index.exists()
+                ):
+                    raw = json.loads(local_index.read_text(encoding="utf-8"))
+                    local_video = {int(index): Path(path) for index, path in raw.items()}
+                else:
+                    local_video = self._execute(
+                        "local_video", manifest, paths, local_video_operation
+                    )
 
                 renderer = VideoRenderer(self.settings, self.ffmpeg)
                 silent_video = paths.videos / "assembled_silent.mp4"
 
                 def render_operation() -> Path:
                     rendered: list[Path] = []
-                    for scene in storyboard.scenes:
+                    scene_count = len(storyboard.scenes)
+                    for position, scene in enumerate(storyboard.scenes):
                         output = paths.videos / f"scene_{scene.index:03d}.mp4"
-                        if scene.index in premium:
-                            renderer.normalize_cloud_scene(scene, premium[scene.index], output)
+                        visual_duration = scene.duration_seconds
+                        if position < scene_count - 1:
+                            visual_duration += self.settings.video.transition_seconds
+                        clip = (
+                            stock_video.get(scene.index)
+                            or premium.get(scene.index)
+                            or local_video.get(scene.index)
+                        )
+                        if clip is not None:
+                            renderer.normalize_video_scene(
+                                scene,
+                                clip,
+                                output,
+                                duration_seconds=visual_duration,
+                            )
                         else:
-                            renderer.render_scene(scene, images[scene.index], output)
+                            renderer.render_scene(
+                                scene,
+                                images[scene.index],
+                                output,
+                                duration_seconds=visual_duration,
+                            )
                         rendered.append(output)
-                    return renderer.concatenate(rendered, silent_video)
+                    return renderer.concatenate(
+                        rendered,
+                        silent_video,
+                        [scene.duration_seconds for scene in storyboard.scenes],
+                    )
 
-                if not (resume and self.store.stage_completed(manifest.run_id, "render") and silent_video.exists()):
+                if not (
+                    resume
+                    and self.store.stage_completed(manifest.run_id, "render")
+                    and silent_video.exists()
+                ):
                     self._execute("render", manifest, paths, render_operation)
 
                 srt_file = paths.subtitles / "subtitles.srt"
@@ -290,12 +447,21 @@ class DailyVideoPipeline:
 
                 def subtitle_operation() -> Path:
                     cues = write_subtitles(
-                        script, audio_duration, srt_file, ass_file, self.settings
+                        script,
+                        audio_duration,
+                        srt_file,
+                        ass_file,
+                        self.settings,
+                        narration=narration,
                     )
                     paths.write_json("subtitles/cues.json", [cue.model_dump() for cue in cues])
                     return ass_file
 
-                if not (resume and self.store.stage_completed(manifest.run_id, "subtitles") and ass_file.exists()):
+                if not (
+                    resume
+                    and self.store.stage_completed(manifest.run_id, "subtitles")
+                    and ass_file.exists()
+                ):
                     self._execute("subtitles", manifest, paths, subtitle_operation)
 
                 music_file = paths.music / "original_ambient.wav"
@@ -303,13 +469,23 @@ class DailyVideoPipeline:
                 mixed_audio = paths.audio / "final_mix.m4a"
 
                 def sound_operation() -> Path:
-                    generate_original_music(audio_duration, music_file)
+                    generate_original_music(audio_duration, music_file, storyboard=storyboard)
                     generate_sfx_track(storyboard, audio_duration, sfx_file)
                     return mix_audio(
-                        narration, music_file, sfx_file, audio_duration, mixed_audio, self.settings, self.ffmpeg
+                        narration,
+                        music_file,
+                        sfx_file,
+                        audio_duration,
+                        mixed_audio,
+                        self.settings,
+                        self.ffmpeg,
                     )
 
-                if not (resume and self.store.stage_completed(manifest.run_id, "sound_mix") and mixed_audio.exists()):
+                if not (
+                    resume
+                    and self.store.stage_completed(manifest.run_id, "sound_mix")
+                    and mixed_audio.exists()
+                ):
                     self._execute("sound_mix", manifest, paths, sound_operation)
 
                 metadata_file = paths.metadata / "metadata.json"
@@ -320,11 +496,20 @@ class DailyVideoPipeline:
                     paths.write_json("metadata/metadata.json", metadata)
                     paths.write_text("metadata/title.txt", metadata.title)
                     paths.write_text("metadata/description.txt", metadata.description)
-                    build_thumbnail(images[1], metadata, thumbnail_file)
+                    thumbnail_background = self.settings.images.thumbnail_background
+                    if thumbnail_background is None:
+                        thumbnail_background = images[min(1, len(images) - 1)]
+                    build_thumbnail(thumbnail_background, metadata, thumbnail_file)
                     return metadata
 
                 metadata = self._load_or_execute_model(
-                    "metadata", metadata_file, VideoMetadata, manifest, paths, metadata_operation, resume
+                    "metadata",
+                    metadata_file,
+                    VideoMetadata,
+                    manifest,
+                    paths,
+                    metadata_operation,
+                    resume,
                 )
 
                 final_video = paths.final / "video.mp4"
@@ -332,14 +517,26 @@ class DailyVideoPipeline:
                 def finish_operation() -> Path:
                     return renderer.finish(silent_video, mixed_audio, ass_file, final_video)
 
-                if not (resume and self.store.stage_completed(manifest.run_id, "finalize") and final_video.exists()):
+                if not (
+                    resume
+                    and self.store.stage_completed(manifest.run_id, "finalize")
+                    and final_video.exists()
+                ):
                     self._execute("finalize", manifest, paths, finish_operation)
 
                 def quality_operation() -> list[str]:
                     warnings = validate_final(
-                        final_video, thumbnail_file, storyboard, metadata, self.settings, self.ffmpeg
+                        final_video,
+                        thumbnail_file,
+                        storyboard,
+                        metadata,
+                        self.settings,
+                        self.ffmpeg,
                     )
-                    paths.write_json("metadata/quality_report.json", {"warnings": warnings, "passed": not warnings})
+                    paths.write_json(
+                        "metadata/quality_report.json",
+                        {"warnings": warnings, "passed": not warnings},
+                    )
                     return warnings
 
                 warnings = self._execute("quality_gate", manifest, paths, quality_operation)
@@ -350,10 +547,21 @@ class DailyVideoPipeline:
 
                 should_upload = self.settings.publishing.enabled if upload is None else upload
                 upload_receipt = paths.metadata / "youtube_video_id.txt"
-                if upload_receipt.exists() and not manifest.youtube_video_id:
+                publish_receipt = paths.metadata / "youtube_publish.json"
+                package_completed = False
+                if publish_receipt.is_file():
+                    try:
+                        package_completed = bool(
+                            json.loads(publish_receipt.read_text(encoding="utf-8")).get(
+                                "package_completed"
+                            )
+                        )
+                    except (OSError, json.JSONDecodeError):
+                        package_completed = False
+                if upload_receipt.exists() and not manifest.youtube_video_id and package_completed:
                     manifest.youtube_video_id = upload_receipt.read_text(encoding="utf-8").strip()
                     manifest.status = RunStatus.published
-                if should_upload and not manifest.youtube_video_id:
+                if should_upload and (not manifest.youtube_video_id or not package_completed):
 
                     def upload_operation() -> str:
                         uploaded_id = YouTubePublisher(self.settings).upload(

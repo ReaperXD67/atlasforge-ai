@@ -1,0 +1,39 @@
+<template>
+  <style>
+  @font-face{font-family:BizImpact;src:local("Impact");font-weight:400 900}
+  @font-face{font-family:BizSans;src:local("Segoe UI");font-weight:400 900}
+  *{box-sizing:border-box}
+  #root{position:absolute;inset:0;width:1080px;height:1920px;overflow:hidden;color:#fff4dd;font-family:BizSans,Arial,sans-serif;container-type:size}
+  .clip{position:absolute;inset:0}
+  .ground{background:#0b0a0a;overflow:hidden}
+  .ground::before{content:"";position:absolute;inset:-100px;background-image:linear-gradient(rgba(244,185,66,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(244,185,66,.1) 1px,transparent 1px);background-size:62px 62px;opacity:.65}
+  .ground::after{content:"";position:absolute;left:-160px;top:260px;width:920px;height:920px;border:1px solid rgba(244,185,66,.18);border-radius:50%}
+  .stage{position:absolute;inset:0;padding:150px 68px 350px;overflow:hidden}
+  .label{font:800 20px/1.2 Consolas,monospace;letter-spacing:.12em;text-transform:uppercase;color:#f4b942}
+  .hero{font:900 150px/.86 BizImpact,Impact,sans-serif;letter-spacing:-.035em;text-transform:lowercase}
+  .hero .caps,.caps{text-transform:uppercase}
+  .gold{color:#f4b942}.coral{color:#ff6b5e}.ivory{color:#fff4dd}.ink{color:#0b0a0a}
+  .hairline{height:1px;background:#282726}
+  .pack{position:relative;width:340px;height:430px;border:5px solid currentColor;color:#f4b942;padding:34px 28px;background:#111}
+  .pack::before{content:"";position:absolute;left:26px;right:26px;top:96px;height:230px;background:repeating-linear-gradient(90deg,currentColor 0 5px,transparent 5px 15px);opacity:.5}
+  .pack strong{font:900 120px/.8 BizImpact,Impact,sans-serif}.pack span{position:absolute;left:28px;bottom:28px;font:900 43px/1 BizImpact,Impact,sans-serif;text-transform:uppercase}
+  .stat{font:900 132px/.84 BizImpact,Impact,sans-serif;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+  .unit{font:800 25px/1 Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}
+  .source{font:700 17px/1.35 Consolas,monospace;letter-spacing:.08em;color:#fff4dd;border-top:1px solid #504d48;padding-top:16px}
+  .bar{height:24px;border-left:1px solid #504d48;background:#1a1918;overflow:hidden}.bar>i{display:block;height:100%;background:#f4b942;transform-origin:left}
+  .nexa{position:absolute;width:520px;height:660px;object-fit:contain;filter:drop-shadow(0 24px 18px rgba(0,0,0,.55));z-index:8}
+  .stamp{display:inline-block;padding:16px 20px;background:#f4b942;color:#0b0a0a;font:900 31px/1 BizImpact,Impact,sans-serif;text-transform:uppercase}
+  .reaction{position:absolute;z-index:10;font:900 46px/1 BizImpact,Impact,sans-serif;text-transform:uppercase;padding:14px 18px;background:#ff6b5e;color:#0b0a0a}
+#c-logo{position:absolute;left:70px;top:240px;width:150px;height:150px;object-fit:contain}.c-nexa{right:-120px;top:450px}</style>
+  <div id="root" data-composition-id="07-loop-cta" data-start="0" data-duration="6.508" data-width="1080" data-height="1920">
+    <div id="frame-07-loop-cta-ground" class="clip ground" data-start="0" data-duration="6.508" data-track-index="1"></div><div class="stage"><img id="c-logo" src="public/biznex-logo.png" alt="BizNex"/><div id="c-follow" class="hero" style="position:absolute;left:70px;top:410px">follow<br/><span class="gold">biznex.</span></div><div id="c-next" class="label" style="position:absolute;left:70px;top:920px;font-size:30px">THE NEXT ODD DETAIL STARTS WITH…</div><div id="c-half" class="hero" style="position:absolute;left:70px;top:1070px">half the<br/>packets.</div><div id="c-more" class="reaction" style="left:590px;top:1370px"><span class="caps">more PV?</span></div><img class="nexa c-nexa" src="public/nexa-v2-closing.png" alt="Nexa, BizNex AI host"/></div>
+  </div>
+  <script>
+    window.__timelines=window.__timelines||{};
+    const tl=gsap.timeline({paused:true});
+    tl.fromTo("#c-logo",{opacity:0,scale:.2,rotation:-25},{opacity:1,scale:1,rotation:0,duration:.65,ease:"power3.out"},.1);tl.fromTo("#c-follow",{opacity:0,x:-130,filter:"blur(14px)"},{opacity:1,x:0,filter:"blur(0px)",duration:.7,ease:"power3.out"},.35);tl.fromTo(".c-nexa",{opacity:0,x:130},{opacity:1,x:0,duration:.7,ease:"power3.out"},.7);
+      tl.fromTo("#c-next",{opacity:0,scaleX:0,transformOrigin:"left"},{opacity:1,scaleX:1,duration:1.5,ease:"steps(16)"},2.0);tl.fromTo("#c-half",{opacity:0,y:160},{opacity:1,y:0,duration:.55,ease:"power3.out"},4.15);tl.fromTo("#c-more",{opacity:0,scale:1.8,rotation:7},{opacity:1,scale:1,rotation:-3,duration:.42,ease:"power3.out"},5.55);
+      tl.to("#c-follow,#c-next,#c-logo,.c-nexa",{opacity:0,duration:.18,ease:"none"},4.12);
+    window.__timelines["07-loop-cta"]=tl;
+  </script>
+</template>

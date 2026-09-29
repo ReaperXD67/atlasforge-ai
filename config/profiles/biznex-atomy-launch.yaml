@@ -1,0 +1,73 @@
+extends: atomy-us-openrouter.yaml
+
+channel:
+  name: "BizNex"
+  content_goal: >-
+    Help skeptical adults understand Atomy USA through official sources, clear trade-offs, and
+    practical decision tools while documenting how BizNex improves an AI-assisted YouTube channel
+    from its first upload onward.
+  audience:
+    - adults researching Atomy in 2026
+    - prospective Atomy USA consumers
+    - prospective Atomy USA distributors
+    - people comparing ethical network marketing options
+    - viewers interested in AI-assisted channel growth
+
+research:
+  seed_topics:
+    - atomy compensation plan 2026
+    - atomy business plan in english
+    - atomy products review
+    - atomy usa
+    - what to know before joining atomy
+  editorial_topics:
+    - "Atomy in 2026: what to know before choosing consumer or distributor membership"
+
+script:
+  target_minutes: 5.2
+  words_per_minute: 145
+  min_words: 680
+  max_words: 820
+  script_override: docs/biznex/video-001-script.json
+  title_override: "Atomy in 2026: What to Know Before You Join"
+  title_variants:
+    - "Before Joining Atomy in 2026, Watch This"
+    - "Atomy Business Explained: Consumer or Distributor?"
+  thumbnail_text_options:
+    - "BEFORE YOU JOIN"
+    - "KNOW THIS FIRST"
+    - "TWO DIFFERENT PATHS"
+  packaging_hypothesis: >-
+    The title captures broad Atomy research intent while the thumbnail adds a consequential pause
+    without repeating the query or promising a negative reveal.
+
+images:
+  thumbnail_background: assets/biznex/video-001-thumbnail-background.png
+
+storyboard:
+  target_scene_seconds: 6
+  min_scene_seconds: 4
+  max_scene_seconds: 9
+  max_scenes: 90
+  engagement_mode: retention
+  pattern_interrupt_seconds: 16
+
+voice:
+  providers: [chatterbox, kokoro]
+  kokoro_voice: af_heart
+  kokoro_speed: 0.97
+  chatterbox_exaggeration: 0.60
+  chatterbox_cfg_weight: 0.38
+  chatterbox_temperature: 0.74
+  chatterbox_speed: 0.92
+  chatterbox_target_wpm: 165
+  chatterbox_sentence_pause_ms: 125
+  chatterbox_paragraph_pause_ms: 365
+
+audio:
+  music_volume_db: -27
+  sfx_volume_db: -20
+  sidechain_ratio: 12
+
+publishing:
+  enabled: false

@@ -3,13 +3,24 @@ from __future__ import annotations
 import wave
 from pathlib import Path
 
-from daily_video_factory.media.audio import generate_original_music, generate_sfx_track
-from daily_video_factory.media.subtitles import write_subtitles
+import pytest
+
+from daily_video_factory.media.audio import (
+    generate_original_music,
+    generate_sfx_track,
+    generate_short_sfx_set,
+    mix_audio,
+)
+from daily_video_factory.media.render import VideoRenderer
+from daily_video_factory.media.subtitles import _align_script_words, write_subtitles
 from daily_video_factory.models import Scene, ScriptDocument, Storyboard
+from daily_video_factory.providers.tts import _atempo_chain, fit_narration_duration
 
 
 def _script() -> ScriptDocument:
-    text = "A clear plan starts with a real customer problem. Compare options before choosing Atomy."
+    text = (
+        "A clear plan starts with a real customer problem. Compare options before choosing Atomy."
+    )
     return ScriptDocument(
         title="A clear decision framework",
         hook=text,
@@ -47,10 +58,339 @@ def test_procedural_audio_has_expected_duration(tmp_path: Path) -> None:
         assert source.getnframes() == 6 * source.getframerate()
 
 
+def test_short_sfx_kit_is_complete_and_reproducible(tmp_path: Path) -> None:
+    first = generate_short_sfx_set(tmp_path / "first")
+    second = generate_short_sfx_set(tmp_path / "second")
+
+    assert {path.name for path in first} == {
+        "chime.wav",
+        "click-soft.wav",
+        "error.wav",
+        "impact-bass-1.wav",
+        "pop.wav",
+        "whoosh-short.wav",
+    }
+    assert [path.read_bytes() for path in first] == [path.read_bytes() for path in second]
+
+
 def test_subtitle_outputs(settings, tmp_path: Path) -> None:
     cues = write_subtitles(
         _script(), 10, tmp_path / "captions.srt", tmp_path / "captions.ass", settings
     )
     assert cues[0].start_seconds == 0
     assert abs(cues[-1].end_seconds - 10) < 0.001
-    assert "Dialogue:" in (tmp_path / "captions.ass").read_text(encoding="utf-8-sig")
+    ass = (tmp_path / "captions.ass").read_text(encoding="utf-8-sig")
+    assert "Dialogue:" in ass
+    assert r"{\c&H0037E6FF&}Atomy{\c&H00FFFFFF&}" in ass
+
+
+def test_script_locked_alignment_corrects_brand_and_discards_asr_insertions() -> None:
+    canonical = ["Join", "Atomy", "USA", "after", "reviewing", "the", "official", "guide."]
+    recognized = [
+        ("Join", 0.0, 0.25),
+        ("ADAMI", 0.25, 0.62),
+        ("USA", 0.62, 0.88),
+        ("however", 0.88, 1.0),
+        ("after", 1.0, 1.22),
+        ("reviewing", 1.22, 1.62),
+        ("the", 1.62, 1.75),
+        ("official", 1.75, 2.05),
+        ("guide", 2.05, 2.4),
+    ]
+
+    aligned = _align_script_words(canonical, recognized)
+
+    assert [word for word, _start, _end in aligned] == canonical
+    assert "ADAMI" not in {word for word, _start, _end in aligned}
+    assert "however" not in {word for word, _start, _end in aligned}
+    assert all(right[1] >= left[2] for left, right in zip(aligned, aligned[1:], strict=False))
+
+
+def test_audio_mix_splits_narration_before_sidechain(settings, tmp_path: Path) -> None:
+    class RecordingFFmpeg:
+        def __init__(self) -> None:
+            self.args: list[str] = []
+
+        def run(self, args: list[str]) -> None:
+            self.args = args
+
+    ffmpeg = RecordingFFmpeg()
+    output = tmp_path / "mixed.m4a"
+    mix_audio(
+        tmp_path / "narration.wav",
+        tmp_path / "music.wav",
+        tmp_path / "sfx.wav",
+        10,
+        output,
+        settings,
+        ffmpeg,  # type: ignore[arg-type]
+    )
+
+    filter_graph = ffmpeg.args[ffmpeg.args.index("-filter_complex") + 1]
+    assert "asplit=2[narr_mix][narr_sidechain]" in filter_graph
+    assert "[music][narr_sidechain]sidechaincompress" in filter_graph
+    assert "[narr_mix][ducked][fx]amix" in filter_graph
+    assert "normalize=0,loudnorm=I=-16:TP=-1.5:LRA=11" in filter_graph
+    assert filter_graph.count("aformat=channel_layouts=stereo") == 3
+
+
+def test_slow_narration_is_pitch_preserving_duration_fitted(tmp_path: Path) -> None:
+    class RecordingFFmpeg:
+        def __init__(self) -> None:
+            self.args: list[str] = []
+
+        def duration(self, _path: Path) -> float:
+            return 180
+
+        def run(self, args: list[str]) -> None:
+            self.args = args
+            Path(args[-1]).write_bytes(b"fitted")
+
+    narration = tmp_path / "narration.wav"
+    narration.write_bytes(b"original")
+    ffmpeg = RecordingFFmpeg()
+
+    result = fit_narration_duration(
+        narration,
+        target_minutes=2,
+        max_duration_ratio=1.18,
+        ffmpeg=ffmpeg,  # type: ignore[arg-type]
+    )
+
+    assert result == narration
+    assert narration.read_bytes() == b"fitted"
+    assert ffmpeg.args[ffmpeg.args.index("-filter:a") + 1] == "atempo=1.271186"
+    assert _atempo_chain(5) == "atempo=2.000000,atempo=2.000000,atempo=1.250000"
+    with pytest.raises(ValueError, match="positive"):
+        _atempo_chain(0)
+
+
+def test_local_video_master_uses_sharp_scale_without_legacy_optical_flow(
+    settings, tmp_path: Path
+) -> None:
+    class RecordingFFmpeg:
+        def __init__(self) -> None:
+            self.args: list[str] = []
+
+        def can_encode(self, _encoder: str) -> bool:
+            return True
+
+        def duration(self, _path: Path) -> float:
+            return 5
+
+        def run(self, args: list[str]) -> None:
+            self.args = args
+
+    scene = Scene(
+        index=1,
+        duration_seconds=5,
+        narration="",
+        video_prompt="photoreal motion",
+        visual_search_query="controlled movement",
+        selected_video_provider="comfyui_wan22",
+    )
+    ffmpeg = RecordingFFmpeg()
+    renderer = VideoRenderer(settings, ffmpeg)  # type: ignore[arg-type]
+
+    renderer.normalize_video_scene(scene, tmp_path / "raw.mp4", tmp_path / "master.mp4")
+
+    video_filter = ffmpeg.args[ffmpeg.args.index("-vf") + 1]
+    assert "minterpolate" not in video_filter
+    assert "flags=lanczos+accurate_rnd+full_chroma_int" in video_filter
+    assert f"fps={settings.video.fps}" in video_filter
+
+
+def test_music_film_still_uses_locked_frame_without_zoompan(settings, tmp_path: Path) -> None:
+    class RecordingFFmpeg:
+        def __init__(self) -> None:
+            self.args: list[str] = []
+
+        def can_encode(self, _encoder: str) -> bool:
+            return True
+
+        def run(self, args: list[str]) -> None:
+            self.args = args
+
+    scene = Scene(
+        index=1,
+        duration_seconds=4,
+        narration="",
+        video_prompt="locked music outro",
+        visual_search_query="locked music outro",
+        music_section="outro",
+        music_edit_style="pragon_neon",
+        music_camera_motion="none",
+    )
+    ffmpeg = RecordingFFmpeg()
+    renderer = VideoRenderer(settings, ffmpeg)  # type: ignore[arg-type]
+
+    renderer.render_scene(scene, tmp_path / "outro.jpg", tmp_path / "outro.mp4")
+
+    video_filter = ffmpeg.args[ffmpeg.args.index("-vf") + 1]
+    assert "zoompan=" not in video_filter
+    assert "scale=1920:1080" in video_filter
+    assert f"fps={settings.video.fps}" in video_filter
+
+
+def test_normalize_video_scene_applies_authored_source_reframe(settings, tmp_path: Path) -> None:
+    class RecordingFFmpeg:
+        def __init__(self) -> None:
+            self.args: list[str] = []
+
+        def can_encode(self, _encoder: str) -> bool:
+            return True
+
+        def duration(self, _path: Path) -> float:
+            return 3.5
+
+        def run(self, args: list[str]) -> None:
+            self.args = args
+
+    scene = Scene(
+        index=1,
+        duration_seconds=3.5,
+        narration="",
+        video_prompt="adult smoker at night",
+        visual_search_query="adult smoker at night",
+        source_reframe_zoom=1.35,
+        source_reframe_x=0.5,
+        source_reframe_y=0.0,
+    )
+    ffmpeg = RecordingFFmpeg()
+    renderer = VideoRenderer(settings, ffmpeg)  # type: ignore[arg-type]
+
+    renderer.normalize_video_scene(scene, tmp_path / "raw.mp4", tmp_path / "master.mp4")
+
+    video_filter = ffmpeg.args[ffmpeg.args.index("-vf") + 1]
+    assert "scale=2592:1458" in video_filter
+    assert "crop=1920:1080:(iw-ow)*0.5000:(ih-oh)*0.0000" in video_filter
+
+
+def test_normalize_video_scene_honors_authored_source_inpoint(settings, tmp_path: Path) -> None:
+    class RecordingFFmpeg:
+        def __init__(self) -> None:
+            self.args: list[str] = []
+
+        def can_encode(self, _encoder: str) -> bool:
+            return True
+
+        def duration(self, _path: Path) -> float:
+            return 12
+
+        def video_scene_boundaries(self, _path: Path) -> list[float]:
+            return []
+
+        def run(self, args: list[str]) -> None:
+            self.args = args
+
+    scene = Scene(
+        index=1,
+        duration_seconds=3.5,
+        narration="",
+        video_prompt="adult smoker at night",
+        visual_search_query="adult smoker at night",
+        source_inpoint_seconds=0.25,
+    )
+    ffmpeg = RecordingFFmpeg()
+    renderer = VideoRenderer(settings, ffmpeg)  # type: ignore[arg-type]
+
+    renderer.normalize_video_scene(scene, tmp_path / "raw.mp4", tmp_path / "master.mp4")
+
+    assert ffmpeg.args[ffmpeg.args.index("-ss") + 1] == "0.250"
+
+
+def test_normalize_video_scene_stabilizes_only_authored_light_scenes(
+    settings, tmp_path: Path
+) -> None:
+    class RecordingFFmpeg:
+        def __init__(self) -> None:
+            self.args: list[str] = []
+
+        def can_encode(self, _encoder: str) -> bool:
+            return True
+
+        def duration(self, _path: Path) -> float:
+            return 3.5
+
+        def run(self, args: list[str]) -> None:
+            self.args = args
+
+    ffmpeg = RecordingFFmpeg()
+    renderer = VideoRenderer(settings, ffmpeg)  # type: ignore[arg-type]
+    scene = Scene(
+        index=1,
+        duration_seconds=3.5,
+        narration="",
+        video_prompt="stable night portrait",
+        visual_search_query="stable night portrait",
+        source_stabilization="light",
+    )
+
+    renderer.normalize_video_scene(scene, tmp_path / "raw.mp4", tmp_path / "master.mp4")
+
+    video_filter = ffmpeg.args[ffmpeg.args.index("-vf") + 1]
+    assert "deshake=rx=4:ry=4" in video_filter
+
+
+def test_zero_transition_concat_trims_scene_padding_on_storyboard_clock(
+    settings, tmp_path: Path
+) -> None:
+    class RecordingFFmpeg:
+        def __init__(self) -> None:
+            self.args: list[str] = []
+
+        def can_encode(self, _encoder: str) -> bool:
+            return True
+
+        def run(self, args: list[str]) -> None:
+            self.args = args
+
+    ffmpeg = RecordingFFmpeg()
+    renderer = VideoRenderer(settings, ffmpeg)  # type: ignore[arg-type]
+    scenes = [tmp_path / "scene_001.mp4", tmp_path / "scene_002.mp4"]
+
+    renderer.concatenate(
+        scenes,
+        tmp_path / "hard-cut.mp4",
+        [2.033, 5.667],
+        transition_seconds=0.0,
+    )
+
+    graph = ffmpeg.args[ffmpeg.args.index("-filter_complex") + 1]
+    assert "trim=end_frame=122" in graph
+    assert "trim=end_frame=340" in graph
+    assert graph.count("setsar=1") == 2
+    assert "concat=n=2:v=1:a=0[joined]" in graph
+    assert "[joined]fps=60,settb=1/60,setpts=N[video]" in graph
+    assert "xfade" not in graph
+
+
+def test_transition_concat_is_frame_normalized_and_capped_to_storyboard_duration(
+    settings, tmp_path: Path
+) -> None:
+    class RecordingFFmpeg:
+        def __init__(self) -> None:
+            self.args: list[str] = []
+
+        def can_encode(self, _encoder: str) -> bool:
+            return True
+
+        def run(self, args: list[str]) -> None:
+            self.args = args
+
+    ffmpeg = RecordingFFmpeg()
+    renderer = VideoRenderer(settings, ffmpeg)  # type: ignore[arg-type]
+    scenes = [tmp_path / "scene_001.mp4", tmp_path / "scene_002.mp4"]
+
+    renderer.concatenate(
+        scenes,
+        tmp_path / "smooth.mp4",
+        [2.0, 3.0],
+        transition_seconds=6 / 60,
+    )
+
+    graph = ffmpeg.args[ffmpeg.args.index("-filter_complex") + 1]
+    assert "xfade=transition=fade:duration=0.100:offset=2.000" in graph
+    assert graph.count("setsar=1") == 2
+    assert "fps=60,settb=1/60,setpts=N[video]" in graph
+    assert ffmpeg.args[ffmpeg.args.index("-frames:v") + 1] == "300"

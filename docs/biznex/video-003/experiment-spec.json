@@ -1,0 +1,37 @@
+{
+  "episode": "biznex-video-003",
+  "title": "Why Does HALF the HemoHIM Box Have MORE PV?",
+  "aspect": "1080x1920",
+  "thumbnail_aspect": "1080x1920",
+  "target_duration_seconds": 58,
+  "hook_delivery_seconds": 1.2,
+  "pattern_interrupt_seconds": 5,
+  "loop_ending": true,
+  "hypothesis": "A source-backed contradiction about HemoHIM will earn more initial attention and completed views than a broad five-minute compensation-plan explainer, while a looped ending should increase replays.",
+  "primary_metric": "average_percentage_viewed",
+  "secondary_metrics": [
+    "viewed_vs_swiped_away",
+    "engaged_views",
+    "likes_per_engaged_view",
+    "comments",
+    "subscribers_gained"
+  ],
+  "packaging": {
+    "title": "Why Does HALF the HemoHIM Box Have MORE PV?",
+    "first_frame": "HALF THE PACKS. MORE PV?",
+    "thumbnail": "HALF THE PACKS / MORE PV? / +9,000 PV",
+    "topic_cluster": "Atomy HemoHIM price and PV comparison",
+    "format": "fast sourced fact-check Short"
+  },
+  "success_thresholds": {
+    "average_percentage_viewed": 80,
+    "viewed_vs_swiped_away": 65,
+    "likes_per_engaged_view": 4
+  },
+  "sources": [
+    "https://us.atomy.com/shop/HemoHIM",
+    "https://mt.atomy.com/content/153?langCode=en",
+    "https://support.google.com/youtube/answer/15424877?hl=en",
+    "https://support.google.com/youtube/answer/10059070?hl=en"
+  ]
+}

@@ -1,0 +1,34 @@
+USER REQUEST (verbatim)
+
+Okey leeave it generate a third video with something more creative cause the first video got only 10 views and the second 2 views also onw thing I m observing is that you dont push the upgrades of pipeline in the github and with each video we have to keep upgrading the pipeline like in voice in other aspect whatever could be improvement wahtever creativity we can bring on the tables so our video becomes viral and the pipeline gets improved
+
+RESEARCH BASIS
+
+Atomy USA HemoHIM product page, checked 2026-08-28:
+https://us.atomy.com/shop/HemoHIM
+
+- New 30-pack option: $80, 75,000 PV, 30 servings.
+- Standard 60-pack one-set option: $105, 66,000 PV, 60 servings.
+- Therefore the 30-pack is $25 less and shows 9,000 more PV on this market listing.
+- Derived comparison: 30-pack = about $2.67 and 2,500 PV per packet.
+- Derived comparison: 60-pack = $1.75 and 1,100 PV per packet.
+- The larger pack is cheaper per packet; the smaller pack has higher listed PV density.
+
+Atomy Masstige Times, global product ranking context:
+https://mt.atomy.com/content/153?langCode=en
+
+- HemoHIM was reported as Atomy's worldwide top-selling product by revenue in the referenced ranking.
+
+YouTube Shorts format guidance:
+https://support.google.com/youtube/answer/15424877?hl=en
+https://support.google.com/youtube/answer/10059070?hl=en
+
+- Vertical videos up to three minutes uploaded after October 15, 2024 can be categorized as Shorts.
+- Since March 31, 2025, Shorts view counting changed; Analytics still reports engaged views for comparison.
+
+EDITORIAL CONSTRAINTS
+
+- Do not make medical or therapeutic claims.
+- Do not imply that PV is cash, commission, or guaranteed earnings.
+- Say that prices and PV can vary by market and can change.
+- Treat all per-packet figures as arithmetic derived from the official listing.

@@ -9,6 +9,8 @@
 - Expensive generation is selected by scene value and bounded by a daily cap.
 - Policy failures stop upload.
 - Secrets never enter manifests or logs.
+- Brand-specific instructions are grounded in a dated official-source pack.
+- Encoder selection is based on a real test frame, not advertised FFmpeg capability.
 
 ## Layers
 
@@ -16,8 +18,8 @@
 |---|---|---|
 | Domain | `models.py`, `quality.py` | validated scripts, scenes, metadata, policy gates |
 | Orchestration | `pipeline.py`, `scheduler.py`, `state.py` | checkpoints, locking, retries/fallback, one-run lifecycle |
-| Providers | `providers/` | text, TTS, images, premium cloud video |
-| Media | `media/` | deterministic music/SFX, subtitles, FFmpeg render/mix |
+| Providers | `providers/` | text, TTS, images, Pexels Video, local Wan video, premium cloud video |
+| Media | `media/` | deterministic stereo music/SFX, forced-aligned subtitles, FFmpeg render/mix |
 | Delivery | `publishing/youtube.py` | minimal-scope OAuth upload, thumbnail, optional captions |
 | Operations | `doctor.py`, `dashboard.py`, CLI | preflight, visibility, human controls |
 
@@ -34,8 +36,8 @@ Providers fail closed at their own boundary and fail over only within the same c
 ```text
 script:    Gemini → OpenRouter → Ollama
 narration: OpenAI → Gemini → Kokoro → Piper
-images:    Pexels → locally generated editorial card
-video:     local FFmpeg motion always; optional Veo → MiniMax for selected scenes
+images:    Pexels → locally generated information card
+video:     CLIP-ranked unique Pexels Video → optional premium AI → explicit local Wan candidate → stable still motion
 ```
 
 The system does not silently replace factual research with model memory. Trend, autocomplete, and Reddit results are explicitly treated as topic/audience signals, not evidence.
@@ -47,7 +49,54 @@ Storyboard scenes receive a `premium_score` from hook position, product relevanc
 - `premium_max_scenes_per_video`
 - `premium_daily_budget_usd`
 
-A failed or over-budget premium scene falls back to local motion from a licensed/source-recorded still. Cost entries are persisted in `manifest.json`.
+A premium scene is considered only when no suitable licensed real clip was selected. A failed or
+over-budget premium scene may reach local Wan only when the storyboard explicitly marks AI as
+necessary and records why; otherwise it falls through to stable motion from a licensed or
+source-recorded still. Cost and provenance entries are persisted with the run.
+
+## Editorial grounding
+
+The configured topic rotation keeps the channel focused on Atomy onboarding, sponsor selection,
+membership choices, PV, and decision criteria instead of allowing unrelated trending topics to take
+over the calendar. Trend and social results influence search intent only. Specific U.S. registration
+and compensation statements are supplied from dated official Atomy summaries, while claim guidance
+comes from the FTC. Brand-focused scripts may name Atomy in the hook; general education videos retain
+the late-brand-mention gate. A stale source pack blocks brand-focused scripts.
+
+## Hybrid local media path
+
+The storyboard assigns concrete shot intent rather than extracting arbitrary script keywords. Exact
+or sensitive requirements become owned information cards. Real licensed footage carries hooks,
+products, people, and ordinary instructional scenes; local AI is not automatically assigned to the
+opening or any other editorial position. A local CLIP pass scores Pexels candidate thumbnails against the
+scene brief before download, while creator and asset reuse guards prevent a repeated stock session.
+Source clips are trimmed at deterministic offsets, gently
+graded, normalized to the output canvas, and overlapped by the configured crossfade. A still fallback
+uses a locked optical axis and a 2x supersampled crop, eliminating the integer crop oscillation that
+made the previous image motion appear to shake.
+
+## Synthetic-media admission
+
+The `AI Generation` workspace is a quarantine, not another automatic source bin. A local candidate
+requires `ai_generation_required=true` plus a non-empty reason. Its source ladder is a real Pexels
+photograph first and SDXL only when no usable real plate exists. A small OpenRouter vision call picks
+the cleanest plate from a numbered grid, avoiding text, logos, crowds, landmarks, and obstructed
+subjects. Wan then renders 1–3 seeds sequentially so the 8 GB GPU is never overcommitted.
+
+Each candidate is sampled into nine chronological frames. The local gate measures decode health,
+sharpness, exposure, luminance/color flicker, coherent motion, unexpected cuts, and first-frame reference
+preservation. An OpenRouter vision supervisor separately checks rigid geometry, anatomy, contact,
+mass/inertia, reflections, identity, camera behavior, and temporal continuity. Admission fails closed
+when that review is unavailable. CLIP's camera-realism guess is recorded for diagnosis but is not an
+admission signal because calibration found it unreliable on genuine footage. If every seed fails,
+the best candidate remains in `videos/candidates/` with `quality/ai_clip_report.json`, but the
+editorial scheduler receives no clip and uses its stable fallback.
+
+Caption text is never authored by speech recognition. Local faster-whisper supplies word-time anchors,
+then a forced aligner maps the exact script onto those anchors, interpolates missed/mispronounced terms,
+and discards ASR insertions. Therefore names such as Atomy, PV, and FTC stay canonical while retaining
+speech-aware timing. Deterministic word pacing remains the last fallback. FFmpeg encoders must
+successfully encode a real frame; an unusable NVENC build automatically yields to `libx264`.
 
 ## Extension examples
 
@@ -62,5 +111,34 @@ To add a video provider, implement `PremiumVideoProvider.generate(scene, output)
 - Fully automatic fact verification is not equivalent to human editorial review. The writer is instructed to minimize claims; `facts_to_verify` is retained for audit.
 - YouTube monetization depends on originality and channel-level patterns, not only technical compliance. A high-volume templated slideshow can still be ineligible.
 - Preview model IDs and prices change. They are configuration, not hard-coded invariants.
-- Pexels images may include people or marks that make a particular use inappropriate even when API access is allowed.
+- Pexels media may include people or marks that make a particular use inappropriate even when API access is allowed.
+- Wan 2.2 TI2V 5B fits this 8 GB GPU through ComfyUI offloading, but no 5B local model can guarantee
+  real-camera physics. At 640x1136/32 steps the measured workload nearly saturates the laptop, so the
+  one-shot, best-of-two default and conservative motion briefs are intentional.
 - Consumer Google AI credits and Developer API billing are separate product contexts unless Google explicitly connects them for your account.
+
+## AI-native viral shorts
+
+`ViralShortPipeline` is deliberately separate from the long-form scheduler. It generates one
+continuous shot to minimize identity drift, accepts a validated subject image or creates a local
+SDXL first frame, analyzes optional master audio, then chooses one explicit lane:
+
+```mermaid
+flowchart LR
+    B["Recipe + one-shot brief"] --> I["Reference image and/or master audio"]
+    I --> L{"Reality lane"}
+    L -->|"Free local"| S["SDXL photoreal first frame"]
+    S --> W["ComfyUI Wan 2.2 TI2V 5B"]
+    L -->|"Native realism"| O["Gemini Omni Flash"]
+    L -->|"Budget native"| V["Veo 3.1 Lite"]
+    W --> Q["RIFE 4.26 neural interpolation"]
+    Q --> M["Lanczos vertical master at 60 fps"]
+    O --> M
+    V --> M
+    M --> A["Master audio + provenance manifest"]
+    A --> Z["1080x1920 local MP4"]
+```
+
+Talking Duo is blocked on the 5B local lane because it has no native dialogue/lip-sync contract.
+The stronger Wan S2V/Animate models are 14B and are treated as an advanced-hardware upgrade rather
+than silently consuming an 8 GB workstation.

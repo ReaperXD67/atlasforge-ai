@@ -1,0 +1,120 @@
+extends: atomy-us-openrouter.yaml
+
+channel:
+  name: "BizNex"
+  content_goal: >-
+    Make Atomy business concepts understandable through official sources, original visual models,
+    and calm human language while publicly documenting how an AI-built YouTube channel improves.
+  audience:
+    - English-speaking adults searching for the Atomy business plan
+    - prospective Atomy distributors confused by PV and two-leg terminology
+    - current members who want a shareable plain-language explanation
+    - skeptical viewers comparing network-marketing plans without income hype
+
+research:
+  seed_topics:
+    - atomy business plan in english
+    - atomy compensation plan 2026
+    - atomy marketing plan explained
+    - atomy PV explained
+    - atomy smaller leg
+  editorial_topics:
+    - "Atomy business plan 2026 explained in English with a visual map of PV, two legs, and commission pools"
+  max_official_source_age_days: 30
+  official_sources:
+    - title: Atomy USA Compensation Plan
+      url: https://us.atomy.com/cst/marketingPlan
+      checked_on: 2026-08-26
+      summary: >-
+        The official U.S. page lists Sales Rep at 10,000-299,999 PV, Agent at 300,000+
+        PV, Special Agent at 700,000+ PV, Dealer at 1.5 million+ PV, and Exclusive
+        Distributor at 2.4 million+ PV, with dealership class subject to monthly change
+        based on personal and downline sales. It says a member must first accumulate
+        10,000 Personal PV to generate downline PV; Personal PV may be added to the
+        smaller leg for commission calculation. The page describes 44% of total sales PV
+        for general commission, 20% for mastership, and a 6% Center education commission.
+        Sales Master requires Special Agent status and at least 2.5 million Group PV under
+        each leg. Total commissions to members do not exceed 35% of total sales income.
+        The page describes mechanics and incentives but does not establish typical net earnings.
+    - title: FTC Business Guidance Concerning Multi-Level Marketing
+      url: https://www.ftc.gov/business-guidance/resources/business-guidance-concerning-multi-level-marketing
+      checked_on: 2026-08-26
+      summary: >-
+        FTC staff guidance says earnings and lifestyle representations must be truthful,
+        substantiated, and representative of what the intended audience is likely to achieve
+        after typical expenses. A compensation-plan chart does not by itself establish typical results.
+
+script:
+  target_minutes: 5.8
+  words_per_minute: 148
+  min_words: 760
+  max_words: 940
+  script_override: docs/biznex/video-002-script.json
+  title_override: "Atomy Business Plan 2026 Explained in English"
+  title_variants:
+    - "Atomy Compensation Plan 2026: The Simple Explanation"
+    - "Atomy Business Plan Explained: PV, Two Legs & Commissions"
+  thumbnail_text_options:
+    - "HOW MONEY FLOWS"
+    - "THE SMALLER SIDE"
+    - "PV MADE SIMPLE"
+  packaging_hypothesis: >-
+    The title matches two live high-intent YouTube autocomplete clusters while the thumbnail opens
+    a visual question about the plan's money flow without promising earnings.
+
+images:
+  thumbnail_background: assets/biznex/video-002-thumbnail-background.png
+  presenter_avatar: assets/biznex/nexa-host-v1.png
+  presenter_name: Nexa
+
+lip_sync:
+  enabled: false
+  provider: rhubarb
+  executable: models/rhubarb-1.14.0/Rhubarb-Lip-Sync-1.14.0-Windows/rhubarb.exe
+  recognizer: pocketSphinx
+  extended_shapes: GHX
+  timeout_seconds: 600
+
+storyboard:
+  target_scene_seconds: 6
+  min_scene_seconds: 4
+  max_scene_seconds: 9
+  max_scenes: 90
+  engagement_mode: retention
+  pattern_interrupt_seconds: 18
+  presenter_interval_scenes: 8
+
+voice:
+  providers: [edge, kokoro]
+  edge_voice: en-IN-NeerjaNeural
+  edge_rate: "+18%"
+  edge_pitch: "+0Hz"
+  edge_expressive: true
+  edge_beat_max_chars: 600
+  edge_sentence_pause_ms: 95
+  edge_paragraph_pause_ms: 240
+  edge_rate_variation_pct: 2
+  edge_pitch_variation_hz: 1
+  edge_caption_max_words: 12
+  edge_caption_min_seconds: 4.0
+  kokoro_voice: af_heart
+  kokoro_speed: 0.99
+  kokoro_sentence_pause_ms: 82
+  kokoro_paragraph_pause_ms: 285
+  pronunciations:
+    Atomy: A-tomy
+    Nexa: Neck-suh
+    PV: P V
+
+audio:
+  music_volume_db: -28
+  sfx_volume_db: -19
+  sidechain_ratio: 12
+
+subtitles:
+  # Keep each complete thought visible while Nexa explains it. This prevents the copy
+  # from disappearing before a viewer can connect the spoken point to the graphic.
+  minimum_caption_seconds: 5.0
+
+publishing:
+  enabled: false

@@ -1,0 +1,23 @@
+A customer can love your product and still disappear because a balance was low, a mandate was revoked, or a bank was briefly unavailable. A failed payment should not automatically become a lost customer.
+
+Razorpay documents that failed subscriptions can move from pending to halted after retries. The deeper problem is that every failure is treated like the same billing event, when low balance, expired credentials, authentication requirements, revoked mandates, and issuer outages demand completely different recovery paths.
+
+Revive is an agentic revenue-recovery control plane. It understands why a recurring payment failed, chooses the highest-probability next action, checks that action against hard customer-trust policies, and measures whether the intervention created incremental revenue.
+
+The command center turns a messy exception queue into an operating system. The briefing separates actions that are safe to automate from cases needing human judgment. Operators see revenue at risk, recovery speed, causal uplift, and policy compliance. The customers and portfolio numbers shown here are realistic simulated data; the backend and evidence flows are live.
+
+Open a case and Revive explains itself. For this insufficient-balance failure, it checks the payment rail, issuer health, contact pressure, customer value, quiet hours, and authentication thresholds before proposing a retry. The operator sees the evidence, confidence, policy version, schedule, and human override before anything sensitive can execute.
+
+Here is the implemented flow end to end. A realistic subscription-pending event reaches the hosted API. Revive validates the request at runtime, classifies the failure, chooses an action, evaluates deterministic guardrails, and writes a private immutable audit record. The interface shows success only after the API returns a valid plan. The payment capture is simulated, clearly labeled, and no customer is charged or contacted.
+
+System Proof makes the engineering inspectable. It reads the running Vercel commit, region, function runtime, enforced controls, API inventory, and bounded hashes from private storage. The replay challenge sends one event twice. The first request creates one immutable record; the identical replay resolves to the same action key and the storage layer suppresses the duplicate. In Decision Lab, a forty-seven-thousand-nine-hundred-and-ninety-nine-rupee recovery crosses the value gate, so the recommendation is generated but execution requires approval.
+
+Revive does not give one general-purpose model unlimited tools. Specialist stages verify events, classify failures, evaluate recovery paths, enforce trust, and prepare actions. Consent, contact caps, India-time quiet hours, issuer holds, UPI AutoPay thresholds, and value gates remain deterministic. Models recommend; policies authorize.
+
+Most recovery dashboards take credit for every payment that eventually succeeds. Revive instead reserves a stable holdout and reports treatment uplift, confidence, and segment effects. That makes incremental recovered revenue—not retry volume or message sends—the north-star metric. The displayed experiment values are simulated, while the measurement design is explicit.
+
+Every decision can be traced from authenticated input to evidence, policy, action, and proof. The Razorpay-shaped webhook boundary verifies HMAC over untouched raw bytes and fails closed when its secret is unavailable. Immutable storage enforces duplicate suppression across serverless instances, while security headers and strict request limits reduce the public attack surface.
+
+The frontend and backend ship together on Vercel Functions in Singapore region sin-one, with encrypted secrets and private Blob evidence. This is a strong public engineering demonstration. A merchant pilot still needs authentication, tenant isolation, real test-mode adapters, transactional workers, rate limits, observability, and operational controls.
+
+Revive turns payment failure from a dead-end status into an explainable, measurable recovery operation: more revenue, less customer friction, and autonomy a fintech team can actually trust. This is Revive.

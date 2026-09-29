@@ -1,0 +1,520 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Inter";
+      src: url("assets/fonts/Inter-Variable.ttf") format("truetype");
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Space Grotesk";
+      src: url("assets/fonts/SpaceGrotesk-Variable.ttf") format("truetype");
+      font-weight: 300 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      container-type: size;
+      color: #000000;
+      font-family: "Inter", sans-serif;
+    }
+
+    #root > .clip {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #root [data-f4="ground"] {
+      background: #ffdc8b;
+    }
+
+    #root [data-f4="ground"]::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.14;
+      background-image: radial-gradient(#000000 1.55px, transparent 1.55px);
+      background-size: 2.35cqw 2.35cqw;
+    }
+
+    #root [data-f4="ground"]::after {
+      content: "";
+      position: absolute;
+      left: -9cqw;
+      top: 60.8cqh;
+      width: 118cqw;
+      height: 5.8cqh;
+      border-top: 0.37cqw solid #000000;
+      border-bottom: 0.37cqw solid #000000;
+      background: repeating-linear-gradient(
+        135deg,
+        #000000 0,
+        #000000 1cqw,
+        #fe90e8 1cqw,
+        #fe90e8 2cqw
+      );
+      opacity: 0.18;
+    }
+
+    #root [data-f4="content"] {
+      position: absolute;
+      inset: 0;
+    }
+
+    #root [data-f4="eyebrow"] {
+      position: absolute;
+      left: 6.4cqw;
+      top: 3.6cqh;
+      height: 4.4cqh;
+      display: flex;
+      align-items: center;
+      padding: 0 3cqw;
+      border: 0.28cqw solid #000000;
+      border-radius: 9999px;
+      background: #ffffff;
+      box-shadow: 0.37cqw 0.37cqw 0 #000000;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.35cqw;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      line-height: 1;
+      text-transform: uppercase;
+      z-index: 12;
+    }
+
+    #root [data-f4="counter"] {
+      position: absolute;
+      right: 6.2cqw;
+      top: 4.1cqh;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.2cqw;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      z-index: 12;
+    }
+
+    #root [data-f4="spine"] {
+      position: absolute;
+      left: 49.35cqw;
+      top: 11.2cqh;
+      width: 1.3cqw;
+      height: 31.8cqh;
+      background: #000000;
+      z-index: 1;
+    }
+
+    #root [data-f4-chip] {
+      position: absolute;
+      left: 39.4cqw;
+      width: 21.2cqw;
+      height: 6cqh;
+      display: grid;
+      grid-template-columns: 5.9cqw 1fr;
+      align-items: stretch;
+      border: 0.28cqw solid #000000;
+      background: #ffffff;
+      box-shadow: 0.37cqw 0.37cqw 0 #000000;
+      transform-origin: 50% 50%;
+      z-index: 8;
+    }
+
+    #root [data-f4-chip="1"] { top: 12cqh; }
+    #root [data-f4-chip="2"] { top: 20cqh; }
+    #root [data-f4-chip="3"] { top: 28cqh; }
+    #root [data-f4-chip="4"] { top: 36cqh; }
+
+    #root [data-f4-chip="1"] { background: #ffffff; }
+    #root [data-f4-chip="2"] { background: #c0f7fe; }
+    #root [data-f4-chip="3"] { background: #99e885; }
+    #root [data-f4-chip="4"] { background: #fe90e8; }
+
+    #root [data-f4="chip-num"] {
+      display: grid;
+      place-items: center;
+      border-right: 0.28cqw solid #000000;
+      background: #f7cb46;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.15cqw;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    #root [data-f4="chip-word"] {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1.1cqw;
+      font-size: 2.35cqw;
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      line-height: 1;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    #root [data-f4="gold-stage"] {
+      position: absolute;
+      left: 3.8cqw;
+      top: 21.2cqh;
+      width: 92.4cqw;
+      height: 40.2cqh;
+      border: 0.37cqw solid #000000;
+      background: #f7cb46;
+      box-shadow: 0.74cqw 0.74cqw 0 #000000;
+      overflow: hidden;
+      z-index: 3;
+    }
+
+    #root [data-f4="gold-stage"]::before {
+      content: "";
+      position: absolute;
+      left: -7cqw;
+      bottom: 2.4cqh;
+      width: 108cqw;
+      height: 6.4cqh;
+      background: repeating-linear-gradient(
+        -45deg,
+        #000000 0,
+        #000000 1.15cqw,
+        transparent 1.15cqw,
+        transparent 2.3cqw
+      );
+      opacity: 0.1;
+    }
+
+    #root [data-f4="save-card"] {
+      position: absolute;
+      left: 8.2cqw;
+      top: 24.5cqh;
+      width: 83.6cqw;
+      height: 32.8cqh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 6.2cqw;
+      border: 0.37cqw solid #000000;
+      background: #ffffff;
+      box-shadow: 0.74cqw 0.74cqw 0 #000000;
+      overflow: visible;
+      transform-origin: 50% 50%;
+      z-index: 6;
+    }
+
+    #root [data-f4="save"] {
+      display: block;
+      font-size: 14cqw;
+      font-weight: 900;
+      letter-spacing: -0.065em;
+      line-height: 0.82;
+      text-transform: uppercase;
+    }
+
+    #root [data-f4="this-order"] {
+      display: block;
+      margin-top: 1.5cqh;
+      font-size: 7.5cqw;
+      font-weight: 900;
+      letter-spacing: -0.045em;
+      line-height: 0.9;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    #root [data-f4="tonight"] {
+      align-self: flex-start;
+      margin-top: 3cqh;
+      padding: 1.2cqh 2.8cqw;
+      border: 0.28cqw solid #000000;
+      background: #c0f7fe;
+      box-shadow: 0.37cqw 0.37cqw 0 #000000;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.45cqw;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    #root [data-f4="bookmark"] {
+      position: absolute;
+      right: 5.2cqw;
+      top: -2.2cqh;
+      width: 10.8cqw;
+      height: 10.2cqh;
+      transform-origin: 50% 10%;
+      z-index: 11;
+    }
+
+    #root [data-f4="bookmark"] svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    #root [data-f4="bookmark"] polygon {
+      fill: #f7cb46;
+      stroke: #000000;
+      stroke-width: 5;
+      stroke-linejoin: miter;
+    }
+
+    #root [data-f4="star"] {
+      position: absolute;
+      left: -4.2cqw;
+      bottom: 2.2cqh;
+      width: 15.5cqw;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 0.37cqw solid #000000;
+      background: #fe90e8;
+      clip-path: polygon(50% 0%, 61% 29%, 88% 12%, 74% 40%, 100% 50%, 72% 61%, 88% 88%, 60% 74%, 50% 100%, 39% 72%, 12% 88%, 27% 60%, 0% 50%, 29% 39%, 12% 12%, 40% 28%);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.1cqw;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    #root [data-f4="brand-rail"] {
+      position: absolute;
+      left: 5cqw;
+      top: 65.8cqh;
+      width: 90cqw;
+      height: 14.2cqh;
+      border: 0.37cqw solid #000000;
+      background: #fffdf5;
+      box-shadow: 0.74cqw 0.74cqw 0 #000000;
+      overflow: hidden;
+      z-index: 5;
+    }
+
+    #root [data-f4="brand-rail"]::before {
+      content: "";
+      position: absolute;
+      left: 48%;
+      top: 0;
+      width: 0.37cqw;
+      height: 100%;
+      background: #000000;
+    }
+
+    #root [data-f4="nexa"] {
+      position: absolute;
+      left: 2.2cqw;
+      bottom: 0;
+      width: 39cqw;
+      height: 13.6cqh;
+      object-fit: contain;
+      object-position: left bottom;
+    }
+
+    #root [data-f4="biznex"] {
+      position: absolute;
+      right: 3cqw;
+      top: 3.4cqh;
+      width: 39.5cqw;
+      height: 7.1cqh;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    #root [data-f4="brand-tag"] {
+      position: absolute;
+      right: 4.1cqw;
+      bottom: 1.2cqh;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.75cqw;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+  </style>
+
+  <div data-hf-id="hf-m640" id="root" data-composition-id="04-save-the-order" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-udca" id="f4-ground" class="clip" data-f4="ground" data-start="0" data-duration="4.117" data-track-index="0"></div>
+
+    <div data-hf-id="hf-hk3z" id="f4-content" class="clip" data-f4="content" data-start="0" data-duration="4.117" data-track-index="1">
+      <div data-hf-id="hf-ldg8" data-f4="eyebrow">4-step memory strip</div>
+      <div data-hf-id="hf-mlby" data-f4="counter">Ready / tonight</div>
+      <div data-hf-id="hf-941t" data-f4="spine" aria-hidden="true"></div>
+
+      <div data-hf-id="hf-tcq7" data-f4-chip="1">
+        <span data-hf-id="hf-6rd2" data-f4="chip-num">01</span>
+        <span data-hf-id="hf-pppc" data-f4="chip-word">Cleanse</span>
+      </div>
+      <div data-hf-id="hf-ih8k" data-f4-chip="2">
+        <span data-hf-id="hf-75o3" data-f4="chip-num">02</span>
+        <span data-hf-id="hf-y5zi" data-f4="chip-word">Foam</span>
+      </div>
+      <div data-hf-id="hf-j8wd" data-f4-chip="3">
+        <span data-hf-id="hf-7jz4" data-f4="chip-num">03</span>
+        <span data-hf-id="hf-g4za" data-f4="chip-word">Exfoliate</span>
+      </div>
+      <div data-hf-id="hf-20m2" data-f4-chip="4">
+        <span data-hf-id="hf-4rtx" data-f4="chip-num">04</span>
+        <span data-hf-id="hf-e8ln" data-f4="chip-word">Mask</span>
+      </div>
+
+      <div data-hf-id="hf-a85r" data-f4="gold-stage" aria-hidden="true"></div>
+
+      <section data-hf-id="hf-8iod" data-f4="save-card" aria-label="Save this order">
+        <span data-hf-id="hf-wdz6" data-f4="save">Save</span>
+        <span data-hf-id="hf-ictb" data-f4="this-order">This order</span>
+        <span data-hf-id="hf-bfba" data-f4="tonight">For tonight ↓</span>
+
+        <div data-hf-id="hf-fbd0" data-f4="bookmark" aria-hidden="true">
+          <svg data-hf-id="hf-eban" viewBox="0 0 120 180">
+            <polygon data-hf-id="hf-fnux" points="8,8 112,8 112,166 60,126 8,166" />
+          </svg>
+        </div>
+
+        <div data-hf-id="hf-cpnl" data-f4="star" aria-hidden="true">SAVE</div>
+      </section>
+
+      <div data-hf-id="hf-x93h" data-f4="brand-rail">
+        <img data-hf-id="hf-vyyh" data-f4="nexa" src="assets/nexa-closing.png" alt="Nexa guide">
+        <img data-hf-id="hf-2cc1" data-f4="biznex" src="assets/biznex-logo.png" alt="BizNex">
+        <span data-hf-id="hf-zqhq" data-f4="brand-tag">Skincare, simplified</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script>
+    (() => {
+      const root = document.querySelector('[data-composition-id="04-save-the-order"]');
+      if (!root || !window.gsap) return;
+
+      const q = (selector) => root.querySelector(selector);
+      const qa = (selector) => Array.from(root.querySelectorAll(selector));
+      const tl = window.gsap.timeline({ paused: true });
+
+      tl.fromTo(
+        q('[data-f4="eyebrow"]'),
+        { y: -34, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.42, ease: "power3.out" },
+        0.02,
+      );
+      tl.fromTo(
+        q('[data-f4="counter"]'),
+        { x: 30, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.38, ease: "power3.out" },
+        0.1,
+      );
+      tl.fromTo(
+        q('[data-f4="spine"]'),
+        { scaleY: 0, opacity: 0, transformOrigin: "center top" },
+        { scaleY: 1, opacity: 1, duration: 0.6, ease: "power3.out" },
+        0.1,
+      );
+
+      const chipStarts = [0.08, 0.48, 0.88, 1.3];
+      qa("[data-f4-chip]").forEach((chip, index) => {
+        tl.fromTo(
+          chip,
+          { y: 28, scale: 0.92, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.42, ease: "power3.out" },
+          chipStarts[index],
+        );
+      });
+
+      const compactTargets = [
+        { x: -351, y: -20 },
+        { x: -117, y: -173 },
+        { x: 117, y: -326 },
+        { x: 351, y: -480 },
+      ];
+      qa("[data-f4-chip]").forEach((chip, index) => {
+        tl.to(
+          chip,
+          {
+            x: compactTargets[index].x,
+            y: compactTargets[index].y,
+            scale: 0.86,
+            duration: 0.56,
+            ease: "power3.inOut",
+          },
+          2.0 + index * 0.025,
+        );
+      });
+
+      tl.fromTo(
+        q('[data-f4="gold-stage"]'),
+        { y: 54, scale: 0.97, opacity: 0 },
+        { y: 0, scale: 1, opacity: 1, duration: 0.55, ease: "power3.out" },
+        1.96,
+      );
+      tl.fromTo(
+        q('[data-f4="save-card"]'),
+        { y: 86, scale: 0.95, opacity: 0 },
+        { y: 0, scale: 1, opacity: 1, duration: 0.64, ease: "power3.out" },
+        2.08,
+      );
+      tl.fromTo(
+        q('[data-f4="save"]'),
+        { y: 44, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.42, ease: "power3.out" },
+        2.42,
+      );
+      tl.fromTo(
+        q('[data-f4="this-order"]'),
+        { y: 42, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.42, ease: "power3.out" },
+        2.62,
+      );
+      tl.fromTo(
+        q('[data-f4="tonight"]'),
+        { y: 28, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.34, ease: "power3.out" },
+        2.88,
+      );
+      tl.fromTo(
+        q('[data-f4="star"]'),
+        { scale: 0.3, rotation: -14, opacity: 0 },
+        { scale: 1, rotation: -7, opacity: 1, duration: 0.5, ease: "power3.out" },
+        2.55,
+      );
+
+      tl.fromTo(
+        q('[data-f4="brand-rail"]'),
+        { y: 36, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.48, ease: "power3.out" },
+        2.68,
+      );
+      tl.fromTo(
+        q('[data-f4="nexa"]'),
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.42, ease: "power3.out" },
+        2.78,
+      );
+      tl.fromTo(
+        q('[data-f4="biznex"]'),
+        { y: 24, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.42, ease: "power3.out" },
+        2.88,
+      );
+
+      tl.fromTo(
+        q('[data-f4="bookmark"]'),
+        { y: -34, scale: 0.35, opacity: 0 },
+        { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "expo.out" },
+        3.35,
+      );
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["04-save-the-order"] = tl;
+    })();
+  </script>
+</template>

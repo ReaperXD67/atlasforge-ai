@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+
+  @font-face { font-family: Impact; src: local("Impact"); }
+  @font-face { font-family: "Arial Narrow"; src: local("Arial Narrow"); }
+  * { box-sizing: border-box; }
+  #root {
+    position: absolute;
+    inset: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background: #0b0a0a;
+    color: #fff4dd;
+    font-family: "Segoe UI", Arial, sans-serif;
+  }
+  .backdrop {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 78% 22%, rgba(244,185,66,.17), transparent 34%),
+      radial-gradient(circle at 12% 78%, rgba(117,214,156,.08), transparent 28%),
+      linear-gradient(135deg, #0b0a0a 0%, #17120c 52%, #080808 100%);
+  }
+  .grid {
+    position: absolute;
+    inset: -100px;
+    opacity: .16;
+    background-image: linear-gradient(rgba(244,185,66,.22) 1px, transparent 1px), linear-gradient(90deg, rgba(244,185,66,.22) 1px, transparent 1px);
+    background-size: 86px 86px;
+    transform: rotate(-6deg) translateY(180px) scale(1.32);
+    transform-origin: center;
+  }
+  .grain {
+    position: absolute;
+    inset: 0;
+    opacity: .09;
+    background-image: radial-gradient(rgba(255,255,255,.8) .8px, transparent .8px);
+    background-size: 6px 6px;
+  }
+  .ambient {
+    position: absolute;
+    width: 760px;
+    height: 760px;
+    border: 2px solid rgba(244,185,66,.16);
+    border-radius: 50%;
+    right: -260px;
+    top: -300px;
+    box-shadow: 0 0 100px rgba(244,185,66,.11), inset 0 0 80px rgba(244,185,66,.05);
+  }
+  .stage { position: absolute; inset: 0; padding: 94px 92px 178px; }
+  .eyebrow {
+    color: #f4b942;
+    font: 700 24px/1 Consolas, monospace;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+  .headline {
+    margin-top: 16px;
+    font-family: Impact, "Arial Narrow", sans-serif;
+    font-size: 116px;
+    line-height: .92;
+    letter-spacing: .012em;
+    text-transform: uppercase;
+  }
+  .headline .gold { color: #f4b942; }
+  .subhead { color: #c8bda7; font-size: 31px; line-height: 1.34; max-width: 920px; }
+  .panel {
+    border: 1px solid rgba(244,185,66,.28);
+    background: linear-gradient(145deg, rgba(31,27,22,.96), rgba(12,11,10,.9));
+    border-radius: 28px;
+    box-shadow: 0 26px 80px rgba(0,0,0,.42), inset 0 1px rgba(255,255,255,.05);
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(244,185,66,.38);
+    color: #f4b942;
+    font: 700 19px/1 Consolas, monospace;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .host-shell { position: absolute; width: 760px; height: 810px; }
+  .host-halo {
+    position: absolute; width: 610px; height: 610px; border-radius: 50%; left: 92px; top: 75px;
+    background: radial-gradient(circle, rgba(244,185,66,.24), transparent 68%);
+    border: 2px solid rgba(244,185,66,.25);
+  }
+  .host-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 28px 30px rgba(0,0,0,.55)); }
+  .name-plate {
+    position: absolute; left: 110px; bottom: 118px; padding: 12px 20px;
+    border-radius: 14px; background: #f4b942; color: #0b0a0a;
+    font: 900 24px/1 "Segoe UI", sans-serif; letter-spacing: .12em;
+  }
+  .source-chip { color: #c8bda7; font: 600 19px/1.2 Consolas, monospace; }
+  .tiny-rule { height: 2px; background: linear-gradient(90deg,#f4b942,transparent); }
+
+
+      .headline { font-size:95px; width:1300px; }
+      .pv-layout { position:absolute; left:92px; right:92px; top:385px; display:grid; grid-template-columns:620px 1fr; gap:36px; }
+      .threshold { height:455px; padding:40px; border-color:#f4b942; }
+      .micro { color:#c8bda7; font:700 17px Consolas,monospace; letter-spacing:.12em; }
+      .threshold strong { display:block; margin-top:25px; font:900 112px/1 Impact,sans-serif; color:#f4b942; letter-spacing:.03em; }
+      .threshold em { display:block; font:900 31px/1 "Segoe UI",sans-serif; font-style:normal; }
+      .threshold p { margin-top:22px; color:#c8bda7; font-size:23px; }
+      .meter { height:18px; background:#30281e; border-radius:20px; margin-top:30px; overflow:hidden; }
+      .meter-fill { width:100%; height:100%; background:linear-gradient(90deg,#f4b942,#fff4dd); transform-origin:left; }
+      .flow { height:270px; display:flex; align-items:center; gap:22px; position:relative; }
+      .token { width:84px; height:84px; border-radius:50%; display:grid; place-items:center; background:#f4b942; color:#0b0a0a; font:900 22px Consolas,monospace; box-shadow:0 0 30px rgba(244,185,66,.28); }
+      .arrow { font-size:76px; color:#75d69c; }
+      .destination { width:370px; height:150px; padding:30px; border-color:#75d69c; }
+      .destination span { display:block; color:#75d69c; font:700 15px Consolas,monospace; }
+      .destination b { display:block; font:900 32px Impact,sans-serif; margin-top:9px; }
+      .warning { position:absolute; right:0; bottom:0; width:785px; height:150px; padding:30px 34px; border-color:#ff6b5e; display:grid; grid-template-columns:260px 1fr; align-items:center; }
+      .warning b { color:#ff6b5e; font:900 31px Impact,sans-serif; }
+      .warning span { font:900 34px Consolas,monospace; text-decoration:line-through 6px #ff6b5e; }
+      .warning small { grid-column:2; color:#c8bda7; font-size:18px; }
+
+      </style>
+      <div id="root" data-composition-id="scene-03-pv" data-start="0" data-duration="36.871" data-width="1920" data-height="1080">
+
+      <div class="backdrop"></div><div class="grid" data-layout-ignore></div><div class="grain" data-layout-ignore></div><div class="ambient" data-layout-ignore></div>
+      <div class="stage">
+        <div class="eyebrow">STEP 02 — ADD THE TRACKING UNIT</div>
+        <h2 class="headline"><span class="gold">PV</span> IS A LANGUAGE,<br>NOT A PAYCHECK</h2>
+        <div class="pv-layout">
+          <div class="threshold panel">
+            <span class="micro">CURRENT ATOMY USA PAGE</span>
+            <strong><span class="counter">10,000</span></strong>
+            <em>PERSONAL PV FIRST</em>
+            <div class="meter"><div class="meter-fill"></div></div>
+            <p>before generating downline PV for the plan</p>
+          </div>
+          <div class="flow">
+            <div class="token t1">PV</div><div class="token t2">PV</div><div class="token t3">PV</div>
+            <div class="arrow">→</div>
+            <div class="destination panel"><span>MAY BE ADDED TO</span><b>THE SMALLER LEG</b></div>
+          </div>
+          <div class="warning panel"><b>DO NOT INVENT</b><span>$ value per PV</span><small>Check current official material.</small></div>
+        </div>
+      </div>
+      </div>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const root = document.querySelector('[data-composition-id="scene-03-pv"]');
+        const q = gsap.utils.selector(root);
+        const tl = gsap.timeline({ paused: true });
+        tl.to(q(".ambient"), { rotation:18, scale:1.13, duration:36.871, ease:"none" }, 0);
+        tl.to(q(".grain"), { backgroundPosition:"32px 18px", duration:36.871, ease:"none" }, 0);
+
+      tl.fromTo(q(".eyebrow,.headline"), { opacity:0, x:-60 }, { opacity:1, x:0, duration:.65, stagger:.18, ease:"power3.out" }, .1);
+      tl.fromTo(q(".threshold"), { opacity:0, y:70, rotate:-1.5 }, { opacity:1, y:0, rotate:0, duration:.75, ease:"back.out(1.2)" }, .8);
+      tl.fromTo(q(".meter-fill"), { scaleX:0 }, { scaleX:1, duration:2.2, ease:"power2.out" }, 1.7);
+      tl.fromTo(q(".token"), { opacity:0, x:-120, scale:.5 }, { opacity:1, x:0, scale:1, duration:.55, stagger:.25, ease:"back.out(1.6)" }, 2.5);
+      tl.fromTo(q(".destination"), { opacity:0, x:80 }, { opacity:1, x:0, duration:.7 }, 3.2);
+      tl.fromTo(q(".warning"), { opacity:0, y:70 }, { opacity:1, y:0, duration:.7, ease:"power3.out" }, 6.3);
+      tl.to(q(".token"), { y:-20, stagger:.15, duration:29.871000000000002, ease:"sine.inOut" }, 7);
+
+        window.__timelines["scene-03-pv"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

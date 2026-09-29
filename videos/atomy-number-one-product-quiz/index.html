@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js" integrity="sha384-sG0Hv1tP1lZCk9KQmrIbY/XNwi+OY84GQqhMscbnsoBFqAz8KNCil1kvfL3Hbbk2" crossorigin="anonymous"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #000;
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #FFFFFF;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-rpo2" id="root" data-composition-id="main" data-start="0" data-duration="21.739" data-width="1080" data-height="1920">
+      <div data-hf-id="hf-nm7s" id="el-01-pick-the-winner" class="scene" data-composition-id="01-pick-the-winner" data-composition-src="compositions/frames/01-pick-the-winner.html" data-start="0" data-duration="4.987" data-track-index="0"></div>
+      <audio data-hf-id="hf-gvrr" id="el-01-pick-the-winner-voice" src="assets/voice/01.wav" data-start="0" data-duration="4.587" data-track-index="10" data-volume="1"></audio>
+
+      <div data-hf-id="hf-a4d1" id="el-02-two-correct-answers" class="scene" data-composition-id="02-two-correct-answers" data-composition-src="compositions/frames/02-two-correct-answers.html" data-start="4.587" data-duration="2.975" data-track-index="1"></div>
+      <audio data-hf-id="hf-37ol" id="el-02-two-correct-answers-voice" src="assets/voice/02.wav" data-start="4.587" data-duration="2.475" data-track-index="10" data-volume="1"></audio>
+
+      <div data-hf-id="hf-iadp" id="el-03-revenue-winner" class="scene" data-composition-id="03-revenue-winner" data-composition-src="compositions/frames/03-revenue-winner.html" data-start="7.061999999999999" data-duration="4.767" data-track-index="0"></div>
+      <audio data-hf-id="hf-lof5" id="el-03-revenue-winner-voice" src="assets/voice/03.wav" data-start="7.061999999999999" data-duration="4.267" data-track-index="10" data-volume="1"></audio>
+
+      <div data-hf-id="hf-tljm" id="el-04-units-winner" class="scene" data-composition-id="04-units-winner" data-composition-src="compositions/frames/04-units-winner.html" data-start="11.329" data-duration="7.445" data-track-index="1"></div>
+      <audio data-hf-id="hf-6mk9" id="el-04-units-winner-voice" src="assets/voice/04.wav" data-start="11.329" data-duration="7.445" data-track-index="10" data-volume="1"></audio>
+
+      <div data-hf-id="hf-id65" id="el-05-did-you-guess" class="scene" data-composition-id="05-did-you-guess" data-composition-src="compositions/frames/05-did-you-guess.html" data-start="18.774" data-duration="2.965" data-track-index="0"></div>
+      <audio data-hf-id="hf-ksnq" id="el-05-did-you-guess-voice" src="assets/voice/05.wav" data-start="18.774" data-duration="2.965" data-track-index="10" data-volume="1"></audio>
+
+      <!-- BGM -->
+      <audio data-hf-id="hf-qzd6" id="el-bgm" src="assets/bgm/track.wav" data-start="0" data-duration="21.739" data-track-index="11" data-volume="0.12"></audio>
+
+      <!-- captions -->
+      <div data-hf-id="hf-so4l" id="el-captions" class="scene" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="21.739" data-track-index="2"></div>
+
+      <!-- SFX -->
+      <audio data-hf-id="hf-lt7i" id="el-sfx-0" src="assets/sfx/impact-bass-1.mp3" data-start="0" data-duration="2.12" data-track-index="20" data-volume="0.35"></audio>
+      <audio data-hf-id="hf-m7j5" id="el-sfx-1" src="assets/sfx/pop.mp3" data-start="0" data-duration="0.72" data-track-index="21" data-volume="0.35"></audio>
+      <audio data-hf-id="hf-ggbe" id="el-sfx-2" src="assets/sfx/impact-bass-1.mp3" data-start="4.587" data-duration="2.12" data-track-index="22" data-volume="0.35"></audio>
+      <audio data-hf-id="hf-6cp0" id="el-sfx-3" src="assets/sfx/click-soft.mp3" data-start="4.587" data-duration="0.37" data-track-index="23" data-volume="0.35"></audio>
+      <audio data-hf-id="hf-ytvp" id="el-sfx-4" src="assets/sfx/whoosh-short.mp3" data-start="7.062" data-duration="0.57" data-track-index="24" data-volume="0.35"></audio>
+      <audio data-hf-id="hf-651r" id="el-sfx-5" src="assets/sfx/click-soft.mp3" data-start="7.062" data-duration="0.37" data-track-index="25" data-volume="0.35"></audio>
+      <audio data-hf-id="hf-xqxm" id="el-sfx-6" src="assets/sfx/whoosh-short.mp3" data-start="11.329" data-duration="0.57" data-track-index="26" data-volume="0.35"></audio>
+      <audio data-hf-id="hf-3lem" id="el-sfx-7" src="assets/sfx/chime.mp3" data-start="11.329" data-duration="2.5" data-track-index="27" data-volume="0.35"></audio>
+      <audio data-hf-id="hf-2faf" id="el-sfx-8" src="assets/sfx/impact-bass-1.mp3" data-start="18.774" data-duration="2.12" data-track-index="28" data-volume="0.35"></audio>
+      <audio data-hf-id="hf-xjh0" id="el-sfx-9" src="assets/sfx/pop.mp3" data-start="18.774" data-duration="0.72" data-track-index="29" data-volume="0.35"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+      // ── frame transitions (injected by transitions.mjs) ──
+      (function () { var tl = window.__timelines["main"];
+        tl.to("#el-01-pick-the-winner", { scale: 2.5, opacity: 0, filter: "blur(8px)", duration: 0.4, ease: "power3.in" }, 4.587);
+        tl.fromTo("#el-02-two-correct-answers", { scale: 0.5, opacity: 0, filter: "blur(8px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.4, ease: "power3.out" }, 4.587);
+        tl.to("#el-02-two-correct-answers", { y: -1920, duration: 0.5, ease: "power3.inOut" }, 7.062);
+        tl.fromTo("#el-03-revenue-winner", { y: 1920, opacity: 1 }, { y: 0, duration: 0.5, ease: "power3.inOut" }, 7.062);
+        tl.to("#el-03-revenue-winner", { y: -1920, duration: 0.5, ease: "power3.inOut" }, 11.329);
+        tl.fromTo("#el-04-units-winner", { y: 1920, opacity: 1 }, { y: 0, duration: 0.5, ease: "power3.inOut" }, 11.329);
+        tl.to({}, { duration: 21.739 }, 0); // full-span anchor — main.duration() == composition total (Studio master duration)
+      })();
+    </script>
+  </body>
+</html>

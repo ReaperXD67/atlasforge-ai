@@ -2,6 +2,46 @@
 
 This guide starts from a clean Windows 11 laptop and ends with a tested, scheduled pipeline. Do the credential and channel setup once; no manual editing is required after that, although you should review early runs and periodically audit facts, audience response, and policy compliance.
 
+## Fastest route: Docker Studio
+
+For the RTX 4070 laptop this is the recommended setup. Install Docker Desktop with its WSL 2
+backend, start it, then run these commands from the repository:
+
+```powershell
+Copy-Item .env.example .env
+notepad .env
+.\scripts\start_studio.ps1
+```
+
+Paste the existing OpenRouter key after `OPENROUTER_API_KEY=`. Paste the Pexels key after
+`PEXELS_API_KEY=` for matching free stock video. Everything else may remain blank: Docker
+includes free local Kokoro narration, local Whisper alignment, FFmpeg, and the web Studio. The
+script builds the image, starts it with GPU access, checks its health, reports the detected render
+path, and opens `http://127.0.0.1:8741/`.
+
+Use **Atomy USA — Fast Preview** first. It creates a short package with publishing and premium
+video providers disabled. After that succeeds, switch to **Atomy USA — Joining Guide** for the full
+6–8 minute 1080p60 render. Generated files persist under `output/`; models persist under `models/`.
+
+What still needs human judgment is deliberately small: provide or approve the exact official
+Atomy registration/sponsor link, fact-check time-sensitive membership claims, verify stock-video
+suitability, and watch the final render before publishing. The free visual path leads with licensed
+real footage and falls back to owned cards or stable still motion. Local AI is used only for an
+explicitly necessary shot that passes admission. Premium cloud clips remain an explicit paid opt-in.
+
+For a song-driven racing/event sample, switch to **Remotion Lab**, upload the final track, check the
+detected BPM, and build the 60-second boss sample. The complete upload and premium-upgrade sequence
+is documented in [Remotion Music Film](docs/MUSIC_VIDEO.md).
+
+For realistic AI-native social clips, switch to **AI Viral Lab**. The free local Beat Creature and
+Physics Spectacle paths use the already installed Wan 2.2 service. Talking Duo and the strongest
+identity/audio coherence require only `GOOGLE_API_KEY` after Docker Studio is installed. Follow
+[AI Viral Lab](docs/VIRAL_SHORTS.md) for the exact inputs, prices, and capability limits.
+
+For a restrained car, product, or environment insert, switch to **AI Generation**. This workspace
+uses the maximum safe local tier, generates two seeds by default, and labels the output admitted or
+quarantined. A quarantined result is evidence for tuning, not footage approved for the main film.
+
 ## 1. Hardware and disk
 
 Recommended for the stated laptop:
@@ -62,7 +102,7 @@ Set-ExecutionPolicy -Scope Process Bypass
 Copy-Item .env.example .env
 ```
 
-The script creates `.venv`, installs the production package plus Google/YouTube integrations, and creates local `output`, `models`, and `secrets` directories.
+The script creates `.venv`, installs the production package plus Google/YouTube integrations, and creates local `output`, `models`, and `secrets` directories. For a fully native (non-Docker) media stack, use `./scripts/install.ps1 -WithLocalTts -WithTranscription -WithVisualRanking`; Docker Studio already includes all three.
 
 ## 4. Choose text generation
 
@@ -148,6 +188,11 @@ Why: free offline narration with better quality than many lightweight local voic
 
 Kokoro downloads its model files on first use into the Hugging Face cache. If you require an offline deployment, pre-run a short test while online and preserve that cache. `KOKORO_MODEL_PATH` is reserved for custom adapters; the packaged Kokoro provider currently uses its own cache.
 
+Studio exposes four Kokoro voice characters plus pace control. For the clearest premium jump, add
+`ELEVENLABS_API_KEY=...` to `.env`, choose **ElevenLabs · premium jump**, and set
+`voice.elevenlabs_voice_id` to a voice available to the account. AtlasForge uses the official REST
+endpoint and keeps Kokoro as fallback.
+
 ### Piper local
 
 Why: smallest, fastest, fully offline fallback. Optional: yes. Free: yes. Disk: usually under 200 MB per voice.
@@ -163,9 +208,9 @@ PIPER_MODEL_PATH=C:\full\path\to\en_US-voice-medium.onnx
 
 ## 6. Images and video
 
-### Pexels images (recommended)
+### Pexels matching video clips (recommended)
 
-Why: free editorial/stock visual source with explicit attribution records saved per scene. Optional: yes; the local card provider always works. Cost: free subject to Pexels API terms.
+Why: free real-world b-roll is the primary visual layer and looks more natural than stretching random photos. Each scene uses a concrete action search, clips and creators are not repeated when alternatives exist, and an attribution/provenance JSON file is saved beside every download. A local OpenAI CLIP model inspects Pexels thumbnails, reranks them by visual relevance, and rejects the scene when even the best candidate is too weak. Its first use downloads the model into the persistent model cache. If CLIP is unavailable, duration/resolution ranking remains a safe fallback. Optional: yes; the local card/still provider always works. Cost: free subject to Pexels API terms.
 
 1. Request a key at [Pexels API](https://www.pexels.com/api/).
 2. Add it:
@@ -174,7 +219,35 @@ Why: free editorial/stock visual source with explicit attribution records saved 
 PEXELS_API_KEY=your_key_here
 ```
 
-Always audit whether a specific photo is suitable for commercial use, contains recognizable people, trademarks, or misleading product context.
+Always audit whether a specific clip is suitable for commercial use, contains recognizable people, trademarks, or misleading product context.
+
+### Real plate → Wan 2.2 → RIFE local candidates (optional, free after electricity)
+
+Why: the official Wan 2.2 TI2V 5B model is the practical supported local video lane for this 8 GB
+RTX 4070. AtlasForge now starts from a sharp real Pexels photograph whenever possible, uses SDXL only
+as a fallback, applies one conservative action and camera move, and uses RIFE 4.26 before 60 fps
+mastering. Studio tiers are 512x896/20 steps, 576x1024/28, and a measured laptop ceiling of
+640x1136/32. The last tier can consume nearly all GPU compute and most available system RAM.
+
+The default best-of-two candidates are sampled and checked for blur, exposure, flicker, frozen or
+abrupt motion, scene discontinuity, reference drift, implausible physics/anatomy, identity changes,
+and artificial camera behavior. The semantic part sends one compressed 3x3 contact sheet—not the
+full video—to the configured OpenRouter model using `OPENROUTER_API_KEY`. It is normally a tiny use
+of the existing credit. If the key or review is unavailable, strict admission fails closed.
+
+The automated one-time setup needs roughly 30 GB free and places everything outside OneDrive:
+
+```powershell
+.\scripts\install_comfyui_wan22.ps1
+```
+
+The installer clones official ComfyUI, creates an isolated Python 3.11 environment, installs NVIDIA CUDA PyTorch, downloads Wan's diffusion model/VAE/text encoder plus the official SDXL 1.0 checkpoint and Comfy-Org RIFE 4.26 weights, verifies their published SHA-256 hashes where available, then verifies that CUDA sees the GPU. Start it manually only when troubleshooting:
+
+```powershell
+.\scripts\start_comfyui.ps1 -Foreground
+```
+
+Normal use requires no extra command: `start_studio.ps1` starts ComfyUI in the background when it is installed. The Studio toggle **Strict AI fallback** only arms the provider; it does not mark ordinary scenes as AI-required. Use the separate **AI Generation** workspace to direct a candidate deliberately. The API URL is already configured as `http://127.0.0.1:8188` on Windows and `http://host.docker.internal:8188` inside Docker.
 
 ### Veo hero clips (optional, off by default)
 
@@ -270,9 +343,15 @@ output/<run/manifest.json
 
 The first production-quality 7-minute render may take 15–45 minutes depending on stock downloads, TTS, scene count, and encoder. A local Ollama or Kokoro run may take longer.
 
-## 10. Dashboard and unattended schedule
+## 10. Studio, dashboard, and unattended schedule
 
-Test the dashboard:
+Recommended Docker Studio:
+
+```powershell
+.\scripts\start_studio.ps1
+```
+
+Native dashboard alternative:
 
 ```powershell
 .\.venv\Scripts\atlasforge.exe dashboard
@@ -295,6 +374,7 @@ The task uses the repository's virtual environment and runs with the current use
 | `GOOGLE_API_KEY` | Gemini text/TTS or Veo | Google AI Studio API keys |
 | `OPENROUTER_API_KEY` | OpenRouter text | OpenRouter account keys |
 | `OPENAI_API_KEY` | OpenAI TTS | OpenAI Platform project key |
+| `ELEVENLABS_API_KEY` | ElevenLabs TTS | ElevenLabs API key |
 | `MINIMAX_API_KEY` | MiniMax video | MiniMax API platform |
 | `PEXELS_API_KEY` | Pexels images | Pexels developer API |
 | `OLLAMA_BASE_URL` | local Ollama | normally `http://127.0.0.1:11434` |

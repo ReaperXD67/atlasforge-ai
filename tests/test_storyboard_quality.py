@@ -1,11 +1,13 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 import pytest
 
 from daily_video_factory.exceptions import QualityGateFailed
 from daily_video_factory.models import ScriptDocument
 from daily_video_factory.quality import validate_script
-from daily_video_factory.storyboard import StoryboardBuilder
+from daily_video_factory.storyboard import StoryboardBuilder, _visual_plan
 
 
 def make_script(text: str, disclosures: list[str] | None = None) -> ScriptDocument:
@@ -19,31 +21,158 @@ def make_script(text: str, disclosures: list[str] | None = None) -> ScriptDocume
         word_count=words,
         estimated_minutes=words / 145,
         facts_to_verify=[],
-        disclosures=disclosures or ["AI-generated narration voice", "Educational, not financial advice"],
+        disclosures=disclosures
+        or ["AI-generated narration voice", "Educational, not financial advice"],
         provider="test",
     )
 
 
 def test_storyboard_is_deterministic_and_varied(settings) -> None:
-    first = " ".join(["Start with the customer problem and test demand before spending money."] * 12)
+    first = " ".join(
+        ["Start with the customer problem and test demand before spending money."] * 12
+    )
     second = " ".join(["Compare time, margin, skill growth, and downside honestly."] * 12)
-    third = " ".join(["Atomy can then be evaluated as one optional case study among alternatives."] * 12)
+    third = " ".join(
+        ["Atomy can then be evaluated as one optional case study among alternatives."] * 12
+    )
     script = make_script(f"{first} {second} {third}")
     board = StoryboardBuilder(settings).run(script)
     assert len(board.scenes) >= 3
     assert board.scenes[0].camera_angle != board.scenes[1].camera_angle
+    assert board.scenes[0].visual_mode == "cold_open"
+    assert board.scenes[1].visual_mode == "kinetic_statement"
+    assert board.scenes[0].ai_generation_required is False
+    assert "product" not in board.scenes[0].visual_search_query
     assert board.total_duration_seconds > 0
+    assert any(scene.visual_mode in {"step_card", "comparison_card"} for scene in board.scenes)
+
+
+def test_sensitive_identity_fact_uses_owned_information_card() -> None:
+    _query, _title, mode = _visual_plan(
+        "Enter your legal name and Social Security details only on the official form.", 2, "Guide"
+    )
+
+    assert mode == "information_card"
+
+
+@pytest.mark.parametrize(
+    ("narration", "expected_mode"),
+    [
+        ("The smaller leg determines the score used by the plan.", "binary_plan_card"),
+        (
+            "The classes move from Sales Rep to Agent, Special Agent, Dealer, and Exclusive Distributor.",
+            "atomy_rank_card",
+        ),
+        (
+            "The page lists 44% for general commission, 20% for mastership, and 6% for centers.",
+            "atomy_allocation_card",
+        ),
+    ],
+)
+def test_compensation_terms_use_owned_diagrams(narration: str, expected_mode: str) -> None:
+    _query, _title, mode = _visual_plan(narration, 3, "Plan")
+
+    assert mode == expected_mode
+
+
+def test_presenter_profile_starts_on_owned_host_card(settings) -> None:
+    settings.images.presenter_avatar = Path("assets/biznex/nexa-host-v1.png")
+    settings.storyboard.presenter_interval_scenes = 4
+    script = make_script(
+        " ".join(
+            [
+                "Two legs and one smaller side make the Atomy plan easier to understand.",
+                "We will draw the structure before discussing any commission.",
+            ]
+            * 22
+        )
+    )
+    script.title = "Atomy Business Plan 2026 Explained in English"
+    script.brand_focused = True
+
+    board = StoryboardBuilder(settings).run(script)
+
+    assert board.scenes[0].visual_mode == "presenter_card"
 
 
 def test_quality_gate_rejects_earnings_promises(settings) -> None:
     safe_prefix = " ".join(["Evaluate the business model carefully before deciding."] * 20)
     unsafe = "You are guaranteed to earn $1000 per day."
-    tail = " ".join(["Atomy is one optional example and should be compared with alternatives."] * 20)
+    tail = " ".join(
+        ["Atomy is one optional example and should be compared with alternatives."] * 20
+    )
     with pytest.raises(QualityGateFailed):
         validate_script(make_script(f"{safe_prefix} {unsafe} {tail}"), settings)
 
 
+def test_quality_gate_accepts_explicitly_negated_outcome_claims(settings) -> None:
+    prefix = " ".join(
+        ["Evaluate costs, time, skills, and customer demand before choosing any model."] * 18
+    )
+    disclaimer = "Results are not guaranteed, and you should not expect to earn $1000 per day."
+    suffix = " ".join(
+        ["Atomy is one optional example to compare with other practical alternatives."] * 12
+    )
+    assert validate_script(make_script(f"{prefix} {disclaimer} {suffix}"), settings) == []
+
+
+def test_quality_gate_rejects_effort_as_an_earnings_explanation(settings) -> None:
+    prefix = " ".join(["Compare the official requirements before deciding."] * 20)
+    unsafe = "Your income results depend on your effort, persistence, and commitment."
+    suffix = " ".join(["Atomy is one optional example to evaluate carefully."] * 20)
+
+    with pytest.raises(QualityGateFailed, match="effort-to-earnings"):
+        validate_script(make_script(f"{prefix} {unsafe} {suffix}"), settings)
+
+
 def test_quality_gate_accepts_education_first_script(settings) -> None:
-    prefix = " ".join(["Evaluate demand, time, skills, costs, and risk before choosing a model."] * 18)
-    suffix = " ".join(["Atomy is one optional example to compare against retail and service alternatives."] * 14)
+    prefix = " ".join(
+        ["Evaluate demand, time, skills, costs, and risk before choosing a model."] * 18
+    )
+    suffix = " ".join(
+        ["Atomy is one optional example to compare against retail and service alternatives."] * 14
+    )
     assert validate_script(make_script(f"{prefix} {suffix}"), settings) == []
+
+
+def test_quality_gate_allows_direct_brand_topic_when_grounded(settings) -> None:
+    text = " ".join(
+        ["Atomy registration should be evaluated carefully against official requirements."] * 24
+    )
+    script = make_script(text)
+    script.brand_focused = True
+    script.source_urls = [settings.research.official_sources[0].url]
+    assert validate_script(script, settings) == []
+
+
+def test_quality_gate_rejects_invented_atomy_pv_expansion(settings) -> None:
+    text = " ".join(
+        ["Atomy registration should be evaluated carefully against official requirements."] * 20
+    )
+    text += " PV means Point Value."
+    script = make_script(text)
+    script.brand_focused = True
+    script.source_urls = [settings.research.official_sources[0].url]
+
+    with pytest.raises(QualityGateFailed, match="PV expansion"):
+        validate_script(script, settings)
+
+
+def test_quality_gate_rejects_unpinned_atomy_compensation_details(settings) -> None:
+    text = " ".join(
+        ["Atomy registration should be evaluated carefully against official requirements."] * 20
+    )
+    text += " Group PV from a downline determines a direct deposit."
+    script = make_script(text)
+    script.brand_focused = True
+    script.source_urls = [settings.research.official_sources[0].url]
+
+    with pytest.raises(QualityGateFailed, match="Unsupported Atomy detail"):
+        validate_script(script, settings)
+
+
+def test_quality_gate_supports_brand_free_profiles(settings) -> None:
+    settings.channel.brand_required = False
+    settings.channel.brand_name = ""
+    text = " ".join(["Explain the idea with examples, limitations, and practical tradeoffs."] * 30)
+    assert validate_script(make_script(text), settings) == []

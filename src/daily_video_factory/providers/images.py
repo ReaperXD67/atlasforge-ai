@@ -13,19 +13,37 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 from ..config import Settings
 from ..exceptions import ProviderFailed
-from ..models import Scene
+from ..models import OWNED_VISUAL_MODES, Scene
+from ..presenter import PresenterExpressionLibrary
 from .base import Provider
 
 
 def _font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
     candidates = [
+        Path("assets/fonts/BarlowCondensed-Black.ttf" if bold else "assets/fonts/Barlow-Regular.ttf"),
         Path("C:/Windows/Fonts/segoeuib.ttf" if bold else "C:/Windows/Fonts/segoeui.ttf"),
         Path("C:/Windows/Fonts/arialbd.ttf" if bold else "C:/Windows/Fonts/arial.ttf"),
+        Path(
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+            if bold
+            else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+        ),
     ]
     for candidate in candidates:
         if candidate.exists():
             return ImageFont.truetype(str(candidate), size=size)
     return ImageFont.load_default()
+
+
+def _wrap_text(text: str, width: int, max_lines: int | None = None) -> str:
+    """Wrap display copy without splitting readable compounds such as “trade-offs”."""
+    lines = textwrap.wrap(
+        text,
+        width=width,
+        break_long_words=False,
+        break_on_hyphens=False,
+    )
+    return "\n".join(lines if max_lines is None else lines[:max_lines])
 
 
 class ImageProvider(Provider[Path]):
@@ -71,7 +89,9 @@ class PexelsImageProvider(ImageProvider):
             "photographer_url": photo.get("photographer_url"),
             "photo_url": photo.get("url"),
         }
-        output.with_suffix(".license.json").write_text(json.dumps(attribution, indent=2), encoding="utf-8")
+        output.with_suffix(".license.json").write_text(
+            json.dumps(attribution, indent=2), encoding="utf-8"
+        )
         self._fit(output)
         return output
 
@@ -79,10 +99,14 @@ class PexelsImageProvider(ImageProvider):
         with Image.open(path) as source:
             image = source.convert("RGB")
             ratio = max(self.cfg.width / image.width, self.cfg.height / image.height)
-            image = image.resize((round(image.width * ratio), round(image.height * ratio)), Image.Resampling.LANCZOS)
+            image = image.resize(
+                (round(image.width * ratio), round(image.height * ratio)), Image.Resampling.LANCZOS
+            )
             left = (image.width - self.cfg.width) // 2
             top = (image.height - self.cfg.height) // 2
-            image.crop((left, top, left + self.cfg.width, top + self.cfg.height)).save(path, quality=94)
+            image.crop((left, top, left + self.cfg.width, top + self.cfg.height)).save(
+                path, quality=94
+            )
 
 
 class TitleCardImageProvider(ImageProvider):
@@ -96,6 +120,40 @@ class TitleCardImageProvider(ImageProvider):
 
     def __init__(self, settings: Settings) -> None:
         self.cfg = settings.images
+        self.channel_name = settings.channel.name
+        self.expression_library = (
+            PresenterExpressionLibrary(self.cfg.presenter_expression_manifest)
+            if self.cfg.presenter_expression_manifest
+            else None
+        )
+
+    def _paste_presenter(
+        self, image: Image.Image, scene: Scene, *, height: int = 850
+    ) -> None:
+        avatar_path = self.cfg.presenter_avatar
+        if self.expression_library:
+            expression = self.expression_library.choose(
+                scene.emotion,
+                scene.narration,
+                scene.onscreen_title,
+                preferred=scene.presenter_expression or self.cfg.presenter_default_expression,
+            )
+            avatar_path = self.expression_library.resolve(expression)
+        if avatar_path is None or not avatar_path.exists():
+            return
+        with Image.open(avatar_path) as source:
+            avatar = source.convert("RGBA")
+        alpha_box = avatar.getchannel("A").getbbox()
+        if alpha_box:
+            avatar = avatar.crop(alpha_box)
+        ratio = height / avatar.height
+        avatar = avatar.resize(
+            (round(avatar.width * ratio), height),
+            Image.Resampling.LANCZOS,
+        )
+        x = self.cfg.width - avatar.width - 48
+        y = self.cfg.height - avatar.height - 54
+        image.alpha_composite(avatar, (x, y))
 
     def available(self) -> bool:
         return True
@@ -103,8 +161,11 @@ class TitleCardImageProvider(ImageProvider):
     def generate(self, scene: Scene, output: Path) -> Path:
         seed = int(hashlib.sha256(scene.video_prompt.encode("utf-8")).hexdigest()[:8], 16)
         rng = random.Random(seed)
-        bg, mid, accent = self.PALETTES[scene.index % len(self.PALETTES)]
-        image = Image.new("RGB", (self.cfg.width, self.cfg.height), bg)
+        if self.channel_name.casefold() == "biznex":
+            bg, mid, accent = (9, 10, 11), (76, 57, 29), (225, 181, 92)
+        else:
+            bg, mid, accent = self.PALETTES[scene.index % len(self.PALETTES)]
+        image = Image.new("RGBA", (self.cfg.width, self.cfg.height), (*bg, 255))
         draw = ImageDraw.Draw(image, "RGBA")
         for _ in range(18):
             x = rng.randint(-300, self.cfg.width)
@@ -114,20 +175,132 @@ class TitleCardImageProvider(ImageProvider):
             draw.ellipse((x, y, x + size, y + size), fill=color)
         image = image.filter(ImageFilter.GaussianBlur(radius=45))
         draw = ImageDraw.Draw(image, "RGBA")
-        draw.rectangle((90, 92, 104, 990), fill=(*accent, 255))
-        draw.text((142, 104), f"SCENE {scene.index:02d}", font=_font(30, True), fill=(*accent, 255))
-        words = scene.visual_search_query.upper().split()[:7]
-        title = "\n".join(textwrap.wrap(" ".join(words), width=18))
-        draw.multiline_text(
-            (142, 220), title, font=_font(86, True), fill=(248, 246, 240, 255), spacing=12
+        title_copy = scene.onscreen_title or scene.visual_search_query
+        draw.rounded_rectangle(
+            (88, 82, 1832, 998),
+            radius=42,
+            fill=(8, 13, 22, 218),
+            outline=(*accent, 112),
+            width=2,
         )
-        caption = textwrap.fill(scene.environment, width=44)
-        draw.multiline_text(
-            (146, 800), caption, font=_font(34), fill=(225, 229, 226, 220), spacing=8
-        )
-        draw.line((142, 950, 890, 950), fill=(*accent, 170), width=3)
+        header = "BIZNEX  /  ATOMY PLAN LAB" if self.channel_name.casefold() == "biznex" else "ATOMY USA  /  RETENTION CUT"
+        draw.text((142, 122), header, font=_font(26, True), fill=(*accent, 255))
+        draw.text((1660, 122), f"{scene.index:02d}", font=_font(30, True), fill=(210, 214, 216, 210))
+
+        if scene.visual_mode == "presenter_card":
+            draw.rounded_rectangle((142, 232, 420, 304), radius=34, fill=(*accent, 255))
+            presenter_label = f"AI HOST  •  {self.cfg.presenter_name.upper()}"
+            draw.text((176, 250), presenter_label, font=_font(25, True), fill=(8, 10, 12, 255))
+            title = _wrap_text(title_copy, width=22, max_lines=4)
+            draw.multiline_text(
+                (142, 372),
+                title,
+                font=_font(82, True),
+                fill=(250, 248, 242, 255),
+                spacing=7,
+            )
+            draw.rectangle((142, 790, 920, 802), fill=(*accent, 235))
+            self._paste_presenter(image, scene)
+            draw = ImageDraw.Draw(image, "RGBA")
+        elif scene.visual_mode == "binary_plan_card":
+            title = _wrap_text(title_copy, width=30, max_lines=2)
+            draw.multiline_text((142, 212), title, font=_font(72, True), fill=(250, 248, 242, 255), spacing=6)
+            origin = (960, 470)
+            left_node = (560, 720)
+            right_node = (1360, 720)
+            draw.line((*origin, *left_node), fill=(*accent, 255), width=16)
+            draw.line((*origin, *right_node), fill=(*accent, 100), width=9)
+            for center, label, glow in (
+                (origin, "YOU", 255),
+                (left_node, "LEFT LEG", 255),
+                (right_node, "RIGHT LEG", 150),
+            ):
+                x, y = center
+                draw.ellipse((x - 74, y - 74, x + 74, y + 74), fill=(18, 22, 27, 255), outline=(*accent, glow), width=8)
+                box = draw.textbbox((0, 0), label, font=_font(26, True))
+                draw.text((x - (box[2] - box[0]) / 2, y - 15), label, font=_font(26, True), fill=(250, 248, 242, 255))
+            draw.rounded_rectangle((1390, 642, 1730, 798), radius=22, fill=(27, 24, 20, 245), outline=(*accent, 130), width=3)
+            draw.text((1450, 675), "SMALLER", font=_font(29, True), fill=(*accent, 255))
+            draw.text((1490, 721), "SIDE", font=_font(38, True), fill=(250, 248, 242, 255))
+        elif scene.visual_mode == "atomy_rank_card":
+            title = _wrap_text(title_copy, width=34, max_lines=2)
+            draw.multiline_text((142, 202), title, font=_font(68, True), fill=(250, 248, 242, 255), spacing=6)
+            ranks = [
+                ("SALES REP", "10K–299,999 PV"),
+                ("AGENT", "300K+ PV"),
+                ("SPECIAL AGENT", "700K+ PV"),
+                ("DEALER", "1.5M+ PV"),
+                ("EXCLUSIVE DISTRIBUTOR", "2.4M+ PV"),
+            ]
+            for row, (label, threshold) in enumerate(ranks):
+                y = 390 + row * 96
+                width = 890 + row * 150
+                draw.rounded_rectangle((142, y, width, y + 70), radius=18, fill=(18, 24, 29, 245), outline=(*accent, 85 + row * 28), width=3)
+                draw.text((174, y + 19), label, font=_font(27, True), fill=(246, 241, 229, 255))
+                threshold_box = draw.textbbox((0, 0), threshold, font=_font(25, True))
+                draw.text((width - (threshold_box[2] - threshold_box[0]) - 28, y + 21), threshold, font=_font(25, True), fill=(*accent, 255))
+        elif scene.visual_mode == "atomy_allocation_card":
+            title = _wrap_text(title_copy, width=34, max_lines=2)
+            draw.multiline_text((142, 204), title, font=_font(68, True), fill=(250, 248, 242, 255), spacing=6)
+            allocations = [
+                ("44%", "GENERAL COMMISSION", 1.0),
+                ("20%", "MASTERSHIP BONUS", 0.63),
+                ("6%", "CENTER EDUCATION", 0.36),
+            ]
+            for row, (value, label, fraction) in enumerate(allocations):
+                y = 410 + row * 145
+                draw.text((150, y), value, font=_font(58, True), fill=(*accent, 255))
+                draw.text((360, y + 12), label, font=_font(31, True), fill=(246, 241, 229, 245))
+                draw.rounded_rectangle((360, y + 66, 1600, y + 92), radius=13, fill=(32, 35, 38, 255))
+                draw.rounded_rectangle((360, y + 66, 360 + round(1240 * fraction), y + 92), radius=13, fill=(*accent, 225))
+            draw.text((142, 838), "Different pools and bases — verify the current official plan", font=_font(24), fill=(205, 207, 204, 225))
+        elif scene.visual_mode == "kinetic_statement":
+            draw.rounded_rectangle((138, 242, 362, 316), radius=36, fill=(*accent, 255))
+            draw.text((180, 260), "THE PROMISE", font=_font(24, True), fill=(8, 13, 22, 255))
+            title = _wrap_text(title_copy, width=25, max_lines=3)
+            draw.multiline_text((142, 382), title, font=_font(100, True), fill=(250, 248, 242, 255), spacing=9)
+            draw.rectangle((142, 790, 930, 804), fill=(*accent, 235))
+        elif scene.visual_mode == "step_card":
+            draw.ellipse((166, 310, 506, 650), outline=(*accent, 238), width=18)
+            draw.line(
+                (248, 478, 326, 556, 454, 390),
+                fill=(*accent, 255),
+                width=28,
+                joint="curve",
+            )
+            draw.line((620, 260, 620, 820), fill=(*accent, 150), width=3)
+            draw.text((704, 270), "ACTION STEP", font=_font(30, True), fill=(*accent, 255))
+            title = _wrap_text(title_copy, width=20, max_lines=4)
+            draw.multiline_text((704, 370), title, font=_font(76, True), fill=(250, 248, 242, 255), spacing=10)
+        elif scene.visual_mode == "comparison_card":
+            title = _wrap_text(title_copy, width=34, max_lines=2)
+            draw.multiline_text((142, 220), title, font=_font(72, True), fill=(250, 248, 242, 255), spacing=8)
+            for left, label, note in (
+                (142, "CONSUMER", "Product access and informed use"),
+                (986, "DISTRIBUTOR", "Responsibilities, costs, and goals"),
+            ):
+                draw.rounded_rectangle((left, 520, left + 704, 820), radius=28, fill=(18, 25, 34, 238), outline=(*accent, 112), width=2)
+                draw.text((left + 42, 570), label, font=_font(36, True), fill=(*accent, 255))
+                note_copy = _wrap_text(note, width=27)
+                draw.multiline_text((left + 42, 650), note_copy, font=_font(30), fill=(226, 230, 228, 225), spacing=7)
+        elif scene.visual_mode == "proof_card":
+            draw.rounded_rectangle((142, 230, 390, 306), radius=38, fill=(*accent, 255))
+            draw.text((190, 249), "VERIFY", font=_font(28, True), fill=(8, 13, 22, 255))
+            title = _wrap_text(title_copy, width=27, max_lines=3)
+            draw.multiline_text((142, 380), title, font=_font(88, True), fill=(250, 248, 242, 255), spacing=9)
+            draw.rounded_rectangle((142, 740, 1460, 828), radius=16, fill=(21, 30, 39, 245), outline=(*accent, 88), width=2)
+            draw.text((178, 766), "OFFICIAL PAGE  →  READ THE CURRENT REQUIREMENTS", font=_font(25, True), fill=(222, 228, 226, 230))
+        else:
+            draw.rectangle((90, 92, 104, 990), fill=(*accent, 255))
+            title = _wrap_text(title_copy, width=24, max_lines=4)
+            draw.multiline_text((148, 290), title, font=_font(88, True), fill=(248, 246, 240, 255), spacing=10)
+
+        # Keep the subtitle-safe lower band visually quiet. Burned captions own that area.
+        draw.line((142, 910, 1778, 910), fill=(*accent, 112), width=2)
+        footer = "OFFICIAL PLAN  •  SIMPLE LANGUAGE  •  NO INCOME HYPE" if self.channel_name.casefold() == "biznex" else "CLEAR STEPS  •  OFFICIAL SOURCES  •  NO HYPE"
+        draw.text((142, 942), footer, font=_font(21, True), fill=(176, 185, 192, 210))
         output.parent.mkdir(parents=True, exist_ok=True)
-        image.save(output, quality=95)
+        image.convert("RGB").save(output, quality=95)
         output.with_suffix(".license.json").write_text(
             json.dumps({"provider": "locally_generated", "license": "project-owned"}, indent=2),
             encoding="utf-8",
@@ -145,12 +318,16 @@ class SceneImageGenerator:
 
     def run(self, scene: Scene, output: Path) -> tuple[str, Path]:
         errors: list[str] = []
-        for provider in self.providers:
+        providers = self.providers
+        if scene.visual_mode in OWNED_VISUAL_MODES:
+            providers = sorted(self.providers, key=lambda provider: provider.name != "title_card")
+        for provider in providers:
             if not provider.available():
                 continue
             try:
                 return provider.name, provider.generate(scene, output)
             except Exception as exc:
                 errors.append(f"{provider.name}: {exc}")
-        raise ProviderFailed(f"No image provider could render scene {scene.index}: {' | '.join(errors)}")
-
+        raise ProviderFailed(
+            f"No image provider could render scene {scene.index}: {' | '.join(errors)}"
+        )

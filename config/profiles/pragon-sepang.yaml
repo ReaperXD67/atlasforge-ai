@@ -1,0 +1,32 @@
+extends: ../default.yaml
+
+channel:
+  name: "Pragon — Sepang Music Film"
+  brand_name: "Pragon"
+  brand_required: false
+  content_goal: >-
+    Produce premium music-led event films for Pragon in Malaysia with clearly adult Malaysian or
+    Southeast Asian casting, nightlife atmosphere, cigarette smoke, and circuit-racing energy.
+  audience:
+    - adults attending the Pragon Sepang event
+
+video:
+  fps: 60
+  transition_seconds: 0.0
+  stock_video_providers: [pexels_video, pixabay_video]
+  stock_video_max_scenes_per_video: 64
+  stock_video_candidates_per_scene: 40
+  stock_video_require_all_music_scenes: true
+  stock_video_semantic_candidates: 12
+  enable_premium_scenes: false
+  local_generation_enabled: false
+  performance_generation_enabled: false
+  performance_mix_ratio: 0.35
+  performance_max_scenes_per_video: 20
+  performance_daily_budget_usd: 0.0
+  performance_preflight_enabled: true
+  performance_require_all_scenes: false
+  performance_stem_analysis: false
+
+publishing:
+  enabled: false

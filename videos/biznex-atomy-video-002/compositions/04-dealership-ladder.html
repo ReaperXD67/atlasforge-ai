@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+
+  @font-face { font-family: Impact; src: local("Impact"); }
+  @font-face { font-family: "Arial Narrow"; src: local("Arial Narrow"); }
+  * { box-sizing: border-box; }
+  #root {
+    position: absolute;
+    inset: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background: #0b0a0a;
+    color: #fff4dd;
+    font-family: "Segoe UI", Arial, sans-serif;
+  }
+  .backdrop {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 78% 22%, rgba(244,185,66,.17), transparent 34%),
+      radial-gradient(circle at 12% 78%, rgba(117,214,156,.08), transparent 28%),
+      linear-gradient(135deg, #0b0a0a 0%, #17120c 52%, #080808 100%);
+  }
+  .grid {
+    position: absolute;
+    inset: -100px;
+    opacity: .16;
+    background-image: linear-gradient(rgba(244,185,66,.22) 1px, transparent 1px), linear-gradient(90deg, rgba(244,185,66,.22) 1px, transparent 1px);
+    background-size: 86px 86px;
+    transform: rotate(-6deg) translateY(180px) scale(1.32);
+    transform-origin: center;
+  }
+  .grain {
+    position: absolute;
+    inset: 0;
+    opacity: .09;
+    background-image: radial-gradient(rgba(255,255,255,.8) .8px, transparent .8px);
+    background-size: 6px 6px;
+  }
+  .ambient {
+    position: absolute;
+    width: 760px;
+    height: 760px;
+    border: 2px solid rgba(244,185,66,.16);
+    border-radius: 50%;
+    right: -260px;
+    top: -300px;
+    box-shadow: 0 0 100px rgba(244,185,66,.11), inset 0 0 80px rgba(244,185,66,.05);
+  }
+  .stage { position: absolute; inset: 0; padding: 94px 92px 178px; }
+  .eyebrow {
+    color: #f4b942;
+    font: 700 24px/1 Consolas, monospace;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+  .headline {
+    margin-top: 16px;
+    font-family: Impact, "Arial Narrow", sans-serif;
+    font-size: 116px;
+    line-height: .92;
+    letter-spacing: .012em;
+    text-transform: uppercase;
+  }
+  .headline .gold { color: #f4b942; }
+  .subhead { color: #c8bda7; font-size: 31px; line-height: 1.34; max-width: 920px; }
+  .panel {
+    border: 1px solid rgba(244,185,66,.28);
+    background: linear-gradient(145deg, rgba(31,27,22,.96), rgba(12,11,10,.9));
+    border-radius: 28px;
+    box-shadow: 0 26px 80px rgba(0,0,0,.42), inset 0 1px rgba(255,255,255,.05);
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(244,185,66,.38);
+    color: #f4b942;
+    font: 700 19px/1 Consolas, monospace;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .host-shell { position: absolute; width: 760px; height: 810px; }
+  .host-halo {
+    position: absolute; width: 610px; height: 610px; border-radius: 50%; left: 92px; top: 75px;
+    background: radial-gradient(circle, rgba(244,185,66,.24), transparent 68%);
+    border: 2px solid rgba(244,185,66,.25);
+  }
+  .host-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 28px 30px rgba(0,0,0,.55)); }
+  .name-plate {
+    position: absolute; left: 110px; bottom: 118px; padding: 12px 20px;
+    border-radius: 14px; background: #f4b942; color: #0b0a0a;
+    font: 900 24px/1 "Segoe UI", sans-serif; letter-spacing: .12em;
+  }
+  .source-chip { color: #c8bda7; font: 600 19px/1.2 Consolas, monospace; }
+  .tiny-rule { height: 2px; background: linear-gradient(90deg,#f4b942,transparent); }
+
+
+      .headline { font-size:88px; }
+      .ladder { position:absolute; left:92px; top:340px; width:1120px; display:grid; gap:13px; }
+      .rank { height:92px; display:grid; grid-template-columns:85px 1fr 260px; align-items:center; padding:0 28px; border:1px solid rgba(244,185,66,.25); border-left:7px solid #f4b942; border-radius:18px; background:rgba(22,19,15,.94); box-shadow:0 12px 35px rgba(0,0,0,.23); }
+      .rank i { color:#f4b942; font:700 20px Consolas,monospace; font-style:normal; }
+      .rank b { font:900 30px Impact,sans-serif; letter-spacing:.04em; }
+      .rank span { color:#c8bda7; font:700 24px Consolas,monospace; text-align:right; }
+      .not-salary { position:absolute; left:930px; bottom:180px; width:350px; padding:22px; transform:rotate(-2deg); border-color:#ff6b5e; z-index:5; }
+      .not-salary span { color:#ff6b5e; font:700 16px Consolas,monospace; }
+      .not-salary b { display:block; font:900 34px Impact,sans-serif; margin-top:4px; }
+      .not-salary small { display:block; color:#c8bda7; margin-top:8px; font-size:18px; }
+      .host-shell { right:-70px; bottom:65px; width:720px; height:760px; }
+
+      </style>
+      <div id="root" data-composition-id="scene-04-classes" data-start="0" data-duration="54.824" data-width="1920" data-height="1080">
+
+      <div class="backdrop"></div><div class="grid" data-layout-ignore></div><div class="grain" data-layout-ignore></div><div class="ambient" data-layout-ignore></div>
+      <div class="stage">
+        <div class="eyebrow">THE FIVE DEALERSHIP CLASSES</div>
+        <h2 class="headline">A <span class="gold">QUALIFICATION</span> LADDER</h2>
+        <div class="ladder">
+          <div class="rank"><i>01</i><b>SALES REP</b><span>10K–299,999 PV</span></div>
+          <div class="rank"><i>02</i><b>AGENT</b><span>300K+ PV</span></div>
+          <div class="rank"><i>03</i><b>SPECIAL AGENT</b><span>700K+ PV</span></div>
+          <div class="rank"><i>04</i><b>DEALER</b><span>1.5M+ PV</span></div>
+          <div class="rank"><i>05</i><b>EXCLUSIVE DISTRIBUTOR</b><span>2.4M+ PV</span></div>
+        </div>
+        <div class="not-salary panel"><span>RANK NAME</span><b>≠ SALARY LABEL</b><small>Class can change monthly.</small></div>
+
+  <div class="host-shell" id="s4-host">
+    <div class="host-halo" data-layout-ignore></div>
+    <img class="host-image" src="assets/nexa-toon-v2.png" alt="Nexa, BizNex AI host" />
+    <div class="name-plate">NEXA // AI HOST</div>
+  </div>
+      </div>
+      </div>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const root = document.querySelector('[data-composition-id="scene-04-classes"]');
+        const q = gsap.utils.selector(root);
+        const tl = gsap.timeline({ paused: true });
+        tl.to(q(".ambient"), { rotation:18, scale:1.13, duration:54.824, ease:"none" }, 0);
+        tl.to(q(".grain"), { backgroundPosition:"32px 18px", duration:54.824, ease:"none" }, 0);
+
+      tl.fromTo(q(".eyebrow,.headline"), { opacity:0, y:-30 }, { opacity:1, y:0, duration:.6, stagger:.14 }, .1);
+      tl.fromTo(q(".rank"), { opacity:0, x:-110 }, { opacity:1, x:0, duration:.62, stagger:.48, ease:"power4.out" }, 1);
+      tl.fromTo(q(".host-shell"), { opacity:0, x:120 }, { opacity:1, x:0, duration:.9, ease:"power4.out" }, 2.1);
+      tl.fromTo(q(".not-salary"), { opacity:0, scale:1.5, rotate:8 }, { opacity:1, scale:1, rotate:-2, duration:.55, ease:"back.out(1.7)" }, 5.2);
+      tl.to(q(".rank"), { borderLeftWidth:16, stagger:.35, duration:47.824, ease:"sine.inOut" }, 7);
+      tl.to(q(".host-shell"), { y:-8, rotate:.24, duration:11, ease:"sine.inOut" }, 0);
+      tl.to(q(".host-shell"), { y:1, rotate:-.16, duration:12, ease:"sine.inOut" }, 11);
+      tl.to(q(".host-shell"), { y:-7, rotate:.2, duration:14, ease:"sine.inOut" }, 23);
+      tl.to(q(".host-shell"), { y:-2, rotate:0, duration:17.823999999999998, ease:"sine.inOut" }, 37);
+
+        window.__timelines["scene-04-classes"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

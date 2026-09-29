@@ -1,0 +1,137 @@
+name: Revive Buildathon pitch evidence
+start_url: https://revive-revenue.vercel.app
+session: revive-pitch-capture
+viewport_width: 1440
+viewport_height: 900
+settle_ms: 1300
+retry_count: 1
+allowed_state_changing_actions:
+  - Start simulation
+  - Prove duplicate safety
+  - Run live decision
+forbidden_click_text:
+  - Notifications
+  - New playbook
+  - Edit triage policy
+  - Export
+  - Hold 24h
+  - Approve action
+  - Approve safe actions
+
+steps:
+  - id: command-center
+    filename: 01-command-center.png
+    url: https://revive-revenue.vercel.app
+    fallback_url: https://raw.githubusercontent.com/ReaperXD67/revive-ai/main/docs/assets/revive-command-center.png
+    expected_text: [Revenue command center, SIMULATED PORTFOLIO · LIVE BACKEND]
+    actions:
+      - {type: click, target: Command center}
+
+  - id: daily-agent-plan
+    filename: 02-agent-plan.png
+    url: https://revive-revenue.vercel.app
+    expected_text: [51 actions ready. 6 need you., HUMAN CHECKPOINT]
+    actions:
+      - {type: click, target: Command center}
+      - {type: click, target: Review agent plan}
+
+  - id: recovery-case
+    filename: 03-recovery-case.png
+    url: https://revive-revenue.vercel.app
+    expected_text: [Recovery decision, NEXT BEST ACTION, Nisha Menon]
+    actions:
+      - {type: click, target: Command center}
+      - {type: click, target: Nisha Menon}
+
+  - id: live-demo-ready
+    filename: 04-live-demo-ready.png
+    url: https://revive-revenue.vercel.app
+    fallback_url: https://raw.githubusercontent.com/ReaperXD67/revive-ai/main/docs/assets/revive-live-demo.png
+    expected_text: ["Watch ₹11,999 come back.", Start simulation]
+    actions:
+      - {type: click, target: Command center}
+      - {type: click, target: Run live demo}
+
+  - id: live-demo-result
+    filename: 05-live-demo-result.png
+    url: https://revive-revenue.vercel.app
+    fallback_url: https://raw.githubusercontent.com/ReaperXD67/revive-ai/main/docs/assets/revive-live-demo.png
+    expected_text: [SIMULATED PAYMENT CAPTURED, "₹11,999 recovered"]
+    actions:
+      - {type: click, target: Command center}
+      - {type: click, target: Run live demo}
+      - {type: click, target: Start simulation, state_changing: true, wait_after_ms: 8500}
+
+  - id: system-proof
+    filename: 06-system-proof.png
+    url: https://revive-revenue.vercel.app
+    fallback_url: https://raw.githubusercontent.com/ReaperXD67/revive-ai/main/docs/assets/revive-system-proof-live.jpg
+    expected_text: [System proof, LIVE SYSTEM VERIFIED, This page proves itself.]
+    actions:
+      - {type: click, target: Backend live}
+
+  - id: duplicate-proof
+    filename: 07-duplicate-proof.png
+    url: https://revive-revenue.vercel.app
+    fallback_url: https://raw.githubusercontent.com/ReaperXD67/revive-ai/main/docs/assets/revive-live-challenge.jpg
+    expected_text: [Duplicate suppressed, same decision]
+    actions:
+      - {type: click, target: Backend live}
+      - {type: click, target: Prove duplicate safety, state_changing: true, wait_after_ms: 6500}
+
+  - id: decision-approval
+    filename: 08-decision-approval.png
+    url: https://revive-revenue.vercel.app
+    fallback_url: https://raw.githubusercontent.com/ReaperXD67/revive-ai/main/docs/assets/revive-live-challenge.jpg
+    expected_text: [SEND PAYMENT LINK, approval required, "Audit record: stored"]
+    actions:
+      - {type: click, target: Backend live}
+      - {type: click, target: Run live decision, state_changing: true, wait_after_ms: 6500}
+
+  - id: decision-block
+    filename: 09-decision-block.png
+    url: https://revive-revenue.vercel.app
+    fallback_url: https://raw.githubusercontent.com/ReaperXD67/revive-ai/main/docs/assets/revive-live-challenge.jpg
+    expected_text: [HUMAN REVIEW, Contact frequency cap]
+    actions:
+      - {type: click, target: Backend live}
+      - {type: fill, target: Contacts in 72h, value: "2"}
+      - {type: click, target: Run live decision, state_changing: true, wait_after_ms: 6500}
+
+  - id: agent-playbooks
+    filename: 10-agent-playbooks.png
+    url: https://revive-revenue.vercel.app
+    expected_text: [Agent playbooks]
+    actions:
+      - {type: click, target: Agent playbooks}
+
+  - id: experiments
+    filename: 11-experiments.png
+    url: https://revive-revenue.vercel.app
+    expected_text: [Experiments]
+    actions:
+      - {type: click, target: Experiments}
+
+  - id: audit-trail
+    filename: 12-audit-trail.png
+    url: https://revive-revenue.vercel.app
+    expected_text: [Audit trail]
+    actions:
+      - {type: click, target: Audit trail}
+
+  - id: proof-api
+    filename: 13-proof-api.png
+    url: https://revive-revenue.vercel.app/api/proof
+    expected_text: [operational, platform, controls]
+    full_page: true
+
+  - id: health-api
+    filename: 14-health-api.png
+    url: https://revive-revenue.vercel.app/api/health
+    expected_text: [operational, deterministic, private]
+    full_page: true
+
+  - id: github-repository
+    filename: 15-github-repository.png
+    url: https://github.com/ReaperXD67/revive-ai
+    expected_text: [ReaperXD67, revive-ai]

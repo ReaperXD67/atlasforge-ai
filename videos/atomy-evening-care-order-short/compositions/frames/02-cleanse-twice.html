@@ -1,0 +1,551 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Inter";
+      src: url("assets/fonts/Inter-Variable.ttf") format("truetype");
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Space Grotesk";
+      src: url("assets/fonts/SpaceGrotesk-Variable.ttf") format("truetype");
+      font-weight: 300 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      container-type: size;
+      color: #000000;
+      font-family: "Inter", sans-serif;
+    }
+
+    #root > .clip {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #root [data-f2="ground"] {
+      background: #c0f7fe;
+    }
+
+    #root [data-f2="ground"]::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.13;
+      background-image: radial-gradient(#000000 1.5px, transparent 1.5px);
+      background-size: 2.35cqw 2.35cqw;
+    }
+
+    #root [data-f2="ground"]::after {
+      content: "";
+      position: absolute;
+      left: -8cqw;
+      top: 51cqh;
+      width: 116cqw;
+      height: 5.5cqh;
+      background: repeating-linear-gradient(
+        135deg,
+        #000000 0,
+        #000000 1.1cqw,
+        #f7cb46 1.1cqw,
+        #f7cb46 2.2cqw
+      );
+      border-top: 0.37cqw solid #000000;
+      border-bottom: 0.37cqw solid #000000;
+      opacity: 0.14;
+    }
+
+    #root [data-f2="content"] {
+      position: absolute;
+      inset: 0;
+    }
+
+    #root [data-f2="eyebrow"] {
+      position: absolute;
+      left: 6.5cqw;
+      top: 3.9cqh;
+      height: 4.4cqh;
+      display: flex;
+      align-items: center;
+      padding: 0 3.1cqw;
+      border: 0.28cqw solid #000000;
+      border-radius: 9999px;
+      background: #ffffff;
+      box-shadow: 0.37cqw 0.37cqw 0 #000000;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.45cqw;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      text-transform: uppercase;
+      white-space: nowrap;
+      z-index: 9;
+    }
+
+    #root [data-f2="counter"] {
+      position: absolute;
+      right: 6.2cqw;
+      top: 4.3cqh;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.15cqw;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      z-index: 9;
+    }
+
+    #root [data-f2="barcode"] {
+      position: absolute;
+      left: 6.2cqw;
+      top: 10.7cqh;
+      width: 25cqw;
+      height: 2.1cqh;
+      display: flex;
+      align-items: stretch;
+      gap: 0.75cqw;
+      z-index: 4;
+    }
+
+    #root [data-f2="barcode"] i {
+      display: block;
+      background: #000000;
+      width: 0.7cqw;
+    }
+
+    #root [data-f2="barcode"] i:nth-child(2),
+    #root [data-f2="barcode"] i:nth-child(5),
+    #root [data-f2="barcode"] i:nth-child(8) {
+      width: 1.5cqw;
+    }
+
+    #root [data-f2="star"] {
+      position: absolute;
+      right: 2.8cqw;
+      top: 8.4cqh;
+      width: 15.2cqw;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      background: #fe90e8;
+      border: 0.37cqw solid #000000;
+      clip-path: polygon(50% 0%, 61% 29%, 88% 12%, 74% 40%, 100% 50%, 72% 61%, 88% 88%, 60% 74%, 50% 100%, 39% 72%, 12% 88%, 27% 60%, 0% 50%, 29% 39%, 12% 12%, 40% 28%);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.15cqw;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      z-index: 10;
+    }
+
+    #root [data-f2-card] {
+      position: absolute;
+      left: 7cqw;
+      width: 84.2cqw;
+      height: 22.4cqh;
+      z-index: 4;
+    }
+
+    #root [data-f2-card="1"] {
+      top: 15.1cqh;
+    }
+
+    #root [data-f2-card="2"] {
+      top: 47.5cqh;
+    }
+
+    #root [data-f2-layer] {
+      position: absolute;
+      inset: 0;
+      border: 0.37cqw solid #000000;
+    }
+
+    #root [data-f2-layer="back"] {
+      left: 3cqw;
+      top: 1.8cqh;
+      background: #f7cb46;
+      z-index: 1;
+    }
+
+    #root [data-f2-layer="middle"] {
+      left: 1.5cqw;
+      top: 0.9cqh;
+      background: #fe90e8;
+      z-index: 2;
+    }
+
+    #root [data-f2-card="2"] [data-f2-layer="back"] {
+      background: #ffdc8b;
+    }
+
+    #root [data-f2-card="2"] [data-f2-layer="middle"] {
+      background: #99e885;
+    }
+
+    #root [data-f2-layer="front"] {
+      display: grid;
+      grid-template-columns: 28cqw 1fr;
+      align-items: stretch;
+      background: #ffffff;
+      box-shadow: 0.74cqw 0.74cqw 0 #000000;
+      z-index: 3;
+    }
+
+    #root [data-f2="step"] {
+      display: grid;
+      place-items: center;
+      border-right: 0.37cqw solid #000000;
+      background: #f7cb46;
+      font-size: 13.2cqw;
+      font-weight: 900;
+      line-height: 0.78;
+      letter-spacing: -0.08em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    #root [data-f2-card="2"] [data-f2="step"] {
+      background: #99e885;
+    }
+
+    #root [data-f2="product"] {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 4.8cqw 0 5.3cqw;
+      overflow: hidden;
+    }
+
+    #root [data-f2="product"]::after {
+      content: "";
+      position: absolute;
+      right: -3cqw;
+      bottom: -2.1cqh;
+      width: 18cqw;
+      height: 5.3cqh;
+      background: repeating-linear-gradient(
+        -45deg,
+        #000000 0,
+        #000000 0.9cqw,
+        transparent 0.9cqw,
+        transparent 1.8cqw
+      );
+      opacity: 0.12;
+    }
+
+    #root [data-f2="mini-label"] {
+      position: relative;
+      margin-bottom: 1.35cqh;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.35cqw;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      line-height: 1;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    #root [data-f2="word"] {
+      position: relative;
+      display: block;
+      font-size: 7.2cqw;
+      font-weight: 900;
+      letter-spacing: -0.045em;
+      line-height: 0.9;
+      text-transform: uppercase;
+      white-space: nowrap;
+      z-index: 2;
+    }
+
+    #root [data-f2="connector"] {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    #root [data-f2-path] {
+      fill: none;
+      stroke: #000000;
+      stroke-width: 14;
+      stroke-linecap: square;
+      stroke-linejoin: miter;
+    }
+
+    #root [data-f2="rail"] {
+      position: absolute;
+      left: 13.8cqw;
+      top: 41.25cqh;
+      width: 72.4cqw;
+      height: 5.5cqh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 0.37cqw solid #000000;
+      background: #000000;
+      box-shadow: 0.74cqw 0.74cqw 0 #f7cb46;
+      color: #ffffff;
+      font-size: 4.35cqw;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      z-index: 8;
+    }
+
+    #root [data-f2="rail-mark"] {
+      margin: 0 2.2cqw;
+      color: #f7cb46;
+    }
+
+    #root [data-f2="edge-label"] {
+      position: absolute;
+      left: 7cqw;
+      top: 72.7cqh;
+      width: 84.2cqw;
+      height: 5.6cqh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3.2cqw;
+      border: 0.28cqw solid #000000;
+      background: #fffdf5;
+      box-shadow: 0.37cqw 0.37cqw 0 #000000;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.2cqw;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      z-index: 5;
+    }
+
+    #root [data-f2="edge-arrow"] {
+      font-family: "Inter", sans-serif;
+      font-size: 3.6cqw;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+  </style>
+
+  <div data-hf-id="hf-7a59" id="root" data-composition-id="02-cleanse-twice" data-width="1080" data-height="1920" data-duration="3.871">
+    <div data-hf-id="hf-58dk" id="f2-ground" class="clip" data-f2="ground" data-start="0" data-duration="3.871" data-track-index="0"></div>
+
+    <div data-hf-id="hf-q0i1" id="f2-content" class="clip" data-f2="content" data-start="0" data-duration="3.871" data-track-index="1">
+      <div data-hf-id="hf-nv2g" data-f2="eyebrow">Evening care / order</div>
+      <div data-hf-id="hf-w6fj" data-f2="counter">01—02 / 04</div>
+
+      <div data-hf-id="hf-lyza" data-f2="barcode" aria-hidden="true">
+        <i data-hf-id="hf-wt6k"></i><i data-hf-id="hf-zeb8"></i><i data-hf-id="hf-y7e5"></i><i data-hf-id="hf-ylp6"></i><i data-hf-id="hf-0l8b"></i><i data-hf-id="hf-0zjc"></i><i data-hf-id="hf-zsm9"></i><i data-hf-id="hf-06xa"></i><i data-hf-id="hf-26gf"></i><i data-hf-id="hf-2krg"></i>
+      </div>
+
+      <div data-hf-id="hf-9rph" data-f2="star" aria-hidden="true">PM</div>
+
+      <section data-hf-id="hf-eyb7" data-f2-card="1" aria-label="Step one Deep Cleanser">
+        <div data-hf-id="hf-ui8m" data-f2-layer="back"></div>
+        <div data-hf-id="hf-81io" data-f2-layer="middle"></div>
+        <div data-hf-id="hf-k7wg" data-f2-layer="front">
+          <div data-hf-id="hf-o47l" data-f2="step"><span data-hf-id="hf-sdi6" data-f2-number="1">01</span></div>
+          <div data-hf-id="hf-r8ew" data-f2="product">
+            <div data-hf-id="hf-zaz1" data-f2="mini-label" data-f2-mini="1">First cleanse</div>
+            <span data-hf-id="hf-fymn" data-f2="word" data-f2-word="deep">Deep</span>
+            <span data-hf-id="hf-9icr" data-f2="word" data-f2-word="cleanser-1">Cleanser</span>
+          </div>
+        </div>
+      </section>
+
+      <svg data-hf-id="hf-z52y" data-f2="connector" viewBox="0 0 1080 1920" aria-hidden="true">
+        <path data-hf-id="hf-jbyn" data-f2-path="line" d="M 540 744 L 540 906" />
+        <path data-hf-id="hf-e003" data-f2-path="arrow" d="M 502 864 L 540 906 L 578 864" />
+      </svg>
+
+      <div data-hf-id="hf-ydk7" data-f2="rail">
+        <span data-hf-id="hf-itm6" data-f2-rail-word="1">Cleanse</span>
+        <span data-hf-id="hf-9pxa" data-f2="rail-mark">→</span>
+        <span data-hf-id="hf-520n" data-f2-rail-word="2">Cleanse</span>
+      </div>
+
+      <section data-hf-id="hf-ljbv" data-f2-card="2" aria-label="Step two Foam Cleanser">
+        <div data-hf-id="hf-g14q" data-f2-layer="back"></div>
+        <div data-hf-id="hf-i0zs" data-f2-layer="middle"></div>
+        <div data-hf-id="hf-9yig" data-f2-layer="front">
+          <div data-hf-id="hf-v45h" data-f2="step"><span data-hf-id="hf-h2ro" data-f2-number="2">02</span></div>
+          <div data-hf-id="hf-rxdc" data-f2="product">
+            <div data-hf-id="hf-aerk" data-f2="mini-label" data-f2-mini="2">Second cleanse</div>
+            <span data-hf-id="hf-mksh" data-f2="word" data-f2-word="foam">Foam</span>
+            <span data-hf-id="hf-igfk" data-f2="word" data-f2-word="cleanser-2">Cleanser</span>
+          </div>
+        </div>
+      </section>
+
+      <div data-hf-id="hf-n965" data-f2="edge-label">
+        <span data-hf-id="hf-mvcl">Double-cleanse foundation</span>
+        <span data-hf-id="hf-fde6" data-f2="edge-arrow">↓</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script>
+    (() => {
+      const root = document.querySelector('[data-composition-id="02-cleanse-twice"]');
+      if (!root || !window.gsap) return;
+
+      const q = (selector) => root.querySelector(selector);
+      const qa = (selector) => Array.from(root.querySelectorAll(selector));
+
+      qa("[data-f2-path]").forEach((path) => {
+        const length = path.getTotalLength();
+        window.gsap.set(path, {
+          strokeDasharray: length,
+          strokeDashoffset: length,
+        });
+      });
+
+      const tl = window.gsap.timeline({ paused: true });
+
+      tl.fromTo(
+        q('[data-f2="eyebrow"]'),
+        { y: -34, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.42, ease: "power3.out" },
+        0.02,
+      );
+      tl.fromTo(
+        q('[data-f2="counter"]'),
+        { x: 30, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" },
+        0.1,
+      );
+      tl.fromTo(
+        q('[data-f2="barcode"]'),
+        { scaleX: 0.18, opacity: 0, transformOrigin: "left center" },
+        { scaleX: 1, opacity: 1, duration: 0.38, ease: "power3.out" },
+        0.22,
+      );
+      tl.fromTo(
+        q('[data-f2="star"]'),
+        { scale: 0.35, rotation: -18, opacity: 0 },
+        { scale: 1, rotation: 8, opacity: 1, duration: 0.55, ease: "back.out(1.5)" },
+        0.25,
+      );
+
+      qa('[data-f2-card="1"] [data-f2-layer]').forEach((layer, index) => {
+        tl.fromTo(
+          layer,
+          { y: 84 - index * 10, scale: 0.94, opacity: 0, rotation: -2 + index },
+          { y: 0, scale: 1, opacity: 1, rotation: 0, duration: 0.62, ease: "power3.out" },
+          0.08 + index * 0.08,
+        );
+      });
+      tl.fromTo(
+        q('[data-f2-number="1"]'),
+        { y: 34, scale: 0.72, opacity: 0 },
+        { y: 0, scale: 1, opacity: 1, duration: 0.38, ease: "back.out(1.35)" },
+        0.5,
+      );
+      tl.fromTo(
+        q('[data-f2-mini="1"]'),
+        { x: -34, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" },
+        0.6,
+      );
+      tl.fromTo(
+        q('[data-f2-word="deep"]'),
+        { x: 54, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.38, ease: "power3.out" },
+        0.76,
+      );
+      tl.fromTo(
+        q('[data-f2-word="cleanser-1"]'),
+        { x: 64, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.42, ease: "power3.out" },
+        0.96,
+      );
+
+      tl.to(
+        q('[data-f2-path="line"]'),
+        { strokeDashoffset: 0, duration: 0.48, ease: "power2.out" },
+        1.34,
+      );
+      tl.to(
+        q('[data-f2-path="arrow"]'),
+        { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" },
+        1.68,
+      );
+
+      qa('[data-f2-card="2"] [data-f2-layer]').forEach((layer, index) => {
+        tl.fromTo(
+          layer,
+          { y: 86 - index * 10, scale: 0.94, opacity: 0, rotation: 2 - index },
+          { y: 0, scale: 1, opacity: 1, rotation: 0, duration: 0.62, ease: "power3.out" },
+          1.46 + index * 0.08,
+        );
+      });
+      tl.fromTo(
+        q('[data-f2-number="2"]'),
+        { y: 34, scale: 0.72, opacity: 0 },
+        { y: 0, scale: 1, opacity: 1, duration: 0.38, ease: "back.out(1.35)" },
+        2.02,
+      );
+      tl.fromTo(
+        q('[data-f2-mini="2"]'),
+        { x: -34, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.34, ease: "power3.out" },
+        2.12,
+      );
+      tl.fromTo(
+        q('[data-f2-word="foam"]'),
+        { x: 54, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.36, ease: "power3.out" },
+        2.25,
+      );
+      tl.fromTo(
+        q('[data-f2-word="cleanser-2"]'),
+        { x: 64, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.38, ease: "power3.out" },
+        2.42,
+      );
+
+      tl.fromTo(
+        q('[data-f2="rail"]'),
+        { scaleX: 0.12, opacity: 0, transformOrigin: "center center" },
+        { scaleX: 1, opacity: 1, duration: 0.28, ease: "power4.out" },
+        2.75,
+      );
+      tl.fromTo(
+        qa("[data-f2-rail-word]"),
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.28, stagger: 0.08, ease: "power3.out" },
+        2.86,
+      );
+      tl.fromTo(
+        q('[data-f2="rail-mark"]'),
+        { scale: 0.4, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(1.45)" },
+        2.92,
+      );
+      tl.fromTo(
+        q('[data-f2="edge-label"]'),
+        { y: 28, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.34, ease: "power3.out" },
+        3.0,
+      );
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["02-cleanse-twice"] = tl;
+    })();
+  </script>
+</template>

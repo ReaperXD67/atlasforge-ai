@@ -1,0 +1,421 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Inter";
+      src: url("./assets/fonts/Inter-Variable.ttf") format("truetype");
+      font-weight: 100 900;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "Space Grotesk";
+      src: url("./assets/fonts/SpaceGrotesk-Variable.ttf") format("truetype");
+      font-weight: 300 700;
+      font-style: normal;
+    }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      container-type: size;
+      color: #000000;
+      font-family: "Inter", sans-serif;
+    }
+
+    .\30 3-finish-routine-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-color: #fe90e8;
+      background-image: radial-gradient(rgba(0, 0, 0, 0.22) 1.4px, transparent 1.4px);
+      background-size: 2.25cqw 2.25cqw;
+    }
+
+    .\30 3-finish-routine-stage {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      padding: 4.8cqw 5.55cqw 0;
+      box-sizing: border-box;
+      transform-origin: 50% 42%;
+    }
+
+    .\30 3-finish-routine-eyebrow-row {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 5.8cqh;
+    }
+
+    .\30 3-finish-routine-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 4.1cqh;
+      padding: 0 3.2cqw;
+      border: 0.32cqw solid #000000;
+      border-radius: 9999px;
+      background: #fffdf5;
+      box-shadow: 0.45cqw 0.45cqw 0 #000000;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.15cqw;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      line-height: 1;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .\30 3-finish-routine-mini-tag {
+      padding: 1.05cqh 2.3cqw 0.9cqh;
+      border: 0.28cqw solid #000000;
+      background: #f7cb46;
+      box-shadow: 0.42cqw 0.42cqw 0 #000000;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.75cqw;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .\30 3-finish-routine-rail {
+      position: relative;
+      z-index: 4;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: center;
+      width: 88.9cqw;
+      height: 7.6cqh;
+      margin-top: 3.25cqh;
+      padding: 0 2.25cqw;
+      box-sizing: border-box;
+      border: 0.34cqw solid #000000;
+      background: #ffffff;
+      box-shadow: 0.65cqw 0.65cqw 0 #000000;
+    }
+
+    .\30 3-finish-routine-rail-line,
+    .\30 3-finish-routine-rail-fill {
+      position: absolute;
+      left: 10.8cqw;
+      right: 10.8cqw;
+      top: calc(50% - 0.18cqw);
+      height: 0.36cqw;
+      background: #000000;
+    }
+
+    .\30 3-finish-routine-rail-fill {
+      right: auto;
+      width: 68cqw;
+      background: #99e885;
+      border-top: 0.16cqw solid #000000;
+      border-bottom: 0.16cqw solid #000000;
+      transform-origin: 0 50%;
+    }
+
+    .\30 3-finish-routine-rail-node {
+      position: relative;
+      z-index: 2;
+      justify-self: center;
+      display: grid;
+      place-items: center;
+      width: 5.25cqw;
+      height: 5.25cqw;
+      border: 0.3cqw solid #000000;
+      border-radius: 50%;
+      background: #fffdf5;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.05cqw;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .\30 3-finish-routine-rail-node[data-done="true"] {
+      background: #99e885;
+    }
+
+    .\30 3-finish-routine-card-stack {
+      position: relative;
+      z-index: 3;
+      width: 88.9cqw;
+      height: 47.8cqh;
+      margin-top: 4.25cqh;
+    }
+
+    .\30 3-finish-routine-connector {
+      position: absolute;
+      left: 12.65cqw;
+      top: 10.1cqh;
+      width: 1.1cqw;
+      height: 27.6cqh;
+      border: 0.32cqw solid #000000;
+      background: #f7cb46;
+      box-sizing: border-box;
+    }
+
+    .\30 3-finish-routine-card {
+      position: absolute;
+      left: 0;
+      width: 88.9cqw;
+      height: 18.9cqh;
+      display: grid;
+      grid-template-columns: 24.5cqw 1fr;
+      align-items: center;
+      overflow: hidden;
+      box-sizing: border-box;
+      border: 0.42cqw solid #000000;
+      background: #ffffff;
+      box-shadow: 0.85cqw 0.85cqw 0 #000000;
+      will-change: transform, opacity;
+    }
+
+    .\30 3-finish-routine-card-three {
+      top: 0;
+    }
+
+    .\30 3-finish-routine-card-four {
+      top: 24.2cqh;
+    }
+
+    .\30 3-finish-routine-step-number {
+      align-self: stretch;
+      display: grid;
+      place-items: center;
+      border-right: 0.42cqw solid #000000;
+      background: #c0f7fe;
+      font-size: 12.8cqw;
+      font-weight: 900;
+      letter-spacing: -0.055em;
+      line-height: 1;
+      will-change: transform, opacity;
+    }
+
+    .\30 3-finish-routine-card-four .\30 3-finish-routine-step-number {
+      background: #ffdc8b;
+    }
+
+    .\30 3-finish-routine-copy {
+      padding: 0 4.6cqw;
+      box-sizing: border-box;
+    }
+
+    .\30 3-finish-routine-kicker {
+      display: inline-block;
+      margin-bottom: 1.35cqh;
+      padding: 0.72cqh 1.7cqw 0.58cqh;
+      border: 0.26cqw solid #000000;
+      border-radius: 9999px;
+      background: #f7cb46;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.7cqw;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .\30 3-finish-routine-name {
+      max-width: 53cqw;
+      font-size: 6.9cqw;
+      font-weight: 900;
+      letter-spacing: -0.045em;
+      line-height: 0.9;
+      text-transform: uppercase;
+      will-change: transform, opacity;
+    }
+
+    .\30 3-finish-routine-stamp {
+      position: absolute;
+      z-index: 7;
+      left: 17.5cqw;
+      top: 42.7cqh;
+      display: flex;
+      align-items: center;
+      gap: 2.1cqw;
+      min-height: 7.2cqh;
+      padding: 0 4.2cqw;
+      border: 0.42cqw solid #000000;
+      background: #99e885;
+      box-shadow: 0.75cqw 0.75cqw 0 #000000;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 3.15cqw;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      text-transform: uppercase;
+      white-space: nowrap;
+      will-change: transform, opacity;
+    }
+
+    .\30 3-finish-routine-check {
+      display: grid;
+      place-items: center;
+      width: 4.7cqw;
+      height: 4.7cqw;
+      border: 0.31cqw solid #000000;
+      background: #ffffff;
+      font-family: "Inter", sans-serif;
+      font-size: 3.15cqw;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .\30 3-finish-routine-stripes {
+      position: absolute;
+      z-index: 1;
+      right: -5.5cqw;
+      top: 36.2cqh;
+      width: 19cqw;
+      height: 9cqh;
+      border: 0.35cqw solid #000000;
+      background: repeating-linear-gradient(45deg, #000000 0, #000000 1.2cqw, #f7cb46 1.2cqw, #f7cb46 2.4cqw);
+      transform: rotate(8deg);
+    }
+  </style>
+
+  <div data-hf-id="hf-el3d" id="root" data-composition-id="03-finish-routine" data-width="1080" data-height="1920" data-duration="3.728">
+    <div data-hf-id="hf-qf85" id="f3-ground" class="clip 03-finish-routine-bg" data-start="0" data-duration="3.728" data-track-index="0"></div>
+
+    <div data-hf-id="hf-9t73" class="03-finish-routine-stage">
+      <div data-hf-id="hf-d9ln" class="03-finish-routine-eyebrow-row">
+        <div data-hf-id="hf-xrub" class="03-finish-routine-pill">Evening care</div>
+        <div data-hf-id="hf-bacd" class="03-finish-routine-mini-tag">Finish strong</div>
+      </div>
+
+      <div data-hf-id="hf-r2ub" class="03-finish-routine-rail">
+        <div data-hf-id="hf-lbo2" class="03-finish-routine-rail-line"></div>
+        <div data-hf-id="hf-01pj" class="03-finish-routine-rail-fill"></div>
+        <div data-hf-id="hf-eeod" class="03-finish-routine-rail-node" data-done="true">1</div>
+        <div data-hf-id="hf-fllg" class="03-finish-routine-rail-node" data-done="true">2</div>
+        <div data-hf-id="hf-geyv" class="03-finish-routine-rail-node 03-finish-routine-node-three" data-done="true">3</div>
+        <div data-hf-id="hf-403c" class="03-finish-routine-rail-node 03-finish-routine-node-four">4</div>
+      </div>
+
+      <div data-hf-id="hf-fyn6" class="03-finish-routine-card-stack">
+        <div data-hf-id="hf-9fbc" class="03-finish-routine-connector"></div>
+
+        <div data-hf-id="hf-o3k1" class="03-finish-routine-card 03-finish-routine-card-three">
+          <div data-hf-id="hf-ubzs" class="03-finish-routine-step-number">03</div>
+          <div data-hf-id="hf-w5sc" class="03-finish-routine-copy">
+            <div data-hf-id="hf-jwqf" class="03-finish-routine-kicker">Exfoliate</div>
+            <div data-hf-id="hf-rd90" class="03-finish-routine-name">Peeling<br data-hf-id="hf-x5px">gel</div>
+          </div>
+        </div>
+
+        <div data-hf-id="hf-vdc7" class="03-finish-routine-card 03-finish-routine-card-four">
+          <div data-hf-id="hf-nhvh" class="03-finish-routine-step-number">04</div>
+          <div data-hf-id="hf-ospw" class="03-finish-routine-copy">
+            <div data-hf-id="hf-2tt5" class="03-finish-routine-kicker">Seal the ritual</div>
+            <div data-hf-id="hf-pbqk" class="03-finish-routine-name">Peel-off<br data-hf-id="hf-rsrt">mask</div>
+          </div>
+        </div>
+
+        <div data-hf-id="hf-idlo" class="03-finish-routine-stamp">
+          <span data-hf-id="hf-cxjz" class="03-finish-routine-check">✓</span>
+          <span data-hf-id="hf-w8ja">Order complete</span>
+        </div>
+      </div>
+
+      <div data-hf-id="hf-l6nb" class="03-finish-routine-stripes"></div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const root = document.querySelector('[data-composition-id="03-finish-routine"]');
+      if (!root || typeof gsap === "undefined") return;
+
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["03-finish-routine"] = tl;
+
+      const byClass = (scope, name) => scope.getElementsByClassName(name)[0];
+      const stage = byClass(root, "03-finish-routine-stage");
+      const rail = byClass(root, "03-finish-routine-rail");
+      const fill = byClass(root, "03-finish-routine-rail-fill");
+      const nodeThree = byClass(root, "03-finish-routine-node-three");
+      const nodeFour = byClass(root, "03-finish-routine-node-four");
+      const cardThree = byClass(root, "03-finish-routine-card-three");
+      const cardFour = byClass(root, "03-finish-routine-card-four");
+      const numberThree = byClass(cardThree, "03-finish-routine-step-number");
+      const nameThree = byClass(cardThree, "03-finish-routine-name");
+      const numberFour = byClass(cardFour, "03-finish-routine-step-number");
+      const nameFour = byClass(cardFour, "03-finish-routine-name");
+      const stamp = byClass(root, "03-finish-routine-stamp");
+
+      tl.set(fill, { scaleX: 0.667 }, 0);
+      tl.fromTo(
+        rail,
+        { y: -42, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.42, ease: "power3.out" },
+        0.03
+      );
+      tl.fromTo(
+        cardThree,
+        { y: -80, scale: 0.94, opacity: 0 },
+        { y: 0, scale: 1, opacity: 1, duration: 0.62, ease: "power3.out" },
+        0.08
+      );
+      tl.fromTo(
+        numberThree,
+        { x: -34, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.42, ease: "power3.out" },
+        0.22
+      );
+      tl.fromTo(
+        nameThree,
+        { x: 42, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.52, ease: "power3.out" },
+        0.48
+      );
+      tl.fromTo(
+        nodeThree,
+        { scale: 0.68 },
+        { scale: 1.1, duration: 0.24, ease: "back.out(1.7)" },
+        0.72
+      );
+      tl.to(nodeThree, { scale: 1, duration: 0.18, ease: "power2.out" }, 0.96);
+
+      tl.fromTo(
+        cardFour,
+        { y: 96, scale: 0.94, opacity: 0 },
+        { y: 0, scale: 1, opacity: 1, duration: 0.62, ease: "power3.out" },
+        1.35
+      );
+      tl.fromTo(
+        numberFour,
+        { x: -34, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.42, ease: "power3.out" },
+        1.48
+      );
+      tl.fromTo(
+        nameFour,
+        { x: 42, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.52, ease: "power3.out" },
+        1.72
+      );
+      tl.to(fill, { scaleX: 1, duration: 0.42, ease: "power3.out" }, 1.56);
+      tl.set(nodeFour, { backgroundColor: "#99e885" }, 1.82);
+      tl.fromTo(
+        nodeFour,
+        { scale: 0.68 },
+        { scale: 1.12, duration: 0.25, ease: "back.out(1.7)" },
+        1.82
+      );
+      tl.to(nodeFour, { scale: 1, duration: 0.18, ease: "power2.out" }, 2.07);
+
+      tl.fromTo(
+        stamp,
+        { scale: 1.62, rotation: -11, opacity: 0 },
+        { scale: 1, rotation: -4, opacity: 1, duration: 0.38, ease: "back.out(1.45)" },
+        2.7
+      );
+      tl.to(stage, { scale: 1.012, duration: 0.58, ease: "sine.out" }, 2.74);
+    })();
+  </script>
+</template>

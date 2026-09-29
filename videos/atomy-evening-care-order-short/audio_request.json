@@ -1,0 +1,16 @@
+{
+  "provider": "kokoro",
+  "lang": "en-us",
+  "speed": 1.03,
+  "voice": "af_heart",
+  "lines": [
+    { "id": "1", "text": "Pause. Are you using Atomy Evening Care in the right order?" },
+    { "id": "2", "text": "Step one: Deep Cleanser. Step two: Foam Cleanser." },
+    { "id": "3", "text": "Step three: Peeling Gel. Step four: Peel-Off Mask." },
+    { "id": "4", "text": "Cleanse, foam, exfoliate, then mask. Save this order for tonight." }
+  ],
+  "bgm": {
+    "mode": "reuse",
+    "prompt": "upbeat playful editorial pulse, light percussion, no vocals"
+  }
+}

@@ -1,6 +1,6 @@
 # AtlasForge AI cost model
 
-Provider prices and free tiers change. The values below are planning assumptions as of 7 August 2026; confirm the linked live pages before enabling paid features.
+Provider prices and free tiers change. The values below are planning assumptions as of 17 August 2026; confirm the linked live pages before enabling paid features.
 
 | Stage | Default path | Expected marginal cost |
 |---|---|---:|
@@ -11,7 +11,11 @@ Provider prices and free tiers change. The values below are planning assumptions
 | Images | Pexels or local card | $0 |
 | Music/SFX | project-generated waveforms | $0 |
 | Captions/edit/render | FFmpeg/NVENC | electricity only |
+| Song analysis / Remotion preview | Librosa + Remotion Player | $0 |
+| ElevenLabs narration | disabled optional premium voice | about $0.10/minute for Multilingual v2/v3 at current API pricing |
 | Veo 3.1 Lite, 720p | disabled; max one 8s clip | about $0.40 at $0.05/s |
+| Gemini Omni Flash video, 720p | opt-in AI Viral Lab native-realism lane | about $0.10/second |
+| Wan 2.2 viral short | local ComfyUI on the RTX 4070 | $0 beyond electricity |
 | MiniMax Hailuo | disabled cloud fallback | package/model dependent |
 | YouTube upload | Data API OAuth | $0; quota applies |
 

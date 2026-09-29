@@ -32,4 +32,3 @@ def configure_logging(log_file: Path | None = None) -> None:
 
 def get_logger(**context: object) -> structlog.stdlib.BoundLogger:
     return structlog.get_logger().bind(**context)
-

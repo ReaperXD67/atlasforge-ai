@@ -1,0 +1,18 @@
+extends: atomy-us-openrouter.yaml
+
+channel:
+  name: "Atomy USA — Fast Preview"
+
+script:
+  target_minutes: 2
+  min_words: 240
+  max_words: 360
+
+storyboard:
+  target_scene_seconds: 6
+  min_scene_seconds: 4
+  max_scene_seconds: 9
+  max_scenes: 30
+
+runtime:
+  keep_intermediates: true

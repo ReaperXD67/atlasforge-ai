@@ -11,7 +11,7 @@ import httpx
 
 from .config import Settings
 from .logging import get_logger
-from .models import ResearchItem, ResearchReport
+from .models import EvidenceSource, ResearchItem, ResearchReport
 
 
 class TopicResearcher:
@@ -134,31 +134,85 @@ class TopicResearcher:
             ranked.append(item)
         return sorted(ranked, key=lambda item: item.score, reverse=True)
 
-    def run(self, query_date: date) -> ResearchReport:
-        items = self._youtube_suggestions() + self._google_trends() + self._reddit()
-        if not items:
-            items = [
+    def run(self, query_date: date, topic_override: str | None = None) -> ResearchReport:
+        topic_override = (topic_override or "").strip() or None
+        if topic_override:
+            # The user has already supplied the editorial intent. Treat it as the highest-value
+            # signal and skip broad trend/social discovery, which adds latency and can pull a
+            # tightly scoped brand video toward unrelated side-hustle topics.
+            ranked = [
                 ResearchItem(
-                    title=topic,
-                    source="configured_seed",
-                    score=1,
-                    rationale="Network research unavailable; used configured evergreen seed",
+                    title=topic_override,
+                    source="user_topic",
+                    score=100,
+                    rationale="Explicit Studio topic; broad discovery intentionally skipped",
                 )
-                for topic in self.settings.research.seed_topics
             ]
-        ranked = self._rank(items)[: self.settings.research.max_candidates]
-        selected = ranked[0]
-        angle = (
-            f"Answer the search intent behind '{selected.title}' with an evidence-aware beginner guide. "
-            "Teach a reusable framework first, then evaluate Atomy neutrally as one optional example."
-        )
+        else:
+            items = self._youtube_suggestions() + self._google_trends() + self._reddit()
+            if not items:
+                items = [
+                    ResearchItem(
+                        title=topic,
+                        source="configured_seed",
+                        score=1,
+                        rationale="Network research unavailable; used configured evergreen seed",
+                    )
+                    for topic in self.settings.research.seed_topics
+                ]
+            ranked = self._rank(items)[: self.settings.research.max_candidates]
+        configured_topics = self.settings.research.editorial_topics
+        if topic_override:
+            selected_title = topic_override
+        elif self.settings.research.rotate_editorial_topics and configured_topics:
+            selected_title = configured_topics[query_date.toordinal() % len(configured_topics)]
+        else:
+            selected_title = ranked[0].title
+        brand = self.settings.channel.brand_name.strip()
+        brand_focused = bool(brand and brand.lower() in selected_title.lower())
+        if brand_focused:
+            angle = (
+                f"Answer '{selected_title}' directly for a skeptical beginner in "
+                f"{self.settings.channel.region}. Ground every "
+                "registration, eligibility, product, or compensation statement in the official "
+                "source pack; distinguish consumer and distributor membership; explain tradeoffs; "
+                "and make no earnings or health claims."
+            )
+        elif self.settings.channel.brand_required and brand:
+            angle = (
+                f"Answer the search intent behind '{selected_title}' with an evidence-aware beginner "
+                f"guide. Teach a reusable framework first, then evaluate {brand} neutrally as one "
+                "optional example."
+            )
+        else:
+            angle = (
+                f"Answer the search intent behind '{selected_title}' with an evidence-aware beginner "
+                "guide. Teach a reusable framework, concrete examples, and honest tradeoffs."
+            )
+        evidence = [
+            EvidenceSource(
+                title=source.title,
+                url=source.url,
+                checked_on=source.checked_on,
+                summary=source.summary,
+            )
+            for source in self.settings.research.official_sources
+        ]
         return ResearchReport(
             query_date=query_date,
             candidates=ranked,
-            selected_title=selected.title,
+            selected_title=selected_title,
             selected_angle=angle,
+            brand_focused=brand_focused,
+            evidence=evidence,
             source_notes=[
-                "Trends and social posts are topic signals, not verified evidence.",
-                "Any product, financial, supplement, or skincare claim must be verified before publication.",
+                (
+                    "The explicit Studio topic was used as editorial intent; broad trend and "
+                    "social discovery was skipped."
+                    if topic_override
+                    else "Trends and social posts are topic signals, not verified evidence."
+                ),
+                "Official-source summaries are locally pinned and must be refreshed on the configured cadence.",
+                "Any product, financial, supplement, or skincare claim outside the source pack must be verified before publication.",
             ],
         )

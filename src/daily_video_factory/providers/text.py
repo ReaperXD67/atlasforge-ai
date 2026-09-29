@@ -111,7 +111,9 @@ class GeminiTextProvider(TextProvider):
     def generate_json(
         self, *, system: str, prompt: str, schema: dict[str, Any], temperature: float = 0.6
     ) -> dict[str, Any]:
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.model}:generateContent"
+        url = (
+            f"https://generativelanguage.googleapis.com/v1beta/models/{self.model}:generateContent"
+        )
         response = httpx.post(
             url,
             headers={"x-goog-api-key": os.environ["GOOGLE_API_KEY"]},

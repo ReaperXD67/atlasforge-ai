@@ -1,0 +1,213 @@
+<template id="captions-template" data-composition-id="captions" data-width="1080" data-height="1920">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+
+
+<style data-brand-tokens="">
+      @font-face { font-family: 'Inter'; src: url('assets/fonts/Inter-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: block; }
+      @font-face { font-family: 'Inter'; src: url('assets/fonts/Inter-700.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: block; }
+      :root {
+      --black: #000000;
+      --white: #FFFFFF;
+      --offwhite: #FFFDF5;
+      --pink: #FE90E8;
+      --blue: #C0F7FE;
+      --green: #99E885;
+      --yellow: #F7CB46;
+      --cream: #FFDC8B;
+      --cap-ink: #000000;
+      --cap-canvas: #FFFFFF;
+      --cap-accent: #F7CB46;
+      --cap-accent-2: #FFDC8B;
+      --font-display: "Inter", system-ui, serif;
+      --font-body: "Inter", system-ui, sans-serif;
+      --cap-band-top: 1600px;
+      --cap-band-height: 320px;
+      }
+    </style>
+
+<style>
+  #captions-root {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .caption-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
+  }
+  /* the keep-out band, from captionBand(H) — frame content stays above it */
+  .caption-stage {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--cap-band-top, 900px);
+    height: var(--cap-band-height, 180px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .caption-group {
+    /* every group is absolutely stacked over the SAME band — exactly one shown at a
+       time via opacity. Must be absolute: in-flow groups would lay out side-by-side. */
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+  }
+
+  /* THE bordered card — 4px black border + 8px hard offset shadow (solid black,
+     zero blur, bottom-right — blockframe's sacred depth), square corners */
+  .caption-pill {
+    max-width: 80%;
+    padding: 18px 40px 22px;
+    background: var(--cap-canvas, #ffffff);
+    border: 4px solid var(--cap-ink, #000000);
+    border-radius: 0;
+    box-shadow: 8px 8px 0 var(--cap-ink, #000000);
+  }
+  .caption-line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.12em 0.32em;
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(38px, 4.2vw, 56px);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+
+  /* upcoming — faded black ink, no stamp */
+  .caption-word {
+    display: inline-block;
+    padding: 0 0.1em;
+    color: color-mix(in srgb, var(--cap-ink, #000000) 40%, var(--cap-canvas, #ffffff));
+  }
+  /* current word — THE yellow stamp-block (box-shadow spread = a hard square block
+     w/o layout shift; no blur), black ink reading on top — blockframe's signature stamp */
+  .caption-word.is-active {
+    color: var(--cap-ink, #000000);
+    background: var(--cap-accent, #f7cb46);
+    box-shadow: 0 0 0 0.08em var(--cap-accent, #f7cb46);
+  }
+  /* already spoken — solid black ink, stamp cleared */
+  .caption-word.is-spoken {
+    color: var(--cap-ink, #000000);
+    background: transparent;
+    box-shadow: none;
+  }
+
+  /* optional per-word accents (dormant until a word-classer tags them) */
+  /* brand / key term — heavier ink weight, blockframe's display is already 900 */
+  .caption-word.cap-brand {
+    color: var(--cap-ink, #000000);
+  }
+  /* numerals / data — the body voice, slightly recessed */
+  .caption-word.cap-num {
+    font-family: "Inter", ui-monospace, monospace;
+    color: color-mix(in srgb, var(--cap-ink, #000000) 74%, var(--cap-canvas, #ffffff));
+  }
+  /* emphasis — a cream hard underline bar (the second-chroma accent) */
+  .caption-word.cap-cta {
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+    text-decoration-color: var(--cap-accent-2, #ffdc8b);
+    text-underline-offset: 0.12em;
+  }
+
+  @media (max-aspect-ratio: 9/16) {
+    .caption-pill {
+      max-width: 92%;
+    }
+    .caption-line {
+      font-size: clamp(34px, 5.4vw, 48px);
+    }
+  }
+</style>
+
+<div data-hf-id="hf-8xgc" id="captions-root" data-composition-id="captions" data-timeline-locked="" data-start="0" data-duration="13.952" data-fps="30" data-width="1080" data-height="1920">
+  <div data-hf-id="hf-9flp" class="caption-layer" aria-hidden="true">
+    <div data-hf-id="hf-ajrg" id="caption-stage" class="caption-stage"></div>
+  </div>
+</div>
+
+<script>
+  // captions.mjs injects the engine's scene-aware groups + real duration here.
+  var GROUPS = [{"id":"caption-group-0","frame":1,"start":0.04,"end":0.336,"text":"Pause.","words":[{"id":"caption-word-0-0","text":"Pause.","start":0.04,"end":0.306}]},{"id":"caption-group-1","frame":1,"start":0.336,"end":0.83,"text":"Are you","words":[{"id":"caption-word-1-0","text":"Are","start":0.336,"end":0.553},{"id":"caption-word-1-1","text":"you","start":0.583,"end":0.8}]},{"id":"caption-group-2","frame":1,"start":0.83,"end":1.422,"text":"using Atomy","words":[{"id":"caption-word-2-0","text":"using","start":0.83,"end":1.096},{"id":"caption-word-2-1","text":"Atomy","start":1.126,"end":1.392}]},{"id":"caption-group-3","frame":1,"start":1.422,"end":2.031,"text":"Evening Care","words":[{"id":"caption-word-3-0","text":"Evening","start":1.422,"end":1.728},{"id":"caption-word-3-1","text":"Care","start":1.758,"end":2.001}]},{"id":"caption-group-4","frame":1,"start":2.031,"end":2.494,"text":"in the","words":[{"id":"caption-word-4-0","text":"in","start":2.031,"end":2.217},{"id":"caption-word-4-1","text":"the","start":2.247,"end":2.464}]},{"id":"caption-group-5","frame":1,"start":2.494,"end":3.176,"text":"right order?","words":[{"id":"caption-word-5-0","text":"right","start":2.494,"end":2.76},{"id":"caption-word-5-1","text":"order?","start":2.79,"end":3.056}]},{"id":"caption-group-6","frame":2,"start":3.176,"end":3.917,"text":"Step one:","words":[{"id":"caption-word-6-0","text":"Step","start":3.176,"end":3.536},{"id":"caption-word-6-1","text":"one:","start":3.566,"end":3.887}]},{"id":"caption-group-7","frame":2,"start":3.917,"end":4.817,"text":"Deep Cleanser.","words":[{"id":"caption-word-7-0","text":"Deep","start":3.917,"end":4.277},{"id":"caption-word-7-1","text":"Cleanser.","start":4.307,"end":4.787}]},{"id":"caption-group-8","frame":2,"start":4.817,"end":5.558,"text":"Step two:","words":[{"id":"caption-word-8-0","text":"Step","start":4.817,"end":5.176},{"id":"caption-word-8-1","text":"two:","start":5.206,"end":5.528}]},{"id":"caption-group-9","frame":2,"start":5.558,"end":6.547,"text":"Foam Cleanser.","words":[{"id":"caption-word-9-0","text":"Foam","start":5.558,"end":5.918},{"id":"caption-word-9-1","text":"Cleanser.","start":5.948,"end":6.427}]},{"id":"caption-group-10","frame":3,"start":6.547,"end":7.345,"text":"Step three:","words":[{"id":"caption-word-10-0","text":"Step","start":6.547,"end":6.9},{"id":"caption-word-10-1","text":"three:","start":6.93,"end":7.315}]},{"id":"caption-group-11","frame":3,"start":7.345,"end":8.164,"text":"Peeling Gel.","words":[{"id":"caption-word-11-0","text":"Peeling","start":7.345,"end":7.789},{"id":"caption-word-11-1","text":"Gel.","start":7.819,"end":8.134}]},{"id":"caption-group-12","frame":3,"start":8.164,"end":8.929,"text":"Step four:","words":[{"id":"caption-word-12-0","text":"Step","start":8.164,"end":8.516},{"id":"caption-word-12-1","text":"four:","start":8.546,"end":8.899}]},{"id":"caption-group-13","frame":3,"start":8.929,"end":9.875,"text":"Peel-Off Mask.","words":[{"id":"caption-word-13-0","text":"Peel-Off","start":8.929,"end":9.372},{"id":"caption-word-13-1","text":"Mask.","start":9.402,"end":9.755}]},{"id":"caption-group-14","frame":4,"start":9.875,"end":10.335,"text":"Cleanse,","words":[{"id":"caption-word-14-0","text":"Cleanse,","start":9.875,"end":10.305}]},{"id":"caption-group-15","frame":4,"start":10.335,"end":10.707,"text":"foam,","words":[{"id":"caption-word-15-0","text":"foam,","start":10.335,"end":10.677}]},{"id":"caption-group-16","frame":4,"start":10.707,"end":11.215,"text":"exfoliate,","words":[{"id":"caption-word-16-0","text":"exfoliate,","start":10.707,"end":11.185}]},{"id":"caption-group-17","frame":4,"start":11.215,"end":11.959,"text":"then mask.","words":[{"id":"caption-word-17-0","text":"then","start":11.215,"end":11.557},{"id":"caption-word-17-1","text":"mask.","start":11.587,"end":11.929}]},{"id":"caption-group-18","frame":4,"start":11.959,"end":13.107,"text":"Save this order","words":[{"id":"caption-word-18-0","text":"Save","start":11.959,"end":12.301},{"id":"caption-word-18-1","text":"this","start":12.331,"end":12.673},{"id":"caption-word-18-2","text":"order","start":12.703,"end":13.077}]},{"id":"caption-group-19","frame":4,"start":13.107,"end":13.992,"text":"for tonight.","words":[{"id":"caption-word-19-0","text":"for","start":13.107,"end":13.412},{"id":"caption-word-19-1","text":"tonight.","start":13.442,"end":13.872}]}];
+  var DURATION = 13.952;
+
+  (function () {
+    var stage = document.getElementById("caption-stage");
+
+    // build DOM: one .caption-group per group, .caption-word per word
+    GROUPS.forEach(function (group, g) {
+      var groupEl = document.createElement("div");
+      groupEl.className = "caption-group";
+      groupEl.id = "caption-group-" + g;
+      var pill = document.createElement("div");
+      pill.className = "caption-pill";
+      var line = document.createElement("div");
+      line.className = "caption-line";
+      (group.words || []).forEach(function (w, i) {
+        var span = document.createElement("span");
+        span.className = "caption-word";
+        span.id = "caption-word-" + g + "-" + i;
+        span.textContent = String(w.text);
+        line.appendChild(span);
+      });
+      pill.appendChild(line);
+      groupEl.appendChild(pill);
+      stage.appendChild(groupEl);
+    });
+
+    window.__timelines = window.__timelines || {};
+    var tl = gsap.timeline({ paused: true });
+
+    GROUPS.forEach(function (group, g) {
+      var groupEl = document.getElementById("caption-group-" + g);
+      var words = group.words || [];
+      var next = GROUPS[g + 1];
+      var isLast = g === GROUPS.length - 1;
+      var start = Math.max(0, Number(group.start));
+      var end = isLast ? DURATION : Math.min(Number(next.start), Number(group.end) + 0.3);
+      if (end <= start) end = start + 0.01;
+
+      // group on/off — exactly one group visible at a time
+      tl.set(groupEl, { opacity: 1 }, start);
+      tl.set(groupEl, { opacity: 0 }, end);
+
+      // 3-state karaoke via className SETS — seek-safe (gsap.set applies on the
+      // engine's frame-by-frame seek; .call callbacks would NOT fire).
+      words.forEach(function (w, i) {
+        var el = document.getElementById("caption-word-" + g + "-" + i);
+        var at = Math.max(start, Number(w.start));
+        tl.set(el, { className: "caption-word" }, start); // upcoming (also resets on reverse-seek)
+        tl.set(el, { className: "caption-word is-active" }, at); // current
+        tl.fromTo(el, { scale: 0.86 }, { scale: 1, duration: 0.2, ease: "back.out(2.4)" }, at);
+        if (i + 1 < words.length) {
+          var nextAt = Math.max(start, Number(words[i + 1].start));
+          tl.set(el, { className: "caption-word is-spoken" }, nextAt); // demote when next activates
+        }
+      });
+      if (words.length) {
+        var lastEl = document.getElementById("caption-word-" + g + "-" + (words.length - 1));
+        var lastSpoken = Math.min(end, Number(words[words.length - 1].end) + 0.1);
+        tl.set(lastEl, { className: "caption-word is-spoken" }, lastSpoken);
+      }
+    });
+
+    // full-span anchor so the sub-comp timeline spans the whole video
+    tl.to({}, { duration: DURATION }, 0);
+    window.__timelines["captions"] = tl;
+  })();
+</script>
+
+<style>
+  .caption-line { line-height: 1.1 !important; }
+</style>
+</template>

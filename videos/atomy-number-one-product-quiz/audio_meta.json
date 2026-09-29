@@ -1,0 +1,430 @@
+{
+  "bgm": {
+    "path": "assets/bgm/track.wav",
+    "volume": 0.12,
+    "query": null,
+    "duration_s": 21.739
+  },
+  "bgm_pending": false,
+  "voices": [
+    {
+      "frame": 1,
+      "path": "assets/voice/01.wav",
+      "duration_s": 4.587,
+      "words": [
+        {
+          "id": "caption-word-1-0",
+          "text": "Quick—what’s",
+          "start": 0.05,
+          "end": 0.658
+        },
+        {
+          "id": "caption-word-1-1",
+          "text": "Atomy’s",
+          "start": 0.693,
+          "end": 1.182
+        },
+        {
+          "id": "caption-word-1-2",
+          "text": "number-one",
+          "start": 1.217,
+          "end": 1.798
+        },
+        {
+          "id": "caption-word-1-3",
+          "text": "product:",
+          "start": 1.833,
+          "end": 2.356
+        },
+        {
+          "id": "caption-word-1-4",
+          "text": "HemoHIM,",
+          "start": 2.391,
+          "end": 2.913
+        },
+        {
+          "id": "caption-word-1-5",
+          "text": "toothpaste,",
+          "start": 2.948,
+          "end": 3.555
+        },
+        {
+          "id": "caption-word-1-6",
+          "text": "or",
+          "start": 3.59,
+          "end": 3.91
+        },
+        {
+          "id": "caption-word-1-7",
+          "text": "skincare?",
+          "start": 3.945,
+          "end": 4.497
+        }
+      ]
+    },
+    {
+      "frame": 2,
+      "path": "assets/voice/02.wav",
+      "duration_s": 2.475,
+      "words": [
+        {
+          "id": "caption-word-2-0",
+          "text": "Trick",
+          "start": 0.05,
+          "end": 0.347
+        },
+        {
+          "id": "caption-word-2-1",
+          "text": "question.",
+          "start": 0.382,
+          "end": 0.744
+        },
+        {
+          "id": "caption-word-2-2",
+          "text": "There",
+          "start": 0.779,
+          "end": 1.076
+        },
+        {
+          "id": "caption-word-2-3",
+          "text": "are",
+          "start": 1.111,
+          "end": 1.354
+        },
+        {
+          "id": "caption-word-2-4",
+          "text": "two",
+          "start": 1.389,
+          "end": 1.632
+        },
+        {
+          "id": "caption-word-2-5",
+          "text": "correct",
+          "start": 1.667,
+          "end": 2.008
+        },
+        {
+          "id": "caption-word-2-6",
+          "text": "answers.",
+          "start": 2.043,
+          "end": 2.385
+        }
+      ]
+    },
+    {
+      "frame": 3,
+      "path": "assets/voice/03.wav",
+      "duration_s": 4.267,
+      "words": [
+        {
+          "id": "caption-word-3-0",
+          "text": "By",
+          "start": 0.05,
+          "end": 0.304
+        },
+        {
+          "id": "caption-word-3-1",
+          "text": "revenue,",
+          "start": 0.339,
+          "end": 0.756
+        },
+        {
+          "id": "caption-word-3-2",
+          "text": "HemoHIM",
+          "start": 0.791,
+          "end": 1.207
+        },
+        {
+          "id": "caption-word-3-3",
+          "text": "wins—more",
+          "start": 1.242,
+          "end": 1.682
+        },
+        {
+          "id": "caption-word-3-4",
+          "text": "than",
+          "start": 1.717,
+          "end": 2.048
+        },
+        {
+          "id": "caption-word-3-5",
+          "text": "three",
+          "start": 2.083,
+          "end": 2.446
+        },
+        {
+          "id": "caption-word-3-6",
+          "text": "hundred",
+          "start": 2.481,
+          "end": 2.897
+        },
+        {
+          "id": "caption-word-3-7",
+          "text": "billion",
+          "start": 2.932,
+          "end": 3.348
+        },
+        {
+          "id": "caption-word-3-8",
+          "text": "won",
+          "start": 3.383,
+          "end": 3.679
+        },
+        {
+          "id": "caption-word-3-9",
+          "text": "worldwide.",
+          "start": 3.714,
+          "end": 4.177
+        }
+      ]
+    },
+    {
+      "frame": 4,
+      "path": "assets/voice/04.wav",
+      "duration_s": 7.445,
+      "words": [
+        {
+          "id": "caption-word-4-0",
+          "text": "By",
+          "start": 0.05,
+          "end": 0.314
+        },
+        {
+          "id": "caption-word-4-1",
+          "text": "units,",
+          "start": 0.349,
+          "end": 0.726
+        },
+        {
+          "id": "caption-word-4-2",
+          "text": "Evening",
+          "start": 0.761,
+          "end": 1.194
+        },
+        {
+          "id": "caption-word-4-3",
+          "text": "Care",
+          "start": 1.229,
+          "end": 1.574
+        },
+        {
+          "id": "caption-word-4-4",
+          "text": "wins—nearly",
+          "start": 1.609,
+          "end": 2.112
+        },
+        {
+          "id": "caption-word-4-5",
+          "text": "five",
+          "start": 2.147,
+          "end": 2.492
+        },
+        {
+          "id": "caption-word-4-6",
+          "text": "million",
+          "start": 2.527,
+          "end": 2.96
+        },
+        {
+          "id": "caption-word-4-7",
+          "text": "sets.",
+          "start": 2.995,
+          "end": 3.339
+        },
+        {
+          "id": "caption-word-4-8",
+          "text": "Toothpaste",
+          "start": 3.374,
+          "end": 3.878
+        },
+        {
+          "id": "caption-word-4-9",
+          "text": "Plus",
+          "start": 3.913,
+          "end": 4.257
+        },
+        {
+          "id": "caption-word-4-10",
+          "text": "was",
+          "start": 4.292,
+          "end": 4.6
+        },
+        {
+          "id": "caption-word-4-11",
+          "text": "right",
+          "start": 4.635,
+          "end": 5.012
+        },
+        {
+          "id": "caption-word-4-12",
+          "text": "behind",
+          "start": 5.047,
+          "end": 5.453
+        },
+        {
+          "id": "caption-word-4-13",
+          "text": "at",
+          "start": 5.488,
+          "end": 5.753
+        },
+        {
+          "id": "caption-word-4-14",
+          "text": "four",
+          "start": 5.788,
+          "end": 6.132
+        },
+        {
+          "id": "caption-word-4-15",
+          "text": "point",
+          "start": 6.167,
+          "end": 6.544
+        },
+        {
+          "id": "caption-word-4-16",
+          "text": "six",
+          "start": 6.579,
+          "end": 6.887
+        },
+        {
+          "id": "caption-word-4-17",
+          "text": "million.",
+          "start": 6.922,
+          "end": 7.355
+        }
+      ]
+    },
+    {
+      "frame": 5,
+      "path": "assets/voice/05.wav",
+      "duration_s": 2.965,
+      "words": [
+        {
+          "id": "caption-word-5-0",
+          "text": "Same",
+          "start": 0.05,
+          "end": 0.335
+        },
+        {
+          "id": "caption-word-5-1",
+          "text": "brand.",
+          "start": 0.37,
+          "end": 0.682
+        },
+        {
+          "id": "caption-word-5-2",
+          "text": "Two",
+          "start": 0.717,
+          "end": 0.972
+        },
+        {
+          "id": "caption-word-5-3",
+          "text": "scoreboards.",
+          "start": 1.007,
+          "end": 1.441
+        },
+        {
+          "id": "caption-word-5-4",
+          "text": "So…",
+          "start": 1.476,
+          "end": 1.695
+        },
+        {
+          "id": "caption-word-5-5",
+          "text": "did",
+          "start": 1.73,
+          "end": 1.985
+        },
+        {
+          "id": "caption-word-5-6",
+          "text": "you",
+          "start": 2.02,
+          "end": 2.274
+        },
+        {
+          "id": "caption-word-5-7",
+          "text": "guess",
+          "start": 2.309,
+          "end": 2.621
+        },
+        {
+          "id": "caption-word-5-8",
+          "text": "it?",
+          "start": 2.656,
+          "end": 2.875
+        }
+      ]
+    }
+  ],
+  "sfx": [
+    {
+      "frame": 1,
+      "file": "assets/sfx/impact-bass-1.mp3",
+      "offset_s": 0,
+      "duration_s": 2.12,
+      "volume": 0.35
+    },
+    {
+      "frame": 1,
+      "file": "assets/sfx/pop.mp3",
+      "offset_s": 0,
+      "duration_s": 0.72,
+      "volume": 0.35
+    },
+    {
+      "frame": 2,
+      "file": "assets/sfx/impact-bass-1.mp3",
+      "offset_s": 0,
+      "duration_s": 2.12,
+      "volume": 0.35
+    },
+    {
+      "frame": 2,
+      "file": "assets/sfx/click-soft.mp3",
+      "offset_s": 0,
+      "duration_s": 0.37,
+      "volume": 0.35
+    },
+    {
+      "frame": 3,
+      "file": "assets/sfx/whoosh-short.mp3",
+      "offset_s": 0,
+      "duration_s": 0.57,
+      "volume": 0.35
+    },
+    {
+      "frame": 3,
+      "file": "assets/sfx/click-soft.mp3",
+      "offset_s": 0,
+      "duration_s": 0.37,
+      "volume": 0.35
+    },
+    {
+      "frame": 4,
+      "file": "assets/sfx/whoosh-short.mp3",
+      "offset_s": 0,
+      "duration_s": 0.57,
+      "volume": 0.35
+    },
+    {
+      "frame": 4,
+      "file": "assets/sfx/chime.mp3",
+      "offset_s": 0,
+      "duration_s": 2.5,
+      "volume": 0.35
+    },
+    {
+      "frame": 5,
+      "file": "assets/sfx/impact-bass-1.mp3",
+      "offset_s": 0,
+      "duration_s": 2.12,
+      "volume": 0.35
+    },
+    {
+      "frame": 5,
+      "file": "assets/sfx/pop.mp3",
+      "offset_s": 0,
+      "duration_s": 0.72,
+      "volume": 0.35
+    }
+  ]
+}

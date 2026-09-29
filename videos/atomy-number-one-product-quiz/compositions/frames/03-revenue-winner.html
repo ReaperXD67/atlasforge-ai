@@ -1,0 +1,55 @@
+<template>
+  <style>
+    @font-face{font-family:Inter;src:url("assets/fonts/Inter-Variable.ttf") format("truetype");font-weight:100 900;font-style:normal}
+    @font-face{font-family:SpaceGrotesk;src:url("assets/fonts/SpaceGrotesk-Variable.ttf") format("truetype");font-weight:300 700;font-style:normal}
+    *{box-sizing:border-box}
+    #root{position:absolute;inset:0;width:1080px;height:1920px;overflow:hidden;color:#000;font-family:Inter,sans-serif;container-type:size}
+    .clip{position:absolute;inset:0}
+    .f03-ground{background:#99e885;overflow:hidden}
+    .f03-ground::before{content:"";position:absolute;left:-160px;top:210px;width:570px;height:1280px;background:repeating-linear-gradient(135deg,#000 0 5px,transparent 5px 28px);opacity:.08;border-right:4px solid #000}
+    .f03-stage{position:absolute;inset:0;padding:78px 64px 330px}
+    .f03-tab{position:absolute;left:64px;top:76px;padding:20px 34px;background:#000;color:#fff;border:4px solid #000;box-shadow:8px 8px 0 #f7cb46;font:800 29px/1 SpaceGrotesk,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+    .f03-proof{position:absolute;right:65px;top:89px;padding:13px 22px;background:#c0f7fe;border:3px solid #000;border-radius:999px;box-shadow:5px 5px 0 #000;font:700 21px/1 SpaceGrotesk,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+    .f03-pack-zone{position:absolute;left:75px;top:285px;width:930px;height:590px}
+    .f03-pedestal{position:absolute;left:210px;bottom:8px;width:520px;height:80px;background:#f7cb46;border:5px solid #000;box-shadow:10px 10px 0 #000}
+    .f03-pack{position:absolute;left:270px;top:35px;width:400px;height:490px;background:#fff;border:6px solid #000;box-shadow:13px 13px 0 #000;padding:50px 38px;overflow:hidden}
+    .f03-pack::before{content:"";position:absolute;right:-60px;top:-40px;width:250px;height:250px;background:#fe90e8;border:5px solid #000;transform:rotate(22deg)}
+    .f03-pack::after{content:"HEALTH FOOD";position:absolute;left:0;right:0;bottom:0;padding:22px 26px;background:#000;color:#fff;font:700 21px/1 SpaceGrotesk,sans-serif;letter-spacing:.12em;text-align:center}
+    .f03-pack-kicker{position:relative;font:700 21px/1 SpaceGrotesk,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+    .f03-pack-name{position:relative;margin-top:62px;font:900 61px/.92 Inter,sans-serif;letter-spacing:-.05em;text-transform:uppercase}
+    .f03-pack-rule{position:relative;margin-top:33px;width:100%;height:25px;background:repeating-linear-gradient(90deg,#000 0 5px,transparent 5px 14px)}
+    .f03-ribbon{position:absolute;right:58px;top:125px;width:230px;height:230px;background:#f7cb46;border:5px solid #000;box-shadow:9px 9px 0 #000;clip-path:polygon(50% 0,61% 27%,85% 15%,73% 39%,100% 50%,73% 61%,85% 85%,61% 73%,50% 100%,39% 73%,15% 85%,27% 61%,0 50%,27% 39%,15% 15%,39% 27%);display:grid;place-items:center;font:900 92px/1 Inter,sans-serif}
+    .f03-metric{position:absolute;left:62px;top:905px;width:956px;height:500px;background:#fffdf5;border:6px solid #000;box-shadow:13px 13px 0 #000;padding:62px 42px 38px;text-align:center}
+    .f03-number{font:900 176px/.82 Inter,sans-serif;letter-spacing:-.07em;font-variant-numeric:tabular-nums;text-transform:uppercase;white-space:nowrap}
+    .f03-unit{display:inline-block;margin-top:39px;padding:14px 24px;background:#fe90e8;border:4px solid #000;box-shadow:7px 7px 0 #000;font:800 28px/1 SpaceGrotesk,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+    .f03-winner{position:absolute;left:34px;top:-32px;padding:12px 24px;background:#c0f7fe;border:4px solid #000;box-shadow:6px 6px 0 #000;font:800 24px/1 SpaceGrotesk,sans-serif;letter-spacing:.11em;text-transform:uppercase}
+    .f03-nexa{position:absolute;right:20px;top:1255px;width:260px;height:330px;object-fit:contain;filter:drop-shadow(8px 8px 0 #000);z-index:8}
+    .f03-source{position:absolute;left:64px;top:1460px;width:720px;padding:18px 25px;background:#000;color:#fff;border:4px solid #000;box-shadow:8px 8px 0 #f7cb46;font:700 22px/1 SpaceGrotesk,sans-serif;letter-spacing:.085em;text-transform:uppercase;white-space:nowrap}
+  </style>
+  <div data-hf-id="hf-i169" id="root" data-composition-id="03-revenue-winner" data-start="0" data-duration="4.767" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-65dt" id="f03-ground" class="clip f03-ground" data-start="0" data-duration="4.767" data-track-index="1"></div>
+    <div data-hf-id="hf-s41c" class="f03-stage">
+      <div data-hf-id="hf-tf6p" id="f03-tab" class="f03-tab">By revenue</div><div data-hf-id="hf-qc6t" class="f03-proof">Scoreboard 1</div>
+      <div data-hf-id="hf-mtcg" class="f03-pack-zone"><div data-hf-id="hf-rsiq" id="f03-pedestal" class="f03-pedestal"></div><div data-hf-id="hf-7fye" id="f03-pack" class="f03-pack"><div data-hf-id="hf-tmyb" class="f03-pack-kicker">Atomy</div><div data-hf-id="hf-els2" class="f03-pack-name">Hemo<br data-hf-id="hf-x5px">HIM</div><div data-hf-id="hf-m9fc" class="f03-pack-rule"></div></div><div data-hf-id="hf-1qra" id="f03-ribbon" class="f03-ribbon">#1</div></div>
+      <div data-hf-id="hf-vjkq" id="f03-metric" class="f03-metric"><div data-hf-id="hf-tx88" class="f03-winner">Revenue winner</div><div data-hf-id="hf-hzg1" id="f03-number" class="f03-number">0B+</div><div data-hf-id="hf-ay8r" id="f03-unit" class="f03-unit">KRW global sales</div></div>
+      <img data-hf-id="hf-rs32" id="f03-nexa" class="f03-nexa" src="assets/nexa-analytical.png" alt="Nexa presenting the sourced figure">
+      <div data-hf-id="hf-vj6i" id="f03-source" class="f03-source">Source: Atomy official reporting</div>
+    </div>
+  </div>
+  <script>
+    window.__timelines=window.__timelines||{};
+    const f03tl=gsap.timeline({paused:true});
+    f03tl.fromTo("#f03-tab",{opacity:0,y:-55},{opacity:1,y:0,duration:.46,ease:"power3.out"},.03);
+    f03tl.fromTo("#f03-pedestal",{opacity:0,scaleX:.2},{opacity:1,scaleX:1,duration:.4,ease:"power3.out"},.58);
+    f03tl.fromTo("#f03-pack",{opacity:0,y:170,scale:.94},{opacity:1,y:0,scale:1,duration:.7,ease:"power3.out"},.67);
+    f03tl.fromTo("#f03-ribbon",{opacity:0,scale:.2,rotation:-30},{opacity:1,scale:1,rotation:8,duration:.45,ease:"back.out(1.45)"},1.1);
+    f03tl.fromTo("#f03-metric",{opacity:0,y:80},{opacity:1,y:0,duration:.42,ease:"power3.out"},1.5);
+    f03tl.fromTo("#f03-unit",{opacity:0,y:24},{opacity:1,y:0,duration:.3,ease:"power3.out"},1.68);
+    const f03count={value:0};
+    f03tl.fromTo("#f03-number",{scale:.94},{scale:1,duration:1.65,ease:"power2.out"},1.57);
+    f03tl.to(f03count,{value:300,duration:1.65,ease:"power2.out",onUpdate:()=>{document.getElementById("f03-number").textContent=Math.round(f03count.value)+"B+";}},1.57);
+    f03tl.fromTo("#f03-nexa",{opacity:0,x:80,y:55},{opacity:1,x:0,y:0,duration:.52,ease:"power3.out"},3.34);
+    f03tl.fromTo("#f03-source",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:.5,ease:"power3.out"},3.48);
+    window.__timelines["03-revenue-winner"]=f03tl;
+  </script>
+</template>

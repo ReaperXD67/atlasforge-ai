@@ -21,7 +21,9 @@ def atomic_write(path: Path, data: str | bytes) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     mode = "wb" if isinstance(data, bytes) else "w"
     encoding = None if isinstance(data, bytes) else "utf-8"
-    with tempfile.NamedTemporaryFile(mode=mode, encoding=encoding, delete=False, dir=path.parent) as tmp:
+    with tempfile.NamedTemporaryFile(
+        mode=mode, encoding=encoding, delete=False, dir=path.parent
+    ) as tmp:
         tmp.write(data)
         temp_path = Path(tmp.name)
     os.replace(temp_path, path)
@@ -48,8 +50,19 @@ class RunPaths:
     def create(cls, output_root: Path, publication_date: date, topic: str) -> RunPaths:
         root = output_root / f"{publication_date.isoformat()}-{slugify(topic)}"
         names = [
-            "scripts", "audio", "storyboards", "scenes", "videos", "music", "sfx",
-            "subtitles", "thumbnails", "final", "logs", "research", "metadata",
+            "scripts",
+            "audio",
+            "storyboards",
+            "scenes",
+            "videos",
+            "music",
+            "sfx",
+            "subtitles",
+            "thumbnails",
+            "final",
+            "logs",
+            "research",
+            "metadata",
         ]
         paths = {name: root / name for name in names}
         for path in paths.values():
@@ -59,15 +72,28 @@ class RunPaths:
     @classmethod
     def from_root(cls, root: Path) -> RunPaths:
         names = [
-            "scripts", "audio", "storyboards", "scenes", "videos", "music", "sfx",
-            "subtitles", "thumbnails", "final", "logs", "research", "metadata",
+            "scripts",
+            "audio",
+            "storyboards",
+            "scenes",
+            "videos",
+            "music",
+            "sfx",
+            "subtitles",
+            "thumbnails",
+            "final",
+            "logs",
+            "research",
+            "metadata",
         ]
         paths = {name: root / name for name in names}
         for path in paths.values():
             path.mkdir(parents=True, exist_ok=True)
         return cls(root=root, **paths)
 
-    def write_json(self, relative: str | Path, value: BaseModel | dict[str, Any] | list[Any]) -> Path:
+    def write_json(
+        self, relative: str | Path, value: BaseModel | dict[str, Any] | list[Any]
+    ) -> Path:
         path = self.root / relative
         payload = value.model_dump(mode="json") if isinstance(value, BaseModel) else value
         atomic_write(path, json.dumps(payload, indent=2, ensure_ascii=False, default=str))

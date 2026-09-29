@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+
+  @font-face { font-family: Impact; src: local("Impact"); }
+  @font-face { font-family: "Arial Narrow"; src: local("Arial Narrow"); }
+  * { box-sizing: border-box; }
+  #root {
+    position: absolute;
+    inset: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background: #0b0a0a;
+    color: #fff4dd;
+    font-family: "Segoe UI", Arial, sans-serif;
+  }
+  .backdrop {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 78% 22%, rgba(244,185,66,.17), transparent 34%),
+      radial-gradient(circle at 12% 78%, rgba(117,214,156,.08), transparent 28%),
+      linear-gradient(135deg, #0b0a0a 0%, #17120c 52%, #080808 100%);
+  }
+  .grid {
+    position: absolute;
+    inset: -100px;
+    opacity: .16;
+    background-image: linear-gradient(rgba(244,185,66,.22) 1px, transparent 1px), linear-gradient(90deg, rgba(244,185,66,.22) 1px, transparent 1px);
+    background-size: 86px 86px;
+    transform: rotate(-6deg) translateY(180px) scale(1.32);
+    transform-origin: center;
+  }
+  .grain {
+    position: absolute;
+    inset: 0;
+    opacity: .09;
+    background-image: radial-gradient(rgba(255,255,255,.8) .8px, transparent .8px);
+    background-size: 6px 6px;
+  }
+  .ambient {
+    position: absolute;
+    width: 760px;
+    height: 760px;
+    border: 2px solid rgba(244,185,66,.16);
+    border-radius: 50%;
+    right: -260px;
+    top: -300px;
+    box-shadow: 0 0 100px rgba(244,185,66,.11), inset 0 0 80px rgba(244,185,66,.05);
+  }
+  .stage { position: absolute; inset: 0; padding: 94px 92px 178px; }
+  .eyebrow {
+    color: #f4b942;
+    font: 700 24px/1 Consolas, monospace;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+  .headline {
+    margin-top: 16px;
+    font-family: Impact, "Arial Narrow", sans-serif;
+    font-size: 116px;
+    line-height: .92;
+    letter-spacing: .012em;
+    text-transform: uppercase;
+  }
+  .headline .gold { color: #f4b942; }
+  .subhead { color: #c8bda7; font-size: 31px; line-height: 1.34; max-width: 920px; }
+  .panel {
+    border: 1px solid rgba(244,185,66,.28);
+    background: linear-gradient(145deg, rgba(31,27,22,.96), rgba(12,11,10,.9));
+    border-radius: 28px;
+    box-shadow: 0 26px 80px rgba(0,0,0,.42), inset 0 1px rgba(255,255,255,.05);
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(244,185,66,.38);
+    color: #f4b942;
+    font: 700 19px/1 Consolas, monospace;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .host-shell { position: absolute; width: 760px; height: 810px; }
+  .host-halo {
+    position: absolute; width: 610px; height: 610px; border-radius: 50%; left: 92px; top: 75px;
+    background: radial-gradient(circle, rgba(244,185,66,.24), transparent 68%);
+    border: 2px solid rgba(244,185,66,.25);
+  }
+  .host-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 28px 30px rgba(0,0,0,.55)); }
+  .name-plate {
+    position: absolute; left: 110px; bottom: 118px; padding: 12px 20px;
+    border-radius: 14px; background: #f4b942; color: #0b0a0a;
+    font: 900 24px/1 "Segoe UI", sans-serif; letter-spacing: .12em;
+  }
+  .source-chip { color: #c8bda7; font: 600 19px/1.2 Consolas, monospace; }
+  .tiny-rule { height: 2px; background: linear-gradient(90deg,#f4b942,transparent); }
+
+
+      .host-shell { left:-65px; bottom:62px; width:780px; height:820px; }
+      .cta-copy { position:absolute; left:720px; right:90px; top:105px; }
+      .headline { font-size:85px; }
+      .polls { margin-top:34px; display:grid; gap:14px; }
+      .poll { height:95px; display:grid; grid-template-columns:90px 1fr; align-items:center; padding:0 28px; }
+      .poll i { width:48px; height:48px; display:grid; place-items:center; border-radius:50%; background:#f4b942; color:#0b0a0a; font:900 24px Impact,sans-serif; font-style:normal; }
+      .poll b { font:900 28px Impact,sans-serif; letter-spacing:.04em; }
+      .subscribe { margin-top:22px; display:flex; align-items:center; justify-content:space-between; background:#f4b942; color:#0b0a0a; padding:18px 24px; border-radius:17px; }
+      .subscribe span { font:900 18px Consolas,monospace; }
+      .subscribe b { font:900 25px "Segoe UI",sans-serif; }
+
+      </style>
+      <div id="root" data-composition-id="scene-08-cta" data-start="0" data-duration="21.334" data-width="1920" data-height="1080">
+
+      <div class="backdrop"></div><div class="grid" data-layout-ignore></div><div class="grain" data-layout-ignore></div><div class="ambient" data-layout-ignore></div>
+      <div class="stage">
+
+  <div class="host-shell" id="s8-host">
+    <div class="host-halo" data-layout-ignore></div>
+    <img class="host-image" src="assets/nexa-toon-v2.png" alt="Nexa, BizNex AI host" />
+    <div class="name-plate">NEXA // AI HOST</div>
+  </div>
+        <div class="cta-copy">
+          <div class="eyebrow">YOU CHOOSE VIDEO 03</div>
+          <h2 class="headline">WHAT SHOULD<br>NEXA <span class="gold">UNPACK NEXT?</span></h2>
+          <div class="polls">
+            <div class="poll panel"><i>A</i><b>DEALERSHIP SCORE TABLE</b></div>
+            <div class="poll panel"><i>B</i><b>SALES MASTER QUALIFICATION</b></div>
+            <div class="poll panel"><i>C</i><b>TYPICAL-RESULT EVIDENCE</b></div>
+          </div>
+          <div class="subscribe"><span>COMMENT A, B, OR C</span><b>SUBSCRIBE TO BIZNEX ↗</b></div>
+        </div>
+      </div>
+      </div>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const root = document.querySelector('[data-composition-id="scene-08-cta"]');
+        const q = gsap.utils.selector(root);
+        const tl = gsap.timeline({ paused: true });
+        tl.to(q(".ambient"), { rotation:18, scale:1.13, duration:21.334, ease:"none" }, 0);
+        tl.to(q(".grain"), { backgroundPosition:"32px 18px", duration:21.334, ease:"none" }, 0);
+
+      tl.fromTo(q(".host-shell"), { opacity:0, x:-130 }, { opacity:1, x:0, duration:.85, ease:"power4.out" }, .1);
+      tl.fromTo(q(".eyebrow,.headline"), { opacity:0, x:80 }, { opacity:1, x:0, duration:.65, stagger:.16, ease:"power3.out" }, .35);
+      tl.fromTo(q(".poll"), { opacity:0, x:110 }, { opacity:1, x:0, duration:.55, stagger:.25, ease:"back.out(1.2)" }, 1.3);
+      tl.fromTo(q(".subscribe"), { opacity:0, scale:.8, y:50 }, { opacity:1, scale:1, y:0, duration:.62, ease:"back.out(1.5)" }, 2.5);
+      tl.to(q(".host-shell"), { y:-7, rotate:.22, duration:6, ease:"sine.inOut" }, 0);
+      tl.to(q(".host-shell"), { y:1, rotate:-.16, duration:7, ease:"sine.inOut" }, 6);
+      tl.to(q(".host-shell"), { y:-5, rotate:.18, duration:8.334, ease:"sine.inOut" }, 13);
+      tl.to(q(".subscribe"), { boxShadow:"0 0 55px rgba(244,185,66,.5)", duration:17.334, ease:"sine.inOut" }, 4);
+
+        window.__timelines["scene-08-cta"] = tl;
+      </script>
+    </template>
+  </body>
+</html>
