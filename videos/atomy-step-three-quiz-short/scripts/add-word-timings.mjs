@@ -3,9 +3,13 @@ import { readFileSync, writeFileSync } from "node:fs";
 const path = new URL("../audio_meta.json", import.meta.url);
 const meta = JSON.parse(readFileSync(path, "utf8"));
 const lines = new Map([
-  [1, "Quick quiz. Which Atomy Evening Care step comes third?"],
-  [2, "Three... two... one..."],
-  [3, "Peeling Gel. Did you get it right? Save this for tonight."],
+  [1, "Atomy fans, three questions. Can you score three out of three?"],
+  [2, "Level one. Which cleanser comes first: Deep or Foam? Three, two, one."],
+  [3, "Deep Cleanser comes first."],
+  [4, "Level two. Which product is step three? Three, two, one."],
+  [5, "Peeling Gel is step three."],
+  [6, "Final level. What finishes the routine: Foam Cleanser or Peel-Off Mask? Three, two, one."],
+  [7, "Peel-Off Mask. Full order: Deep, Foam, Peeling Gel, then Mask. What did you score? Save this and challenge a friend."],
 ]);
 
 for (const voice of meta.voices ?? []) {

@@ -1,17 +1,33 @@
-# SCRIPT - atomy-step-three-quiz-short
+# SCRIPT - Atomy 3-Level Evening Care Challenge
 
 **Voice:** Kokoro `af_heart` (warm female)
-**Voice settings:** speed 1.04
-**Direction:** Bright, confident, and conversational. Pause cleanly before the reveal.
+**Voice settings:** speed 1.06
+**Direction:** Bright, confident, and conversational. Treat every level like a friendly game and pause cleanly before each reveal.
 
-## Line 1 - Quiz hook
+## Line 1 - Challenge hook
 
-    Quick quiz. Which Atomy Evening Care step comes third?
+    Atomy fans, three questions. Can you score three out of three?
 
-## Line 2 - Countdown
+## Line 2 - Level one
 
-    Three... two... one...
+    Level one. Which cleanser comes first: Deep or Foam? Three, two, one.
 
-## Line 3 - Reveal and CTA
+## Line 3 - Level one answer
 
-    Peeling Gel. Did you get it right? Save this for tonight.
+    Deep Cleanser comes first.
+
+## Line 4 - Level two
+
+    Level two. Which product is step three? Three, two, one.
+
+## Line 5 - Level two answer
+
+    Peeling Gel is step three.
+
+## Line 6 - Final level
+
+    Final level. What finishes the routine: Foam Cleanser or Peel-Off Mask? Three, two, one.
+
+## Line 7 - Final answer and score
+
+    Peel-Off Mask. Full order: Deep, Foam, Peeling Gel, then Mask. What did you score? Save this and challenge a friend.

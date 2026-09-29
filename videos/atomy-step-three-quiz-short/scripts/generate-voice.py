@@ -7,9 +7,13 @@ from kokoro_onnx import Kokoro
 MODEL = Path.home() / ".cache/hyperframes/tts/models/kokoro-v1.0.onnx"
 VOICES = Path.home() / ".cache/hyperframes/tts/voices/voices-v1.0.bin"
 LINES = [
-    "Quick quiz. Which Atomy Evening Care step comes third?",
-    "Three... two... one...",
-    "Peeling Gel. Did you get it right? Save this for tonight.",
+    "Atomy fans, three questions. Can you score three out of three?",
+    "Level one. Which cleanser comes first: Deep or Foam? Three, two, one.",
+    "Deep Cleanser comes first.",
+    "Level two. Which product is step three? Three, two, one.",
+    "Peeling Gel is step three.",
+    "Final level. What finishes the routine: Foam Cleanser or Peel-Off Mask? Three, two, one.",
+    "Peel-Off Mask. Full order: Deep, Foam, Peeling Gel, then Mask. What did you score? Save this and challenge a friend.",
 ]
 
 
@@ -21,7 +25,7 @@ def main() -> None:
         samples, sample_rate = kokoro.create(
             text,
             voice="af_heart",
-            speed=1.04,
+            speed=1.06,
             lang="en-us",
             sentence_pause=0.18,
             clause_pause=0.08,

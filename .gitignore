@@ -31,6 +31,8 @@ videos/**/snapshots/
 videos/**/snapshots*/
 videos/**/.thumbnails/
 videos/**/thumbnail-capture/
+videos/**/thumbnail-clean/
+videos/**/thumbnail-snapshot/
 videos/**/.hyperframes/frame-packets/
 videos/**/.hyperframes/caption-skin.html
 videos/biznex-revive-pitch-001/assets/

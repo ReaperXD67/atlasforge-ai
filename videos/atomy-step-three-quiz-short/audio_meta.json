@@ -3,167 +3,513 @@
     "path": "assets/bgm/track.wav",
     "volume": 0.12,
     "query": "upbeat playful editorial pulse, light percussion, no vocals",
-    "duration_s": 21.739
+    "duration_s": 25.856
   },
   "bgm_pending": false,
-  "total_duration_s": 7.467,
+  "total_duration_s": 25.856,
   "voices": [
     {
       "frame": 1,
       "path": "assets/voice/01.wav",
-      "duration_s": 2.816,
+      "duration_s": 3.392,
       "words": [
         {
           "id": "caption-word-1-0",
-          "text": "Quick",
+          "text": "Atomy",
           "start": 0.04,
-          "end": 0.316
+          "end": 0.327
         },
         {
           "id": "caption-word-1-1",
-          "text": "quiz.",
-          "start": 0.346,
-          "end": 0.599
+          "text": "fans,",
+          "start": 0.357,
+          "end": 0.62
         },
         {
           "id": "caption-word-1-2",
-          "text": "Which",
-          "start": 0.629,
-          "end": 0.905
+          "text": "three",
+          "start": 0.65,
+          "end": 0.937
         },
         {
           "id": "caption-word-1-3",
-          "text": "Atomy",
-          "start": 0.935,
-          "end": 1.211
+          "text": "questions.",
+          "start": 0.967,
+          "end": 1.335
         },
         {
           "id": "caption-word-1-4",
-          "text": "Evening",
-          "start": 1.241,
-          "end": 1.559
+          "text": "Can",
+          "start": 1.365,
+          "end": 1.6
         },
         {
           "id": "caption-word-1-5",
-          "text": "Care",
-          "start": 1.589,
-          "end": 1.841
+          "text": "you",
+          "start": 1.63,
+          "end": 1.864
         },
         {
           "id": "caption-word-1-6",
-          "text": "step",
-          "start": 1.871,
-          "end": 2.124
+          "text": "score",
+          "start": 1.894,
+          "end": 2.182
         },
         {
           "id": "caption-word-1-7",
-          "text": "comes",
-          "start": 2.154,
-          "end": 2.43
+          "text": "three",
+          "start": 2.212,
+          "end": 2.499
         },
         {
           "id": "caption-word-1-8",
-          "text": "third?",
-          "start": 2.46,
-          "end": 2.736
+          "text": "out",
+          "start": 2.529,
+          "end": 2.763
+        },
+        {
+          "id": "caption-word-1-9",
+          "text": "of",
+          "start": 2.793,
+          "end": 2.995
+        },
+        {
+          "id": "caption-word-1-10",
+          "text": "three?",
+          "start": 3.025,
+          "end": 3.312
         }
       ]
     },
     {
       "frame": 2,
       "path": "assets/voice/02.wav",
-      "duration_s": 1.451,
+      "duration_s": 4.011,
       "words": [
         {
           "id": "caption-word-2-0",
-          "text": "Three...",
+          "text": "Level",
           "start": 0.04,
-          "end": 0.523
+          "end": 0.358
         },
         {
           "id": "caption-word-2-1",
-          "text": "two...",
-          "start": 0.553,
-          "end": 0.947
+          "text": "one.",
+          "start": 0.388,
+          "end": 0.648
         },
         {
           "id": "caption-word-2-2",
-          "text": "one...",
-          "start": 0.977,
-          "end": 1.371
+          "text": "Which",
+          "start": 0.678,
+          "end": 0.996
+        },
+        {
+          "id": "caption-word-2-3",
+          "text": "cleanser",
+          "start": 1.026,
+          "end": 1.413
+        },
+        {
+          "id": "caption-word-2-4",
+          "text": "comes",
+          "start": 1.443,
+          "end": 1.761
+        },
+        {
+          "id": "caption-word-2-5",
+          "text": "first:",
+          "start": 1.791,
+          "end": 2.109
+        },
+        {
+          "id": "caption-word-2-6",
+          "text": "Deep",
+          "start": 2.139,
+          "end": 2.43
+        },
+        {
+          "id": "caption-word-2-7",
+          "text": "or",
+          "start": 2.46,
+          "end": 2.683
+        },
+        {
+          "id": "caption-word-2-8",
+          "text": "Foam?",
+          "start": 2.713,
+          "end": 3.004
+        },
+        {
+          "id": "caption-word-2-9",
+          "text": "Three,",
+          "start": 3.034,
+          "end": 3.352
+        },
+        {
+          "id": "caption-word-2-10",
+          "text": "two,",
+          "start": 3.382,
+          "end": 3.641
+        },
+        {
+          "id": "caption-word-2-11",
+          "text": "one.",
+          "start": 3.671,
+          "end": 3.931
         }
       ]
     },
     {
       "frame": 3,
       "path": "assets/voice/03.wav",
-      "duration_s": 3.2,
+      "duration_s": 1.472,
       "words": [
         {
           "id": "caption-word-3-0",
-          "text": "Peeling",
+          "text": "Deep",
           "start": 0.04,
-          "end": 0.363
+          "end": 0.319
         },
         {
           "id": "caption-word-3-1",
-          "text": "Gel.",
-          "start": 0.393,
-          "end": 0.622
+          "text": "Cleanser",
+          "start": 0.349,
+          "end": 0.721
         },
         {
           "id": "caption-word-3-2",
-          "text": "Did",
-          "start": 0.652,
-          "end": 0.881
+          "text": "comes",
+          "start": 0.751,
+          "end": 1.056
         },
         {
           "id": "caption-word-3-3",
+          "text": "first.",
+          "start": 1.086,
+          "end": 1.392
+        }
+      ]
+    },
+    {
+      "frame": 4,
+      "path": "assets/voice/04.wav",
+      "duration_s": 3.221,
+      "words": [
+        {
+          "id": "caption-word-4-0",
+          "text": "Level",
+          "start": 0.04,
+          "end": 0.347
+        },
+        {
+          "id": "caption-word-4-1",
+          "text": "two.",
+          "start": 0.377,
+          "end": 0.628
+        },
+        {
+          "id": "caption-word-4-2",
+          "text": "Which",
+          "start": 0.658,
+          "end": 0.965
+        },
+        {
+          "id": "caption-word-4-3",
+          "text": "product",
+          "start": 0.995,
+          "end": 1.349
+        },
+        {
+          "id": "caption-word-4-4",
+          "text": "is",
+          "start": 1.379,
+          "end": 1.594
+        },
+        {
+          "id": "caption-word-4-5",
+          "text": "step",
+          "start": 1.624,
+          "end": 1.905
+        },
+        {
+          "id": "caption-word-4-6",
+          "text": "three?",
+          "start": 1.935,
+          "end": 2.242
+        },
+        {
+          "id": "caption-word-4-7",
+          "text": "Three,",
+          "start": 2.272,
+          "end": 2.58
+        },
+        {
+          "id": "caption-word-4-8",
+          "text": "two,",
+          "start": 2.61,
+          "end": 2.86
+        },
+        {
+          "id": "caption-word-4-9",
+          "text": "one.",
+          "start": 2.89,
+          "end": 3.141
+        }
+      ]
+    },
+    {
+      "frame": 5,
+      "path": "assets/voice/05.wav",
+      "duration_s": 1.515,
+      "words": [
+        {
+          "id": "caption-word-5-0",
+          "text": "Peeling",
+          "start": 0.04,
+          "end": 0.36
+        },
+        {
+          "id": "caption-word-5-1",
+          "text": "Gel",
+          "start": 0.39,
+          "end": 0.617
+        },
+        {
+          "id": "caption-word-5-2",
+          "text": "is",
+          "start": 0.647,
+          "end": 0.842
+        },
+        {
+          "id": "caption-word-5-3",
+          "text": "step",
+          "start": 0.872,
+          "end": 1.127
+        },
+        {
+          "id": "caption-word-5-4",
+          "text": "three.",
+          "start": 1.157,
+          "end": 1.435
+        }
+      ]
+    },
+    {
+      "frame": 6,
+      "path": "assets/voice/06.wav",
+      "duration_s": 5.504,
+      "words": [
+        {
+          "id": "caption-word-6-0",
+          "text": "Final",
+          "start": 0.04,
+          "end": 0.407
+        },
+        {
+          "id": "caption-word-6-1",
+          "text": "level.",
+          "start": 0.437,
+          "end": 0.803
+        },
+        {
+          "id": "caption-word-6-2",
+          "text": "What",
+          "start": 0.833,
+          "end": 1.168
+        },
+        {
+          "id": "caption-word-6-3",
+          "text": "finishes",
+          "start": 1.198,
+          "end": 1.644
+        },
+        {
+          "id": "caption-word-6-4",
+          "text": "the",
+          "start": 1.674,
+          "end": 1.973
+        },
+        {
+          "id": "caption-word-6-5",
+          "text": "routine:",
+          "start": 2.003,
+          "end": 2.425
+        },
+        {
+          "id": "caption-word-6-6",
+          "text": "Foam",
+          "start": 2.455,
+          "end": 2.79
+        },
+        {
+          "id": "caption-word-6-7",
+          "text": "Cleanser",
+          "start": 2.82,
+          "end": 3.266
+        },
+        {
+          "id": "caption-word-6-8",
+          "text": "or",
+          "start": 3.296,
+          "end": 3.553
+        },
+        {
+          "id": "caption-word-6-9",
+          "text": "Peel-Off",
+          "start": 3.583,
+          "end": 4.004
+        },
+        {
+          "id": "caption-word-6-10",
+          "text": "Mask?",
+          "start": 4.034,
+          "end": 4.369
+        },
+        {
+          "id": "caption-word-6-11",
+          "text": "Three,",
+          "start": 4.399,
+          "end": 4.766
+        },
+        {
+          "id": "caption-word-6-12",
+          "text": "two,",
+          "start": 4.796,
+          "end": 5.095
+        },
+        {
+          "id": "caption-word-6-13",
+          "text": "one.",
+          "start": 5.125,
+          "end": 5.424
+        }
+      ]
+    },
+    {
+      "frame": 7,
+      "path": "assets/voice/07.wav",
+      "duration_s": 6.741,
+      "words": [
+        {
+          "id": "caption-word-7-0",
+          "text": "Peel-Off",
+          "start": 0.04,
+          "end": 0.412
+        },
+        {
+          "id": "caption-word-7-1",
+          "text": "Mask.",
+          "start": 0.442,
+          "end": 0.738
+        },
+        {
+          "id": "caption-word-7-2",
+          "text": "Full",
+          "start": 0.768,
+          "end": 1.064
+        },
+        {
+          "id": "caption-word-7-3",
+          "text": "order:",
+          "start": 1.094,
+          "end": 1.418
+        },
+        {
+          "id": "caption-word-7-4",
+          "text": "Deep,",
+          "start": 1.448,
+          "end": 1.743
+        },
+        {
+          "id": "caption-word-7-5",
+          "text": "Foam,",
+          "start": 1.773,
+          "end": 2.069
+        },
+        {
+          "id": "caption-word-7-6",
+          "text": "Peeling",
+          "start": 2.099,
+          "end": 2.471
+        },
+        {
+          "id": "caption-word-7-7",
+          "text": "Gel,",
+          "start": 2.501,
+          "end": 2.765
+        },
+        {
+          "id": "caption-word-7-8",
+          "text": "then",
+          "start": 2.795,
+          "end": 3.091
+        },
+        {
+          "id": "caption-word-7-9",
+          "text": "Mask.",
+          "start": 3.121,
+          "end": 3.417
+        },
+        {
+          "id": "caption-word-7-10",
+          "text": "What",
+          "start": 3.447,
+          "end": 3.743
+        },
+        {
+          "id": "caption-word-7-11",
+          "text": "did",
+          "start": 3.773,
+          "end": 4.037
+        },
+        {
+          "id": "caption-word-7-12",
           "text": "you",
-          "start": 0.911,
-          "end": 1.14
+          "start": 4.067,
+          "end": 4.331
         },
         {
-          "id": "caption-word-3-4",
-          "text": "get",
-          "start": 1.17,
-          "end": 1.398
+          "id": "caption-word-7-13",
+          "text": "score?",
+          "start": 4.361,
+          "end": 4.685
         },
         {
-          "id": "caption-word-3-5",
-          "text": "it",
-          "start": 1.428,
-          "end": 1.625
-        },
-        {
-          "id": "caption-word-3-6",
-          "text": "right?",
-          "start": 1.655,
-          "end": 1.935
-        },
-        {
-          "id": "caption-word-3-7",
+          "id": "caption-word-7-14",
           "text": "Save",
-          "start": 1.965,
-          "end": 2.222
+          "start": 4.715,
+          "end": 5.011
         },
         {
-          "id": "caption-word-3-8",
+          "id": "caption-word-7-15",
           "text": "this",
-          "start": 2.252,
-          "end": 2.508
+          "start": 5.041,
+          "end": 5.336
         },
         {
-          "id": "caption-word-3-9",
-          "text": "for",
-          "start": 2.538,
-          "end": 2.767
+          "id": "caption-word-7-16",
+          "text": "and",
+          "start": 5.366,
+          "end": 5.63
         },
         {
-          "id": "caption-word-3-10",
-          "text": "tonight.",
-          "start": 2.797,
-          "end": 3.12
+          "id": "caption-word-7-17",
+          "text": "challenge",
+          "start": 5.66,
+          "end": 6.075
+        },
+        {
+          "id": "caption-word-7-18",
+          "text": "a",
+          "start": 6.105,
+          "end": 6.282
+        },
+        {
+          "id": "caption-word-7-19",
+          "text": "friend.",
+          "start": 6.312,
+          "end": 6.661
         }
       ]
     }
@@ -179,7 +525,7 @@
     {
       "frame": 1,
       "file": "assets/sfx/click-soft.mp3",
-      "offset_s": 1.75,
+      "offset_s": 2.5,
       "duration_s": 0.37,
       "volume": 0.24
     },
@@ -193,7 +539,7 @@
     {
       "frame": 2,
       "file": "assets/sfx/click-soft.mp3",
-      "offset_s": 0.95,
+      "offset_s": 2.9,
       "duration_s": 0.37,
       "volume": 0.25
     },
@@ -201,13 +547,69 @@
       "frame": 3,
       "file": "assets/sfx/impact-bass-1.mp3",
       "offset_s": 0,
-      "duration_s": 2.12,
+      "duration_s": 1.472,
       "volume": 0.3
     },
     {
       "frame": 3,
       "file": "assets/sfx/pop.mp3",
-      "offset_s": 1.65,
+      "offset_s": 0.7,
+      "duration_s": 0.72,
+      "volume": 0.25
+    },
+    {
+      "frame": 4,
+      "file": "assets/sfx/whoosh-short.mp3",
+      "offset_s": 0,
+      "duration_s": 0.57,
+      "volume": 0.26
+    },
+    {
+      "frame": 4,
+      "file": "assets/sfx/click-soft.mp3",
+      "offset_s": 2.2,
+      "duration_s": 0.37,
+      "volume": 0.25
+    },
+    {
+      "frame": 5,
+      "file": "assets/sfx/impact-bass-1.mp3",
+      "offset_s": 0,
+      "duration_s": 1.515,
+      "volume": 0.3
+    },
+    {
+      "frame": 5,
+      "file": "assets/sfx/pop.mp3",
+      "offset_s": 0.75,
+      "duration_s": 0.72,
+      "volume": 0.25
+    },
+    {
+      "frame": 6,
+      "file": "assets/sfx/whoosh-short.mp3",
+      "offset_s": 0,
+      "duration_s": 0.57,
+      "volume": 0.26
+    },
+    {
+      "frame": 6,
+      "file": "assets/sfx/click-soft.mp3",
+      "offset_s": 4.1,
+      "duration_s": 0.37,
+      "volume": 0.25
+    },
+    {
+      "frame": 7,
+      "file": "assets/sfx/impact-bass-1.mp3",
+      "offset_s": 0,
+      "duration_s": 2.12,
+      "volume": 0.3
+    },
+    {
+      "frame": 7,
+      "file": "assets/sfx/pop.mp3",
+      "offset_s": 4.8,
       "duration_s": 0.72,
       "volume": 0.25
     }

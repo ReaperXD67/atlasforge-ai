@@ -1,12 +1,16 @@
 {
   "provider": "kokoro",
   "lang": "en-us",
-  "speed": 1.04,
+  "speed": 1.06,
   "voice": "af_heart",
   "lines": [
-    { "id": "1", "text": "Quick quiz. Which Atomy Evening Care step comes third?" },
-    { "id": "2", "text": "Three... two... one..." },
-    { "id": "3", "text": "Peeling Gel. Did you get it right? Save this for tonight." }
+    { "id": "1", "text": "Atomy fans, three questions. Can you score three out of three?" },
+    { "id": "2", "text": "Level one. Which cleanser comes first: Deep or Foam? Three, two, one." },
+    { "id": "3", "text": "Deep Cleanser comes first." },
+    { "id": "4", "text": "Level two. Which product is step three? Three, two, one." },
+    { "id": "5", "text": "Peeling Gel is step three." },
+    { "id": "6", "text": "Final level. What finishes the routine: Foam Cleanser or Peel-Off Mask? Three, two, one." },
+    { "id": "7", "text": "Peel-Off Mask. Full order: Deep, Foam, Peeling Gel, then Mask. What did you score? Save this and challenge a friend." }
   ],
   "bgm": {
     "mode": "reuse",
