@@ -8,6 +8,14 @@ param(
     [ValidateSet("draft", "looks", "delivery", "standard", "high")]
     [string]$Quality = "delivery",
 
+    [string]$Thumbnail,
+
+    [switch]$VerifyShorts,
+
+    [double]$MinDuration = 20,
+
+    [double]$MaxDuration = 30,
+
     [switch]$DryRun
 )
 
@@ -83,6 +91,26 @@ try {
         & ffprobe -v error -show_entries "stream=width,height,r_frame_rate:format=duration" -of default=noprint_wrappers=1 $outputPath
         if ($LASTEXITCODE -ne 0) {
             throw "ffprobe could not validate the rendered video."
+        }
+    }
+
+    if ($VerifyShorts) {
+        if (-not $Thumbnail) {
+            throw "-Thumbnail is required when -VerifyShorts is enabled."
+        }
+        $thumbnailPath = if ([System.IO.Path]::IsPathRooted($Thumbnail)) { $Thumbnail } else { Join-Path $projectPath $Thumbnail }
+        $repositoryPath = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
+        $pythonPath = Join-Path $repositoryPath ".venv\Scripts\python.exe"
+        if (-not (Test-Path -LiteralPath $pythonPath -PathType Leaf)) {
+            throw "Python environment not found: $pythonPath"
+        }
+        & $pythonPath -m daily_video_factory.cli verify-shorts-delivery `
+            --video $outputPath `
+            --thumbnail $thumbnailPath `
+            --min-seconds $MinDuration `
+            --max-seconds $MaxDuration
+        if ($LASTEXITCODE -ne 0) {
+            throw "Shorts delivery verification failed."
         }
     }
 }

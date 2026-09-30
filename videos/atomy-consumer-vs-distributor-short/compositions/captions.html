@@ -1,0 +1,222 @@
+<template id="captions-template" data-composition-id="captions" data-width="1080" data-height="1920">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+
+
+<style data-brand-tokens>
+      @font-face { font-family: 'Inter'; src: url('assets/fonts/Inter-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: block; }
+      @font-face { font-family: 'Inter'; src: url('assets/fonts/Inter-700.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: block; }
+      :root {
+      --black: #000000;
+      --white: #FFFFFF;
+      --offwhite: #FFFDF5;
+      --pink: #FE90E8;
+      --blue: #C0F7FE;
+      --green: #99E885;
+      --yellow: #F7CB46;
+      --cream: #FFDC8B;
+      --cap-ink: #000000;
+      --cap-canvas: #FFFFFF;
+      --cap-accent: #F7CB46;
+      --cap-accent-2: #FFDC8B;
+      --font-display: "Inter", system-ui, serif;
+      --font-body: "Inter", system-ui, sans-serif;
+      --cap-band-top: 1600px;
+      --cap-band-height: 320px;
+      }
+    </style>
+
+<style>
+  #captions-root {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .caption-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
+  }
+  /* the keep-out band, from captionBand(H) — frame content stays above it */
+  .caption-stage {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--cap-band-top, 900px);
+    height: var(--cap-band-height, 180px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .caption-group {
+    /* every group is absolutely stacked over the SAME band — exactly one shown at a
+       time via opacity. Must be absolute: in-flow groups would lay out side-by-side. */
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+  }
+
+  /* THE bordered card — 4px black border + 8px hard offset shadow (solid black,
+     zero blur, bottom-right — blockframe's sacred depth), square corners */
+  .caption-pill {
+    max-width: 80%;
+    padding: 18px 40px 22px;
+    background: var(--cap-canvas, #ffffff);
+    border: 4px solid var(--cap-ink, #000000);
+    border-radius: 0;
+    box-shadow: 8px 8px 0 var(--cap-ink, #000000);
+  }
+  .caption-line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.12em 0.32em;
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(38px, 4.2vw, 56px);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+
+  /* upcoming — faded black ink, no stamp */
+  .caption-word {
+    display: inline-block;
+    padding: 0 0.1em;
+    color: color-mix(in srgb, var(--cap-ink, #000000) 40%, var(--cap-canvas, #ffffff));
+  }
+  /* current word — THE yellow stamp-block (box-shadow spread = a hard square block
+     w/o layout shift; no blur), black ink reading on top — blockframe's signature stamp */
+  .caption-word.is-active {
+    color: var(--cap-ink, #000000);
+    background: var(--cap-accent, #f7cb46);
+    box-shadow: 0 0 0 0.08em var(--cap-accent, #f7cb46);
+  }
+  /* already spoken — solid black ink, stamp cleared */
+  .caption-word.is-spoken {
+    color: var(--cap-ink, #000000);
+    background: transparent;
+    box-shadow: none;
+  }
+
+  /* optional per-word accents (dormant until a word-classer tags them) */
+  /* brand / key term — heavier ink weight, blockframe's display is already 900 */
+  .caption-word.cap-brand {
+    color: var(--cap-ink, #000000);
+  }
+  /* numerals / data — the body voice, slightly recessed */
+  .caption-word.cap-num {
+    font-family: "Inter", ui-monospace, monospace;
+    color: color-mix(in srgb, var(--cap-ink, #000000) 74%, var(--cap-canvas, #ffffff));
+  }
+  /* emphasis — a cream hard underline bar (the second-chroma accent) */
+  .caption-word.cap-cta {
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+    text-decoration-color: var(--cap-accent-2, #ffdc8b);
+    text-underline-offset: 0.12em;
+  }
+
+  @media (max-aspect-ratio: 9/16) {
+    .caption-pill {
+      max-width: 92%;
+    }
+    .caption-line {
+      font-size: clamp(34px, 5.4vw, 48px);
+    }
+  }
+</style>
+
+<div
+  id="captions-root"
+  data-composition-id="captions"
+  data-timeline-locked
+  data-start="0"
+  data-duration="28.77"
+  data-fps="30"
+  data-width="1080"
+  data-height="1920"
+>
+  <div class="caption-layer" aria-hidden="true">
+    <div id="caption-stage" class="caption-stage"></div>
+  </div>
+</div>
+
+<script>
+  // captions.mjs injects the engine's scene-aware groups + real duration here.
+  var GROUPS = [{"id":"caption-group-0","frame":1,"start":0.04,"end":1.06,"text":"Before you join","words":[{"id":"caption-word-0-0","text":"Before","start":0.04,"end":0.397},{"id":"caption-word-0-1","text":"you","start":0.427,"end":0.698},{"id":"caption-word-0-2","text":"join","start":0.728,"end":1.03}]},{"id":"caption-group-1","frame":1,"start":1.06,"end":1.422,"text":"Atomy,","words":[{"id":"caption-word-1-0","text":"Atomy,","start":1.06,"end":1.392}]},{"id":"caption-group-2","frame":1,"start":1.422,"end":2.475,"text":"choose your lane:","words":[{"id":"caption-word-2-0","text":"choose","start":1.422,"end":1.779},{"id":"caption-word-2-1","text":"your","start":1.809,"end":2.112},{"id":"caption-word-2-2","text":"lane:","start":2.142,"end":2.445}]},{"id":"caption-group-3","frame":1,"start":2.475,"end":3.752,"text":"consumer or distributor.","words":[{"id":"caption-word-3-0","text":"consumer","start":2.475,"end":2.878},{"id":"caption-word-3-1","text":"or","start":2.908,"end":3.14},{"id":"caption-word-3-2","text":"distributor.","start":3.17,"end":3.632}]},{"id":"caption-group-4","frame":2,"start":3.89,"end":4.605,"text":"Choose consumer","words":[{"id":"caption-word-4-0","text":"Choose","start":3.89,"end":4.198},{"id":"caption-word-4-1","text":"consumer","start":4.228,"end":4.575}]},{"id":"caption-group-5","frame":2,"start":4.605,"end":5.097,"text":"if you","words":[{"id":"caption-word-5-0","text":"if","start":4.605,"end":4.805},{"id":"caption-word-5-1","text":"you","start":4.835,"end":5.067}]},{"id":"caption-group-6","frame":2,"start":5.097,"end":5.726,"text":"mainly want","words":[{"id":"caption-word-6-0","text":"mainly","start":5.097,"end":5.405},{"id":"caption-word-6-1","text":"want","start":5.435,"end":5.696}]},{"id":"caption-group-7","frame":2,"start":5.726,"end":6.246,"text":"to shop","words":[{"id":"caption-word-7-0","text":"to","start":5.726,"end":5.926},{"id":"caption-word-7-1","text":"shop","start":5.956,"end":6.216}]},{"id":"caption-group-8","frame":2,"start":6.246,"end":6.886,"text":"for products","words":[{"id":"caption-word-8-0","text":"for","start":6.246,"end":6.479},{"id":"caption-word-8-1","text":"products","start":6.509,"end":6.856}]},{"id":"caption-group-9","frame":2,"start":6.886,"end":7.879,"text":"for personal use.","words":[{"id":"caption-word-9-0","text":"for","start":6.886,"end":7.119},{"id":"caption-word-9-1","text":"personal","start":7.149,"end":7.496},{"id":"caption-word-9-2","text":"use.","start":7.526,"end":7.759}]},{"id":"caption-group-10","frame":3,"start":8.04,"end":9.255,"text":"Choose distributor if","words":[{"id":"caption-word-10-0","text":"Choose","start":8.04,"end":8.422},{"id":"caption-word-10-1","text":"distributor","start":8.452,"end":8.947},{"id":"caption-word-10-2","text":"if","start":8.977,"end":9.225}]},{"id":"caption-group-11","frame":3,"start":9.255,"end":10.434,"text":"you want commission","words":[{"id":"caption-word-11-0","text":"you","start":9.255,"end":9.545},{"id":"caption-word-11-1","text":"want","start":9.575,"end":9.899},{"id":"caption-word-11-2","text":"commission","start":9.929,"end":10.404}]},{"id":"caption-group-12","frame":3,"start":10.434,"end":11.69,"text":"eligibility and Atomy's","words":[{"id":"caption-word-12-0","text":"eligibility","start":10.434,"end":10.929},{"id":"caption-word-12-1","text":"and","start":10.959,"end":11.248},{"id":"caption-word-12-2","text":"Atomy's","start":11.278,"end":11.66}]},{"id":"caption-group-13","frame":3,"start":11.69,"end":12.627,"text":"business tools.","words":[{"id":"caption-word-13-0","text":"business","start":11.69,"end":12.122},{"id":"caption-word-13-1","text":"tools.","start":12.152,"end":12.507}]},{"id":"caption-group-14","frame":4,"start":12.76,"end":13.876,"text":"Both paths ask","words":[{"id":"caption-word-14-0","text":"Both","start":12.76,"end":13.103},{"id":"caption-word-14-1","text":"paths","start":13.133,"end":13.509},{"id":"caption-word-14-2","text":"ask","start":13.539,"end":13.846}]},{"id":"caption-group-15","frame":4,"start":13.876,"end":14.618,"text":"for terms,","words":[{"id":"caption-word-15-0","text":"for","start":13.876,"end":14.182},{"id":"caption-word-15-1","text":"terms,","start":14.212,"end":14.588}]},{"id":"caption-group-16","frame":4,"start":14.618,"end":14.911,"text":"U.S.","words":[{"id":"caption-word-16-0","text":"U.S.","start":14.618,"end":14.881}]},{"id":"caption-group-17","frame":4,"start":14.911,"end":15.92,"text":"mobile verification,","words":[{"id":"caption-word-17-0","text":"mobile","start":14.911,"end":15.316},{"id":"caption-word-17-1","text":"verification,","start":15.346,"end":15.89}]},{"id":"caption-group-18","frame":4,"start":15.92,"end":16.755,"text":"your details,","words":[{"id":"caption-word-18-0","text":"your","start":15.92,"end":16.263},{"id":"caption-word-18-1","text":"details,","start":16.293,"end":16.725}]},{"id":"caption-group-19","frame":4,"start":16.755,"end":17.88,"text":"and a sponsor.","words":[{"id":"caption-word-19-0","text":"and","start":16.755,"end":17.062},{"id":"caption-word-19-1","text":"a","start":17.092,"end":17.298},{"id":"caption-word-19-2","text":"sponsor.","start":17.328,"end":17.76}]},{"id":"caption-group-20","frame":5,"start":18.01,"end":19.21,"text":"The distributor path","words":[{"id":"caption-word-20-0","text":"The","start":18.01,"end":18.3},{"id":"caption-word-20-1","text":"distributor","start":18.33,"end":18.825},{"id":"caption-word-20-2","text":"path","start":18.855,"end":19.18}]},{"id":"caption-group-21","frame":5,"start":19.21,"end":20.239,"text":"also asks for","words":[{"id":"caption-word-21-0","text":"also","start":19.21,"end":19.535},{"id":"caption-word-21-1","text":"asks","start":19.565,"end":19.889},{"id":"caption-word-21-2","text":"for","start":19.919,"end":20.209}]},{"id":"caption-group-22","frame":5,"start":20.239,"end":21.434,"text":"Social Security and","words":[{"id":"caption-word-22-0","text":"Social","start":20.239,"end":20.622},{"id":"caption-word-22-1","text":"Security","start":20.652,"end":21.085},{"id":"caption-word-22-2","text":"and","start":21.115,"end":21.404}]},{"id":"caption-group-23","frame":5,"start":21.434,"end":22.405,"text":"bank information.","words":[{"id":"caption-word-23-0","text":"bank","start":21.434,"end":21.759},{"id":"caption-word-23-1","text":"information.","start":21.789,"end":22.285}]},{"id":"caption-group-24","frame":6,"start":22.56,"end":23.134,"text":"You must","words":[{"id":"caption-word-24-0","text":"You","start":22.56,"end":22.802},{"id":"caption-word-24-1","text":"must","start":22.832,"end":23.104}]},{"id":"caption-group-25","frame":6,"start":23.134,"end":23.763,"text":"be eighteen","words":[{"id":"caption-word-25-0","text":"be","start":23.134,"end":23.342},{"id":"caption-word-25-1","text":"eighteen","start":23.372,"end":23.733}]},{"id":"caption-group-26","frame":6,"start":23.763,"end":24.328,"text":"or older.","words":[{"id":"caption-word-26-0","text":"or","start":23.763,"end":23.971},{"id":"caption-word-26-1","text":"older.","start":24.001,"end":24.298}]},{"id":"caption-group-27","frame":6,"start":24.328,"end":24.566,"text":"So:","words":[{"id":"caption-word-27-0","text":"So:","start":24.328,"end":24.536}]},{"id":"caption-group-28","frame":6,"start":24.566,"end":25.169,"text":"shop only,","words":[{"id":"caption-word-28-0","text":"shop","start":24.566,"end":24.837},{"id":"caption-word-28-1","text":"only,","start":24.867,"end":25.139}]},{"id":"caption-group-29","frame":6,"start":25.169,"end":25.778,"text":"or explore","words":[{"id":"caption-word-29-0","text":"or","start":25.169,"end":25.376},{"id":"caption-word-29-1","text":"explore","start":25.406,"end":25.748}]},{"id":"caption-group-30","frame":6,"start":25.778,"end":26.442,"text":"the business","words":[{"id":"caption-word-30-0","text":"the","start":25.778,"end":26.02},{"id":"caption-word-30-1","text":"business","start":26.05,"end":26.412}]},{"id":"caption-group-31","frame":6,"start":26.442,"end":26.743,"text":"side?","words":[{"id":"caption-word-31-0","text":"side?","start":26.442,"end":26.713}]},{"id":"caption-group-32","frame":6,"start":26.743,"end":27.395,"text":"Choose your","words":[{"id":"caption-word-32-0","text":"Choose","start":26.743,"end":27.063},{"id":"caption-word-32-1","text":"your","start":27.093,"end":27.365}]},{"id":"caption-group-33","frame":6,"start":27.395,"end":27.696,"text":"lane,","words":[{"id":"caption-word-33-0","text":"lane,","start":27.395,"end":27.666}]},{"id":"caption-group-34","frame":6,"start":27.696,"end":28.661,"text":"and save this.","words":[{"id":"caption-word-34-0","text":"and","start":27.696,"end":27.938},{"id":"caption-word-34-1","text":"save","start":27.968,"end":28.24},{"id":"caption-word-34-2","text":"this.","start":28.27,"end":28.541}]}];
+  var DURATION = 28.77;
+
+  (function () {
+    var stage = document.getElementById("caption-stage");
+
+    // build DOM: one .caption-group per group, .caption-word per word
+    GROUPS.forEach(function (group, g) {
+      var groupEl = document.createElement("div");
+      groupEl.className = "caption-group";
+      groupEl.id = "caption-group-" + g;
+      var pill = document.createElement("div");
+      pill.className = "caption-pill";
+      var line = document.createElement("div");
+      line.className = "caption-line";
+      (group.words || []).forEach(function (w, i) {
+        var span = document.createElement("span");
+        span.className = "caption-word";
+        span.id = "caption-word-" + g + "-" + i;
+        span.textContent = String(w.text);
+        line.appendChild(span);
+      });
+      pill.appendChild(line);
+      groupEl.appendChild(pill);
+      stage.appendChild(groupEl);
+    });
+
+    window.__timelines = window.__timelines || {};
+    var tl = gsap.timeline({ paused: true });
+
+    GROUPS.forEach(function (group, g) {
+      var groupEl = document.getElementById("caption-group-" + g);
+      var words = group.words || [];
+      var next = GROUPS[g + 1];
+      var isLast = g === GROUPS.length - 1;
+      var start = Math.max(0, Number(group.start));
+      var end = isLast ? DURATION : Math.min(Number(next.start), Number(group.end) + 0.3);
+      if (end <= start) end = start + 0.01;
+
+      // group on/off — exactly one group visible at a time
+      tl.set(groupEl, { opacity: 1 }, start);
+      tl.set(groupEl, { opacity: 0 }, end);
+
+      // 3-state karaoke via className SETS — seek-safe (gsap.set applies on the
+      // engine's frame-by-frame seek; .call callbacks would NOT fire).
+      words.forEach(function (w, i) {
+        var el = document.getElementById("caption-word-" + g + "-" + i);
+        var at = Math.max(start, Number(w.start));
+        tl.set(el, { className: "caption-word" }, start); // upcoming (also resets on reverse-seek)
+        tl.set(el, { className: "caption-word is-active" }, at); // current
+        tl.fromTo(el, { scale: 0.86 }, { scale: 1, duration: 0.2, ease: "back.out(2.4)" }, at);
+        if (i + 1 < words.length) {
+          var nextAt = Math.max(start, Number(words[i + 1].start));
+          tl.set(el, { className: "caption-word is-spoken" }, nextAt); // demote when next activates
+        }
+      });
+      if (words.length) {
+        var lastEl = document.getElementById("caption-word-" + g + "-" + (words.length - 1));
+        var lastSpoken = Math.min(end, Number(words[words.length - 1].end) + 0.1);
+        tl.set(lastEl, { className: "caption-word is-spoken" }, lastSpoken);
+      }
+    });
+
+    // full-span anchor so the sub-comp timeline spans the whole video
+    tl.to({}, { duration: DURATION }, 0);
+    window.__timelines["captions"] = tl;
+  })();
+</script>
+
+<style>
+  .caption-line { line-height: 1.1 !important; }
+</style>
+</template>

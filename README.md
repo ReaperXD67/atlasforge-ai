@@ -143,6 +143,21 @@ Open `http://127.0.0.1:8741`, select **Atomy USA — Fast Preview** for the firs
 **Generate film**. Stop the service later with `.\scripts\stop_studio.ps1`. The first build installs
 the local voice/caption stack; the first generation can also download model data into `models/`.
 
+### Shorts delivery gate
+
+Before a portrait Short is handed off, verify the rendered MP4 and its thumbnail together. The gate
+requires a 1080x1920, 30 fps, 20–30 second video with AAC audio plus a non-empty 1080x1920 thumbnail:
+
+```powershell
+.\.venv\Scripts\atlasforge.exe verify-shorts-delivery `
+  --video videos\my-short\renders\final.mp4 `
+  --thumbnail videos\my-short\assets\thumbnails\thumbnail.png
+```
+
+`scripts/render_hyperframes_windows.ps1` can run the same gate immediately after rendering with
+`-VerifyShorts -Thumbnail <path>`, preventing a finished MP4 from being delivered without its custom
+thumbnail or with the wrong duration, format, frame rate, or audio stream.
+
 ### One-click YouTube upload
 
 The finished render exposes an **Upload all** action in Studio. It assembles and previews the final

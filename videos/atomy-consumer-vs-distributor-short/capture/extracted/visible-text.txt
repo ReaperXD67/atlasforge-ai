@@ -1,0 +1,14 @@
+Official Atomy U.S. membership registration guidance distinguishes Consumer Membership and Distributor Membership.
+
+Consumer Membership is for people who want to purchase products for personal use. Consumer accounts are not eligible for commission.
+
+Distributor Membership includes access to business tools and commission eligibility. Eligibility is not a promise of earnings.
+
+Both flows include accepting terms, U.S. mobile verification, personal details, and selecting or confirming a sponsor. The Distributor flow additionally requests Social Security and bank information.
+
+Applicants must be legal U.S. residents who are at least 18 years old.
+
+Sources:
+https://us.atomy.com/cst/userGuide/24100000001691
+https://us.atomy.com/join/memberGate
+https://us.atomy.com/common/footerTermsInfo?isHtml=Y&tabIndex=1

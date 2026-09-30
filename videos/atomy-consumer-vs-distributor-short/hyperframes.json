@@ -1,0 +1,14 @@
+{
+  "project": "atomy-consumer-vs-distributor-short",
+  "workflow": "faceless-explainer",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "destination": "youtube-shorts",
+  "language": "en",
+  "voice": "af_heart",
+  "source": "https://us.atomy.com/cst/userGuide/24100000001691",
+  "authoringSkill": "faceless-explainer"
+}

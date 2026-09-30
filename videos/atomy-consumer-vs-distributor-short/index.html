@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js" integrity="sha384-sG0Hv1tP1lZCk9KQmrIbY/XNwi+OY84GQqhMscbnsoBFqAz8KNCil1kvfL3Hbbk2" crossorigin="anonymous"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #000;
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #FFFFFF;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="28.77"
+      data-width="1080"
+      data-height="1920"
+    >
+      <div
+        id="el-01-choose-lane"
+        class="scene"
+        data-composition-id="01-choose-lane"
+        data-composition-src="compositions/frames/01-choose-lane.html"
+        data-start="0"
+        data-duration="4.35"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-01-choose-lane-voice"
+        src="assets/voice/01.wav"
+        data-start="0"
+        data-duration="3.712"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-02-consumer"
+        class="scene"
+        data-composition-id="02-consumer"
+        data-composition-src="compositions/frames/02-consumer.html"
+        data-start="3.85"
+        data-duration="4.65"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-02-consumer-voice"
+        src="assets/voice/02.wav"
+        data-start="3.85"
+        data-duration="3.989"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-03-distributor"
+        class="scene"
+        data-composition-id="03-distributor"
+        data-composition-src="compositions/frames/03-distributor.html"
+        data-start="8"
+        data-duration="5.32"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-03-distributor-voice"
+        src="assets/voice/03.wav"
+        data-start="8"
+        data-duration="4.587"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-04-shared-steps"
+        class="scene"
+        data-composition-id="04-shared-steps"
+        data-composition-src="compositions/frames/04-shared-steps.html"
+        data-start="12.719999999999999"
+        data-duration="5.65"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-04-shared-steps-voice"
+        src="assets/voice/04.wav"
+        data-start="12.72"
+        data-duration="5.120"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-05-extra-details"
+        class="scene"
+        data-composition-id="05-extra-details"
+        data-composition-src="compositions/frames/05-extra-details.html"
+        data-start="17.97"
+        data-duration="5.05"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-05-extra-details-voice"
+        src="assets/voice/05.wav"
+        data-start="17.97"
+        data-duration="4.395"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-06-decide-save"
+        class="scene"
+        data-composition-id="06-decide-save"
+        data-composition-src="compositions/frames/06-decide-save.html"
+        data-start="22.52"
+        data-duration="6.25"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-06-decide-save-voice"
+        src="assets/voice/06.wav"
+        data-start="22.52"
+        data-duration="6.101"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <!-- BGM -->
+      <audio
+        id="el-bgm"
+        src="assets/bgm/track.loop.mp3"
+        data-start="0"
+        data-duration="28.77"
+        data-track-index="11"
+        data-volume="0.105"
+      ></audio>
+
+      <!-- captions -->
+      <div
+        id="el-captions"
+        class="scene"
+        data-composition-id="captions"
+        data-composition-src="compositions/captions.html"
+        data-start="0"
+        data-duration="28.77"
+        data-track-index="2"
+        data-track-kind="captions"
+      ></div>
+
+      <!-- restrained edit punctuation -->
+      <audio id="sfx-open" src="assets/sfx/impact-bass-1.mp3" data-start="0" data-duration="2.12" data-track-index="20" data-volume="0.24"></audio>
+      <audio id="sfx-consumer" src="assets/sfx/whoosh-short.mp3" data-start="3.85" data-duration="0.57" data-track-index="21" data-volume="0.22"></audio>
+      <audio id="sfx-distributor" src="assets/sfx/whoosh-short.mp3" data-start="8" data-duration="0.57" data-track-index="22" data-volume="0.22"></audio>
+      <audio id="sfx-shared-1" src="assets/sfx/click-soft.mp3" data-start="14.08" data-duration="0.37" data-track-index="23" data-volume="0.2"></audio>
+      <audio id="sfx-shared-2" src="assets/sfx/click-soft.mp3" data-start="15.58" data-duration="0.37" data-track-index="24" data-volume="0.2"></audio>
+      <audio id="sfx-extra" src="assets/sfx/impact-bass-1.mp3" data-start="17.97" data-duration="2.12" data-track-index="25" data-volume="0.22"></audio>
+      <audio id="sfx-decision" src="assets/sfx/whoosh-short.mp3" data-start="22.52" data-duration="0.57" data-track-index="26" data-volume="0.22"></audio>
+      <audio id="sfx-save" src="assets/sfx/pop.mp3" data-start="27.24" data-duration="0.72" data-track-index="27" data-volume="0.2"></audio>
+
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+      // ── frame transitions (injected by transitions.mjs) ──
+      (function () { var tl = window.__timelines["main"];
+        tl.to("#el-01-choose-lane", { x: -1080, duration: 0.5, ease: "power3.inOut" }, 3.85);
+        tl.fromTo("#el-02-consumer", { x: 1080, opacity: 1 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 3.85);
+        tl.addLabel("hf:transition:01-choose-lane:02-consumer:push-slide", 3.85);
+        tl.to("#el-02-consumer", { x: -1080, duration: 0.5, ease: "power3.inOut" }, 8);
+        tl.fromTo("#el-03-distributor", { x: 1080, opacity: 1 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 8);
+        tl.addLabel("hf:transition:02-consumer:03-distributor:push-slide", 8);
+        tl.to("#el-03-distributor", { filter: "blur(10px)", scale: 1.03, opacity: 0, duration: 0.6, ease: "power2.inOut" }, 12.72);
+        tl.fromTo("#el-04-shared-steps", { filter: "blur(10px)", scale: 0.97, opacity: 0 }, { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.6, ease: "power2.inOut" }, 12.72);
+        tl.addLabel("hf:transition:03-distributor:04-shared-steps:blur-crossfade", 12.72);
+        tl.to("#el-04-shared-steps", { scale: 2.5, opacity: 0, filter: "blur(8px)", duration: 0.4, ease: "power3.in" }, 17.97);
+        tl.fromTo("#el-05-extra-details", { scale: 0.5, opacity: 0, filter: "blur(8px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.4, ease: "power3.out" }, 17.97);
+        tl.addLabel("hf:transition:04-shared-steps:05-extra-details:zoom-through", 17.97);
+        tl.to("#el-05-extra-details", { y: -1920, duration: 0.5, ease: "power3.inOut" }, 22.52);
+        tl.fromTo("#el-06-decide-save", { y: 1920, opacity: 1 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 22.52);
+        tl.addLabel("hf:transition:05-extra-details:06-decide-save:push-slide", 22.52);
+        tl.to({}, { duration: 28.77 }, 0); // full-span anchor — main.duration() == composition total (Studio master duration)
+      })();
+    </script>
+  </body>
+</html>

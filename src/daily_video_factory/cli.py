@@ -23,6 +23,7 @@ from .providers.tts import NarrationGenerator
 from .publishing.youtube import YouTubePublisher
 from .scheduler import run_scheduler
 from .shorts import extract_hyperframes_narration, write_short_experiment_manifest
+from .shorts_delivery import ShortsDeliveryError, validate_short_delivery
 from .viral_video import ViralShortPipeline
 
 app = typer.Typer(
@@ -117,6 +118,25 @@ def short_sfx_command(
     """Generate the deterministic, royalty-free micro-SFX kit used by Shorts."""
     results = generate_short_sfx_set(output)
     console.print(f"[bold green]Short SFX kit ready:[/] {len(results)} cues in {output}")
+
+
+@app.command("verify-shorts-delivery")
+def verify_shorts_delivery_command(
+    video: Path = typer.Option(..., exists=True, dir_okay=False),
+    thumbnail: Path = typer.Option(..., exists=True, dir_okay=False),
+    min_seconds: float = typer.Option(20, min=1),
+    max_seconds: float = typer.Option(30, min=1),
+) -> None:
+    """Reject an incomplete Shorts handoff before it reaches the upload queue."""
+    try:
+        report = validate_short_delivery(
+            video, thumbnail, min_seconds=min_seconds, max_seconds=max_seconds
+        )
+    except ShortsDeliveryError as exc:
+        console.print(f"[bold red]Shorts delivery failed:[/] {exc}")
+        raise typer.Exit(1) from exc
+    console.print("[bold green]Shorts delivery verified[/]")
+    console.print_json(data=report)
 
 
 @app.command("run")
