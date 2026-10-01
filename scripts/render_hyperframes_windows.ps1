@@ -12,9 +12,18 @@ param(
 
     [switch]$VerifyShorts,
 
-    [double]$MinDuration = 20,
+    [switch]$VerifyYouTube,
 
-    [double]$MaxDuration = 30,
+    [string]$UploadPackage,
+
+    [switch]$CheckFirst,
+
+    [ValidateRange(5, 60)]
+    [int]$CheckSamples = 17,
+
+    [double]$MinDuration = 0,
+
+    [double]$MaxDuration = 0,
 
     [switch]$DryRun
 )
@@ -34,6 +43,13 @@ if (-not $versionMatch.Success) {
 }
 $hyperframesVersion = $versionMatch.Groups[1].Value
 
+$hyperframesConfigPath = Join-Path $projectPath "hyperframes.json"
+$authoringSkill = $null
+if (Test-Path -LiteralPath $hyperframesConfigPath -PathType Leaf) {
+    $hyperframesConfig = Get-Content -LiteralPath $hyperframesConfigPath -Raw | ConvertFrom-Json
+    $authoringSkill = $hyperframesConfig.authoringSkill
+}
+
 $chromeCandidates = @(
     "C:\Program Files\Google\Chrome\Application\chrome.exe",
     "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
@@ -41,6 +57,7 @@ $chromeCandidates = @(
 $chromePath = $chromeCandidates | Where-Object { Test-Path -LiteralPath $_ -PathType Leaf } | Select-Object -First 1
 if ($chromePath) {
     $env:PRODUCER_HEADLESS_SHELL_PATH = $chromePath
+    $env:HYPERFRAMES_BROWSER_PATH = $chromePath
 }
 
 $env:PRODUCER_BROWSER_GPU_MODE = "software"
@@ -59,9 +76,11 @@ $renderArgs = @(
     "--no-browser-gpu",
     "--browser-timeout", "120",
     "--protocol-timeout", "600000",
-    "--player-ready-timeout", "120000",
-    "--skill", "faceless-explainer"
+    "--player-ready-timeout", "120000"
 )
+if ($authoringSkill) {
+    $renderArgs += @("--skill", $authoringSkill)
+}
 
 Write-Host "HyperFrames $hyperframesVersion | software browser | low-memory mode | one worker"
 if ($chromePath) {
@@ -70,6 +89,20 @@ if ($chromePath) {
 Write-Host "Project: $projectPath"
 Write-Host "Output: $Output"
 
+if ($VerifyShorts -and $VerifyYouTube) {
+    throw "Choose either -VerifyShorts or -VerifyYouTube, not both."
+}
+
+if ($MinDuration -le 0) {
+    $MinDuration = if ($VerifyYouTube) { 300 } else { 20 }
+}
+if ($MaxDuration -le 0) {
+    $MaxDuration = if ($VerifyYouTube) { 360 } else { 30 }
+}
+if ($MinDuration -ge $MaxDuration) {
+    throw "-MinDuration must be lower than -MaxDuration."
+}
+
 if ($DryRun) {
     Write-Host "Dry run: npx $($renderArgs -join ' ')"
     exit 0
@@ -77,6 +110,17 @@ if ($DryRun) {
 
 Push-Location $projectPath
 try {
+    if ($CheckFirst) {
+        & npx --yes "hyperframes@$hyperframesVersion" check . `
+            --samples $CheckSamples `
+            --snapshots `
+            --timeout 120000 `
+            --no-browser-gpu
+        if ($LASTEXITCODE -ne 0) {
+            throw "HyperFrames pre-render check failed."
+        }
+    }
+
     & npx @renderArgs
     if ($LASTEXITCODE -ne 0) {
         throw "HyperFrames render failed with exit code $LASTEXITCODE."
@@ -111,6 +155,31 @@ try {
             --max-seconds $MaxDuration
         if ($LASTEXITCODE -ne 0) {
             throw "Shorts delivery verification failed."
+        }
+    }
+
+    if ($VerifyYouTube) {
+        if (-not $Thumbnail) {
+            throw "-Thumbnail is required when -VerifyYouTube is enabled."
+        }
+        if (-not $UploadPackage) {
+            throw "-UploadPackage is required when -VerifyYouTube is enabled."
+        }
+        $thumbnailPath = if ([System.IO.Path]::IsPathRooted($Thumbnail)) { $Thumbnail } else { Join-Path $projectPath $Thumbnail }
+        $uploadPackagePath = if ([System.IO.Path]::IsPathRooted($UploadPackage)) { $UploadPackage } else { Join-Path $projectPath $UploadPackage }
+        $repositoryPath = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
+        $pythonPath = Join-Path $repositoryPath ".venv\Scripts\python.exe"
+        if (-not (Test-Path -LiteralPath $pythonPath -PathType Leaf)) {
+            throw "Python environment not found: $pythonPath"
+        }
+        & $pythonPath -m daily_video_factory.cli verify-youtube-delivery `
+            --video $outputPath `
+            --thumbnail $thumbnailPath `
+            --upload-package $uploadPackagePath `
+            --min-seconds $MinDuration `
+            --max-seconds $MaxDuration
+        if ($LASTEXITCODE -ne 0) {
+            throw "YouTube delivery verification failed."
         }
     }
 }

@@ -1,0 +1,283 @@
+1
+00:00:00,099 --> 00:00:05,964
+Two legs. One smaller side. And somehow shopping activity becomes a commission
+
+2
+00:00:05,974 --> 00:00:10,875
+score. If an Atomy presentation lost you there, that isn't your fault—the
+
+3
+00:00:10,875 --> 00:00:16,672
+explanation probably started in the middle. I'm Nexa, BizNex's AI host.
+
+4
+00:00:17,389 --> 00:00:21,492
+Let's rebuild the Atomy business plan from one simple picture, then add
+
+5
+00:00:21,503 --> 00:00:25,228
+the official numbers only when they have somewhere to live. By the
+
+6
+00:00:25,239 --> 00:00:29,248
+end, you'll understand the five dealership classes, why the smaller leg keeps
+
+7
+00:00:29,258 --> 00:00:32,614
+appearing, where the major commission pools fit, and the one question a
+
+8
+00:00:32,614 --> 00:00:36,934
+compensation chart cannot answer for you. Start with the picture.
+
+9
+00:00:37,606 --> 00:00:41,848
+Put yourself in the center. The plan tracks activity through two sides,
+
+10
+00:00:42,044 --> 00:00:45,831
+usually described as a left leg and a right leg. Think of
+
+11
+00:00:45,842 --> 00:00:50,589
+them as two lanes carrying PV from qualifying product activity. The lanes
+
+12
+00:00:50,599 --> 00:00:54,665
+do not have to grow evenly, but the official general-commission table repeatedly
+
+13
+00:00:54,676 --> 00:00:58,236
+looks at the smaller leg. That is why a giant number on
+
+14
+00:00:58,246 --> 00:01:03,189
+one side does not automatically produce the same commission score. Balance matters
+
+15
+00:01:03,200 --> 00:01:07,443
+to the calculation. Now add Personal PV.
+
+16
+00:01:07,443 --> 00:01:11,106
+On the current Atomy USA page, a person must first accumulate at
+
+17
+00:01:11,117 --> 00:01:15,042
+least ten thousand Personal PV before generating downline PV for the plan.
+
+18
+00:01:15,776 --> 00:01:18,862
+The same page says Personal PV may be added to the smaller
+
+19
+00:01:18,872 --> 00:01:23,175
+leg when commission is calculated. Notice what we are not doing: we're
+
+20
+00:01:23,186 --> 00:01:27,719
+not inventing a dollar value for one PV. The official page presents
+
+21
+00:01:27,719 --> 00:01:31,497
+PV as the plan's tracking unit, so use the current company material
+
+22
+00:01:31,508 --> 00:01:37,609
+for any conversion or transaction-specific question. Next come the five dealership classes.
+
+23
+00:01:38,339 --> 00:01:41,627
+The current U.S. plan lists Sales Rep from ten thousand through two
+
+24
+00:01:41,638 --> 00:01:46,154
+hundred ninety-nine thousand nine hundred ninety-nine PV; Agent at three hundred thousand
+
+25
+00:01:46,164 --> 00:01:49,901
+or more; Special Agent at seven hundred thousand or more; Dealer at
+
+26
+00:01:49,911 --> 00:01:53,861
+one point five million or more; and Exclusive Distributor at two point
+
+27
+00:01:53,872 --> 00:01:58,334
+four million or more. The page also says dealership class can change
+
+28
+00:01:58,345 --> 00:02:02,754
+monthly based on personal and team sales. A rank name is therefore
+
+29
+00:02:02,765 --> 00:02:07,731
+a qualification category, not a salary label. Here is the part most
+
+30
+00:02:07,742 --> 00:02:12,935
+presentations rush: the general commission. The official page says forty-four percent of
+
+31
+00:02:12,945 --> 00:02:17,238
+total sales PV is distributed among qualified members each week according to
+
+32
+00:02:17,248 --> 00:02:21,252
+the listed rate. Its table connects a dealership class and a daily
+
+33
+00:02:21,263 --> 00:02:25,277
+smaller-leg total to a score level. In plain English, the plan is
+
+34
+00:02:25,288 --> 00:02:29,209
+not simply asking, 'How much did the whole network do?' It is
+
+35
+00:02:29,219 --> 00:02:33,492
+also asking, 'What qualification applies, and what happened on the smaller side?'
+
+36
+00:02:34,530 --> 00:02:38,847
+Then there is mastership. The page says twenty percent of total sales
+
+37
+00:02:38,847 --> 00:02:43,950
+PV is distributed according to mastership level. The first listed level, Sales
+
+38
+00:02:43,960 --> 00:02:48,006
+Master, requires Special Agent status and at least two point five million
+
+39
+00:02:48,017 --> 00:02:52,939
+Group PV under each leg. Higher masterships add deeper structural conditions.
+
+40
+00:02:53,675 --> 00:02:57,828
+Those requirements explain why a slide showing an incentive is incomplete by
+
+41
+00:02:57,839 --> 00:03:02,899
+itself. You also need the exact qualification path, the relevant period, and
+
+42
+00:03:02,910 --> 00:03:07,565
+the current rules underneath it. A third official bucket is the education
+
+43
+00:03:07,576 --> 00:03:10,913
+commission: six percent of a Center's total PV may be paid to
+
+44
+00:03:10,924 --> 00:03:15,985
+that Center for operating expenses. The plan also states that total commissions
+
+45
+00:03:15,996 --> 00:03:19,753
+to members do not exceed thirty-five percent of total sales income under
+
+46
+00:03:19,763 --> 00:03:25,430
+the applicable direct-selling rule. These percentages describe different allocations and bases.
+
+47
+00:03:26,165 --> 00:03:30,720
+Do not casually add them to a personal income forecast. A system-level
+
+48
+00:03:30,730 --> 00:03:35,266
+pool is not the same thing as an individual's likely payout. So
+
+49
+00:03:35,276 --> 00:03:38,704
+what does the Atomy plan do well? It gives you a visible
+
+50
+00:03:38,715 --> 00:03:44,783
+structure to inspect: classes, thresholds, score levels, smaller-leg logic, mastership conditions, and
+
+51
+00:03:44,793 --> 00:03:49,045
+stated allocation pools. That is much more useful than a slogan.
+
+52
+00:03:49,757 --> 00:03:53,761
+But structure is not prediction. The page does not tell a new
+
+53
+00:03:53,772 --> 00:03:58,178
+viewer how many participants reach each level, what a typical participant receives,
+
+54
+00:03:58,281 --> 00:04:02,915
+or what typical net results look like after expenses. Those are separate
+
+55
+00:04:02,925 --> 00:04:06,977
+evidence questions. That distinction is not negativity;
+
+56
+00:04:07,166 --> 00:04:12,353
+it is basic decision hygiene. The Federal Trade Commission says earnings representations
+
+57
+00:04:12,364 --> 00:04:17,118
+must be truthful, substantiated, and representative of what the intended audience is
+
+58
+00:04:17,128 --> 00:04:22,722
+likely to achieve, including typical expenses. So when someone explains this plan,
+
+59
+00:04:22,869 --> 00:04:27,046
+listen for a clean boundary: official mechanics on one side, evidence about
+
+60
+00:04:27,056 --> 00:04:31,286
+typical outcomes on the other. If the two are blended together, ask
+
+61
+00:04:31,296 --> 00:04:35,418
+them to separate the claim from the chart. Here is the complete
+
+62
+00:04:35,428 --> 00:04:41,816
+mental model. PV is the tracking language. Dealership classes establish qualification
+
+63
+00:04:41,827 --> 00:04:47,816
+categories. Two legs organize the structure. The smaller leg influences the score
+
+64
+00:04:47,826 --> 00:04:52,353
+used for general commission. Mastership adds another set of conditions.
+
+65
+00:04:53,090 --> 00:04:58,054
+Allocation percentages describe company-level plan mechanics, not your personal forecast.
+
+66
+00:04:58,790 --> 00:05:01,854
+Once you can redraw that map on paper, you are ready to
+
+67
+00:05:01,865 --> 00:05:06,791
+read the official page without getting lost in the vocabulary. Which part
+
+68
+00:05:06,801 --> 00:05:11,775
+should Nexa unpack next: the dealership score table, Sales Master qualification, or
+
+69
+00:05:11,786 --> 00:05:16,070
+how to evaluate typical-result evidence? Comment one of those three.
+
+70
+00:05:16,803 --> 00:05:21,282
+BizNex will use the most-requested question for the next sourced explainer—and we
+
+71
+00:05:21,292 --> 00:05:24,316
+will show the channel data as this AI-built series grows.

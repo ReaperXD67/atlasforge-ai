@@ -44,7 +44,8 @@ if (-not $SkipNarration) {
 
 $narration = Join-Path $humanVoiceOutput "narration.wav"
 $captionTimings = Join-Path $humanVoiceOutput "narration.captions.json"
-foreach ($required in @($narration, $captionTimings)) {
+$exactCaptions = Join-Path $humanVoiceOutput "narration.exact.srt"
+foreach ($required in @($narration, $captionTimings, $exactCaptions)) {
     if (-not (Test-Path -LiteralPath $required -PathType Leaf)) {
         throw "Required exact narration source is missing: $required"
     }
@@ -53,6 +54,11 @@ foreach ($required in @($narration, $captionTimings)) {
 $projectAssets = Join-Path $project "assets"
 New-Item -ItemType Directory -Path $projectAssets -Force | Out-Null
 Copy-Item -LiteralPath $narration -Destination (Join-Path $projectAssets "narration.wav") -Force
+$projectCaptions = Join-Path $project "captions"
+New-Item -ItemType Directory -Path $projectCaptions -Force | Out-Null
+Copy-Item -LiteralPath $exactCaptions `
+    -Destination (Join-Path $projectCaptions "atomy-compensation-plan.en.srt") `
+    -Force
 
 if (-not $MusicSource) {
     $musicCandidate = Get-ChildItem -LiteralPath (Join-Path $repository "output") -Directory |

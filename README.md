@@ -158,6 +158,26 @@ requires a 1080x1920, 30 fps, 20–30 second video with AAC audio plus a non-emp
 `-VerifyShorts -Thumbnail <path>`, preventing a finished MP4 from being delivered without its custom
 thumbnail or with the wrong duration, format, frame rate, or audio stream.
 
+### Long-form YouTube delivery gate
+
+Long-form exports use the same fail-closed handoff. The verifier requires a 1920x1080,
+30 fps H.264 MP4 with 48 kHz stereo AAC audio, a 16:9 PNG/JPEG thumbnail at least
+1280 pixels wide, and a complete upload package containing a valid title, description,
+at least three hashtags, and timestamped chapters:
+
+```powershell
+.\.venv\Scripts\atlasforge.exe verify-youtube-delivery `
+  --video videos\my-video\renders\final.mp4 `
+  --thumbnail videos\my-video\assets\thumbnails\thumbnail.png `
+  --upload-package videos\my-video\UPLOAD_PACKAGE.md
+```
+
+On Windows, `scripts/render_hyperframes_windows.ps1` now supports `-CheckFirst` to run
+the browser audit through the stable software-Chrome fallback before encoding. Add
+`-VerifyYouTube -Thumbnail <path> -UploadPackage <path> -MinDuration 300 -MaxDuration 360`
+to validate the complete handoff immediately after render. The wrapper reads the project's
+`authoringSkill` instead of incorrectly stamping every render as a faceless explainer.
+
 ### One-click YouTube upload
 
 The finished render exposes an **Upload all** action in Studio. It assembles and previews the final

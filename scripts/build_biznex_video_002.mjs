@@ -667,10 +667,10 @@ const thumbnailHtml = `<!doctype html>
       <div class="rays"></div>
       <div class="copy"><div class="kicker">ATOMY BUSINESS PLAN 2026</div><h1>THE<br><span>SMALLER</span><br>SIDE?</h1><div class="mini">PV · TWO LEGS · <b>OFFICIAL NUMBERS</b></div></div>
       <div class="balance"><div class="beam"></div><div class="pivot"></div><div class="weight big">1.9M PV</div><div class="weight small">700K PV</div></div>
-      <div class="host"><img src="assets/nexa-toon-v2.png" alt="Nexa" /></div>
-      <div class="arrow">THIS SIDE DECIDES ↙</div><img class="logo" src="assets/biznex-logo.png" alt="BizNex" />
+      <div class="host"><img src="../assets/nexa-toon-v2.png" alt="Nexa" /></div>
+      <div class="arrow">THIS SIDE DECIDES ↙</div><img class="logo" src="../assets/biznex-logo.png" alt="BizNex" />
     </div>
-    <script>window.__timelines=window.__timelines||{};const tl=gsap.timeline({paused:true});tl.fromTo(".copy",{opacity:0,x:-40},{opacity:1,x:0,duration:.5});tl.fromTo(".host",{opacity:0,x:50},{opacity:1,x:0,duration:.5},.1);tl.fromTo(".arrow",{opacity:0,scale:1.4},{opacity:1,scale:1,duration:.4},.3);window.__timelines.thumbnail=tl;</script>
+    <script>window.__timelines=window.__timelines||{};window.__timelines.thumbnail=gsap.timeline({paused:true});</script>
   </body>
 </html>`;
 const thumbnailDir = path.join(project, "thumbnail");

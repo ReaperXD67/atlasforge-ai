@@ -1,7 +1,13 @@
 ---
 background: "#0B0A0A"
 surface: "#181512"
+canvas_deep: "#080808"
+canvas_warm: "#17120C"
+surface_warm: "#231D15"
+surface_high: "#30281E"
 foreground: "#FFF4DD"
+caption_foreground: "#FFFFFF"
+ink: "#000000"
 muted: "#C8BDA7"
 accent: "#F4B942"
 danger: "#FF6B5E"
@@ -9,7 +15,7 @@ success: "#75D69C"
 display_font: "Impact / Arial Narrow"
 body_font: "Segoe UI"
 data_font: "Consolas"
-corner_radius: "28px"
+corner_radius: "28px panels; 14–18px compact labels; 99px/50% pills"
 ---
 
 # BizNex animated editorial system

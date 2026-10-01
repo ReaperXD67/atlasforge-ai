@@ -12,6 +12,7 @@ htmlcov/
 build/
 dist/
 frontend/node_modules/
+node_modules/
 frontend/dist/
 *.egg-info/
 output/
@@ -35,6 +36,10 @@ videos/**/thumbnail-clean/
 videos/**/thumbnail-snapshot/
 videos/**/.hyperframes/frame-packets/
 videos/**/.hyperframes/caption-skin.html
+videos/**/.hyperframes/anim-map/
+videos/**/.hyperframes/history-id
+videos/**/.hyperframes/history-turn.json
+videos/**/.hyperframes/history-turns.json
 videos/biznex-revive-pitch-001/assets/
 videos/biznex-revive-pitch-001/thumbnail/assets/
 .DS_Store

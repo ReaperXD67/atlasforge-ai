@@ -25,6 +25,7 @@ from .scheduler import run_scheduler
 from .shorts import extract_hyperframes_narration, write_short_experiment_manifest
 from .shorts_delivery import ShortsDeliveryError, validate_short_delivery
 from .viral_video import ViralShortPipeline
+from .youtube_delivery import YouTubeDeliveryError, validate_youtube_delivery
 
 app = typer.Typer(
     no_args_is_help=True,
@@ -136,6 +137,30 @@ def verify_shorts_delivery_command(
         console.print(f"[bold red]Shorts delivery failed:[/] {exc}")
         raise typer.Exit(1) from exc
     console.print("[bold green]Shorts delivery verified[/]")
+    console.print_json(data=report)
+
+
+@app.command("verify-youtube-delivery")
+def verify_youtube_delivery_command(
+    video: Path = typer.Option(..., exists=True, dir_okay=False),
+    thumbnail: Path = typer.Option(..., exists=True, dir_okay=False),
+    upload_package: Path = typer.Option(..., exists=True, dir_okay=False),
+    min_seconds: float = typer.Option(300, min=1),
+    max_seconds: float = typer.Option(360, min=1),
+) -> None:
+    """Reject an incomplete long-form YouTube package before upload."""
+    try:
+        report = validate_youtube_delivery(
+            video,
+            thumbnail,
+            upload_package,
+            min_seconds=min_seconds,
+            max_seconds=max_seconds,
+        )
+    except YouTubeDeliveryError as exc:
+        console.print(f"[bold red]YouTube delivery failed:[/] {exc}")
+        raise typer.Exit(1) from exc
+    console.print("[bold green]YouTube delivery verified[/]")
     console.print_json(data=report)
 
 
