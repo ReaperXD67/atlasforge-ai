@@ -145,18 +145,24 @@ the local voice/caption stack; the first generation can also download model data
 
 ### Shorts delivery gate
 
-Before a portrait Short is handed off, verify the rendered MP4 and its thumbnail together. The gate
-requires a 1080x1920, 30 fps, 20–30 second video with AAC audio plus a non-empty 1080x1920 thumbnail:
+Before a portrait Short is handed off, verify the rendered MP4, thumbnail, metadata, and voice lock
+together. The gate requires a 1080x1920, 30 fps H.264/yuv420p, 20–30 second video with 48 kHz stereo
+AAC audio, a non-empty 1080x1920 thumbnail, a valid title/description/hashtag package, and (when
+requested) the exact approved narration voice:
 
 ```powershell
 .\.venv\Scripts\atlasforge.exe verify-shorts-delivery `
   --video videos\my-short\renders\final.mp4 `
-  --thumbnail videos\my-short\assets\thumbnails\thumbnail.png
+  --thumbnail videos\my-short\assets\thumbnails\thumbnail.png `
+  --upload-package videos\my-short\UPLOAD_PACKAGE.md `
+  --voice-manifest videos\my-short\audio_request.json `
+  --expected-voice af_heart
 ```
 
 `scripts/render_hyperframes_windows.ps1` can run the same gate immediately after rendering with
-`-VerifyShorts -Thumbnail <path>`, preventing a finished MP4 from being delivered without its custom
-thumbnail or with the wrong duration, format, frame rate, or audio stream.
+`-VerifyShorts -Thumbnail <path> -UploadPackage <path> -VoiceManifest <path> -ExpectedVoice <id>`,
+preventing a finished MP4 from being delivered without its custom thumbnail, upload copy, approved
+voice, or correct encoding.
 
 ### Long-form YouTube delivery gate
 

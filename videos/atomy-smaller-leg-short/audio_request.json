@@ -1,0 +1,11 @@
+{
+  "provider": "kokoro",
+  "voice": "af_heart",
+  "speed": 1.06,
+  "lang": "en-us",
+  "style": "Warm, conversational, confidently curious, and never salesy.",
+  "bgm": {
+    "mode": "project-owned",
+    "intent": "tense editorial quiz pulse with a satisfying reveal"
+  }
+}

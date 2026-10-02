@@ -1,0 +1,25 @@
+{
+  "episode": "atomy-smaller-leg-short",
+  "title": "Which Atomy Leg Actually Decides Your Score?",
+  "target_duration_seconds": 29.013,
+  "hook_delivery_seconds": 1.25,
+  "pattern_interrupt_seconds": 7.8,
+  "hypothesis": "A concrete two-number quiz with a delayed smaller-leg reveal should improve viewed-versus-swiped-away and completion rate.",
+  "primary_metric": "average_percentage_viewed",
+  "secondary_metrics": ["viewed_vs_swiped_away", "engaged_views"],
+  "packaging": {
+    "hook": "1.9M vs 700K — which side decides?",
+    "thumbnail": "THE SMALLER LEG?",
+    "loop": "Big side gets attention. Small side does the math."
+  },
+  "success_thresholds": {
+    "average_percentage_viewed": 85,
+    "viewed_vs_swiped_away": 70
+  },
+  "sources": ["https://us.atomy.com/cst/marketingPlan"],
+  "voice": {
+    "provider": "kokoro",
+    "id": "af_heart",
+    "speed": 1.06
+  }
+}

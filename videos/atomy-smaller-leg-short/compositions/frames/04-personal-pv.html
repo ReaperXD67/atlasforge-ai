@@ -1,0 +1,96 @@
+<template>
+  <style>
+    *{box-sizing:border-box}
+    #root{position:absolute;inset:0;width:1080px;height:1920px;overflow:hidden;color:#000;font-family:sans-serif;container-type:size}
+    .clip{position:absolute;inset:0}
+    .f04-ground{background:#c0f7fe;overflow:hidden}
+    .f04-ground::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.22) 2px,transparent 2px);background-size:34px 34px;opacity:.48}
+    .f04-topbar{position:absolute;left:58px;right:58px;top:72px;height:112px;z-index:20}
+    .f04-kicker{position:absolute;left:0;top:0;padding:15px 24px;background:#fff;border:4px solid #000;border-radius:999px;box-shadow:7px 7px 0 #000;font-size:25px;font-weight:900;line-height:1;letter-spacing:.09em;text-transform:uppercase}
+    .f04-counter-chip{position:absolute;right:0;top:0;padding:14px 20px;background:#f7cb46;border:4px solid #000;box-shadow:7px 7px 0 #000;font-size:24px;font-weight:900;line-height:1;letter-spacing:.06em}
+    .f04-viewport{position:absolute;left:0;right:0;top:196px;height:1370px;overflow:hidden}
+    .f04-world{position:absolute;left:0;top:0;width:2800px;height:1370px}
+    .f04-route{position:absolute;left:335px;top:615px;width:1930px;height:260px;overflow:visible;z-index:2}
+    .f04-route path{fill:none;stroke:#000;stroke-width:20;stroke-linecap:square;stroke-linejoin:miter}
+    .f04-route polygon{fill:#000}
+    .f04-station-one{position:absolute;left:70px;top:100px;width:1000px;height:1130px;z-index:5}
+    .f04-station-label{position:absolute;left:38px;top:20px;padding:13px 20px;background:#99e885;border:4px solid #000;border-radius:999px;box-shadow:7px 7px 0 #000;font-size:23px;font-weight:900;line-height:1;letter-spacing:.1em;text-transform:uppercase}
+    .f04-tile{position:absolute;left:52px;top:430px;width:450px;height:330px;background:#fe90e8;border:7px solid #000;box-shadow:16px 16px 0 #000;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:8}
+    .f04-tile-icon{width:94px;height:94px;margin-bottom:27px;background:#fff;border:5px solid #000;box-shadow:7px 7px 0 #000;display:grid;place-items:center;font-size:54px;font-weight:900;line-height:1}
+    .f04-tile-copy{font-size:59px;font-weight:900;line-height:.9;letter-spacing:-.045em;text-transform:uppercase;text-align:center}
+    .f04-gate{position:absolute;left:670px;top:280px;width:280px;height:670px;border:9px solid #000;background:#fffdf5;box-shadow:17px 17px 0 #000;overflow:hidden;z-index:10}
+    .f04-gate::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:9px;margin-left:-5px;background:#000;z-index:4}
+    .f04-door{position:absolute;left:0;width:100%;height:50%;background:repeating-linear-gradient(90deg,#000 0 18px,#f7cb46 18px 55px);z-index:3}
+    .f04-door-top{top:0;border-bottom:7px solid #000}.f04-door-bottom{bottom:0;border-top:7px solid #000}
+    .f04-lock{position:absolute;left:50%;top:50%;width:126px;height:126px;margin-left:-63px;margin-top:-63px;background:#fe90e8;border:7px solid #000;box-shadow:10px 10px 0 #000;display:grid;place-items:center;font-size:66px;font-weight:900;line-height:1;z-index:12}
+    .f04-gate-sign{position:absolute;left:588px;top:65px;width:445px;padding:27px 22px;background:#000;color:#fff;border:6px solid #000;box-shadow:11px 11px 0 #f7cb46;text-align:center;font-size:54px;font-weight:900;line-height:.9;letter-spacing:-.035em;text-transform:uppercase;z-index:13}
+    .f04-live-count{position:absolute;left:620px;top:1002px;width:390px;padding:22px 24px;background:#fff;border:6px solid #000;box-shadow:11px 11px 0 #000;text-align:center;font-size:57px;font-weight:900;line-height:1;letter-spacing:-.04em;z-index:13}
+    .f04-live-count small{display:block;margin-top:12px;font-size:21px;letter-spacing:.1em;text-transform:uppercase}
+    .f04-mid-tag{position:absolute;left:1230px;top:254px;width:440px;padding:30px 28px;background:#fff;border:6px solid #000;box-shadow:12px 12px 0 #000;text-align:center;font-size:47px;font-weight:900;line-height:.92;letter-spacing:-.025em;text-transform:uppercase;z-index:6}
+    .f04-arrow-word{position:absolute;left:1302px;top:975px;padding:13px 22px;background:#000;color:#fff;border:4px solid #000;box-shadow:7px 7px 0 #fe90e8;font-size:24px;font-weight:900;line-height:1;letter-spacing:.11em;text-transform:uppercase;z-index:6}
+    .f04-final{position:absolute;left:1850px;top:90px;width:900px;height:1180px;z-index:7}
+    .f04-final-label{position:absolute;left:90px;top:25px;padding:14px 24px;background:#f7cb46;border:4px solid #000;border-radius:999px;box-shadow:7px 7px 0 #000;font-size:24px;font-weight:900;line-height:1;letter-spacing:.1em;text-transform:uppercase}
+    .f04-meter{position:absolute;left:95px;top:250px;width:740px;height:560px;background:#fff;border:8px solid #000;box-shadow:18px 18px 0 #000;overflow:hidden}
+    .f04-meter-head{height:140px;padding:40px 42px;background:#99e885;border-bottom:7px solid #000;font-size:62px;font-weight:900;line-height:1;letter-spacing:-.04em;text-transform:uppercase}
+    .f04-meter-track{position:absolute;left:48px;right:48px;top:230px;height:120px;border:6px solid #000;background:#fffdf5;padding:14px;display:flex;gap:12px}
+    .f04-meter-cell{flex:1;background:#c0f7fe;border:4px solid #000}
+    .f04-meter-cell:last-child{background:#fe90e8}
+    .f04-meter-foot{position:absolute;left:48px;right:48px;bottom:55px;display:flex;justify-content:space-between;align-items:center;font-size:26px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+    .f04-added{position:absolute;left:190px;top:885px;width:610px;padding:34px 28px;background:#000;color:#fff;border:7px solid #000;box-shadow:14px 14px 0 #f7cb46;text-align:center;font-size:68px;font-weight:900;line-height:.87;letter-spacing:-.045em;text-transform:uppercase;z-index:12}
+    .f04-snap{position:absolute;left:760px;top:742px;width:150px;height:150px;background:#fe90e8;border:6px solid #000;clip-path:polygon(50% 0,61% 33%,86% 14%,67% 39%,100% 50%,67% 61%,86% 86%,61% 67%,50% 100%,39% 67%,14% 86%,33% 61%,0 50%,33% 39%,14% 14%,39% 33%);z-index:15}
+  </style>
+  <div data-hf-id="hf-f04-root" id="root" data-composition-id="04-personal-pv" data-start="0" data-duration="6.324" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-f04-ground" id="f04-ground" class="clip f04-ground" data-start="0" data-duration="6.324" data-track-index="1"></div>
+    <div data-hf-id="hf-f04-topbar" class="f04-topbar"><div data-hf-id="hf-f04-kicker" class="f04-kicker">One condition</div><div data-hf-id="hf-f04-counter-chip" class="f04-counter-chip">04 / 05</div></div>
+    <div data-hf-id="hf-f04-viewport" class="f04-viewport">
+      <div data-hf-id="hf-f04-world" id="f04-world" class="f04-world">
+        <svg data-hf-id="hf-f04-route" class="f04-route" viewBox="0 0 1930 260" aria-hidden="true"><path id="f04-route-line" d="M0 130 H1780"/><polygon points="1780,40 1930,130 1780,220"/></svg>
+        <div data-hf-id="hf-f04-station-one" class="f04-station-one">
+          <div data-hf-id="hf-f04-station-label" class="f04-station-label">Personal volume</div>
+          <div data-hf-id="hf-f04-tile" id="f04-tile" class="f04-tile"><div data-hf-id="hf-f04-tile-icon" class="f04-tile-icon" data-layout-allow-occlusion>+</div><div data-hf-id="hf-f04-tile-copy" class="f04-tile-copy" data-layout-allow-overlap data-layout-allow-occlusion>Personal<br>PV</div></div>
+          <div data-hf-id="hf-f04-gate-sign" class="f04-gate-sign">10,000<br>First</div>
+          <div data-hf-id="hf-f04-gate" class="f04-gate"><div data-hf-id="hf-f04-door-top" id="f04-door-top" class="f04-door f04-door-top"></div><div data-hf-id="hf-f04-door-bottom" id="f04-door-bottom" class="f04-door f04-door-bottom"></div></div>
+          <div data-hf-id="hf-f04-lock" id="f04-lock" class="f04-lock" data-layout-allow-overlap>×</div>
+          <div data-hf-id="hf-f04-live-count" id="f04-live-count" class="f04-live-count"><span data-hf-id="hf-f04-count-value" id="f04-count-value">0</span><small data-hf-id="hf-f04-count-small">Personal PV</small></div>
+        </div>
+        <div data-hf-id="hf-f04-mid-tag" id="f04-mid-tag" class="f04-mid-tag">Threshold<br>cleared</div>
+        <div data-hf-id="hf-f04-arrow-word" id="f04-arrow-word" class="f04-arrow-word">Now it can travel</div>
+        <div data-hf-id="hf-f04-final" class="f04-final">
+          <div data-hf-id="hf-f04-final-label" class="f04-final-label">Destination</div>
+          <div data-hf-id="hf-f04-meter" id="f04-meter" class="f04-meter">
+            <div data-hf-id="hf-f04-meter-head" class="f04-meter-head">Smaller leg</div>
+            <div data-hf-id="hf-f04-meter-track" class="f04-meter-track"><div data-hf-id="hf-f04-meter-cell-1" class="f04-meter-cell"></div><div data-hf-id="hf-f04-meter-cell-2" class="f04-meter-cell"></div><div data-hf-id="hf-f04-meter-cell-3" class="f04-meter-cell"></div><div data-hf-id="hf-f04-meter-cell-4" class="f04-meter-cell"></div></div>
+            <div data-hf-id="hf-f04-meter-foot" class="f04-meter-foot"><span data-hf-id="hf-f04-meter-foot-a">Daily meter</span><span data-hf-id="hf-f04-meter-foot-b">+ PV</span></div>
+          </div>
+          <div data-hf-id="hf-f04-snap" id="f04-snap" class="f04-snap"></div>
+          <div data-hf-id="hf-f04-added" id="f04-added" class="f04-added">May be<br>added</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.__timelines=window.__timelines||{};
+    const f04tl=gsap.timeline({paused:true});
+    const f04count={value:0};
+    f04tl.fromTo("#f04-tile",{opacity:0,x:-180,scale:.82},{opacity:1,x:0,scale:1,duration:.45,ease:"back.out(1.35)"},.04);
+    f04tl.fromTo("#f04-lock",{opacity:0,scale:.25,rotation:-20},{opacity:1,scale:1,rotation:0,duration:.35,ease:"back.out(1.8)"},.22);
+    f04tl.to("#f04-tile",{x:175,duration:.66,ease:"power2.out"},.58);
+    f04tl.fromTo("#f04-live-count",{opacity:0,y:30},{opacity:1,y:0,duration:.25,ease:"power2.out"},1.43);
+    f04tl.to(f04count,{value:10000,duration:.95,ease:"power2.inOut",onUpdate:()=>{const el=document.querySelector("#f04-count-value");if(el)el.textContent=Math.round(f04count.value).toLocaleString("en-US");}},1.55);
+    f04tl.to("#f04-lock",{rotation:90,scale:0,opacity:0,duration:.28,ease:"back.in(1.7)"},2.25);
+    f04tl.to("#f04-door-top",{y:-350,duration:.4,ease:"power3.inOut"},2.34);
+    f04tl.to("#f04-door-bottom",{y:350,duration:.4,ease:"power3.inOut"},2.34);
+    f04tl.to("#f04-world",{x:-830,duration:1.05,ease:"power2.inOut"},2.45);
+    f04tl.to("#f04-tile",{x:1210,y:20,scale:.84,duration:1.05,ease:"power2.inOut"},2.45);
+    f04tl.fromTo("#f04-mid-tag",{opacity:0,y:38,scale:.86},{opacity:1,y:0,scale:1,duration:.33,ease:"back.out(1.65)"},3.18);
+    f04tl.fromTo("#f04-arrow-word",{opacity:0,y:22},{opacity:1,y:0,duration:.25,ease:"power2.out"},3.55);
+    f04tl.to("#f04-world",{x:-1710,duration:.86,ease:"power2.inOut"},3.86);
+    f04tl.to("#f04-tile",{x:2040,y:-5,scale:.38,duration:.86,ease:"power2.inOut"},3.86);
+    f04tl.fromTo("#f04-meter",{opacity:0,scale:.82,y:55},{opacity:1,scale:1,y:0,duration:.42,ease:"back.out(1.45)"},4.22);
+    f04tl.fromTo("#f04-snap",{opacity:0,scale:.12,rotation:-25},{opacity:1,scale:1,rotation:8,duration:.26,ease:"back.out(2.1)"},4.55);
+    f04tl.to("#f04-snap",{opacity:0,scale:1.65,duration:.24,ease:"power2.out"},4.82);
+    f04tl.fromTo("#f04-added",{opacity:0,y:45,scale:.78},{opacity:1,y:0,scale:1,duration:.4,ease:"back.out(1.7)"},4.68);
+    f04tl.to("#f04-added",{scale:1.03,duration:.16,ease:"power1.out"},5.17).to("#f04-added",{scale:1,duration:.22,ease:"power1.inOut"},5.33);
+    window.__timelines["04-personal-pv"]=f04tl;
+  </script>
+</template>

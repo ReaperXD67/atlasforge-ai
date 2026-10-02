@@ -1,0 +1,601 @@
+{
+  "voice_lock": {
+    "provider": "kokoro",
+    "voice": "af_heart",
+    "speed": 1.06
+  },
+  "bgm": {
+    "path": "assets/bgm/track.wav",
+    "volume": 0.085,
+    "query": "tense editorial quiz pulse with a satisfying reveal",
+    "duration_s": 29.013
+  },
+  "bgm_pending": false,
+  "total_duration_s": 29.013,
+  "voices": [
+    {
+      "frame": 1,
+      "path": "assets/voice/01.wav",
+      "duration_s": 8.448,
+      "words": [
+        {
+          "id": "caption-word-1-0",
+          "text": "Quick\u2014one",
+          "start": 0.04,
+          "end": 0.554
+        },
+        {
+          "id": "caption-word-1-1",
+          "text": "Atomy",
+          "start": 0.58,
+          "end": 1.004
+        },
+        {
+          "id": "caption-word-1-2",
+          "text": "leg",
+          "start": 1.03,
+          "end": 1.378
+        },
+        {
+          "id": "caption-word-1-3",
+          "text": "has",
+          "start": 1.404,
+          "end": 1.751
+        },
+        {
+          "id": "caption-word-1-4",
+          "text": "1.9",
+          "start": 1.777,
+          "end": 2.076
+        },
+        {
+          "id": "caption-word-1-5",
+          "text": "million",
+          "start": 2.102,
+          "end": 2.588
+        },
+        {
+          "id": "caption-word-1-6",
+          "text": "PV.",
+          "start": 2.614,
+          "end": 2.913
+        },
+        {
+          "id": "caption-word-1-7",
+          "text": "The",
+          "start": 2.939,
+          "end": 3.287
+        },
+        {
+          "id": "caption-word-1-8",
+          "text": "other",
+          "start": 3.313,
+          "end": 3.737
+        },
+        {
+          "id": "caption-word-1-9",
+          "text": "has",
+          "start": 3.763,
+          "end": 4.11
+        },
+        {
+          "id": "caption-word-1-10",
+          "text": "700",
+          "start": 4.136,
+          "end": 4.483
+        },
+        {
+          "id": "caption-word-1-11",
+          "text": "thousand.",
+          "start": 4.509,
+          "end": 5.024
+        },
+        {
+          "id": "caption-word-1-12",
+          "text": "Which",
+          "start": 5.05,
+          "end": 5.474
+        },
+        {
+          "id": "caption-word-1-13",
+          "text": "side",
+          "start": 5.5,
+          "end": 5.888
+        },
+        {
+          "id": "caption-word-1-14",
+          "text": "decides",
+          "start": 5.914,
+          "end": 6.4
+        },
+        {
+          "id": "caption-word-1-15",
+          "text": "your",
+          "start": 6.426,
+          "end": 6.814
+        },
+        {
+          "id": "caption-word-1-16",
+          "text": "general",
+          "start": 6.84,
+          "end": 7.327
+        },
+        {
+          "id": "caption-word-1-17",
+          "text": "commission",
+          "start": 7.353,
+          "end": 7.918
+        },
+        {
+          "id": "caption-word-1-18",
+          "text": "score?",
+          "start": 7.944,
+          "end": 8.368
+        }
+      ]
+    },
+    {
+      "frame": 2,
+      "path": "assets/voice/02.wav",
+      "duration_s": 2.837,
+      "words": [
+        {
+          "id": "caption-word-2-0",
+          "text": "Most",
+          "start": 0.04,
+          "end": 0.286
+        },
+        {
+          "id": "caption-word-2-1",
+          "text": "people",
+          "start": 0.312,
+          "end": 0.601
+        },
+        {
+          "id": "caption-word-2-2",
+          "text": "point",
+          "start": 0.627,
+          "end": 0.896
+        },
+        {
+          "id": "caption-word-2-3",
+          "text": "to",
+          "start": 0.922,
+          "end": 1.111
+        },
+        {
+          "id": "caption-word-2-4",
+          "text": "the",
+          "start": 1.137,
+          "end": 1.357
+        },
+        {
+          "id": "caption-word-2-5",
+          "text": "bigger",
+          "start": 1.383,
+          "end": 1.673
+        },
+        {
+          "id": "caption-word-2-6",
+          "text": "side.",
+          "start": 1.699,
+          "end": 1.945
+        },
+        {
+          "id": "caption-word-2-7",
+          "text": "That's",
+          "start": 1.971,
+          "end": 2.239
+        },
+        {
+          "id": "caption-word-2-8",
+          "text": "the",
+          "start": 2.265,
+          "end": 2.485
+        },
+        {
+          "id": "caption-word-2-9",
+          "text": "trap.",
+          "start": 2.511,
+          "end": 2.757
+        }
+      ]
+    },
+    {
+      "frame": 3,
+      "path": "assets/voice/03.wav",
+      "duration_s": 6.485,
+      "words": [
+        {
+          "id": "caption-word-3-0",
+          "text": "Atomy",
+          "start": 0.04,
+          "end": 0.457
+        },
+        {
+          "id": "caption-word-3-1",
+          "text": "USA",
+          "start": 0.483,
+          "end": 0.825
+        },
+        {
+          "id": "caption-word-3-2",
+          "text": "says",
+          "start": 0.851,
+          "end": 1.232
+        },
+        {
+          "id": "caption-word-3-3",
+          "text": "the",
+          "start": 1.258,
+          "end": 1.6
+        },
+        {
+          "id": "caption-word-3-4",
+          "text": "calculation",
+          "start": 1.626,
+          "end": 2.205
+        },
+        {
+          "id": "caption-word-3-5",
+          "text": "uses",
+          "start": 2.231,
+          "end": 2.612
+        },
+        {
+          "id": "caption-word-3-6",
+          "text": "your",
+          "start": 2.638,
+          "end": 3.02
+        },
+        {
+          "id": "caption-word-3-7",
+          "text": "daily",
+          "start": 3.046,
+          "end": 3.463
+        },
+        {
+          "id": "caption-word-3-8",
+          "text": "smaller",
+          "start": 3.489,
+          "end": 3.968
+        },
+        {
+          "id": "caption-word-3-9",
+          "text": "leg.",
+          "start": 3.994,
+          "end": 4.335
+        },
+        {
+          "id": "caption-word-3-10",
+          "text": "Here,",
+          "start": 4.361,
+          "end": 4.743
+        },
+        {
+          "id": "caption-word-3-11",
+          "text": "that's",
+          "start": 4.769,
+          "end": 5.186
+        },
+        {
+          "id": "caption-word-3-12",
+          "text": "700",
+          "start": 5.212,
+          "end": 5.554
+        },
+        {
+          "id": "caption-word-3-13",
+          "text": "thousand",
+          "start": 5.58,
+          "end": 6.085
+        },
+        {
+          "id": "caption-word-3-14",
+          "text": "PV.",
+          "start": 6.111,
+          "end": 6.405
+        }
+      ]
+    },
+    {
+      "frame": 4,
+      "path": "assets/voice/04.wav",
+      "duration_s": 5.824,
+      "words": [
+        {
+          "id": "caption-word-4-0",
+          "text": "Personal",
+          "start": 0.04,
+          "end": 0.476
+        },
+        {
+          "id": "caption-word-4-1",
+          "text": "PV",
+          "start": 0.502,
+          "end": 0.756
+        },
+        {
+          "id": "caption-word-4-2",
+          "text": "may",
+          "start": 0.782,
+          "end": 1.077
+        },
+        {
+          "id": "caption-word-4-3",
+          "text": "be",
+          "start": 1.103,
+          "end": 1.357
+        },
+        {
+          "id": "caption-word-4-4",
+          "text": "added",
+          "start": 1.383,
+          "end": 1.743
+        },
+        {
+          "id": "caption-word-4-5",
+          "text": "to",
+          "start": 1.769,
+          "end": 2.022
+        },
+        {
+          "id": "caption-word-4-6",
+          "text": "that",
+          "start": 2.048,
+          "end": 2.378
+        },
+        {
+          "id": "caption-word-4-7",
+          "text": "smaller",
+          "start": 2.404,
+          "end": 2.817
+        },
+        {
+          "id": "caption-word-4-8",
+          "text": "leg",
+          "start": 2.843,
+          "end": 3.137
+        },
+        {
+          "id": "caption-word-4-9",
+          "text": "after",
+          "start": 3.163,
+          "end": 3.523
+        },
+        {
+          "id": "caption-word-4-10",
+          "text": "you",
+          "start": 3.549,
+          "end": 3.844
+        },
+        {
+          "id": "caption-word-4-11",
+          "text": "first",
+          "start": 3.87,
+          "end": 4.23
+        },
+        {
+          "id": "caption-word-4-12",
+          "text": "reach",
+          "start": 4.256,
+          "end": 4.616
+        },
+        {
+          "id": "caption-word-4-13",
+          "text": "10,000",
+          "start": 4.642,
+          "end": 5.002
+        },
+        {
+          "id": "caption-word-4-14",
+          "text": "personal",
+          "start": 5.028,
+          "end": 5.464
+        },
+        {
+          "id": "caption-word-4-15",
+          "text": "PV.",
+          "start": 5.49,
+          "end": 5.744
+        }
+      ]
+    },
+    {
+      "frame": 5,
+      "path": "assets/voice/05.wav",
+      "duration_s": 5.419,
+      "words": [
+        {
+          "id": "caption-word-5-0",
+          "text": "Big",
+          "start": 0.04,
+          "end": 0.304
+        },
+        {
+          "id": "caption-word-5-1",
+          "text": "side",
+          "start": 0.33,
+          "end": 0.625
+        },
+        {
+          "id": "caption-word-5-2",
+          "text": "gets",
+          "start": 0.651,
+          "end": 0.945
+        },
+        {
+          "id": "caption-word-5-3",
+          "text": "attention.",
+          "start": 0.971,
+          "end": 1.382
+        },
+        {
+          "id": "caption-word-5-4",
+          "text": "Small",
+          "start": 1.408,
+          "end": 1.73
+        },
+        {
+          "id": "caption-word-5-5",
+          "text": "side",
+          "start": 1.756,
+          "end": 2.05
+        },
+        {
+          "id": "caption-word-5-6",
+          "text": "does",
+          "start": 2.076,
+          "end": 2.371
+        },
+        {
+          "id": "caption-word-5-7",
+          "text": "the",
+          "start": 2.397,
+          "end": 2.661
+        },
+        {
+          "id": "caption-word-5-8",
+          "text": "math.",
+          "start": 2.687,
+          "end": 2.982
+        },
+        {
+          "id": "caption-word-5-9",
+          "text": "Save",
+          "start": 3.008,
+          "end": 3.302
+        },
+        {
+          "id": "caption-word-5-10",
+          "text": "this,",
+          "start": 3.328,
+          "end": 3.623
+        },
+        {
+          "id": "caption-word-5-11",
+          "text": "then",
+          "start": 3.649,
+          "end": 3.944
+        },
+        {
+          "id": "caption-word-5-12",
+          "text": "watch",
+          "start": 3.97,
+          "end": 4.292
+        },
+        {
+          "id": "caption-word-5-13",
+          "text": "the",
+          "start": 4.318,
+          "end": 4.582
+        },
+        {
+          "id": "caption-word-5-14",
+          "text": "full",
+          "start": 4.608,
+          "end": 4.902
+        },
+        {
+          "id": "caption-word-5-15",
+          "text": "breakdown.",
+          "start": 4.928,
+          "end": 5.339
+        }
+      ]
+    }
+  ],
+  "sfx": [
+    {
+      "frame": 1,
+      "file": "assets/sfx/impact-bass-1.wav",
+      "offset_s": 0.0,
+      "duration_s": 0.82,
+      "volume": 0.24
+    },
+    {
+      "frame": 1,
+      "file": "assets/sfx/whoosh-short.wav",
+      "offset_s": 1.25,
+      "duration_s": 0.72,
+      "volume": 0.18
+    },
+    {
+      "frame": 1,
+      "file": "assets/sfx/click-soft.wav",
+      "offset_s": 5.9,
+      "duration_s": 0.23,
+      "volume": 0.22
+    },
+    {
+      "frame": 2,
+      "file": "assets/sfx/click-soft.wav",
+      "offset_s": 0.35,
+      "duration_s": 0.23,
+      "volume": 0.22
+    },
+    {
+      "frame": 2,
+      "file": "assets/sfx/error.wav",
+      "offset_s": 0.95,
+      "duration_s": 0.64,
+      "volume": 0.24
+    },
+    {
+      "frame": 3,
+      "file": "assets/sfx/whoosh-short.wav",
+      "offset_s": 0.0,
+      "duration_s": 0.72,
+      "volume": 0.16
+    },
+    {
+      "frame": 3,
+      "file": "assets/sfx/chime.wav",
+      "offset_s": 4.8,
+      "duration_s": 0.57,
+      "volume": 0.21
+    },
+    {
+      "frame": 4,
+      "file": "assets/sfx/click-soft.wav",
+      "offset_s": 1.55,
+      "duration_s": 0.23,
+      "volume": 0.2
+    },
+    {
+      "frame": 4,
+      "file": "assets/sfx/whoosh-short.wav",
+      "offset_s": 3.9,
+      "duration_s": 0.72,
+      "volume": 0.15
+    },
+    {
+      "frame": 4,
+      "file": "assets/sfx/pop.wav",
+      "offset_s": 4.3,
+      "duration_s": 0.37,
+      "volume": 0.2
+    },
+    {
+      "frame": 5,
+      "file": "assets/sfx/whoosh-short.wav",
+      "offset_s": 0.0,
+      "duration_s": 0.72,
+      "volume": 0.16
+    },
+    {
+      "frame": 5,
+      "file": "assets/sfx/pop.wav",
+      "offset_s": 2.1,
+      "duration_s": 0.37,
+      "volume": 0.22
+    },
+    {
+      "frame": 5,
+      "file": "assets/sfx/click-soft.wav",
+      "offset_s": 3.95,
+      "duration_s": 0.23,
+      "volume": 0.22
+    }
+  ]
+}

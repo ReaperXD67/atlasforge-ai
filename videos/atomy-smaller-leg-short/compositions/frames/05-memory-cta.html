@@ -1,0 +1,517 @@
+<template>
+  <style>
+    #root {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      container-type: size;
+      color: #ffffff;
+      font-family: sans-serif;
+    }
+
+    .f05-ground {
+      position: absolute;
+      inset: 0;
+      background: #000000;
+    }
+
+    .f05-dot-grid {
+      position: absolute;
+      inset: 0 0 17cqh 0;
+      opacity: 0.18;
+      background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+
+    .f05-close-frame {
+      position: absolute;
+      top: 3.5cqh;
+      left: 5.2cqw;
+      width: 87cqw;
+      height: 75cqh;
+      border: 0.65cqw solid #ffffff;
+      box-shadow: 1.45cqw 1.45cqw 0 #f7cb46;
+      box-sizing: border-box;
+      z-index: 2;
+    }
+
+    .f05-header {
+      position: absolute;
+      top: 6.2cqh;
+      left: 10cqw;
+      right: 8.5cqw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 6;
+    }
+
+    .f05-eyebrow,
+    .f05-counter {
+      border: 0.42cqw solid #ffffff;
+      box-shadow: 0.65cqw 0.65cqw 0 #ffffff;
+      padding: 1.25cqh 3.2cqw 1.05cqh;
+      color: #000000;
+      font-size: 2.45cqw;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .f05-eyebrow {
+      border-radius: 9999px;
+      background: #fe90e8;
+    }
+
+    .f05-counter {
+      background: #c0f7fe;
+      box-shadow: 0.65cqw 0.65cqw 0 #f7cb46;
+    }
+
+    .f05-morph-center {
+      position: absolute;
+      top: 13.5cqh;
+      left: 8cqw;
+      width: 84cqw;
+      height: 59cqh;
+      z-index: 4;
+    }
+
+    .f05-big-lockup,
+    .f05-math-key,
+    .f05-cta-lockup {
+      position: absolute;
+      top: 7cqh;
+      left: 4cqw;
+      width: 76cqw;
+      height: 37cqh;
+      transform-origin: 50% 50%;
+    }
+
+    .f05-spotlight {
+      position: absolute;
+      top: 0;
+      left: 5cqw;
+      width: 66cqw;
+      height: 35cqh;
+      border: 0.6cqw solid #ffffff;
+      background: #f7cb46;
+      box-shadow: 1cqw 1cqw 0 #fe90e8;
+      clip-path: polygon(12% 0, 88% 0, 100% 100%, 0 100%);
+      transform: rotate(-2deg);
+      opacity: 0;
+    }
+
+    .f05-big-copy {
+      position: absolute;
+      inset: 3.7cqh 2cqw auto;
+      color: #000000;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .f05-big-copy strong,
+    .f05-big-copy span {
+      display: block;
+    }
+
+    .f05-big-copy strong {
+      font-size: 15.5cqw;
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      line-height: 0.82;
+    }
+
+    .f05-big-copy span {
+      margin-top: 2cqh;
+      font-size: 6.3cqw;
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      line-height: 0.95;
+    }
+
+    .f05-flash {
+      position: absolute;
+      top: -3cqh;
+      right: -1cqw;
+      width: 14cqw;
+      height: 14cqw;
+      display: grid;
+      place-items: center;
+      border: 0.45cqw solid #ffffff;
+      background: #c0f7fe;
+      color: #000000;
+      clip-path: polygon(50% 0%, 61% 34%, 91% 19%, 72% 46%, 100% 50%, 72% 56%, 91% 84%, 61% 66%, 50% 100%, 39% 66%, 9% 84%, 28% 56%, 0 50%, 28% 46%, 9% 19%, 39% 34%);
+      font-size: 3.2cqw;
+      font-weight: 900;
+      transform: rotate(9deg);
+    }
+
+    .f05-math-key {
+      top: 3.8cqh;
+      left: 10cqw;
+      width: 64cqw;
+      height: 41cqh;
+      border: 0.75cqw solid #000000;
+      background: #f7cb46;
+      box-shadow: 1.55cqw 1.55cqw 0 #ffffff;
+      color: #000000;
+      box-sizing: border-box;
+      padding: 4.4cqh 5.2cqw;
+      opacity: 0;
+    }
+
+    .f05-key-chrome {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3.5cqh;
+    }
+
+    .f05-key-label {
+      border: 0.4cqw solid #000000;
+      background: #ffffff;
+      box-shadow: 0.6cqw 0.6cqw 0 #000000;
+      padding: 1.05cqh 2.2cqw 0.85cqh;
+      font-size: 2.45cqw;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .f05-key-symbol {
+      display: grid;
+      place-items: center;
+      width: 10cqw;
+      height: 10cqw;
+      border: 0.45cqw solid #000000;
+      background: #99e885;
+      box-shadow: 0.65cqw 0.65cqw 0 #000000;
+      font-size: 7cqw;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .f05-small-side,
+    .f05-does-math {
+      display: block;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.055em;
+      line-height: 0.86;
+    }
+
+    .f05-small-side {
+      font-size: 12.5cqw;
+    }
+
+    .f05-does-math {
+      margin-top: 2.2cqh;
+      font-size: 8.3cqw;
+    }
+
+    .f05-key-burst {
+      position: absolute;
+      width: 7cqw;
+      height: 1.1cqh;
+      border: 0.35cqw solid #ffffff;
+      background: #fe90e8;
+      opacity: 0;
+    }
+
+    .f05-burst-a { top: 2cqh; left: 2cqw; transform: rotate(-28deg); }
+    .f05-burst-b { top: 1cqh; right: 1cqw; transform: rotate(31deg); }
+    .f05-burst-c { bottom: -2cqh; left: 8cqw; transform: rotate(18deg); }
+    .f05-burst-d { bottom: -1.3cqh; right: 7cqw; transform: rotate(-21deg); }
+
+    .f05-cta-lockup {
+      top: 4cqh;
+      left: 8cqw;
+      width: 68cqw;
+      height: 48cqh;
+      opacity: 0;
+    }
+
+    .f05-save-ticket {
+      position: absolute;
+      top: 0;
+      left: 6cqw;
+      width: 56cqw;
+      height: 13cqh;
+      display: grid;
+      place-items: center;
+      border: 0.7cqw solid #000000;
+      background: #f7cb46;
+      box-shadow: 1.35cqw 1.35cqw 0 #ffffff;
+      color: #000000;
+      font-size: 10.5cqw;
+      font-weight: 900;
+      letter-spacing: -0.055em;
+      line-height: 1;
+      text-transform: uppercase;
+      transform-origin: 50% 50%;
+      z-index: 3;
+    }
+
+    .f05-watch-card {
+      position: absolute;
+      top: 17cqh;
+      left: 2cqw;
+      width: 64cqw;
+      min-height: 10.5cqh;
+      display: grid;
+      place-items: center;
+      border: 0.55cqw solid #ffffff;
+      background: #fe90e8;
+      box-shadow: 1cqw 1cqw 0 #ffffff;
+      color: #000000;
+      padding: 2.2cqh 3cqw 1.8cqh;
+      box-sizing: border-box;
+      font-size: 5.7cqw;
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      line-height: 0.95;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .f05-brand {
+      position: absolute;
+      top: 31cqh;
+      left: 17cqw;
+      width: 34cqw;
+      height: 14cqh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 0.45cqw solid #ffffff;
+      background: #000000;
+      box-shadow: 0.85cqw 0.85cqw 0 #f7cb46;
+      padding: 1.2cqh 3cqw;
+      box-sizing: border-box;
+    }
+
+    .f05-brand img {
+      display: block;
+      width: auto;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .f05-cursor {
+      position: absolute;
+      top: 8.2cqh;
+      right: 3cqw;
+      color: #ffffff;
+      text-shadow: 0.42cqw 0.42cqw 0 #000000;
+      font-size: 10cqw;
+      font-weight: 900;
+      line-height: 1;
+      opacity: 0;
+      transform-origin: 50% 50%;
+      z-index: 7;
+    }
+
+    .f05-click-spark {
+      position: absolute;
+      top: 6.8cqh;
+      left: 13cqw;
+      width: 8cqw;
+      height: 8cqw;
+      border: 0.45cqw solid #ffffff;
+      background: #99e885;
+      clip-path: polygon(50% 0%, 61% 34%, 91% 19%, 72% 46%, 100% 50%, 72% 56%, 91% 84%, 61% 66%, 50% 100%, 39% 66%, 9% 84%, 28% 56%, 0 50%, 28% 46%, 9% 19%, 39% 34%);
+      opacity: 0;
+      z-index: 6;
+    }
+
+    .f05-footer-stripe {
+      position: absolute;
+      left: -2cqw;
+      top: 72cqh;
+      width: 37cqw;
+      height: 5.8cqh;
+      border: 0.5cqw solid #ffffff;
+      background: repeating-linear-gradient(
+        45deg,
+        #c0f7fe 0,
+        #c0f7fe 15px,
+        #000000 15px,
+        #000000 21px
+      );
+      transform: rotate(-5deg);
+      opacity: 0.9;
+    }
+  </style>
+
+  <div id="root" data-composition-id="05-memory-cta" data-width="1080" data-height="1920">
+    <div id="f05-ground" class="clip f05-ground" data-start="0" data-duration="5.419" data-track-index="0"></div>
+    <div class="f05-dot-grid"></div>
+    <div class="f05-close-frame"></div>
+
+    <div class="f05-header">
+      <div class="f05-eyebrow">Remember this</div>
+      <div class="f05-counter">05 / 05</div>
+    </div>
+
+    <div class="f05-morph-center">
+      <div class="f05-big-lockup">
+        <div class="f05-spotlight"></div>
+        <div class="f05-big-copy">
+          <strong data-layout-allow-overlap>Big side</strong>
+          <span data-layout-allow-overlap>Gets attention</span>
+        </div>
+        <div class="f05-flash">LOOK</div>
+      </div>
+
+      <div class="f05-math-key">
+        <div class="f05-key-chrome">
+          <div class="f05-key-label" data-layout-allow-overlap>The rule</div>
+          <div class="f05-key-symbol">=</div>
+        </div>
+        <span class="f05-small-side">Small side</span>
+        <span class="f05-does-math">Does the math</span>
+      </div>
+      <div class="f05-key-burst f05-burst-a"></div>
+      <div class="f05-key-burst f05-burst-b"></div>
+      <div class="f05-key-burst f05-burst-c"></div>
+      <div class="f05-key-burst f05-burst-d"></div>
+
+      <div class="f05-cta-lockup">
+        <div class="f05-save-ticket" data-layout-allow-overlap>Save this</div>
+        <div class="f05-watch-card">Watch the full breakdown</div>
+        <div class="f05-brand"><img src="assets/biznex-logo.png" alt="BizNex" /></div>
+        <div class="f05-cursor">↖</div>
+        <div class="f05-click-spark"></div>
+      </div>
+    </div>
+
+    <div class="f05-footer-stripe"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script>
+    (() => {
+      const root = document.querySelector('[data-composition-id="05-memory-cta"]');
+      const big = root.querySelector('.f05-big-lockup');
+      const spotlight = root.querySelector('.f05-spotlight');
+      const mathKey = root.querySelector('.f05-math-key');
+      const bursts = root.querySelectorAll('.f05-key-burst');
+      const cta = root.querySelector('.f05-cta-lockup');
+      const save = root.querySelector('.f05-save-ticket');
+      const cursor = root.querySelector('.f05-cursor');
+      const spark = root.querySelector('.f05-click-spark');
+      const tl = gsap.timeline({ paused: true });
+
+      tl.fromTo(big,
+        { y: 90, scale: 0.76, opacity: 0 },
+        { y: 0, scale: 1, opacity: 1, duration: 0.52, ease: 'back.out(1.5)' },
+        0
+      );
+      tl.fromTo(spotlight,
+        { scaleY: 0.08, opacity: 0, transformOrigin: '50% 0%' },
+        { scaleY: 1, opacity: 1, duration: 0.58, ease: 'power3.out' },
+        0.06
+      );
+      tl.fromTo(root.querySelector('.f05-flash'),
+        { scale: 0.2, rotation: -20, opacity: 0 },
+        { scale: 1, rotation: 9, opacity: 1, duration: 0.55, ease: 'back.out(2)' },
+        0.62
+      );
+      tl.to(spotlight,
+        { opacity: 0.16, scale: 0.92, duration: 0.58, ease: 'power2.inOut' },
+        1.12
+      );
+      tl.to(big,
+        { opacity: 0.22, scale: 0.92, duration: 0.52, ease: 'power2.inOut' },
+        1.2
+      );
+
+      tl.to(big,
+        { scale: 0.42, opacity: 0, duration: 0.28, ease: 'power2.in' },
+        1.72
+      );
+      tl.fromTo(mathKey,
+        { scale: 0.48, opacity: 0, rotation: 3 },
+        { scale: 1, opacity: 1, rotation: -1.5, duration: 0.64, ease: 'back.out(1.65)' },
+        1.72
+      );
+      tl.fromTo(root.querySelector('.f05-small-side'),
+        { x: -120, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.45, ease: 'power3.out' },
+        2.12
+      );
+      tl.fromTo(root.querySelector('.f05-does-math'),
+        { x: 120, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.45, ease: 'power3.out' },
+        2.52
+      );
+      tl.to(mathKey,
+        { x: 10, y: 10, scale: 0.94, boxShadow: '0.45cqw 0.45cqw 0 #ffffff', duration: 0.13, ease: 'power2.in' },
+        3.08
+      );
+      tl.to(mathKey,
+        { x: 0, y: 0, scale: 1, boxShadow: '1.55cqw 1.55cqw 0 #ffffff', duration: 0.3, ease: 'back.out(2)' },
+        3.21
+      );
+      tl.fromTo(bursts,
+        { scaleX: 0, opacity: 0 },
+        { scaleX: 1, opacity: 1, duration: 0.28, stagger: 0.055, ease: 'power2.out' },
+        3.14
+      );
+
+      tl.to(mathKey,
+        { scale: 0.45, opacity: 0, duration: 0.3, ease: 'power2.in' },
+        3.92
+      );
+      tl.to(bursts,
+        { opacity: 0, duration: 0.18, ease: 'power1.in' },
+        3.92
+      );
+      tl.fromTo(cta,
+        { scale: 0.48, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.54, ease: 'back.out(1.65)' },
+        3.92
+      );
+      tl.fromTo(root.querySelector('.f05-watch-card'),
+        { y: 70, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.42, ease: 'power3.out' },
+        4.12
+      );
+      tl.fromTo(root.querySelector('.f05-brand'),
+        { y: 55, scale: 0.72, opacity: 0 },
+        { y: 0, scale: 1, opacity: 1, duration: 0.48, ease: 'back.out(1.5)' },
+        4.22
+      );
+      tl.fromTo(cursor,
+        { x: 190, y: 130, opacity: 0 },
+        { x: -18, y: -12, opacity: 1, duration: 0.48, ease: 'power2.out' },
+        4.12
+      );
+      tl.to([save, cursor],
+        { scale: 0.9, x: '+=7', y: '+=7', duration: 0.11, ease: 'power2.in' },
+        4.62
+      );
+      tl.to([save, cursor],
+        { scale: 1, x: '-=7', y: '-=7', duration: 0.22, ease: 'back.out(2.4)' },
+        4.73
+      );
+      tl.fromTo(spark,
+        { scale: 0.15, rotation: -25, opacity: 0 },
+        { scale: 1, rotation: 8, opacity: 1, duration: 0.34, ease: 'back.out(2)' },
+        4.67
+      );
+      tl.to(save,
+        { backgroundColor: '#99e885', duration: 0.18, ease: 'none' },
+        4.74
+      );
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines['05-memory-cta'] = tl;
+    })();
+  </script>
+</template>

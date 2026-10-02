@@ -125,13 +125,22 @@ def short_sfx_command(
 def verify_shorts_delivery_command(
     video: Path = typer.Option(..., exists=True, dir_okay=False),
     thumbnail: Path = typer.Option(..., exists=True, dir_okay=False),
+    upload_package: Path | None = typer.Option(None, exists=True, dir_okay=False),
+    voice_manifest: Path | None = typer.Option(None, exists=True, dir_okay=False),
+    expected_voice: str | None = typer.Option(None),
     min_seconds: float = typer.Option(20, min=1),
     max_seconds: float = typer.Option(30, min=1),
 ) -> None:
     """Reject an incomplete Shorts handoff before it reaches the upload queue."""
     try:
         report = validate_short_delivery(
-            video, thumbnail, min_seconds=min_seconds, max_seconds=max_seconds
+            video,
+            thumbnail,
+            upload_package=upload_package,
+            voice_manifest=voice_manifest,
+            expected_voice=expected_voice,
+            min_seconds=min_seconds,
+            max_seconds=max_seconds,
         )
     except ShortsDeliveryError as exc:
         console.print(f"[bold red]Shorts delivery failed:[/] {exc}")

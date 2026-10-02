@@ -1,0 +1,446 @@
+<template>
+  <style>
+    #root {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      container-type: size;
+      color: #000000;
+      font-family: sans-serif;
+    }
+
+    .f03-ground {
+      position: absolute;
+      inset: 0;
+      background: #99e885;
+    }
+
+    .f03-dot-grid {
+      position: absolute;
+      inset: 0 0 17cqh 0;
+      opacity: 0.16;
+      background-image: radial-gradient(#000000 1.8px, transparent 1.8px);
+      background-size: 30px 30px;
+      pointer-events: none;
+    }
+
+    .f03-corner-stripes {
+      position: absolute;
+      top: 2.8cqh;
+      right: -3.5cqw;
+      width: 31cqw;
+      height: 8.5cqh;
+      border: 0.55cqw solid #000000;
+      background: repeating-linear-gradient(
+        -45deg,
+        #f7cb46 0,
+        #f7cb46 16px,
+        #000000 16px,
+        #000000 22px
+      );
+      box-shadow: 1cqw 1cqw 0 #000000;
+      transform: rotate(7deg);
+    }
+
+    .f03-header {
+      position: absolute;
+      top: 5.5cqh;
+      left: 5.6cqw;
+      right: 5.6cqw;
+      height: 5.2cqh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 4;
+    }
+
+    .f03-pill,
+    .f03-counter {
+      border: 0.42cqw solid #000000;
+      box-shadow: 0.65cqw 0.65cqw 0 #000000;
+      background: #ffffff;
+      padding: 1.35cqh 3.2cqw 1.15cqh;
+      font-size: 2.55cqw;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .f03-pill {
+      border-radius: 9999px;
+      background: #ffdc8b;
+    }
+
+    .f03-counter {
+      background: #c0f7fe;
+      padding-inline: 2.4cqw;
+    }
+
+    .f03-stage {
+      position: absolute;
+      top: 12.5cqh;
+      left: 3.7cqw;
+      width: 92.6cqw;
+      height: 67.5cqh;
+      z-index: 3;
+      transform-origin: 50% 47%;
+    }
+
+    .f03-ghost-card {
+      position: absolute;
+      top: 2.5cqh;
+      right: 2.4cqw;
+      width: 31cqw;
+      min-height: 8.7cqh;
+      display: grid;
+      place-items: center;
+      border: 0.48cqw solid #000000;
+      background: #ffffff;
+      box-shadow: 0.85cqw 0.85cqw 0 #000000;
+      opacity: 0.3;
+      z-index: 1;
+    }
+
+    .f03-ghost-number {
+      font-size: 8cqw;
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -0.055em;
+    }
+
+    .f03-ghost-x {
+      position: absolute;
+      top: -1.8cqh;
+      right: -2.4cqw;
+      display: grid;
+      place-items: center;
+      width: 8.4cqw;
+      height: 8.4cqw;
+      border: 0.45cqw solid #000000;
+      background: #fe90e8;
+      box-shadow: 0.65cqw 0.65cqw 0 #000000;
+      font-size: 5cqw;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .f03-hero-glow {
+      position: absolute;
+      top: 18cqh;
+      left: 8cqw;
+      width: 76cqw;
+      height: 38cqh;
+      background: #f7cb46;
+      border: 0.55cqw solid #000000;
+      opacity: 0;
+      z-index: 0;
+    }
+
+    .f03-hero {
+      position: absolute;
+      top: 17cqh;
+      left: 7cqw;
+      width: 73cqw;
+      height: 34.5cqh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 0.7cqw solid #000000;
+      background: #ffffff;
+      box-shadow: 1.35cqw 1.35cqw 0 #000000;
+      padding: 4.2cqh 5.2cqw 4.7cqh;
+      box-sizing: border-box;
+      z-index: 3;
+    }
+
+    .f03-card-tag {
+      align-self: flex-start;
+      border: 0.4cqw solid #000000;
+      background: #c0f7fe;
+      box-shadow: 0.55cqw 0.55cqw 0 #000000;
+      padding: 1cqh 2.4cqw 0.8cqh;
+      font-size: 2.35cqw;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .f03-value-box {
+      position: relative;
+      height: 16.5cqh;
+      margin-top: 2.5cqh;
+      display: flex;
+      align-items: center;
+    }
+
+    .f03-short-value,
+    .f03-count-value {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      font-size: 18.5cqw;
+      font-weight: 900;
+      line-height: 0.83;
+      letter-spacing: -0.075em;
+      white-space: nowrap;
+      transform: translateY(-50%);
+      transform-origin: 0 50%;
+    }
+
+    .f03-count-value {
+      font-size: 14.3cqw;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .f03-pv {
+      display: inline-block;
+      margin-left: 1.1cqw;
+      padding: 0.65cqh 1.5cqw 0.45cqh;
+      border: 0.4cqw solid #000000;
+      background: #ffdc8b;
+      box-shadow: 0.55cqw 0.55cqw 0 #000000;
+      font-size: 5.8cqw;
+      font-weight: 900;
+      letter-spacing: 0;
+      vertical-align: 0.28em;
+    }
+
+    .f03-label {
+      position: absolute;
+      left: 8cqw;
+      top: 54.4cqh;
+      width: 68cqw;
+      border: 0.55cqw solid #000000;
+      background: #000000;
+      color: #ffffff;
+      box-shadow: 1cqw 1cqw 0 #f7cb46;
+      padding: 1.9cqh 3cqw 1.55cqh;
+      box-sizing: border-box;
+      font-size: 6.2cqw;
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      line-height: 0.95;
+      text-align: center;
+      text-transform: uppercase;
+      z-index: 4;
+    }
+
+    .f03-bracket {
+      position: absolute;
+      top: 17.7cqh;
+      right: 0.3cqw;
+      width: 10cqw;
+      height: 34cqh;
+      overflow: visible;
+      z-index: 5;
+    }
+
+    .f03-bracket-path {
+      fill: none;
+      stroke: #000000;
+      stroke-width: 8;
+      stroke-linecap: square;
+      stroke-linejoin: miter;
+      stroke-dasharray: 560;
+      stroke-dashoffset: 560;
+    }
+
+    .f03-check {
+      position: absolute;
+      top: 48.2cqh;
+      left: 2cqw;
+      width: 13.5cqw;
+      height: 13.5cqw;
+      display: grid;
+      place-items: center;
+      border: 0.55cqw solid #000000;
+      background: #99e885;
+      box-shadow: 0.9cqw 0.9cqw 0 #000000;
+      color: #000000;
+      font-size: 9cqw;
+      font-weight: 900;
+      line-height: 1;
+      opacity: 0;
+      z-index: 7;
+    }
+
+    .f03-this-one {
+      position: absolute;
+      top: 61.5cqh;
+      right: 4cqw;
+      border: 0.5cqw solid #000000;
+      background: #f7cb46;
+      box-shadow: 0.9cqw 0.9cqw 0 #000000;
+      padding: 1.45cqh 4.2cqw 1.2cqh;
+      font-size: 5cqw;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      text-transform: uppercase;
+      opacity: 0;
+      z-index: 8;
+    }
+
+    .f03-proofline {
+      position: absolute;
+      left: 5cqw;
+      right: 5cqw;
+      bottom: 0.6cqh;
+      height: 1.1cqh;
+      border: 0.35cqw solid #000000;
+      background: #fe90e8;
+      box-shadow: 0.5cqw 0.5cqw 0 #000000;
+    }
+
+    .f03-star {
+      position: absolute;
+      left: -1.5cqw;
+      top: 26cqh;
+      width: 14cqw;
+      height: 14cqw;
+      display: grid;
+      place-items: center;
+      border: 0.45cqw solid #000000;
+      background: #fe90e8;
+      clip-path: polygon(50% 0%, 61% 34%, 91% 19%, 72% 46%, 100% 50%, 72% 56%, 91% 84%, 61% 66%, 50% 100%, 39% 66%, 9% 84%, 28% 56%, 0 50%, 28% 46%, 9% 19%, 39% 34%);
+      font-size: 3.4cqw;
+      font-weight: 900;
+      opacity: 0;
+      z-index: 6;
+    }
+  </style>
+
+  <div id="root" data-composition-id="03-smaller-reveal" data-width="1080" data-height="1920" data-duration="7.085">
+    <div id="f03-ground" class="clip f03-ground" data-start="0" data-duration="7.085" data-track-index="0"></div>
+    <div class="f03-dot-grid"></div>
+    <div class="f03-corner-stripes"></div>
+
+    <div class="f03-header">
+      <div class="f03-pill">Rule reveal</div>
+      <div class="f03-counter">03 / 05</div>
+    </div>
+
+    <div class="f03-stage">
+      <div class="f03-ghost-card">
+        <div class="f03-ghost-number">1.9M</div>
+        <div class="f03-ghost-x">×</div>
+      </div>
+
+      <div class="f03-hero-glow"></div>
+
+      <div class="f03-hero">
+        <div class="f03-card-tag">Measured side</div>
+        <div class="f03-value-box">
+          <div class="f03-short-value">700K</div>
+          <div class="f03-count-value"><span class="f03-count-number">0</span><span class="f03-pv">PV</span></div>
+        </div>
+      </div>
+
+      <svg class="f03-bracket" viewBox="0 0 100 700" aria-hidden="true">
+        <path class="f03-bracket-path" d="M84 16 H28 V684 H84 M28 350 H5" />
+      </svg>
+
+      <div class="f03-label">Daily smaller leg</div>
+      <div class="f03-check">✓</div>
+      <div class="f03-this-one">This one</div>
+      <div class="f03-star">PV</div>
+      <div class="f03-proofline"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script>
+    (() => {
+      const root = document.querySelector('[data-composition-id="03-smaller-reveal"]');
+      const numberNode = root.querySelector('.f03-count-number');
+      const counter = { value: 0 };
+      const tl = gsap.timeline({ paused: true });
+
+      tl.fromTo(root.querySelector('.f03-ghost-card'),
+        { x: -240, y: 260, scale: 1.5, opacity: 0.75, rotation: -2 },
+        { x: 0, y: 0, scale: 1, opacity: 0.3, rotation: 2, duration: 1.22, ease: 'power3.inOut' },
+        0
+      );
+      tl.fromTo(root.querySelector('.f03-hero'),
+        { x: 270, scale: 0.7, opacity: 0, rotation: 5 },
+        { x: 0, scale: 1, opacity: 1, rotation: -1.4, duration: 0.92, ease: 'back.out(1.45)' },
+        0.06
+      );
+      tl.fromTo(root.querySelector('.f03-short-value'),
+        { scale: 0.82, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.52, ease: 'power3.out' },
+        0.2
+      );
+      tl.fromTo(root.querySelector('.f03-hero-glow'),
+        { scale: 0.72, opacity: 0 },
+        { scale: 1, opacity: 0.95, duration: 0.95, ease: 'power2.out' },
+        0.35
+      );
+
+      tl.to(root.querySelector('.f03-short-value'),
+        { opacity: 0, scale: 1.08, duration: 0.12, ease: 'power1.in' },
+        1.28
+      );
+      tl.set(root.querySelector('.f03-count-value'), { autoAlpha: 1 }, 1.34);
+      tl.to(counter, {
+        value: 700000,
+        duration: 2.55,
+        ease: 'power3.out',
+        onUpdate: () => {
+          numberNode.textContent = Math.round(counter.value).toLocaleString('en-US');
+        }
+      }, 1.34);
+      tl.fromTo(root.querySelector('.f03-count-value'),
+        { scale: 0.72 },
+        { scale: 1, duration: 2.55, ease: 'power3.out' },
+        1.34
+      );
+      tl.to(root.querySelector('.f03-bracket-path'),
+        { strokeDashoffset: 0, duration: 1.55, ease: 'power2.inOut' },
+        1.55
+      );
+      tl.fromTo(root.querySelector('.f03-label'),
+        { y: 70, opacity: 0, scale: 0.94 },
+        { y: 0, opacity: 1, scale: 1, duration: 0.72, ease: 'back.out(1.35)' },
+        2.95
+      );
+      tl.fromTo(root.querySelector('.f03-star'),
+        { scale: 0.15, rotation: -30, opacity: 0 },
+        { scale: 1, rotation: -8, opacity: 1, duration: 0.68, ease: 'back.out(2)' },
+        3.75
+      );
+
+      tl.fromTo(root.querySelector('.f03-check'),
+        { scale: 0.18, rotation: -18, opacity: 0 },
+        { scale: 1, rotation: -6, opacity: 1, duration: 0.58, ease: 'back.out(2.2)' },
+        4.8
+      );
+      tl.fromTo(root.querySelector('.f03-this-one'),
+        { x: 130, scale: 0.72, opacity: 0, rotation: 5 },
+        { x: 0, scale: 1, opacity: 1, rotation: 2, duration: 0.62, ease: 'back.out(1.8)' },
+        4.96
+      );
+      tl.fromTo(root.querySelector('.f03-proofline'),
+        { scaleX: 0, transformOrigin: '0% 50%' },
+        { scaleX: 1, duration: 0.8, ease: 'power2.out' },
+        5.28
+      );
+      tl.to(root.querySelector('.f03-stage'),
+        { scale: 1.025, duration: 0.75, ease: 'power2.out' },
+        4.65
+      );
+      tl.to(root.querySelector('.f03-stage'),
+        { scale: 1.005, duration: 0.85, ease: 'power2.inOut' },
+        5.4
+      );
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines['03-smaller-reveal'] = tl;
+    })();
+  </script>
+</template>

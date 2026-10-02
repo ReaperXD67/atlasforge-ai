@@ -1,0 +1,451 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Inter";
+      src: url("assets/fonts/Inter-Variable.ttf") format("truetype");
+      font-weight: 100 900;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "Space Grotesk";
+      src: url("assets/fonts/SpaceGrotesk-Variable.ttf") format("truetype");
+      font-weight: 300 700;
+      font-style: normal;
+    }
+
+    #root {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      container-type: size;
+      color: #000000;
+      isolation: isolate;
+      perspective: 1500px;
+    }
+
+    .\30 1-two-numbers-ground {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background-color: #ffdc8b;
+      background-image:
+        radial-gradient(circle at center, rgba(0, 0, 0, 0.16) 0 1.3px, transparent 1.5px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0));
+      background-size: 24px 24px, 100% 100%;
+      z-index: 0;
+    }
+
+    .\30 1-two-numbers-ground::before {
+      content: "";
+      position: absolute;
+      top: -5cqh;
+      right: -12cqw;
+      width: 54cqw;
+      height: 24cqh;
+      border: 0.37cqw solid #000000;
+      background: repeating-linear-gradient(45deg, #000000 0 8px, #fe90e8 8px 22px);
+      rotate: 8deg;
+    }
+
+    .\30 1-two-numbers-label {
+      position: absolute;
+      top: 4.4cqh;
+      left: 7.5cqw;
+      z-index: 5;
+      padding: 1.2cqh 4.6cqw 1cqh;
+      border: 0.28cqw solid #000000;
+      border-radius: 9999px;
+      background: #99e885;
+      box-shadow: 0.55cqw 0.55cqw 0 #000000;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 3.35cqw;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transform-origin: 50% 50%;
+    }
+
+    .\30 1-two-numbers-heading {
+      position: absolute;
+      top: 9.8cqh;
+      left: 7.5cqw;
+      width: 85cqw;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      font-family: "Inter", sans-serif;
+      font-size: 9.35cqw;
+      font-weight: 900;
+      line-height: 0.87;
+      letter-spacing: -0.045em;
+      text-transform: uppercase;
+    }
+
+    .\30 1-two-numbers-heading-word {
+      display: inline-block;
+      padding: 0 1.6cqw;
+      background: #fffdf5;
+      border: 0.37cqw solid #000000;
+      box-shadow: 0.75cqw 0.75cqw 0 #000000;
+      transform-origin: 0 50%;
+    }
+
+    .\30 1-two-numbers-heading-word:nth-child(2) {
+      margin-top: 0.7cqh;
+      margin-left: 7cqw;
+      background: #c0f7fe;
+    }
+
+    .\30 1-two-numbers-heading-word:nth-child(3) {
+      margin-top: 0.7cqh;
+      margin-left: 1.5cqw;
+      background: #fe90e8;
+    }
+
+    .\30 1-two-numbers-star {
+      position: absolute;
+      top: 5.2cqh;
+      right: 3.6cqw;
+      z-index: 6;
+      width: 17cqw;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      clip-path: polygon(50% 0%, 61% 30%, 88% 13%, 72% 40%, 100% 50%, 70% 61%, 88% 88%, 60% 72%, 50% 100%, 39% 71%, 12% 88%, 29% 60%, 0% 50%, 30% 39%, 12% 13%, 40% 30%);
+      background: #f7cb46;
+      font-family: "Inter", sans-serif;
+      font-size: 8cqw;
+      font-weight: 900;
+      rotate: 8deg;
+    }
+
+    .\30 1-two-numbers-stage {
+      position: absolute;
+      top: 25.2cqh;
+      left: 4.6cqw;
+      width: 90.8cqw;
+      height: 40.2cqh;
+      z-index: 3;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 7.4cqw;
+      transform-style: preserve-3d;
+      perspective: 1500px;
+    }
+
+    .\30 1-two-numbers-glow {
+      position: absolute;
+      top: 31cqh;
+      width: 54cqw;
+      height: 30cqh;
+      z-index: 1;
+      opacity: 0;
+      pointer-events: none;
+      filter: blur(42px);
+      transform-origin: 50% 50%;
+    }
+
+    .\30 1-two-numbers-glow-left {
+      left: -5cqw;
+      background: radial-gradient(ellipse at center, rgba(254, 144, 232, 0.88), rgba(254, 144, 232, 0));
+    }
+
+    .\30 1-two-numbers-glow-right {
+      right: -5cqw;
+      background: radial-gradient(ellipse at center, rgba(0, 132, 151, 0.56), rgba(192, 247, 254, 0));
+    }
+
+    .\30 1-two-numbers-card {
+      position: relative;
+      width: 39.8cqw;
+      height: 35.6cqh;
+      padding: 2.5cqh 3cqw 2.3cqh;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: visible;
+      border: 0.4cqw solid #000000;
+      background: #ffffff;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    .\30 1-two-numbers-card-left {
+      box-shadow: -0.85cqw 0.85cqw 0 #000000;
+    }
+
+    .\30 1-two-numbers-card-right {
+      box-shadow: 0.85cqw 0.85cqw 0 #000000;
+    }
+
+    .\30 1-two-numbers-side-tag {
+      position: absolute;
+      top: 2cqh;
+      padding: 0.7cqh 2.6cqw 0.55cqh;
+      border: 0.28cqw solid #000000;
+      border-radius: 9999px;
+      background: #fffdf5;
+      box-shadow: 0.45cqw 0.45cqw 0 #000000;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.65cqw;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transform-origin: 50% 50%;
+    }
+
+    .\30 1-two-numbers-card-left .\30 1-two-numbers-side-tag {
+      right: -4.5cqw;
+      background: #fe90e8;
+    }
+
+    .\30 1-two-numbers-card-right .\30 1-two-numbers-side-tag {
+      left: -4.5cqw;
+      background: #c0f7fe;
+    }
+
+    .\30 1-two-numbers-tower-shell {
+      position: relative;
+      width: 100%;
+      height: 22.5cqh;
+      overflow: hidden;
+      border: 0.3cqw solid #000000;
+      background-color: #fffdf5;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.09) 0.2cqh, transparent 0.2cqh);
+      background-size: 100% 4cqh;
+    }
+
+    .\30 1-two-numbers-tower-fill {
+      position: absolute;
+      inset: 0;
+      transform-origin: 50% 100%;
+    }
+
+    .\30 1-two-numbers-card-left .\30 1-two-numbers-tower-fill {
+      background: #fe90e8;
+    }
+
+    .\30 1-two-numbers-card-right .\30 1-two-numbers-tower-fill {
+      background: #c0f7fe;
+    }
+
+    .\30 1-two-numbers-number {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 1.2cqh;
+      font-family: "Inter", sans-serif;
+      font-size: 8.15cqw;
+      font-weight: 900;
+      line-height: 0.88;
+      letter-spacing: -0.055em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .\30 1-two-numbers-number-unit {
+      display: block;
+      margin-top: 0.65cqh;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.7cqw;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .\30 1-two-numbers-vs {
+      position: absolute;
+      left: 50%;
+      top: 52.2cqh;
+      z-index: 8;
+      width: 15cqw;
+      aspect-ratio: 1;
+      margin-left: -7.5cqw;
+      display: grid;
+      place-items: center;
+      border: 0.4cqw solid #000000;
+      background: #f7cb46;
+      box-shadow: 0.7cqw 0.7cqw 0 #000000;
+      font-family: "Inter", sans-serif;
+      font-size: 6.2cqw;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      transform-origin: 50% 50%;
+    }
+
+    .\30 1-two-numbers-choice-ring {
+      position: absolute;
+      top: 31.5cqh;
+      z-index: 9;
+      width: 44cqw;
+      height: 33.2cqh;
+      box-sizing: border-box;
+      border: 1.35cqw solid #f7cb46;
+      border-radius: 50%;
+      opacity: 0;
+      transform-origin: 50% 50%;
+      pointer-events: none;
+    }
+
+    .\30 1-two-numbers-choice-ring-left {
+      left: 1.5cqw;
+      rotate: -5deg;
+    }
+
+    .\30 1-two-numbers-choice-ring-right {
+      right: 1.5cqw;
+      rotate: 5deg;
+    }
+
+    .\30 1-two-numbers-nexa {
+      position: absolute;
+      left: 1cqw;
+      top: 60cqh;
+      z-index: 11;
+      width: 31cqw;
+      height: 20.8cqh;
+      object-fit: contain;
+      object-position: left bottom;
+      filter: drop-shadow(0.55cqw 0.55cqw 0 #000000);
+      transform-origin: 50% 100%;
+    }
+
+    .\30 1-two-numbers-pick {
+      position: absolute;
+      left: 35cqw;
+      top: 70.2cqh;
+      z-index: 12;
+      width: 56cqw;
+      padding: 1.75cqh 2cqw 1.45cqh;
+      box-sizing: border-box;
+      border: 0.4cqw solid #000000;
+      background: #f7cb46;
+      box-shadow: 0.8cqw 0.8cqw 0 #000000;
+      font-family: "Inter", sans-serif;
+      font-size: 7.15cqw;
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.035em;
+      text-align: center;
+      text-transform: uppercase;
+      transform-origin: 50% 50%;
+    }
+  </style>
+
+  <div id="root" data-composition-id="01-two-numbers" data-duration="8.948" data-width="1080" data-height="1920">
+    <div id="f01-ground" class="clip 01-two-numbers-ground" data-start="0" data-duration="8.948" data-track-index="0"></div>
+
+    <div class="01-two-numbers-glow 01-two-numbers-glow-left"></div>
+    <div class="01-two-numbers-glow 01-two-numbers-glow-right"></div>
+
+    <div class="01-two-numbers-label">Quick quiz</div>
+    <div class="01-two-numbers-heading" aria-label="Which side decides?">
+      <span class="01-two-numbers-heading-word">Which</span>
+      <span class="01-two-numbers-heading-word">side</span>
+      <span class="01-two-numbers-heading-word">decides?</span>
+    </div>
+    <div class="01-two-numbers-star" aria-hidden="true">?</div>
+
+    <div class="01-two-numbers-stage">
+      <div class="01-two-numbers-card 01-two-numbers-card-left">
+        <div class="01-two-numbers-side-tag">Leg A</div>
+        <div class="01-two-numbers-tower-shell">
+          <div class="01-two-numbers-tower-fill 01-two-numbers-tower-fill-left"></div>
+        </div>
+        <div class="01-two-numbers-number">
+          <span id="f01-left-count">0.0M</span>
+          <span class="01-two-numbers-number-unit">PV</span>
+        </div>
+      </div>
+
+      <div class="01-two-numbers-card 01-two-numbers-card-right">
+        <div class="01-two-numbers-side-tag">Leg B</div>
+        <div class="01-two-numbers-tower-shell">
+          <div class="01-two-numbers-tower-fill 01-two-numbers-tower-fill-right"></div>
+        </div>
+        <div class="01-two-numbers-number">
+          <span id="f01-right-count">0K</span>
+          <span class="01-two-numbers-number-unit">PV</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="01-two-numbers-vs">VS</div>
+    <div class="01-two-numbers-choice-ring 01-two-numbers-choice-ring-left"></div>
+    <div class="01-two-numbers-choice-ring 01-two-numbers-choice-ring-right"></div>
+    <img class="01-two-numbers-nexa" src="assets/nexa-surprised.png" alt="Nexa reacting to the two choices" />
+    <div class="01-two-numbers-pick">Pick one</div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      const label = document.querySelector(".\\30 1-two-numbers-label");
+      const words = gsap.utils.toArray(".\\30 1-two-numbers-heading-word");
+      const leftCard = document.querySelector(".\\30 1-two-numbers-card-left");
+      const rightCard = document.querySelector(".\\30 1-two-numbers-card-right");
+      const leftFill = document.querySelector(".\\30 1-two-numbers-tower-fill-left");
+      const rightFill = document.querySelector(".\\30 1-two-numbers-tower-fill-right");
+      const leftCount = document.getElementById("f01-left-count");
+      const rightCount = document.getElementById("f01-right-count");
+      const leftTag = leftCard.querySelector(".\\30 1-two-numbers-side-tag");
+      const rightTag = rightCard.querySelector(".\\30 1-two-numbers-side-tag");
+      const rings = gsap.utils.toArray(".\\30 1-two-numbers-choice-ring");
+      const glows = gsap.utils.toArray(".\\30 1-two-numbers-glow");
+      const leftValue = { value: 0 };
+      const rightValue = { value: 0 };
+      const glowPhase = { value: 0 };
+
+      tl.fromTo(label, { scale: 0.72, opacity: 0, y: -28 }, { scale: 1, opacity: 1, y: 0, duration: 0.42, ease: "power3.out" }, 0.04);
+      words.forEach((word, index) => {
+        tl.fromTo(word, { opacity: 0, y: -70, x: index === 1 ? 34 : -24 }, { opacity: 1, y: 0, x: 0, duration: 0.46, ease: "power3.out" }, 0.14 + index * 0.18);
+      });
+      tl.fromTo(".\\30 1-two-numbers-star", { opacity: 0, scale: 0.35, rotation: -16 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.55, ease: "power3.out" }, 0.48);
+
+      tl.fromTo(glows, { opacity: 0, scale: 0.82 }, { opacity: 0.22, scale: 1, duration: 0.9, stagger: 0.16, ease: "power2.out" }, 1.12);
+      tl.fromTo(leftCard, { x: -410, rotateY: 24, scale: 0.86, opacity: 0 }, { x: 0, rotateY: 13, scale: 1, opacity: 1, duration: 0.92, ease: "power3.out" }, 1.25);
+      tl.fromTo(rightCard, { x: 410, rotateY: -24, scale: 0.86, opacity: 0 }, { x: 0, rotateY: -13, scale: 1, opacity: 1, duration: 0.92, ease: "power3.out" }, 1.46);
+
+      tl.fromTo(leftFill, { scaleY: 0 }, { scaleY: 1, duration: 1.48, ease: "power3.out" }, 1.72);
+      tl.to(leftValue, { value: 1.9, duration: 1.48, ease: "power2.out", onUpdate: () => { leftCount.textContent = `${leftValue.value.toFixed(1)}M`; } }, 1.72);
+      tl.fromTo(rightFill, { scaleY: 0 }, { scaleY: 0.37, duration: 1.46, ease: "power3.out" }, 3.35);
+      tl.to(rightValue, { value: 700, duration: 1.46, ease: "power2.out", onUpdate: () => { rightCount.textContent = `${Math.round(rightValue.value)}K`; } }, 3.35);
+
+      tl.fromTo(".\\30 1-two-numbers-vs", { scale: 0, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.54, ease: "power3.out" }, 4.82);
+      tl.fromTo(leftTag, { scale: 0, opacity: 0, y: 18 }, { scale: 1, opacity: 1, y: 0, duration: 0.46, ease: "power3.out", overwrite: "auto", immediateRender: false }, 5.06);
+      tl.fromTo(rightTag, { scale: 0, opacity: 0, y: 18 }, { scale: 1, opacity: 1, y: 0, duration: 0.46, ease: "power3.out", overwrite: "auto", immediateRender: false }, 5.32);
+
+      tl.to(leftCard, { y: -3, duration: 0.32, ease: "sine.inOut" }, 5.18);
+      tl.to(rightCard, { y: 3, duration: 0.32, ease: "sine.inOut" }, 5.18);
+      tl.to(leftCard, { y: 0, duration: 0.32, ease: "sine.inOut" }, 5.5);
+      tl.to(rightCard, { y: 0, duration: 0.32, ease: "sine.inOut" }, 5.5);
+      tl.to(glowPhase, {
+        value: Math.PI * 2,
+        duration: 3.35,
+        ease: "none",
+        onUpdate: () => {
+          const wave = Math.sin(glowPhase.value);
+          glows[0].style.opacity = String(0.22 + wave * 0.025);
+          glows[1].style.opacity = String(0.22 - wave * 0.025);
+        }
+      }, 2.2);
+
+      rings.forEach((ring, index) => {
+        tl.fromTo(ring, { opacity: 0, scale: 0.72 }, { opacity: 0.92, scale: 1.04, duration: 0.34, ease: "power3.out" }, 5.9 + index * 0.1);
+        tl.to(ring, { opacity: 0.7, scale: 1, duration: 0.28, ease: "power2.out" }, 6.24 + index * 0.1);
+      });
+      tl.fromTo(".\\30 1-two-numbers-nexa", { opacity: 0, x: -90, y: 28 }, { opacity: 1, x: 0, y: 0, duration: 0.66, ease: "power3.out" }, 6.12);
+      tl.fromTo(".\\30 1-two-numbers-pick", { opacity: 0, scale: 0.74, y: 34 }, { opacity: 1, scale: 1, y: 0, duration: 0.58, ease: "power3.out" }, 6.55);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["01-two-numbers"] = tl;
+    })();
+  </script>
+</template>

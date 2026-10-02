@@ -29,6 +29,12 @@ def extract_hyperframes_narration(script_markdown: str) -> str:
     return narration
 
 
+class VoiceLockSpec(BaseModel):
+    provider: str = Field(min_length=2, max_length=40)
+    id: str = Field(min_length=2, max_length=80)
+    speed: float = Field(ge=0.7, le=1.5)
+
+
 class ShortExperimentSpec(BaseModel):
     episode: str = Field(min_length=3, max_length=80)
     title: str = Field(min_length=10, max_length=100)
@@ -46,6 +52,7 @@ class ShortExperimentSpec(BaseModel):
     packaging: dict[str, str]
     success_thresholds: dict[str, float] = Field(min_length=1)
     sources: list[str] = Field(min_length=1)
+    voice: VoiceLockSpec | None = None
 
     @model_validator(mode="after")
     def validate_vertical_delivery(self) -> ShortExperimentSpec:
@@ -78,6 +85,7 @@ def build_short_experiment_manifest(spec: ShortExperimentSpec) -> dict[str, obje
         },
         "hypothesis": spec.hypothesis,
         "packaging": spec.packaging,
+        "voice_lock": spec.voice.model_dump() if spec.voice else None,
         "measurement": {
             "primary_metric": spec.primary_metric,
             "secondary_metrics": spec.secondary_metrics,

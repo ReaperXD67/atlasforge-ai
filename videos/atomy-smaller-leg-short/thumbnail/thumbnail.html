@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=1080,height=1920" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; }
+    body {
+      position: relative;
+      color: #000;
+      background: #f7cb46;
+      font-family: Arial Black, Inter, Arial, sans-serif;
+    }
+    body::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image: radial-gradient(#000 3px, transparent 3px);
+      background-size: 34px 34px;
+      opacity: .12;
+    }
+    .topbar {
+      position: absolute; z-index: 3; left: 58px; right: 58px; top: 62px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .pill, .brand {
+      border: 5px solid #000; background: #fff; padding: 18px 27px;
+      box-shadow: 9px 9px 0 #000; font: 900 29px/1 Arial, sans-serif;
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+    .brand { background: #c0f7fe; }
+    h1 {
+      position: absolute; z-index: 3; left: 54px; right: 54px; top: 205px;
+      margin: 0; font-size: 132px; line-height: .91; letter-spacing: -.07em;
+      text-transform: uppercase;
+      text-shadow: 8px 8px 0 #fff;
+    }
+    .trap {
+      display: inline-block; margin-top: 20px; padding: 7px 22px 18px;
+      background: #fe90e8; border: 7px solid #000; box-shadow: 12px 12px 0 #000;
+      transform: rotate(-3deg); text-shadow: none;
+    }
+    .arena {
+      position: absolute; z-index: 2; left: 54px; right: 54px; top: 735px; height: 620px;
+      display: flex; gap: 32px; align-items: flex-end;
+    }
+    .tower {
+      position: relative; flex: 1; border: 7px solid #000; box-shadow: 12px 12px 0 #000;
+      display: flex; flex-direction: column; justify-content: flex-start; align-items: center;
+      padding-top: 52px; font-size: 84px; line-height: .9; letter-spacing: -.05em;
+      background: #fff;
+    }
+    .tower small { font: 900 34px/1 Arial, sans-serif; letter-spacing: .08em; margin-top: 16px; }
+    .big { height: 600px; background: #c0f7fe; }
+    .small { height: 420px; background: #99e885; transform: rotate(2deg); }
+    .wrong {
+      position: absolute; left: 42px; top: 270px; transform: rotate(-16deg);
+      padding: 11px 20px; background: #ff3b30; color: #fff; border: 6px solid #000;
+      font-size: 45px; letter-spacing: .03em;
+    }
+    .arrow {
+      position: absolute; z-index: 5; right: 220px; top: 1180px;
+      width: 220px; height: 220px; border-right: 26px solid #000; border-bottom: 26px solid #000;
+      transform: rotate(38deg);
+    }
+    .nexa {
+      position: absolute; z-index: 4; width: 570px; left: -72px; bottom: -46px;
+      filter: drop-shadow(12px 12px 0 #fff);
+    }
+    .answer {
+      position: absolute; z-index: 6; right: 46px; bottom: 118px; width: 565px;
+      background: #000; color: #fff; border: 7px solid #fff; box-shadow: 15px 15px 0 #fe90e8;
+      padding: 34px 30px 38px; transform: rotate(-2deg);
+      font-size: 61px; line-height: .95; letter-spacing: -.04em; text-transform: uppercase;
+    }
+    .answer span { color: #f7cb46; font-size: 84px; }
+    .burst {
+      position: absolute; z-index: 1; right: -95px; top: 560px; width: 340px; height: 340px;
+      background: #fff; border: 7px solid #000;
+      clip-path: polygon(50% 0,61% 29%,85% 15%,71% 39%,100% 50%,71% 61%,85% 85%,61% 71%,50% 100%,39% 71%,15% 85%,29% 61%,0 50%,29% 39%,15% 15%,39% 29%);
+      transform: rotate(12deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar"><div class="pill">Atomy PV Quiz</div><div class="brand">BizNex</div></div>
+  <h1>The bigger leg?<br><span class="trap">That's the trap.</span></h1>
+  <div class="burst"></div>
+  <div class="arena">
+    <div class="tower big">1.9M<small>PV</small><div class="wrong">NOT THIS</div></div>
+    <div class="tower small">700K<small>PV</small></div>
+  </div>
+  <div class="arrow"></div>
+  <img class="nexa" src="../assets/nexa-surprised.png" alt="Nexa reacting to the two PV legs" />
+  <div class="answer">Watch the<br><span>smaller leg</span></div>
+</body>
+</html>

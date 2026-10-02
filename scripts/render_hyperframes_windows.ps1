@@ -16,6 +16,10 @@ param(
 
     [string]$UploadPackage,
 
+    [string]$VoiceManifest,
+
+    [string]$ExpectedVoice,
+
     [switch]$CheckFirst,
 
     [ValidateRange(5, 60)]
@@ -143,16 +147,30 @@ try {
             throw "-Thumbnail is required when -VerifyShorts is enabled."
         }
         $thumbnailPath = if ([System.IO.Path]::IsPathRooted($Thumbnail)) { $Thumbnail } else { Join-Path $projectPath $Thumbnail }
+        $uploadPackagePath = if ($UploadPackage) { if ([System.IO.Path]::IsPathRooted($UploadPackage)) { $UploadPackage } else { Join-Path $projectPath $UploadPackage } } else { $null }
+        $voiceManifestPath = if ($VoiceManifest) { if ([System.IO.Path]::IsPathRooted($VoiceManifest)) { $VoiceManifest } else { Join-Path $projectPath $VoiceManifest } } else { $null }
+        if ($ExpectedVoice -and -not $voiceManifestPath) {
+            throw "-VoiceManifest is required when -ExpectedVoice is set."
+        }
         $repositoryPath = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
         $pythonPath = Join-Path $repositoryPath ".venv\Scripts\python.exe"
         if (-not (Test-Path -LiteralPath $pythonPath -PathType Leaf)) {
             throw "Python environment not found: $pythonPath"
         }
-        & $pythonPath -m daily_video_factory.cli verify-shorts-delivery `
-            --video $outputPath `
-            --thumbnail $thumbnailPath `
-            --min-seconds $MinDuration `
-            --max-seconds $MaxDuration
+        $verifyShortArgs = @(
+            "-m", "daily_video_factory.cli", "verify-shorts-delivery",
+            "--video", $outputPath,
+            "--thumbnail", $thumbnailPath,
+            "--min-seconds", $MinDuration,
+            "--max-seconds", $MaxDuration
+        )
+        if ($uploadPackagePath) {
+            $verifyShortArgs += @("--upload-package", $uploadPackagePath)
+        }
+        if ($voiceManifestPath) {
+            $verifyShortArgs += @("--voice-manifest", $voiceManifestPath, "--expected-voice", $ExpectedVoice)
+        }
+        & $pythonPath @verifyShortArgs
         if ($LASTEXITCODE -ne 0) {
             throw "Shorts delivery verification failed."
         }

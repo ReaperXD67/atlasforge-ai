@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "preferences": {
+    "voice": {
+      "value": "af_heart",
+      "confirmed_in": [
+        "atomy-smaller-leg-short"
+      ],
+      "updated_at": "2026-10-02T15:47:32.880Z"
+    },
+    "destination": {
+      "value": "youtube-shorts",
+      "confirmed_in": [
+        "atomy-smaller-leg-short"
+      ],
+      "updated_at": "2026-10-02T15:47:32.940Z"
+    },
+    "aspect": {
+      "value": "1080x1920",
+      "confirmed_in": [
+        "atomy-smaller-leg-short"
+      ],
+      "updated_at": "2026-10-02T15:47:33.001Z"
+    }
+  },
+  "sightings": {}
+}

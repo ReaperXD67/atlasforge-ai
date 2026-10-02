@@ -78,6 +78,7 @@ def test_short_manifest_is_deterministic_and_written(tmp_path: Path) -> None:
         "packaging": {"hook": "HALF THE PACKS. MORE PV?"},
         "success_thresholds": {"average_percentage_viewed": 80},
         "sources": ["https://example.com/source"],
+        "voice": {"provider": "kokoro", "id": "af_heart", "speed": 1.06},
     }
     spec_path = tmp_path / "spec.json"
     output_path = tmp_path / "manifest.json"
@@ -89,3 +90,8 @@ def test_short_manifest_is_deterministic_and_written(tmp_path: Path) -> None:
     assert written["youtube_short_eligible"] is True
     assert written["delivery"]["thumbnail_aspect"] == "1080x1920"
     assert written["measurement"]["checkpoints_hours"] == [24, 72]
+    assert written["voice_lock"] == {
+        "provider": "kokoro",
+        "id": "af_heart",
+        "speed": 1.06,
+    }
