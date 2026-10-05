@@ -1,0 +1,248 @@
+<template>
+  <style>
+    @font-face{font-family:Inter;src:url('assets/fonts/Inter-Variable.ttf') format('truetype');font-weight:100 900;font-style:normal;font-display:block}
+    @font-face{font-family:'Space Grotesk';src:url('assets/fonts/SpaceGrotesk-Variable.ttf') format('truetype');font-weight:300 700;font-style:normal;font-display:block}
+    #root{position:relative;width:100%;height:100%;container-type:size;isolation:isolate;overflow:hidden;color:#000000;font-family:Inter}
+    #root *{box-sizing:border-box}
+    [class^="pool-"],[class*=" pool-"]{position:absolute}
+    .pool-ground{inset:0;width:100%;height:100%}
+    #pool-pink{background:#FE90E8;z-index:0}
+    #pool-blue{background:#C0F7FE;z-index:0}
+    #pool-green{background:#99E885;z-index:0}
+    #pool-black{background:#000000;z-index:0}
+    .pool-grid{inset:0;background-image:radial-gradient(#000000 1.2px,transparent 1.2px);background-size:2.22cqw 2.22cqw;opacity:.13;z-index:0}
+    .pool-stripe{border:.278cqw solid #000000;background:repeating-linear-gradient(45deg,#000000 0,#000000 1.18cqw,#F7CB46 1.18cqw,#F7CB46 2.36cqw);box-shadow:.37cqw .37cqw 0 #000000;z-index:0}
+    #pool-stripe-main{left:4.63cqw;top:64.81cqw;width:87.04cqw;height:24.07cqw}
+    #pool-stripe-corner{left:83.33cqw;top:4.63cqw;width:22.22cqw;height:26.85cqw}
+    .pool-pill{padding:1.11cqw 2.04cqw;border:.278cqw solid #000000;box-shadow:.37cqw .37cqw 0 #000000;background:#FFFFFF;color:#000000;font-family:'Space Grotesk';font-size:2.78cqw;font-weight:700;letter-spacing:.08em;line-height:1.1;text-transform:uppercase;white-space:nowrap}
+    #pool-context{left:9.26cqw;top:15.28cqw;background:#FFDC8B;z-index:12}
+    #pool-plan{left:25.46cqw;top:16.2cqw;width:44.44cqw;text-align:center;background:#F7CB46;z-index:12}
+    #pool-swap-wrap{left:13.43cqw;top:32.87cqw;width:68.52cqw;height:72.22cqw}
+    #pool-white-state,#pool-close-state{position:absolute;inset:0;transform-origin:50% 50%}
+    #pool-white-state{z-index:5}
+    #pool-close-state{z-index:9;background:#000000;border:.37cqw solid #FFFFFF;box-shadow:1.11cqw 1.11cqw 0 #F7CB46;color:#FFFFFF}
+    #pool-shared-card{position:absolute;inset:0;background:#FFFDF5;border:.37cqw solid #000000;box-shadow:.74cqw .74cqw 0 #000000;z-index:0}
+    #pool-live-diagram{left:-13.43cqw;top:-32.87cqw;width:100cqw;height:139.81cqw;transform-origin:50% 0;z-index:1}
+    #pool-vessel{left:13.43cqw;top:38.89cqw;width:68.52cqw;height:39.81cqw;transform-origin:50% 0;z-index:4}
+    #pool-vessel-back{position:absolute;left:.74cqw;top:.74cqw;width:100%;height:100%;background:#000000}
+    #pool-vessel-body{position:absolute;inset:0;background:#FFFFFF;border:.37cqw solid #000000;overflow:hidden}
+    #pool-liquid{position:absolute;left:0;bottom:0;width:100%;height:100%;background:#C0F7FE;transform-origin:50% 100%;border-top:.278cqw solid #000000}
+    #pool-liquid-rule{left:0;top:56%;width:100%;height:.278cqw;background:#000000;z-index:2}
+    #pool-liquid-sheen{left:1.85cqw;bottom:1.85cqw;width:12.96cqw;height:.93cqw;background:#FFFFFF;z-index:2}
+    #pool-stat{left:0;top:11.63cqw;width:100%;height:25.93cqw;font-size:25.93cqw;font-weight:900;letter-spacing:-.065em;line-height:1;text-align:center;transform-origin:50% 50%;z-index:3}
+    #pool-ticket-label{left:2.41cqw;top:1.48cqw;font-family:'Space Grotesk';font-weight:700;font-size:2.04cqw;letter-spacing:.16em;line-height:1;text-transform:uppercase;z-index:3}
+    #pool-ticket-teeth{left:0;bottom:0;width:100%;height:1.85cqw;background:repeating-linear-gradient(90deg,#000000 0,#000000 .278cqw,transparent .278cqw,transparent 3.33cqw);z-index:3}
+    #pool-tank-top{left:0;top:0;width:100%;height:1.67cqw;border:.278cqw solid #000000;background:#FFFDF5;z-index:5}
+    #pool-you{left:61.57cqw;top:85.39cqw;width:21.3cqw;padding:1.48cqw 1.48cqw;background:#F7CB46;border:.37cqw solid #000000;box-shadow:.74cqw .74cqw 0 #000000;font-size:6.85cqw;line-height:1;font-weight:900;letter-spacing:-.04em;text-align:center;z-index:8}
+    #pool-stop{left:14.81cqw;top:107.52cqw;width:65.28cqw;height:12.5cqw;min-height:12.5cqw;border:.37cqw solid #000000;box-shadow:.74cqw .74cqw 0 #000000;background:#FFFDF5;font-size:6.85cqw;font-weight:900;letter-spacing:-.035em;line-height:1;display:flex;align-items:center;justify-content:center;gap:1.11cqw;z-index:8}
+    #pool-stop span{position:relative;display:inline-block}
+    #pool-pv{left:18.06cqw;top:28.24cqw;width:59.26cqw;text-align:center;background:#FFFFFF;font-size:3.33cqw;z-index:5}
+    #pool-general{left:14.81cqw;top:87.04cqw;width:65.28cqw;text-align:center;background:#F7CB46;font-size:3.43cqw;z-index:5}
+    #pool-allocation{left:14.81cqw;top:99.07cqw;width:65.28cqw;text-align:center;font-size:6.3cqw;font-weight:900;line-height:1;letter-spacing:-.03em;z-index:5}
+    #pool-flow{left:0;top:0;width:100cqw;height:139.81cqw;overflow:visible;z-index:2}
+    .pool-pipe-outer{fill:none;stroke:#000000;stroke-width:18;stroke-linecap:square;stroke-linejoin:miter}
+    .pool-pipe-inner{fill:none;stroke:#C0F7FE;stroke-width:10;stroke-linecap:square;stroke-linejoin:miter}
+    #pool-members-label{left:32.41cqw;top:63.89cqw;width:48.15cqw;text-align:center;background:#FFFDF5;font-size:2.78cqw;z-index:4}
+    .pool-tray{left:37.96cqw;width:41.67cqw;height:11.3cqw;background:#FFFFFF;border:.37cqw solid #000000;box-shadow:.74cqw .74cqw 0 #000000;z-index:4}
+    #pool-tray-a{top:71.76cqw}
+    #pool-tray-b{top:86.57cqw}
+    #pool-tray-c{top:101.39cqw}
+    .pool-tray-flow{position:absolute;bottom:0;left:0;width:100%;height:2.41cqw;background:#C0F7FE;border-top:.278cqw solid #000000;transform-origin:0 50%}
+    .pool-member-icon{left:1.85cqw;top:1.67cqw;width:5.93cqw;height:5.93cqw;border:.278cqw solid #000000;background:#99E885}
+    .pool-member-icon svg{position:absolute;inset:1.11cqw;width:3.15cqw;height:3.15cqw}
+    .pool-name-line{left:10.37cqw;top:2.59cqw;width:25cqw;height:.56cqw;background:#000000}
+    .pool-detail-line{left:10.37cqw;top:4.63cqw;width:16.67cqw;height:.37cqw;background:#000000}
+    #pool-schematic{left:9.26cqw;top:114.35cqw;background:#FFDC8B;font-size:2.22cqw;z-index:5}
+    #pool-personal{left:15.74cqw;top:119.44cqw;width:65.28cqw;height:9.72cqw;background:#FE90E8;border:.37cqw solid #000000;box-shadow:.74cqw .74cqw 0 #000000;display:flex;align-items:center;justify-content:center;font-size:5.56cqw;line-height:1;font-weight:900;letter-spacing:-.025em;z-index:6}
+    #pool-cross{position:absolute;left:-1.85cqw;top:-1.85cqw;width:68.52cqw;height:13.89cqw;overflow:visible;z-index:7}
+    #pool-cross path{fill:none;stroke:#000000;stroke-width:12;stroke-linecap:square}
+    #pool-shared-title{left:3.7cqw;top:4.07cqw;width:60.74cqw;padding:1.67cqw 1.85cqw;background:#F7CB46;border:.278cqw solid #000000;box-shadow:.37cqw .37cqw 0 #000000;text-align:center;font-size:5.56cqw;font-weight:900;letter-spacing:-.035em;line-height:1;z-index:3}
+    #pool-close-label{left:4.07cqw;top:4.44cqw;background:#FE90E8;font-size:2.78cqw}
+    #pool-close-copy{left:4.07cqw;top:17.59cqw;width:59.26cqw;font-size:11.11cqw;font-weight:900;letter-spacing:-.055em;line-height:1.18}
+    #pool-close-copy span{position:relative;display:block}
+    #pool-close-copy span:nth-child(3){color:#F7CB46}
+    #pool-close-line{left:4.44cqw;top:54.81cqw;width:57.41cqw;height:.37cqw;background:#FFFFFF;transform-origin:0 50%}
+    #pool-save{left:26.39cqw;top:120.37cqw;width:41.67cqw;height:11.11cqw;border:.278cqw solid #000000;background:#F7CB46;box-shadow:.56cqw .56cqw 0 #FFFFFF;display:flex;align-items:center;justify-content:center;gap:2.41cqw;font-size:6.3cqw;line-height:1;font-weight:900;letter-spacing:-.035em;z-index:12}
+    #pool-save svg{position:relative;width:4.63cqw;height:5.56cqw;flex:none}
+  </style>
+
+  <div id="root" data-composition-id="01-explainer" data-duration="25.625" data-width="1080" data-height="1920">
+    <div id="pool-pink" class="clip pool-ground" data-start="0" data-duration="25.625" data-track-index="0"></div>
+    <div id="pool-blue" class="clip pool-ground" data-start="0" data-duration="25.625" data-track-index="1"></div>
+    <div id="pool-green" class="clip pool-ground" data-start="0" data-duration="25.625" data-track-index="2"></div>
+    <div id="pool-black" class="clip pool-ground" data-start="0" data-duration="25.625" data-track-index="3"></div>
+    <div id="pool-grid" class="pool-grid"></div>
+    <div id="pool-stripe-main" class="pool-stripe"></div>
+    <div id="pool-stripe-corner" class="pool-stripe" data-layout-allow-overflow></div>
+    <div id="pool-context" class="pool-pill">ATOMY USA</div>
+    <div id="pool-plan" class="pool-pill">PLAN RULES APPLY</div>
+
+    <div id="pool-swap-wrap" class="pool-swap-wrap">
+      <div id="pool-white-state">
+        <div id="pool-shared-card"></div>
+        <div id="pool-live-diagram" class="pool-live-diagram">
+          <div id="pool-vessel" class="pool-vessel">
+            <div id="pool-vessel-back"></div>
+            <div id="pool-vessel-body">
+              <div id="pool-liquid"></div>
+              <div id="pool-liquid-rule" class="pool-liquid-rule"></div>
+              <div id="pool-liquid-sheen" class="pool-liquid-sheen"></div>
+              <div id="pool-ticket-label" class="pool-ticket-label">COMMISSION</div>
+              <div id="pool-stat" class="pool-stat">44%</div>
+              <div id="pool-ticket-teeth" class="pool-ticket-teeth"></div>
+            </div>
+            <div id="pool-tank-top" class="pool-tank-top"></div>
+          </div>
+          <div id="pool-you" class="pool-you">YOU?</div>
+          <div id="pool-stop" class="pool-stop"><span id="pool-not">NOT</span><span id="pool-so">SO</span><span id="pool-fast">FAST</span></div>
+          <div id="pool-pv" class="pool-pill">TOTAL SALES PV</div>
+          <div id="pool-general" class="pool-pill">GENERAL COMMISSION</div>
+          <div id="pool-allocation" class="pool-allocation">ALLOCATION</div>
+
+          <svg id="pool-flow" class="pool-flow" viewBox="0 0 1080 1510" xmlns="http://www.w3.org/2000/svg" aria-label="Shared pool distributing through three schematic outlets">
+            <path id="pool-pipe-a" class="pool-pipe-outer" d="M 320 580 V 645 H 190 V 836 H 410"/>
+            <path id="pool-pipe-b" class="pool-pipe-outer" d="M 370 580 V 680 H 235 V 996 H 410"/>
+            <path id="pool-pipe-c" class="pool-pipe-outer" d="M 420 580 V 680 H 280 V 1156 H 410"/>
+            <path id="pool-water-a" class="pool-pipe-inner" d="M 320 580 V 645 H 190 V 836 H 410"/>
+            <path id="pool-water-b" class="pool-pipe-inner" d="M 370 580 V 680 H 235 V 996 H 410"/>
+            <path id="pool-water-c" class="pool-pipe-inner" d="M 420 580 V 680 H 280 V 1156 H 410"/>
+          </svg>
+          <div id="pool-members-label" class="pool-pill">QUALIFIED MEMBERS</div>
+          <div id="pool-tray-a" class="pool-tray">
+            <div class="pool-member-icon"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M5 20L15 30L35 8" fill="none" stroke="#000000" stroke-width="6"/></svg></div>
+            <div class="pool-name-line"></div><div class="pool-detail-line"></div>
+            <div id="pool-tray-flow-a" class="pool-tray-flow"></div>
+          </div>
+          <div id="pool-tray-b" class="pool-tray">
+            <div class="pool-member-icon"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M5 20L15 30L35 8" fill="none" stroke="#000000" stroke-width="6"/></svg></div>
+            <div class="pool-name-line"></div><div class="pool-detail-line"></div>
+            <div id="pool-tray-flow-b" class="pool-tray-flow"></div>
+          </div>
+          <div id="pool-tray-c" class="pool-tray">
+            <div class="pool-member-icon"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M5 20L15 30L35 8" fill="none" stroke="#000000" stroke-width="6"/></svg></div>
+            <div class="pool-name-line"></div><div class="pool-detail-line"></div>
+            <div id="pool-tray-flow-c" class="pool-tray-flow"></div>
+          </div>
+          <div id="pool-schematic" class="pool-pill">SCHEMATIC</div>
+          <div id="pool-personal" class="pool-personal">PERSONAL CUT?
+            <svg id="pool-cross" viewBox="0 0 740 150" xmlns="http://www.w3.org/2000/svg"><path id="pool-cross-line" d="M18 128 L718 18"/></svg>
+          </div>
+        </div>
+        <div id="pool-shared-title" class="pool-shared-title">SHARED POOL</div>
+      </div>
+      <div id="pool-close-state">
+        <div id="pool-close-label" class="pool-pill">SHARED POOL</div>
+        <div id="pool-close-copy" class="pool-close-copy"><span id="pool-close-not">NOT</span><span id="pool-close-your">YOUR</span><span id="pool-close-rate">RATE</span></div>
+        <div id="pool-close-line" class="pool-close-line"></div>
+      </div>
+    </div>
+    <div id="pool-save" class="pool-save"><svg viewBox="0 0 50 60" xmlns="http://www.w3.org/2000/svg"><path d="M7 4H43V54L25 43L7 54Z" fill="none" stroke="#000000" stroke-width="5"/></svg>SAVE</div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    (function(){
+      const timeline = gsap.timeline({paused:true});
+      window.__timelines = window.__timelines || {};
+      window.__timelines['01-explainer'] = timeline;
+      const el = name => document.getElementById('pool-' + name);
+      const hideAtBuild = ['blue','green','black','plan','shared-card','shared-title','close-state','save','pv','general','allocation','tank-top','liquid-rule','liquid-sheen','members-label','tray-a','tray-b','tray-c','schematic','personal'];
+      timeline.set(hideAtBuild.map(el),{opacity:0},0);
+      timeline.set(el('liquid'),{scaleY:0},0);
+      timeline.set(['a','b','c'].map(s=>el('tray-flow-'+s)),{scaleX:0},0);
+      timeline.set(el('close-state'),{scale:.7},0);
+      timeline.set(['not','so','fast'].map(el),{opacity:0,x:35},0);
+
+      // A single content-length reduction places the three hook beats.
+      const hookContent = [
+        {title:'44%',hold:.75},
+        {title:'YOU?',hold:1.32},
+        {title:'NOT SO FAST',hold:1.2}
+      ];
+      let hookCursor=.12;
+      const hookSequence=hookContent.map(entry=>{
+        const start=hookCursor;
+        hookCursor+=.6+entry.title.length*.04+entry.hold;
+        return {...entry,start,end:hookCursor};
+      });
+      timeline.fromTo(el('context'),{y:-20,opacity:0},{y:0,opacity:1,duration:.45,ease:'power3.out'},.06);
+      timeline.fromTo(el('vessel'),{rotation:-6,scale:.92,y:18,opacity:0},{rotation:-3,scale:1,y:0,opacity:1,duration:.54,ease:'power3.out'},hookSequence[0].start);
+      timeline.fromTo(el('stripe-main'),{rotation:2,y:45,opacity:0},{rotation:6,y:0,opacity:1,duration:.58,ease:'power3.out'},.22);
+      timeline.fromTo(el('stripe-corner'),{rotation:-8,y:-40,opacity:0},{rotation:9,y:0,opacity:1,duration:.7,ease:'power3.out'},.45);
+      timeline.fromTo(el('you'),{rotation:14,scale:.68,opacity:0},{rotation:8,scale:1,opacity:1,duration:.42,ease:'power3.out'},hookSequence[1].start);
+      timeline.fromTo(el('stop'),{rotation:-9,scale:1.18,opacity:0,y:20},{rotation:-6,scale:1,opacity:1,y:0,duration:.32,ease:'power4.out'},hookSequence[2].start);
+      let wordOffset=0;
+      ['not','so','fast'].forEach(word=>{
+        timeline.to(el(word),{x:0,opacity:1,duration:.24,ease:'power4.out'},hookSequence[2].start+wordOffset);
+        wordOffset+=.1+word.length*.03;
+      });
+      // Matching upward acceleration and deceleration retain the ticket as the actor.
+      timeline.to([el('you'),el('stop')],{y:-65,opacity:0,duration:.3,ease:'power4.in'},4.408);
+      timeline.to(el('vessel'),{y:-32,rotation:0,duration:.3,ease:'power4.in'},4.408);
+      timeline.to(el('vessel'),{y:-64,duration:.3,ease:'power4.out'},4.708);
+      timeline.to(el('vessel'),{y:0,duration:.45,ease:'power3.out'},5.008);
+      timeline.to(el('blue'),{opacity:1,duration:.42,ease:'power1.out'},4.708);
+      timeline.to(el('stripe-main'),{rotation:3,y:30,opacity:.22,duration:.6,ease:'power3.out'},4.708);
+      timeline.to([el('ticket-label'),el('ticket-teeth')],{opacity:0,duration:.22,ease:'power1.out'},4.708);
+      timeline.fromTo(el('pv'),{y:35,opacity:0},{y:0,opacity:1,duration:.48,ease:'power4.out'},5.22);
+      timeline.fromTo(el('tank-top'),{y:-12,opacity:0},{y:0,opacity:1,duration:.4,ease:'power3.out'},5.65);
+      timeline.to(el('stat'),{scale:.56,y:60,duration:.85,ease:'power3.inOut'},6.3);
+      // The complete tank is total sales PV. Only its lower 44% fills.
+      timeline.fromTo(el('liquid'),{scaleY:0},{scaleY:.44,duration:1.1,ease:'power2.out'},6.95);
+      timeline.fromTo(el('liquid-rule'),{opacity:0},{opacity:1,duration:.2,ease:'power1.out'},7.98);
+      timeline.fromTo(el('liquid-sheen'),{scaleX:0,opacity:0},{scaleX:1,opacity:1,duration:.42,ease:'power3.out'},8.05);
+      timeline.fromTo(el('general'),{y:40,opacity:0},{y:0,opacity:1,duration:.5,ease:'power3.out'},8.3);
+      timeline.fromTo(el('allocation'),{y:35,opacity:0},{y:0,opacity:1,duration:.55,ease:'power3.out'},9.55);
+
+      // Pull the reservoir upward to make room for three schematic outlets.
+      timeline.to(el('green'),{opacity:1,duration:.4,ease:'power1.out'},11.037);
+      timeline.to(el('vessel'),{y:-75,scale:.86,duration:.32,ease:'power4.in'},10.717);
+      timeline.to(el('vessel'),{y:-150,scale:.72,duration:.32,ease:'power4.out'},11.037);
+      timeline.to(el('pv'),{y:-110,scale:.9,duration:.64,ease:'power3.inOut'},10.717);
+      timeline.to(el('general'),{y:-590,scale:.55,duration:.64,ease:'power3.inOut'},10.717);
+      timeline.to(el('allocation'),{y:-60,opacity:0,duration:.32,ease:'power4.in'},10.717);
+      timeline.to(el('stripe-main'),{y:290,rotation:-3,opacity:.18,duration:.64,ease:'power3.inOut'},10.717);
+      timeline.fromTo(el('members-label'),{y:30,opacity:0},{y:0,opacity:1,duration:.45,ease:'power3.out'},11.48);
+      const measuredPaths=['pipe-a','pipe-b','pipe-c','water-a','water-b','water-c','cross-line'];
+      measuredPaths.forEach(name=>{
+        const path=el(name),length=path.getTotalLength();
+        path.style.strokeDasharray=String(length);
+        path.style.strokeDashoffset=String(length);
+      });
+      ['a','b','c'].forEach((suffix,index)=>{
+        const start=11.77+index*.56;
+        timeline.fromTo(el('tray-'+suffix),{x:60,rotation:index%2?-2:2,opacity:0},{x:0,rotation:0,opacity:1,duration:.45,ease:'power4.out'},start+.36);
+        timeline.to(el('pipe-'+suffix),{strokeDashoffset:0,duration:.8,ease:'power2.out'},start);
+        timeline.to(el('water-'+suffix),{strokeDashoffset:0,duration:.8,ease:'power2.out'},start+.08);
+        timeline.to(el('tray-flow-'+suffix),{scaleX:1,duration:.45,ease:'power2.out'},start+.77);
+      });
+      timeline.fromTo(el('schematic'),{y:20,opacity:0},{y:0,opacity:1,duration:.4,ease:'power3.out'},13.72);
+      timeline.fromTo(el('personal'),{rotation:5,scale:.8,y:20,opacity:0},{rotation:-3,scale:1,y:0,opacity:1,duration:.42,ease:'power3.out'},14.65);
+      timeline.to(el('cross-line'),{strokeDashoffset:0,duration:.55,ease:'power2.out'},16.0);
+
+      // One actor compacts into its own shared-pool card before the final swap.
+      timeline.fromTo(el('plan'),{y:35,opacity:0},{y:0,opacity:1,duration:.45,ease:'power3.out'},17.687);
+      timeline.to([el('pv'),el('general'),el('members-label'),el('schematic'),el('personal')],{opacity:0,duration:.3,ease:'power1.out'},17.687);
+      timeline.fromTo(el('shared-card'),{scale:.9,opacity:0},{scale:1,opacity:1,duration:.58,ease:'power3.out'},17.687);
+      timeline.to(el('live-diagram'),{scale:.48,x:-10,y:380,duration:.75,ease:'power3.inOut'},17.687);
+      timeline.fromTo(el('shared-title'),{y:25,opacity:0},{y:0,opacity:1,duration:.5,ease:'power3.out'},18.52);
+      timeline.to([el('stripe-main'),el('stripe-corner')],{opacity:0,duration:.4,ease:'power1.out'},19.82);
+      timeline.to(el('context'),{opacity:0,duration:.25,ease:'power1.out'},17.427);
+      timeline.to(el('plan'),{opacity:0,duration:.25,ease:'power1.out'},20.3);
+      timeline.to(el('white-state'),{scale:.7,opacity:0,duration:.4,ease:'power2.in'},20.5);
+      timeline.fromTo(el('close-state'),{scale:.7,opacity:0},{scale:1,opacity:1,duration:.6,ease:'power3.out'},20.75);
+      timeline.to(el('black'),{opacity:1,duration:.6,ease:'power1.out'},20.5);
+      timeline.to(el('grid'),{opacity:0,duration:.4,ease:'power1.out'},20.5);
+      timeline.fromTo(el('close-label'),{y:20,opacity:0},{y:0,opacity:1,duration:.35,ease:'power3.out'},21.45);
+      ['close-not','close-your','close-rate'].forEach((word,index)=>{
+        timeline.fromTo(el(word),{x:40,opacity:0},{x:0,opacity:1,duration:.4,ease:'power4.out'},21.6+index*.26);
+      });
+      timeline.fromTo(el('close-line'),{scaleX:0},{scaleX:1,duration:.45,ease:'power2.out'},22.54);
+      timeline.fromTo(el('save'),{rotation:-7,y:35,scale:.8,opacity:0},{rotation:-3,y:0,scale:1,opacity:1,duration:.55,ease:'power3.out'},23.65);
+      // Exact fixed length; the final message holds fully settled for 1.425 seconds.
+      const clock={time:0};
+      timeline.to(clock,{time:25.625,duration:25.625,ease:'none'},0);
+    })();
+  </script>
+</template>
+

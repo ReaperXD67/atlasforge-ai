@@ -1,0 +1,221 @@
+<template>
+  <style>
+    @font-face{font-family:Inter;src:url('assets/fonts/Inter-Variable.ttf') format('truetype');font-style:normal;font-weight:100 900;font-display:block}
+    @font-face{font-family:'Space Grotesk';src:url('assets/fonts/SpaceGrotesk-Variable.ttf') format('truetype');font-style:normal;font-weight:300 700;font-display:block}
+    #root{position:relative;width:100%;height:100%;overflow:hidden;container-type:size;color:#000000;font-family:Inter}
+    #root *{box-sizing:border-box}
+    #gate-ground{position:absolute;inset:0;container-type:size;background:#99E885;z-index:0}
+    .gate-dots{position:absolute;inset:0;background-image:radial-gradient(#000000 0.12cqw,transparent 0.15cqw);background-size:2.23cqw 2.23cqw;opacity:0.12}
+    .gate-stripes{position:absolute;right:-4.6cqw;top:116cqw;width:17cqw;height:18cqw;background:repeating-linear-gradient(45deg,#000000 0 0.7cqw,#C0F7FE 0.7cqw 1.4cqw);border:0.28cqw solid #000000;rotate:8deg;opacity:0.8}
+    .gate-pill{display:inline-flex;align-items:center;padding:1.1cqw 1.75cqw;border:0.28cqw solid #000000;box-shadow:0.37cqw 0.37cqw 0 #000000;background:#FFFDF5;font-family:'Space Grotesk';font-weight:700;font-size:2.8cqw;letter-spacing:0.08em;line-height:1.1;text-transform:uppercase;white-space:nowrap}
+    #gate-eyebrow{position:absolute;left:7.87cqw;top:9.25cqw;z-index:8}
+    .gate-heading{position:absolute;left:7.87cqw;top:17.5cqw;width:77.3cqw;min-height:25cqw;margin:0;z-index:8;font-size:9.5cqw;line-height:1.25;font-weight:900;letter-spacing:-0.035em;text-transform:uppercase;transform-origin:50% 50%}
+    .gate-heading span{display:inline-block}
+    .gate-heading .gate-line{display:block}
+    #gate-heading-two{font-size:9cqw}
+    #gate-heading-three{font-size:9.05cqw}
+    #gate-camera{position:absolute;left:7.87cqw;top:41.6667cqw;width:77.315cqw;height:78.704cqw;z-index:5;transform-origin:50% 0%;perspective:85cqw}
+    #gate-meter{position:absolute;left:9.72cqw;top:0;width:57.87cqw;height:19.7cqw;border:0.37cqw solid #000000;background:#FFFFFF;box-shadow:0.74cqw 0.74cqw 0 #000000;z-index:6;text-align:center}
+    #gate-count{position:absolute;left:0;top:1.4cqw;width:100%;font-size:10.4cqw;line-height:1;font-weight:900;letter-spacing:-0.05em}
+    .gate-meter-label{position:absolute;left:0;top:13.9cqw;width:100%;font-family:'Space Grotesk';font-weight:700;font-size:2.65cqw;line-height:1.1;letter-spacing:0.07em}
+    .gate-meter-track{position:absolute;left:1.65cqw;right:1.65cqw;top:17.5cqw;height:1.5cqw;border:0.28cqw solid #000000;background:#FFFDF5;overflow:hidden}
+    #gate-meter-fill{width:100%;height:100%;background:#F7CB46;transform-origin:left center}
+    #gate-frame{position:absolute;inset:0;z-index:2}
+    .gate-beam{position:absolute;left:8.79cqw;top:18.52cqw;width:59.72cqw;height:7.04cqw;border:0.37cqw solid #000000;background:#FFDC8B;box-shadow:0.74cqw 0.74cqw 0 #000000}
+    .gate-post{position:absolute;top:22.69cqw;width:4.17cqw;height:34.1cqw;border:0.37cqw solid #000000;background:#FFFDF5;box-shadow:0.74cqw 0.74cqw 0 #000000}
+    .gate-post-left{left:8.33cqw}.gate-post-right{left:65.28cqw}
+    .gate-door{position:absolute;top:25.56cqw;width:25.65cqw;height:31.48cqw;border:0.37cqw solid #000000;background:#C0F7FE;transform-style:preserve-3d;backface-visibility:visible}
+    #gate-door-left{left:12.59cqw;transform-origin:left center}
+    #gate-door-right{left:39.17cqw;transform-origin:right center}
+    .gate-rail{position:absolute;top:2.78cqw;bottom:2.78cqw;width:1.48cqw;border:0.28cqw solid #000000;background:#FFFDF5}
+    .gate-rail:nth-child(1){left:3.15cqw}.gate-rail:nth-child(2){left:8.52cqw}.gate-rail:nth-child(3){left:13.89cqw}.gate-rail:nth-child(4){left:19.26cqw}
+    .gate-floor{position:absolute;left:6.02cqw;top:57.22cqw;width:65.28cqw;height:1.48cqw;background:#000000}
+    #gate-lock{position:absolute;left:32.96cqw;top:32.4cqw;width:13.15cqw;height:16.2cqw;z-index:8;transform-origin:50% 50%}
+    #gate-lock svg{display:block;width:100%;height:100%}
+    #gate-key{position:absolute;left:0;top:44.45cqw;width:44.44cqw;height:23.15cqw;z-index:9;transform-origin:0% 50%}
+    #gate-key svg{display:block;width:44.44cqw;height:17.59cqw}
+    .gate-key-label{position:absolute;left:1.86cqw;top:17.15cqw;background:#F7CB46;font-size:2.7cqw;rotate:-3deg}
+    #gate-flow-wrap{position:absolute;left:10.65cqw;top:60.46cqw;width:57.4cqw;height:16.67cqw;z-index:5}
+    .gate-flow-state{position:absolute;inset:0;transform-origin:50% 50%}
+    #gate-flow-one{z-index:1}
+    #gate-flow-two{z-index:2}
+    .gate-lane{position:absolute;border:0.37cqw solid #000000;box-shadow:0.74cqw 0.74cqw 0 #000000;background:#C0F7FE}
+    #gate-lane-full{inset:0 0 auto;height:9.26cqw;display:flex;align-items:center;justify-content:center;gap:1.85cqw;font-size:4.1cqw;font-weight:900;letter-spacing:-0.025em}
+    .gate-arrow{width:6.11cqw;height:4.45cqw;flex:none;display:block}
+    #gate-lane-downline{left:0;top:0;width:27.78cqw;height:16.67cqw;padding:1.3cqw 1.48cqw;font-size:3.25cqw;font-weight:900;letter-spacing:-0.025em;line-height:1.15}
+    .gate-downline-copy{position:absolute;left:1.48cqw;top:1.4cqw;line-height:1.15}
+    #gate-lane-downline .gate-arrow{position:absolute;left:1.48cqw;top:11.4cqw;width:5.28cqw;height:3.33cqw}
+    #gate-lane-payout{right:0;top:0;width:27.78cqw;height:16.67cqw;background:#FE90E8;padding:1.3cqw 1.48cqw}
+    .gate-payout-label{font-size:4.1cqw;font-weight:900;line-height:1;letter-spacing:-0.025em}
+    #gate-rules-lock{position:absolute;left:1.48cqw;right:1.48cqw;top:7.4cqw;height:4.73cqw;background:#FFFDF5;border:0.28cqw solid #000000;display:flex;align-items:center;justify-content:center;gap:1cqw;font-family:'Space Grotesk';font-size:2.87cqw;line-height:1;font-weight:700;letter-spacing:0.05em}
+    #gate-rules-lock svg{width:3.25cqw;height:3.52cqw;flex:none}
+    #gate-not-payday{position:absolute;left:7.87cqw;top:123cqw;width:77.31cqw;z-index:7}
+    #gate-not-payday .gate-pill{background:#FFDC8B;font-size:3.15cqw}
+    #gate-close-card{position:absolute;left:7.87cqw;top:21.3cqw;width:77.31cqw;height:102.78cqw;z-index:3;border:0.37cqw solid #FFFFFF;background:#000000;box-shadow:1.11cqw 1.11cqw 0 #F7CB46;transform-origin:50% 50%}
+    #gate-close-eyebrow{position:absolute;left:3.2cqw;top:3cqw;background:#FE90E8}
+    #gate-close-title{position:absolute;left:3.2cqw;top:11.45cqw;width:69cqw;min-height:25cqw;color:#FFFFFF;font-size:8.4cqw;line-height:0.98;font-weight:900;letter-spacing:-0.035em;text-transform:uppercase}
+    #gate-close-title span{display:block}
+    #gate-close-title .gate-equals{color:#F7CB46}
+    #gate-local-plan{position:absolute;left:7.87cqw;top:127.32cqw;width:60.2cqw;height:7.59cqw;z-index:10;border:0.28cqw solid #000000;box-shadow:0.37cqw 0.37cqw 0 #000000;background:#FFFDF5;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-size:3.08cqw;font-weight:700;letter-spacing:0.02em;white-space:nowrap}
+    #gate-save{position:absolute;left:69.45cqw;top:127.32cqw;width:15.74cqw;height:7.59cqw;z-index:10;border:0.28cqw solid #000000;box-shadow:0.37cqw 0.37cqw 0 #000000;background:#F7CB46;display:flex;align-items:center;justify-content:center;font-family:Inter;font-size:3.4cqw;font-weight:900;letter-spacing:-0.02em;transform-origin:50% 50%}
+  </style>
+
+  <div id="root" data-composition-id="01-explainer" data-width="1080" data-height="1920">
+    <div id="gate-ground" class="clip" data-start="0" data-duration="24.260" data-track-index="0">
+      <div class="gate-dots"></div><div class="gate-stripes"></div>
+    </div>
+    <div id="gate-eyebrow" class="gate-pill">ATOMY · U.S. PLAN</div>
+    <h1 id="gate-heading-one" class="gate-heading"><span id="gate-word-before" class="gate-line">BEFORE</span><span id="gate-word-the">THE</span> <span id="gate-word-team">TEAM</span></h1>
+    <h1 id="gate-heading-two" class="gate-heading"><span class="gate-line">PERSONAL PV</span><span>FIRST</span></h1>
+    <h1 id="gate-heading-three" class="gate-heading"><span class="gate-line">ENTRY</span><span>CONDITION</span></h1>
+
+    <div id="gate-close-card">
+      <div id="gate-close-eyebrow" class="gate-pill">THE DISTINCTION</div>
+      <div id="gate-close-title"><span id="gate-close-open">GATE OPEN</span><span id="gate-close-payday"><b class="gate-equals">≠</b> PAYDAY</span></div>
+    </div>
+
+    <div id="gate-camera">
+      <div id="gate-meter">
+        <div id="gate-count">0</div><div class="gate-meter-label">PERSONAL PV</div>
+        <div class="gate-meter-track"><div id="gate-meter-fill"></div></div>
+      </div>
+      <div id="gate-frame">
+        <div class="gate-beam"></div><div class="gate-post gate-post-left"></div><div class="gate-post gate-post-right"></div>
+        <div id="gate-door-left" class="gate-door"><i class="gate-rail"></i><i class="gate-rail"></i><i class="gate-rail"></i><i class="gate-rail"></i></div>
+        <div id="gate-door-right" class="gate-door"><i class="gate-rail"></i><i class="gate-rail"></i><i class="gate-rail"></i><i class="gate-rail"></i></div>
+        <div class="gate-floor"></div>
+      </div>
+      <div id="gate-lock" aria-label="Locked personal PV gate">
+        <svg viewBox="0 0 142 175" xmlns="http://www.w3.org/2000/svg"><path d="M35 80V46C35 26 48 12 71 12S107 26 107 46V80" fill="none" stroke="#000000" stroke-width="18"/><path d="M35 80V46C35 26 48 12 71 12S107 26 107 46V80" fill="none" stroke="#FFFDF5" stroke-width="9"/><path d="M16 74H126V161H16Z" fill="#F7CB46" stroke="#000000" stroke-width="5"/><path d="M60 106H82V125H75V141H67V125H60Z" fill="#000000"/></svg>
+      </div>
+      <div id="gate-key" aria-label="Personal PV key">
+        <svg viewBox="0 0 480 190" xmlns="http://www.w3.org/2000/svg"><path d="M24 30H160V80H446V125H410V159H372V125H337V148H300V125H160V165H24Z" fill="#F7CB46" stroke="#000000" stroke-width="6"/><path d="M56 63H124V132H56Z" fill="#99E885" stroke="#000000" stroke-width="6"/></svg>
+        <div class="gate-pill gate-key-label">PERSONAL PV</div>
+      </div>
+      <div id="gate-flow-wrap">
+        <div id="gate-flow-one" class="gate-flow-state">
+          <div id="gate-lane-full" class="gate-lane"><svg class="gate-arrow" viewBox="0 0 66 48" xmlns="http://www.w3.org/2000/svg"><path d="M3 16H39V3L63 24 39 45V32H3Z" fill="#99E885" stroke="#000000" stroke-width="4"/></svg><span>DOWNLINE PV</span></div>
+        </div>
+        <div id="gate-flow-two" class="gate-flow-state">
+          <div id="gate-lane-downline" class="gate-lane"><div class="gate-downline-copy">DOWNLINE<br>PV</div><svg id="gate-proceed-arrow" class="gate-arrow" viewBox="0 0 66 48" xmlns="http://www.w3.org/2000/svg"><path d="M3 16H39V3L63 24 39 45V32H3Z" fill="#99E885" stroke="#000000" stroke-width="4"/></svg></div>
+          <div id="gate-lane-payout" class="gate-lane"><div class="gate-payout-label">PAYOUT</div><div id="gate-rules-lock"><svg viewBox="0 0 38 41" xmlns="http://www.w3.org/2000/svg"><path d="M10 17V10C10 4 28 4 28 10V17" fill="none" stroke="#000000" stroke-width="4"/><path d="M4 17H34V37H4Z" fill="#F7CB46" stroke="#000000" stroke-width="3"/><path d="M17 23H21V31H17Z" fill="#000000"/></svg><span>RULES</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div id="gate-not-payday"><div class="gate-pill">≠ AUTOMATIC PAYDAY</div></div>
+    <div id="gate-local-plan">RECHECK LOCAL PLAN</div><div id="gate-save">SAVE</div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      const root = document.querySelector('[data-composition-id="01-explainer"]');
+      const el = (id) => root.querySelector('#' + id);
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines = window.__timelines || {};
+      window.__timelines['01-explainer'] = tl;
+      const DURATION = 24.260;
+      const widthUnit = 1080 / 100;
+      const px = (n) => n * widthUnit;
+
+      // Content-aware sequencing is computed once, then mapped to the measured VO windows.
+      function sequence(items, start, end) {
+        const raw = items.map(item => ({ ...item, span: 0.60 + item.body.length * 0.045 + item.hold }));
+        const total = raw.reduce((sum, item) => sum + item.span, 0);
+        let cursor = start;
+        return raw.map(item => {
+          const span = item.span / total * (end - start);
+          const result = { ...item, start: cursor, end: cursor + span };
+          cursor += span;
+          return result;
+        });
+      }
+      const hookSequence = sequence([
+        { body: 'BEFORE THE TEAM', hold: 0.25 },
+        { body: 'PERSONAL PV', hold: 0.25 },
+        { body: 'GATE', hold: 0.55 }
+      ], 0, 4.345);
+      const finalSequence = sequence([
+        { body: 'GATE OPEN ≠ PAYDAY', hold: 0.50 },
+        { body: 'RECHECK LOCAL PLAN', hold: 2.00 },
+        { body: 'SAVE', hold: 1.10 }
+      ], 16.940, DURATION);
+
+      // Initial states live on the seekable timeline, not in CSS or deferred callbacks.
+      tl.set([
+        el('gate-heading-two'), el('gate-heading-three'), el('gate-meter'), el('gate-key'),
+        el('gate-lock'), el('gate-flow-one'), el('gate-flow-two'), el('gate-lane-payout'),
+        el('gate-rules-lock'), el('gate-not-payday'), el('gate-close-card'),
+        el('gate-close-open'), el('gate-close-payday'), el('gate-local-plan'), el('gate-save')
+      ], { opacity: 0 }, 0);
+      tl.set(el('gate-meter-fill'), { scaleX: 0 }, 0);
+      tl.set(el('gate-flow-two'), { scale: 0.74 }, 0);
+
+      // Scene 1: the same gate is already readable as a silhouette; key and lock arrive in order.
+      tl.fromTo(el('gate-frame'), { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.48, ease: 'power3.out' }, 0.02);
+      tl.fromTo(el('gate-eyebrow'), { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.45, ease: 'power3.out' }, 0.02);
+      ['gate-word-before', 'gate-word-the', 'gate-word-team'].forEach((id, index) => {
+        tl.fromTo(el(id), { opacity: 0, x: 36 }, { opacity: 1, x: 0, duration: 0.48, ease: 'power3.out' }, hookSequence[0].start + index * 0.22);
+      });
+      tl.fromTo(el('gate-key'), { opacity: 0, x: -30, y: 10, scale: 0.88 }, { opacity: 1, x: 0, y: 0, scale: 1, duration: 0.68, ease: 'power3.out' }, hookSequence[1].start);
+      tl.fromTo(el('gate-lock'), { opacity: 0, scale: 0.82, y: -18 }, { opacity: 1, scale: 1, y: 0, duration: 0.54, ease: 'power3.out' }, hookSequence[2].start);
+      tl.to(el('gate-key'), { x: 72, y: -87, scale: 0.65, duration: 0.78, ease: 'power3.inOut' }, hookSequence[2].start + 0.18);
+
+      // Internal headline seams use one velocity-matched Z cut; the diagram never unmounts.
+      function headlineCut(outId, inId, at) {
+        tl.to(el(outId), { scale: 1.20, filter: 'blur(10px)', duration: 0.20, ease: 'power3.in' }, at - 0.20);
+        tl.to(el(outId), { opacity: 0.15, duration: 0.20, ease: 'none' }, at - 0.20);
+        tl.set(el(outId), { opacity: 0 }, at);
+        tl.fromTo(el(inId), { opacity: 0.15, scale: 0.75, filter: 'blur(10px)' }, { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.50, ease: 'expo.out', immediateRender: false }, at);
+      }
+
+      // Scene 2: personal PV resolves first; only then can the downstream track appear.
+      headlineCut('gate-heading-one', 'gate-heading-two', 4.345);
+      tl.fromTo(el('gate-meter'), { opacity: 0, y: 28, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.62, ease: 'power3.out' }, 4.58);
+      tl.to(el('gate-camera'), { y: -15, duration: 1.0, ease: 'power3.inOut' }, 4.345);
+      const counter = { value: 0 };
+      let lastValue = -1;
+      tl.to(counter, {
+        value: 10000, duration: 1.55, ease: 'power2.out',
+        onUpdate: () => {
+          const value = Math.round(counter.value);
+          if (value !== lastValue) {
+            el('gate-count').textContent = value.toLocaleString('en-US');
+            lastValue = value;
+          }
+        }
+      }, 5.65);
+      tl.to(el('gate-meter-fill'), { scaleX: 1, duration: 1.55, ease: 'power2.out' }, 5.65);
+      tl.to(el('gate-key'), { x: 145, scale: 0.50, opacity: 0, duration: 0.34, ease: 'power2.in' }, 7.30);
+      tl.to(el('gate-lock'), { x: 180, y: 36, opacity: 0, rotation: 8, duration: 0.48, ease: 'power3.inOut' }, 7.34);
+      tl.to(el('gate-door-left'), { rotationY: -79, transformPerspective: 900, duration: 0.90, ease: 'power3.inOut' }, 7.72);
+      tl.to(el('gate-door-right'), { rotationY: 79, transformPerspective: 900, duration: 0.90, ease: 'power3.inOut' }, 7.72);
+      tl.fromTo(el('gate-flow-one'), { opacity: 0, y: -24 }, { opacity: 1, y: 0, duration: 0.65, ease: 'power3.out' }, 8.66);
+
+      // Scene 3: same actor, closer framing. Scale-swap separates generation from payout.
+      headlineCut('gate-heading-two', 'gate-heading-three', 10.333);
+      tl.to(el('gate-camera'), { scale: 1.04, y: -18, duration: 0.90, ease: 'power3.inOut' }, 10.333);
+      tl.to(el('gate-flow-one'), { scale: 0.74, opacity: 0, duration: 0.34, ease: 'power2.in' }, 10.333);
+      tl.fromTo(el('gate-flow-two'), { scale: 0.74, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.60, ease: 'power3.out', immediateRender: false }, 10.523);
+      tl.fromTo(el('gate-proceed-arrow'), { x: -18, opacity: 0 }, { x: 0, opacity: 1, duration: 0.56, ease: 'power3.out' }, 11.05);
+      tl.fromTo(el('gate-not-payday'), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: 'power3.out' }, 12.10);
+      tl.fromTo(el('gate-lane-payout'), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.65, ease: 'power3.out' }, 12.36);
+      tl.fromTo(el('gate-rules-lock'), { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.60, ease: 'power3.out' }, 14.10);
+
+      // Scene 4: pull the open gate into the inverted take-away, preserving both tracks.
+      tl.to(el('gate-heading-three'), { scale: 0.80, filter: 'blur(10px)', duration: 0.20, ease: 'power3.in' }, 16.74);
+      tl.to(el('gate-heading-three'), { opacity: 0.15, duration: 0.20, ease: 'none' }, 16.74);
+      tl.set(el('gate-heading-three'), { opacity: 0 }, 16.940);
+      tl.to(el('gate-not-payday'), { opacity: 0, y: -15, duration: 0.30, ease: 'power3.in' }, 16.74);
+      tl.fromTo(el('gate-close-card'), { scale: 1.12, opacity: 0.15, filter: 'blur(18px)' }, { scale: 1, opacity: 1, filter: 'blur(0px)', duration: 0.65, ease: 'expo.out', immediateRender: false }, finalSequence[0].start);
+      tl.to(el('gate-camera'), { scale: 0.66, y: 300, duration: 1.05, ease: 'power3.inOut' }, 16.940);
+      tl.fromTo(el('gate-close-open'), { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.60, ease: 'power3.out' }, 17.20);
+      tl.fromTo(el('gate-close-payday'), { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.60, ease: 'power3.out' }, 17.76);
+      tl.fromTo(el('gate-local-plan'), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.60, ease: 'power3.out' }, finalSequence[1].start);
+      tl.fromTo(el('gate-save'), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.48, ease: 'power3.out' }, finalSequence[2].start);
+      tl.to(el('gate-save'), { x: px(0.37), y: px(0.37), scale: 0.97, duration: 0.16, ease: 'power2.inOut' }, finalSequence[2].start + 0.56);
+      tl.to(el('gate-save'), { x: 0, y: 0, scale: 1, duration: 0.22, ease: 'power3.out' }, finalSequence[2].start + 0.72);
+      tl.to({}, { duration: 0.001 }, DURATION - 0.001);
+    })();
+  </script>
+</template>

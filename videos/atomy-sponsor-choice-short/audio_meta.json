@@ -1,0 +1,463 @@
+{
+  "request_sha256": "c05c41613d92efa3ca9e80f34d2ba259753d1180d3c9701b744057b6c1130481",
+  "voice_lock": {
+    "provider": "kokoro",
+    "voice": "af_heart",
+    "speed": 1.04
+  },
+  "timing_source": "faster-whisper-small.en ASR word alignment (estimated, not native TTS timestamps)",
+  "bgm": {
+    "path": "assets/bgm/bed.wav",
+    "volume": 0.065,
+    "duration_s": 24.644
+  },
+  "bgm_pending": false,
+  "total_duration_s": 24.644,
+  "cues": [
+    {
+      "start": 0.0,
+      "end": 3.755,
+      "text": "Want to join Atomy but don't know a sponsor? You are not out of options.",
+      "shot": "A registration ticket arrives with a blank SPONSOR box and oversized question mark. Per-word reveal (dynamic-content-sequencing), cream ground, title NO SPONSOR? upper third, tilted ticket center and faint dot grid behind."
+    },
+    {
+      "start": 3.855,
+      "end": 10.489,
+      "text": "The official U S guide says a sponsor is necessary, but describes automatic or manual sponsor selection.",
+      "shot": "The blank box unfolds into a vertical fork: AUTOMATIC and MANUAL. SVG paths draw (svg-path-draw) on the choices' spoken cues, then tiles arrive. Label SPONSOR REQUIRED remains visible; make this an explanatory diagram, not a replica signup UI."
+    },
+    {
+      "start": 10.589,
+      "end": 17.501,
+      "text": "Both consumer and distributor signup include that step. The guide also says placement is assigned automatically.",
+      "shot": "Fork reconnects into CONSUMER and DISTRIBUTOR tickets, then a separate PLACEMENT AUTO lane draws beneath. Progressive disclosure (dynamic-content-sequencing), stacked diagram with distinct selection versus placement labels; no invented placement control."
+    },
+    {
+      "start": 17.601,
+      "end": 24.044,
+      "text": "So check the official flow, not random promises in comments. Save this, and choose with the rules in view.",
+      "shot": "Diagram contracts into a shielded OFFICIAL GUIDE ticket; random comment bubbles shrink away using scale-swap-transition. Inverted closer says CHECK THE OFFICIAL FLOW; SAVE arrives on cue and holds. Caption keepout maintained."
+    }
+  ],
+  "voices": [
+    {
+      "frame": 1,
+      "path": "assets/voice/01.wav",
+      "duration_s": 24.644,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Want",
+          "start": 0.0,
+          "end": 0.18
+        },
+        {
+          "id": "w1",
+          "text": "to",
+          "start": 0.18,
+          "end": 0.32
+        },
+        {
+          "id": "w2",
+          "text": "join",
+          "start": 0.32,
+          "end": 0.54
+        },
+        {
+          "id": "w3",
+          "text": "Atomy",
+          "start": 0.54,
+          "end": 0.94
+        },
+        {
+          "id": "w4",
+          "text": "but",
+          "start": 0.94,
+          "end": 1.28
+        },
+        {
+          "id": "w5",
+          "text": "don't",
+          "start": 1.28,
+          "end": 1.44
+        },
+        {
+          "id": "w6",
+          "text": "know",
+          "start": 1.44,
+          "end": 1.56
+        },
+        {
+          "id": "w7",
+          "text": "a",
+          "start": 1.56,
+          "end": 1.72
+        },
+        {
+          "id": "w8",
+          "text": "sponsor?",
+          "start": 1.72,
+          "end": 1.98
+        },
+        {
+          "id": "w9",
+          "text": "You",
+          "start": 2.5,
+          "end": 2.62
+        },
+        {
+          "id": "w10",
+          "text": "are",
+          "start": 2.62,
+          "end": 2.72
+        },
+        {
+          "id": "w11",
+          "text": "not",
+          "start": 2.72,
+          "end": 2.9
+        },
+        {
+          "id": "w12",
+          "text": "out",
+          "start": 2.9,
+          "end": 3.04
+        },
+        {
+          "id": "w13",
+          "text": "of",
+          "start": 3.04,
+          "end": 3.14
+        },
+        {
+          "id": "w14",
+          "text": "options.",
+          "start": 3.14,
+          "end": 3.48
+        },
+        {
+          "id": "w15",
+          "text": "The",
+          "start": 3.94,
+          "end": 3.98
+        },
+        {
+          "id": "w16",
+          "text": "official",
+          "start": 3.98,
+          "end": 4.38
+        },
+        {
+          "id": "w17",
+          "text": "U.S.",
+          "start": 4.38,
+          "end": 4.86
+        },
+        {
+          "id": "w18",
+          "text": "guide",
+          "start": 5.08,
+          "end": 5.18
+        },
+        {
+          "id": "w19",
+          "text": "says",
+          "start": 5.18,
+          "end": 5.6
+        },
+        {
+          "id": "w20",
+          "text": "a",
+          "start": 5.6,
+          "end": 5.8
+        },
+        {
+          "id": "w21",
+          "text": "sponsor",
+          "start": 5.8,
+          "end": 6.08
+        },
+        {
+          "id": "w22",
+          "text": "is",
+          "start": 6.08,
+          "end": 6.32
+        },
+        {
+          "id": "w23",
+          "text": "necessary,",
+          "start": 6.32,
+          "end": 6.86
+        },
+        {
+          "id": "w24",
+          "text": "but",
+          "start": 7.28,
+          "end": 7.52
+        },
+        {
+          "id": "w25",
+          "text": "describes",
+          "start": 7.52,
+          "end": 8.0
+        },
+        {
+          "id": "w26",
+          "text": "automatic",
+          "start": 8.0,
+          "end": 8.56
+        },
+        {
+          "id": "w27",
+          "text": "or",
+          "start": 8.56,
+          "end": 8.98
+        },
+        {
+          "id": "w28",
+          "text": "manual",
+          "start": 8.98,
+          "end": 9.36
+        },
+        {
+          "id": "w29",
+          "text": "sponsor",
+          "start": 9.36,
+          "end": 9.74
+        },
+        {
+          "id": "w30",
+          "text": "selection.",
+          "start": 9.74,
+          "end": 10.3
+        },
+        {
+          "id": "w31",
+          "text": "Both",
+          "start": 10.62,
+          "end": 10.78
+        },
+        {
+          "id": "w32",
+          "text": "consumer",
+          "start": 10.78,
+          "end": 11.22
+        },
+        {
+          "id": "w33",
+          "text": "and",
+          "start": 11.22,
+          "end": 11.74
+        },
+        {
+          "id": "w34",
+          "text": "distributor",
+          "start": 11.74,
+          "end": 12.24
+        },
+        {
+          "id": "w35",
+          "text": "signup",
+          "start": 12.24,
+          "end": 12.74
+        },
+        {
+          "id": "w36",
+          "text": "include",
+          "start": 12.74,
+          "end": 13.14
+        },
+        {
+          "id": "w37",
+          "text": "that",
+          "start": 13.14,
+          "end": 13.4
+        },
+        {
+          "id": "w38",
+          "text": "step.",
+          "start": 13.4,
+          "end": 13.72
+        },
+        {
+          "id": "w39",
+          "text": "The",
+          "start": 14.28,
+          "end": 14.38
+        },
+        {
+          "id": "w40",
+          "text": "guide",
+          "start": 14.38,
+          "end": 14.62
+        },
+        {
+          "id": "w41",
+          "text": "also",
+          "start": 14.62,
+          "end": 14.98
+        },
+        {
+          "id": "w42",
+          "text": "says",
+          "start": 14.98,
+          "end": 15.26
+        },
+        {
+          "id": "w43",
+          "text": "placement",
+          "start": 15.26,
+          "end": 15.68
+        },
+        {
+          "id": "w44",
+          "text": "is",
+          "start": 15.68,
+          "end": 16.1
+        },
+        {
+          "id": "w45",
+          "text": "assigned",
+          "start": 16.1,
+          "end": 16.54
+        },
+        {
+          "id": "w46",
+          "text": "automatically.",
+          "start": 16.54,
+          "end": 17.16
+        },
+        {
+          "id": "w47",
+          "text": "So",
+          "start": 17.64,
+          "end": 17.76
+        },
+        {
+          "id": "w48",
+          "text": "check",
+          "start": 17.76,
+          "end": 18.0
+        },
+        {
+          "id": "w49",
+          "text": "the",
+          "start": 18.0,
+          "end": 18.18
+        },
+        {
+          "id": "w50",
+          "text": "official",
+          "start": 18.18,
+          "end": 18.48
+        },
+        {
+          "id": "w51",
+          "text": "flow,",
+          "start": 18.48,
+          "end": 18.84
+        },
+        {
+          "id": "w52",
+          "text": "not",
+          "start": 19.16,
+          "end": 19.36
+        },
+        {
+          "id": "w53",
+          "text": "random",
+          "start": 19.36,
+          "end": 19.76
+        },
+        {
+          "id": "w54",
+          "text": "promises",
+          "start": 19.76,
+          "end": 20.26
+        },
+        {
+          "id": "w55",
+          "text": "in",
+          "start": 20.26,
+          "end": 20.48
+        },
+        {
+          "id": "w56",
+          "text": "comments.",
+          "start": 20.48,
+          "end": 20.94
+        },
+        {
+          "id": "w57",
+          "text": "Save",
+          "start": 21.58,
+          "end": 21.82
+        },
+        {
+          "id": "w58",
+          "text": "this",
+          "start": 21.82,
+          "end": 22.12
+        },
+        {
+          "id": "w59",
+          "text": "and",
+          "start": 22.12,
+          "end": 22.44
+        },
+        {
+          "id": "w60",
+          "text": "choose",
+          "start": 22.44,
+          "end": 22.74
+        },
+        {
+          "id": "w61",
+          "text": "with",
+          "start": 22.74,
+          "end": 22.98
+        },
+        {
+          "id": "w62",
+          "text": "the",
+          "start": 22.98,
+          "end": 23.12
+        },
+        {
+          "id": "w63",
+          "text": "rules",
+          "start": 23.12,
+          "end": 23.38
+        },
+        {
+          "id": "w64",
+          "text": "in",
+          "start": 23.38,
+          "end": 23.64
+        },
+        {
+          "id": "w65",
+          "text": "view.",
+          "start": 23.64,
+          "end": 23.84
+        }
+      ]
+    }
+  ],
+  "sfx": [
+    {
+      "frame": 1,
+      "file": "assets/sfx/impact-bass-1.wav",
+      "offset_s": 0.06,
+      "duration_s": 0.45,
+      "volume": 0.12
+    },
+    {
+      "frame": 1,
+      "file": "assets/sfx/chime.wav",
+      "offset_s": 4.105,
+      "duration_s": 0.57,
+      "volume": 0.12
+    }
+  ]
+}

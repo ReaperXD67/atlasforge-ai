@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "batch_id": "atomy-quick-truths",
+  "voice": "af_heart",
+  "speed": 1.04,
+  "episodes": [
+    {
+      "id": "pv-not-money",
+      "project": "videos/atomy-pv-not-money-short",
+      "title": "Atomy PV Is NOT Money — Don't Confuse These Numbers",
+      "thumbnail_headline": "PV ≠ CASH",
+      "thumbnail_stat": "POINTS\nNOT DOLLARS",
+      "color": "#C0F7FE",
+      "message": "PV is a measurement in the compensation plan, not a cash balance.",
+      "source": "https://us.atomy.com/common/footerTermsInfo?tabIndex=1",
+      "source_note": "Atomy USA's Member Agreement defines PV as Point Value, a unit of measurement established by the marketing and compensation plan. Commissions depend on the plan and eligibility; PV is not a dollar balance.",
+      "description": "PV on your Atomy account is not a cash balance. This quick visual explainer separates Point Value from money and explains why a PV figure alone is not an earnings claim.\n\nBased on Atomy USA's Member Agreement. This is U.S.-plan education, not an income promise. Rules vary by market and may change. Check your local official plan before making decisions.\n\nOfficial source: https://us.atomy.com/common/footerTermsInfo?tabIndex=1\n\nFollow BizNex for clear, source-checked Atomy explainers.",
+      "hashtags": ["#Atomy", "#AtomyPV", "#BizNex", "#Shorts"],
+      "segments": [
+        {"text": "A big Atomy P V number is not a big bank balance.", "shot": "Center a huge PV ticket on a blue ground; a money-symbol sticker tries to attach, then is crossed out. Per-word reveal (dynamic-content-sequencing); three layers: dot-grid, ticket, bold crossed symbol. Start with only the ticket, reveal the symbol on bank balance."},
+        {"text": "P V means Point Value. Atomy's U S agreement defines it as a measurement used in the compensation plan.", "shot": "The same ticket scale-swaps (scale-swap-transition) from PV to POINT VALUE, then unfolds into a tall measuring ruler. Use stacked bands; reveal MEASUREMENT and PLAN on their spoken cues, not at scene start."},
+        {"text": "It is not a dollar balance you can withdraw. Commissions still depend on the plan and your eligibility.", "shot": "The ruler becomes a receipt with separate POINTS and CASH rows. A withdrawal arrow stops at a black barrier; a QUALIFICATION key arrives later. Sequential disclosure (dynamic-content-sequencing), asymmetric vertical stack, no implied fixed conversion rate."},
+        {"text": "So read the label before reading the number. Save this: points measure volume; they do not promise income.", "shot": "The receipt contracts to a yellow reminder ticket: READ THE LABEL, then POINTS ≠ PAYDAY. Smooth scale-swap (scale-swap-transition) into an inverted closer; final SAVE THIS tab arrives on Save and holds. Keep the caption band empty."}
+      ]
+    },
+    {
+      "id": "44-percent-pool",
+      "project": "videos/atomy-44-percent-pool-short",
+      "title": "Atomy's 44% Is NOT Your Personal Cut — Here's the Difference",
+      "thumbnail_headline": "44% FOR YOU?",
+      "thumbnail_stat": "SHARED POOL\nNOT YOUR CUT",
+      "color": "#FE90E8",
+      "message": "The 44% general commission allocation is shared among qualified members, not an individual commission rate.",
+      "source": "https://us.atomy.com/cst/marketingPlan",
+      "source_note": "Atomy USA states that general commission is 44% of entire sales PV, distributed weekly between qualified members according to rate. It does not say every member personally receives 44% of a sale.",
+      "description": "Does Atomy's 44% general commission figure mean YOU get 44%? No: the official U.S. plan describes a shared allocation distributed among qualified members. Watch the pool split to see the difference.\n\nThis is U.S.-plan education, not an earnings guarantee or a personal payout calculation. Qualification, scores and other plan conditions apply. Rules vary by market and may change.\n\nOfficial source: https://us.atomy.com/cst/marketingPlan\n\nFollow BizNex for source-checked Atomy explainers.",
+      "hashtags": ["#Atomy", "#CompensationPlan", "#BizNex", "#Shorts"],
+      "segments": [
+        {"text": "Forty four percent commission sounds like your personal cut, right? Not so fast.", "shot": "A giant 44% ticket fills the pink upper stage; a YOU? sticker arrives, then a tilted NOT SO FAST stamp interrupts it. Per-word reveal (dynamic-content-sequencing), centered foreground with striped midground."},
+        {"text": "Atomy U S A describes forty four percent of total sales P V as the general commission allocation.", "shot": "The ticket becomes a labeled pool container; a 44% fill rises via stat-bars-and-fills while TOTAL SALES PV and GENERAL COMMISSION labels reveal in order. Do not depict 44% of retail price or an individual's sale."},
+        {"text": "That pool is distributed among qualified members. It is not a promise that every member gets forty four percent.", "shot": "The same pool opens three outlet pipes, drawing paths (svg-path-draw) into three QUALIFIED MEMBER trays; the number of trays is a schematic, not a claim of actual member count. Stack vertically. PERSONAL CUT? stamp crosses out as the sentence resolves."},
+        {"text": "Your result depends on the plan's rules. Remember: shared pool, not personal percentage. Save this before you calculate.", "shot": "The pipes pull into one diagram card labeled SHARED POOL; scale-swap-transition takes it into a black closing plate with NOT YOUR RATE and a yellow SAVE ticket. Sequential late reveals and final still hold, caption band clear."}
+      ]
+    },
+    {
+      "id": "10000-pv-gate",
+      "project": "videos/atomy-10000-pv-gate-short",
+      "title": "The Atomy 10,000 PV Gate — What It Actually Unlocks",
+      "thumbnail_headline": "10,000 FIRST",
+      "thumbnail_stat": "GATE OPEN\nPAYDAY? NO",
+      "color": "#99E885",
+      "message": "The initial 10,000 personal-PV rule is a prerequisite for generating downline PV, not an automatic payout.",
+      "source": "https://us.atomy.com/cst/marketingPlan",
+      "source_note": "Atomy USA's marketing plan says individuals must first accumulate 10,000 Personal PV before generating any downline PV. This prerequisite is separate from commission eligibility and other payout requirements.",
+      "description": "What does the initial 10,000 Personal PV threshold actually do? In Atomy's official U.S. plan, it is a prerequisite before generating downline PV — not an automatic payday. This animated gate makes the distinction clear.\n\nU.S.-plan education only. Other qualification and commission rules still apply; no income is guaranteed. Rules vary by market and may change. Do not purchase solely to meet a volume threshold.\n\nOfficial source: https://us.atomy.com/cst/marketingPlan\n\nFollow BizNex for clear Atomy explainers.",
+      "hashtags": ["#Atomy", "#PersonalPV", "#AtomyExplained", "#BizNex", "#Shorts"],
+      "segments": [
+        {"text": "Before you count the team, Atomy's U S plan has a personal P V gate.", "shot": "A large PERSONAL PV key moves toward a locked gate on a green stage. Per-word reveal (dynamic-content-sequencing); title BEFORE THE TEAM then key then gate arrive sequentially. Ground grid, gate midground, key foreground."},
+        {"text": "It says you must first accumulate ten thousand personal P V before generating any downline P V.", "shot": "Gate counter builds to 10,000 via stat-bars-and-fills, then lock slides off and gate opens. A DOWNLINE PV track is revealed only after ten thousand is spoken. One continuous diagram, upper-third title, center hero."},
+        {"text": "That is an entry condition, not an automatic payday. Other qualification and commission rules still apply.", "shot": "The open gate exposes two separate tracks: DOWNLINE PV proceeds; PAYOUT remains behind a RULES lock. Smooth scale-swap-transition to a closer view and progressive disclosure on entry condition, payday, then rules. Never depict guaranteed money."},
+        {"text": "Think gate open, not money guaranteed. Read your local plan before buying for a threshold. Save the distinction.", "shot": "Pull the gate motif into an inverted card: GATE OPEN ≠ PAYDAY. RECHECK LOCAL PLAN follows on its spoken cue; yellow SAVE tab presses once. Sequential reveal (dynamic-content-sequencing), final still hold and no critical content below caption band."}
+      ]
+    },
+    {
+      "id": "sponsor-choice",
+      "project": "videos/atomy-sponsor-choice-short",
+      "title": "No Atomy Sponsor? The Official U.S. Signup Guide Has Two Options",
+      "thumbnail_headline": "NO SPONSOR?",
+      "thumbnail_stat": "2 OPTIONS\nIN THE GUIDE",
+      "color": "#FFDC8B",
+      "message": "The official U.S. signup guide requires a sponsor but describes automatic and manual sponsor selection.",
+      "source": "https://us.atomy.com/cst/userGuide/24100000001691",
+      "source_note": "Atomy USA's Membership Registration guide says a sponsor is necessary and describes automatic or manual sponsor selection for both Consumer and Distributor registration; placement is assigned automatically.",
+      "description": "Don't know an Atomy sponsor? The official U.S. membership guide describes automatic and manual sponsor selection. A sponsor is still required, and placement is assigned automatically. This Short shows the two choices without confusing sponsor selection with placement.\n\nCheck the live official signup flow and your local market's rules. This video covers the U.S. guide and is not a registration service. Never share private identity or banking details in comments.\n\nOfficial guide: https://us.atomy.com/cst/userGuide/24100000001691\n\nFollow BizNex for practical Atomy explainers.",
+      "hashtags": ["#Atomy", "#AtomyMembership", "#BizNex", "#Shorts"],
+      "segments": [
+        {"text": "Want to join Atomy but don't know a sponsor? You are not out of options.", "shot": "A registration ticket arrives with a blank SPONSOR box and oversized question mark. Per-word reveal (dynamic-content-sequencing), cream ground, title NO SPONSOR? upper third, tilted ticket center and faint dot grid behind."},
+        {"text": "The official U S guide says a sponsor is necessary, but describes automatic or manual sponsor selection.", "shot": "The blank box unfolds into a vertical fork: AUTOMATIC and MANUAL. SVG paths draw (svg-path-draw) on the choices' spoken cues, then tiles arrive. Label SPONSOR REQUIRED remains visible; make this an explanatory diagram, not a replica signup UI."},
+        {"text": "Both consumer and distributor signup include that step. The guide also says placement is assigned automatically.", "shot": "Fork reconnects into CONSUMER and DISTRIBUTOR tickets, then a separate PLACEMENT AUTO lane draws beneath. Progressive disclosure (dynamic-content-sequencing), stacked diagram with distinct selection versus placement labels; no invented placement control."},
+        {"text": "So check the official flow, not random promises in comments. Save this, and choose with the rules in view.", "shot": "Diagram contracts into a shielded OFFICIAL GUIDE ticket; random comment bubbles shrink away using scale-swap-transition. Inverted closer says CHECK THE OFFICIAL FLOW; SAVE arrives on cue and holds. Caption keepout maintained."}
+      ]
+    }
+  ]
+}

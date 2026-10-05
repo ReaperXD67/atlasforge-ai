@@ -1,0 +1,422 @@
+{
+  "request_sha256": "b91316573a2e8bc7d939ef17b899a8c217a0e98507cf196e0c22fdfe9471e734",
+  "voice_lock": {
+    "provider": "kokoro",
+    "voice": "af_heart",
+    "speed": 1.04
+  },
+  "timing_source": "faster-whisper-small.en ASR word alignment (estimated, not native TTS timestamps)",
+  "bgm": {
+    "path": "assets/bgm/bed.wav",
+    "volume": 0.065,
+    "duration_s": 25.625
+  },
+  "bgm_pending": false,
+  "total_duration_s": 25.625,
+  "cues": [
+    {
+      "start": 0.0,
+      "end": 4.608,
+      "text": "Forty four percent commission sounds like your personal cut, right? Not so fast.",
+      "shot": "A giant 44% ticket fills the pink upper stage; a YOU? sticker arrives, then a tilted NOT SO FAST stamp interrupts it. Per-word reveal (dynamic-content-sequencing), centered foreground with striped midground."
+    },
+    {
+      "start": 4.708,
+      "end": 10.937,
+      "text": "Atomy U S A describes forty four percent of total sales P V as the general commission allocation.",
+      "shot": "The ticket becomes a labeled pool container; a 44% fill rises via stat-bars-and-fills while TOTAL SALES PV and GENERAL COMMISSION labels reveal in order. Do not depict 44% of retail price or an individual's sale."
+    },
+    {
+      "start": 11.037,
+      "end": 17.587,
+      "text": "That pool is distributed among qualified members. It is not a promise that every member gets forty four percent.",
+      "shot": "The same pool opens three outlet pipes, drawing paths (svg-path-draw) into three QUALIFIED MEMBER trays; the number of trays is a schematic, not a claim of actual member count. Stack vertically. PERSONAL CUT? stamp crosses out as the sentence resolves."
+    },
+    {
+      "start": 17.687,
+      "end": 25.025,
+      "text": "Your result depends on the plan's rules. Remember: shared pool, not personal percentage. Save this before you calculate.",
+      "shot": "The pipes pull into one diagram card labeled SHARED POOL; scale-swap-transition takes it into a black closing plate with NOT YOUR RATE and a yellow SAVE ticket. Sequential late reveals and final still hold, caption band clear."
+    }
+  ],
+  "voices": [
+    {
+      "frame": 1,
+      "path": "assets/voice/01.wav",
+      "duration_s": 25.625,
+      "words": [
+        {
+          "id": "w0",
+          "text": "44%",
+          "start": 0.0,
+          "end": 0.92
+        },
+        {
+          "id": "w1",
+          "text": "commission",
+          "start": 0.92,
+          "end": 1.26
+        },
+        {
+          "id": "w2",
+          "text": "sounds",
+          "start": 1.26,
+          "end": 1.84
+        },
+        {
+          "id": "w3",
+          "text": "like",
+          "start": 1.84,
+          "end": 2.06
+        },
+        {
+          "id": "w4",
+          "text": "your",
+          "start": 2.06,
+          "end": 2.2
+        },
+        {
+          "id": "w5",
+          "text": "personal",
+          "start": 2.2,
+          "end": 2.56
+        },
+        {
+          "id": "w6",
+          "text": "cut,",
+          "start": 2.56,
+          "end": 2.86
+        },
+        {
+          "id": "w7",
+          "text": "right?",
+          "start": 3.0,
+          "end": 3.24
+        },
+        {
+          "id": "w8",
+          "text": "Not",
+          "start": 3.72,
+          "end": 3.86
+        },
+        {
+          "id": "w9",
+          "text": "so",
+          "start": 3.86,
+          "end": 4.04
+        },
+        {
+          "id": "w10",
+          "text": "fast.",
+          "start": 4.04,
+          "end": 4.4
+        },
+        {
+          "id": "w11",
+          "text": "Atomy.",
+          "start": 4.84,
+          "end": 5.02
+        },
+        {
+          "id": "w12",
+          "text": "U.S.A.",
+          "start": 5.24,
+          "end": 5.82
+        },
+        {
+          "id": "w13",
+          "text": "describes",
+          "start": 5.86,
+          "end": 6.22
+        },
+        {
+          "id": "w14",
+          "text": "44%",
+          "start": 6.22,
+          "end": 7.24
+        },
+        {
+          "id": "w15",
+          "text": "of",
+          "start": 7.24,
+          "end": 7.36
+        },
+        {
+          "id": "w16",
+          "text": "total",
+          "start": 7.36,
+          "end": 7.64
+        },
+        {
+          "id": "w17",
+          "text": "sales",
+          "start": 7.64,
+          "end": 8.04
+        },
+        {
+          "id": "w18",
+          "text": "PV",
+          "start": 8.04,
+          "end": 8.54
+        },
+        {
+          "id": "w19",
+          "text": "as",
+          "start": 8.54,
+          "end": 9.28
+        },
+        {
+          "id": "w20",
+          "text": "the",
+          "start": 9.28,
+          "end": 9.44
+        },
+        {
+          "id": "w21",
+          "text": "general",
+          "start": 9.44,
+          "end": 9.72
+        },
+        {
+          "id": "w22",
+          "text": "commission",
+          "start": 9.72,
+          "end": 10.08
+        },
+        {
+          "id": "w23",
+          "text": "allocation.",
+          "start": 10.08,
+          "end": 10.64
+        },
+        {
+          "id": "w24",
+          "text": "That",
+          "start": 11.08,
+          "end": 11.2
+        },
+        {
+          "id": "w25",
+          "text": "pool",
+          "start": 11.2,
+          "end": 11.48
+        },
+        {
+          "id": "w26",
+          "text": "is",
+          "start": 11.48,
+          "end": 11.76
+        },
+        {
+          "id": "w27",
+          "text": "distributed",
+          "start": 11.76,
+          "end": 12.24
+        },
+        {
+          "id": "w28",
+          "text": "among",
+          "start": 12.24,
+          "end": 12.64
+        },
+        {
+          "id": "w29",
+          "text": "qualified",
+          "start": 12.64,
+          "end": 13.2
+        },
+        {
+          "id": "w30",
+          "text": "members.",
+          "start": 13.2,
+          "end": 13.7
+        },
+        {
+          "id": "w31",
+          "text": "It",
+          "start": 14.3,
+          "end": 14.38
+        },
+        {
+          "id": "w32",
+          "text": "is",
+          "start": 14.38,
+          "end": 14.5
+        },
+        {
+          "id": "w33",
+          "text": "not",
+          "start": 14.5,
+          "end": 14.72
+        },
+        {
+          "id": "w34",
+          "text": "a",
+          "start": 14.72,
+          "end": 14.88
+        },
+        {
+          "id": "w35",
+          "text": "promise",
+          "start": 14.88,
+          "end": 15.18
+        },
+        {
+          "id": "w36",
+          "text": "that",
+          "start": 15.18,
+          "end": 15.56
+        },
+        {
+          "id": "w37",
+          "text": "every",
+          "start": 15.56,
+          "end": 15.88
+        },
+        {
+          "id": "w38",
+          "text": "member",
+          "start": 15.88,
+          "end": 16.1
+        },
+        {
+          "id": "w39",
+          "text": "gets",
+          "start": 16.1,
+          "end": 16.4
+        },
+        {
+          "id": "w40",
+          "text": "44%.",
+          "start": 16.4,
+          "end": 17.56
+        },
+        {
+          "id": "w41",
+          "text": "Your",
+          "start": 17.56,
+          "end": 17.84
+        },
+        {
+          "id": "w42",
+          "text": "result",
+          "start": 17.84,
+          "end": 18.2
+        },
+        {
+          "id": "w43",
+          "text": "depends",
+          "start": 18.2,
+          "end": 18.56
+        },
+        {
+          "id": "w44",
+          "text": "on",
+          "start": 18.56,
+          "end": 18.76
+        },
+        {
+          "id": "w45",
+          "text": "the",
+          "start": 18.76,
+          "end": 18.9
+        },
+        {
+          "id": "w46",
+          "text": "plan's",
+          "start": 18.9,
+          "end": 19.12
+        },
+        {
+          "id": "w47",
+          "text": "rules.",
+          "start": 19.12,
+          "end": 19.5
+        },
+        {
+          "id": "w48",
+          "text": "Remember:",
+          "start": 20.02,
+          "end": 20.48,
+          "alignment": "estimated source-prompted local ASR and speech envelope"
+        },
+        {
+          "id": "w49",
+          "text": "shared",
+          "start": 20.8,
+          "end": 21.04
+        },
+        {
+          "id": "w50",
+          "text": "pool,",
+          "start": 21.04,
+          "end": 21.46
+        },
+        {
+          "id": "w51",
+          "text": "not",
+          "start": 21.58,
+          "end": 21.8
+        },
+        {
+          "id": "w52",
+          "text": "personal",
+          "start": 21.8,
+          "end": 22.26
+        },
+        {
+          "id": "w53",
+          "text": "percentage.",
+          "start": 22.26,
+          "end": 22.78
+        },
+        {
+          "id": "w54",
+          "text": "Save",
+          "start": 23.3,
+          "end": 23.6
+        },
+        {
+          "id": "w55",
+          "text": "this",
+          "start": 23.6,
+          "end": 23.82
+        },
+        {
+          "id": "w56",
+          "text": "before",
+          "start": 23.82,
+          "end": 24.12
+        },
+        {
+          "id": "w57",
+          "text": "you",
+          "start": 24.12,
+          "end": 24.32
+        },
+        {
+          "id": "w58",
+          "text": "calculate.",
+          "start": 24.32,
+          "end": 24.74
+        }
+      ]
+    }
+  ],
+  "sfx": [
+    {
+      "frame": 1,
+      "file": "assets/sfx/impact-bass-1.wav",
+      "offset_s": 0.06,
+      "duration_s": 0.45,
+      "volume": 0.12
+    },
+    {
+      "frame": 1,
+      "file": "assets/sfx/chime.wav",
+      "offset_s": 4.958,
+      "duration_s": 0.57,
+      "volume": 0.12
+    }
+  ]
+}

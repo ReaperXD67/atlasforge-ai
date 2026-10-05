@@ -1,0 +1,63 @@
+{
+  "id": "sponsor-choice",
+  "project": "videos/atomy-sponsor-choice-short",
+  "title": "No Atomy Sponsor? The Official U.S. Signup Guide Has Two Options",
+  "thumbnail_headline": "NO SPONSOR?",
+  "thumbnail_stat": "2 OPTIONS\nIN THE GUIDE",
+  "color": "#FFDC8B",
+  "message": "The official U.S. signup guide requires a sponsor but describes automatic and manual sponsor selection.",
+  "source": "https://us.atomy.com/cst/userGuide/24100000001691",
+  "source_note": "Atomy USA's Membership Registration guide says a sponsor is necessary and describes automatic or manual sponsor selection for both Consumer and Distributor registration; placement is assigned automatically.",
+  "description": "Don't know an Atomy sponsor? The official U.S. membership guide describes automatic and manual sponsor selection. A sponsor is still required, and placement is assigned automatically. This Short shows the two choices without confusing sponsor selection with placement.\n\nCheck the live official signup flow and your local market's rules. This video covers the U.S. guide and is not a registration service. Never share private identity or banking details in comments.\n\nOfficial guide: https://us.atomy.com/cst/userGuide/24100000001691\n\nFollow BizNex for practical Atomy explainers.",
+  "hashtags": [
+    "#Atomy",
+    "#AtomyMembership",
+    "#BizNex",
+    "#Shorts"
+  ],
+  "segments": [
+    {
+      "text": "Want to join Atomy but don't know a sponsor? You are not out of options.",
+      "shot": "A registration ticket arrives with a blank SPONSOR box and oversized question mark. Per-word reveal (dynamic-content-sequencing), cream ground, title NO SPONSOR? upper third, tilted ticket center and faint dot grid behind."
+    },
+    {
+      "text": "The official U S guide says a sponsor is necessary, but describes automatic or manual sponsor selection.",
+      "shot": "The blank box unfolds into a vertical fork: AUTOMATIC and MANUAL. SVG paths draw (svg-path-draw) on the choices' spoken cues, then tiles arrive. Label SPONSOR REQUIRED remains visible; make this an explanatory diagram, not a replica signup UI."
+    },
+    {
+      "text": "Both consumer and distributor signup include that step. The guide also says placement is assigned automatically.",
+      "shot": "Fork reconnects into CONSUMER and DISTRIBUTOR tickets, then a separate PLACEMENT AUTO lane draws beneath. Progressive disclosure (dynamic-content-sequencing), stacked diagram with distinct selection versus placement labels; no invented placement control."
+    },
+    {
+      "text": "So check the official flow, not random promises in comments. Save this, and choose with the rules in view.",
+      "shot": "Diagram contracts into a shielded OFFICIAL GUIDE ticket; random comment bubbles shrink away using scale-swap-transition. Inverted closer says CHECK THE OFFICIAL FLOW; SAVE arrives on cue and holds. Caption keepout maintained."
+    }
+  ],
+  "duration_s": 24.644,
+  "cues": [
+    {
+      "start": 0.0,
+      "end": 3.755,
+      "text": "Want to join Atomy but don't know a sponsor? You are not out of options.",
+      "shot": "A registration ticket arrives with a blank SPONSOR box and oversized question mark. Per-word reveal (dynamic-content-sequencing), cream ground, title NO SPONSOR? upper third, tilted ticket center and faint dot grid behind."
+    },
+    {
+      "start": 3.855,
+      "end": 10.489,
+      "text": "The official U S guide says a sponsor is necessary, but describes automatic or manual sponsor selection.",
+      "shot": "The blank box unfolds into a vertical fork: AUTOMATIC and MANUAL. SVG paths draw (svg-path-draw) on the choices' spoken cues, then tiles arrive. Label SPONSOR REQUIRED remains visible; make this an explanatory diagram, not a replica signup UI."
+    },
+    {
+      "start": 10.589,
+      "end": 17.501,
+      "text": "Both consumer and distributor signup include that step. The guide also says placement is assigned automatically.",
+      "shot": "Fork reconnects into CONSUMER and DISTRIBUTOR tickets, then a separate PLACEMENT AUTO lane draws beneath. Progressive disclosure (dynamic-content-sequencing), stacked diagram with distinct selection versus placement labels; no invented placement control."
+    },
+    {
+      "start": 17.601,
+      "end": 24.044,
+      "text": "So check the official flow, not random promises in comments. Save this, and choose with the rules in view.",
+      "shot": "Diagram contracts into a shielded OFFICIAL GUIDE ticket; random comment bubbles shrink away using scale-swap-transition. Inverted closer says CHECK THE OFFICIAL FLOW; SAVE arrives on cue and holds. Caption keepout maintained."
+    }
+  ]
+}

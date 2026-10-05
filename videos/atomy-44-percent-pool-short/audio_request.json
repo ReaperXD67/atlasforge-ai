@@ -1,0 +1,28 @@
+{
+  "provider": "kokoro",
+  "voice": "af_heart",
+  "speed": 1.04,
+  "lang": "en-us",
+  "style": "Warm, curious, clear, conversational; no voice substitution.",
+  "lines": [
+    {
+      "id": "cue-1",
+      "text": "Forty four percent commission sounds like your personal cut, right? Not so fast."
+    },
+    {
+      "id": "cue-2",
+      "text": "Atomy U S A describes forty four percent of total sales P V as the general commission allocation."
+    },
+    {
+      "id": "cue-3",
+      "text": "That pool is distributed among qualified members. It is not a promise that every member gets forty four percent."
+    },
+    {
+      "id": "cue-4",
+      "text": "Your result depends on the plan's rules. Remember: shared pool, not personal percentage. Save this before you calculate."
+    }
+  ],
+  "bgm": {
+    "mode": "project-owned"
+  }
+}

@@ -1,0 +1,33 @@
+// Deterministic portrait poster factory; screenshot these with the local browser.
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { resolve, join } from 'node:path';
+
+const spec = JSON.parse(readFileSync(process.argv[2], 'utf8'));
+const root = resolve('.');
+const escape = s => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
+const drawings = {
+  'pv-not-money': `<div class="ticket"><small>POINTS MEASUREMENT</small><b>PV</b><span>POINT VALUE</span></div><div class="vs">≠</div><div class="bank"><b>$</b><span>CASH BALANCE</span></div>`,
+  '44-percent-pool': `<div class="pool"><small>GENERAL COMMISSION</small><b>44%</b><span>OF TOTAL SALES PV</span></div><div class="branch"></div><div class="members"><span>QUALIFIED</span><span>MEMBERS</span></div>`,
+  '10000-pv-gate': `<div class="gate"><small>PERSONAL PV</small><b>10,000</b><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M27 42V26a23 23 0 0 1 46 0v16M18 42h64v52H18z" fill="#FFFDF5" stroke="black" stroke-width="8"/><circle cx="50" cy="65" r="7" fill="black"/><path d="M50 65v15" stroke="black" stroke-width="7"/></svg><span>ENTRY CONDITION</span></div>`,
+  'sponsor-choice': `<div class="join"><small>SPONSOR SELECTION</small><b>2</b><span>OPTIONS IN THE U.S. GUIDE</span></div><div class="fork"></div><div class="choices"><b>AUTO</b><b>MANUAL</b></div>`,
+};
+for (const ep of spec.episodes) {
+  if (!drawings[ep.id] || !/^videos\/[a-z0-9-]+$/.test(ep.project)) throw new Error('Unsupported episode');
+  const dir = join(root, ep.project, 'thumbnail');
+  mkdirSync(dir, { recursive: true });
+  mkdirSync(join(root, ep.project, 'assets/thumbnails'), { recursive: true });
+  const html = `<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Inter;src:url('../assets/fonts/Inter-Variable.ttf')}@font-face{font-family:SpaceGrotesk;src:url('../assets/fonts/SpaceGrotesk-Variable.ttf')}
+*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden}body{background:${ep.color};color:#000;font-family:Inter,sans-serif}
+.poster{position:relative;width:1080px;height:1920px;padding:94px 84px;background-image:radial-gradient(#0002 2px,transparent 2px);background-size:32px 32px}
+.brand{display:inline-block;padding:16px 24px;background:#FFFDF5;border:4px solid #000;box-shadow:8px 8px #000;font:700 32px SpaceGrotesk;letter-spacing:3px}.edition{position:absolute;right:88px;top:105px;font:700 27px SpaceGrotesk;text-align:right}
+h1{font-size:118px;line-height:.98;font-weight:950;letter-spacing:-6px;margin:83px 0 55px;max-width:890px;text-transform:uppercase}
+.art{position:relative;height:740px;width:860px;margin:0 auto}.art small,.art span{display:block;font:700 31px SpaceGrotesk;letter-spacing:1px}.art b{display:block;font-size:138px;font-weight:900;letter-spacing:-7px;line-height:1.1}
+.ticket,.bank,.pool,.gate,.join{border:5px solid #000;box-shadow:12px 12px #000;background:#FFFDF5;padding:36px;text-align:center}.ticket{width:650px;transform:rotate(-3deg);margin:0 auto}.bank{background:#F7CB46;width:540px;margin:0 auto;transform:rotate(3deg)}.bank b{font-size:120px}.vs{font-size:150px;font-weight:900;text-align:center;height:180px;line-height:180px}
+.pool{width:790px;background:#C0F7FE}.pool b{font-size:210px}.branch{width:5px;height:110px;background:#000;margin:12px auto 0}.members{display:flex;justify-content:center;gap:22px}.members span{background:#FFFDF5;border:4px solid #000;box-shadow:8px 8px #000;padding:30px 25px;font-size:34px}
+.gate{width:790px;background:#F7CB46}.gate b{font-size:162px;margin:12px 0}.gate svg{width:180px;height:180px;margin:18px}.gate span{font-size:40px;margin:20px 0}.join{width:790px;background:#FFFDF5}.join b{font-size:180px}.join span{font-size:32px}.fork{height:100px;width:510px;border-top:5px solid #000;border-left:5px solid #000;border-right:5px solid #000;margin:45px auto 0;position:relative}.fork:before{content:"";position:absolute;height:50px;width:5px;background:#000;left:250px;top:-50px}.choices{display:flex;gap:24px;justify-content:center}.choices b{font-size:57px;background:#99E885;padding:36px 28px;border:5px solid #000;box-shadow:10px 10px #000;letter-spacing:-2px}.choices b:last-child{background:#FE90E8}
+.takeaway{position:absolute;left:84px;right:84px;bottom:130px;background:#000;color:#FFFDF5;padding:37px 35px;border:4px solid #FFFDF5;box-shadow:14px 14px #F7CB46;font-size:68px;font-weight:900;line-height:1.05;letter-spacing:-2px;text-transform:uppercase}.takeaway span{display:block}.footer{position:absolute;bottom:42px;left:90px;font:700 24px SpaceGrotesk;letter-spacing:2px}
+</style></head><body><div class="poster"><div class="brand">BIZNEX × ATOMY</div><div class="edition">QUICK TRUTHS<br>U.S. PLAN</div><h1>${escape(ep.thumbnail_headline)}</h1><div class="art">${drawings[ep.id]}</div><div class="takeaway">${ep.thumbnail_stat.split('\n').map(s=>`<span>${escape(s)}</span>`).join('')}</div><div class="footer">SOURCE-CHECKED EXPLAINER · NO INCOME PROMISE</div></div></body></html>`;
+  writeFileSync(join(dir, 'index.html'), html);
+  console.log(`${ep.id}: thumbnail/index.html`);
+}

@@ -1,0 +1,28 @@
+{
+  "provider": "kokoro",
+  "voice": "af_heart",
+  "speed": 1.04,
+  "lang": "en-us",
+  "style": "Warm, curious, clear, conversational; no voice substitution.",
+  "lines": [
+    {
+      "id": "cue-1",
+      "text": "Want to join Atomy but don't know a sponsor? You are not out of options."
+    },
+    {
+      "id": "cue-2",
+      "text": "The official U S guide says a sponsor is necessary, but describes automatic or manual sponsor selection."
+    },
+    {
+      "id": "cue-3",
+      "text": "Both consumer and distributor signup include that step. The guide also says placement is assigned automatically."
+    },
+    {
+      "id": "cue-4",
+      "text": "So check the official flow, not random promises in comments. Save this, and choose with the rules in view."
+    }
+  ],
+  "bgm": {
+    "mode": "project-owned"
+  }
+}

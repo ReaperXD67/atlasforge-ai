@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "batch_id": "atomy-quick-truths",
+  "expected_voice": "af_heart",
+  "episodes": [
+    {
+      "id": "pv-not-money",
+      "project": "videos/atomy-pv-not-money-short",
+      "output": "renders/final.mp4",
+      "thumbnail": "assets/thumbnails/thumbnail.png",
+      "upload_package": "UPLOAD_PACKAGE.md",
+      "voice_manifest": "audio_request.json"
+    },
+    {
+      "id": "44-percent-pool",
+      "project": "videos/atomy-44-percent-pool-short",
+      "output": "renders/final.mp4",
+      "thumbnail": "assets/thumbnails/thumbnail.png",
+      "upload_package": "UPLOAD_PACKAGE.md",
+      "voice_manifest": "audio_request.json"
+    },
+    {
+      "id": "10000-pv-gate",
+      "project": "videos/atomy-10000-pv-gate-short",
+      "output": "renders/final.mp4",
+      "thumbnail": "assets/thumbnails/thumbnail.png",
+      "upload_package": "UPLOAD_PACKAGE.md",
+      "voice_manifest": "audio_request.json"
+    },
+    {
+      "id": "sponsor-choice",
+      "project": "videos/atomy-sponsor-choice-short",
+      "output": "renders/final.mp4",
+      "thumbnail": "assets/thumbnails/thumbnail.png",
+      "upload_package": "UPLOAD_PACKAGE.md",
+      "voice_manifest": "audio_request.json"
+    }
+  ]
+}

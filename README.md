@@ -30,6 +30,8 @@ OpenRouter vision checks approve it. Generated footage is never inserted merely 
 
 It is configured for education-first Atomy content aimed at people researching online business, side hustles, entrepreneurship, wellness, Korean skincare, and productivity. The brand is introduced as one possible case study, never as a guaranteed income or health outcome.
 
+**Shorts batches:** prepare and render multiple independent 20–30 second HyperFrames episodes in one resumable job, with the approved voice locked, required thumbnails/upload text, speech-aligned captions, and mastered delivery checks. See [Shorts batch workflow](docs/SHORTS_BATCH.md).
+
 > [!CAUTION]
 > AtlasForge AI automates production, not editorial responsibility. Its gates block obvious earnings promises, medical claims, early sales pitches, missing disclosures, and malformed media. You remain responsible for factual accuracy, licensing, product claims, and channel compliance.
 

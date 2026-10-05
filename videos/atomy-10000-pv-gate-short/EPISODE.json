@@ -1,0 +1,64 @@
+{
+  "id": "10000-pv-gate",
+  "project": "videos/atomy-10000-pv-gate-short",
+  "title": "The Atomy 10,000 PV Gate — What It Actually Unlocks",
+  "thumbnail_headline": "10,000 FIRST",
+  "thumbnail_stat": "GATE OPEN\nPAYDAY? NO",
+  "color": "#99E885",
+  "message": "The initial 10,000 personal-PV rule is a prerequisite for generating downline PV, not an automatic payout.",
+  "source": "https://us.atomy.com/cst/marketingPlan",
+  "source_note": "Atomy USA's marketing plan says individuals must first accumulate 10,000 Personal PV before generating any downline PV. This prerequisite is separate from commission eligibility and other payout requirements.",
+  "description": "What does the initial 10,000 Personal PV threshold actually do? In Atomy's official U.S. plan, it is a prerequisite before generating downline PV — not an automatic payday. This animated gate makes the distinction clear.\n\nU.S.-plan education only. Other qualification and commission rules still apply; no income is guaranteed. Rules vary by market and may change. Do not purchase solely to meet a volume threshold.\n\nOfficial source: https://us.atomy.com/cst/marketingPlan\n\nFollow BizNex for clear Atomy explainers.",
+  "hashtags": [
+    "#Atomy",
+    "#PersonalPV",
+    "#AtomyExplained",
+    "#BizNex",
+    "#Shorts"
+  ],
+  "segments": [
+    {
+      "text": "Before you count the team, Atomy's U S plan has a personal P V gate.",
+      "shot": "A large PERSONAL PV key moves toward a locked gate on a green stage. Per-word reveal (dynamic-content-sequencing); title BEFORE THE TEAM then key then gate arrive sequentially. Ground grid, gate midground, key foreground."
+    },
+    {
+      "text": "It says you must first accumulate ten thousand personal P V before generating any downline P V.",
+      "shot": "Gate counter builds to 10,000 via stat-bars-and-fills, then lock slides off and gate opens. A DOWNLINE PV track is revealed only after ten thousand is spoken. One continuous diagram, upper-third title, center hero."
+    },
+    {
+      "text": "That is an entry condition, not an automatic payday. Other qualification and commission rules still apply.",
+      "shot": "The open gate exposes two separate tracks: DOWNLINE PV proceeds; PAYOUT remains behind a RULES lock. Smooth scale-swap-transition to a closer view and progressive disclosure on entry condition, payday, then rules. Never depict guaranteed money."
+    },
+    {
+      "text": "Think gate open, not money guaranteed. Read your local plan before buying for a threshold. Save the distinction.",
+      "shot": "Pull the gate motif into an inverted card: GATE OPEN ≠ PAYDAY. RECHECK LOCAL PLAN follows on its spoken cue; yellow SAVE tab presses once. Sequential reveal (dynamic-content-sequencing), final still hold and no critical content below caption band."
+    }
+  ],
+  "duration_s": 24.26,
+  "cues": [
+    {
+      "start": 0.0,
+      "end": 4.245,
+      "text": "Before you count the team, Atomy's U S plan has a personal P V gate.",
+      "shot": "A large PERSONAL PV key moves toward a locked gate on a green stage. Per-word reveal (dynamic-content-sequencing); title BEFORE THE TEAM then key then gate arrive sequentially. Ground grid, gate midground, key foreground."
+    },
+    {
+      "start": 4.345,
+      "end": 10.233,
+      "text": "It says you must first accumulate ten thousand personal P V before generating any downline P V.",
+      "shot": "Gate counter builds to 10,000 via stat-bars-and-fills, then lock slides off and gate opens. A DOWNLINE PV track is revealed only after ten thousand is spoken. One continuous diagram, upper-third title, center hero."
+    },
+    {
+      "start": 10.333,
+      "end": 16.84,
+      "text": "That is an entry condition, not an automatic payday. Other qualification and commission rules still apply.",
+      "shot": "The open gate exposes two separate tracks: DOWNLINE PV proceeds; PAYOUT remains behind a RULES lock. Smooth scale-swap-transition to a closer view and progressive disclosure on entry condition, payday, then rules. Never depict guaranteed money."
+    },
+    {
+      "start": 16.94,
+      "end": 23.66,
+      "text": "Think gate open, not money guaranteed. Read your local plan before buying for a threshold. Save the distinction.",
+      "shot": "Pull the gate motif into an inverted card: GATE OPEN ≠ PAYDAY. RECHECK LOCAL PLAN follows on its spoken cue; yellow SAVE tab presses once. Sequential reveal (dynamic-content-sequencing), final still hold and no critical content below caption band."
+    }
+  ]
+}

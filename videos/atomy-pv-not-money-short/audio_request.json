@@ -1,0 +1,28 @@
+{
+  "provider": "kokoro",
+  "voice": "af_heart",
+  "speed": 1.04,
+  "lang": "en-us",
+  "style": "Warm, curious, clear, conversational; no voice substitution.",
+  "lines": [
+    {
+      "id": "cue-1",
+      "text": "A big Atomy P V number is not a big bank balance."
+    },
+    {
+      "id": "cue-2",
+      "text": "P V means Point Value. Atomy's U S agreement defines it as a measurement used in the compensation plan."
+    },
+    {
+      "id": "cue-3",
+      "text": "It is not a dollar balance you can withdraw. Commissions still depend on the plan and your eligibility."
+    },
+    {
+      "id": "cue-4",
+      "text": "So read the label before reading the number. Save this: points measure volume; they do not promise income."
+    }
+  ],
+  "bgm": {
+    "mode": "project-owned"
+  }
+}

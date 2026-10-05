@@ -23,6 +23,7 @@ from .providers.tts import NarrationGenerator
 from .publishing.youtube import YouTubePublisher
 from .scheduler import run_scheduler
 from .shorts import extract_hyperframes_narration, write_short_experiment_manifest
+from .shorts_batch import ShortsBatchError, run_shorts_batch
 from .shorts_delivery import ShortsDeliveryError, validate_short_delivery
 from .viral_video import ViralShortPipeline
 from .youtube_delivery import YouTubeDeliveryError, validate_youtube_delivery
@@ -147,6 +148,25 @@ def verify_shorts_delivery_command(
         raise typer.Exit(1) from exc
     console.print("[bold green]Shorts delivery verified[/]")
     console.print_json(data=report)
+
+
+@app.command("render-shorts-batch")
+def render_shorts_batch_command(
+    manifest: Path = typer.Option(..., exists=True, dir_okay=False, help="Shorts batch JSON manifest."),
+    resume: bool = typer.Option(
+        True, "--resume/--fresh", help="Skip only unchanged, previously verified deliveries."
+    ),
+    dry_run: bool = typer.Option(False, help="Preview render and mastering jobs without encoding."),
+) -> None:
+    """Render a local Shorts batch with the approved voice and delivery gates."""
+    try:
+        report = run_shorts_batch(manifest, resume=resume, dry_run=dry_run)
+    except ShortsBatchError as exc:
+        console.print(f"[bold red]Shorts batch failed:[/] {exc}")
+        raise typer.Exit(1) from exc
+    console.print_json(data=report)
+    if report["status"] == "failed":
+        raise typer.Exit(1)
 
 
 @app.command("verify-youtube-delivery")

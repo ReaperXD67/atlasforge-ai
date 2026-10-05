@@ -1,0 +1,433 @@
+{
+  "request_sha256": "7e030737b51126d50a5098e2489aeebc72edb8a5c2ea9e0e9d7247b55942b80c",
+  "voice_lock": {
+    "provider": "kokoro",
+    "voice": "af_heart",
+    "speed": 1.04
+  },
+  "timing_source": "faster-whisper-small.en ASR word alignment (estimated, not native TTS timestamps)",
+  "bgm": {
+    "path": "assets/bgm/bed.wav",
+    "volume": 0.065,
+    "duration_s": 24.26
+  },
+  "bgm_pending": false,
+  "total_duration_s": 24.26,
+  "cues": [
+    {
+      "start": 0.0,
+      "end": 4.245,
+      "text": "Before you count the team, Atomy's U S plan has a personal P V gate.",
+      "shot": "A large PERSONAL PV key moves toward a locked gate on a green stage. Per-word reveal (dynamic-content-sequencing); title BEFORE THE TEAM then key then gate arrive sequentially. Ground grid, gate midground, key foreground."
+    },
+    {
+      "start": 4.345,
+      "end": 10.233,
+      "text": "It says you must first accumulate ten thousand personal P V before generating any downline P V.",
+      "shot": "Gate counter builds to 10,000 via stat-bars-and-fills, then lock slides off and gate opens. A DOWNLINE PV track is revealed only after ten thousand is spoken. One continuous diagram, upper-third title, center hero."
+    },
+    {
+      "start": 10.333,
+      "end": 16.84,
+      "text": "That is an entry condition, not an automatic payday. Other qualification and commission rules still apply.",
+      "shot": "The open gate exposes two separate tracks: DOWNLINE PV proceeds; PAYOUT remains behind a RULES lock. Smooth scale-swap-transition to a closer view and progressive disclosure on entry condition, payday, then rules. Never depict guaranteed money."
+    },
+    {
+      "start": 16.94,
+      "end": 23.66,
+      "text": "Think gate open, not money guaranteed. Read your local plan before buying for a threshold. Save the distinction.",
+      "shot": "Pull the gate motif into an inverted card: GATE OPEN ≠ PAYDAY. RECHECK LOCAL PLAN follows on its spoken cue; yellow SAVE tab presses once. Sequential reveal (dynamic-content-sequencing), final still hold and no critical content below caption band."
+    }
+  ],
+  "voices": [
+    {
+      "frame": 1,
+      "path": "assets/voice/01.wav",
+      "duration_s": 24.26,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Before",
+          "start": 0.0,
+          "end": 0.22
+        },
+        {
+          "id": "w1",
+          "text": "you",
+          "start": 0.22,
+          "end": 0.4
+        },
+        {
+          "id": "w2",
+          "text": "count",
+          "start": 0.4,
+          "end": 0.6
+        },
+        {
+          "id": "w3",
+          "text": "the",
+          "start": 0.6,
+          "end": 0.76
+        },
+        {
+          "id": "w4",
+          "text": "team,",
+          "start": 0.76,
+          "end": 1.08
+        },
+        {
+          "id": "w5",
+          "text": "Atomy's",
+          "start": 1.64,
+          "end": 1.96
+        },
+        {
+          "id": "w6",
+          "text": "U.S.",
+          "start": 1.96,
+          "end": 2.28
+        },
+        {
+          "id": "w7",
+          "text": "plan",
+          "start": 2.5,
+          "end": 2.54
+        },
+        {
+          "id": "w8",
+          "text": "has",
+          "start": 2.54,
+          "end": 2.84
+        },
+        {
+          "id": "w9",
+          "text": "a",
+          "start": 2.84,
+          "end": 3.02
+        },
+        {
+          "id": "w10",
+          "text": "personal",
+          "start": 3.02,
+          "end": 3.32
+        },
+        {
+          "id": "w11",
+          "text": "PV",
+          "start": 3.32,
+          "end": 3.64
+        },
+        {
+          "id": "w12",
+          "text": "gate.",
+          "start": 3.64,
+          "end": 4.06
+        },
+        {
+          "id": "w13",
+          "text": "It",
+          "start": 4.36,
+          "end": 4.46
+        },
+        {
+          "id": "w14",
+          "text": "says",
+          "start": 4.46,
+          "end": 4.6
+        },
+        {
+          "id": "w15",
+          "text": "you",
+          "start": 4.6,
+          "end": 4.78
+        },
+        {
+          "id": "w16",
+          "text": "must",
+          "start": 4.78,
+          "end": 4.96
+        },
+        {
+          "id": "w17",
+          "text": "first",
+          "start": 4.96,
+          "end": 5.26
+        },
+        {
+          "id": "w18",
+          "text": "accumulate",
+          "start": 5.26,
+          "end": 5.8
+        },
+        {
+          "id": "w19",
+          "text": "10,000",
+          "start": 5.8,
+          "end": 6.66
+        },
+        {
+          "id": "w20",
+          "text": "personal",
+          "start": 6.66,
+          "end": 7.08
+        },
+        {
+          "id": "w21",
+          "text": "PV",
+          "start": 7.08,
+          "end": 7.5
+        },
+        {
+          "id": "w22",
+          "text": "before",
+          "start": 7.5,
+          "end": 8.24
+        },
+        {
+          "id": "w23",
+          "text": "generating",
+          "start": 8.24,
+          "end": 8.8
+        },
+        {
+          "id": "w24",
+          "text": "any",
+          "start": 8.8,
+          "end": 9.1
+        },
+        {
+          "id": "w25",
+          "text": "downline",
+          "start": 9.1,
+          "end": 9.6
+        },
+        {
+          "id": "w26",
+          "text": "PV.",
+          "start": 9.6,
+          "end": 9.98
+        },
+        {
+          "id": "w27",
+          "text": "That",
+          "start": 10.34,
+          "end": 10.52
+        },
+        {
+          "id": "w28",
+          "text": "is",
+          "start": 10.52,
+          "end": 10.7
+        },
+        {
+          "id": "w29",
+          "text": "an",
+          "start": 10.7,
+          "end": 10.86
+        },
+        {
+          "id": "w30",
+          "text": "entry",
+          "start": 10.86,
+          "end": 11.14
+        },
+        {
+          "id": "w31",
+          "text": "condition,",
+          "start": 11.14,
+          "end": 11.66
+        },
+        {
+          "id": "w32",
+          "text": "not",
+          "start": 12.0,
+          "end": 12.16
+        },
+        {
+          "id": "w33",
+          "text": "an",
+          "start": 12.16,
+          "end": 12.3
+        },
+        {
+          "id": "w34",
+          "text": "automatic",
+          "start": 12.3,
+          "end": 12.82
+        },
+        {
+          "id": "w35",
+          "text": "payday.",
+          "start": 12.82,
+          "end": 13.18
+        },
+        {
+          "id": "w36",
+          "text": "Other",
+          "start": 13.94,
+          "end": 14.12
+        },
+        {
+          "id": "w37",
+          "text": "qualification",
+          "start": 14.12,
+          "end": 14.7
+        },
+        {
+          "id": "w38",
+          "text": "and",
+          "start": 14.7,
+          "end": 15.1
+        },
+        {
+          "id": "w39",
+          "text": "commission",
+          "start": 15.1,
+          "end": 15.38
+        },
+        {
+          "id": "w40",
+          "text": "rules",
+          "start": 15.38,
+          "end": 15.86
+        },
+        {
+          "id": "w41",
+          "text": "still",
+          "start": 15.86,
+          "end": 16.2
+        },
+        {
+          "id": "w42",
+          "text": "apply.",
+          "start": 16.2,
+          "end": 16.62
+        },
+        {
+          "id": "w43",
+          "text": "Think",
+          "start": 17.04,
+          "end": 17.16
+        },
+        {
+          "id": "w44",
+          "text": "gate",
+          "start": 17.16,
+          "end": 17.42
+        },
+        {
+          "id": "w45",
+          "text": "open,",
+          "start": 17.42,
+          "end": 17.76
+        },
+        {
+          "id": "w46",
+          "text": "not",
+          "start": 18.1,
+          "end": 18.24
+        },
+        {
+          "id": "w47",
+          "text": "money",
+          "start": 18.24,
+          "end": 18.54
+        },
+        {
+          "id": "w48",
+          "text": "guaranteed.",
+          "start": 18.54,
+          "end": 19.14
+        },
+        {
+          "id": "w49",
+          "text": "Read",
+          "start": 19.68,
+          "end": 19.78
+        },
+        {
+          "id": "w50",
+          "text": "your",
+          "start": 19.78,
+          "end": 19.96
+        },
+        {
+          "id": "w51",
+          "text": "local",
+          "start": 19.96,
+          "end": 20.2
+        },
+        {
+          "id": "w52",
+          "text": "plan",
+          "start": 20.2,
+          "end": 20.6
+        },
+        {
+          "id": "w53",
+          "text": "before",
+          "start": 20.6,
+          "end": 20.92
+        },
+        {
+          "id": "w54",
+          "text": "buying",
+          "start": 20.92,
+          "end": 21.28
+        },
+        {
+          "id": "w55",
+          "text": "for",
+          "start": 21.28,
+          "end": 21.52
+        },
+        {
+          "id": "w56",
+          "text": "a",
+          "start": 21.52,
+          "end": 21.66
+        },
+        {
+          "id": "w57",
+          "text": "threshold.",
+          "start": 21.66,
+          "end": 22.02
+        },
+        {
+          "id": "w58",
+          "text": "Save",
+          "start": 22.6,
+          "end": 22.78
+        },
+        {
+          "id": "w59",
+          "text": "the",
+          "start": 22.78,
+          "end": 22.98
+        },
+        {
+          "id": "w60",
+          "text": "distinction.",
+          "start": 22.98,
+          "end": 23.34
+        }
+      ]
+    }
+  ],
+  "sfx": [
+    {
+      "frame": 1,
+      "file": "assets/sfx/impact-bass-1.wav",
+      "offset_s": 0.06,
+      "duration_s": 0.45,
+      "volume": 0.12
+    },
+    {
+      "frame": 1,
+      "file": "assets/sfx/chime.wav",
+      "offset_s": 4.595,
+      "duration_s": 0.57,
+      "volume": 0.12
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "provider": "kokoro",
+  "voice": "af_heart",
+  "speed": 1.04,
+  "lang": "en-us",
+  "style": "Warm, curious, clear, conversational; no voice substitution.",
+  "lines": [
+    {
+      "id": "cue-1",
+      "text": "Before you count the team, Atomy's U S plan has a personal P V gate."
+    },
+    {
+      "id": "cue-2",
+      "text": "It says you must first accumulate ten thousand personal P V before generating any downline P V."
+    },
+    {
+      "id": "cue-3",
+      "text": "That is an entry condition, not an automatic payday. Other qualification and commission rules still apply."
+    },
+    {
+      "id": "cue-4",
+      "text": "Think gate open, not money guaranteed. Read your local plan before buying for a threshold. Save the distinction."
+    }
+  ],
+  "bgm": {
+    "mode": "project-owned"
+  }
+}

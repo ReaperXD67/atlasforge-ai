@@ -1,0 +1,221 @@
+<template id="captions-template" data-composition-id="captions" data-width="1080" data-height="1920">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+
+
+<style data-brand-tokens>
+      @font-face { font-family: 'Inter'; src: url('assets/fonts/Inter-Variable.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: block; }
+      :root {
+      --black: #000000;
+      --white: #FFFFFF;
+      --offwhite: #FFFDF5;
+      --pink: #FE90E8;
+      --blue: #C0F7FE;
+      --green: #99E885;
+      --yellow: #F7CB46;
+      --cream: #FFDC8B;
+      --cap-ink: #000000;
+      --cap-canvas: #FFFFFF;
+      --cap-accent: #F7CB46;
+      --cap-accent-2: #FFDC8B;
+      --font-display: "Inter", system-ui, serif;
+      --font-body: "Inter", system-ui, sans-serif;
+      --cap-band-top: 1600px;
+      --cap-band-height: 320px;
+      }
+    </style>
+
+<style>
+  #captions-root {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .caption-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
+  }
+  /* the keep-out band, from captionBand(H) — frame content stays above it */
+  .caption-stage {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--cap-band-top, 900px);
+    height: var(--cap-band-height, 180px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .caption-group {
+    /* every group is absolutely stacked over the SAME band — exactly one shown at a
+       time via opacity. Must be absolute: in-flow groups would lay out side-by-side. */
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+  }
+
+  /* THE bordered card — 4px black border + 8px hard offset shadow (solid black,
+     zero blur, bottom-right — blockframe's sacred depth), square corners */
+  .caption-pill {
+    max-width: 80%;
+    padding: 18px 40px 22px;
+    background: var(--cap-canvas, #ffffff);
+    border: 4px solid var(--cap-ink, #000000);
+    border-radius: 0;
+    box-shadow: 8px 8px 0 var(--cap-ink, #000000);
+  }
+  .caption-line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.12em 0.32em;
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(38px, 4.2vw, 56px);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+
+  /* upcoming — faded black ink, no stamp */
+  .caption-word {
+    display: inline-block;
+    padding: 0 0.1em;
+    color: color-mix(in srgb, var(--cap-ink, #000000) 40%, var(--cap-canvas, #ffffff));
+  }
+  /* current word — THE yellow stamp-block (box-shadow spread = a hard square block
+     w/o layout shift; no blur), black ink reading on top — blockframe's signature stamp */
+  .caption-word.is-active {
+    color: var(--cap-ink, #000000);
+    background: var(--cap-accent, #f7cb46);
+    box-shadow: 0 0 0 0.08em var(--cap-accent, #f7cb46);
+  }
+  /* already spoken — solid black ink, stamp cleared */
+  .caption-word.is-spoken {
+    color: var(--cap-ink, #000000);
+    background: transparent;
+    box-shadow: none;
+  }
+
+  /* optional per-word accents (dormant until a word-classer tags them) */
+  /* brand / key term — heavier ink weight, blockframe's display is already 900 */
+  .caption-word.cap-brand {
+    color: var(--cap-ink, #000000);
+  }
+  /* numerals / data — the body voice, slightly recessed */
+  .caption-word.cap-num {
+    font-family: "Inter", ui-monospace, monospace;
+    color: color-mix(in srgb, var(--cap-ink, #000000) 74%, var(--cap-canvas, #ffffff));
+  }
+  /* emphasis — a cream hard underline bar (the second-chroma accent) */
+  .caption-word.cap-cta {
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+    text-decoration-color: var(--cap-accent-2, #ffdc8b);
+    text-underline-offset: 0.12em;
+  }
+
+  @media (max-aspect-ratio: 9/16) {
+    .caption-pill {
+      max-width: 92%;
+    }
+    .caption-line {
+      font-size: clamp(34px, 5.4vw, 48px);
+    }
+  }
+</style>
+
+<div
+  id="captions-root"
+  data-composition-id="captions"
+  data-timeline-locked
+  data-start="0"
+  data-duration="25.625"
+  data-fps="30"
+  data-width="1080"
+  data-height="1920"
+>
+  <div class="caption-layer" aria-hidden="true">
+    <div id="caption-stage" class="caption-stage"></div>
+  </div>
+</div>
+
+<script>
+  // captions.mjs injects the engine's scene-aware groups + real duration here.
+  var GROUPS = [{"id":"caption-group-0","frame":1,"start":0,"end":2.06,"text":"44% commission sounds like","words":[{"id":"caption-word-0-0","text":"44%","start":0,"end":0.92},{"id":"caption-word-0-1","text":"commission","start":0.92,"end":1.26},{"id":"caption-word-0-2","text":"sounds","start":1.26,"end":1.84},{"id":"caption-word-0-3","text":"like","start":1.84,"end":2.06}]},{"id":"caption-group-1","frame":1,"start":2.06,"end":2.56,"text":"your personal","words":[{"id":"caption-word-1-0","text":"your","start":2.06,"end":2.2},{"id":"caption-word-1-1","text":"personal","start":2.2,"end":2.56}]},{"id":"caption-group-2","frame":1,"start":2.56,"end":2.98,"text":"cut,","words":[{"id":"caption-word-2-0","text":"cut,","start":2.56,"end":2.86}]},{"id":"caption-group-3","frame":1,"start":3,"end":3.36,"text":"right?","words":[{"id":"caption-word-3-0","text":"right?","start":3,"end":3.24}]},{"id":"caption-group-4","frame":1,"start":3.72,"end":4.52,"text":"Not so fast.","words":[{"id":"caption-word-4-0","text":"Not","start":3.72,"end":3.86},{"id":"caption-word-4-1","text":"so","start":3.86,"end":4.04},{"id":"caption-word-4-2","text":"fast.","start":4.04,"end":4.4}]},{"id":"caption-group-5","frame":1,"start":4.84,"end":5.14,"text":"Atomy.","words":[{"id":"caption-word-5-0","text":"Atomy.","start":4.84,"end":5.02}]},{"id":"caption-group-6","frame":1,"start":5.24,"end":5.86,"text":"U.S.A.","words":[{"id":"caption-word-6-0","text":"U.S.A.","start":5.24,"end":5.82}]},{"id":"caption-group-7","frame":1,"start":5.86,"end":7.64,"text":"describes 44% of total","words":[{"id":"caption-word-7-0","text":"describes","start":5.86,"end":6.22},{"id":"caption-word-7-1","text":"44%","start":6.22,"end":7.24},{"id":"caption-word-7-2","text":"of","start":7.24,"end":7.36},{"id":"caption-word-7-3","text":"total","start":7.36,"end":7.64}]},{"id":"caption-group-8","frame":1,"start":7.64,"end":9.28,"text":"sales PV as","words":[{"id":"caption-word-8-0","text":"sales","start":7.64,"end":8.04},{"id":"caption-word-8-1","text":"PV","start":8.04,"end":8.54},{"id":"caption-word-8-2","text":"as","start":8.54,"end":9.28}]},{"id":"caption-group-9","frame":1,"start":9.28,"end":9.72,"text":"the general","words":[{"id":"caption-word-9-0","text":"the","start":9.28,"end":9.44},{"id":"caption-word-9-1","text":"general","start":9.44,"end":9.72}]},{"id":"caption-group-10","frame":1,"start":9.72,"end":10.76,"text":"commission allocation.","words":[{"id":"caption-word-10-0","text":"commission","start":9.72,"end":10.08},{"id":"caption-word-10-1","text":"allocation.","start":10.08,"end":10.64}]},{"id":"caption-group-11","frame":1,"start":11.08,"end":11.48,"text":"That pool","words":[{"id":"caption-word-11-0","text":"That","start":11.08,"end":11.2},{"id":"caption-word-11-1","text":"pool","start":11.2,"end":11.48}]},{"id":"caption-group-12","frame":1,"start":11.48,"end":12.64,"text":"is distributed among","words":[{"id":"caption-word-12-0","text":"is","start":11.48,"end":11.76},{"id":"caption-word-12-1","text":"distributed","start":11.76,"end":12.24},{"id":"caption-word-12-2","text":"among","start":12.24,"end":12.64}]},{"id":"caption-group-13","frame":1,"start":12.64,"end":13.82,"text":"qualified members.","words":[{"id":"caption-word-13-0","text":"qualified","start":12.64,"end":13.2},{"id":"caption-word-13-1","text":"members.","start":13.2,"end":13.7}]},{"id":"caption-group-14","frame":1,"start":14.3,"end":14.5,"text":"It is","words":[{"id":"caption-word-14-0","text":"It","start":14.3,"end":14.38},{"id":"caption-word-14-1","text":"is","start":14.38,"end":14.5}]},{"id":"caption-group-15","frame":1,"start":14.5,"end":14.88,"text":"not a","words":[{"id":"caption-word-15-0","text":"not","start":14.5,"end":14.72},{"id":"caption-word-15-1","text":"a","start":14.72,"end":14.88}]},{"id":"caption-group-16","frame":1,"start":14.88,"end":15.88,"text":"promise that every","words":[{"id":"caption-word-16-0","text":"promise","start":14.88,"end":15.18},{"id":"caption-word-16-1","text":"that","start":15.18,"end":15.56},{"id":"caption-word-16-2","text":"every","start":15.56,"end":15.88}]},{"id":"caption-group-17","frame":1,"start":15.88,"end":17.56,"text":"member gets 44%.","words":[{"id":"caption-word-17-0","text":"member","start":15.88,"end":16.1},{"id":"caption-word-17-1","text":"gets","start":16.1,"end":16.4},{"id":"caption-word-17-2","text":"44%.","start":16.4,"end":17.56}]},{"id":"caption-group-18","frame":1,"start":17.56,"end":18.56,"text":"Your result depends","words":[{"id":"caption-word-18-0","text":"Your","start":17.56,"end":17.84},{"id":"caption-word-18-1","text":"result","start":17.84,"end":18.2},{"id":"caption-word-18-2","text":"depends","start":18.2,"end":18.56}]},{"id":"caption-group-19","frame":1,"start":18.56,"end":18.9,"text":"on the","words":[{"id":"caption-word-19-0","text":"on","start":18.56,"end":18.76},{"id":"caption-word-19-1","text":"the","start":18.76,"end":18.9}]},{"id":"caption-group-20","frame":1,"start":18.9,"end":19.62,"text":"plan's rules.","words":[{"id":"caption-word-20-0","text":"plan's","start":18.9,"end":19.12},{"id":"caption-word-20-1","text":"rules.","start":19.12,"end":19.5}]},{"id":"caption-group-21","frame":1,"start":20.02,"end":20.6,"text":"Remember:","words":[{"id":"caption-word-21-0","text":"Remember:","start":20.02,"end":20.48}]},{"id":"caption-group-22","frame":1,"start":20.8,"end":21.58,"text":"shared pool,","words":[{"id":"caption-word-22-0","text":"shared","start":20.8,"end":21.04},{"id":"caption-word-22-1","text":"pool,","start":21.04,"end":21.46}]},{"id":"caption-group-23","frame":1,"start":21.58,"end":22.9,"text":"not personal percentage.","words":[{"id":"caption-word-23-0","text":"not","start":21.58,"end":21.8},{"id":"caption-word-23-1","text":"personal","start":21.8,"end":22.26},{"id":"caption-word-23-2","text":"percentage.","start":22.26,"end":22.78}]},{"id":"caption-group-24","frame":1,"start":23.3,"end":23.82,"text":"Save this","words":[{"id":"caption-word-24-0","text":"Save","start":23.3,"end":23.6},{"id":"caption-word-24-1","text":"this","start":23.6,"end":23.82}]},{"id":"caption-group-25","frame":1,"start":23.82,"end":24.86,"text":"before you calculate.","words":[{"id":"caption-word-25-0","text":"before","start":23.82,"end":24.12},{"id":"caption-word-25-1","text":"you","start":24.12,"end":24.32},{"id":"caption-word-25-2","text":"calculate.","start":24.32,"end":24.74}]}];
+  var DURATION = 25.625;
+
+  (function () {
+    var stage = document.getElementById("caption-stage");
+
+    // build DOM: one .caption-group per group, .caption-word per word
+    GROUPS.forEach(function (group, g) {
+      var groupEl = document.createElement("div");
+      groupEl.className = "caption-group";
+      groupEl.id = "caption-group-" + g;
+      var pill = document.createElement("div");
+      pill.className = "caption-pill";
+      var line = document.createElement("div");
+      line.className = "caption-line";
+      (group.words || []).forEach(function (w, i) {
+        var span = document.createElement("span");
+        span.className = "caption-word";
+        span.id = "caption-word-" + g + "-" + i;
+        span.textContent = String(w.text);
+        line.appendChild(span);
+      });
+      pill.appendChild(line);
+      groupEl.appendChild(pill);
+      stage.appendChild(groupEl);
+    });
+
+    window.__timelines = window.__timelines || {};
+    var tl = gsap.timeline({ paused: true });
+
+    GROUPS.forEach(function (group, g) {
+      var groupEl = document.getElementById("caption-group-" + g);
+      var words = group.words || [];
+      var next = GROUPS[g + 1];
+      var isLast = g === GROUPS.length - 1;
+      var start = Math.max(0, Number(group.start));
+      var end = isLast ? DURATION : Math.min(Number(next.start), Number(group.end) + 0.3);
+      if (end <= start) end = start + 0.01;
+
+      // group on/off — exactly one group visible at a time
+      tl.set(groupEl, { opacity: 1 }, start);
+      tl.set(groupEl, { opacity: 0 }, end);
+
+      // 3-state karaoke via className SETS — seek-safe (gsap.set applies on the
+      // engine's frame-by-frame seek; .call callbacks would NOT fire).
+      words.forEach(function (w, i) {
+        var el = document.getElementById("caption-word-" + g + "-" + i);
+        var at = Math.max(start, Number(w.start));
+        tl.set(el, { className: "caption-word" }, start); // upcoming (also resets on reverse-seek)
+        tl.set(el, { className: "caption-word is-active" }, at); // current
+        tl.fromTo(el, { scale: 0.86 }, { scale: 1, duration: 0.2, ease: "back.out(2.4)" }, at);
+        if (i + 1 < words.length) {
+          var nextAt = Math.max(start, Number(words[i + 1].start));
+          tl.set(el, { className: "caption-word is-spoken" }, nextAt); // demote when next activates
+        }
+      });
+      if (words.length) {
+        var lastEl = document.getElementById("caption-word-" + g + "-" + (words.length - 1));
+        var lastSpoken = Math.min(end, Number(words[words.length - 1].end) + 0.1);
+        tl.set(lastEl, { className: "caption-word is-spoken" }, lastSpoken);
+      }
+    });
+
+    // full-span anchor so the sub-comp timeline spans the whole video
+    tl.to({}, { duration: DURATION }, 0);
+    window.__timelines["captions"] = tl;
+  })();
+</script>
+
+<style>
+  .caption-line { line-height: 1.1 !important; }
+</style>
+</template>

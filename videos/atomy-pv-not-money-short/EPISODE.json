@@ -1,0 +1,63 @@
+{
+  "id": "pv-not-money",
+  "project": "videos/atomy-pv-not-money-short",
+  "title": "Atomy PV Is NOT Money — Don't Confuse These Numbers",
+  "thumbnail_headline": "PV ≠ CASH",
+  "thumbnail_stat": "POINTS\nNOT DOLLARS",
+  "color": "#C0F7FE",
+  "message": "PV is a measurement in the compensation plan, not a cash balance.",
+  "source": "https://us.atomy.com/common/footerTermsInfo?tabIndex=1",
+  "source_note": "Atomy USA's Member Agreement defines PV as Point Value, a unit of measurement established by the marketing and compensation plan. Commissions depend on the plan and eligibility; PV is not a dollar balance.",
+  "description": "PV on your Atomy account is not a cash balance. This quick visual explainer separates Point Value from money and explains why a PV figure alone is not an earnings claim.\n\nBased on Atomy USA's Member Agreement. This is U.S.-plan education, not an income promise. Rules vary by market and may change. Check your local official plan before making decisions.\n\nOfficial source: https://us.atomy.com/common/footerTermsInfo?tabIndex=1\n\nFollow BizNex for clear, source-checked Atomy explainers.",
+  "hashtags": [
+    "#Atomy",
+    "#AtomyPV",
+    "#BizNex",
+    "#Shorts"
+  ],
+  "segments": [
+    {
+      "text": "A big Atomy P V number is not a big bank balance.",
+      "shot": "Center a huge PV ticket on a blue ground; a money-symbol sticker tries to attach, then is crossed out. Per-word reveal (dynamic-content-sequencing); three layers: dot-grid, ticket, bold crossed symbol. Start with only the ticket, reveal the symbol on bank balance."
+    },
+    {
+      "text": "P V means Point Value. Atomy's U S agreement defines it as a measurement used in the compensation plan.",
+      "shot": "The same ticket scale-swaps (scale-swap-transition) from PV to POINT VALUE, then unfolds into a tall measuring ruler. Use stacked bands; reveal MEASUREMENT and PLAN on their spoken cues, not at scene start."
+    },
+    {
+      "text": "It is not a dollar balance you can withdraw. Commissions still depend on the plan and your eligibility.",
+      "shot": "The ruler becomes a receipt with separate POINTS and CASH rows. A withdrawal arrow stops at a black barrier; a QUALIFICATION key arrives later. Sequential disclosure (dynamic-content-sequencing), asymmetric vertical stack, no implied fixed conversion rate."
+    },
+    {
+      "text": "So read the label before reading the number. Save this: points measure volume; they do not promise income.",
+      "shot": "The receipt contracts to a yellow reminder ticket: READ THE LABEL, then POINTS ≠ PAYDAY. Smooth scale-swap (scale-swap-transition) into an inverted closer; final SAVE THIS tab arrives on Save and holds. Keep the caption band empty."
+    }
+  ],
+  "duration_s": 23.172,
+  "cues": [
+    {
+      "start": 0.0,
+      "end": 3.264,
+      "text": "A big Atomy P V number is not a big bank balance.",
+      "shot": "Center a huge PV ticket on a blue ground; a money-symbol sticker tries to attach, then is crossed out. Per-word reveal (dynamic-content-sequencing); three layers: dot-grid, ticket, bold crossed symbol. Start with only the ticket, reveal the symbol on bank balance."
+    },
+    {
+      "start": 3.364,
+      "end": 10.447,
+      "text": "P V means Point Value. Atomy's U S agreement defines it as a measurement used in the compensation plan.",
+      "shot": "The same ticket scale-swaps (scale-swap-transition) from PV to POINT VALUE, then unfolds into a tall measuring ruler. Use stacked bands; reveal MEASUREMENT and PLAN on their spoken cues, not at scene start."
+    },
+    {
+      "start": 10.547,
+      "end": 16.221,
+      "text": "It is not a dollar balance you can withdraw. Commissions still depend on the plan and your eligibility.",
+      "shot": "The ruler becomes a receipt with separate POINTS and CASH rows. A withdrawal arrow stops at a black barrier; a QUALIFICATION key arrives later. Sequential disclosure (dynamic-content-sequencing), asymmetric vertical stack, no implied fixed conversion rate."
+    },
+    {
+      "start": 16.321,
+      "end": 22.572,
+      "text": "So read the label before reading the number. Save this: points measure volume; they do not promise income.",
+      "shot": "The receipt contracts to a yellow reminder ticket: READ THE LABEL, then POINTS ≠ PAYDAY. Smooth scale-swap (scale-swap-transition) into an inverted closer; final SAVE THIS tab arrives on Save and holds. Keep the caption band empty."
+    }
+  ]
+}

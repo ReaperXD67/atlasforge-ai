@@ -1,0 +1,63 @@
+{
+  "id": "44-percent-pool",
+  "project": "videos/atomy-44-percent-pool-short",
+  "title": "Atomy's 44% Is NOT Your Personal Cut — Here's the Difference",
+  "thumbnail_headline": "44% FOR YOU?",
+  "thumbnail_stat": "SHARED POOL\nNOT YOUR CUT",
+  "color": "#FE90E8",
+  "message": "The 44% general commission allocation is shared among qualified members, not an individual commission rate.",
+  "source": "https://us.atomy.com/cst/marketingPlan",
+  "source_note": "Atomy USA states that general commission is 44% of entire sales PV, distributed weekly between qualified members according to rate. It does not say every member personally receives 44% of a sale.",
+  "description": "Does Atomy's 44% general commission figure mean YOU get 44%? No: the official U.S. plan describes a shared allocation distributed among qualified members. Watch the pool split to see the difference.\n\nThis is U.S.-plan education, not an earnings guarantee or a personal payout calculation. Qualification, scores and other plan conditions apply. Rules vary by market and may change.\n\nOfficial source: https://us.atomy.com/cst/marketingPlan\n\nFollow BizNex for source-checked Atomy explainers.",
+  "hashtags": [
+    "#Atomy",
+    "#CompensationPlan",
+    "#BizNex",
+    "#Shorts"
+  ],
+  "segments": [
+    {
+      "text": "Forty four percent commission sounds like your personal cut, right? Not so fast.",
+      "shot": "A giant 44% ticket fills the pink upper stage; a YOU? sticker arrives, then a tilted NOT SO FAST stamp interrupts it. Per-word reveal (dynamic-content-sequencing), centered foreground with striped midground."
+    },
+    {
+      "text": "Atomy U S A describes forty four percent of total sales P V as the general commission allocation.",
+      "shot": "The ticket becomes a labeled pool container; a 44% fill rises via stat-bars-and-fills while TOTAL SALES PV and GENERAL COMMISSION labels reveal in order. Do not depict 44% of retail price or an individual's sale."
+    },
+    {
+      "text": "That pool is distributed among qualified members. It is not a promise that every member gets forty four percent.",
+      "shot": "The same pool opens three outlet pipes, drawing paths (svg-path-draw) into three QUALIFIED MEMBER trays; the number of trays is a schematic, not a claim of actual member count. Stack vertically. PERSONAL CUT? stamp crosses out as the sentence resolves."
+    },
+    {
+      "text": "Your result depends on the plan's rules. Remember: shared pool, not personal percentage. Save this before you calculate.",
+      "shot": "The pipes pull into one diagram card labeled SHARED POOL; scale-swap-transition takes it into a black closing plate with NOT YOUR RATE and a yellow SAVE ticket. Sequential late reveals and final still hold, caption band clear."
+    }
+  ],
+  "duration_s": 25.625,
+  "cues": [
+    {
+      "start": 0.0,
+      "end": 4.608,
+      "text": "Forty four percent commission sounds like your personal cut, right? Not so fast.",
+      "shot": "A giant 44% ticket fills the pink upper stage; a YOU? sticker arrives, then a tilted NOT SO FAST stamp interrupts it. Per-word reveal (dynamic-content-sequencing), centered foreground with striped midground."
+    },
+    {
+      "start": 4.708,
+      "end": 10.937,
+      "text": "Atomy U S A describes forty four percent of total sales P V as the general commission allocation.",
+      "shot": "The ticket becomes a labeled pool container; a 44% fill rises via stat-bars-and-fills while TOTAL SALES PV and GENERAL COMMISSION labels reveal in order. Do not depict 44% of retail price or an individual's sale."
+    },
+    {
+      "start": 11.037,
+      "end": 17.587,
+      "text": "That pool is distributed among qualified members. It is not a promise that every member gets forty four percent.",
+      "shot": "The same pool opens three outlet pipes, drawing paths (svg-path-draw) into three QUALIFIED MEMBER trays; the number of trays is a schematic, not a claim of actual member count. Stack vertically. PERSONAL CUT? stamp crosses out as the sentence resolves."
+    },
+    {
+      "start": 17.687,
+      "end": 25.025,
+      "text": "Your result depends on the plan's rules. Remember: shared pool, not personal percentage. Save this before you calculate.",
+      "shot": "The pipes pull into one diagram card labeled SHARED POOL; scale-swap-transition takes it into a black closing plate with NOT YOUR RATE and a yellow SAVE ticket. Sequential late reveals and final still hold, caption band clear."
+    }
+  ]
+}
