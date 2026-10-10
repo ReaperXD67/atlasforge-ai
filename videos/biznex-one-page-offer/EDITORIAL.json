@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "script": "SCRIPT.md",
+  "thumbnail_copy": "THUMBNAIL_COPY.txt",
+  "audience_problem": "A beginner's broad service description hides the deliverable, scope, proof, price basis and next step.",
+  "hook": {
+    "text": "Before: creative solutions for every business",
+    "at_seconds": 0
+  },
+  "payoff": {
+    "text": "You do not need a perfect website for this exercise",
+    "at_seconds": 18.959
+  },
+  "packaging": {
+    "title": "No Clients? Build This One-Page Offer First",
+    "thumbnail_text": "SELL ONE CLEAR THING",
+    "promise": "Build and show one complete fictional café offer page, give a fill-in template, and test whether a reader understands it.",
+    "evidence_anchor": "You do not need a perfect website for this exercise",
+    "reviewed": true
+  },
+  "sources": [
+    {
+      "claim": "The one-page structure, five-second exercise, template and fictional example are original BizNex heuristics, not empirical findings. SBA supplies general target-market, sales-plan and budget background only.",
+      "url": "https://www.sba.gov/counseling/manage-your-business/",
+      "checked_on": "2026-10-10"
+    }
+  ],
+  "retention_beats": [
+    {
+      "at_seconds": 0.0,
+      "purpose": "One vague line becomes an offer"
+    },
+    {
+      "at_seconds": 18.959,
+      "purpose": "A page, not a magic trick"
+    },
+    {
+      "at_seconds": 36.147,
+      "purpose": "Choose one initial customer"
+    },
+    {
+      "at_seconds": 53.953,
+      "purpose": "Name a visible problem"
+    },
+    {
+      "at_seconds": 72.293,
+      "purpose": "Name the deliverable in the headline"
+    },
+    {
+      "at_seconds": 92.724,
+      "purpose": "List what is included"
+    },
+    {
+      "at_seconds": 112.216,
+      "purpose": "Make the timeline conditional"
+    },
+    {
+      "at_seconds": 131.9,
+      "purpose": "Show an honestly labelled sample"
+    },
+    {
+      "at_seconds": 150.645,
+      "purpose": "Use only work you can show"
+    },
+    {
+      "at_seconds": 170.841,
+      "purpose": "Explain the price basis"
+    },
+    {
+      "at_seconds": 191.101,
+      "purpose": "Say what is not included"
+    },
+    {
+      "at_seconds": 211.233,
+      "purpose": "Explain the small process"
+    },
+    {
+      "at_seconds": 230.619,
+      "purpose": "Ask for a relevant next step"
+    },
+    {
+      "at_seconds": 247.551,
+      "purpose": "The assembled one-page offer"
+    },
+    {
+      "at_seconds": 269.837,
+      "purpose": "The quick reader test"
+    },
+    {
+      "at_seconds": 287.879,
+      "purpose": "Your fill-in template"
+    },
+    {
+      "at_seconds": 306.603,
+      "purpose": "Let the offer support the message"
+    },
+    {
+      "at_seconds": 327.033,
+      "purpose": "Build the rough page today"
+    }
+  ]
+}

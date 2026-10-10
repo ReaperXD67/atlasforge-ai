@@ -1,0 +1,174 @@
+{
+  "id": "five-second-offer",
+  "project": "videos/biznex-five-second-offer",
+  "format": "shorts",
+  "title": "Your Offer Fails This 5-Second Test",
+  "audience_problem": "A beginner's offer sounds impressive but does not tell a buyer what they receive.",
+  "packaging_promise": "Give a quick, explicitly non-scientific clarity exercise and a visible headline rewrite.",
+  "thumbnail_headline": "WHAT DO YOU SELL?",
+  "description": "Can someone understand your offer after a quick glance? This five-second exercise is a clarity heuristic, not a scientific cutoff. We rewrite a vague service headline into a specific fictional café offer.\n\nAn original BizNex framework with illustrative examples. Understanding an offer does not guarantee replies, clients or income. Only promise work you can actually deliver.\n\nGeneral marketing background: https://www.sba.gov/counseling/manage-your-business/\n\nThe long Repair Lab episode builds the entire one-page offer.",
+  "hashtags": [
+    "#FreelancingTips",
+    "#BusinessTips",
+    "#BizNex",
+    "#Shorts"
+  ],
+  "sources": [
+    {
+      "claim": "The five-second exercise is an original clarity heuristic, not a validated benchmark. SBA supplies general target-market and sales-planning background only.",
+      "url": "https://www.sba.gov/counseling/manage-your-business/",
+      "checked_on": "2026-10-10"
+    }
+  ],
+  "segments": [
+    {
+      "id": "01-before",
+      "title": "The fuzzy headline",
+      "kind": "offer",
+      "text": "Read this offer: I help businesses grow with creative solutions. After five seconds, what would you actually buy?",
+      "display": [
+        "Creative solutions",
+        "WHAT WOULD YOU BUY?"
+      ],
+      "beat_phrases": [
+        "I help businesses grow",
+        "what would you actually buy"
+      ]
+    },
+    {
+      "id": "02-after",
+      "title": "A concrete headline",
+      "kind": "compare",
+      "text": "Now this fictional example: One mobile friendly menu page for cafés, with clear prices and an enquiry button.",
+      "display": [
+        "Café menu page",
+        "Clear prices",
+        "Enquiry button"
+      ],
+      "beat_phrases": [
+        "One mobile friendly menu page",
+        "clear prices",
+        "an enquiry button"
+      ]
+    },
+    {
+      "id": "03-test",
+      "title": "Three clarity questions",
+      "kind": "checklist",
+      "text": "Ask someone: Who is it for? What do they get? What happens next? This is a clarity exercise, not science.",
+      "display": [
+        "WHO?",
+        "WHAT?",
+        "NEXT?"
+      ],
+      "beat_phrases": [
+        "Who is it for",
+        "What do they get",
+        "What happens next"
+      ]
+    },
+    {
+      "id": "04-repair",
+      "title": "Fix the first sentence",
+      "kind": "recap",
+      "text": "If they cannot explain it, rewrite the headline before redesigning the whole website.",
+      "display": [
+        "REWRITE THE HEADLINE",
+        "Then redesign"
+      ],
+      "beat_phrases": [
+        "rewrite the headline",
+        "redesigning the whole website"
+      ]
+    }
+  ],
+  "duration_s": 25.872,
+  "cues": [
+    {
+      "id": "01-before",
+      "title": "The fuzzy headline",
+      "kind": "offer",
+      "text": "Read this offer: I help businesses grow with creative solutions. After five seconds, what would you actually buy?",
+      "display": [
+        "Creative solutions",
+        "WHAT WOULD YOU BUY?"
+      ],
+      "beat_phrases": [
+        "I help businesses grow",
+        "what would you actually buy"
+      ],
+      "start": 0.0,
+      "end": 6.827,
+      "beats": [
+        1.24,
+        5.62
+      ]
+    },
+    {
+      "id": "02-after",
+      "title": "A concrete headline",
+      "kind": "compare",
+      "text": "Now this fictional example: One mobile friendly menu page for cafés, with clear prices and an enquiry button.",
+      "display": [
+        "Café menu page",
+        "Clear prices",
+        "Enquiry button"
+      ],
+      "beat_phrases": [
+        "One mobile friendly menu page",
+        "clear prices",
+        "an enquiry button"
+      ],
+      "start": 6.927,
+      "end": 14.244,
+      "beats": [
+        2.0,
+        5.14,
+        6.24
+      ]
+    },
+    {
+      "id": "03-test",
+      "title": "Three clarity questions",
+      "kind": "checklist",
+      "text": "Ask someone: Who is it for? What do they get? What happens next? This is a clarity exercise, not science.",
+      "display": [
+        "WHO?",
+        "WHAT?",
+        "NEXT?"
+      ],
+      "beat_phrases": [
+        "Who is it for",
+        "What do they get",
+        "What happens next"
+      ],
+      "start": 14.344,
+      "end": 20.744,
+      "beats": [
+        0.64,
+        1.74,
+        2.7
+      ]
+    },
+    {
+      "id": "04-repair",
+      "title": "Fix the first sentence",
+      "kind": "recap",
+      "text": "If they cannot explain it, rewrite the headline before redesigning the whole website.",
+      "display": [
+        "REWRITE THE HEADLINE",
+        "Then redesign"
+      ],
+      "beat_phrases": [
+        "rewrite the headline",
+        "redesigning the whole website"
+      ],
+      "start": 20.844,
+      "end": 25.452,
+      "beats": [
+        1.7,
+        2.96
+      ]
+    }
+  ]
+}

@@ -1,0 +1,766 @@
+{
+  "id": "one-page-offer",
+  "project": "videos/biznex-one-page-offer",
+  "format": "youtube",
+  "title": "No Clients? Build This One-Page Offer First",
+  "audience_problem": "A beginner's broad service description hides the deliverable, scope, proof, price basis and next step.",
+  "packaging_promise": "Build and show one complete fictional café offer page, give a fill-in template, and test whether a reader understands it.",
+  "thumbnail_headline": "SELL ONE CLEAR THING",
+  "description": "Build a one-page offer before another round of vague outreach. We turn 'creative solutions for everyone' into a fictional café menu-page service with a customer, bounded deliverable, scope, honest sample, clear price basis, process and next step. The episode finishes with a fill-in template and a quick reader test.\n\nThis is an original BizNex educational framework, not a validated sales system. The business, samples, time estimates and pricing decisions are illustrative. No clients, testimonials, revenue or conversion results are claimed. Replies, clients and income are not guaranteed. A clear offer is only useful if the need exists and you can deliver the work.\n\nGeneral marketing-planning background: https://www.sba.gov/counseling/manage-your-business/\n\nUse a simple document or a tool you already have; no paid software is required. Respect privacy, ownership and applicable outreach rules.",
+  "hashtags": [
+    "#Freelancing",
+    "#BusinessIdeas",
+    "#OfferDesign",
+    "#BizNex"
+  ],
+  "sources": [
+    {
+      "claim": "The one-page structure, five-second exercise, template and fictional example are original BizNex heuristics, not empirical findings. SBA supplies general target-market, sales-plan and budget background only.",
+      "url": "https://www.sba.gov/counseling/manage-your-business/",
+      "checked_on": "2026-10-10"
+    }
+  ],
+  "segments": [
+    {
+      "id": "01-payoff",
+      "title": "One vague line becomes an offer",
+      "kind": "compare",
+      "text": "Before: creative solutions for every business. After: one mobile friendly menu page for cafés, with readable prices and an enquiry button. That is the difference between describing yourself and describing something a customer can buy. We will build the offer on one page, with a fictional example.",
+      "display": [
+        "Creative solutions for everyone",
+        "One café menu page",
+        "Readable prices",
+        "Enquiry button"
+      ],
+      "beat_phrases": [
+        "creative solutions for every business",
+        "one mobile friendly menu page",
+        "one page"
+      ]
+    },
+    {
+      "id": "02-page-not-magic",
+      "title": "A page, not a magic trick",
+      "kind": "offer",
+      "text": "You do not need a perfect website for this exercise. A plain document is enough to clarify the offer. It will not create demand or guarantee clients. It helps you answer the questions behind a purchase: who is this for, what arrives, what does it cost, and what happens next? ",
+      "display": [
+        "Plain document is enough",
+        "Who?",
+        "What + cost?",
+        "What next?"
+      ],
+      "beat_phrases": [
+        "A plain document is enough",
+        "will not create demand",
+        "what happens next"
+      ]
+    },
+    {
+      "id": "03-customer",
+      "title": "Choose one initial customer",
+      "kind": "offer",
+      "text": "Start with one customer type. Everyone with a business gives you no useful boundary. Choose independent cafés with an existing menu. Ask an owner: how do customers currently read your menu on a phone? Their answer can confirm, reshape, or reject your idea before you build anything.",
+      "display": [
+        "Independent cafés",
+        "Existing menu",
+        "How is it read on mobile?",
+        "Validate before building"
+      ],
+      "beat_phrases": [
+        "one customer type",
+        "Choose independent cafés",
+        "Ask an owner"
+      ]
+    },
+    {
+      "id": "04-problem",
+      "title": "Name a visible problem",
+      "kind": "compare",
+      "text": "Write the problem in ordinary language. In our Sunny Café concept, the menu is a crowded image. On a phone, the item names and prices shrink together. The clearer version separates each item into a readable row. That gives your page a specific job: make this menu easier to read.",
+      "display": [
+        "Crowded menu image",
+        "Item names + prices shrink",
+        "Readable rows",
+        "A specific job"
+      ],
+      "beat_phrases": [
+        "ordinary language",
+        "crowded image",
+        "readable row"
+      ]
+    },
+    {
+      "id": "05-result",
+      "title": "Name the deliverable in the headline",
+      "kind": "offer",
+      "text": "Next, name the deliverable in the headline. One mobile friendly menu page for independent cafés. Read that slowly: one page defines the size; mobile friendly describes the use; cafés identifies the customer. Place this sentence at the top. A visitor should not need your biography to understand the project.",
+      "display": [
+        "One menu page",
+        "Mobile friendly",
+        "For independent cafés",
+        "Customer + deliverable"
+      ],
+      "beat_phrases": [
+        "name the deliverable",
+        "one page defines the size",
+        "cafés identifies the customer"
+      ]
+    },
+    {
+      "id": "06-included",
+      "title": "List what is included",
+      "kind": "checklist",
+      "text": "Under the headline, list exactly what is included. In this offer: one menu page, agreed categories and prices, a contact button, and one revision round. The owner supplies the approved menu content. You arrange it. That sentence separates content approval from layout work and gives the project a boundary.",
+      "display": [
+        "One menu page",
+        "Owner supplies approved content",
+        "Contact button",
+        "One revision round"
+      ],
+      "beat_phrases": [
+        "exactly what is included",
+        "one revision round",
+        "owner supplies the approved menu content"
+      ]
+    },
+    {
+      "id": "07-timeline",
+      "title": "Make the timeline conditional",
+      "kind": "steps",
+      "text": "Add a realistic timeline and its starting condition. Our example says: delivery within one agreed working week after receiving the final menu and required access. Adapt that only after testing your workflow. Put the condition beside the timeline, not in tiny print. The clock starts when the inputs are ready.",
+      "display": [
+        "Agreed working week",
+        "After final menu + access",
+        "Test your workflow",
+        "Inputs ready → clock starts"
+      ],
+      "beat_phrases": [
+        "starting condition",
+        "after receiving the final menu",
+        "clock starts"
+      ]
+    },
+    {
+      "id": "08-sample",
+      "title": "Show an honestly labelled sample",
+      "kind": "compare",
+      "text": "Now show the work. Build a practice menu and label it: fictional concept, not client work. Sunny Café has tea at eighty rupees, coffee at one hundred twenty, and a sandwich at one hundred fifty. The prices are invented. Show readable rows, clear spacing, and a contact button beneath the menu.",
+      "display": [
+        "Fictional concept",
+        "Tea ₹80",
+        "Coffee ₹120",
+        "Sandwich ₹150"
+      ],
+      "beat_phrases": [
+        "fictional concept",
+        "tea at eighty rupees",
+        "readable rows"
+      ]
+    },
+    {
+      "id": "09-permission",
+      "title": "Use only work you can show",
+      "kind": "warning",
+      "text": "If you later add real examples, get permission and respect private information. Do not borrow another designer's portfolio, use customer logos to imply endorsement, or invent testimonials. Remove names you cannot publish. Your proof section should make the offer more trustworthy, not create a question about ownership.",
+      "display": [
+        "Permission where needed",
+        "No borrowed portfolio",
+        "No fake endorsement",
+        "Protect private details"
+      ],
+      "beat_phrases": [
+        "get permission",
+        "invent testimonials",
+        "question about ownership"
+      ]
+    },
+    {
+      "id": "10-price",
+      "title": "Explain the price basis",
+      "kind": "offer",
+      "text": "Your price needs a basis. Estimate the time for setup, layout, checking, and the included revision. Add any required costs. If you need to inspect the menu first, write: fixed project quote after reviewing your content and confirming scope. Then tell them what changes the quote, such as extra pages or new functionality.",
+      "display": [
+        "Setup + layout + checks",
+        "Included revision + costs",
+        "Quote after scope review",
+        "Extras change the quote"
+      ],
+      "beat_phrases": [
+        "price needs a basis",
+        "fixed project quote",
+        "what changes the quote"
+      ]
+    },
+    {
+      "id": "11-boundaries",
+      "title": "Say what is not included",
+      "kind": "checklist",
+      "text": "Put the boundaries beside the price. Our menu-page example excludes photography, advertising, ongoing edits, and an ordering system. Hosting and recurring costs must be assigned if relevant. Do not hide them behind a headline. A buyer should understand the difference between this one-page project and running their business.",
+      "display": [
+        "No photography or ads",
+        "No ordering system",
+        "Recurring costs disclosed",
+        "Bounded project"
+      ],
+      "beat_phrases": [
+        "boundaries beside the price",
+        "recurring costs",
+        "Do not hide them"
+      ]
+    },
+    {
+      "id": "12-process",
+      "title": "Explain the small process",
+      "kind": "steps",
+      "text": "Show the process in three steps. First, agree the scope and receive the content. Second, share a draft for the revision round. Third, deliver the files or publish the page under the arrangement. Keep payment terms and responsibilities in writing. The offer is a summary, not a replacement for an agreement.",
+      "display": [
+        "1 / Agree scope + content",
+        "2 / Draft + revision",
+        "3 / Agreed delivery",
+        "Terms in writing"
+      ],
+      "beat_phrases": [
+        "three steps",
+        "share a draft",
+        "not a replacement for an agreement"
+      ]
+    },
+    {
+      "id": "13-next-step",
+      "title": "Ask for a relevant next step",
+      "kind": "message",
+      "text": "End with one next step. Interested? Send your current menu and tell me whether you need a readable page or an ordering system. That question checks fit before promising work. Do not put six buttons on an offer. Choose a contact method you can monitor, and explain what you need.",
+      "display": [
+        "Send current menu",
+        "Readable page or ordering?",
+        "Check fit first",
+        "One contact method"
+      ],
+      "beat_phrases": [
+        "one next step",
+        "checks fit",
+        "six buttons"
+      ]
+    },
+    {
+      "id": "14-full-page",
+      "title": "The assembled one-page offer",
+      "kind": "offer",
+      "text": "Here is the assembled page. Menu pages for independent cafés. One page, readable prices, contact button, one revision. A labelled Sunny Café concept. Quote after content review. Delivery after approved content arrives. No ordering system or ongoing edits included. Send your menu to check fit. Now the project is clear.",
+      "display": [
+        "Café menu page + one revision",
+        "Labelled Sunny Café concept",
+        "Quote after content review",
+        "Send menu to check fit"
+      ],
+      "beat_phrases": [
+        "assembled page",
+        "Quote after content review",
+        "Send your menu"
+      ]
+    },
+    {
+      "id": "15-reader-test",
+      "title": "The quick reader test",
+      "kind": "checklist",
+      "text": "Try a reader test. Show the page to someone unfamiliar with it, then ask what they think you sell, who should buy it, and what happens next. Five seconds is an exercise, not a scientific cutoff. If their explanation is wrong, repair the wording before spending time polishing decoration.",
+      "display": [
+        "What is sold?",
+        "Who is it for?",
+        "What next?",
+        "Clarity exercise, not science"
+      ],
+      "beat_phrases": [
+        "reader test",
+        "not a scientific cutoff",
+        "repair the wording"
+      ]
+    },
+    {
+      "id": "16-template",
+      "title": "Your fill-in template",
+      "kind": "steps",
+      "text": "Use this template. For this customer, I deliver this thing. It includes these items and excludes these items. Here is an honest sample. The price or quote basis is this. Delivery starts after these inputs. To check fit, take this one next step. Every blank needs a truthful answer.",
+      "display": [
+        "For [customer], I deliver [thing]",
+        "Includes / excludes",
+        "Sample / price / inputs",
+        "One next step"
+      ],
+      "beat_phrases": [
+        "Use this template",
+        "an honest sample",
+        "Every blank needs a truthful answer"
+      ]
+    },
+    {
+      "id": "17-outreach",
+      "title": "Let the offer support the message",
+      "kind": "message",
+      "text": "Now the page can support a short, relevant introduction instead of replacing one. Contact businesses respectfully through business channels, not random people at scale. Ask whether the example would be useful before sending multiple links. Respect refusals and rules. A clearer offer is not a reason to ignore boundaries.",
+      "display": [
+        "Relevant introduction",
+        "Suitable businesses",
+        "Ask before link piles",
+        "Respect refusals"
+      ],
+      "beat_phrases": [
+        "short, relevant introduction",
+        "Contact businesses respectfully",
+        "Respect refusals"
+      ]
+    },
+    {
+      "id": "18-action",
+      "title": "Build the rough page today",
+      "kind": "recap",
+      "text": "Build the page before redesigning your brand. Choose one customer, one bounded deliverable, one honest sample, and one next step. Then ask a person whether the offer makes sense and whether the need is real. No guaranteed clients. Just a starting point you can test, improve, or decide not to sell.",
+      "display": [
+        "One customer + deliverable",
+        "One honest sample",
+        "One next step",
+        "Test the need"
+      ],
+      "beat_phrases": [
+        "Build the page",
+        "whether the need is real",
+        "No guaranteed clients"
+      ]
+    }
+  ],
+  "duration_s": 346.291,
+  "cues": [
+    {
+      "id": "01-payoff",
+      "title": "One vague line becomes an offer",
+      "kind": "compare",
+      "text": "Before: creative solutions for every business. After: one mobile friendly menu page for cafés, with readable prices and an enquiry button. That is the difference between describing yourself and describing something a customer can buy. We will build the offer on one page, with a fictional example.",
+      "display": [
+        "Creative solutions for everyone",
+        "One café menu page",
+        "Readable prices",
+        "Enquiry button"
+      ],
+      "beat_phrases": [
+        "creative solutions for every business",
+        "one mobile friendly menu page",
+        "one page"
+      ],
+      "start": 0.0,
+      "end": 18.859,
+      "beats": [
+        0.8,
+        4.26,
+        16.64
+      ]
+    },
+    {
+      "id": "02-page-not-magic",
+      "title": "A page, not a magic trick",
+      "kind": "offer",
+      "text": "You do not need a perfect website for this exercise. A plain document is enough to clarify the offer. It will not create demand or guarantee clients. It helps you answer the questions behind a purchase: who is this for, what arrives, what does it cost, and what happens next? ",
+      "display": [
+        "Plain document is enough",
+        "Who?",
+        "What + cost?",
+        "What next?"
+      ],
+      "beat_phrases": [
+        "A plain document is enough",
+        "will not create demand",
+        "what happens next"
+      ],
+      "start": 18.959,
+      "end": 36.047,
+      "beats": [
+        3.38,
+        6.58,
+        16.02
+      ]
+    },
+    {
+      "id": "03-customer",
+      "title": "Choose one initial customer",
+      "kind": "offer",
+      "text": "Start with one customer type. Everyone with a business gives you no useful boundary. Choose independent cafés with an existing menu. Ask an owner: how do customers currently read your menu on a phone? Their answer can confirm, reshape, or reject your idea before you build anything.",
+      "display": [
+        "Independent cafés",
+        "Existing menu",
+        "How is it read on mobile?",
+        "Validate before building"
+      ],
+      "beat_phrases": [
+        "one customer type",
+        "Choose independent cafés",
+        "Ask an owner"
+      ],
+      "start": 36.147,
+      "end": 53.853,
+      "beats": [
+        0.52,
+        5.38,
+        8.66
+      ]
+    },
+    {
+      "id": "04-problem",
+      "title": "Name a visible problem",
+      "kind": "compare",
+      "text": "Write the problem in ordinary language. In our Sunny Café concept, the menu is a crowded image. On a phone, the item names and prices shrink together. The clearer version separates each item into a readable row. That gives your page a specific job: make this menu easier to read.",
+      "display": [
+        "Crowded menu image",
+        "Item names + prices shrink",
+        "Readable rows",
+        "A specific job"
+      ],
+      "beat_phrases": [
+        "ordinary language",
+        "crowded image",
+        "readable row"
+      ],
+      "start": 53.953,
+      "end": 72.193,
+      "beats": [
+        1.02,
+        5.16,
+        12.98
+      ]
+    },
+    {
+      "id": "05-result",
+      "title": "Name the deliverable in the headline",
+      "kind": "offer",
+      "text": "Next, name the deliverable in the headline. One mobile friendly menu page for independent cafés. Read that slowly: one page defines the size; mobile friendly describes the use; cafés identifies the customer. Place this sentence at the top. A visitor should not need your biography to understand the project.",
+      "display": [
+        "One menu page",
+        "Mobile friendly",
+        "For independent cafés",
+        "Customer + deliverable"
+      ],
+      "beat_phrases": [
+        "name the deliverable",
+        "one page defines the size",
+        "cafés identifies the customer"
+      ],
+      "start": 72.293,
+      "end": 92.624,
+      "beats": [
+        0.6,
+        8.0,
+        12.4
+      ]
+    },
+    {
+      "id": "06-included",
+      "title": "List what is included",
+      "kind": "checklist",
+      "text": "Under the headline, list exactly what is included. In this offer: one menu page, agreed categories and prices, a contact button, and one revision round. The owner supplies the approved menu content. You arrange it. That sentence separates content approval from layout work and gives the project a boundary.",
+      "display": [
+        "One menu page",
+        "Owner supplies approved content",
+        "Contact button",
+        "One revision round"
+      ],
+      "beat_phrases": [
+        "exactly what is included",
+        "one revision round",
+        "owner supplies the approved menu content"
+      ],
+      "start": 92.724,
+      "end": 112.116,
+      "beats": [
+        1.28,
+        8.72,
+        10.44
+      ]
+    },
+    {
+      "id": "07-timeline",
+      "title": "Make the timeline conditional",
+      "kind": "steps",
+      "text": "Add a realistic timeline and its starting condition. Our example says: delivery within one agreed working week after receiving the final menu and required access. Adapt that only after testing your workflow. Put the condition beside the timeline, not in tiny print. The clock starts when the inputs are ready.",
+      "display": [
+        "Agreed working week",
+        "After final menu + access",
+        "Test your workflow",
+        "Inputs ready → clock starts"
+      ],
+      "beat_phrases": [
+        "starting condition",
+        "after receiving the final menu",
+        "clock starts"
+      ],
+      "start": 112.216,
+      "end": 131.8,
+      "beats": [
+        2.0,
+        6.82,
+        17.62
+      ]
+    },
+    {
+      "id": "08-sample",
+      "title": "Show an honestly labelled sample",
+      "kind": "compare",
+      "text": "Now show the work. Build a practice menu and label it: fictional concept, not client work. Sunny Café has tea at eighty rupees, coffee at one hundred twenty, and a sandwich at one hundred fifty. The prices are invented. Show readable rows, clear spacing, and a contact button beneath the menu.",
+      "display": [
+        "Fictional concept",
+        "Tea ₹80",
+        "Coffee ₹120",
+        "Sandwich ₹150"
+      ],
+      "beat_phrases": [
+        "fictional concept",
+        "tea at eighty rupees",
+        "readable rows"
+      ],
+      "start": 131.9,
+      "end": 150.545,
+      "beats": [
+        3.7,
+        7.18,
+        14.58
+      ]
+    },
+    {
+      "id": "09-permission",
+      "title": "Use only work you can show",
+      "kind": "warning",
+      "text": "If you later add real examples, get permission and respect private information. Do not borrow another designer's portfolio, use customer logos to imply endorsement, or invent testimonials. Remove names you cannot publish. Your proof section should make the offer more trustworthy, not create a question about ownership.",
+      "display": [
+        "Permission where needed",
+        "No borrowed portfolio",
+        "No fake endorsement",
+        "Protect private details"
+      ],
+      "beat_phrases": [
+        "get permission",
+        "invent testimonials",
+        "question about ownership"
+      ],
+      "start": 150.645,
+      "end": 170.741,
+      "beats": [
+        2.14,
+        10.98,
+        18.68
+      ]
+    },
+    {
+      "id": "10-price",
+      "title": "Explain the price basis",
+      "kind": "offer",
+      "text": "Your price needs a basis. Estimate the time for setup, layout, checking, and the included revision. Add any required costs. If you need to inspect the menu first, write: fixed project quote after reviewing your content and confirming scope. Then tell them what changes the quote, such as extra pages or new functionality.",
+      "display": [
+        "Setup + layout + checks",
+        "Included revision + costs",
+        "Quote after scope review",
+        "Extras change the quote"
+      ],
+      "beat_phrases": [
+        "price needs a basis",
+        "fixed project quote",
+        "what changes the quote"
+      ],
+      "start": 170.841,
+      "end": 191.001,
+      "beats": [
+        0.18,
+        11.38,
+        16.18
+      ]
+    },
+    {
+      "id": "11-boundaries",
+      "title": "Say what is not included",
+      "kind": "checklist",
+      "text": "Put the boundaries beside the price. Our menu-page example excludes photography, advertising, ongoing edits, and an ordering system. Hosting and recurring costs must be assigned if relevant. Do not hide them behind a headline. A buyer should understand the difference between this one-page project and running their business.",
+      "display": [
+        "No photography or ads",
+        "No ordering system",
+        "Recurring costs disclosed",
+        "Bounded project"
+      ],
+      "beat_phrases": [
+        "boundaries beside the price",
+        "recurring costs",
+        "Do not hide them"
+      ],
+      "start": 191.101,
+      "end": 211.133,
+      "beats": [
+        0.24,
+        9.56,
+        12.74
+      ]
+    },
+    {
+      "id": "12-process",
+      "title": "Explain the small process",
+      "kind": "steps",
+      "text": "Show the process in three steps. First, agree the scope and receive the content. Second, share a draft for the revision round. Third, deliver the files or publish the page under the arrangement. Keep payment terms and responsibilities in writing. The offer is a summary, not a replacement for an agreement.",
+      "display": [
+        "1 / Agree scope + content",
+        "2 / Draft + revision",
+        "3 / Agreed delivery",
+        "Terms in writing"
+      ],
+      "beat_phrases": [
+        "three steps",
+        "share a draft",
+        "not a replacement for an agreement"
+      ],
+      "start": 211.233,
+      "end": 230.519,
+      "beats": [
+        1.04,
+        6.06,
+        17.6
+      ]
+    },
+    {
+      "id": "13-next-step",
+      "title": "Ask for a relevant next step",
+      "kind": "message",
+      "text": "End with one next step. Interested? Send your current menu and tell me whether you need a readable page or an ordering system. That question checks fit before promising work. Do not put six buttons on an offer. Choose a contact method you can monitor, and explain what you need.",
+      "display": [
+        "Send current menu",
+        "Readable page or ordering?",
+        "Check fit first",
+        "One contact method"
+      ],
+      "beat_phrases": [
+        "one next step",
+        "checks fit",
+        "six buttons"
+      ],
+      "start": 230.619,
+      "end": 247.451,
+      "beats": [
+        0.48,
+        8.76,
+        11.64
+      ]
+    },
+    {
+      "id": "14-full-page",
+      "title": "The assembled one-page offer",
+      "kind": "offer",
+      "text": "Here is the assembled page. Menu pages for independent cafés. One page, readable prices, contact button, one revision. A labelled Sunny Café concept. Quote after content review. Delivery after approved content arrives. No ordering system or ongoing edits included. Send your menu to check fit. Now the project is clear.",
+      "display": [
+        "Café menu page + one revision",
+        "Labelled Sunny Café concept",
+        "Quote after content review",
+        "Send menu to check fit"
+      ],
+      "beat_phrases": [
+        "assembled page",
+        "Quote after content review",
+        "Send your menu"
+      ],
+      "start": 247.551,
+      "end": 269.737,
+      "beats": [
+        0.56,
+        11.18,
+        18.88
+      ]
+    },
+    {
+      "id": "15-reader-test",
+      "title": "The quick reader test",
+      "kind": "checklist",
+      "text": "Try a reader test. Show the page to someone unfamiliar with it, then ask what they think you sell, who should buy it, and what happens next. Five seconds is an exercise, not a scientific cutoff. If their explanation is wrong, repair the wording before spending time polishing decoration.",
+      "display": [
+        "What is sold?",
+        "Who is it for?",
+        "What next?",
+        "Clarity exercise, not science"
+      ],
+      "beat_phrases": [
+        "reader test",
+        "not a scientific cutoff",
+        "repair the wording"
+      ],
+      "start": 269.837,
+      "end": 287.779,
+      "beats": [
+        0.42,
+        10.6,
+        14.64
+      ]
+    },
+    {
+      "id": "16-template",
+      "title": "Your fill-in template",
+      "kind": "steps",
+      "text": "Use this template. For this customer, I deliver this thing. It includes these items and excludes these items. Here is an honest sample. The price or quote basis is this. Delivery starts after these inputs. To check fit, take this one next step. Every blank needs a truthful answer.",
+      "display": [
+        "For [customer], I deliver [thing]",
+        "Includes / excludes",
+        "Sample / price / inputs",
+        "One next step"
+      ],
+      "beat_phrases": [
+        "Use this template",
+        "an honest sample",
+        "Every blank needs a truthful answer"
+      ],
+      "start": 287.879,
+      "end": 306.503,
+      "beats": [
+        0.0,
+        7.6,
+        16.62
+      ]
+    },
+    {
+      "id": "17-outreach",
+      "title": "Let the offer support the message",
+      "kind": "message",
+      "text": "Now the page can support a short, relevant introduction instead of replacing one. Contact businesses respectfully through business channels, not random people at scale. Ask whether the example would be useful before sending multiple links. Respect refusals and rules. A clearer offer is not a reason to ignore boundaries.",
+      "display": [
+        "Relevant introduction",
+        "Suitable businesses",
+        "Ask before link piles",
+        "Respect refusals"
+      ],
+      "beat_phrases": [
+        "short, relevant introduction",
+        "Contact businesses respectfully",
+        "Respect refusals"
+      ],
+      "start": 306.603,
+      "end": 326.933,
+      "beats": [
+        1.6,
+        5.66,
+        15.42
+      ]
+    },
+    {
+      "id": "18-action",
+      "title": "Build the rough page today",
+      "kind": "recap",
+      "text": "Build the page before redesigning your brand. Choose one customer, one bounded deliverable, one honest sample, and one next step. Then ask a person whether the offer makes sense and whether the need is real. No guaranteed clients. Just a starting point you can test, improve, or decide not to sell.",
+      "display": [
+        "One customer + deliverable",
+        "One honest sample",
+        "One next step",
+        "Test the need"
+      ],
+      "beat_phrases": [
+        "Build the page",
+        "whether the need is real",
+        "No guaranteed clients"
+      ],
+      "start": 327.033,
+      "end": 345.871,
+      "beats": [
+        0.0,
+        11.24,
+        13.06
+      ]
+    }
+  ]
+}

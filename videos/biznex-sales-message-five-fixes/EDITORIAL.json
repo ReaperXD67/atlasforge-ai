@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "script": "SCRIPT.md",
+  "thumbnail_copy": "THUMBNAIL_COPY.txt",
+  "audience_problem": "A beginner is tempted to send more generic sales messages instead of checking relevance, scope, proof and the ask.",
+  "hook": {
+    "text": "Before: I provide amazing services",
+    "at_seconds": 0
+  },
+  "payoff": {
+    "text": "A silent inbox gives you no explanation",
+    "at_seconds": 16.996
+  },
+  "packaging": {
+    "title": "Why Nobody Replies to Your Sales Messages — 5 Fixes",
+    "thumbnail_text": "NO REPLIES? FIX THIS",
+    "promise": "Repair one fictional café pitch through five named fixes, finish with a reusable template and self-test; no promised reply rate.",
+    "evidence_anchor": "A silent inbox gives you no explanation",
+    "reviewed": true
+  },
+  "sources": [
+    {
+      "claim": "The five-fix checklist, message template and fictional café demonstration are original BizNex heuristics, not empirical findings. SBA supplies general marketing-plan background only.",
+      "url": "https://www.sba.gov/counseling/manage-your-business/",
+      "checked_on": "2026-10-10"
+    }
+  ],
+  "retention_beats": [
+    {
+      "at_seconds": 0.0,
+      "purpose": "The rewrite first"
+    },
+    {
+      "at_seconds": 16.996,
+      "purpose": "Work on the message you control"
+    },
+    {
+      "at_seconds": 35.101,
+      "purpose": "The fictional bad message"
+    },
+    {
+      "at_seconds": 52.247,
+      "purpose": "Fix one: one real observation"
+    },
+    {
+      "at_seconds": 69.435,
+      "purpose": "Check the actual mobile problem"
+    },
+    {
+      "at_seconds": 86.303,
+      "purpose": "Fix two: name the work"
+    },
+    {
+      "at_seconds": 103.021,
+      "purpose": "Put a boundary around it"
+    },
+    {
+      "at_seconds": 122.535,
+      "purpose": "Fix three: show honest proof"
+    },
+    {
+      "at_seconds": 141.728,
+      "purpose": "Explain what your sample proves"
+    },
+    {
+      "at_seconds": 161.028,
+      "purpose": "Fix four: a small question"
+    },
+    {
+      "at_seconds": 178.237,
+      "purpose": "Ask one thing, not five"
+    },
+    {
+      "at_seconds": 195.809,
+      "purpose": "Fix five: a respectful follow-up"
+    },
+    {
+      "at_seconds": 215.792,
+      "purpose": "More messages is not the fix"
+    },
+    {
+      "at_seconds": 235.903,
+      "purpose": "The complete repaired message"
+    },
+    {
+      "at_seconds": 253.453,
+      "purpose": "Check your own message"
+    },
+    {
+      "at_seconds": 271.025,
+      "purpose": "The reusable template"
+    },
+    {
+      "at_seconds": 290.752,
+      "purpose": "Track the learning, not a fantasy"
+    },
+    {
+      "at_seconds": 311.439,
+      "purpose": "One real repair today"
+    }
+  ]
+}

@@ -32,6 +32,8 @@ It is configured for education-first Atomy content aimed at people researching o
 
 **Shorts batches:** prepare and render multiple independent 20–30 second HyperFrames episodes in one resumable job, with the approved voice locked, required thumbnails/upload text, speech-aligned captions, and mastered delivery checks. See [Shorts batch workflow](docs/SHORTS_BATCH.md).
 
+**Mixed production batches:** render Shorts and 5–6 minute landscape videos together, with cached approved narration, measured caption/reveal timing, voice-aware music, source-hash-safe resume, editorial preparation gates and complete upload packages. See [production batch workflow](docs/PRODUCTION_BATCH.md) and the [three-Short/two-video Repair Lab experiment](docs/BIZNEX_REPAIR_LAB.md). Editorial checks are preparation safeguards, not predictions of views or automatic fact-checking.
+
 > [!CAUTION]
 > AtlasForge AI automates production, not editorial responsibility. Its gates block obvious earnings promises, medical claims, early sales pitches, missing disclosures, and malformed media. You remain responsible for factual accuracy, licensing, product claims, and channel compliance.
 

@@ -1,0 +1,178 @@
+{
+  "id": "pay-first-job-warning",
+  "project": "videos/biznex-pay-first-job-warning",
+  "format": "shorts",
+  "title": "This 'Online Job' Asks You to Pay First — Stop",
+  "audience_problem": "A beginner may mistake an initial task payment or an app balance for proof that an online job is real.",
+  "packaging_promise": "Show the pay-to-unlock task-scam pattern and give the concrete boundary: do not deposit money.",
+  "thumbnail_headline": "PAY TO GET PAID?",
+  "description": "An unexpected task job, a small initial payment, a growing app balance, then a demand to deposit your own money: the FTC warns that this is a task-scam pattern. The on-screen conversation is a fictional illustration, not an actual recruiter or earning record.\n\nDo not send money to unlock earnings. Ignore suspicious unsolicited job messages and verify employers independently. There are no guaranteed replies, legitimate jobs or income from this video.\n\nOfficial FTC sources, checked 10 October 2026:\nhttps://consumer.ftc.gov/consumer-alerts/2025/08/how-spot-avoid-task-scams\nhttps://consumer.ftc.gov/consumer-alerts/2026/04/job-offer-text-probably-scam\n\nIf you have lost money, contact your payment provider promptly and use your local official fraud-reporting channel.",
+  "hashtags": [
+    "#JobScam",
+    "#ScamAwareness",
+    "#OnlineSafety",
+    "#BizNex",
+    "#Shorts"
+  ],
+  "sources": [
+    {
+      "claim": "Task scammers may build trust with a small payment, display fake app earnings, then demand personal deposits to unlock tasks or withdrawals.",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/08/how-spot-avoid-task-scams",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "claim": "Unsolicited fake-recruiter texts can seek engagement before asking for money. The FTC advises ignoring generic unexpected job messages and not paying to get paid.",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/job-offer-text-probably-scam",
+      "checked_on": "2026-10-10"
+    }
+  ],
+  "segments": [
+    {
+      "id": "01-trap",
+      "title": "The unexpected offer",
+      "kind": "message",
+      "text": "An online job pays you a little, then says: deposit money to unlock your earnings. Stop. That is the trap.",
+      "display": [
+        "Small payment",
+        "Deposit to unlock",
+        "STOP"
+      ],
+      "beat_phrases": [
+        "pays you a little",
+        "deposit money",
+        "That is the trap"
+      ]
+    },
+    {
+      "id": "02-balance",
+      "title": "The balance is not proof",
+      "kind": "warning",
+      "text": "The F T C warns that task scams can show fake app balances and use early payments to build trust.",
+      "display": [
+        "FAKE APP BALANCE",
+        "Trust bait"
+      ],
+      "beat_phrases": [
+        "task scams",
+        "fake app balances",
+        "build trust"
+      ]
+    },
+    {
+      "id": "03-action",
+      "title": "Do not deposit",
+      "kind": "steps",
+      "text": "Do not send money. Ignore suspicious unsolicited job messages, and verify the employer through an independently found official website.",
+      "display": [
+        "Do not send money",
+        "Verify independently"
+      ],
+      "beat_phrases": [
+        "Do not send money",
+        "verify the employer"
+      ]
+    },
+    {
+      "id": "04-rule",
+      "title": "The memorable boundary",
+      "kind": "recap",
+      "text": "A payment screenshot is not proof. Your wages should not need a deposit from you.",
+      "display": [
+        "SCREENSHOT ≠ PROOF",
+        "WAGES, NOT DEPOSITS"
+      ],
+      "beat_phrases": [
+        "not proof",
+        "not need a deposit"
+      ]
+    }
+  ],
+  "duration_s": 27.493,
+  "cues": [
+    {
+      "id": "01-trap",
+      "title": "The unexpected offer",
+      "kind": "message",
+      "text": "An online job pays you a little, then says: deposit money to unlock your earnings. Stop. That is the trap.",
+      "display": [
+        "Small payment",
+        "Deposit to unlock",
+        "STOP"
+      ],
+      "beat_phrases": [
+        "pays you a little",
+        "deposit money",
+        "That is the trap"
+      ],
+      "start": 0.0,
+      "end": 6.592,
+      "beats": [
+        0.86,
+        2.08,
+        5.76
+      ]
+    },
+    {
+      "id": "02-balance",
+      "title": "The balance is not proof",
+      "kind": "warning",
+      "text": "The F T C warns that task scams can show fake app balances and use early payments to build trust.",
+      "display": [
+        "FAKE APP BALANCE",
+        "Trust bait"
+      ],
+      "beat_phrases": [
+        "task scams",
+        "fake app balances",
+        "build trust"
+      ],
+      "start": 6.692,
+      "end": 13.305,
+      "beats": [
+        1.42,
+        3.0,
+        5.88
+      ]
+    },
+    {
+      "id": "03-action",
+      "title": "Do not deposit",
+      "kind": "steps",
+      "text": "Do not send money. Ignore suspicious unsolicited job messages, and verify the employer through an independently found official website.",
+      "display": [
+        "Do not send money",
+        "Verify independently"
+      ],
+      "beat_phrases": [
+        "Do not send money",
+        "verify the employer"
+      ],
+      "start": 13.405,
+      "end": 22.301,
+      "beats": [
+        0.0,
+        5.1
+      ]
+    },
+    {
+      "id": "04-rule",
+      "title": "The memorable boundary",
+      "kind": "recap",
+      "text": "A payment screenshot is not proof. Your wages should not need a deposit from you.",
+      "display": [
+        "SCREENSHOT ≠ PROOF",
+        "WAGES, NOT DEPOSITS"
+      ],
+      "beat_phrases": [
+        "not proof",
+        "not need a deposit"
+      ],
+      "start": 22.401,
+      "end": 27.073,
+      "beats": [
+        1.32,
+        3.18
+      ]
+    }
+  ]
+}

@@ -19,6 +19,7 @@ from .media.ffmpeg import FFmpeg
 from .models import MUSIC_EDIT_STYLES, MusicEditStyle
 from .music_video import MusicVideoPipeline
 from .pipeline import DailyVideoPipeline
+from .production_batch import run_production_batch
 from .providers.tts import NarrationGenerator
 from .publishing.youtube import YouTubePublisher
 from .scheduler import run_scheduler
@@ -163,6 +164,25 @@ def render_shorts_batch_command(
         report = run_shorts_batch(manifest, resume=resume, dry_run=dry_run)
     except ShortsBatchError as exc:
         console.print(f"[bold red]Shorts batch failed:[/] {exc}")
+        raise typer.Exit(1) from exc
+    console.print_json(data=report)
+    if report["status"] == "failed":
+        raise typer.Exit(1)
+
+
+@app.command("render-production-batch")
+def render_production_batch_command(
+    manifest: Path = typer.Option(..., exists=True, dir_okay=False, help="Mixed-format batch JSON."),
+    resume: bool = typer.Option(
+        True, "--resume/--fresh", help="Skip only unchanged, previously verified deliveries."
+    ),
+    dry_run: bool = typer.Option(False, help="Validate preparation and preview jobs without encoding."),
+) -> None:
+    """Render Shorts and full YouTube videos with editorial, voice and format gates."""
+    try:
+        report = run_production_batch(manifest, resume=resume, dry_run=dry_run)
+    except ShortsBatchError as exc:
+        console.print(f"[bold red]Production batch failed:[/] {exc}")
         raise typer.Exit(1) from exc
     console.print_json(data=report)
     if report["status"] == "failed":

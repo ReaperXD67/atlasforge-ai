@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>One real repair today</title></head><body><template>
+<style>@font-face{font-family:Montserrat;src:url('../../assets/fonts/Montserrat.ttf') format('truetype');font-weight:100 900;font-display:block}
+@font-face{font-family:'IBM Plex Mono';src:url('../../assets/fonts/PlexMono.ttf') format('truetype');font-weight:400 700;font-display:block}
+#frame-18-18-action,#frame-18-18-action *{box-sizing:border-box}
+#frame-18-18-action{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:#17191c;color:#f4eedf;font-family:Montserrat,sans-serif}
+#frame-18-18-action .scene-inner{position:absolute;inset:0;padding:68px 96px 240px;display:flex;flex-direction:row-reverse;gap:72px;align-items:center}
+#frame-18-18-action .case-header{position:absolute;left:96px;right:96px;top:48px;display:flex;justify-content:space-between;color:#b3b0a8;font:400 24px/1.2 'IBM Plex Mono',monospace;letter-spacing:.04em}
+#frame-18-18-action .story{flex:0 0 620px;padding-top:28px;position:relative;z-index:2}
+#frame-18-18-action .chapter{display:inline-flex;gap:18px;align-items:center;font:400 25px/1.4 'IBM Plex Mono',monospace;color:#efc66a;margin-bottom:26px}
+#frame-18-18-action .chapter-num{font-size:44px;font-weight:700}
+#frame-18-18-action h1{font-size:80px;line-height:1.05;letter-spacing:-.045em;margin:0;font-weight:900;max-width:100%;overflow-wrap:break-word}
+#frame-18-18-action .story-rule{margin-top:32px;height:6px;width:170px;background:#efc66a;transform-origin:left center}
+#frame-18-18-action .story-note{font:400 26px/1.4 'IBM Plex Mono',monospace;color:#b3b0a8;max-width:590px;margin-top:26px}
+#frame-18-18-action .object{position:relative;flex:1;display:flex;flex-direction:column;min-width:0;max-width:970px;background:#f4eedf;color:#17191c;border:3px solid #efc66a;border-radius:16px;z-index:2;overflow:hidden;align-self:center;transform-origin:center center}
+#frame-18-18-action .object-bar{display:flex;justify-content:space-between;align-items:center;padding:22px 30px;background:#17191c;color:#f4eedf;font:400 24px/1.3 'IBM Plex Mono',monospace;border-bottom:3px solid #efc66a}
+#frame-18-18-action .window-dots{font-size:18px;color:#efc66a;letter-spacing:.2em}
+#frame-18-18-action .object-content{display:grid;flex:1;gap:16px;padding:26px;min-height:420px;align-content:center}
+#frame-18-18-action .item{min-width:0;display:flex;flex-direction:column;justify-content:center;padding:18px 24px;background:#f4eedf;border:2px solid #17191c;border-bottom:;border-radius:2px;opacity:1;position:relative}
+#frame-18-18-action .item-top{display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:30px;margin-bottom:8px}
+#frame-18-18-action .item-label{font:400 22px/1.2 'IBM Plex Mono',monospace;letter-spacing:.025em}
+#frame-18-18-action .item-text{font:700 38px/1.17 Montserrat,sans-serif;letter-spacing:-.025em;overflow-wrap:break-word}
+#frame-18-18-action .tick{width:33px;height:29px;flex:none;overflow:visible}
+#frame-18-18-action .tick path{stroke:#17191c;stroke-width:5px;fill:none;stroke-linecap:round;stroke-linejoin:round}
+#frame-18-18-action .item.status-bad{background:#ffad9d}
+#frame-18-18-action .item.status-neutral{background:#f4eedf}
+#frame-18-18-action .status-neutral .tick{opacity:0}
+#frame-18-18-action .object-footer{display:flex;justify-content:space-between;gap:16px;padding:19px 30px;background:#efc66a;color:#17191c;font:400 21px/1.3 'IBM Plex Mono',monospace}
+#frame-18-18-action .comparison-half{width:50%;display:flex;flex-direction:column;gap:16px;min-width:0}
+#frame-18-18-action .comparison-half .item{flex:1;background:#f4eedf;padding:18px 20px}
+#frame-18-18-action .comparison-half.before .item{background:#ffad9d}
+#frame-18-18-action .comparison-half.after .item{background:#bce5bd}
+#frame-18-18-action .comparison-half.after .item.status-neutral{background:#f4eedf}
+#frame-18-18-action .half-label{font:700 22px/1.3 'IBM Plex Mono',monospace;min-height:58px}
+#frame-18-18-action .object-compare .item-text{font-size:34px}
+#frame-18-18-action .object-compare .item-label{font-size:21px}
+#frame-18-18-action .tiny-menu{padding:34px 18px;background:#f4eedf;border:2px solid #17191c;min-height:330px;display:flex;gap:16px;flex-direction:column;justify-content:center;font:400 24px/1.6 'IBM Plex Mono',monospace;text-align:center}
+#frame-18-18-action .tiny-menu span:first-child{font:900 36px/1.2 Montserrat,sans-serif}
+#frame-18-18-action .menu-proof .object-content{min-height:560px}
+#frame-18-18-action .menu-proof .after .item{padding:10px 16px}
+#frame-18-18-action .menu-proof .after .item-top{margin-bottom:4px}
+#frame-18-18-action .menu-proof .after .item-text{font-size:32px}
+#frame-18-18-action .object-checklist .object-content,#frame-18-18-action .object-steps .object-content{gap:20px}
+#frame-18-18-action .object-steps .item{border:0;border-bottom:2px solid #17191c;background:#f4eedf;padding-left:76px}
+#frame-18-18-action .object-steps .item-label{position:absolute;left:20px;top:20px;font-size:32px;font-weight:700;color:#17191c}
+#frame-18-18-action .back-label{position:absolute;right:40px;bottom:160px;font:900 290px/1 Montserrat,sans-serif;color:#efc66a;opacity:.1;pointer-events:none;z-index:0}
+#frame-18-18-action .register{position:absolute;left:0;bottom:150px;width:1920px;height:3px;background:#efc66a;opacity:.18;z-index:0;transform-origin:left center}
+</style>
+<div id="frame-18-18-action" data-composition-id="frame-18-18-action" data-width="1920" data-height="1080" data-duration="21.177">
+<div class="back-label" id="frame-18-18-action-back" data-layout-ignore>18</div><div class="register" id="frame-18-18-action-register" data-layout-ignore></div>
+<div class="case-header"><span>BIZNEX / REPAIR LAB</span><span>WORKED EXAMPLE</span></div>
+<div class="scene-inner"><div class="story"><div class="chapter"><span class="chapter-num">18</span><span>STEPS</span></div><h1>One real repair today</h1><div class="story-rule" id="frame-18-18-action-rule"></div><div class="story-note">Fictional example. No promised replies or clients.</div></div><div class="object object-steps" id="frame-18-18-action-object">
+  <div class="object-bar"><span>WORKING RECIPE</span><span class="window-dots" aria-hidden="true">● ● ●</span></div>
+  <div class="object-content"><div class="item item-0 status-good" id="frame-18-18-action-item-0"><div class="item-top"><span class="item-label">01</span><svg class="tick" viewBox="0 0 48 38" aria-hidden="true"><path id="frame-18-18-action-tick-0" d="M5 19 L17 31 L42 5"/></svg></div><div class="item-text">Repair one old pitch</div></div><div class="item item-1 status-good" id="frame-18-18-action-item-1"><div class="item-top"><span class="item-label">02</span><svg class="tick" viewBox="0 0 48 38" aria-hidden="true"><path id="frame-18-18-action-tick-1" d="M5 19 L17 31 L42 5"/></svg></div><div class="item-text">Use all five checks</div></div><div class="item item-2 status-neutral" id="frame-18-18-action-item-2"><div class="item-top"><span class="item-label">03</span><svg class="tick" viewBox="0 0 48 38" aria-hidden="true"><path id="frame-18-18-action-tick-2" d="M5 19 L17 31 L42 5"/></svg></div><div class="item-text">Clarity ≠ guaranteed clients</div></div><div class="item item-3 status-good" id="frame-18-18-action-item-3"><div class="item-top"><span class="item-label">04</span><svg class="tick" viewBox="0 0 48 38" aria-hidden="true"><path id="frame-18-18-action-tick-3" d="M5 19 L17 31 L42 5"/></svg></div><div class="item-text">Make it worth reading</div></div></div>
+  <div class="object-footer"><span>FICTIONAL / TEACHING EXAMPLE</span><span>18</span></div>
+  </div></div>
+</div>
+<script>(function(){var tl=gsap.timeline({paused:true});
+tl.fromTo('#frame-18-18-action-object',{scale:.98,rotation:.45},{scale:1,rotation:0,duration:.45,ease:'power3.out'},0);
+tl.fromTo('#frame-18-18-action-rule',{scaleX:0},{scaleX:1,duration:.42,ease:'power2.out'},.12);
+tl.fromTo('#frame-18-18-action-item-0', {x:-28,y:16,opacity:1}, {x:0,y:0,opacity:1,duration:.35,ease:'power3.out'}, 0.000);
+var tick0=document.getElementById('frame-18-18-action-tick-0');var len0=tick0.getTotalLength();tick0.style.strokeDasharray=len0;
+tl.fromTo(tick0,{strokeDashoffset:len0},{strokeDashoffset:0,duration:.34,ease:'power2.out'},0.350);
+tl.fromTo('#frame-18-18-action-item-1', {x:28,y:16,opacity:0}, {x:0,y:0,opacity:1,duration:.35,ease:'power4.out'}, 11.820);
+var tick1=document.getElementById('frame-18-18-action-tick-1');var len1=tick1.getTotalLength();tick1.style.strokeDasharray=len1;
+tl.fromTo(tick1,{strokeDashoffset:len1},{strokeDashoffset:0,duration:.34,ease:'power2.out'},12.170);
+tl.fromTo('#frame-18-18-action-item-2', {x:-28,y:16,opacity:0}, {x:0,y:0,opacity:1,duration:.35,ease:'power2.out'}, 19.380);
+var tick2=document.getElementById('frame-18-18-action-tick-2');var len2=tick2.getTotalLength();tick2.style.strokeDasharray=len2;
+tl.fromTo(tick2,{strokeDashoffset:len2},{strokeDashoffset:0,duration:.34,ease:'power2.out'},19.730);
+tl.fromTo('#frame-18-18-action-item-3', {x:28,y:16,opacity:0}, {x:0,y:0,opacity:1,duration:.35,ease:'power3.out'}, 20.069);
+var tick3=document.getElementById('frame-18-18-action-tick-3');var len3=tick3.getTotalLength();tick3.style.strokeDasharray=len3;
+tl.fromTo(tick3,{strokeDashoffset:len3},{strokeDashoffset:0,duration:.34,ease:'power2.out'},20.419);
+tl.fromTo('#frame-18-18-action-object',{borderColor:'#efc66a'},{borderColor:'#bce5bd',duration:.32,ease:'power1.out',immediateRender:false},20.069);
+tl.fromTo('#frame-18-18-action-register',{scaleX:.82},{scaleX:1,duration:21.177,ease:'none'},0);
+window.__timelines['frame-18-18-action']=tl;
+})();</script></template></body></html>

@@ -1,0 +1,176 @@
+{
+  "id": "sales-message-repair",
+  "project": "videos/biznex-sales-message-repair",
+  "format": "shorts",
+  "title": "Stop Sending This Sales Message — Try This Rewrite",
+  "audience_problem": "A beginner sends vague service pitches and does not know what to change.",
+  "packaging_promise": "Show a vague message becoming a specific fictional café pitch with one small question.",
+  "thumbnail_headline": "STOP SENDING THIS",
+  "description": "Before: a vague pitch asking for a call. After: one relevant observation, one specific offer, and one small next step. Watch this fictional café message get repaired.\n\nThis is an original BizNex teaching framework, not a proven conversion formula. Examples are illustrative; replies, clients and income are not guaranteed. Contact people respectfully, follow applicable rules, and stop when asked.\n\nGeneral marketing background: https://www.sba.gov/counseling/manage-your-business/\n\nThe full Repair Lab episode builds the five-part message checklist.",
+  "hashtags": [
+    "#SalesTips",
+    "#Freelancing",
+    "#BizNex",
+    "#Shorts"
+  ],
+  "sources": [
+    {
+      "claim": "The rewrite is an original BizNex heuristic using a fictional café, not an experimentally proven result. SBA supplies general marketing-planning background only.",
+      "url": "https://www.sba.gov/counseling/manage-your-business/",
+      "checked_on": "2026-10-10"
+    }
+  ],
+  "segments": [
+    {
+      "id": "01-before",
+      "title": "The vague pitch",
+      "kind": "message",
+      "text": "Stop sending this: I provide amazing services. Can we jump on a call? What service? Why me?",
+      "display": [
+        "Amazing services",
+        "Jump on a call?",
+        "WHY ME?"
+      ],
+      "beat_phrases": [
+        "I provide amazing services",
+        "Can we jump on a call",
+        "Why me"
+      ]
+    },
+    {
+      "id": "02-after",
+      "title": "The useful rewrite",
+      "kind": "message",
+      "text": "Try this fictional café example: Your menu is hard to read on mobile. I made a clearer sample.",
+      "display": [
+        "Mobile menu",
+        "Clearer sample"
+      ],
+      "beat_phrases": [
+        "Your menu is hard to read",
+        "I made a clearer sample"
+      ]
+    },
+    {
+      "id": "03-ask",
+      "title": "A smaller next step",
+      "kind": "compare",
+      "text": "Want me to send it? One relevant observation. One specific deliverable. One small question, not a meeting demand.",
+      "display": [
+        "Send the sample?",
+        "Observation",
+        "Deliverable",
+        "Small question"
+      ],
+      "beat_phrases": [
+        "Want me to send it",
+        "One relevant observation",
+        "One small question"
+      ]
+    },
+    {
+      "id": "04-test",
+      "title": "Repair one sentence",
+      "kind": "recap",
+      "text": "No guaranteed replies. Just a clearer message. Repair yours before sending another pitch.",
+      "display": [
+        "CLEARER, NOT GUARANTEED",
+        "Repair your pitch"
+      ],
+      "beat_phrases": [
+        "No guaranteed replies",
+        "Repair yours"
+      ]
+    }
+  ],
+  "duration_s": 25.637,
+  "cues": [
+    {
+      "id": "01-before",
+      "title": "The vague pitch",
+      "kind": "message",
+      "text": "Stop sending this: I provide amazing services. Can we jump on a call? What service? Why me?",
+      "display": [
+        "Amazing services",
+        "Jump on a call?",
+        "WHY ME?"
+      ],
+      "beat_phrases": [
+        "I provide amazing services",
+        "Can we jump on a call",
+        "Why me"
+      ],
+      "start": 0.0,
+      "end": 5.995,
+      "beats": [
+        1.16,
+        3.24,
+        5.5
+      ]
+    },
+    {
+      "id": "02-after",
+      "title": "The useful rewrite",
+      "kind": "message",
+      "text": "Try this fictional café example: Your menu is hard to read on mobile. I made a clearer sample.",
+      "display": [
+        "Mobile menu",
+        "Clearer sample"
+      ],
+      "beat_phrases": [
+        "Your menu is hard to read",
+        "I made a clearer sample"
+      ],
+      "start": 6.095,
+      "end": 11.876,
+      "beats": [
+        2.26,
+        4.52
+      ]
+    },
+    {
+      "id": "03-ask",
+      "title": "A smaller next step",
+      "kind": "compare",
+      "text": "Want me to send it? One relevant observation. One specific deliverable. One small question, not a meeting demand.",
+      "display": [
+        "Send the sample?",
+        "Observation",
+        "Deliverable",
+        "Small question"
+      ],
+      "beat_phrases": [
+        "Want me to send it",
+        "One relevant observation",
+        "One small question"
+      ],
+      "start": 11.976,
+      "end": 19.443,
+      "beats": [
+        0.0,
+        1.22,
+        5.0
+      ]
+    },
+    {
+      "id": "04-test",
+      "title": "Repair one sentence",
+      "kind": "recap",
+      "text": "No guaranteed replies. Just a clearer message. Repair yours before sending another pitch.",
+      "display": [
+        "CLEARER, NOT GUARANTEED",
+        "Repair your pitch"
+      ],
+      "beat_phrases": [
+        "No guaranteed replies",
+        "Repair yours"
+      ],
+      "start": 19.543,
+      "end": 25.217,
+      "beats": [
+        0.0,
+        3.62
+      ]
+    }
+  ]
+}

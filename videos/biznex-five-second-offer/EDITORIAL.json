@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "script": "SCRIPT.md",
+  "thumbnail_copy": "THUMBNAIL_COPY.txt",
+  "audience_problem": "A beginner's offer sounds impressive but does not tell a buyer what they receive.",
+  "hook": {
+    "text": "Read this offer: I help businesses grow with creative solutions",
+    "at_seconds": 0
+  },
+  "payoff": {
+    "text": "Now this fictional example: One mobile friendly menu page for cafés, with clear prices and an enquiry button.",
+    "at_seconds": 6.927
+  },
+  "packaging": {
+    "title": "Your Offer Fails This 5-Second Test",
+    "thumbnail_text": "WHAT DO YOU SELL?",
+    "promise": "Give a quick, explicitly non-scientific clarity exercise and a visible headline rewrite.",
+    "evidence_anchor": "Now this fictional example: One mobile friendly menu page for cafés, with clear prices and an enquiry button.",
+    "reviewed": true
+  },
+  "sources": [
+    {
+      "claim": "The five-second exercise is an original clarity heuristic, not a validated benchmark. SBA supplies general target-market and sales-planning background only.",
+      "url": "https://www.sba.gov/counseling/manage-your-business/",
+      "checked_on": "2026-10-10"
+    }
+  ],
+  "retention_beats": [
+    {
+      "at_seconds": 0.0,
+      "purpose": "The fuzzy headline"
+    },
+    {
+      "at_seconds": 6.927,
+      "purpose": "A concrete headline"
+    },
+    {
+      "at_seconds": 14.344,
+      "purpose": "Three clarity questions"
+    },
+    {
+      "at_seconds": 20.844,
+      "purpose": "Fix the first sentence"
+    }
+  ]
+}

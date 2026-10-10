@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "script": "SCRIPT.md",
+  "thumbnail_copy": "THUMBNAIL_COPY.txt",
+  "audience_problem": "A beginner sends vague service pitches and does not know what to change.",
+  "hook": {
+    "text": "Stop sending this: I provide amazing services",
+    "at_seconds": 0
+  },
+  "payoff": {
+    "text": "Try this fictional café example: Your menu is hard to read on mobile",
+    "at_seconds": 6.095
+  },
+  "packaging": {
+    "title": "Stop Sending This Sales Message — Try This Rewrite",
+    "thumbnail_text": "STOP SENDING THIS",
+    "promise": "Show a vague message becoming a specific fictional café pitch with one small question.",
+    "evidence_anchor": "Try this fictional café example: Your menu is hard to read on mobile",
+    "reviewed": true
+  },
+  "sources": [
+    {
+      "claim": "The rewrite is an original BizNex heuristic using a fictional café, not an experimentally proven result. SBA supplies general marketing-planning background only.",
+      "url": "https://www.sba.gov/counseling/manage-your-business/",
+      "checked_on": "2026-10-10"
+    }
+  ],
+  "retention_beats": [
+    {
+      "at_seconds": 0.0,
+      "purpose": "The vague pitch"
+    },
+    {
+      "at_seconds": 6.095,
+      "purpose": "The useful rewrite"
+    },
+    {
+      "at_seconds": 11.976,
+      "purpose": "A smaller next step"
+    },
+    {
+      "at_seconds": 19.543,
+      "purpose": "Repair one sentence"
+    }
+  ]
+}

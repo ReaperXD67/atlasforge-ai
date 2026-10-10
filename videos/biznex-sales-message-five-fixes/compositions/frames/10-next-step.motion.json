@@ -1,0 +1,55 @@
+{
+  "frame_id": "frame-10-10-next-step",
+  "duration": 17.209000000000003,
+  "rules": [
+    "dynamic-content-sequencing",
+    "discrete-text-sequence",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "right",
+    "duration": 0.45
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#frame-10-10-next-step-object",
+      "bySec": 0.5
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#frame-10-10-next-step-object"
+    },
+    {
+      "kind": "appearsBy",
+      "selector": "#frame-10-10-next-step-item-0",
+      "bySec": 0.5
+    },
+    {
+      "kind": "appearsBy",
+      "selector": "#frame-10-10-next-step-item-1",
+      "bySec": 7.92
+    },
+    {
+      "kind": "appearsBy",
+      "selector": "#frame-10-10-next-step-item-2",
+      "bySec": 8.280000000000001
+    },
+    {
+      "kind": "appearsBy",
+      "selector": "#frame-10-10-next-step-item-3",
+      "bySec": 15.474500000000004
+    }
+  ],
+  "reveal_times": [
+    0,
+    7.42,
+    7.780000000000001,
+    14.974500000000004
+  ],
+  "note": "First object/title present at t=0; subsequent object fields reveal on measured ASR anchors. No breathing loop substitutes for explanation."
+}

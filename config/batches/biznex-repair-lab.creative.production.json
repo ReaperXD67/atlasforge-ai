@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "batch_id": "biznex-repair-lab",
+  "expected_voice": "af_heart",
+  "episodes": [
+    {
+      "id": "sales-message-repair",
+      "project": "videos/biznex-sales-message-repair",
+      "format": "shorts",
+      "output": "renders/final.mp4",
+      "thumbnail": "assets/thumbnails/thumbnail.png",
+      "upload_package": "UPLOAD_PACKAGE.md",
+      "voice_manifest": "audio_request.json",
+      "editorial_manifest": "EDITORIAL.json",
+      "min_seconds": 20,
+      "max_seconds": 35
+    },
+    {
+      "id": "five-second-offer",
+      "project": "videos/biznex-five-second-offer",
+      "format": "shorts",
+      "output": "renders/final.mp4",
+      "thumbnail": "assets/thumbnails/thumbnail.png",
+      "upload_package": "UPLOAD_PACKAGE.md",
+      "voice_manifest": "audio_request.json",
+      "editorial_manifest": "EDITORIAL.json",
+      "min_seconds": 20,
+      "max_seconds": 35
+    },
+    {
+      "id": "pay-first-job-warning",
+      "project": "videos/biznex-pay-first-job-warning",
+      "format": "shorts",
+      "output": "renders/final.mp4",
+      "thumbnail": "assets/thumbnails/thumbnail.png",
+      "upload_package": "UPLOAD_PACKAGE.md",
+      "voice_manifest": "audio_request.json",
+      "editorial_manifest": "EDITORIAL.json",
+      "min_seconds": 20,
+      "max_seconds": 35
+    },
+    {
+      "id": "sales-message-five-fixes",
+      "project": "videos/biznex-sales-message-five-fixes",
+      "format": "youtube",
+      "output": "renders/final.mp4",
+      "thumbnail": "assets/thumbnails/thumbnail.png",
+      "upload_package": "UPLOAD_PACKAGE.md",
+      "voice_manifest": "audio_request.json",
+      "editorial_manifest": "EDITORIAL.json",
+      "min_seconds": 300,
+      "max_seconds": 360
+    },
+    {
+      "id": "one-page-offer",
+      "project": "videos/biznex-one-page-offer",
+      "format": "youtube",
+      "output": "renders/final.mp4",
+      "thumbnail": "assets/thumbnails/thumbnail.png",
+      "upload_package": "UPLOAD_PACKAGE.md",
+      "voice_manifest": "audio_request.json",
+      "editorial_manifest": "EDITORIAL.json",
+      "min_seconds": 300,
+      "max_seconds": 360
+    }
+  ]
+}

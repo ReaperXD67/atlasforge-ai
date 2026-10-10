@@ -5,6 +5,10 @@ four browser encoders competing for the workstation's memory. Authoring and
 packaging can happen in parallel. This creates files locally; it never uploads
 videos to YouTube.
 
+For a batch containing both Shorts and full YouTube videos, use the separate
+[`render-production-batch` workflow](PRODUCTION_BATCH.md). It adds per-format
+runtime and editorial gates without changing this command or its manifests.
+
 ## Current example: Atomy Quick Truths
 
 The creative spec is `config/batches/atomy-quick-truths.creative.json`. It contains

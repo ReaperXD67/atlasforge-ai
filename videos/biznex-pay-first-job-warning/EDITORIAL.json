@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "script": "SCRIPT.md",
+  "thumbnail_copy": "THUMBNAIL_COPY.txt",
+  "audience_problem": "A beginner may mistake an initial task payment or an app balance for proof that an online job is real.",
+  "hook": {
+    "text": "An online job pays you a little, then says: deposit money to unlock your earnings",
+    "at_seconds": 0
+  },
+  "payoff": {
+    "text": "The F T C warns that task scams can show fake app balances and use early payments to build trust.",
+    "at_seconds": 6.692
+  },
+  "packaging": {
+    "title": "This 'Online Job' Asks You to Pay First — Stop",
+    "thumbnail_text": "PAY TO GET PAID?",
+    "promise": "Show the pay-to-unlock task-scam pattern and give the concrete boundary: do not deposit money.",
+    "evidence_anchor": "The F T C warns that task scams can show fake app balances and use early payments to build trust.",
+    "reviewed": true
+  },
+  "sources": [
+    {
+      "claim": "Task scammers may build trust with a small payment, display fake app earnings, then demand personal deposits to unlock tasks or withdrawals.",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/08/how-spot-avoid-task-scams",
+      "checked_on": "2026-10-10"
+    },
+    {
+      "claim": "Unsolicited fake-recruiter texts can seek engagement before asking for money. The FTC advises ignoring generic unexpected job messages and not paying to get paid.",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/job-offer-text-probably-scam",
+      "checked_on": "2026-10-10"
+    }
+  ],
+  "retention_beats": [
+    {
+      "at_seconds": 0.0,
+      "purpose": "The unexpected offer"
+    },
+    {
+      "at_seconds": 6.692,
+      "purpose": "The balance is not proof"
+    },
+    {
+      "at_seconds": 13.405,
+      "purpose": "Do not deposit"
+    },
+    {
+      "at_seconds": 22.401,
+      "purpose": "The memorable boundary"
+    }
+  ]
+}

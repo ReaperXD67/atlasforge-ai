@@ -7,6 +7,7 @@ import re
 import shutil
 import subprocess
 import sys
+from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path, PureWindowsPath
@@ -31,6 +32,8 @@ _EXCLUDED_DIRECTORIES = {
     ".mypy_cache",
     ".ruff_cache",
     ".cache",
+    ".production-cache",
+    ".waveform-cache",
     "renders",
     "snapshots",
 }
@@ -463,6 +466,25 @@ def run_shorts_batch(
 ) -> dict[str, Any]:
     """Render each independent episode, persisting only verified successes for resume."""
     manifest = load_shorts_batch_manifest(manifest_path, repository_root=repository_root)
+    return _run_batch(manifest, resume=resume, dry_run=dry_run)
+
+
+def _run_batch(
+    manifest: ShortsBatchManifest,
+    *,
+    resume: bool = True,
+    dry_run: bool = False,
+    validate_inputs: Callable[..., None] | None = None,
+    verify_delivery: Callable[..., dict[str, Any]] | None = None,
+    render_job: Callable[..., list[str]] | None = None,
+    fingerprint_sources: Callable[..., tuple[str, list[dict[str, Any]]]] | None = None,
+    report_extra: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Shared transaction loop; the legacy Shorts entry point keeps its existing gates."""
+    validate_inputs = validate_inputs or _validate_inputs
+    verify_delivery = verify_delivery or _verify
+    render_job = render_job or render_command
+    fingerprint_sources = fingerprint_sources or source_fingerprint
     previous = _previous_episodes(manifest) if resume and not dry_run else {}
     report: dict[str, Any] = {
         "schema_version": 1,
@@ -473,6 +495,7 @@ def run_shorts_batch(
         "status": "dry_run" if dry_run else "running",
         "episodes": [],
     }
+    report.update(report_extra or {})
     for number, episode in enumerate(manifest.episodes, 1):
         result: dict[str, Any] = {
             "id": episode.id,
@@ -483,9 +506,11 @@ def run_shorts_batch(
             "voice_manifest": str(episode.voice_manifest),
             "resumed": False,
         }
+        if hasattr(episode, "format"):
+            result.update({key: getattr(episode, key) for key in ("format", "min_seconds", "max_seconds")})
         try:
-            _validate_inputs(episode)
-            fingerprint, sources = source_fingerprint(episode, manifest)
+            validate_inputs(episode)
+            fingerprint, sources = fingerprint_sources(episode, manifest)
             result.update(source_fingerprint=fingerprint, source_files=sources)
             old = previous.get(episode.id, {})
             if (
@@ -494,7 +519,7 @@ def run_shorts_batch(
                 and old.get("output") == str(episode.output)
             ):
                 try:
-                    delivery = _verify(episode.output, episode)
+                    delivery = verify_delivery(episode.output, episode)
                     hashes = _deliverable_hashes(episode)
                     if hashes == old.get("deliverable_hashes"):
                         result.update(
@@ -506,7 +531,7 @@ def run_shorts_batch(
                 except (OSError, ValueError, subprocess.SubprocessError):
                     pass
             if result.get("status") != "verified":
-                render = render_command(episode, manifest)
+                render = render_job(episode, manifest)
                 master = master_command(episode)
                 result.update(render_command=render, master_command=master)
                 if dry_run:
@@ -527,15 +552,15 @@ def run_shorts_batch(
                     _require_file(episode.mastered_output, "fresh mastered render")
                     if _stamp(episode.mastered_output) == before_master:
                         raise ShortsBatchError("ffmpeg left a stale mastered render unchanged")
-                    _verify(episode.mastered_output, episode)
-                    after_fingerprint, _ = source_fingerprint(episode, manifest)
+                    verify_delivery(episode.mastered_output, episode)
+                    after_fingerprint, _ = fingerprint_sources(episode, manifest)
                     if after_fingerprint != fingerprint:
                         raise ShortsBatchError(
                             "project sources changed during rendering; rerun the episode"
                         )
                     episode.output.parent.mkdir(parents=True, exist_ok=True)
                     episode.mastered_output.replace(episode.output)
-                    delivery = _verify(episode.output, episode)
+                    delivery = verify_delivery(episode.output, episode)
                     result.update(
                         status="verified",
                         report=delivery,

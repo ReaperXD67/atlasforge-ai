@@ -1,0 +1,27 @@
+{
+  "provider": "kokoro",
+  "voice": "af_heart",
+  "speed": 1.0,
+  "lang": "en-us",
+  "lines": [
+    {
+      "id": "01-trap",
+      "text": "An online job pays you a little, then says: deposit money to unlock your earnings. Stop. That is the trap."
+    },
+    {
+      "id": "02-balance",
+      "text": "The F T C warns that task scams can show fake app balances and use early payments to build trust."
+    },
+    {
+      "id": "03-action",
+      "text": "Do not send money. Ignore suspicious unsolicited job messages, and verify the employer through an independently found official website."
+    },
+    {
+      "id": "04-rule",
+      "text": "A payment screenshot is not proof. Your wages should not need a deposit from you."
+    }
+  ],
+  "bgm": {
+    "mode": "project-owned"
+  }
+}

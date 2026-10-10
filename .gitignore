@@ -38,10 +38,15 @@ videos/**/.hyperframes/frame-packets/
 videos/**/.hyperframes/caption-skin.html
 videos/**/.hyperframes/anim-map/
 videos/**/.hyperframes/thumbnail-profile/
+videos/**/.hyperframes/preview/
+videos/**/.hyperframes/hf-ids-stamped.json
 videos/**/.hyperframes/history-id
 videos/**/.hyperframes/history-turn.json
 videos/**/.hyperframes/history-turns.json
 config/batches/BATCH_REPORT.json
+config/batches/PRODUCTION_BATCH_REPORT.json
+videos/**/.production-cache/
+videos/**/.waveform-cache/
 videos/biznex-revive-pitch-001/assets/
 videos/biznex-revive-pitch-001/thumbnail/assets/
 .DS_Store

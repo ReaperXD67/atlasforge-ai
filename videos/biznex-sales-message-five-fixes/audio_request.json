@@ -1,0 +1,83 @@
+{
+  "provider": "kokoro",
+  "voice": "af_heart",
+  "speed": 1.0,
+  "lang": "en-us",
+  "lines": [
+    {
+      "id": "01-payoff",
+      "text": "Before: I provide amazing services. Can we schedule a call? After: Your café menu is difficult to read on mobile. I made a clearer sample. Want me to send it? Today we will build that rewrite with five fixes, without pretending any sentence guarantees a reply."
+    },
+    {
+      "id": "02-diagnosis",
+      "text": "A silent inbox gives you no explanation. They may be busy or the wrong customer. Work on the message you control. We will repair a pitch for fictional Sunny Café, using five checks: relevance, deliverable, proof, next step, and respectful follow-up. Keep the original beside the rewrite."
+    },
+    {
+      "id": "03-original",
+      "text": "Here is our fictional starting message. Hello sir, I am a passionate digital expert. I can help your business grow with services. Please let me know your availability for a meeting. Nothing here tells the café owner what changes, what they receive, or why this message reached them."
+    },
+    {
+      "id": "04-relevance",
+      "text": "Fix one is relevance. Replace a generic compliment with one truthful observation about a suitable business. The menu is an image with tiny text on a phone. Say that plainly. Do not claim you researched their whole business if you only looked at one public page."
+    },
+    {
+      "id": "05-relevance-check",
+      "text": "Open the example menu on a phone. Can you read an item and its price without pinching the screen? Our crowded sample needs zooming. Circle that issue, not the café's entire business. Your opening line now has a reason: I noticed the prices are difficult to read on mobile."
+    },
+    {
+      "id": "06-deliverable",
+      "text": "Fix two is a concrete deliverable. I help businesses grow hides the work. I can build one mobile friendly menu page with readable prices tells the owner what they would receive. Notice the promise is a page you can deliver, not more revenue you cannot control."
+    },
+    {
+      "id": "07-scope",
+      "text": "Now make the scope believable. One page, one agreed menu, and one revision round is different from unlimited design, marketing, and support forever. The final details belong in an agreement, not the first message. But knowing your boundaries stops your pitch from promising a project you cannot actually finish."
+    },
+    {
+      "id": "08-proof",
+      "text": "Fix three is honest proof. Build a practice sample if you are new, and label it as a concept. Here is Sunny Café: tea, eighty rupees; coffee, one hundred twenty; sandwich, one hundred fifty. Prices are invented. The sample demonstrates readable rows, not a paying customer or a sales result."
+    },
+    {
+      "id": "09-proof-check",
+      "text": "Show the relevant change instead of a wall of credentials. Tiny text becomes a simple vertical list. Each price sits beside its item, and the contact button is easy to find. Your note can say: I simplified the menu layout for mobile reading. Now the sample supports the exact service you described."
+    },
+    {
+      "id": "10-next-step",
+      "text": "Fix four is a smaller next step. A stranger asking for a meeting is asking for time before explaining value. Want me to send the sample? is easier to understand. It is also a genuine question: they can say no. Do not attach a huge file or bury them in links."
+    },
+    {
+      "id": "11-question-check",
+      "text": "Make the question match the stage. If they already requested a quote, send the quote rather than teasing a sample. If this is a first introduction, ask one relevant question. Would you like the example, a call, a proposal, and my full portfolio creates four decisions when one would do."
+    },
+    {
+      "id": "12-follow-up",
+      "text": "Fix five is the follow-up. If contacting this business is appropriate, a brief follow-up might say: Checking whether a menu sample would be useful. If not, no problem; I will leave it here. This is an example, not permission to repeatedly message strangers. Stop immediately if they decline or request no contact."
+    },
+    {
+      "id": "13-outreach-boundaries",
+      "text": "Avoid daily reminders, guilt, fake urgency, or switching to personal accounts to bypass silence. Use appropriate business channels and follow local rules and platform policies. No reply is not consent to keep pushing. If a person says no, respect it. A clear offer should not require pressure to make its case."
+    },
+    {
+      "id": "14-assembled",
+      "text": "Put the pieces together. Hello Sunny Café, I noticed your menu prices are difficult to read on mobile. I build simple menu pages with clear prices. I made a labelled concept sample showing a cleaner layout. Would you like me to send it? Now the reason, work, and question are visible."
+    },
+    {
+      "id": "15-self-test",
+      "text": "Now pause and test your own message. Can the recipient identify why you contacted them? Can they name the deliverable? Is your proof true? Is there one manageable next step? Does your follow-up respect their choice? If a line fails a check, rewrite that line. Do not add adjectives."
+    },
+    {
+      "id": "16-template",
+      "text": "Here is the reusable skeleton. I noticed this specific, verifiable issue. I can deliver this bounded piece of work. Here is an accurately labelled example. Would this small next step be useful? Replace every placeholder with something true. If you cannot fill one honestly, do more preparation before you send anything."
+    },
+    {
+      "id": "17-learn",
+      "text": "Keep a simple private record of appropriate outreach: which audience, which offer, and what response, if any, arrived. Do not invent a success rate from a tiny sample. A polite rejection can still reveal that your offer is irrelevant. Change one meaningful element at a time instead of rewriting everything after one silence."
+    },
+    {
+      "id": "18-action",
+      "text": "Your next action is small: take one old pitch and repair it using the five checks. Relevant observation, concrete deliverable, honest proof, small next step, respectful follow-up. This cannot force interest or guarantee clients. It can make your offer easier to understand. Before sending more messages, make this one worth reading."
+    }
+  ],
+  "bgm": {
+    "mode": "project-owned"
+  }
+}

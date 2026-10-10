@@ -1,0 +1,539 @@
+{
+  "voice_lock": {
+    "provider": "kokoro",
+    "voice": "af_heart",
+    "speed": 1.0
+  },
+  "timing_source": "faster-whisper-small.en measured ASR word alignment (estimated, not native timestamps)",
+  "cues": [
+    {
+      "id": "01-trap",
+      "title": "The unexpected offer",
+      "kind": "message",
+      "text": "An online job pays you a little, then says: deposit money to unlock your earnings. Stop. That is the trap.",
+      "display": [
+        "Small payment",
+        "Deposit to unlock",
+        "STOP"
+      ],
+      "beat_phrases": [
+        "pays you a little",
+        "deposit money",
+        "That is the trap"
+      ],
+      "start": 0.0,
+      "end": 6.592,
+      "beats": [
+        0.86,
+        2.08,
+        5.76
+      ]
+    },
+    {
+      "id": "02-balance",
+      "title": "The balance is not proof",
+      "kind": "warning",
+      "text": "The F T C warns that task scams can show fake app balances and use early payments to build trust.",
+      "display": [
+        "FAKE APP BALANCE",
+        "Trust bait"
+      ],
+      "beat_phrases": [
+        "task scams",
+        "fake app balances",
+        "build trust"
+      ],
+      "start": 6.692,
+      "end": 13.305,
+      "beats": [
+        1.42,
+        3.0,
+        5.88
+      ]
+    },
+    {
+      "id": "03-action",
+      "title": "Do not deposit",
+      "kind": "steps",
+      "text": "Do not send money. Ignore suspicious unsolicited job messages, and verify the employer through an independently found official website.",
+      "display": [
+        "Do not send money",
+        "Verify independently"
+      ],
+      "beat_phrases": [
+        "Do not send money",
+        "verify the employer"
+      ],
+      "start": 13.405,
+      "end": 22.301,
+      "beats": [
+        0.0,
+        5.1
+      ]
+    },
+    {
+      "id": "04-rule",
+      "title": "The memorable boundary",
+      "kind": "recap",
+      "text": "A payment screenshot is not proof. Your wages should not need a deposit from you.",
+      "display": [
+        "SCREENSHOT ≠ PROOF",
+        "WAGES, NOT DEPOSITS"
+      ],
+      "beat_phrases": [
+        "not proof",
+        "not need a deposit"
+      ],
+      "start": 22.401,
+      "end": 27.073,
+      "beats": [
+        1.32,
+        3.18
+      ]
+    }
+  ],
+  "total_duration_s": 27.493,
+  "voices": [
+    {
+      "frame": 1,
+      "path": "assets/voice/01.wav",
+      "duration_s": 27.493,
+      "words": [
+        {
+          "text": "An",
+          "start": 0.0,
+          "end": 0.16,
+          "id": "w0"
+        },
+        {
+          "text": "online",
+          "start": 0.16,
+          "end": 0.52,
+          "id": "w1"
+        },
+        {
+          "text": "job",
+          "start": 0.52,
+          "end": 0.86,
+          "id": "w2"
+        },
+        {
+          "text": "pays",
+          "start": 0.86,
+          "end": 1.16,
+          "id": "w3"
+        },
+        {
+          "text": "you",
+          "start": 1.16,
+          "end": 1.36,
+          "id": "w4"
+        },
+        {
+          "text": "a",
+          "start": 1.36,
+          "end": 1.38,
+          "id": "w5"
+        },
+        {
+          "text": "little,",
+          "start": 1.38,
+          "end": 1.54,
+          "id": "w6"
+        },
+        {
+          "text": "then says",
+          "start": 1.7,
+          "end": 2.08,
+          "id": "w7"
+        },
+        {
+          "text": "deposit",
+          "start": 2.08,
+          "end": 2.76,
+          "id": "w8"
+        },
+        {
+          "text": "money",
+          "start": 2.76,
+          "end": 3.12,
+          "id": "w9"
+        },
+        {
+          "text": "to",
+          "start": 3.12,
+          "end": 3.36,
+          "id": "w10"
+        },
+        {
+          "text": "unlock",
+          "start": 3.36,
+          "end": 3.7,
+          "id": "w11"
+        },
+        {
+          "text": "your",
+          "start": 3.7,
+          "end": 3.88,
+          "id": "w12"
+        },
+        {
+          "text": "earnings.",
+          "start": 3.88,
+          "end": 4.22,
+          "id": "w13"
+        },
+        {
+          "text": "Stop.",
+          "start": 5.06,
+          "end": 5.24,
+          "id": "w14"
+        },
+        {
+          "text": "That",
+          "start": 5.76,
+          "end": 5.84,
+          "id": "w15"
+        },
+        {
+          "text": "is",
+          "start": 5.84,
+          "end": 5.96,
+          "id": "w16"
+        },
+        {
+          "text": "the",
+          "start": 5.96,
+          "end": 6.12,
+          "id": "w17"
+        },
+        {
+          "text": "trap.",
+          "start": 6.12,
+          "end": 6.32,
+          "id": "w18"
+        },
+        {
+          "text": "The",
+          "start": 6.692,
+          "end": 6.812,
+          "id": "w19"
+        },
+        {
+          "text": "FTC",
+          "start": 6.812,
+          "end": 7.292,
+          "id": "w20"
+        },
+        {
+          "text": "warns",
+          "start": 7.292,
+          "end": 7.772,
+          "id": "w21"
+        },
+        {
+          "text": "that",
+          "start": 7.772,
+          "end": 8.112,
+          "id": "w22"
+        },
+        {
+          "text": "task",
+          "start": 8.112,
+          "end": 8.392,
+          "id": "w23"
+        },
+        {
+          "text": "scams",
+          "start": 8.392,
+          "end": 8.852,
+          "id": "w24"
+        },
+        {
+          "text": "can",
+          "start": 8.852,
+          "end": 9.412,
+          "id": "w25"
+        },
+        {
+          "text": "show",
+          "start": 9.412,
+          "end": 9.692,
+          "id": "w26"
+        },
+        {
+          "text": "fake",
+          "start": 9.692,
+          "end": 9.972,
+          "id": "w27"
+        },
+        {
+          "text": "app",
+          "start": 9.972,
+          "end": 10.272,
+          "id": "w28"
+        },
+        {
+          "text": "balances",
+          "start": 10.272,
+          "end": 10.772,
+          "id": "w29"
+        },
+        {
+          "text": "and",
+          "start": 10.772,
+          "end": 11.392,
+          "id": "w30"
+        },
+        {
+          "text": "use",
+          "start": 11.392,
+          "end": 11.592,
+          "id": "w31"
+        },
+        {
+          "text": "early",
+          "start": 11.592,
+          "end": 11.952,
+          "id": "w32"
+        },
+        {
+          "text": "payments",
+          "start": 11.952,
+          "end": 12.352,
+          "id": "w33"
+        },
+        {
+          "text": "to",
+          "start": 12.352,
+          "end": 12.572,
+          "id": "w34"
+        },
+        {
+          "text": "build",
+          "start": 12.572,
+          "end": 12.772,
+          "id": "w35"
+        },
+        {
+          "text": "trust.",
+          "start": 12.772,
+          "end": 13.052,
+          "id": "w36"
+        },
+        {
+          "text": "Do",
+          "start": 13.405,
+          "end": 13.525,
+          "id": "w37"
+        },
+        {
+          "text": "not",
+          "start": 13.525,
+          "end": 13.765,
+          "id": "w38"
+        },
+        {
+          "text": "send",
+          "start": 13.765,
+          "end": 14.085,
+          "id": "w39"
+        },
+        {
+          "text": "money.",
+          "start": 14.085,
+          "end": 14.485,
+          "id": "w40"
+        },
+        {
+          "text": "Ignore suspicious",
+          "start": 15.405,
+          "end": 16.045,
+          "id": "w41"
+        },
+        {
+          "text": "unsolicited",
+          "start": 16.045,
+          "end": 16.885,
+          "id": "w42"
+        },
+        {
+          "text": "job",
+          "start": 16.885,
+          "end": 17.305,
+          "id": "w43"
+        },
+        {
+          "text": "messages,",
+          "start": 17.305,
+          "end": 17.885,
+          "id": "w44"
+        },
+        {
+          "text": "and",
+          "start": 18.085,
+          "end": 18.505,
+          "id": "w45"
+        },
+        {
+          "text": "verify",
+          "start": 18.505,
+          "end": 18.945,
+          "id": "w46"
+        },
+        {
+          "text": "the",
+          "start": 18.945,
+          "end": 19.145,
+          "id": "w47"
+        },
+        {
+          "text": "employer",
+          "start": 19.145,
+          "end": 19.545,
+          "id": "w48"
+        },
+        {
+          "text": "through",
+          "start": 19.545,
+          "end": 19.965,
+          "id": "w49"
+        },
+        {
+          "text": "an",
+          "start": 19.965,
+          "end": 20.165,
+          "id": "w50"
+        },
+        {
+          "text": "independently",
+          "start": 20.165,
+          "end": 20.705,
+          "id": "w51"
+        },
+        {
+          "text": "found",
+          "start": 20.705,
+          "end": 21.225,
+          "id": "w52"
+        },
+        {
+          "text": "official",
+          "start": 21.225,
+          "end": 21.645,
+          "id": "w53"
+        },
+        {
+          "text": "website.",
+          "start": 21.645,
+          "end": 21.965,
+          "id": "w54"
+        },
+        {
+          "text": "A",
+          "start": 22.401,
+          "end": 22.541,
+          "id": "w55"
+        },
+        {
+          "text": "payment",
+          "start": 22.541,
+          "end": 22.781,
+          "id": "w56"
+        },
+        {
+          "text": "screenshot",
+          "start": 22.781,
+          "end": 23.401,
+          "id": "w57"
+        },
+        {
+          "text": "is",
+          "start": 23.401,
+          "end": 23.721,
+          "id": "w58"
+        },
+        {
+          "text": "not",
+          "start": 23.721,
+          "end": 23.961,
+          "id": "w59"
+        },
+        {
+          "text": "proof.",
+          "start": 23.961,
+          "end": 24.221,
+          "id": "w60"
+        },
+        {
+          "text": "Your",
+          "start": 24.841,
+          "end": 24.941,
+          "id": "w61"
+        },
+        {
+          "text": "wages",
+          "start": 24.941,
+          "end": 25.301,
+          "id": "w62"
+        },
+        {
+          "text": "should",
+          "start": 25.301,
+          "end": 25.581,
+          "id": "w63"
+        },
+        {
+          "text": "not",
+          "start": 25.581,
+          "end": 25.781,
+          "id": "w64"
+        },
+        {
+          "text": "need",
+          "start": 25.781,
+          "end": 26.001,
+          "id": "w65"
+        },
+        {
+          "text": "a",
+          "start": 26.001,
+          "end": 26.121,
+          "id": "w66"
+        },
+        {
+          "text": "deposit",
+          "start": 26.121,
+          "end": 26.441,
+          "id": "w67"
+        },
+        {
+          "text": "from",
+          "start": 26.441,
+          "end": 26.761,
+          "id": "w68"
+        },
+        {
+          "text": "you.",
+          "start": 26.761,
+          "end": 26.961,
+          "id": "w69"
+        }
+      ]
+    }
+  ],
+  "bgm_pending": false,
+  "bgm": {
+    "path": "assets/bgm/bed.m4a",
+    "duration_s": 27.493,
+    "volume": 0.055
+  },
+  "sfx": [
+    {
+      "file": "assets/sfx/chime.wav",
+      "offset_s": 6.892,
+      "duration_s": 0.57,
+      "volume": 0.09
+    }
+  ]
+}

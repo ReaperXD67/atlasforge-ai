@@ -1,0 +1,27 @@
+{
+  "provider": "kokoro",
+  "voice": "af_heart",
+  "speed": 1.0,
+  "lang": "en-us",
+  "lines": [
+    {
+      "id": "01-before",
+      "text": "Stop sending this: I provide amazing services. Can we jump on a call? What service? Why me?"
+    },
+    {
+      "id": "02-after",
+      "text": "Try this fictional café example: Your menu is hard to read on mobile. I made a clearer sample."
+    },
+    {
+      "id": "03-ask",
+      "text": "Want me to send it? One relevant observation. One specific deliverable. One small question, not a meeting demand."
+    },
+    {
+      "id": "04-test",
+      "text": "No guaranteed replies. Just a clearer message. Repair yours before sending another pitch."
+    }
+  ],
+  "bgm": {
+    "mode": "project-owned"
+  }
+}

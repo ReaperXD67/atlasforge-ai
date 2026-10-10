@@ -1,0 +1,528 @@
+{
+  "voice_lock": {
+    "provider": "kokoro",
+    "voice": "af_heart",
+    "speed": 1.0
+  },
+  "timing_source": "faster-whisper-small.en measured ASR word alignment (estimated, not native timestamps)",
+  "cues": [
+    {
+      "id": "01-before",
+      "title": "The fuzzy headline",
+      "kind": "offer",
+      "text": "Read this offer: I help businesses grow with creative solutions. After five seconds, what would you actually buy?",
+      "display": [
+        "Creative solutions",
+        "WHAT WOULD YOU BUY?"
+      ],
+      "beat_phrases": [
+        "I help businesses grow",
+        "what would you actually buy"
+      ],
+      "start": 0.0,
+      "end": 6.827,
+      "beats": [
+        1.24,
+        5.62
+      ]
+    },
+    {
+      "id": "02-after",
+      "title": "A concrete headline",
+      "kind": "compare",
+      "text": "Now this fictional example: One mobile friendly menu page for cafés, with clear prices and an enquiry button.",
+      "display": [
+        "Café menu page",
+        "Clear prices",
+        "Enquiry button"
+      ],
+      "beat_phrases": [
+        "One mobile friendly menu page",
+        "clear prices",
+        "an enquiry button"
+      ],
+      "start": 6.927,
+      "end": 14.244,
+      "beats": [
+        2.0,
+        5.14,
+        6.24
+      ]
+    },
+    {
+      "id": "03-test",
+      "title": "Three clarity questions",
+      "kind": "checklist",
+      "text": "Ask someone: Who is it for? What do they get? What happens next? This is a clarity exercise, not science.",
+      "display": [
+        "WHO?",
+        "WHAT?",
+        "NEXT?"
+      ],
+      "beat_phrases": [
+        "Who is it for",
+        "What do they get",
+        "What happens next"
+      ],
+      "start": 14.344,
+      "end": 20.744,
+      "beats": [
+        0.64,
+        1.74,
+        2.7
+      ]
+    },
+    {
+      "id": "04-repair",
+      "title": "Fix the first sentence",
+      "kind": "recap",
+      "text": "If they cannot explain it, rewrite the headline before redesigning the whole website.",
+      "display": [
+        "REWRITE THE HEADLINE",
+        "Then redesign"
+      ],
+      "beat_phrases": [
+        "rewrite the headline",
+        "redesigning the whole website"
+      ],
+      "start": 20.844,
+      "end": 25.452,
+      "beats": [
+        1.7,
+        2.96
+      ]
+    }
+  ],
+  "total_duration_s": 25.872,
+  "voices": [
+    {
+      "frame": 1,
+      "path": "assets/voice/01.wav",
+      "duration_s": 25.872,
+      "words": [
+        {
+          "text": "Read",
+          "start": 0.0,
+          "end": 0.26,
+          "id": "w0"
+        },
+        {
+          "text": "this",
+          "start": 0.26,
+          "end": 0.48,
+          "id": "w1"
+        },
+        {
+          "text": "offer.",
+          "start": 0.48,
+          "end": 0.84,
+          "id": "w2"
+        },
+        {
+          "text": "I help",
+          "start": 1.24,
+          "end": 1.44,
+          "id": "w3"
+        },
+        {
+          "text": "businesses",
+          "start": 1.44,
+          "end": 1.82,
+          "id": "w4"
+        },
+        {
+          "text": "grow",
+          "start": 1.82,
+          "end": 2.24,
+          "id": "w5"
+        },
+        {
+          "text": "with",
+          "start": 2.24,
+          "end": 2.52,
+          "id": "w6"
+        },
+        {
+          "text": "creative",
+          "start": 2.52,
+          "end": 2.9,
+          "id": "w7"
+        },
+        {
+          "text": "solutions.",
+          "start": 2.9,
+          "end": 3.42,
+          "id": "w8"
+        },
+        {
+          "text": "After",
+          "start": 4.26,
+          "end": 4.46,
+          "id": "w9"
+        },
+        {
+          "text": "five",
+          "start": 4.46,
+          "end": 4.74,
+          "id": "w10"
+        },
+        {
+          "text": "seconds,",
+          "start": 4.74,
+          "end": 5.22,
+          "id": "w11"
+        },
+        {
+          "text": "what",
+          "start": 5.62,
+          "end": 5.7,
+          "id": "w12"
+        },
+        {
+          "text": "would",
+          "start": 5.7,
+          "end": 5.82,
+          "id": "w13"
+        },
+        {
+          "text": "you",
+          "start": 5.82,
+          "end": 5.92,
+          "id": "w14"
+        },
+        {
+          "text": "actually",
+          "start": 5.92,
+          "end": 6.28,
+          "id": "w15"
+        },
+        {
+          "text": "buy?",
+          "start": 6.28,
+          "end": 6.58,
+          "id": "w16"
+        },
+        {
+          "text": "Now",
+          "start": 6.927,
+          "end": 7.187,
+          "id": "w17"
+        },
+        {
+          "text": "this",
+          "start": 7.187,
+          "end": 7.447,
+          "id": "w18"
+        },
+        {
+          "text": "fictional",
+          "start": 7.447,
+          "end": 7.807,
+          "id": "w19"
+        },
+        {
+          "text": "example.",
+          "start": 7.807,
+          "end": 8.307,
+          "id": "w20"
+        },
+        {
+          "text": "One",
+          "start": 8.927,
+          "end": 9.127,
+          "id": "w21"
+        },
+        {
+          "text": "mobile",
+          "start": 9.127,
+          "end": 9.527,
+          "id": "w22"
+        },
+        {
+          "text": "friendly",
+          "start": 9.527,
+          "end": 9.907,
+          "id": "w23"
+        },
+        {
+          "text": "menu",
+          "start": 9.907,
+          "end": 10.327,
+          "id": "w24"
+        },
+        {
+          "text": "page",
+          "start": 10.327,
+          "end": 10.647,
+          "id": "w25"
+        },
+        {
+          "text": "for",
+          "start": 10.647,
+          "end": 10.967,
+          "id": "w26"
+        },
+        {
+          "text": "cafés,",
+          "start": 10.967,
+          "end": 11.547,
+          "id": "w27"
+        },
+        {
+          "text": "with",
+          "start": 11.887,
+          "end": 12.067,
+          "id": "w28"
+        },
+        {
+          "text": "clear",
+          "start": 12.067,
+          "end": 12.327,
+          "id": "w29"
+        },
+        {
+          "text": "prices",
+          "start": 12.327,
+          "end": 12.787,
+          "id": "w30"
+        },
+        {
+          "text": "and",
+          "start": 12.787,
+          "end": 13.167,
+          "id": "w31"
+        },
+        {
+          "text": "an",
+          "start": 13.167,
+          "end": 13.247,
+          "id": "w32"
+        },
+        {
+          "text": "enquiry",
+          "start": 13.247,
+          "end": 13.787,
+          "id": "w33"
+        },
+        {
+          "text": "button.",
+          "start": 13.787,
+          "end": 14.027,
+          "id": "w34"
+        },
+        {
+          "text": "Ask",
+          "start": 14.344,
+          "end": 14.624,
+          "id": "w35"
+        },
+        {
+          "text": "someone",
+          "start": 14.624,
+          "end": 14.984,
+          "id": "w36"
+        },
+        {
+          "text": "who",
+          "start": 14.984,
+          "end": 15.224,
+          "id": "w37"
+        },
+        {
+          "text": "is",
+          "start": 15.224,
+          "end": 15.384,
+          "id": "w38"
+        },
+        {
+          "text": "it",
+          "start": 15.384,
+          "end": 15.524,
+          "id": "w39"
+        },
+        {
+          "text": "for?",
+          "start": 15.524,
+          "end": 15.724,
+          "id": "w40"
+        },
+        {
+          "text": "What",
+          "start": 16.084,
+          "end": 16.204,
+          "id": "w41"
+        },
+        {
+          "text": "do",
+          "start": 16.204,
+          "end": 16.324,
+          "id": "w42"
+        },
+        {
+          "text": "they",
+          "start": 16.324,
+          "end": 16.464,
+          "id": "w43"
+        },
+        {
+          "text": "get?",
+          "start": 16.464,
+          "end": 16.724,
+          "id": "w44"
+        },
+        {
+          "text": "What",
+          "start": 17.044,
+          "end": 17.144,
+          "id": "w45"
+        },
+        {
+          "text": "happens",
+          "start": 17.144,
+          "end": 17.404,
+          "id": "w46"
+        },
+        {
+          "text": "next?",
+          "start": 17.404,
+          "end": 17.744,
+          "id": "w47"
+        },
+        {
+          "text": "This",
+          "start": 18.304,
+          "end": 18.424,
+          "id": "w48"
+        },
+        {
+          "text": "is",
+          "start": 18.424,
+          "end": 18.564,
+          "id": "w49"
+        },
+        {
+          "text": "a",
+          "start": 18.564,
+          "end": 18.744,
+          "id": "w50"
+        },
+        {
+          "text": "clarity",
+          "start": 18.744,
+          "end": 18.984,
+          "id": "w51"
+        },
+        {
+          "text": "exercise,",
+          "start": 18.984,
+          "end": 19.664,
+          "id": "w52"
+        },
+        {
+          "text": "not",
+          "start": 19.844,
+          "end": 20.084,
+          "id": "w53"
+        },
+        {
+          "text": "science.",
+          "start": 20.084,
+          "end": 20.464,
+          "id": "w54"
+        },
+        {
+          "text": "If",
+          "start": 20.844,
+          "end": 20.984,
+          "id": "w55"
+        },
+        {
+          "text": "they",
+          "start": 20.984,
+          "end": 21.144,
+          "id": "w56"
+        },
+        {
+          "text": "cannot",
+          "start": 21.144,
+          "end": 21.444,
+          "id": "w57"
+        },
+        {
+          "text": "explain",
+          "start": 21.444,
+          "end": 21.904,
+          "id": "w58"
+        },
+        {
+          "text": "it,",
+          "start": 21.904,
+          "end": 22.204,
+          "id": "w59"
+        },
+        {
+          "text": "rewrite",
+          "start": 22.544,
+          "end": 22.764,
+          "id": "w60"
+        },
+        {
+          "text": "the",
+          "start": 22.764,
+          "end": 22.964,
+          "id": "w61"
+        },
+        {
+          "text": "headline",
+          "start": 22.964,
+          "end": 23.364,
+          "id": "w62"
+        },
+        {
+          "text": "before",
+          "start": 23.364,
+          "end": 23.804,
+          "id": "w63"
+        },
+        {
+          "text": "redesigning",
+          "start": 23.804,
+          "end": 24.504,
+          "id": "w64"
+        },
+        {
+          "text": "the",
+          "start": 24.504,
+          "end": 24.604,
+          "id": "w65"
+        },
+        {
+          "text": "whole",
+          "start": 24.604,
+          "end": 24.824,
+          "id": "w66"
+        },
+        {
+          "text": "website.",
+          "start": 24.824,
+          "end": 25.144,
+          "id": "w67"
+        }
+      ]
+    }
+  ],
+  "bgm_pending": false,
+  "bgm": {
+    "path": "assets/bgm/bed.m4a",
+    "duration_s": 25.872,
+    "volume": 0.055
+  },
+  "sfx": [
+    {
+      "file": "assets/sfx/chime.wav",
+      "offset_s": 7.127,
+      "duration_s": 0.57,
+      "volume": 0.09
+    }
+  ]
+}

@@ -1,0 +1,762 @@
+{
+  "id": "sales-message-five-fixes",
+  "project": "videos/biznex-sales-message-five-fixes",
+  "format": "youtube",
+  "title": "Why Nobody Replies to Your Sales Messages — 5 Fixes",
+  "audience_problem": "A beginner is tempted to send more generic sales messages instead of checking relevance, scope, proof and the ask.",
+  "packaging_promise": "Repair one fictional café pitch through five named fixes, finish with a reusable template and self-test; no promised reply rate.",
+  "thumbnail_headline": "NO REPLIES? FIX THIS",
+  "description": "Repair a vague sales pitch in five steps: relevance, a concrete deliverable, honest proof, a small next step, and a respectful follow-up. This BizNex Repair Lab episode works through one fictional café example and gives you a reusable message template.\n\nThe five fixes are an original teaching framework, not an experimentally proven conversion formula. We cannot diagnose your actual outreach from a view count or promise that a message will get replies. All examples and businesses are illustrative; no client results or income claims are shown. Replies, clients and income are not guaranteed.\n\nUse public business contact channels appropriately, follow applicable laws and platform rules, and honour opt-outs.\n\nGeneral marketing-planning background: https://www.sba.gov/counseling/manage-your-business/\n\nNext in Repair Lab: build the one-page offer behind your message.",
+  "hashtags": [
+    "#SalesTips",
+    "#Freelancing",
+    "#SmallBusiness",
+    "#BizNex"
+  ],
+  "sources": [
+    {
+      "claim": "The five-fix checklist, message template and fictional café demonstration are original BizNex heuristics, not empirical findings. SBA supplies general marketing-plan background only.",
+      "url": "https://www.sba.gov/counseling/manage-your-business/",
+      "checked_on": "2026-10-10"
+    }
+  ],
+  "segments": [
+    {
+      "id": "01-payoff",
+      "title": "The rewrite first",
+      "kind": "compare",
+      "text": "Before: I provide amazing services. Can we schedule a call? After: Your café menu is difficult to read on mobile. I made a clearer sample. Want me to send it? Today we will build that rewrite with five fixes, without pretending any sentence guarantees a reply.",
+      "display": [
+        "Amazing services",
+        "Schedule a call?",
+        "Clearer mobile menu sample",
+        "Want to see it?"
+      ],
+      "beat_phrases": [
+        "I provide amazing services",
+        "I made a clearer sample",
+        "five fixes"
+      ]
+    },
+    {
+      "id": "02-diagnosis",
+      "title": "Work on the message you control",
+      "kind": "checklist",
+      "text": "A silent inbox gives you no explanation. They may be busy or the wrong customer. Work on the message you control. We will repair a pitch for fictional Sunny Café, using five checks: relevance, deliverable, proof, next step, and respectful follow-up. Keep the original beside the rewrite.",
+      "display": [
+        "Fictional Sunny Café",
+        "Relevance",
+        "Deliverable + proof",
+        "Next step + follow-up"
+      ],
+      "beat_phrases": [
+        "message you control",
+        "fictional Sunny Café",
+        "five checks"
+      ]
+    },
+    {
+      "id": "03-original",
+      "title": "The fictional bad message",
+      "kind": "message",
+      "text": "Here is our fictional starting message. Hello sir, I am a passionate digital expert. I can help your business grow with services. Please let me know your availability for a meeting. Nothing here tells the café owner what changes, what they receive, or why this message reached them.",
+      "display": [
+        "Passionate digital expert",
+        "Help your business grow",
+        "Please book a meeting",
+        "WHAT CHANGES?"
+      ],
+      "beat_phrases": [
+        "passionate digital expert",
+        "help your business grow",
+        "what they receive"
+      ]
+    },
+    {
+      "id": "04-relevance",
+      "title": "Fix one: one real observation",
+      "kind": "message",
+      "text": "Fix one is relevance. Replace a generic compliment with one truthful observation about a suitable business. The menu is an image with tiny text on a phone. Say that plainly. Do not claim you researched their whole business if you only looked at one public page.",
+      "display": [
+        "1 / RELEVANCE",
+        "Tiny menu text on mobile",
+        "Truthful observation"
+      ],
+      "beat_phrases": [
+        "Fix one is relevance",
+        "tiny text on a phone",
+        "Say that plainly"
+      ]
+    },
+    {
+      "id": "05-relevance-check",
+      "title": "Check the actual mobile problem",
+      "kind": "checklist",
+      "text": "Open the example menu on a phone. Can you read an item and its price without pinching the screen? Our crowded sample needs zooming. Circle that issue, not the café's entire business. Your opening line now has a reason: I noticed the prices are difficult to read on mobile.",
+      "display": [
+        "Can you read the price?",
+        "Pinch to zoom",
+        "Circle the readability issue",
+        "Prices are hard to read"
+      ],
+      "beat_phrases": [
+        "without pinching the screen",
+        "Circle that issue",
+        "prices are difficult to read"
+      ]
+    },
+    {
+      "id": "06-deliverable",
+      "title": "Fix two: name the work",
+      "kind": "offer",
+      "text": "Fix two is a concrete deliverable. I help businesses grow hides the work. I can build one mobile friendly menu page with readable prices tells the owner what they would receive. Notice the promise is a page you can deliver, not more revenue you cannot control.",
+      "display": [
+        "2 / DELIVERABLE",
+        "One menu page",
+        "Readable prices",
+        "Not a revenue guarantee"
+      ],
+      "beat_phrases": [
+        "Fix two is a concrete deliverable",
+        "one mobile friendly menu page",
+        "not more revenue"
+      ]
+    },
+    {
+      "id": "07-scope",
+      "title": "Put a boundary around it",
+      "kind": "offer",
+      "text": "Now make the scope believable. One page, one agreed menu, and one revision round is different from unlimited design, marketing, and support forever. The final details belong in an agreement, not the first message. But knowing your boundaries stops your pitch from promising a project you cannot actually finish.",
+      "display": [
+        "One page",
+        "One agreed menu",
+        "One revision round",
+        "Defined scope"
+      ],
+      "beat_phrases": [
+        "make the scope believable",
+        "one revision round",
+        "cannot actually finish"
+      ]
+    },
+    {
+      "id": "08-proof",
+      "title": "Fix three: show honest proof",
+      "kind": "compare",
+      "text": "Fix three is honest proof. Build a practice sample if you are new, and label it as a concept. Here is Sunny Café: tea, eighty rupees; coffee, one hundred twenty; sandwich, one hundred fifty. Prices are invented. The sample demonstrates readable rows, not a paying customer or a sales result.",
+      "display": [
+        "3 / HONEST PROOF",
+        "Tea ₹80",
+        "Coffee ₹120",
+        "Sandwich ₹150"
+      ],
+      "beat_phrases": [
+        "Fix three is honest proof",
+        "tea, eighty rupees",
+        "readable rows"
+      ]
+    },
+    {
+      "id": "09-proof-check",
+      "title": "Explain what your sample proves",
+      "kind": "compare",
+      "text": "Show the relevant change instead of a wall of credentials. Tiny text becomes a simple vertical list. Each price sits beside its item, and the contact button is easy to find. Your note can say: I simplified the menu layout for mobile reading. Now the sample supports the exact service you described.",
+      "display": [
+        "Tiny text → vertical list",
+        "Price beside item",
+        "Visible contact button",
+        "Simpler mobile layout"
+      ],
+      "beat_phrases": [
+        "Show the relevant change",
+        "simple vertical list",
+        "I simplified the menu layout"
+      ]
+    },
+    {
+      "id": "10-next-step",
+      "title": "Fix four: a small question",
+      "kind": "message",
+      "text": "Fix four is a smaller next step. A stranger asking for a meeting is asking for time before explaining value. Want me to send the sample? is easier to understand. It is also a genuine question: they can say no. Do not attach a huge file or bury them in links.",
+      "display": [
+        "4 / SMALL NEXT STEP",
+        "Book a meeting?",
+        "Send the sample?",
+        "No is allowed"
+      ],
+      "beat_phrases": [
+        "Fix four is a smaller next step",
+        "Want me to send the sample",
+        "they can say no"
+      ]
+    },
+    {
+      "id": "11-question-check",
+      "title": "Ask one thing, not five",
+      "kind": "checklist",
+      "text": "Make the question match the stage. If they already requested a quote, send the quote rather than teasing a sample. If this is a first introduction, ask one relevant question. Would you like the example, a call, a proposal, and my full portfolio creates four decisions when one would do.",
+      "display": [
+        "Match the stage",
+        "One relevant question",
+        "Not four decisions"
+      ],
+      "beat_phrases": [
+        "match the stage",
+        "ask one relevant question",
+        "creates four decisions"
+      ]
+    },
+    {
+      "id": "12-follow-up",
+      "title": "Fix five: a respectful follow-up",
+      "kind": "message",
+      "text": "Fix five is the follow-up. If contacting this business is appropriate, a brief follow-up might say: Checking whether a menu sample would be useful. If not, no problem; I will leave it here. This is an example, not permission to repeatedly message strangers. Stop immediately if they decline or request no contact.",
+      "display": [
+        "5 / RESPECTFUL FOLLOW-UP",
+        "Would a sample be useful?",
+        "If not, no problem",
+        "Honour no-contact requests"
+      ],
+      "beat_phrases": [
+        "Fix five is the follow-up",
+        "I will leave it here",
+        "Stop immediately"
+      ]
+    },
+    {
+      "id": "13-outreach-boundaries",
+      "title": "More messages is not the fix",
+      "kind": "warning",
+      "text": "Avoid daily reminders, guilt, fake urgency, or switching to personal accounts to bypass silence. Use appropriate business channels and follow local rules and platform policies. No reply is not consent to keep pushing. If a person says no, respect it. A clear offer should not require pressure to make its case.",
+      "display": [
+        "No fake urgency",
+        "Appropriate channels",
+        "No reply ≠ consent",
+        "Respect no"
+      ],
+      "beat_phrases": [
+        "Avoid daily reminders",
+        "No reply is not consent",
+        "respect it"
+      ]
+    },
+    {
+      "id": "14-assembled",
+      "title": "The complete repaired message",
+      "kind": "message",
+      "text": "Put the pieces together. Hello Sunny Café, I noticed your menu prices are difficult to read on mobile. I build simple menu pages with clear prices. I made a labelled concept sample showing a cleaner layout. Would you like me to send it? Now the reason, work, and question are visible.",
+      "display": [
+        "Hello Sunny Café",
+        "Prices hard to read on mobile",
+        "Labelled concept sample",
+        "Would you like me to send it?"
+      ],
+      "beat_phrases": [
+        "Hello Sunny Café",
+        "labelled concept sample",
+        "reason, work, and question"
+      ]
+    },
+    {
+      "id": "15-self-test",
+      "title": "Check your own message",
+      "kind": "checklist",
+      "text": "Now pause and test your own message. Can the recipient identify why you contacted them? Can they name the deliverable? Is your proof true? Is there one manageable next step? Does your follow-up respect their choice? If a line fails a check, rewrite that line. Do not add adjectives.",
+      "display": [
+        "Why this recipient?",
+        "What deliverable?",
+        "True proof?",
+        "One next step?"
+      ],
+      "beat_phrases": [
+        "test your own message",
+        "Is your proof true",
+        "rewrite that line"
+      ]
+    },
+    {
+      "id": "16-template",
+      "title": "The reusable template",
+      "kind": "steps",
+      "text": "Here is the reusable skeleton. I noticed this specific, verifiable issue. I can deliver this bounded piece of work. Here is an accurately labelled example. Would this small next step be useful? Replace every placeholder with something true. If you cannot fill one honestly, do more preparation before you send anything.",
+      "display": [
+        "I noticed [real issue]",
+        "I deliver [bounded work]",
+        "Here is [honest example]",
+        "Would [small step] help?"
+      ],
+      "beat_phrases": [
+        "reusable skeleton",
+        "Replace every placeholder",
+        "do more preparation"
+      ]
+    },
+    {
+      "id": "17-learn",
+      "title": "Track the learning, not a fantasy",
+      "kind": "checklist",
+      "text": "Keep a simple private record of appropriate outreach: which audience, which offer, and what response, if any, arrived. Do not invent a success rate from a tiny sample. A polite rejection can still reveal that your offer is irrelevant. Change one meaningful element at a time instead of rewriting everything after one silence.",
+      "display": [
+        "Audience",
+        "Offer",
+        "Actual response",
+        "Change one element"
+      ],
+      "beat_phrases": [
+        "simple private record",
+        "Do not invent a success rate",
+        "Change one meaningful element"
+      ]
+    },
+    {
+      "id": "18-action",
+      "title": "One real repair today",
+      "kind": "recap",
+      "text": "Your next action is small: take one old pitch and repair it using the five checks. Relevant observation, concrete deliverable, honest proof, small next step, respectful follow-up. This cannot force interest or guarantee clients. It can make your offer easier to understand. Before sending more messages, make this one worth reading.",
+      "display": [
+        "Repair one old pitch",
+        "Use all five checks",
+        "Clarity ≠ guaranteed clients",
+        "Make it worth reading"
+      ],
+      "beat_phrases": [
+        "repair it using the five checks",
+        "cannot force interest",
+        "make this one worth reading"
+      ]
+    }
+  ],
+  "duration_s": 332.616,
+  "cues": [
+    {
+      "id": "01-payoff",
+      "title": "The rewrite first",
+      "kind": "compare",
+      "text": "Before: I provide amazing services. Can we schedule a call? After: Your café menu is difficult to read on mobile. I made a clearer sample. Want me to send it? Today we will build that rewrite with five fixes, without pretending any sentence guarantees a reply.",
+      "display": [
+        "Amazing services",
+        "Schedule a call?",
+        "Clearer mobile menu sample",
+        "Want to see it?"
+      ],
+      "beat_phrases": [
+        "I provide amazing services",
+        "I made a clearer sample",
+        "five fixes"
+      ],
+      "start": 0.0,
+      "end": 16.896,
+      "beats": [
+        0.34,
+        8.2,
+        12.8
+      ]
+    },
+    {
+      "id": "02-diagnosis",
+      "title": "Work on the message you control",
+      "kind": "checklist",
+      "text": "A silent inbox gives you no explanation. They may be busy or the wrong customer. Work on the message you control. We will repair a pitch for fictional Sunny Café, using five checks: relevance, deliverable, proof, next step, and respectful follow-up. Keep the original beside the rewrite.",
+      "display": [
+        "Fictional Sunny Café",
+        "Relevance",
+        "Deliverable + proof",
+        "Next step + follow-up"
+      ],
+      "beat_phrases": [
+        "message you control",
+        "fictional Sunny Café",
+        "five checks"
+      ],
+      "start": 16.996,
+      "end": 35.001,
+      "beats": [
+        5.98,
+        8.58,
+        10.36
+      ]
+    },
+    {
+      "id": "03-original",
+      "title": "The fictional bad message",
+      "kind": "message",
+      "text": "Here is our fictional starting message. Hello sir, I am a passionate digital expert. I can help your business grow with services. Please let me know your availability for a meeting. Nothing here tells the café owner what changes, what they receive, or why this message reached them.",
+      "display": [
+        "Passionate digital expert",
+        "Help your business grow",
+        "Please book a meeting",
+        "WHAT CHANGES?"
+      ],
+      "beat_phrases": [
+        "passionate digital expert",
+        "help your business grow",
+        "what they receive"
+      ],
+      "start": 35.101,
+      "end": 52.147,
+      "beats": [
+        3.6,
+        5.86,
+        14.08
+      ]
+    },
+    {
+      "id": "04-relevance",
+      "title": "Fix one: one real observation",
+      "kind": "message",
+      "text": "Fix one is relevance. Replace a generic compliment with one truthful observation about a suitable business. The menu is an image with tiny text on a phone. Say that plainly. Do not claim you researched their whole business if you only looked at one public page.",
+      "display": [
+        "1 / RELEVANCE",
+        "Tiny menu text on mobile",
+        "Truthful observation"
+      ],
+      "beat_phrases": [
+        "Fix one is relevance",
+        "tiny text on a phone",
+        "Say that plainly"
+      ],
+      "start": 52.247,
+      "end": 69.335,
+      "beats": [
+        0.0,
+        9.06,
+        11.16
+      ]
+    },
+    {
+      "id": "05-relevance-check",
+      "title": "Check the actual mobile problem",
+      "kind": "checklist",
+      "text": "Open the example menu on a phone. Can you read an item and its price without pinching the screen? Our crowded sample needs zooming. Circle that issue, not the café's entire business. Your opening line now has a reason: I noticed the prices are difficult to read on mobile.",
+      "display": [
+        "Can you read the price?",
+        "Pinch to zoom",
+        "Circle the readability issue",
+        "Prices are hard to read"
+      ],
+      "beat_phrases": [
+        "without pinching the screen",
+        "Circle that issue",
+        "prices are difficult to read"
+      ],
+      "start": 69.435,
+      "end": 86.203,
+      "beats": [
+        4.22,
+        8.38,
+        14.74
+      ]
+    },
+    {
+      "id": "06-deliverable",
+      "title": "Fix two: name the work",
+      "kind": "offer",
+      "text": "Fix two is a concrete deliverable. I help businesses grow hides the work. I can build one mobile friendly menu page with readable prices tells the owner what they would receive. Notice the promise is a page you can deliver, not more revenue you cannot control.",
+      "display": [
+        "2 / DELIVERABLE",
+        "One menu page",
+        "Readable prices",
+        "Not a revenue guarantee"
+      ],
+      "beat_phrases": [
+        "Fix two is a concrete deliverable",
+        "one mobile friendly menu page",
+        "not more revenue"
+      ],
+      "start": 86.303,
+      "end": 102.921,
+      "beats": [
+        0.0,
+        5.7,
+        14.32
+      ]
+    },
+    {
+      "id": "07-scope",
+      "title": "Put a boundary around it",
+      "kind": "offer",
+      "text": "Now make the scope believable. One page, one agreed menu, and one revision round is different from unlimited design, marketing, and support forever. The final details belong in an agreement, not the first message. But knowing your boundaries stops your pitch from promising a project you cannot actually finish.",
+      "display": [
+        "One page",
+        "One agreed menu",
+        "One revision round",
+        "Defined scope"
+      ],
+      "beat_phrases": [
+        "make the scope believable",
+        "one revision round",
+        "cannot actually finish"
+      ],
+      "start": 103.021,
+      "end": 122.435,
+      "beats": [
+        0.28,
+        4.68,
+        18.06
+      ]
+    },
+    {
+      "id": "08-proof",
+      "title": "Fix three: show honest proof",
+      "kind": "compare",
+      "text": "Fix three is honest proof. Build a practice sample if you are new, and label it as a concept. Here is Sunny Café: tea, eighty rupees; coffee, one hundred twenty; sandwich, one hundred fifty. Prices are invented. The sample demonstrates readable rows, not a paying customer or a sales result.",
+      "display": [
+        "3 / HONEST PROOF",
+        "Tea ₹80",
+        "Coffee ₹120",
+        "Sandwich ₹150"
+      ],
+      "beat_phrases": [
+        "Fix three is honest proof",
+        "tea, eighty rupees",
+        "readable rows"
+      ],
+      "start": 122.535,
+      "end": 141.628,
+      "beats": [
+        0.0,
+        7.44,
+        15.3
+      ]
+    },
+    {
+      "id": "09-proof-check",
+      "title": "Explain what your sample proves",
+      "kind": "compare",
+      "text": "Show the relevant change instead of a wall of credentials. Tiny text becomes a simple vertical list. Each price sits beside its item, and the contact button is easy to find. Your note can say: I simplified the menu layout for mobile reading. Now the sample supports the exact service you described.",
+      "display": [
+        "Tiny text → vertical list",
+        "Price beside item",
+        "Visible contact button",
+        "Simpler mobile layout"
+      ],
+      "beat_phrases": [
+        "Show the relevant change",
+        "simple vertical list",
+        "I simplified the menu layout"
+      ],
+      "start": 141.728,
+      "end": 160.928,
+      "beats": [
+        0.0,
+        5.0,
+        12.86
+      ]
+    },
+    {
+      "id": "10-next-step",
+      "title": "Fix four: a small question",
+      "kind": "message",
+      "text": "Fix four is a smaller next step. A stranger asking for a meeting is asking for time before explaining value. Want me to send the sample? is easier to understand. It is also a genuine question: they can say no. Do not attach a huge file or bury them in links.",
+      "display": [
+        "4 / SMALL NEXT STEP",
+        "Book a meeting?",
+        "Send the sample?",
+        "No is allowed"
+      ],
+      "beat_phrases": [
+        "Fix four is a smaller next step",
+        "Want me to send the sample",
+        "they can say no"
+      ],
+      "start": 161.028,
+      "end": 178.137,
+      "beats": [
+        0.0,
+        7.42,
+        12.84
+      ]
+    },
+    {
+      "id": "11-question-check",
+      "title": "Ask one thing, not five",
+      "kind": "checklist",
+      "text": "Make the question match the stage. If they already requested a quote, send the quote rather than teasing a sample. If this is a first introduction, ask one relevant question. Would you like the example, a call, a proposal, and my full portfolio creates four decisions when one would do.",
+      "display": [
+        "Match the stage",
+        "One relevant question",
+        "Not four decisions"
+      ],
+      "beat_phrases": [
+        "match the stage",
+        "ask one relevant question",
+        "creates four decisions"
+      ],
+      "start": 178.237,
+      "end": 195.709,
+      "beats": [
+        0.74,
+        8.64,
+        15.14
+      ]
+    },
+    {
+      "id": "12-follow-up",
+      "title": "Fix five: a respectful follow-up",
+      "kind": "message",
+      "text": "Fix five is the follow-up. If contacting this business is appropriate, a brief follow-up might say: Checking whether a menu sample would be useful. If not, no problem; I will leave it here. This is an example, not permission to repeatedly message strangers. Stop immediately if they decline or request no contact.",
+      "display": [
+        "5 / RESPECTFUL FOLLOW-UP",
+        "Would a sample be useful?",
+        "If not, no problem",
+        "Honour no-contact requests"
+      ],
+      "beat_phrases": [
+        "Fix five is the follow-up",
+        "I will leave it here",
+        "Stop immediately"
+      ],
+      "start": 195.809,
+      "end": 215.692,
+      "beats": [
+        0.0,
+        10.44,
+        16.22
+      ]
+    },
+    {
+      "id": "13-outreach-boundaries",
+      "title": "More messages is not the fix",
+      "kind": "warning",
+      "text": "Avoid daily reminders, guilt, fake urgency, or switching to personal accounts to bypass silence. Use appropriate business channels and follow local rules and platform policies. No reply is not consent to keep pushing. If a person says no, respect it. A clear offer should not require pressure to make its case.",
+      "display": [
+        "No fake urgency",
+        "Appropriate channels",
+        "No reply ≠ consent",
+        "Respect no"
+      ],
+      "beat_phrases": [
+        "Avoid daily reminders",
+        "No reply is not consent",
+        "respect it"
+      ],
+      "start": 215.792,
+      "end": 235.803,
+      "beats": [
+        0.0,
+        11.62,
+        15.88
+      ]
+    },
+    {
+      "id": "14-assembled",
+      "title": "The complete repaired message",
+      "kind": "message",
+      "text": "Put the pieces together. Hello Sunny Café, I noticed your menu prices are difficult to read on mobile. I build simple menu pages with clear prices. I made a labelled concept sample showing a cleaner layout. Would you like me to send it? Now the reason, work, and question are visible.",
+      "display": [
+        "Hello Sunny Café",
+        "Prices hard to read on mobile",
+        "Labelled concept sample",
+        "Would you like me to send it?"
+      ],
+      "beat_phrases": [
+        "Hello Sunny Café",
+        "labelled concept sample",
+        "reason, work, and question"
+      ],
+      "start": 235.903,
+      "end": 253.353,
+      "beats": [
+        1.58,
+        10.1,
+        15.12
+      ]
+    },
+    {
+      "id": "15-self-test",
+      "title": "Check your own message",
+      "kind": "checklist",
+      "text": "Now pause and test your own message. Can the recipient identify why you contacted them? Can they name the deliverable? Is your proof true? Is there one manageable next step? Does your follow-up respect their choice? If a line fails a check, rewrite that line. Do not add adjectives.",
+      "display": [
+        "Why this recipient?",
+        "What deliverable?",
+        "True proof?",
+        "One next step?"
+      ],
+      "beat_phrases": [
+        "test your own message",
+        "Is your proof true",
+        "rewrite that line"
+      ],
+      "start": 253.453,
+      "end": 270.925,
+      "beats": [
+        1.02,
+        7.52,
+        14.92
+      ]
+    },
+    {
+      "id": "16-template",
+      "title": "The reusable template",
+      "kind": "steps",
+      "text": "Here is the reusable skeleton. I noticed this specific, verifiable issue. I can deliver this bounded piece of work. Here is an accurately labelled example. Would this small next step be useful? Replace every placeholder with something true. If you cannot fill one honestly, do more preparation before you send anything.",
+      "display": [
+        "I noticed [real issue]",
+        "I deliver [bounded work]",
+        "Here is [honest example]",
+        "Would [small step] help?"
+      ],
+      "beat_phrases": [
+        "reusable skeleton",
+        "Replace every placeholder",
+        "do more preparation"
+      ],
+      "start": 271.025,
+      "end": 290.652,
+      "beats": [
+        0.6,
+        12.8,
+        17.32
+      ]
+    },
+    {
+      "id": "17-learn",
+      "title": "Track the learning, not a fantasy",
+      "kind": "checklist",
+      "text": "Keep a simple private record of appropriate outreach: which audience, which offer, and what response, if any, arrived. Do not invent a success rate from a tiny sample. A polite rejection can still reveal that your offer is irrelevant. Change one meaningful element at a time instead of rewriting everything after one silence.",
+      "display": [
+        "Audience",
+        "Offer",
+        "Actual response",
+        "Change one element"
+      ],
+      "beat_phrases": [
+        "simple private record",
+        "Do not invent a success rate",
+        "Change one meaningful element"
+      ],
+      "start": 290.752,
+      "end": 311.339,
+      "beats": [
+        0.36,
+        7.84,
+        15.14
+      ]
+    },
+    {
+      "id": "18-action",
+      "title": "One real repair today",
+      "kind": "recap",
+      "text": "Your next action is small: take one old pitch and repair it using the five checks. Relevant observation, concrete deliverable, honest proof, small next step, respectful follow-up. This cannot force interest or guarantee clients. It can make your offer easier to understand. Before sending more messages, make this one worth reading.",
+      "display": [
+        "Repair one old pitch",
+        "Use all five checks",
+        "Clarity ≠ guaranteed clients",
+        "Make it worth reading"
+      ],
+      "beat_phrases": [
+        "repair it using the five checks",
+        "cannot force interest",
+        "make this one worth reading"
+      ],
+      "start": 311.439,
+      "end": 332.196,
+      "beats": [
+        2.88,
+        11.82,
+        19.38
+      ]
+    }
+  ]
+}

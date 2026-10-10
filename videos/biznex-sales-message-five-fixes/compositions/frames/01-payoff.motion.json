@@ -1,0 +1,55 @@
+{
+  "frame_id": "frame-01-01-payoff",
+  "duration": 16.996,
+  "rules": [
+    "dynamic-content-sequencing",
+    "discrete-text-sequence",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "left",
+    "duration": 0.45
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#frame-01-01-payoff-object",
+      "bySec": 0.5
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#frame-01-01-payoff-object"
+    },
+    {
+      "kind": "appearsBy",
+      "selector": "#frame-01-01-payoff-item-0",
+      "bySec": 0.5
+    },
+    {
+      "kind": "appearsBy",
+      "selector": "#frame-01-01-payoff-item-1",
+      "bySec": 3.62
+    },
+    {
+      "kind": "appearsBy",
+      "selector": "#frame-01-01-payoff-item-2",
+      "bySec": 13.3
+    },
+    {
+      "kind": "appearsBy",
+      "selector": "#frame-01-01-payoff-item-3",
+      "bySec": 15.348
+    }
+  ],
+  "reveal_times": [
+    0,
+    3.12,
+    12.8,
+    14.848
+  ],
+  "note": "First object/title present at t=0; subsequent object fields reveal on measured ASR anchors. No breathing loop substitutes for explanation."
+}

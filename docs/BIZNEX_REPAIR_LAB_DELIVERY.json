@@ -1,0 +1,72 @@
+{
+  "batch_id": "biznex-repair-lab",
+  "episodes": [
+    {
+      "id": "sales-message-repair",
+      "format": "shorts",
+      "duration_seconds": 25.7,
+      "voice": "af_heart",
+      "delivery_passed": true,
+      "video": "sales-message-repair/final.mp4",
+      "thumbnail": "sales-message-repair/thumbnail.png",
+      "audio_quality": {
+        "integrated_lufs": -14.21,
+        "true_peak_dbtp": -2.0
+      }
+    },
+    {
+      "id": "five-second-offer",
+      "format": "shorts",
+      "duration_seconds": 25.9,
+      "voice": "af_heart",
+      "delivery_passed": true,
+      "video": "five-second-offer/final.mp4",
+      "thumbnail": "five-second-offer/thumbnail.png",
+      "audio_quality": {
+        "integrated_lufs": -14.6,
+        "true_peak_dbtp": -1.89
+      }
+    },
+    {
+      "id": "pay-first-job-warning",
+      "format": "shorts",
+      "duration_seconds": 27.5,
+      "voice": "af_heart",
+      "delivery_passed": true,
+      "video": "pay-first-job-warning/final.mp4",
+      "thumbnail": "pay-first-job-warning/thumbnail.png",
+      "audio_quality": {
+        "integrated_lufs": -14.2,
+        "true_peak_dbtp": -2.0
+      }
+    },
+    {
+      "id": "sales-message-five-fixes",
+      "format": "youtube",
+      "duration_seconds": 332.7,
+      "voice": "af_heart",
+      "delivery_passed": true,
+      "video": "sales-message-five-fixes/final.mp4",
+      "thumbnail": "sales-message-five-fixes/thumbnail.png",
+      "audio_quality": {
+        "integrated_lufs": -14.22,
+        "true_peak_dbtp": -1.89
+      }
+    },
+    {
+      "id": "one-page-offer",
+      "format": "youtube",
+      "duration_seconds": 346.3,
+      "voice": "af_heart",
+      "delivery_passed": true,
+      "video": "one-page-offer/final.mp4",
+      "thumbnail": "one-page-offer/thumbnail.png",
+      "audio_quality": {
+        "integrated_lufs": -14.24,
+        "true_peak_dbtp": -1.82
+      }
+    }
+  ],
+  "guaranteed_views": false,
+  "uploaded_to_youtube": false
+}

@@ -1,0 +1,27 @@
+{
+  "provider": "kokoro",
+  "voice": "af_heart",
+  "speed": 1.0,
+  "lang": "en-us",
+  "lines": [
+    {
+      "id": "01-before",
+      "text": "Read this offer: I help businesses grow with creative solutions. After five seconds, what would you actually buy?"
+    },
+    {
+      "id": "02-after",
+      "text": "Now this fictional example: One mobile friendly menu page for cafés, with clear prices and an enquiry button."
+    },
+    {
+      "id": "03-test",
+      "text": "Ask someone: Who is it for? What do they get? What happens next? This is a clarity exercise, not science."
+    },
+    {
+      "id": "04-repair",
+      "text": "If they cannot explain it, rewrite the headline before redesigning the whole website."
+    }
+  ],
+  "bgm": {
+    "mode": "project-owned"
+  }
+}
