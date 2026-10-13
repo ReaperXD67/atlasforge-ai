@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [ValidateRange(1, 6)][int]$Workers = 3,
+    [ValidateRange(1, 6)][int]$Workers = 1,
     [string]$Output = 'renders/For-my-Sweetheart-Anniversary.mp4'
 )
 $ErrorActionPreference = 'Stop'

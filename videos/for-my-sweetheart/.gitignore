@@ -14,3 +14,4 @@ lyric-timing.json
 qa/
 qa-check.json
 qa-check-*.json
+patch-*.html

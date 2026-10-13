@@ -68,6 +68,7 @@
     if(a>0){eyebrow.textContent=e;title.textContent=h;note.textContent=n;}
   }
   function renderAt(t){
+    t += Number.isFinite(window.SWEETHEART_TIME_OFFSET) ? window.SWEETHEART_TIME_OFFSET : 0;
     t=clamp(t,0,D.duration);
     let i=D.scenes.findIndex(s=>t>=s.start&&t<s.end);if(i<0)i=D.scenes.length-1;
     const s=D.scenes[i];drawScene(lc[0],s,t);

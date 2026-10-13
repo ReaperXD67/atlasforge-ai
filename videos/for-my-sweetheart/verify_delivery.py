@@ -18,13 +18,13 @@ def audio(path: Path) -> np.ndarray:
                              '-ar', '8000', '-f', 'f32le', '-'), dtype='<f4')
 
 
-def verify(path: Path) -> dict:
+def verify(path: Path, *, share: bool = False) -> dict:
     metadata = json.loads(run('ffprobe', '-v', 'error', '-show_streams', '-show_format',
                               '-of', 'json', str(path)))
     video = next(s for s in metadata['streams'] if s['codec_type'] == 'video')
     sound = next(s for s in metadata['streams'] if s['codec_type'] == 'audio')
     duration = float(metadata['format']['duration'])
-    assert (video['width'], video['height']) == (1920, 1080)
+    assert (video['width'], video['height']) == ((1280, 720) if share else (1920, 1080))
     assert video['codec_name'] == 'h264' and video['pix_fmt'] == 'yuv420p'
     assert video['avg_frame_rate'] == '30/1'
     assert sound['codec_name'] == 'aac' and sound['channels'] == 2
@@ -52,8 +52,11 @@ def verify(path: Path) -> dict:
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('video', type=Path)
-    parser.add_argument('--report', type=Path, default=ROOT / 'renders/delivery-verification.json')
+    parser.add_argument('--share', action='store_true', help='Verify the 720p sharing profile.')
+    parser.add_argument('--report', type=Path)
     args = parser.parse_args()
-    result = verify(args.video)
-    args.report.write_text(json.dumps(result, indent=2), encoding='utf-8')
+    result = verify(args.video, share=args.share)
+    report = args.report or ROOT / ('renders/share-verification.json' if args.share
+                                   else 'renders/delivery-verification.json')
+    report.write_text(json.dumps(result, indent=2), encoding='utf-8')
     print(json.dumps(result, indent=2))

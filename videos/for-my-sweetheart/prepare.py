@@ -22,10 +22,6 @@ MOTION = [
     ('moon-a', '09-shattered-moon-wan-motion.mp4', 69.9, 5, .8, 3),
     ('moon-b', '09-shattered-moon-wan-motion.mp4', 186.5, 4.9, .8, 3),
     ('moon-c', '09-shattered-moon-wan-motion.mp4', 263.6, 5.7, .8, 3),
-    ('lily-a', '07-blue-lily-wan-motion.mp4', 136, 5.1, .55, 4),
-    ('lily-b', '07-blue-lily-wan-motion.mp4', 325.3, 5.2, .55, 4),
-    ('garden-a', '10-blue-lily-ocean-wan-motion-deflicker.mp4', 287.9, 6.2, .7, 5),
-    ('garden-b', '10-blue-lily-ocean-wan-motion-deflicker.mp4', 332.6, 6.2, .7, 5),
 ]
 
 
