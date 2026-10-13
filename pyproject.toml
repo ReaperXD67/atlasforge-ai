@@ -31,6 +31,7 @@ dependencies = [
   "python-dotenv>=1,<2",
   "PyYAML>=6,<7",
   "rich>=13.9,<15",
+  "scipy>=1.11,<2",
   "structlog>=24.4,<26",
   "tenacity>=9,<10",
   "typer>=0.15,<1",

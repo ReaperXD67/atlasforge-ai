@@ -1,5 +1,19 @@
 # Remotion Music Film workflow
 
+## Custom cinematic music films
+
+The dedicated [anniversary composition](../videos/for-my-sweetheart/README.md) shows a full-song
+HyperFrames path for personal films outside the racing profile: lyric-directed camera scenes,
+generated environments, local Wan image-to-video inserts, original-photo memories, and measured
+subtitles. Its original audio, personal image, generated media, and lyric text stay local; Git
+contains the reproducible composition and preparation/render/verification scripts.
+
+For an environment where the optional native music analyzer cannot import, explicitly call
+`daily_video_factory.music_analysis_fallback.analyze_music_fallback(track)`. This independent
+FFmpeg/SciPy helper measures energy and onsets without changing system security settings. Tempo and
+beat positions are labeled estimates; it does not fabricate meter/downbeats or assign rhythm to
+silence. Prefer measured lyric phrases for sparse vocals. The existing racing analyzer is unchanged.
+
 AtlasForge has a separate music-first path for event films. It does not force a song through the
 long-form explainer timeline. The Pragon profile is locked to licensed existing footage for every
 human, performance, friendship, smoke, and driving scene.
