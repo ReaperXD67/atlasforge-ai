@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>For my Sweetheart — Five months</title>
+  <script src="assets/gsap.min.js"></script>
+  <script src="film-data.js"></script>
+  <script src="atmosphere.js"></script>
+  <style>
+    @font-face{font-family:'Cormorant';src:url('assets/fonts/CormorantGaramond.ttf')}
+    @font-face{font-family:'Inter';src:url('assets/fonts/Inter-Regular.woff2')}
+    *{box-sizing:border-box;margin:0;padding:0}html,body{width:1920px;height:1080px;overflow:hidden;background:#030406}
+    #film{position:relative;width:100%;height:100%;overflow:hidden;background:#030406;color:#f4f0e8}
+    #world{position:absolute;inset:0;width:100%;height:100%}
+    .motion-window{position:absolute;left:0;top:112px;width:1920px;height:804px;overflow:hidden;opacity:0;z-index:1}
+    .motion-window video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    #caption{z-index:3}#dedication{z-index:4}
+    #caption{position:absolute;left:150px;right:150px;top:947px;height:95px;display:flex;align-items:center;justify-content:center;text-align:center;font:400 31px/1.5 'Inter',sans-serif;letter-spacing:.012em;color:#f3f1ed;background:#030406}
+    #caption-text{max-width:1510px;text-wrap:balance;}
+    #dedication{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;pointer-events:none;opacity:0}
+    #dedication-inner{width:1480px;display:flex;flex-direction:column;align-items:center;gap:23px}
+    #dedication-eyebrow{font:400 20px/1.4 'Inter',sans-serif;letter-spacing:.34em;text-transform:uppercase;color:#c4c8ce}
+    #dedication-title{font:400 100px/1.05 'Cormorant',serif;letter-spacing:-.025em;color:#fff8ed;text-shadow:0 3px 40px #000}
+    #dedication-note{font:400 27px/1.4 'Cormorant',serif;letter-spacing:.1em;color:#e4d6c9}
+    #grain-overlay{position:absolute;left:0;right:0;top:112px;height:804px;pointer-events:none;overflow:hidden;opacity:.022}
+    .grain-texture{position:absolute;inset:-50%;width:200%;height:200%;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")}
+  </style>
+</head>
+<body>
+  <div data-hf-id="hf-ef0k" id="film" data-composition-id="sweetheart" data-start="0" data-duration="372.76" data-width="1920" data-height="1080">
+    <canvas data-hf-id="hf-nob8" id="world" width="1920" height="1080" data-layout-allow-overflow="" data-layout-ignore=""></canvas>
+<!-- MOTION INSERTS -->
+<div id="motion-stairs-a" class="motion-window" data-layout-ignore><video id="stairs-a" class="clip" src="assets/generated/08-ocean-stairway-wan-motion.mp4" muted playsinline data-start="37.9" data-duration="5" data-playback-rate="0.6" data-track-index="2"></video></div>
+<div id="motion-stairs-b" class="motion-window" data-layout-ignore><video id="stairs-b" class="clip" src="assets/generated/08-ocean-stairway-wan-motion.mp4" muted playsinline data-start="76.6" data-duration="5" data-playback-rate="0.6" data-track-index="2"></video></div>
+<div id="motion-stairs-c" class="motion-window" data-layout-ignore><video id="stairs-c" class="clip" src="assets/generated/08-ocean-stairway-wan-motion.mp4" muted playsinline data-start="164.8" data-duration="5" data-playback-rate="0.6" data-track-index="2"></video></div>
+<div id="motion-moon-a" class="motion-window" data-layout-ignore><video id="moon-a" class="clip" src="assets/generated/09-shattered-moon-wan-motion.mp4" muted playsinline data-start="69.9" data-duration="5" data-playback-rate="0.8" data-track-index="3"></video></div>
+<div id="motion-moon-b" class="motion-window" data-layout-ignore><video id="moon-b" class="clip" src="assets/generated/09-shattered-moon-wan-motion.mp4" muted playsinline data-start="186.5" data-duration="4.9" data-playback-rate="0.8" data-track-index="3"></video></div>
+<div id="motion-moon-c" class="motion-window" data-layout-ignore><video id="moon-c" class="clip" src="assets/generated/09-shattered-moon-wan-motion.mp4" muted playsinline data-start="263.6" data-duration="5.7" data-playback-rate="0.8" data-track-index="3"></video></div>
+<!-- END MOTION INSERTS -->
+    <div data-hf-id="hf-zaba" id="grain-overlay" data-layout-ignore=""><div data-hf-id="hf-0qtj" class="grain-texture"></div></div>
+    <div data-hf-id="hf-kfml" id="caption" data-layout-allow-caption-zone=""><span data-hf-id="hf-mb1o" id="caption-text"></span></div>
+    <div data-hf-id="hf-enfr" id="dedication"><div data-hf-id="hf-imo8" id="dedication-inner"><p data-hf-id="hf-oawg" id="dedication-eyebrow"></p><h1 data-hf-id="hf-76os" id="dedication-title"></h1><p data-hf-id="hf-va37" id="dedication-note"></p></div></div>
+    <audio data-hf-id="hf-e16v" id="song-master" src="assets/bgm.wav" data-start="0" data-duration="372.76" data-track-index="11" data-volume="1"></audio>
+  </div>
+  <script src="cinema.js"></script>
+  <script>
+    window.__hf.buildReady.sweetheart.then(() => {
+      const filmClock = {time: 0};
+      const tl = gsap.timeline({paused: true});
+      tl.to(filmClock, {time: 372.76, duration: 372.76, ease: 'none', onUpdate: () => window.renderSweetheartAt(filmClock.time)}, 0);
+      document.querySelectorAll('.motion-window').forEach(wrapper => {
+        const video = wrapper.querySelector('video');
+        const start = Number(video.dataset.start), duration = Number(video.dataset.duration);
+        tl.fromTo(wrapper, {opacity: 0}, {opacity: 1, duration: .8, ease: 'sine.inOut'}, start);
+        tl.to(wrapper, {opacity: 0, duration: .8, ease: 'sine.inOut'}, start + duration - .8);
+      });
+      window.__timelines = window.__timelines || {};
+      window.__timelines['sweetheart'] = tl;
+    });
+  </script>
+</body>
+</html>
