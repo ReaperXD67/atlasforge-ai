@@ -11,31 +11,59 @@
 [![Policy](https://img.shields.io/badge/editorial-policy_gated-16a085)](POLICY.md)
 [![Cost model](https://img.shields.io/badge/costs-explicit-4d8dff)](COSTS.md)
 
-AtlasForge AI is a local-first, production-oriented pipeline that researches, scripts, narrates, storyboards, edits, captions, packages, and can optionally publish one original 6-8 minute YouTube video per day.
+AtlasForge AI supports daily editorial production, custom cinematic music films, and reusable video
+batches. Its daily pipeline researches, scripts, narrates, storyboards, edits, captions, packages,
+and can optionally publish an original 6–8 minute YouTube video.
 
-It also includes a separate **Remotion Music Film** workspace: upload a song, analyze its beat and
-energy map locally, preview deterministic beat-reactive graphics, then build a faceless racing/event
-film from CLIP-ranked real footage, with synthetic inserts isolated behind admission. See
-[Remotion Music Film workflow](docs/MUSIC_VIDEO.md).
+## Choose a workflow
 
-The third workspace, **AI Viral Lab**, creates coherent 3–10 second vertical AI-native shots:
-reference-led character performances synchronized to an uploaded song, native-audio fictional
-dialogue, and physically plausible fictional spectacles. It includes a free Wan 2.2 lane for the
-8 GB RTX 4070 and opt-in Gemini Omni/Veo lanes. See [AI Viral Lab](docs/VIRAL_SHORTS.md).
+| Workflow | What it produces | Start here |
+| --- | --- | --- |
+| **Editorial Studio** | Researched, narrated videos using matched real footage, owned cards, captions, and reviewable upload packages | [Windows setup](SETUP.md) |
+| **Custom cinematic films · HyperFrames** | Authored full-song films with supplied photographs, generated artwork, reviewed motion inserts, deterministic camera/atmosphere movement, and measured lyric subtitles | [Cinematic workflow below](#custom-cinematic-music-films) · [reference project](videos/for-my-sweetheart/README.md) |
+| **Remotion Music Film · Studio** | Song-driven racing/event edits: Remotion graphics preview, local music analysis, CLIP-ranked footage, and FFmpeg/NVENC final rendering. The Pragon profile requires licensed footage for its human and event scenes | [Racing/event workflow](docs/MUSIC_VIDEO.md) |
+| **AI Viral Lab** | Individual 3–10 second vertical AI shots, with reference-led motion and optional native dialogue/audio; local Wan 2.2 on an 8 GB RTX 4070 or opt-in Gemini Omni/Veo | [AI Viral Lab](docs/VIRAL_SHORTS.md) |
+| **AI Generation** | Isolated cinematic-insert candidates: a real photographic plate when possible, 1–3 seeds, and technical/vision admission checks before editorial use | [Cinematic inserts and admission](docs/VIRAL_SHORTS.md#strict-admission-policy) |
+| **Shorts batches** | Resumable groups of 20–30 second HyperFrames episodes with an approved voice, aligned captions, thumbnails, upload text, and delivery checks | [Shorts batch workflow](docs/SHORTS_BATCH.md) |
+| **Mixed production batches** | Shorts and 5–6 minute landscape videos with cached narration, measured reveal timing, voice-aware music, source-checked resume, and upload packages | [Production batches](docs/PRODUCTION_BATCH.md) · [Repair Lab example](docs/BIZNEX_REPAIR_LAB.md) |
 
-The separate **AI Generation** workspace is an isolated candidate workshop for cars, products,
-environments, and other shots that cannot be sourced honestly. It starts from a real photographic
-plate when possible, generates 1–3 seeds, and quarantines every result until technical and
-OpenRouter vision checks approve it. Generated footage is never inserted merely because it exists.
-
-It is configured for education-first Atomy content aimed at people researching online business, side hustles, entrepreneurship, wellness, Korean skincare, and productivity. The brand is introduced as one possible case study, never as a guaranteed income or health outcome.
-
-**Shorts batches:** prepare and render multiple independent 20–30 second HyperFrames episodes in one resumable job, with the approved voice locked, required thumbnails/upload text, speech-aligned captions, and mastered delivery checks. See [Shorts batch workflow](docs/SHORTS_BATCH.md).
-
-**Mixed production batches:** render Shorts and 5–6 minute landscape videos together, with cached approved narration, measured caption/reveal timing, voice-aware music, source-hash-safe resume, editorial preparation gates and complete upload packages. See [production batch workflow](docs/PRODUCTION_BATCH.md) and the [three-Short/two-video Repair Lab experiment](docs/BIZNEX_REPAIR_LAB.md). Editorial checks are preparation safeguards, not predictions of views or automatic fact-checking.
+The default editorial profiles cover education-first Atomy content for people researching online
+business, side hustles, wellness, Korean skincare, and productivity. Atomy is one possible case
+study, never a guaranteed income or health outcome. Editorial checks are preparation safeguards,
+not predictions of views or automatic fact-checking.
 
 > [!CAUTION]
 > AtlasForge AI automates production, not editorial responsibility. Its gates block obvious earnings promises, medical claims, early sales pitches, missing disclosures, and malformed media. You remain responsible for factual accuracy, licensing, product claims, and channel compliance.
+
+## Custom cinematic music films
+
+The [For my Sweetheart project](videos/for-my-sweetheart/README.md) demonstrates the authored
+HyperFrames route: a complete **6:12.76 song**, **42 lyric-directed shots**, and **122 measured subtitle
+cues**, delivered as a **1080p30 master** and a **720p sharing copy**. Six generated plates, the supplied
+couple photograph, seeded cosmic/weather animation, and two approved Wan clips across six inserts
+share one absolute song clock. The song remains the audio master.
+
+The exported master passed a complete 11,183-frame decode, audio alignment, subtitle bounds, and
+rendered-frame review. Two other motion candidates were rejected for abrupt visual changes and
+flashing artifacts; their scenes use the approved image treatment. See the project's
+[verified delivery notes](videos/for-my-sweetheart/README.md#verified-delivery).
+
+To build or adapt this kind of film:
+
+1. Follow the [project rebuild guide](videos/for-my-sweetheart/README.md#rebuild) to supply the local
+   music, photographs, approved visuals, and timed lyrics. The
+   [preparation script](videos/for-my-sweetheart/prepare.py) packages those inputs.
+2. Author the [scene plan](videos/for-my-sweetheart/scene-plan.json), camera/caption treatment in
+   [cinema.js](videos/for-my-sweetheart/cinema.js), and deterministic effects in
+   [atmosphere.js](videos/for-my-sweetheart/atmosphere.js). Check and preview the project, then use
+   its [Windows render script](videos/for-my-sweetheart/render.ps1).
+3. Run the [delivery verifier](videos/for-my-sweetheart/verify_delivery.py) against the rendered
+   master, then create a portable copy with [share.ps1](videos/for-my-sweetheart/share.ps1).
+
+These projects live under `videos/` and are authored directly in HyperFrames. Studio's
+**Remotion Music Film** workspace remains the separate racing/event workflow described above.
+Private source media, generated assets, lyrics, and rendered deliveries stay local and are excluded
+from Git; the repository contains the reusable composition and production tools.
 
 ## Target architecture
 
@@ -277,7 +305,11 @@ The former `dailyvideo` command remains available as a backward-compatible alias
 - [Fresh Windows setup](SETUP.md)
 - [Architecture and extension points](ARCHITECTURE.md)
 - [Cost model](COSTS.md)
+- [Custom cinematic music film: project, rebuild, and delivery checks](videos/for-my-sweetheart/README.md)
+- [Remotion racing/event music films](docs/MUSIC_VIDEO.md)
 - [AI Viral Lab](docs/VIRAL_SHORTS.md)
+- [Shorts batches](docs/SHORTS_BATCH.md)
+- [Mixed production batches](docs/PRODUCTION_BATCH.md)
 - [YouTube and claims policy](POLICY.md)
 - [Contributing](CONTRIBUTING.md)
 
