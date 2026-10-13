@@ -1,0 +1,225 @@
+{
+  "duration_seconds": 372.76,
+  "bpm": 66.843,
+  "sections": [
+    {
+      "start_seconds": 0,
+      "label": "Intro",
+      "end_seconds": 20.96,
+      "energy": 0.055,
+      "pacing": "phrase_flow",
+      "annotation_source": "User-supplied section names aligned to measured vocal words"
+    },
+    {
+      "start_seconds": 20.96,
+      "label": "Verse 1",
+      "end_seconds": 52.94,
+      "energy": 0.269,
+      "pacing": "beat_cut",
+      "annotation_source": "User-supplied section names aligned to measured vocal words"
+    },
+    {
+      "start_seconds": 52.94,
+      "label": "Pre-Chorus 1",
+      "end_seconds": 68.78,
+      "energy": 0.386,
+      "pacing": "beat_cut",
+      "annotation_source": "User-supplied section names aligned to measured vocal words"
+    },
+    {
+      "start_seconds": 68.78,
+      "label": "Chorus 1",
+      "end_seconds": 113.4,
+      "energy": 0.484,
+      "pacing": "beat_cut",
+      "annotation_source": "User-supplied section names aligned to measured vocal words"
+    },
+    {
+      "start_seconds": 113.4,
+      "label": "Verse 2",
+      "end_seconds": 142.5,
+      "energy": 0.339,
+      "pacing": "beat_cut",
+      "annotation_source": "User-supplied section names aligned to measured vocal words"
+    },
+    {
+      "start_seconds": 142.5,
+      "label": "Pre-Chorus 2",
+      "end_seconds": 156.88,
+      "energy": 0.476,
+      "pacing": "beat_cut",
+      "annotation_source": "User-supplied section names aligned to measured vocal words"
+    },
+    {
+      "start_seconds": 156.88,
+      "label": "Chorus 2",
+      "end_seconds": 202.02,
+      "energy": 0.443,
+      "pacing": "beat_cut",
+      "annotation_source": "User-supplied section names aligned to measured vocal words"
+    },
+    {
+      "start_seconds": 202.02,
+      "label": "Bridge",
+      "end_seconds": 262.56,
+      "energy": 0.403,
+      "pacing": "phrase_flow",
+      "annotation_source": "User-supplied section names aligned to measured vocal words"
+    },
+    {
+      "start_seconds": 262.56,
+      "label": "Final Chorus",
+      "end_seconds": 315.66,
+      "energy": 0.399,
+      "pacing": "beat_cut",
+      "annotation_source": "User-supplied section names aligned to measured vocal words"
+    },
+    {
+      "start_seconds": 315.66,
+      "label": "Outro",
+      "end_seconds": 352.04,
+      "energy": 0.157,
+      "pacing": "phrase_flow",
+      "annotation_source": "User-supplied section names aligned to measured vocal words"
+    },
+    {
+      "start_seconds": 352.04,
+      "end_seconds": 372.76,
+      "label": "Instrumental tail",
+      "energy": 0.193,
+      "pacing": "phrase_flow",
+      "annotation_source": "End of supplied lyrics / audio tail"
+    }
+  ],
+  "analysis_backend": "scipy_spectral_flux_autocorrelation",
+  "rhythm_confidence": 0.4118,
+  "downbeat_confidence": 0.2,
+  "is_rhythmic": true,
+  "key_moments": [
+    {
+      "time_seconds": 22.0,
+      "kind": "surge",
+      "strength": 0.575
+    },
+    {
+      "time_seconds": 37.0,
+      "kind": "surge",
+      "strength": 0.456
+    },
+    {
+      "time_seconds": 53.0,
+      "kind": "surge",
+      "strength": 0.622
+    },
+    {
+      "time_seconds": 66.0,
+      "kind": "surge",
+      "strength": 0.392
+    },
+    {
+      "time_seconds": 110.0,
+      "kind": "drop",
+      "strength": 0.434
+    },
+    {
+      "time_seconds": 119.0,
+      "kind": "surge",
+      "strength": 0.449
+    },
+    {
+      "time_seconds": 127.0,
+      "kind": "surge",
+      "strength": 0.68
+    },
+    {
+      "time_seconds": 140.0,
+      "kind": "surge",
+      "strength": 0.33
+    },
+    {
+      "time_seconds": 154.0,
+      "kind": "surge",
+      "strength": 0.325
+    },
+    {
+      "time_seconds": 187.0,
+      "kind": "drop",
+      "strength": 0.673
+    },
+    {
+      "time_seconds": 218.0,
+      "kind": "surge",
+      "strength": 0.887
+    },
+    {
+      "time_seconds": 249.0,
+      "kind": "drop",
+      "strength": 0.9
+    },
+    {
+      "time_seconds": 261.0,
+      "kind": "surge",
+      "strength": 0.443
+    },
+    {
+      "time_seconds": 289.0,
+      "kind": "drop",
+      "strength": 0.551
+    },
+    {
+      "time_seconds": 313.0,
+      "kind": "surge",
+      "strength": 0.394
+    },
+    {
+      "time_seconds": 321.0,
+      "kind": "drop",
+      "strength": 0.547
+    },
+    {
+      "time_seconds": 330.0,
+      "kind": "drop",
+      "strength": 0.492
+    },
+    {
+      "time_seconds": 350.0,
+      "kind": "surge",
+      "strength": 0.494
+    },
+    {
+      "time_seconds": 361.0,
+      "kind": "drop",
+      "strength": 0.41
+    }
+  ],
+  "tempo_candidates": [
+    [
+      0.4118325221640403,
+      67.11647727272727
+    ],
+    [
+      0.2183991153793517,
+      132.51201923076923
+    ],
+    [
+      0.1124654443485031,
+      89.10290948275862
+    ],
+    [
+      -0.027563128918590536,
+      75.99954044117648
+    ],
+    [
+      -0.03171535981367142,
+      59.40193965517241
+    ],
+    [
+      -0.03713297703321164,
+      105.46875
+    ]
+  ],
+  "warnings": [
+    "The installed librosa/numba library was blocked by Windows Application Control. Used FFmpeg decode and scipy spectral flux; no security settings changed.",
+    "Beat grid is an autocorrelation estimate with local onset snapping. Downbeat phase is an unverified four-beat bass heuristic. Phrase pacing is preferable for spoken passages."
+  ]
+}

@@ -9,5 +9,12 @@
   "media": {
     "autoProxy": true
   },
-  "authoringSkill": "music-to-video"
+  "authoringSkill": "music-to-video",
+  "registryItems": [
+    {
+      "name": "grain-overlay",
+      "type": "hyperframes:component",
+      "target": "compositions/components/grain-overlay.html"
+    }
+  ]
 }

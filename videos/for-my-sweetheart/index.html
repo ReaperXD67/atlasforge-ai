@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>For my Sweetheart — Five months</title>
+  <script src="assets/gsap.min.js"></script>
+  <script src="film-data.js"></script>
+  <script src="atmosphere.js"></script>
+  <style>
+    @font-face{font-family:'Cormorant';src:url('assets/fonts/CormorantGaramond.ttf')}
+    @font-face{font-family:'Inter';src:url('assets/fonts/Inter-Regular.woff2')}
+    *{box-sizing:border-box;margin:0;padding:0}html,body{width:1920px;height:1080px;overflow:hidden;background:#030406}
+    #film{position:relative;width:100%;height:100%;overflow:hidden;background:#030406;color:#f4f0e8}
+    #world{position:absolute;inset:0;width:100%;height:100%}
+    #caption{position:absolute;left:150px;right:150px;top:947px;height:95px;display:flex;align-items:center;justify-content:center;text-align:center;font:400 31px/1.5 'Inter',sans-serif;letter-spacing:.012em;color:#f3f1ed;background:#030406}
+    #caption-text{max-width:1510px;text-wrap:balance;}
+    #dedication{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;pointer-events:none;opacity:0}
+    #dedication-inner{width:1480px;display:flex;flex-direction:column;align-items:center;gap:23px}
+    #dedication-eyebrow{font:400 20px/1.4 'Inter',sans-serif;letter-spacing:.34em;text-transform:uppercase;color:#c4c8ce}
+    #dedication-title{font:400 100px/1.05 'Cormorant',serif;letter-spacing:-.025em;color:#fff8ed;text-shadow:0 3px 40px #000}
+    #dedication-note{font:400 27px/1.4 'Cormorant',serif;letter-spacing:.1em;color:#e4d6c9}
+    #grain-overlay{position:absolute;left:0;right:0;top:112px;height:804px;pointer-events:none;overflow:hidden;opacity:.022}
+    .grain-texture{position:absolute;inset:-50%;width:200%;height:200%;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")}
+  </style>
+</head>
+<body>
+  <div data-hf-id="hf-ef0k" id="film" data-composition-id="sweetheart" data-start="0" data-duration="372.76" data-width="1920" data-height="1080">
+    <canvas data-hf-id="hf-nob8" id="world" width="1920" height="1080" data-layout-allow-overflow="" data-layout-ignore=""></canvas>
+    <div data-hf-id="hf-zaba" id="grain-overlay" data-layout-ignore=""><div data-hf-id="hf-0qtj" class="grain-texture"></div></div>
+    <div data-hf-id="hf-kfml" id="caption" data-layout-allow-caption-zone=""><span data-hf-id="hf-mb1o" id="caption-text"></span></div>
+    <div data-hf-id="hf-enfr" id="dedication"><div data-hf-id="hf-imo8" id="dedication-inner"><p data-hf-id="hf-oawg" id="dedication-eyebrow"></p><h1 data-hf-id="hf-76os" id="dedication-title"></h1><p data-hf-id="hf-va37" id="dedication-note"></p></div></div>
+    <audio data-hf-id="hf-e16v" id="song-master" src="assets/bgm.wav" data-start="0" data-duration="372.76" data-track-index="11" data-volume="1"></audio>
+  </div>
+  <script src="cinema.js"></script>
+  <script>
+    window.__hf.buildReady.sweetheart.then(() => {
+      const filmClock = {time: 0};
+      const tl = gsap.timeline({paused: true});
+      tl.to(filmClock, {time: 372.76, duration: 372.76, ease: 'none', onUpdate: () => window.renderSweetheartAt(filmClock.time)}, 0);
+      window.__timelines = window.__timelines || {};
+      window.__timelines['sweetheart'] = tl;
+    });
+  </script>
+</body>
+</html>

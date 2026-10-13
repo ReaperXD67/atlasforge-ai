@@ -9,3 +9,7 @@ lyrics.txt
 captions.json
 captions.srt
 transcript*.json
+film-data.js
+lyric-timing.json
+qa/
+qa-check.json
