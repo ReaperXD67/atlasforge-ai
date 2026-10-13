@@ -1,0 +1,11 @@
+assets/private/
+assets/generated/
+assets/bgm.wav
+assets/bgm.mp3
+renders/
+snapshots/
+.hyperframes/
+lyrics.txt
+captions.json
+captions.srt
+transcript*.json
