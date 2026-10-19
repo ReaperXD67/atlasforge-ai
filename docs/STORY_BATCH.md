@@ -90,5 +90,7 @@ change one meaningful variable rather than declaring either a winning formula or
 
 ## Delivery status
 
-Pipeline preparation is validated; this batch is in production. No final-export or audience-outcome
-claim is made until the actual media and archive have passed verification.
+The three Shorts are exported and verified at 25.1, 25.6 and 28.9 seconds. Their project READMEs link
+the MP4s, thumbnails and publishing copy, with measured audio readings. All passed full decoding,
+strict browser checks and rendered-frame review. The full film is rendering; the complete archive
+is not yet verified. No audience-outcome claim is made.
