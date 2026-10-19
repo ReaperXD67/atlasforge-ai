@@ -37,6 +37,11 @@ Story-aware batches can lead with a broader human problem and connect Atomy as t
 They require a spoken fiction disclosure and measured setup, turn, brand-context and payoff anchors;
 these checks establish structural consistency, not factual endorsement, audience retention or viral reach.
 
+The included [Unsent Message batch](docs/STORY_BATCH.md#delivery-status) has verified final exports:
+three Shorts (25.1, 25.6 and 28.9 seconds) and one 5:03.6 film, with four custom thumbnails and
+[complete publishing copy](videos/BIZNEX_UNSENT_STORIES_UPLOADS.md). The earlier female `af_heart`
+voice is retained. These are delivered production samples, not evidence of improved audience results.
+
 > [!CAUTION]
 > AtlasForge AI automates production, not editorial responsibility. Its gates block obvious earnings promises, medical claims, early sales pitches, missing disclosures, and malformed media. You remain responsible for factual accuracy, licensing, product claims, and channel compliance.
 

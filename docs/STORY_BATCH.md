@@ -70,7 +70,7 @@ only when current media, voice, metadata, story checks and source hashes pass. P
 runner if necessary; it is not a read-only archive command. Do not rebuild HTML after carving or
 while a render is running. Use `--only <episode-id>` during preparation/build for a targeted repair.
 
-Expected local package: `output/biznex-unsent-stories/biznex-unsent-stories.zip`, with four MP4s,
+Local delivery package: `output/biznex-unsent-stories/biznex-unsent-stories.zip`, with four MP4s,
 four thumbnails, four upload packages, `UPLOAD_ALL.md` and `DELIVERY_SUMMARY.json`—14 members.
 Final runtimes and measured audio outcomes belong in the delivery summary, not planning estimates.
 
@@ -90,7 +90,19 @@ change one meaningful variable rather than declaring either a winning formula or
 
 ## Delivery status
 
-The three Shorts are exported and verified at 25.1, 25.6 and 28.9 seconds. Their project READMEs link
-the MP4s, thumbnails and publishing copy, with measured audio readings. All passed full decoding,
-strict browser checks and rendered-frame review. The full film is rendering; the complete archive
-is not yet verified. No audience-outcome claim is made.
+All four final exports are verified: Shorts at **25.1, 25.6 and 28.9 seconds**, and the full film at
+**303.6 seconds (5:03.6)**. Project READMEs link the committed MP4s, thumbnails and publishing copy.
+The 34,427,215-byte local archive contains all 14 expected members and passed its CRC integrity check.
+
+- Every MP4 passed complete decoding and media/voice/editorial checks. All four were reused without
+  re-encoding when packaging rechecked current source and output hashes, including after README updates.
+- All 37 scene midpoints were reviewed; the full film's final MP4 also received matching-time scene,
+  opening and ending review. Strict browser audits used 17 samples per Short and 60 for the film.
+- Final audio measures −14.44 to −14.15 LUFS, with true peaks no higher than −1.40 dBTP.
+- Regression validation passed **377 Python tests** and **30 Node tests**, including actual GSAP
+  forward/backward seeking of established drafts and deletions.
+
+See [combined titles, descriptions, hashtags and chapters](../videos/BIZNEX_UNSENT_STORIES_UPLOADS.md)
+and the [measured delivery summary](BIZNEX_UNSENT_STORIES_DELIVERY.json). Summary media paths refer
+to files inside the ZIP; project READMEs are the repository's clickable media entry points.
+No YouTube upload or audience-outcome claim is made.

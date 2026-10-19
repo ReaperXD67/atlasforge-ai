@@ -1,0 +1,63 @@
+{
+  "batch_id": "biznex-unsent-stories",
+  "format_counts": {
+    "shorts": 3,
+    "youtube": 1
+  },
+  "episodes": [
+    {
+      "id": "unsent-message",
+      "format": "shorts",
+      "duration_seconds": 25.1,
+      "voice": "af_heart",
+      "delivery_passed": true,
+      "video": "unsent-message/final.mp4",
+      "thumbnail": "unsent-message/thumbnail.png",
+      "audio_quality": {
+        "integrated_lufs": -14.18,
+        "true_peak_dbtp": -1.88
+      }
+    },
+    {
+      "id": "full-cupboard",
+      "format": "shorts",
+      "duration_seconds": 25.6,
+      "voice": "af_heart",
+      "delivery_passed": true,
+      "video": "full-cupboard/final.mp4",
+      "thumbnail": "full-cupboard/thumbnail.png",
+      "audio_quality": {
+        "integrated_lufs": -14.44,
+        "true_peak_dbtp": -1.97
+      }
+    },
+    {
+      "id": "already-answered",
+      "format": "shorts",
+      "duration_seconds": 28.9,
+      "voice": "af_heart",
+      "delivery_passed": true,
+      "video": "already-answered/final.mp4",
+      "thumbnail": "already-answered/thumbnail.png",
+      "audio_quality": {
+        "integrated_lufs": -14.23,
+        "true_peak_dbtp": -1.94
+      }
+    },
+    {
+      "id": "the-unsent-message",
+      "format": "youtube",
+      "duration_seconds": 303.6,
+      "voice": "af_heart",
+      "delivery_passed": true,
+      "video": "the-unsent-message/final.mp4",
+      "thumbnail": "the-unsent-message/thumbnail.png",
+      "audio_quality": {
+        "integrated_lufs": -14.15,
+        "true_peak_dbtp": -1.4
+      }
+    }
+  ],
+  "guaranteed_views": false,
+  "uploaded_to_youtube": false
+}
