@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 import re
 import shutil
 import subprocess
@@ -18,6 +19,8 @@ from typing import Any
 import numpy as np
 import soundfile as sf
 from prepare_local_shorts_batch import ASSET_SOURCE, ROOT, local_whisper
+
+from daily_video_factory.production_batch import validate_story_contract
 
 
 def write_json(path: Path, payload: Any) -> None:
@@ -101,15 +104,109 @@ def measured_words(whisper: Any, wav: Path, source: str) -> list[dict[str, Any]]
     return words
 
 
+def delivery_bounds(ep: dict[str, Any]) -> tuple[float, float]:
+    """Use authored delivery limits without padding or stretching the narration."""
+    defaults = (20, 35) if ep["format"] == "shorts" else (300, 360)
+    bounds = ep.get("delivery_bounds", {})
+    if not isinstance(bounds, dict):
+        raise ValueError("delivery_bounds must be an object")
+    minimum = bounds.get("min_seconds", defaults[0])
+    maximum = bounds.get("max_seconds", defaults[1])
+    if any(isinstance(value, bool) or not isinstance(value, (int, float))
+           or not math.isfinite(value) for value in (minimum, maximum)):
+        raise ValueError("delivery bounds must be finite numbers")
+    if not 0 < minimum < maximum or (ep["format"] == "shorts" and maximum > 180):
+        raise ValueError("invalid delivery bounds: require 0 < min < max and Shorts <=180s")
+    return float(minimum), float(maximum)
+
+
+def chapter_cues(ep: dict[str, Any], cues: list[dict[str, Any]]) -> list[tuple[str, dict[str, Any]]]:
+    """Resolve explicit, ordered segment IDs; retain the legacy 18-scene chapters."""
+    by_id = {cue["id"]: (index, cue) for index, cue in enumerate(cues)}
+    requested = ep.get("chapter_segments")
+    if requested is None:
+        indices = [0, 3, 6, 10, 14, 16] if len(cues) == 18 else sorted(
+            {round(index * (len(cues) - 1) / min(5, len(cues) - 1))
+             for index in range(min(6, len(cues)))}
+        )
+        requested = [cues[index]["id"] for index in indices]
+    if not isinstance(requested, list) or len(requested) < 3:
+        raise ValueError("long-video chapter_segments require at least three ordered segment IDs")
+    result, positions = [], []
+    for reference in requested:
+        segment_id = reference.get("segment_id") if isinstance(reference, dict) else reference
+        if not isinstance(segment_id, str) or segment_id not in by_id:
+            raise ValueError(f"chapter_segments refers to an unknown segment: {segment_id}")
+        index, cue = by_id[segment_id]
+        title = reference.get("title", cue["title"]) if isinstance(reference, dict) else cue["title"]
+        if not isinstance(title, str) or not title.strip() or "\n" in title:
+            raise ValueError("chapter title must be non-empty single-line text")
+        result.append((title, cue))
+        positions.append(index)
+    if positions[0] != 0 or any(later <= earlier for earlier, later in zip(positions, positions[1:], strict=False)):
+        raise ValueError("chapter_segments must start at the first segment and be strictly ordered")
+    if all("start" in cue for _, cue in result):
+        times = [int(cue["start"]) for _, cue in result]
+        if times[0] != 0 or any(later - earlier < 10 for earlier, later in zip(times, times[1:], strict=False)):
+            raise ValueError("measured chapters must start at 00:00 and be at least ten seconds apart")
+    return result
+
+
+def validate_creative_episode(ep: dict[str, Any]) -> None:
+    segments = ep.get("segments")
+    if not isinstance(segments, list) or len(segments) < 2:
+        raise ValueError("episodes require at least two authored segments")
+    ids = [segment.get("id") for segment in segments]
+    if any(not isinstance(value, str) or not value.strip() for value in ids) or len(set(ids)) != len(ids):
+        raise ValueError("segment IDs must be unique non-empty text")
+    delivery_bounds(ep)
+    if ep["format"] == "youtube":
+        chapter_cues(ep, segments)
+    if "story" in ep:
+        validate_story_contract(ep["story"], segments=segments,
+                                script="\n".join(segment["text"] for segment in segments))
+
+
 def document_plans(project: Path, spec: dict[str, Any], ep: dict[str, Any], meta: dict[str, Any]) -> None:
     short = ep["format"] == "shorts"
     total = meta["total_duration_s"]
     canvas = "1080x1920" if short else "1920x1080"
     workflow = "faceless-explainer" if short else "general-video"
-    (project / "BRIEF.md").write_text(f'''---
+    minimum, maximum = delivery_bounds(ep)
+    series = spec.get("series")
+    if series is not None and (
+        not isinstance(series, dict)
+        or any(not isinstance(series.get(key), str) or not series[key].strip()
+               for key in ("name", "angle", "direction"))
+    ):
+        raise ValueError("series requires non-empty name, angle and direction")
+    story = ep.get("story")
+    series_name = series["name"] if series else "Fictional story" if story else "Business Repair Lab"
+    series_direction = series["direction"] if series else (
+        "Reveal a fictional character's situation, choice and consequence through continuous action."
+        if story else "Immediate demonstration, diagnosis, repair, read and action; no inflated claims or stock filler."
+    )
+    if story is not None:
+        validate_story_contract(story, segments=meta["cues"],
+                                script="\n".join(cue["text"] for cue in meta["cues"]),
+                                duration_seconds=total)
+    counts = {name: sum(item["format"] == name for item in spec["episodes"])
+              for name in ("shorts", "youtube")}
+    creative_direction = (
+        f"{series_name} is an experimental story-first series. {series['angle']}\n\n{series_direction}"
+        if series else
+        f"{series_name} is an original fictional narrative. {series_direction}"
+        if story else
+        "Business Repair Lab is an experimental broader BizNex angle: early before/after, a visible fictional worked example and a reusable action. Dark ink, warm cream and gold; ASR-measured captions and spoken-cue reveals."
+    )
+    story_note = (
+        f"\n\nFictional protagonist: {story['protagonist']}. Spoken disclosure: {story['disclosure']}"
+        if story else ""
+    )
+    brief_text = f'''---
 workflow: {workflow}
 mode: autonomous
-length: {"20–35 seconds" if short else "5–6 minutes"}
+length: {minimum:g}–{maximum:g} seconds
 format: {canvas}
 language: English
 voice: af_heart
@@ -120,14 +217,24 @@ voice: af_heart
 Audience problem: {ep['audience_problem']}
 Promise: {ep['packaging_promise']}
 
-The user authorized generating three Shorts and two full videos, refining the pipeline, and pushing changes to GitHub main. Preserve the earlier approved female voice: local Kokoro af_heart, speed {spec['speed']}. No paid calls or automatic YouTube upload. No guaranteed reach, clients or income.
+This batch contains {counts['shorts']} Shorts and {counts['youtube']} full videos. Preserve the earlier approved female voice: local Kokoro af_heart, speed {spec['speed']}. No paid calls or automatic YouTube upload. No guaranteed reach, clients or income.
 
-Business Repair Lab is an experimental broader BizNex angle: early before/after, a visible fictional worked example and a reusable action. Dark ink, warm cream and gold; ASR-measured captions and spoken-cue reveals. Reuse owned music and sound effects. Every package includes a final MP4, thumbnail, title, description, hashtags and verification report.
+{creative_direction}{story_note}
 
-Analytics supplied: Sept 11–Oct 8, 2026 overview 161 views, 0.8 watch hours, +1 subscriber; Shorts search traffic 57.8%, Shorts-feed 19.0%, stayed to watch 54.2%. These channel aggregates do not establish individual-video CTR or retention failures.
-''', encoding="utf-8")
-    (project / "frame.md").write_text('''---
-name: Business Repair Lab
+ASR-measured captions and spoken-cue reveals. Reuse owned music and sound effects. Every package includes a final MP4, thumbnail, title, description, hashtags and verification report. This is a creative experiment, not evidence of increased views or a forecast of audience response.
+'''
+    # An authored story brief/design owns creative intent. Audio preparation
+    # must not replace it with a generic template on every cached rerun.
+    if not (story and (project / "BRIEF.md").exists()):
+        (project / "BRIEF.md").write_text(brief_text, encoding="utf-8")
+    frame_direction = (
+        f"# {series_name}\n\n{series_direction}\n\n"
+        "Keep character, location and prop continuity across authored scene roles. Reveal the story through actions and objects, not repeated advice cards. Plain-text brand context must remain part of the story, not a deceptive testimonial or sales reveal. Fictional events are not evidence about the company."
+        if series or story else
+        "# Case file, not a sales slide\n\nThe subject is a message or one-page offer being repaired. Ink/cream fields alternate with gold markup; green indicates a clearer option and red marks an actual caution. Use three semantic framings, not one card repeated forever. Message reconstructions and cafés are illustrative, not real client results."
+    )
+    frame_text = '''---
+name: ''' + json.dumps(series_name, ensure_ascii=False) + '''
 colors:
   ink: "#17191c"
   cream: "#f4eedf"
@@ -143,78 +250,117 @@ spacing: {density: generous, minimum: 16, maximum: 120}
 components: {corners: restrained, radius: 16, depth: flat}
 ---
 
-# Case file, not a sales slide
+''' + frame_direction + '''
 
-The subject is a message or one-page offer being repaired. Ink/cream fields alternate with gold markup; green indicates a clearer option and red marks an actual caution. Type is forceful but sentence-level demo text remains readable. Keep essential content above the bottom 17%; portrait also leaves the right control rail clear. Use three semantic framings, not one card repeated forever. Message reconstructions and cafés are illustrative, not real client results.
+Type is forceful but sentence-level text remains readable. Keep essential content above the bottom 17%; portrait also leaves the right control rail clear.
 
 Motion reveals each new object or line on its measured spoken cue, including the later half. Explicit paused GSAP fromTo timelines; no clock, randomness, loops, bouncing, breathing or late drifting. Short still holds allow reading. No invented success counters, earnings screenshots, client logos or forced subscribe intro.
-''', encoding="utf-8")
+'''
+    if not (story and (project / "frame.md").exists()):
+        (project / "frame.md").write_text(frame_text, encoding="utf-8")
     script = f"# SCRIPT — {ep['id']}\n\n**Voice:** Kokoro af_heart\n**Voice settings:** speed {spec['speed']}\n**Voice direction:** Warm, conversational, clear female narration.\n"
     storyboard = f'''---
 format: {canvas}
 duration: {total:.3f}s
 message: "{ep['packaging_promise']}"
-arc: how-to-process with worked example
-audience: beginners building a small service business
+arc: {"fictional character story with contextual brand connection" if story else "how-to-process with worked example"}
+audience: {ep['audience_problem']}
 mode: autonomous
 music: minimal project-owned pulse under clear narration
 ---
 
 ## Video direction
 
-Business Repair Lab palette and fonts from frame.md. Rhythm: immediate demo → diagnose → repair → self-test → usable action. Compose message, offer, comparison and checklist scenes from dynamic-content-sequencing and discrete-text-sequence. Each added line arrives on its measured phrase; do not dump the scene at its start. Alternate asymmetric, full-width and paired framings (portrait uses stacked comparisons). Foreground is the repaired object, midground its annotation, background the case-file field and section index. Deliberate still read after the last reveal; no lazy drift, breathing, random motion, fake evidence or off-brand visuals. Bottom17% reserved for captions. Scene cuts carry the same subject.
+{series_name} palette and fonts from frame.md. {series_direction}{story_note}
+
+Each visual reveal arrives on its measured phrase; do not dump the scene at its start. Preserve continuity across the scene cuts and hold the completed read. Bottom 17% reserved for captions. No fake evidence, invented results or off-brand sales interruption.
 '''
-    expanded = f"# Expanded production direction\n\n{ep['title']}\n\nSee frame.md for exact palette and embedded typography. Immediate demonstration, diagnosis, repair, read and action; no inflated claims or stock filler.\n"
+    expanded = f"# Expanded production direction\n\n{ep['title']}\n\nSee frame.md for exact palette and embedded typography. {series_direction}\n"
     for i, cue in enumerate(meta["cues"]):
         end = meta["cues"][i + 1]["start"] if i + 1 < len(meta["cues"]) else total
         duration = end - cue["start"]
         src = f"compositions/frames/{cue['id']}.html"
-        script += f"\n## Line {i + 1} — {cue['title']} (Frame {i + 1})\n\n**Time:** {cue['start']:.3f} – {end:.3f}s\n**Delivery:** Show the example, then land the useful repair.\n\n    {cue['text']}\n"
+        role = cue.get("narrative_role", cue["title"])
+        visual = cue.get("visual", {})
+        visual_note = f"\nvisual: {json.dumps(visual, ensure_ascii=False, sort_keys=True)}\n" if visual else ""
+        visual_type = visual.get("type", "room")
+        location = visual.get("location", "the authored story location")
+        motion_rules = {
+            "phone": ["discrete-text-sequence", "spring-pop-entrance"],
+            "paper": ["discrete-text-sequence", "spring-pop-entrance"],
+            "room": ["viewport-change"], "split": ["viewport-change"],
+            "cupboard": ["svg-path-draw", "spring-pop-entrance"],
+            "calendar": ["svg-path-draw"],
+        }.get(visual_type, ["discrete-text-sequence", "spring-pop-entrance"])
+        motion_citations = " · ".join(
+            f"{rule} (`hyperframes-animation/rules/{rule}.md`)" for rule in motion_rules
+        )
+        scene_description = (
+            f"Fictional character {story['protagonist']} acts in {location}; the {visual_type} visual reveals this {role} beat."
+            if story else f"A {cue['kind']} demonstration makes the spoken advice concrete."
+        )
+        frame_type = ("hook" if i == 0 else "resolution" if i == len(meta["cues"]) - 1 else "story_beat") if story else (
+            "hook" if i == 0 else "cta" if i == len(meta["cues"]) - 1 else "feature_showcase"
+        )
+        persuasion = "Character empathy + dramatic choice + honest resolution" if story else "Before/after + concretization + progressive disclosure"
+        focal = f"{visual_type} action in {location}" if story else f"the {cue['kind']} example"
+        roles = (
+            "character action and meaningful prop = foreground · reaction = supporting · continuous story location = background"
+            if story else "repaired object = foreground · markup = supporting · case-file field = background"
+        )
+        motion_note = f"\n- motion_rules: {motion_citations}" if story else ""
+        script += f"\n## Line {i + 1} — {cue['title']} (Frame {i + 1})\n\n**Time:** {cue['start']:.3f} – {end:.3f}s\n**Delivery:** {role}. Warm, conversational, unhurried.\n\n    {cue['text']}\n"
         shot_lines = []
         boundaries = sorted(set([0.0, *cue["beats"], round(duration, 3)]))
         for j, (a, b) in enumerate(zip(boundaries, boundaries[1:], strict=False)):
             item = cue["display"][min(j, len(cue["display"]) - 1)]
-            shot_lines.append(f"Scene {j + 1} ({a:.3f}–{b:.3f}s): {cue['kind']} actor; reveal ‘{item}’ on the corresponding spoken phrase, then hold the read. Foreground object, supporting markup, case-file background.")
+            if story:
+                shot_lines.append(f"Scene {j + 1} ({a:.3f}–{b:.3f}s): {visual_type} in {location}; reveal ‘{item}’ on the corresponding spoken phrase as a fictional character action, then hold its consequence. Preserve character identity, location and meaningful prop continuity.")
+            else:
+                shot_lines.append(f"Scene {j + 1} ({a:.3f}–{b:.3f}s): {cue['kind']} actor; reveal ‘{item}’ on the corresponding spoken phrase, then hold the read. Foreground object, supporting markup, case-file background.")
         storyboard += f'''\n## Frame {i + 1} — {cue['title']}
 
-- scene: A {cue['kind']} demonstration makes the spoken advice concrete.
+- scene: {scene_description}
 - duration: {duration:.3f}s
 - voiceover: "{cue['text']}"
 - transition_in: cut
 - poster: {min(duration - .2, max(cue['beats'][-1] + .5, .8)):.3f}s
 - status: outline
 - src: {src}
-- type: {"hook" if i == 0 else "cta" if i == len(meta['cues']) - 1 else "feature_showcase"}
-- persuasion: Before/after + concretization + progressive disclosure
-- beat: {"recognition and curiosity" if i == 0 else "clarity and confidence"}
+- type: {frame_type}
+- persuasion: {persuasion}
+- beat: {role if story else "recognition and curiosity" if i == 0 else "clarity and confidence"}
 - blueprint: compose
-- focal: the {cue['kind']} example
-- roles: repaired object = foreground · markup = supporting · case-file field = background
+- focal: {focal}
+- roles: {roles}{motion_note}
 
-narrativeRole: {cue['title']}.
+narrativeRole: {role}.
 keyMessage: {cue['display'][-1]}
+{visual_note}
 
 {chr(10).join(shot_lines)}
 '''
-        expanded += f"\n## Scene {i + 1}: {cue['title']}\n\nConcept: {cue['kind']} repair in a practical case-file lab. Mood: warm, sharp and useful. BG ink/cream field, MG example, FG gold annotations. Choreography: reveal each displayed item on the measured narration beat; hold the completed read; cut to the next demonstration.\n{chr(10).join(shot_lines)}\n"
+        expanded += f"\n## Scene {i + 1}: {cue['title']}\n\nNarrative role: {role}. Concept: {visual_type if story else cue['kind']}. {series_direction}{visual_note}\nChoreography: reveal each authored visual element on the measured narration beat; hold the completed read; preserve character and prop continuity.\n{('Motion citations: ' + motion_citations + chr(10)) if story else ''}{chr(10).join(shot_lines)}\n"
     (project / "SCRIPT.md").write_text(script, encoding="utf-8")
     (project / "STORYBOARD.md").write_text(storyboard, encoding="utf-8")
     (project / ".hyperframes").mkdir(exist_ok=True)
     (project / ".hyperframes/expanded-prompt.md").write_text(expanded, encoding="utf-8")
     (project / "THUMBNAIL_COPY.txt").write_text(ep["thumbnail_headline"] + "\n", encoding="utf-8")
     description = ep["description"]
+    if story and " ".join(story["disclosure"].split()).casefold() not in " ".join(description.split()).casefold():
+        description += "\n\n" + story["disclosure"]
     if not short:
         chapters = []
-        for i in [0, 3, 6, 10, 14, 16]:
-            seconds = int(meta["cues"][i]["start"])
-            chapters.append(f"{seconds // 60:02d}:{seconds % 60:02d} {meta['cues'][i]['title']}")
+        for chapter_title, cue in chapter_cues(ep, meta["cues"]):
+            seconds = int(cue["start"])
+            chapters.append(f"{seconds // 60:02d}:{seconds % 60:02d} {chapter_title}")
         description += "\n\nChapters:\n" + "\n".join(chapters)
     upload = f"# Upload package\n\n## Title\n\n{ep['title']}\n\n## Description\n\n{description}\n\n## Hashtags\n\n{' '.join(ep['hashtags'])}\n\n## Files\n\n- Video: renders/final.mp4\n- Thumbnail: assets/thumbnails/thumbnail.png\n- Voice: af_heart\n- Runtime: {total:.3f} seconds\n\nNo automatic upload. {('Shorts cover selection depends on the upload surface; an in-video cover is included.' if short else 'Landscape thumbnail supplied separately.')}\n"
     (project / "UPLOAD_PACKAGE.md").write_text(upload, encoding="utf-8")
     hook = ep["segments"][0]["text"].split(". ")[0]
-    payoff_cue = meta["cues"][1]
-    payoff = payoff_cue["text"].split(". ")[0]
-    write_json(project / "EDITORIAL.json", {
+    payoff_cue = next(cue for cue in meta["cues"] if cue["id"] == story["payoff_segment"]) if story else meta["cues"][1]
+    payoff = payoff_cue["text"] if story else payoff_cue["text"].split(". ")[0]
+    editorial = {
         "schema_version": 1, "script": "SCRIPT.md", "thumbnail_copy": "THUMBNAIL_COPY.txt",
         "audience_problem": ep["audience_problem"], "hook": {"text": hook, "at_seconds": 0},
         "payoff": {"text": payoff, "at_seconds": payoff_cue["start"]},
@@ -222,7 +368,10 @@ keyMessage: {cue['display'][-1]}
                       "promise": ep["packaging_promise"], "evidence_anchor": payoff, "reviewed": True},
         "sources": ep["sources"],
         "retention_beats": [{"at_seconds": cue["start"], "purpose": cue["title"]} for cue in meta["cues"]],
-    })
+    }
+    if story:
+        editorial["story"] = {**story, "timing_manifest": "audio_meta.json"}
+    write_json(project / "EDITORIAL.json", editorial)
 
 
 def main() -> None:
@@ -238,6 +387,12 @@ def main() -> None:
         raise ValueError("Duplicate episode IDs")
     if args.only and args.only not in ids:
         raise ValueError("Unknown episode ID in --only")
+    if "series" in spec and (
+        not isinstance(spec["series"], dict)
+        or any(not isinstance(spec["series"].get(key), str) or not spec["series"][key].strip()
+               for key in ("name", "angle", "direction"))
+    ):
+        raise ValueError("series requires non-empty name, angle and direction")
     projects = [(ROOT / ep["project"]).resolve() for ep in spec["episodes"]]
     if len(set(projects)) != len(projects):
         raise ValueError("Duplicate project paths")
@@ -253,12 +408,13 @@ def main() -> None:
             raise ValueError("Project must be a child of videos, not its root")
         if not (project / "BRIEF.md").exists():
             raise ValueError("Initialize and brief projects before generating audio")
-        short = ep["format"] == "shorts"
+        validate_creative_episode(ep)
+        minimum, maximum = delivery_bounds(ep)
         manifest.append({"id": ep["id"], "project": ep["project"], "format": ep["format"],
                          "output": "renders/final.mp4", "thumbnail": "assets/thumbnails/thumbnail.png",
                          "upload_package": "UPLOAD_PACKAGE.md", "voice_manifest": "audio_request.json",
-                         "editorial_manifest": "EDITORIAL.json", "min_seconds": 20 if short else 300,
-                         "max_seconds": 35 if short else 360})
+                         "editorial_manifest": "EDITORIAL.json", "min_seconds": minimum,
+                         "max_seconds": maximum})
         if args.only and args.only != ep["id"]:
             continue
         cache = project / ".production-cache"
@@ -267,7 +423,9 @@ def main() -> None:
         voice_dir.mkdir(parents=True, exist_ok=True)
         (project / "assets/bgm").mkdir(parents=True, exist_ok=True)
         shutil.copytree(ASSET_SOURCE / "sfx", project / "assets/sfx", dirs_exist_ok=True)
-        chunks, cues, words = [], [], []
+        chunks: list[Any] = []
+        cues: list[dict[str, Any]] = []
+        words: list[dict[str, Any]] = []
         offset, rate = 0.0, 24000
         for i, segment in enumerate(ep["segments"]):
             request = {"text": segment["text"], "voice": spec["voice"], "speed": spec["speed"],
@@ -317,7 +475,6 @@ def main() -> None:
             offset += duration + .10
             print(f"{ep['id']}: cue {i + 1}/{len(ep['segments'])}, {duration:.2f}s", flush=True)
         total = round(offset + .32, 3)
-        minimum, maximum = (20, 35) if short else (300, 360)
         if not minimum <= total <= maximum:
             raise ValueError(f"{ep['id']}: measured {total}s outside {minimum}–{maximum}s; revise narration")
         chunks.append(np.zeros(round(.32 * rate), dtype=np.float32))
@@ -334,6 +491,14 @@ def main() -> None:
                 "voices": [{"frame": 1, "path": "assets/voice/01.wav", "duration_s": total, "words": words}],
                 "bgm_pending": False, "bgm": {"path": "assets/bgm/bed.m4a", "duration_s": total, "volume": .055},
                 "sfx": [{"file": "assets/sfx/chime.wav", "offset_s": cues[1]["start"] + .2, "duration_s": .57, "volume": .09}]}
+        if "series" in spec:
+            meta["series"] = spec["series"]
+        if "story" in ep:
+            measured_story = validate_story_contract(
+                ep["story"], segments=cues,
+                script="\n".join(cue["text"] for cue in cues), duration_seconds=total,
+            )
+            meta["story"] = {**ep["story"], "measured_markers": measured_story["markers"]}
         write_json(project / "audio_request.json", {"provider": "kokoro", "voice": spec["voice"], "speed": spec["speed"],
                     "lang": "en-us", "lines": [{"id": s["id"], "text": s["text"]} for s in ep["segments"]], "bgm": {"mode": "project-owned"}})
         write_json(project / "audio_meta.json", meta)

@@ -79,7 +79,7 @@ def packaging(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> SimpleNamespac
     return SimpleNamespace(module=module, root=root, manifest=manifest, manifest_path=manifest_path,
                            report=report, calls=calls, out=out, duration_by_id=duration_by_id,
                            audio_quality=audio_quality,
-                           archive=out / "biznex-three-shorts-two-videos.zip")
+                           archive=out / "package-test.zip")
 
 
 def test_verified_package_contains_exactly_five_delivery_triples_and_aggregate_files(
@@ -177,3 +177,28 @@ def test_bad_final_audio_refuses_packaging_before_overwriting_files(packaging: S
     assert packaging.archive.read_bytes() == b"previous verified package"
     assert not (packaging.out / "DELIVERY_SUMMARY.json").exists()
     assert not (packaging.out / "UPLOAD_ALL.md").exists()
+
+
+def test_three_shorts_one_video_package_uses_actual_counts_and_fourteen_members(
+    packaging: SimpleNamespace,
+) -> None:
+    packaging.manifest.episodes = packaging.manifest.episodes[:4]
+    packaging.report["episodes"] = packaging.report["episodes"][:4]
+    packaging.module.main()
+    with zipfile.ZipFile(packaging.archive) as archive:
+        assert len(archive.namelist()) == 14
+        assert "episode-5/final.mp4" not in archive.namelist()
+        upload = archive.read("UPLOAD_ALL.md").decode()
+        assert "3 Shorts and 1 full video" in upload
+        assert "three Shorts and two videos" not in upload
+        summary = json.loads(archive.read("DELIVERY_SUMMARY.json"))
+        assert summary["format_counts"] == {"shorts": 3, "youtube": 1}
+        assert len(summary["episodes"]) == 4
+
+
+def test_legacy_repair_lab_archive_keeps_its_published_filename(packaging: SimpleNamespace) -> None:
+    packaging.manifest.batch_id = "biznex-repair-lab"
+    packaging.module.main()
+    out = packaging.root / "output" / "biznex-repair-lab"
+    assert (out / "biznex-three-shorts-two-videos.zip").is_file()
+    assert not (out / "biznex-repair-lab.zip").exists()

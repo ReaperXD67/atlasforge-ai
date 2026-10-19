@@ -474,3 +474,196 @@ def test_json_writer_preserves_unicode_in_reproducible_planning(preparation: Sim
     first = path.read_bytes()
     preparation.module.write_json(path, payload)
     assert path.read_bytes() == first
+
+
+def _story_spec(preparation: SimpleNamespace) -> tuple[Path, dict[str, Any]]:
+    path, spec = _spec(preparation)
+    spec["series"] = {"name": "The Unsent Message", "angle": "A friendship before a pitch",
+                      "direction": "Show a continuous fictional scene, not repeated advice cards."}
+    episode = spec["episodes"][0]
+    episode["delivery_bounds"] = {"min_seconds": 20, "max_seconds": 60}
+    texts = [
+        "This is a fictional story. Mira reads a message.",
+        "Atomy is context, not a promised outcome.",
+        "She pauses before sending another pitch.",
+        "Her friend needs someone who will listen.",
+        "Mira sends a question and listens instead.",
+    ]
+    episode["segments"] = [
+        {"id": name, "title": name.title(), "kind": "story", "narrative_role": role,
+         "text": text, "display": [text.split()[0], text.split()[-1]],
+         "beat_phrases": [text.split()[0], text.split()[-1]],
+         "visual": {"type": "phone", "location": "kitchen", "expression": "worried",
+                    "prop": "unsent message", "future_renderer_key": {"retained": True}}}
+        for name, role, text in zip(
+            ["setup", "context", "pressure", "turn", "payoff"],
+            ["setup", "connection", "complication", "turn", "payoff"], texts, strict=True
+        )
+    ]
+    episode["story"] = {
+        "fictional": True, "disclosure": "This is a fictional story.", "protagonist": "Mira",
+        "setup_segment": "setup", "turn_segment": "turn",
+        "brand_connection_segment": "context", "payoff_segment": "payoff",
+    }
+    path.write_text(json.dumps(spec))
+    return path, spec
+
+
+def test_story_preparation_preserves_authored_brief_design_and_renderer_payload(
+    preparation: SimpleNamespace, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    path, spec = _story_spec(preparation)
+    project = preparation.root / spec["episodes"][0]["project"]
+    (project / "BRIEF.md").write_text("Authoritative story brief, no replacement")
+    (project / "frame.md").write_text("Authoritative illustrated story design")
+    _invoke(preparation, path, monkeypatch)
+    assert (project / "BRIEF.md").read_text() == "Authoritative story brief, no replacement"
+    assert (project / "frame.md").read_text() == "Authoritative illustrated story design"
+    meta = json.loads((project / "audio_meta.json").read_text())
+    episode = json.loads((project / "EPISODE.json").read_text())
+    assert meta["cues"][0]["visual"] == spec["episodes"][0]["segments"][0]["visual"]
+    assert meta["cues"][3]["narrative_role"] == "turn"
+    assert episode["segments"][0]["visual"] == meta["cues"][0]["visual"]
+    assert meta["story"]["measured_markers"]["brand_connection_segment"]["at_seconds"] == 10.1
+    assert meta["story"]["measured_markers"]["turn_segment"]["at_seconds"] == 30.3
+    assert meta["series"] == spec["series"]
+    editorial = json.loads((project / "EDITORIAL.json").read_text())
+    assert editorial["payoff"]["at_seconds"] == 40.4
+    assert editorial["payoff"]["text"] == spec["episodes"][0]["segments"][-1]["text"]
+    assert editorial["story"]["timing_manifest"] == "audio_meta.json"
+    storyboard = (project / "STORYBOARD.md").read_text()
+    assert '"future_renderer_key": {"retained": true}' in storyboard
+    assert "narrativeRole: turn." in storyboard
+    assert "Business Repair Lab" not in storyboard
+    for stale in ("spoken advice", "case-file", "repaired object", "Before/after", "- type: cta", "feature_showcase"):
+        assert stale not in storyboard
+        assert stale not in (project / ".hyperframes/expanded-prompt.md").read_text()
+    assert "- type: resolution" in storyboard
+    assert "hyperframes-animation/rules/discrete-text-sequence.md" in storyboard
+    assert "hyperframes-animation/rules/spring-pop-entrance.md" in storyboard
+    assert "fictional story" in (project / "UPLOAD_PACKAGE.md").read_text()
+    manifest = json.loads(path.with_suffix(".production.json").read_text())
+    assert manifest["episodes"][0]["max_seconds"] == 60
+    preparation.generated.clear()
+    preparation.transcribed.clear()
+    _invoke(preparation, path, monkeypatch)
+    assert preparation.generated == [] and preparation.transcribed == []
+
+
+def test_new_story_design_without_existing_frame_uses_declared_series(
+    preparation: SimpleNamespace, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    path, spec = _story_spec(preparation)
+    _invoke(preparation, path, monkeypatch)
+    frame = (preparation.root / spec["episodes"][0]["project"] / "frame.md").read_text()
+    assert "The Unsent Message" in frame
+    assert "repeated advice cards" in frame
+    assert "Business Repair Lab" not in frame
+
+
+@pytest.mark.parametrize("visual_type,rules", [
+    ("paper", ["discrete-text-sequence", "spring-pop-entrance"]),
+    ("room", ["viewport-change"]), ("split", ["viewport-change"]),
+    ("cupboard", ["svg-path-draw", "spring-pop-entrance"]),
+    ("calendar", ["svg-path-draw"]),
+])
+def test_story_plans_cite_named_motion_rules_for_the_authored_visual(
+    preparation: SimpleNamespace, visual_type: str, rules: list[str],
+) -> None:
+    _, spec = _story_spec(preparation)
+    episode = spec["episodes"][0]
+    cues = [{**segment, "visual": {"type": visual_type, "location": "Asha's kitchen"},
+             "start": i * 10., "end": (i + 1) * 10., "beats": [0., 2.]}
+            for i, segment in enumerate(episode["segments"])]
+    project = preparation.root / episode["project"]
+    preparation.module.document_plans(project, spec, episode, {"cues": cues, "total_duration_s": 50.})
+    storyboard = (project / "STORYBOARD.md").read_text()
+    assert f"{visual_type} visual" in storyboard
+    assert "Asha's kitchen" in storyboard
+    for rule in rules:
+        assert f"hyperframes-animation/rules/{rule}.md" in storyboard
+        assert f"hyperframes-animation/rules/{rule}.md" in (project / ".hyperframes/expanded-prompt.md").read_text()
+
+
+@pytest.mark.parametrize("change,match", [
+    ("fictional", "fictional"), ("disclosure", "spoken script"),
+    ("unknown_marker", "unknown segment"), ("bad_order", "setup < turn"),
+    ("missing_brand", "Atomy"), ("duplicate_segments", "segment IDs"),
+    ("invalid_bounds", "delivery bounds"), ("invalid_series", "series requires"),
+])
+def test_invalid_story_contract_is_rejected_before_narration(
+    preparation: SimpleNamespace, monkeypatch: pytest.MonkeyPatch, change: str, match: str,
+) -> None:
+    path, spec = _story_spec(preparation)
+    episode = spec["episodes"][0]
+    if change == "fictional":
+        episode["story"]["fictional"] = False
+    elif change == "disclosure":
+        episode["story"]["disclosure"] = "A disclosure never spoken."
+    elif change == "unknown_marker":
+        episode["story"]["turn_segment"] = "missing"
+    elif change == "bad_order":
+        episode["story"]["payoff_segment"] = "turn"
+    elif change == "missing_brand":
+        episode["segments"][1]["text"] = "A brand is merely context."
+    elif change == "duplicate_segments":
+        episode["segments"][1]["id"] = episode["segments"][0]["id"]
+    elif change == "invalid_bounds":
+        episode["delivery_bounds"]["max_seconds"] = float("inf")
+    else:
+        spec["series"]["direction"] = ""
+    path.write_text(json.dumps(spec))
+    with pytest.raises(ValueError, match=match):
+        _invoke(preparation, path, monkeypatch)
+    assert preparation.generated == [] and preparation.transcribed == []
+
+
+@pytest.mark.parametrize("bounds", [
+    {"min_seconds": True}, {"min_seconds": 35, "max_seconds": 30},
+    {"max_seconds": 181}, {"min_seconds": 0}, {"max_seconds": "40"},
+])
+def test_invalid_custom_delivery_bounds_fail_closed(preparation: SimpleNamespace, bounds: Any) -> None:
+    with pytest.raises(ValueError, match="delivery bounds"):
+        preparation.module.delivery_bounds({"format": "shorts", "delivery_bounds": bounds})
+
+
+def test_explicit_chapters_resolve_twenty_one_measured_cues_without_fixed_indices(
+    preparation: SimpleNamespace,
+) -> None:
+    _, spec = _spec(preparation)
+    episode = spec["episodes"][0]
+    episode["format"] = "youtube"
+    base = episode["segments"][0]
+    episode["segments"] = [{**base, "id": f"scene-{i}", "title": f"Scene {i}"} for i in range(21)]
+    episode["chapter_segments"] = ["scene-0", "scene-4", {"segment_id": "scene-9", "title": "The reveal"}, "scene-16", "scene-20"]
+    cues = [{**segment, "start": i * 15., "end": (i + 1) * 15., "beats": [0., 1.2]}
+            for i, segment in enumerate(episode["segments"])]
+    project = preparation.root / episode["project"]
+    preparation.module.document_plans(project, spec, episode, {"cues": cues, "total_duration_s": 315.})
+    upload = (project / "UPLOAD_PACKAGE.md").read_text()
+    assert "00:00 Scene 0" in upload
+    assert "01:00 Scene 4" in upload
+    assert "02:15 The reveal" in upload
+    assert "05:00 Scene 20" in upload
+    assert "Scene 17" not in upload
+
+
+@pytest.mark.parametrize("references", [
+    ["setup", "missing", "payoff"], ["context", "turn", "payoff"],
+    ["setup", "payoff", "turn"], ["setup", "turn", "turn"], ["setup", "payoff"],
+])
+def test_unknown_unordered_or_short_chapter_lists_fail_before_voice(
+    preparation: SimpleNamespace, monkeypatch: pytest.MonkeyPatch, references: list[str],
+) -> None:
+    path, spec = _story_spec(preparation)
+    spec["episodes"][0].update(format="youtube", chapter_segments=references)
+    path.write_text(json.dumps(spec))
+    with pytest.raises(ValueError, match="chapter"):
+        _invoke(preparation, path, monkeypatch)
+    assert preparation.generated == []
+
+
+def test_chapters_require_ten_seconds_between_actual_measured_starts(preparation: SimpleNamespace) -> None:
+    cues = [{"id": str(i), "title": str(i), "start": i * 5} for i in range(3)]
+    with pytest.raises(ValueError, match="ten seconds"):
+        preparation.module.chapter_cues({"chapter_segments": ["0", "1", "2"]}, cues)

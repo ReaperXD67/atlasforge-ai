@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import re
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
@@ -120,6 +121,84 @@ def _object(value: Any, label: str) -> dict[str, Any]:
     return value
 
 
+def validate_story_contract(
+    story: Any,
+    *,
+    segments: Any,
+    script: str,
+    duration_seconds: float | None = None,
+) -> dict[str, Any]:
+    """Validate declared story structure and literal anchors, not semantic truth.
+
+    Preparation calls this before synthesis with authored segments, then again
+    with measured cues. Delivery reads the same cues from the timing manifest.
+    Unknown creative/visual keys are deliberately preserved by the caller.
+    """
+    story = _object(story, "story")
+    if story.get("fictional") is not True:
+        raise ProductionBatchError("story requires an explicit fictional: true declaration")
+    _text(story.get("protagonist"), "story.protagonist")
+    disclosure = _normalized(_text(story.get("disclosure"), "story.disclosure"))
+    normalized_script = _normalized(script)
+    if disclosure not in normalized_script:
+        raise ProductionBatchError("story disclosure must literally occur in the spoken script")
+    if not re.search(r"\bfiction(?:al)?\b", disclosure):
+        raise ProductionBatchError("story disclosure must explicitly label the story as fictional")
+    if not isinstance(segments, list) or not segments:
+        raise ProductionBatchError("story requires authored segments or measured cues")
+    by_id: dict[str, tuple[int, dict[str, Any]]] = {}
+    for index, segment in enumerate(segments):
+        segment = _object(segment, "story segment")
+        segment_id = _text(segment.get("id"), "story segment id")
+        if segment_id in by_id:
+            raise ProductionBatchError("story segment IDs must be unique")
+        by_id[segment_id] = (index, segment)
+    fields = ("setup_segment", "turn_segment", "brand_connection_segment", "payoff_segment")
+    positions: list[int] = []
+    markers: dict[str, Any] = {}
+    for field in fields:
+        segment_id = _text(story.get(field), f"story.{field}")
+        if segment_id not in by_id:
+            raise ProductionBatchError(f"story {field} refers to an unknown segment: {segment_id}")
+        index, segment = by_id[segment_id]
+        text = _text(segment.get("text"), f"story {field} text")
+        if _normalized(text) not in normalized_script:
+            raise ProductionBatchError(f"story {field} text is not anchored in the spoken script")
+        if field == "brand_connection_segment" and not re.search(r"\batomy\b", text, re.I):
+            raise ProductionBatchError("story brand connection must literally mention Atomy")
+        marker: dict[str, Any] = {"segment_id": segment_id, "text": text}
+        if "start" in segment:
+            at = _number(segment["start"], f"story {field} measured start")
+            if at < 0 or (duration_seconds is not None and at >= duration_seconds):
+                raise ProductionBatchError("story marker falls outside the measured video")
+            marker["at_seconds"] = at
+        markers[field] = marker
+        positions.append(index)
+    if not (positions[0] < positions[1] < positions[3]
+            and positions[0] < positions[2] < positions[3]):
+        raise ProductionBatchError(
+            "story requires setup < turn < payoff and setup < brand connection < payoff"
+        )
+    measured = [markers[field].get("at_seconds") for field in fields]
+    if duration_seconds is not None and any(value is None for value in measured):
+        raise ProductionBatchError("story markers require complete measured timing")
+    if any(value is not None for value in measured):
+        if any(value is None for value in measured):
+            raise ProductionBatchError("story markers require complete measured timing")
+        setup, turn, connection, payoff = measured
+        if not (setup < turn < payoff and setup < connection < payoff):
+            raise ProductionBatchError(
+                "measured story requires setup < turn < payoff and setup < brand connection < payoff"
+            )
+    return {
+        "fictional_declared": True,
+        "disclosure_anchored": True,
+        "markers": markers,
+        "semantic_accuracy_automatically_verified": False,
+        "viral_outcome_predicted": False,
+    }
+
+
 def validate_editorial_manifest(
     episode: ProductionBatchEpisode,
     *,
@@ -206,7 +285,7 @@ def validate_editorial_manifest(
         )
     if duration_seconds is not None and duration_seconds - times[-1] > maximum_gap:
         raise ProductionBatchError("the final stretch has no planned retention beat")
-    return {
+    result: dict[str, Any] = {
         "hook_seconds": hook_time,
         "payoff_seconds": payoff_time,
         "source_claim_count": len(sources),
@@ -215,6 +294,22 @@ def validate_editorial_manifest(
         "semantic_accuracy_automatically_verified": False,
         "analytics_observed": False,
     }
+    if "story" in editorial:
+        story = _object(editorial["story"], "story")
+        timing_path = shorts_batch._relative_path(
+            episode.project, story.get("timing_manifest"), "story timing_manifest"
+        )
+        shorts_batch._require_file(timing_path, "story measured timing manifest")
+        timing = _object(json.loads(timing_path.read_text(encoding="utf-8-sig")), "story timing")
+        result["story"] = validate_story_contract(
+            story,
+            segments=timing.get("cues"),
+            script=script,
+            duration_seconds=duration_limit,
+        )
+        if payoff_time != result["story"]["markers"]["payoff_segment"]["at_seconds"]:
+            raise ProductionBatchError("editorial payoff must use its measured story cue")
+    return result
 
 
 def _metadata(episode: ProductionBatchEpisode, *, duration_seconds: float) -> dict[str, Any]:
@@ -312,6 +407,10 @@ def source_fingerprint(
     extra_files = [episode.editorial_manifest]
     for key in ("script", "thumbnail_copy"):
         extra_files.append(shorts_batch._relative_path(episode.project, editorial[key], key))
+    if "story" in editorial:
+        extra_files.append(shorts_batch._relative_path(
+            episode.project, editorial["story"]["timing_manifest"], "story timing_manifest"
+        ))
     payload = {
         "pipeline_version": 1,
         "source_fingerprint": fingerprint,

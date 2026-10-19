@@ -16,6 +16,7 @@ from daily_video_factory.production_batch import (
     load_production_batch_manifest,
     run_production_batch,
     source_fingerprint,
+    validate_story_contract,
 )
 
 
@@ -145,6 +146,122 @@ def _change_editorial(root: Path, **changes: Any) -> None:
     payload = json.loads(path.read_text())
     payload.update(changes)
     path.write_text(json.dumps(payload))
+
+
+def _install_story(root: Path) -> dict[str, Any]:
+    project = root / "videos" / "question-short"
+    story = {
+        "fictional": True, "disclosure": "This is a fictional story.", "protagonist": "Mira",
+        "setup_segment": "setup", "turn_segment": "turn",
+        "brand_connection_segment": "context", "payoff_segment": "payoff",
+        "timing_manifest": "audio_meta.json",
+    }
+    cues = [
+        {"id": "setup", "start": 0, "text": "What did it really cost? This is a fictional story. Mira reads a message."},
+        {"id": "context", "start": 5, "text": "Atomy is part of the context, not a promised outcome."},
+        {"id": "turn", "start": 15, "text": "She decides to listen before speaking."},
+        {"id": "payoff", "start": 23, "text": "Subtract all the costs first."},
+    ]
+    (project / "SCRIPT.md").write_text("\n".join(cue["text"] for cue in cues))
+    (project / "audio_meta.json").write_text(json.dumps({"cues": cues}))
+    _change_editorial(root, story=story)
+    return story
+
+
+def test_story_brand_context_may_precede_turn_and_delivery_reports_only_structure(
+    production: tuple[Path, Path, list[list[str]]],
+) -> None:
+    root, manifest, _ = production
+    _install_story(root)
+    result = run_production_batch(manifest, repository_root=root)
+    assert result["status"] == "verified"
+    story = result["episodes"][0]["report"]["editorial"]["story"]
+    assert story["fictional_declared"] and story["disclosure_anchored"]
+    assert story["markers"]["brand_connection_segment"]["at_seconds"] == 5
+    assert story["markers"]["turn_segment"]["at_seconds"] == 15
+    assert story["semantic_accuracy_automatically_verified"] is False
+    assert story["viral_outcome_predicted"] is False
+
+
+@pytest.mark.parametrize("change,match", [
+    ("fictional", "fictional"), ("disclosure", "spoken script"),
+    ("protagonist", "protagonist"), ("missing_id", "unknown segment"),
+    ("not_fictional_disclosure", "explicitly label"),
+    ("connection_at_setup", "setup < turn"), ("turn_at_payoff", "setup < turn"),
+    ("unspoken_cue", "anchored"), ("brand_absent", "Atomy"),
+    ("unmeasured_cue", "complete measured"), ("nonfinite_time", "finite"),
+    ("time_order", "measured story"), ("payoff_mismatch", "measured story cue"),
+])
+def test_invalid_story_structure_fails_without_blocking_independent_video(
+    production: tuple[Path, Path, list[list[str]]], change: str, match: str,
+) -> None:
+    root, manifest, commands = production
+    story = _install_story(root)
+    project = root / "videos" / "question-short"
+    timing = json.loads((project / "audio_meta.json").read_text())
+    if change == "fictional":
+        story["fictional"] = False
+    elif change == "disclosure":
+        story["disclosure"] = "An unspoken disclosure."
+    elif change == "protagonist":
+        story["protagonist"] = ""
+    elif change == "not_fictional_disclosure":
+        story["disclosure"] = "Mira reads a message."
+    elif change == "missing_id":
+        story["turn_segment"] = "missing"
+    elif change == "connection_at_setup":
+        story["setup_segment"] = "context"
+    elif change == "turn_at_payoff":
+        story["turn_segment"] = "payoff"
+    elif change == "unspoken_cue":
+        timing["cues"][2]["text"] = "Something never spoken in the script."
+    elif change == "brand_absent":
+        timing["cues"][1]["text"] = "An unrelated company is context."
+        (project / "SCRIPT.md").write_text("\n".join(cue["text"] for cue in timing["cues"]))
+    elif change == "unmeasured_cue":
+        del timing["cues"][2]["start"]
+    elif change == "nonfinite_time":
+        timing["cues"][2]["start"] = float("nan")
+    elif change == "time_order":
+        timing["cues"][2]["start"] = 24
+    else:
+        timing["cues"][3]["start"] = 24
+    _change_editorial(root, story=story)
+    (project / "audio_meta.json").write_text(json.dumps(timing))
+    result = run_production_batch(manifest, repository_root=root)
+    assert result["status"] == "failed"
+    assert match in result["episodes"][0]["error"]["message"]
+    assert result["episodes"][1]["status"] == "verified"
+    assert len(commands) == 2
+
+
+def test_story_timing_changes_invalidate_only_the_affected_resume(
+    production: tuple[Path, Path, list[list[str]]],
+) -> None:
+    root, manifest, commands = production
+    _install_story(root)
+    assert run_production_batch(manifest, repository_root=root)["status"] == "verified"
+    timing_path = root / "videos" / "question-short" / "audio_meta.json"
+    timing = json.loads(timing_path.read_text())
+    timing["cues"][2]["start"] = 16
+    timing_path.write_text(json.dumps(timing))
+    commands.clear()
+    result = run_production_batch(manifest, repository_root=root)
+    assert result["status"] == "verified"
+    assert not result["episodes"][0]["resumed"] and result["episodes"][1]["resumed"]
+    assert len(commands) == 2
+
+
+def test_story_connection_can_follow_turn_and_share_its_cue() -> None:
+    story = {"fictional": True, "protagonist": "Mira", "disclosure": "Fictional story.",
+             "setup_segment": "setup", "turn_segment": "turn",
+             "brand_connection_segment": "turn", "payoff_segment": "payoff"}
+    cues = [{"id": "setup", "text": "Fictional story.", "start": 0},
+            {"id": "turn", "text": "Atomy is context, not the solution.", "start": 8},
+            {"id": "payoff", "text": "She listens first.", "start": 20}]
+    result = validate_story_contract(story, segments=cues, script=" ".join(cue["text"] for cue in cues),
+                                     duration_seconds=27)
+    assert result["markers"]["brand_connection_segment"]["at_seconds"] == 8
 
 
 def test_mixed_batch_routes_formats_duration_bounds_and_resumes(

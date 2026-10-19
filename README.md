@@ -25,12 +25,16 @@ and can optionally publish an original 6–8 minute YouTube video.
 | **AI Viral Lab** | Individual 3–10 second vertical AI shots, with reference-led motion and optional native dialogue/audio; local Wan 2.2 on an 8 GB RTX 4070 or opt-in Gemini Omni/Veo | [AI Viral Lab](docs/VIRAL_SHORTS.md) |
 | **AI Generation** | Isolated cinematic-insert candidates: a real photographic plate when possible, 1–3 seeds, and technical/vision admission checks before editorial use | [Cinematic inserts and admission](docs/VIRAL_SHORTS.md#strict-admission-policy) |
 | **Shorts batches** | Resumable groups of 20–30 second HyperFrames episodes with an approved voice, aligned captions, thumbnails, upload text, and delivery checks | [Shorts batch workflow](docs/SHORTS_BATCH.md) |
-| **Mixed production batches** | Shorts and 5–6 minute landscape videos with cached narration, measured reveal timing, voice-aware music, source-checked resume, and upload packages | [Production batches](docs/PRODUCTION_BATCH.md) · [Repair Lab example](docs/BIZNEX_REPAIR_LAB.md) |
+| **Mixed production batches** | Flexible Shorts/full-video counts, optional fictional-story checks, segment-ID chapters, cached narration, measured reveal timing, voice-aware music, and source-checked resume | [Production batches](docs/PRODUCTION_BATCH.md) · [Repair Lab example](docs/BIZNEX_REPAIR_LAB.md) |
 
 The default editorial profiles cover education-first Atomy content for people researching online
 business, side hustles, wellness, Korean skincare, and productivity. Atomy is one possible case
 study, never a guaranteed income or health outcome. Editorial checks are preparation safeguards,
 not predictions of views or automatic fact-checking.
+
+Story-aware batches can lead with a broader human problem and connect Atomy as transparent context.
+They require a spoken fiction disclosure and measured setup, turn, brand-context and payoff anchors;
+these checks establish structural consistency, not factual endorsement, audience retention or viral reach.
 
 > [!CAUTION]
 > AtlasForge AI automates production, not editorial responsibility. Its gates block obvious earnings promises, medical claims, early sales pitches, missing disclosures, and malformed media. You remain responsible for factual accuracy, licensing, product claims, and channel compliance.
@@ -196,6 +200,10 @@ requested) the exact approved narration voice:
 preventing a finished MP4 from being delivered without its custom thumbnail, upload copy, approved
 voice, or correct encoding.
 
+The standalone gate defaults to 20–30 seconds. Mixed production manifests can explicitly set other
+bounds; the current story batch targets 30–35-second Shorts. Narration must actually fit the declared
+window—preparation rejects out-of-range audio rather than padding or speeding it up.
+
 ### Long-form YouTube delivery gate
 
 Long-form exports use the same fail-closed handoff. The verifier requires a 1920x1080,
@@ -294,7 +302,8 @@ The former `dailyvideo` command remains available as a backward-compatible alias
 - Upload privacy is `private`.
 - Realistic synthetic media is declared through `status.containsSyntheticMedia`.
 - API keys and OAuth tokens live in ignored local files.
-- Generated media and models are not committed.
+- Private media, model weights and regenerable caches stay out of Git. Explicitly approved public
+  batch assets and final deliveries may be versioned; private cinematic source media remain local.
 - One SQLite lock prevents overlapping daily runs.
 - A failed provider falls through; a failed compliance or media-quality gate stops publishing.
 - A rejected synthetic clip remains inspectable in its run folder but is not admitted to editorial.

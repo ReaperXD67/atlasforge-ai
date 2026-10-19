@@ -44,7 +44,7 @@ Record results separately for Shorts and long videos, at comparable 24-hour and 
 
 ## Verified delivery — 10 October 2026
 
-All five final MP4s passed media, voice, metadata and measured audio gates. All use the approved `af_heart` narrator. The observed integrated loudness ranges from −14.60 to −14.20 LUFS; true peaks remain at or below −1.82 dBTP. These readings do not predict views. The videos have not been uploaded to YouTube.
+All five final MP4s passed media, voice, metadata and measured audio gates. All use the approved `af_heart` narrator. The observed integrated loudness ranges from −14.60 to −14.20 LUFS; true peaks remain at or below −1.82 dBTP. These readings do not predict views. The pipeline did not upload them to YouTube; subsequent manual publishing and audience results are separate from this delivery record.
 
 | Episode | Verified runtime | Repository project |
 | --- | --- | --- |

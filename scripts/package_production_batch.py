@@ -31,7 +31,10 @@ def main() -> None:
     root = Path(__file__).resolve().parents[1]
     out = root / "output" / manifest.batch_id
     out.mkdir(parents=True, exist_ok=True)
-    upload_text = ["# BizNex Repair Lab — three Shorts and two videos\n",
+    counts = {name: sum(episode.format == name for episode in manifest.episodes)
+              for name in ("shorts", "youtube")}
+    label = f"{counts['shorts']} Shorts and {counts['youtube']} full video{'s' if counts['youtube'] != 1 else ''}"
+    upload_text = [f"# {manifest.batch_id} — {label}\n",
                    "Approved female narration: Kokoro af_heart. Final H.264/AAC MP4s, 30 fps. No automatic YouTube upload.\n"]
     files, summary = [], []
     for ep in manifest.episodes:
@@ -49,9 +52,13 @@ def main() -> None:
     metadata = out / "UPLOAD_ALL.md"
     metadata.write_text("\n".join(upload_text), encoding="utf-8")
     validation = out / "DELIVERY_SUMMARY.json"
-    validation.write_text(json.dumps({"batch_id": manifest.batch_id, "episodes": summary,
+    validation.write_text(json.dumps({"batch_id": manifest.batch_id, "format_counts": counts,
+                          "episodes": summary,
                           "guaranteed_views": False, "uploaded_to_youtube": False}, indent=2) + "\n", encoding="utf-8")
-    archive = out / "biznex-three-shorts-two-videos.zip"
+    # Keep the already published legacy link stable; new batches are named by ID.
+    archive_name = ("biznex-three-shorts-two-videos.zip" if manifest.batch_id == "biznex-repair-lab"
+                    else f"{manifest.batch_id}.zip")
+    archive = out / archive_name
     with zipfile.ZipFile(archive, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=1) as delivery:
         for source, name in files:
             delivery.write(source, name)
