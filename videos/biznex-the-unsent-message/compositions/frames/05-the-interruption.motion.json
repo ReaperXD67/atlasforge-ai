@@ -1,0 +1,41 @@
+{
+  "frame_id": "story-05-05-the-interruption",
+  "duration": 10.403999999999996,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-05-05-the-interruption-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-05-05-the-interruption-viewport"
+    }
+  ],
+  "reveal_times": [
+    8.339999999999996
+  ],
+  "events": [
+    {
+      "kind": "action",
+      "action": "reveal",
+      "at": 8.339999999999996,
+      "phrase": "opened the cupboard"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

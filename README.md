@@ -26,6 +26,7 @@ and can optionally publish an original 6–8 minute YouTube video.
 | **AI Generation** | Isolated cinematic-insert candidates: a real photographic plate when possible, 1–3 seeds, and technical/vision admission checks before editorial use | [Cinematic inserts and admission](docs/VIRAL_SHORTS.md#strict-admission-policy) |
 | **Shorts batches** | Resumable groups of 20–30 second HyperFrames episodes with an approved voice, aligned captions, thumbnails, upload text, and delivery checks | [Shorts batch workflow](docs/SHORTS_BATCH.md) |
 | **Mixed production batches** | Flexible Shorts/full-video counts, optional fictional-story checks, segment-ID chapters, cached narration, measured reveal timing, voice-aware music, and source-checked resume | [Production batches](docs/PRODUCTION_BATCH.md) · [Repair Lab example](docs/BIZNEX_REPAIR_LAB.md) |
+| **Illustrated story batches** | Original recurring characters, six room/prop/message worlds, literal speech-anchored choices, fictional-story disclosures, thumbnails and upload copy | [The Unsent Message workflow](docs/STORY_BATCH.md) |
 
 The default editorial profiles cover education-first Atomy content for people researching online
 business, side hustles, wellness, Korean skincare, and productivity. Atomy is one possible case
@@ -201,7 +202,7 @@ preventing a finished MP4 from being delivered without its custom thumbnail, upl
 voice, or correct encoding.
 
 The standalone gate defaults to 20–30 seconds. Mixed production manifests can explicitly set other
-bounds; the current story batch targets 30–35-second Shorts. Narration must actually fit the declared
+bounds; the current story batch allows 20–35-second Shorts. Narration must actually fit the declared
 window—preparation rejects out-of-range audio rather than padding or speeding it up.
 
 ### Long-form YouTube delivery gate
@@ -319,6 +320,7 @@ The former `dailyvideo` command remains available as a backward-compatible alias
 - [AI Viral Lab](docs/VIRAL_SHORTS.md)
 - [Shorts batches](docs/SHORTS_BATCH.md)
 - [Mixed production batches](docs/PRODUCTION_BATCH.md)
+- [Story-first illustrated batches and rebuild commands](docs/STORY_BATCH.md)
 - [YouTube and claims policy](POLICY.md)
 - [Contributing](CONTRIBUTING.md)
 

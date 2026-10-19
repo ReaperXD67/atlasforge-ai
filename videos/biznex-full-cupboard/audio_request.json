@@ -1,0 +1,31 @@
+{
+  "provider": "kokoro",
+  "voice": "af_heart",
+  "speed": 1.0,
+  "lang": "en-us",
+  "lines": [
+    {
+      "id": "01-door",
+      "text": "The cupboard door swung open. Mira stopped with a full shopping cart on her phone."
+    },
+    {
+      "id": "02-list",
+      "text": "Mira and Asha are fictional. Mira had added toiletries to her Atomy shopping list."
+    },
+    {
+      "id": "03-shelf",
+      "text": "On the shelf sat unused supplies. She had forgotten them. Buying more had been her idea."
+    },
+    {
+      "id": "04-count",
+      "text": "She counted the bottles, crossed out the extras, and closed the cart without ordering."
+    },
+    {
+      "id": "05-note",
+      "text": "Then she put one note on the fridge: Use what we have first. The cupboard finally won."
+    }
+  ],
+  "bgm": {
+    "mode": "project-owned"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "frame_id": "story-16-16-eight-words-sent",
+  "duration": 13.347999999999985,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-16-16-eight-words-sent-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-16-16-eight-words-sent-viewport"
+    }
+  ],
+  "reveal_times": [
+    1.1599999999999966,
+    10.639999999999986,
+    10.639999999999986
+  ],
+  "events": [
+    {
+      "kind": "message",
+      "at": 1.1599999999999966,
+      "phrase": "I’m here."
+    },
+    {
+      "kind": "message",
+      "at": 10.639999999999986,
+      "phrase": "Mira pressed send"
+    },
+    {
+      "kind": "action",
+      "action": "send",
+      "at": 10.639999999999986,
+      "phrase": "Mira pressed send"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

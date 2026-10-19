@@ -182,6 +182,11 @@ def test_batch_renders_masters_and_resumes_verified_unchanged_deliveries(
         ("index.html", b"<main>Changed narration timing</main>"),
         ("hyperframes.json", b'{"width":1080,"height":1920,"duration":26}'),
         ("assets/voice.wav", b"changed narration audio"),
+        ("BRIEF.md", b"Changed creative contract"),
+        ("frame.md", b"Changed visual design"),
+        ("SCRIPT.md", b"Changed approved narration script"),
+        ("THUMBNAIL_COPY.txt", b"Changed thumbnail promise"),
+        ("audio_request.json", b'{"provider":"kokoro","voice":"af_heart","speed":1.01}'),
         (
             "UPLOAD_PACKAGE.md",
             b"## Title\nChanged title\n\n## Description\nUpdated.\n#One #Two #Three",
@@ -241,6 +246,57 @@ def test_cache_and_render_outputs_do_not_change_source_fingerprint(
     assert after == before
     assert "assets/voice.wav" in {item["path"] for item in sources}
     assert ".env" not in {item["path"] for item in sources}
+
+
+def test_project_root_readme_delivery_updates_preserve_verified_resume(
+    batch: tuple[Path, Path, list[list[str]]],
+) -> None:
+    root, manifest_path, commands = batch
+    project = root / "videos" / "pv-is-not-money"
+    (project / "README.md").write_text("How to rebuild this project", encoding="utf-8")
+    first = run_shorts_batch(manifest_path, repository_root=root)
+    commands.clear()
+    (project / "README.md").write_text("Verified final delivery, 27 seconds", encoding="utf-8")
+    second = run_shorts_batch(manifest_path, repository_root=root)
+    assert second["status"] == "verified"
+    assert all(episode["resumed"] for episode in second["episodes"])
+    assert commands == []
+    assert first["episodes"][0]["source_fingerprint"] == second["episodes"][0]["source_fingerprint"]
+    manifest = load_shorts_batch_manifest(manifest_path, repository_root=root)
+    _, sources = source_fingerprint(manifest.episodes[0], manifest)
+    assert "README.md" not in {item["path"] for item in sources}
+
+
+def test_nested_readme_is_still_a_render_source_input(
+    batch: tuple[Path, Path, list[list[str]]],
+) -> None:
+    root, manifest_path, commands = batch
+    nested = root / "videos" / "pv-is-not-money" / "compositions" / "README.md"
+    nested.parent.mkdir(parents=True)
+    nested.write_text("Composition notes", encoding="utf-8")
+    run_shorts_batch(manifest_path, repository_root=root)
+    commands.clear()
+    nested.write_text("Changed composition notes", encoding="utf-8")
+    second = run_shorts_batch(manifest_path, repository_root=root)
+    assert second["status"] == "verified"
+    assert not second["episodes"][0]["resumed"] and second["episodes"][1]["resumed"]
+    assert len(commands) == 2
+
+
+def test_readme_named_explicit_delivery_metadata_is_not_excluded(
+    batch: tuple[Path, Path, list[list[str]]],
+) -> None:
+    root, manifest_path, _ = batch
+    payload = json.loads(manifest_path.read_text(encoding="utf-8"))
+    payload["episodes"][0]["upload_package"] = "README.md"
+    _change_manifest(manifest_path, episodes=payload["episodes"])
+    project = root / "videos" / "pv-is-not-money"
+    (project / "README.md").write_bytes((project / "UPLOAD_PACKAGE.md").read_bytes())
+    manifest = load_shorts_batch_manifest(manifest_path, repository_root=root)
+    before, sources = source_fingerprint(manifest.episodes[0], manifest)
+    assert "README.md" in {item["path"] for item in sources}
+    (project / "README.md").write_text("Updated explicit upload copy", encoding="utf-8")
+    assert source_fingerprint(manifest.episodes[0], manifest)[0] != before
 
 
 def test_stale_raw_output_cannot_be_counted_as_success(

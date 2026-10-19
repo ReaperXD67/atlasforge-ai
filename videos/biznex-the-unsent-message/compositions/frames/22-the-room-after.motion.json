@@ -1,0 +1,41 @@
+{
+  "frame_id": "story-22-22-the-room-after",
+  "duration": 15.09699999999998,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-22-22-the-room-after-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-22-22-the-room-after-viewport"
+    }
+  ],
+  "reveal_times": [
+    13.120000000000005
+  ],
+  "events": [
+    {
+      "kind": "action",
+      "action": "close",
+      "at": 13.120000000000005,
+      "phrase": "nothing else she needed to send"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

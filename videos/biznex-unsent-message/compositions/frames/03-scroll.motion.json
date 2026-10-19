@@ -1,0 +1,53 @@
+{
+  "frame_id": "story-03-03-scroll",
+  "duration": 4.474,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-03-03-scroll-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-03-03-scroll-viewport"
+    }
+  ],
+  "reveal_times": [
+    0,
+    1.4800000000000004,
+    2.379999999999999
+  ],
+  "events": [
+    {
+      "kind": "action",
+      "action": "reveal",
+      "at": 0,
+      "phrase": "Above it"
+    },
+    {
+      "kind": "message",
+      "at": 1.4800000000000004,
+      "phrase": "Can we talk?"
+    },
+    {
+      "kind": "message",
+      "at": 2.379999999999999,
+      "phrase": "Rough day."
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

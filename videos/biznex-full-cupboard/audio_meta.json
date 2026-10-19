@@ -1,0 +1,744 @@
+{
+  "voice_lock": {
+    "provider": "kokoro",
+    "voice": "af_heart",
+    "speed": 1.0
+  },
+  "timing_source": "faster-whisper-small.en measured ASR word alignment (estimated, not native timestamps)",
+  "cues": [
+    {
+      "id": "01-door",
+      "title": "The other full thing",
+      "kind": "story",
+      "text": "The cupboard door swung open. Mira stopped with a full shopping cart on her phone.",
+      "display": [
+        "A full cart",
+        "A closed cupboard"
+      ],
+      "beat_phrases": [
+        "cupboard door swung open",
+        "a full shopping cart"
+      ],
+      "narrative_role": "setup",
+      "visual": {
+        "type": "cupboard",
+        "expression": "concerned",
+        "screen_title": "Shopping list",
+        "messages": [],
+        "action": "reveal",
+        "action_phrase": "cupboard door swung open",
+        "note": "The original generic cupboard and its supplies are already present behind the door.",
+        "headline": "Something she forgot",
+        "items": [
+          {
+            "label": "Bottles",
+            "quantity": 3
+          },
+          {
+            "label": "Tubes",
+            "quantity": 4
+          }
+        ],
+        "camera": "wide"
+      },
+      "start": 0.0,
+      "end": 4.672,
+      "beats": [
+        0.14,
+        2.88
+      ]
+    },
+    {
+      "id": "02-list",
+      "title": "Mira's shopping list",
+      "kind": "story",
+      "text": "Mira and Asha are fictional. Mira had added toiletries to her Atomy shopping list.",
+      "display": [
+        "Atomy shopping list",
+        "Toiletries"
+      ],
+      "beat_phrases": [
+        "Mira and Asha are fictional.",
+        "added toiletries",
+        "Atomy shopping list"
+      ],
+      "narrative_role": "brand_connection",
+      "visual": {
+        "type": "phone",
+        "expression": "thinking",
+        "screen_title": "Mira's shopping list",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Atomy shopping list: toiletries",
+            "at_phrase": "Atomy shopping list"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "added toiletries",
+        "note": "A personal list, not a copied store interface or actual SKU offer.",
+        "headline": "The list on her phone",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 4.772,
+      "end": 10.127,
+      "beats": [
+        0.0,
+        2.82,
+        4.1
+      ]
+    },
+    {
+      "id": "03-shelf",
+      "title": "The shelf answers",
+      "kind": "story",
+      "text": "On the shelf sat unused supplies. She had forgotten them. Buying more had been her idea.",
+      "display": [
+        "Already here",
+        "Her idea to buy more"
+      ],
+      "beat_phrases": [
+        "unused supplies",
+        "She had forgotten them.",
+        "her idea"
+      ],
+      "narrative_role": "turn",
+      "visual": {
+        "type": "cupboard",
+        "expression": "concerned",
+        "screen_title": "Already at home",
+        "messages": [],
+        "action": "reveal",
+        "action_phrase": "unused supplies",
+        "note": "Match the same three generic bottles and four tubes from the opening.",
+        "headline": "Already at home",
+        "items": [
+          {
+            "label": "Bottles",
+            "quantity": 3
+          },
+          {
+            "label": "Tubes",
+            "quantity": 4
+          }
+        ],
+        "camera": "close"
+      },
+      "start": 10.227,
+      "end": 15.56,
+      "beats": [
+        0.82,
+        2.46,
+        4.56
+      ]
+    },
+    {
+      "id": "04-count",
+      "title": "No order placed",
+      "kind": "story",
+      "text": "She counted the bottles, crossed out the extras, and closed the cart without ordering.",
+      "display": [
+        "Counted",
+        "Crossed out",
+        "No order placed"
+      ],
+      "beat_phrases": [
+        "counted the bottles",
+        "crossed out the extras",
+        "closed the cart without ordering"
+      ],
+      "narrative_role": "choice",
+      "visual": {
+        "type": "paper",
+        "expression": "relieved",
+        "screen_title": "Shopping list",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Extra toiletries",
+            "at_phrase": "counted the bottles"
+          }
+        ],
+        "action": "delete",
+        "action_phrase": "crossed out the extras",
+        "note": "A physical line crosses the unnecessary addition. The cart remains unpurchased.",
+        "headline": "No order placed",
+        "items": [
+          {
+            "label": "Bottles at home",
+            "quantity": 3
+          }
+        ],
+        "camera": "over-shoulder"
+      },
+      "start": 15.66,
+      "end": 20.332,
+      "beats": [
+        0.18,
+        1.42,
+        3.02
+      ]
+    },
+    {
+      "id": "05-note",
+      "title": "The cupboard wins",
+      "kind": "story",
+      "text": "Then she put one note on the fridge: Use what we have first. The cupboard finally won.",
+      "display": [
+        "Use what we have first."
+      ],
+      "beat_phrases": [
+        "one note on the fridge",
+        "Use what we have first.",
+        "The cupboard finally won."
+      ],
+      "narrative_role": "payoff",
+      "visual": {
+        "type": "room",
+        "expression": "relieved",
+        "screen_title": "Shopping list closed",
+        "messages": [],
+        "action": "close",
+        "action_phrase": "The cupboard finally won.",
+        "note": "Use what we have first.",
+        "headline": "The cupboard finally won",
+        "items": [
+          {
+            "label": "Bottles",
+            "quantity": 3
+          },
+          {
+            "label": "Tubes",
+            "quantity": 4
+          }
+        ],
+        "camera": "wide"
+      },
+      "start": 20.432,
+      "end": 25.168,
+      "beats": [
+        0.46,
+        1.98,
+        3.4
+      ]
+    }
+  ],
+  "total_duration_s": 25.588,
+  "voices": [
+    {
+      "frame": 1,
+      "path": "assets/voice/01.wav",
+      "duration_s": 25.588,
+      "words": [
+        {
+          "text": "The",
+          "start": 0.0,
+          "end": 0.14,
+          "id": "w0"
+        },
+        {
+          "text": "cupboard",
+          "start": 0.14,
+          "end": 0.44,
+          "id": "w1"
+        },
+        {
+          "text": "door",
+          "start": 0.44,
+          "end": 0.66,
+          "id": "w2"
+        },
+        {
+          "text": "swung",
+          "start": 0.66,
+          "end": 1.04,
+          "id": "w3"
+        },
+        {
+          "text": "open.",
+          "start": 1.04,
+          "end": 1.46,
+          "id": "w4"
+        },
+        {
+          "text": "Mira",
+          "start": 2.14,
+          "end": 2.3,
+          "id": "w5"
+        },
+        {
+          "text": "stopped",
+          "start": 2.3,
+          "end": 2.62,
+          "id": "w6"
+        },
+        {
+          "text": "with",
+          "start": 2.62,
+          "end": 2.88,
+          "id": "w7"
+        },
+        {
+          "text": "a",
+          "start": 2.88,
+          "end": 3.0,
+          "id": "w8"
+        },
+        {
+          "text": "full",
+          "start": 3.0,
+          "end": 3.26,
+          "id": "w9"
+        },
+        {
+          "text": "shopping",
+          "start": 3.26,
+          "end": 3.66,
+          "id": "w10"
+        },
+        {
+          "text": "cart",
+          "start": 3.66,
+          "end": 3.94,
+          "id": "w11"
+        },
+        {
+          "text": "on",
+          "start": 3.94,
+          "end": 4.08,
+          "id": "w12"
+        },
+        {
+          "text": "her",
+          "start": 4.08,
+          "end": 4.22,
+          "id": "w13"
+        },
+        {
+          "text": "phone.",
+          "start": 4.22,
+          "end": 4.48,
+          "id": "w14"
+        },
+        {
+          "text": "Mira",
+          "start": 4.772,
+          "end": 5.212,
+          "id": "w15"
+        },
+        {
+          "text": "and",
+          "start": 5.212,
+          "end": 5.352,
+          "id": "w16"
+        },
+        {
+          "text": "Asha",
+          "start": 5.352,
+          "end": 5.752,
+          "id": "w17"
+        },
+        {
+          "text": "are",
+          "start": 5.752,
+          "end": 6.092,
+          "id": "w18"
+        },
+        {
+          "text": "fictional.",
+          "start": 6.092,
+          "end": 6.472,
+          "id": "w19"
+        },
+        {
+          "text": "Mira",
+          "start": 7.292,
+          "end": 7.492,
+          "id": "w20"
+        },
+        {
+          "text": "had",
+          "start": 7.492,
+          "end": 7.592,
+          "id": "w21"
+        },
+        {
+          "text": "added",
+          "start": 7.592,
+          "end": 7.932,
+          "id": "w22"
+        },
+        {
+          "text": "toiletries",
+          "start": 7.932,
+          "end": 8.512,
+          "id": "w23"
+        },
+        {
+          "text": "to",
+          "start": 8.512,
+          "end": 8.732,
+          "id": "w24"
+        },
+        {
+          "text": "her",
+          "start": 8.732,
+          "end": 8.872,
+          "id": "w25"
+        },
+        {
+          "text": "Atomy",
+          "start": 8.872,
+          "end": 9.272,
+          "id": "w26"
+        },
+        {
+          "text": "shopping",
+          "start": 9.272,
+          "end": 9.592,
+          "id": "w27"
+        },
+        {
+          "text": "list.",
+          "start": 9.592,
+          "end": 9.932,
+          "id": "w28"
+        },
+        {
+          "text": "On",
+          "start": 10.227,
+          "end": 10.367,
+          "id": "w29"
+        },
+        {
+          "text": "the",
+          "start": 10.367,
+          "end": 10.507,
+          "id": "w30"
+        },
+        {
+          "text": "shelf",
+          "start": 10.507,
+          "end": 10.727,
+          "id": "w31"
+        },
+        {
+          "text": "sat",
+          "start": 10.727,
+          "end": 11.047,
+          "id": "w32"
+        },
+        {
+          "text": "unused",
+          "start": 11.047,
+          "end": 11.527,
+          "id": "w33"
+        },
+        {
+          "text": "supplies.",
+          "start": 11.527,
+          "end": 12.087,
+          "id": "w34"
+        },
+        {
+          "text": "She",
+          "start": 12.687,
+          "end": 12.787,
+          "id": "w35"
+        },
+        {
+          "text": "had",
+          "start": 12.787,
+          "end": 12.887,
+          "id": "w36"
+        },
+        {
+          "text": "forgotten",
+          "start": 12.887,
+          "end": 13.227,
+          "id": "w37"
+        },
+        {
+          "text": "them.",
+          "start": 13.227,
+          "end": 13.587,
+          "id": "w38"
+        },
+        {
+          "text": "Buying",
+          "start": 14.007,
+          "end": 14.247,
+          "id": "w39"
+        },
+        {
+          "text": "more",
+          "start": 14.247,
+          "end": 14.467,
+          "id": "w40"
+        },
+        {
+          "text": "had",
+          "start": 14.467,
+          "end": 14.627,
+          "id": "w41"
+        },
+        {
+          "text": "been",
+          "start": 14.627,
+          "end": 14.787,
+          "id": "w42"
+        },
+        {
+          "text": "her",
+          "start": 14.787,
+          "end": 14.947,
+          "id": "w43"
+        },
+        {
+          "text": "idea.",
+          "start": 14.947,
+          "end": 15.287,
+          "id": "w44"
+        },
+        {
+          "text": "She",
+          "start": 15.66,
+          "end": 15.84,
+          "id": "w45"
+        },
+        {
+          "text": "counted",
+          "start": 15.84,
+          "end": 16.14,
+          "id": "w46"
+        },
+        {
+          "text": "the",
+          "start": 16.14,
+          "end": 16.32,
+          "id": "w47"
+        },
+        {
+          "text": "bottles,",
+          "start": 16.32,
+          "end": 16.72,
+          "id": "w48"
+        },
+        {
+          "text": "crossed",
+          "start": 17.08,
+          "end": 17.3,
+          "id": "w49"
+        },
+        {
+          "text": "out",
+          "start": 17.3,
+          "end": 17.54,
+          "id": "w50"
+        },
+        {
+          "text": "the",
+          "start": 17.54,
+          "end": 17.66,
+          "id": "w51"
+        },
+        {
+          "text": "extras,",
+          "start": 17.66,
+          "end": 18.02,
+          "id": "w52"
+        },
+        {
+          "text": "and",
+          "start": 18.52,
+          "end": 18.68,
+          "id": "w53"
+        },
+        {
+          "text": "closed",
+          "start": 18.68,
+          "end": 18.94,
+          "id": "w54"
+        },
+        {
+          "text": "the",
+          "start": 18.94,
+          "end": 19.16,
+          "id": "w55"
+        },
+        {
+          "text": "cart",
+          "start": 19.16,
+          "end": 19.36,
+          "id": "w56"
+        },
+        {
+          "text": "without",
+          "start": 19.36,
+          "end": 19.68,
+          "id": "w57"
+        },
+        {
+          "text": "ordering.",
+          "start": 19.68,
+          "end": 20.04,
+          "id": "w58"
+        },
+        {
+          "text": "Then",
+          "start": 20.432,
+          "end": 20.592,
+          "id": "w59"
+        },
+        {
+          "text": "she",
+          "start": 20.592,
+          "end": 20.752,
+          "id": "w60"
+        },
+        {
+          "text": "put",
+          "start": 20.752,
+          "end": 20.892,
+          "id": "w61"
+        },
+        {
+          "text": "one",
+          "start": 20.892,
+          "end": 21.132,
+          "id": "w62"
+        },
+        {
+          "text": "note",
+          "start": 21.132,
+          "end": 21.372,
+          "id": "w63"
+        },
+        {
+          "text": "on",
+          "start": 21.372,
+          "end": 21.552,
+          "id": "w64"
+        },
+        {
+          "text": "the",
+          "start": 21.552,
+          "end": 21.672,
+          "id": "w65"
+        },
+        {
+          "text": "fridge.",
+          "start": 21.672,
+          "end": 22.032,
+          "id": "w66"
+        },
+        {
+          "text": "Use",
+          "start": 22.412,
+          "end": 22.532,
+          "id": "w67"
+        },
+        {
+          "text": "what",
+          "start": 22.532,
+          "end": 22.692,
+          "id": "w68"
+        },
+        {
+          "text": "we",
+          "start": 22.692,
+          "end": 22.792,
+          "id": "w69"
+        },
+        {
+          "text": "have",
+          "start": 22.792,
+          "end": 22.972,
+          "id": "w70"
+        },
+        {
+          "text": "first.",
+          "start": 22.972,
+          "end": 23.292,
+          "id": "w71"
+        },
+        {
+          "text": "The",
+          "start": 23.832,
+          "end": 23.932,
+          "id": "w72"
+        },
+        {
+          "text": "cupboard",
+          "start": 23.932,
+          "end": 24.212,
+          "id": "w73"
+        },
+        {
+          "text": "finally",
+          "start": 24.212,
+          "end": 24.592,
+          "id": "w74"
+        },
+        {
+          "text": "won.",
+          "start": 24.592,
+          "end": 24.952,
+          "id": "w75"
+        }
+      ]
+    }
+  ],
+  "bgm_pending": false,
+  "bgm": {
+    "path": "assets/bgm/bed.m4a",
+    "duration_s": 25.588,
+    "volume": 0.055
+  },
+  "sfx": [
+    {
+      "file": "assets/sfx/chime.wav",
+      "offset_s": 4.972,
+      "duration_s": 0.57,
+      "volume": 0.09
+    }
+  ],
+  "series": {
+    "name": "The Unsent Message",
+    "angle": "Original fictional mini-dramas about ordinary friendship, shopping and the choice not to turn every conversation into an opportunity.",
+    "direction": "Warm illustrated rooms, authored phone conversations and meaningful prop actions. Story before instruction; Atomy is transparent context, never a hidden advertisement or the source of fictional pressure. Resolve the relationship without a later sale.",
+    "design_spec": "docs/UNSENT_STORIES_DESIGN.md"
+  },
+  "story": {
+    "fictional": true,
+    "protagonist": "Mira",
+    "disclosure": "Mira and Asha are fictional.",
+    "setup_segment": "01-door",
+    "turn_segment": "03-shelf",
+    "brand_connection_segment": "02-list",
+    "payoff_segment": "05-note",
+    "measured_markers": {
+      "setup_segment": {
+        "segment_id": "01-door",
+        "text": "The cupboard door swung open. Mira stopped with a full shopping cart on her phone.",
+        "at_seconds": 0.0
+      },
+      "turn_segment": {
+        "segment_id": "03-shelf",
+        "text": "On the shelf sat unused supplies. She had forgotten them. Buying more had been her idea.",
+        "at_seconds": 10.227
+      },
+      "brand_connection_segment": {
+        "segment_id": "02-list",
+        "text": "Mira and Asha are fictional. Mira had added toiletries to her Atomy shopping list.",
+        "at_seconds": 4.772
+      },
+      "payoff_segment": {
+        "segment_id": "05-note",
+        "text": "Then she put one note on the fridge: Use what we have first. The cupboard finally won.",
+        "at_seconds": 20.432
+      }
+    }
+  }
+}

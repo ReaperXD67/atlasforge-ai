@@ -1,0 +1,53 @@
+{
+  "frame_id": "story-15-15-the-deletion",
+  "duration": 15.24600000000001,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-15-15-the-deletion-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-15-15-the-deletion-viewport"
+    }
+  ],
+  "reveal_times": [
+    0.18000000000000682,
+    1.8600000000000136,
+    4.5
+  ],
+  "events": [
+    {
+      "kind": "message",
+      "at": 0.18000000000000682,
+      "phrase": "selected the recommendation"
+    },
+    {
+      "kind": "message",
+      "at": 1.8600000000000136,
+      "phrase": "then the explanation"
+    },
+    {
+      "kind": "action",
+      "action": "delete",
+      "at": 4.5,
+      "phrase": "Delete."
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

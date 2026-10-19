@@ -1,0 +1,41 @@
+{
+  "frame_id": "story-01-01-door",
+  "duration": 4.772,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-01-01-door-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-01-01-door-viewport"
+    }
+  ],
+  "reveal_times": [
+    0.14
+  ],
+  "events": [
+    {
+      "kind": "action",
+      "action": "reveal",
+      "at": 0.14,
+      "phrase": "cupboard door swung open"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

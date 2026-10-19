@@ -1,0 +1,443 @@
+{
+  "id": "unsent-message",
+  "project": "videos/biznex-unsent-message",
+  "format": "shorts",
+  "delivery_bounds": {
+    "min_seconds": 20,
+    "max_seconds": 35
+  },
+  "title": "She Almost Sent the Wrong Message",
+  "audience_problem": "A recommendation can distract someone from a friend's actual request for connection.",
+  "packaging_promise": "Reveal the unanswered message above Mira's draft, show her delete the pitch and send a human response, then end with a call rather than a purchase.",
+  "thumbnail_headline": "DON'T HIT SEND",
+  "thumbnail_visual": {
+    "type": "phone",
+    "headline": "DON'T HIT SEND"
+  },
+  "description": "A long recommendation. One missed message. Mira almost presses send before noticing what her friend actually asked.\n\nAn original fictional BizNex story: Mira and Asha are fictional. Atomy is a contextual shopping example, not a promise of product results or income. Independent and not endorsed by Atomy; no real customer conversation or result is depicted.\n\nCreator posting check: review applicable local member/media permissions and disclose any material connection before publication.",
+  "hashtags": [
+    "#AnimatedStory",
+    "#Friendship",
+    "#TheUnsentMessage",
+    "#BizNex",
+    "#Shorts"
+  ],
+  "sources": [
+    {
+      "claim": "Strategy metadata only: YouTube recommends framing niche topics around universal problems and fulfilling packaging expectations in the opening. This does not verify the fictional story or guarantee reach.",
+      "url": "https://support.google.com/youtube/answer/16559650?hl=en",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "claim": "U.S.-specific ethics and posting-review context only: the member agreement addresses consent, purchasing pressure and public advertising/IP approval. It is not a global rule summary or legal advice; no company approval is claimed.",
+      "url": "https://us.atomy.com/common/footerTermsInfo?isHtml=Y&tabIndex=1",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "story": {
+    "fictional": true,
+    "protagonist": "Mira",
+    "disclosure": "Mira and Asha are fictional.",
+    "setup_segment": "01-hover",
+    "turn_segment": "03-scroll",
+    "brand_connection_segment": "02-draft",
+    "payoff_segment": "05-call"
+  },
+  "segments": [
+    {
+      "id": "01-hover",
+      "title": "The hidden message",
+      "kind": "story",
+      "text": "Mira's thumb hovered over send. Then she noticed the message hidden above her draft.",
+      "display": [
+        "SEND",
+        "One unread message"
+      ],
+      "beat_phrases": [
+        "thumb hovered over send",
+        "hidden above her draft"
+      ],
+      "narrative_role": "setup",
+      "visual": {
+        "type": "phone",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Could I show you some products?",
+            "at_phrase": "thumb hovered over send"
+          }
+        ],
+        "action": "wait",
+        "action_phrase": "Then she noticed",
+        "note": "An older message is obscured above the draft, not falsely shown as read.",
+        "headline": "DON'T HIT SEND",
+        "items": [],
+        "camera": "close"
+      }
+    },
+    {
+      "id": "02-draft",
+      "title": "A recommendation, not an answer",
+      "kind": "story",
+      "text": "Mira and Asha are fictional. She had written an Atomy recommendation for her oldest friend.",
+      "display": [
+        "An Atomy recommendation",
+        "Oldest friend"
+      ],
+      "beat_phrases": [
+        "Mira and Asha are fictional.",
+        "an Atomy recommendation",
+        "her oldest friend"
+      ],
+      "narrative_role": "brand_connection",
+      "visual": {
+        "type": "paper",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "An Atomy recommendation",
+            "at_phrase": "an Atomy recommendation"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "She had written",
+        "note": "Original fictional story",
+        "headline": "One carefully written draft",
+        "items": [],
+        "camera": "over-shoulder"
+      }
+    },
+    {
+      "id": "03-scroll",
+      "title": "What Asha actually asked",
+      "kind": "story",
+      "text": "Above it, Asha had asked: Can we talk? Rough day. Mira had never answered.",
+      "display": [
+        "Can we talk?",
+        "Rough day."
+      ],
+      "beat_phrases": [
+        "Can we talk?",
+        "Rough day.",
+        "Mira had never answered."
+      ],
+      "narrative_role": "turn",
+      "visual": {
+        "type": "phone",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Can we talk?",
+            "at_phrase": "Can we talk?"
+          },
+          {
+            "sender": "Asha",
+            "text": "Rough day.",
+            "at_phrase": "Rough day."
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "Above it",
+        "note": "The older request is finally unobscured.",
+        "headline": "The unanswered message",
+        "items": [],
+        "camera": "close"
+      }
+    },
+    {
+      "id": "04-choice",
+      "title": "Eight words instead",
+      "kind": "story",
+      "text": "She deleted the pitch. I’m here. Do you still want to talk? This time, she sent it.",
+      "display": [
+        "I’m here.",
+        "Do you still want to talk?"
+      ],
+      "beat_phrases": [
+        "She deleted the pitch.",
+        "I’m here.",
+        "she sent it"
+      ],
+      "narrative_role": "choice",
+      "visual": {
+        "type": "phone",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "I’m here. Do you still want to talk?",
+            "at_phrase": "I’m here."
+          },
+          {
+            "sender": "Mira",
+            "text": "I’m here. Do you still want to talk?",
+            "at_phrase": "she sent it"
+          }
+        ],
+        "action": "delete",
+        "action_phrase": "She deleted the pitch.",
+        "note": "The product draft disappears before the replacement is sent.",
+        "headline": "A different message",
+        "items": [],
+        "camera": "close"
+      }
+    },
+    {
+      "id": "05-call",
+      "title": "Nothing to buy",
+      "kind": "story",
+      "text": "Asha replied: Yes, please. Mira put away the shopping list and pressed call.",
+      "display": [
+        "Yes, please.",
+        "CALL"
+      ],
+      "beat_phrases": [
+        "Yes, please.",
+        "put away the shopping list",
+        "pressed call"
+      ],
+      "narrative_role": "payoff",
+      "visual": {
+        "type": "split",
+        "expression": "relieved",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Yes, please.",
+            "at_phrase": "Yes, please."
+          }
+        ],
+        "action": "send",
+        "action_phrase": "pressed call",
+        "note": "A call connects the two rooms. No order, referral or later sale.",
+        "headline": "A friend, not an audience",
+        "items": [],
+        "camera": "wide"
+      }
+    }
+  ],
+  "duration_s": 25.033,
+  "cues": [
+    {
+      "id": "01-hover",
+      "title": "The hidden message",
+      "kind": "story",
+      "text": "Mira's thumb hovered over send. Then she noticed the message hidden above her draft.",
+      "display": [
+        "SEND",
+        "One unread message"
+      ],
+      "beat_phrases": [
+        "thumb hovered over send",
+        "hidden above her draft"
+      ],
+      "narrative_role": "setup",
+      "visual": {
+        "type": "phone",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Could I show you some products?",
+            "at_phrase": "thumb hovered over send"
+          }
+        ],
+        "action": "wait",
+        "action_phrase": "Then she noticed",
+        "note": "An older message is obscured above the draft, not falsely shown as read.",
+        "headline": "DON'T HIT SEND",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 0.0,
+      "end": 4.971,
+      "beats": [
+        0.58,
+        3.62
+      ]
+    },
+    {
+      "id": "02-draft",
+      "title": "A recommendation, not an answer",
+      "kind": "story",
+      "text": "Mira and Asha are fictional. She had written an Atomy recommendation for her oldest friend.",
+      "display": [
+        "An Atomy recommendation",
+        "Oldest friend"
+      ],
+      "beat_phrases": [
+        "Mira and Asha are fictional.",
+        "an Atomy recommendation",
+        "her oldest friend"
+      ],
+      "narrative_role": "brand_connection",
+      "visual": {
+        "type": "paper",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "An Atomy recommendation",
+            "at_phrase": "an Atomy recommendation"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "She had written",
+        "note": "Original fictional story",
+        "headline": "One carefully written draft",
+        "items": [],
+        "camera": "over-shoulder"
+      },
+      "start": 5.071,
+      "end": 10.489,
+      "beats": [
+        0.0,
+        2.82,
+        4.3
+      ]
+    },
+    {
+      "id": "03-scroll",
+      "title": "What Asha actually asked",
+      "kind": "story",
+      "text": "Above it, Asha had asked: Can we talk? Rough day. Mira had never answered.",
+      "display": [
+        "Can we talk?",
+        "Rough day."
+      ],
+      "beat_phrases": [
+        "Can we talk?",
+        "Rough day.",
+        "Mira had never answered."
+      ],
+      "narrative_role": "turn",
+      "visual": {
+        "type": "phone",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Can we talk?",
+            "at_phrase": "Can we talk?"
+          },
+          {
+            "sender": "Asha",
+            "text": "Rough day.",
+            "at_phrase": "Rough day."
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "Above it",
+        "note": "The older request is finally unobscured.",
+        "headline": "The unanswered message",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 10.589,
+      "end": 14.963,
+      "beats": [
+        1.48,
+        2.38,
+        3.18
+      ]
+    },
+    {
+      "id": "04-choice",
+      "title": "Eight words instead",
+      "kind": "story",
+      "text": "She deleted the pitch. I’m here. Do you still want to talk? This time, she sent it.",
+      "display": [
+        "I’m here.",
+        "Do you still want to talk?"
+      ],
+      "beat_phrases": [
+        "She deleted the pitch.",
+        "I’m here.",
+        "she sent it"
+      ],
+      "narrative_role": "choice",
+      "visual": {
+        "type": "phone",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "I’m here. Do you still want to talk?",
+            "at_phrase": "I’m here."
+          },
+          {
+            "sender": "Mira",
+            "text": "I’m here. Do you still want to talk?",
+            "at_phrase": "she sent it"
+          }
+        ],
+        "action": "delete",
+        "action_phrase": "She deleted the pitch.",
+        "note": "The product draft disappears before the replacement is sent.",
+        "headline": "A different message",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 15.063,
+      "end": 19.82,
+      "beats": [
+        0.0,
+        1.52,
+        4.02
+      ]
+    },
+    {
+      "id": "05-call",
+      "title": "Nothing to buy",
+      "kind": "story",
+      "text": "Asha replied: Yes, please. Mira put away the shopping list and pressed call.",
+      "display": [
+        "Yes, please.",
+        "CALL"
+      ],
+      "beat_phrases": [
+        "Yes, please.",
+        "put away the shopping list",
+        "pressed call"
+      ],
+      "narrative_role": "payoff",
+      "visual": {
+        "type": "split",
+        "expression": "relieved",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Yes, please.",
+            "at_phrase": "Yes, please."
+          }
+        ],
+        "action": "send",
+        "action_phrase": "pressed call",
+        "note": "A call connects the two rooms. No order, referral or later sale.",
+        "headline": "A friend, not an audience",
+        "items": [],
+        "camera": "wide"
+      },
+      "start": 19.92,
+      "end": 24.613,
+      "beats": [
+        1.16,
+        2.7,
+        3.96
+      ]
+    }
+  ]
+}

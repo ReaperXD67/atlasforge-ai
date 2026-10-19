@@ -203,6 +203,43 @@ def test_phrase_time_respects_word_boundaries_instead_of_matching_inside_a_word(
         preparation.module.phrase_time(words[:1], "offer")
 
 
+@pytest.mark.parametrize("phrase,expected", [
+    ("Yes, please.", 1.16), ("please", 2.58), ("Mira", 2.58),
+    ("please. Mira", 2.58), ("Mira listens", 2.58),
+])
+def test_phrase_anchors_may_begin_or_end_inside_a_measured_multiword_bundle(
+    preparation: SimpleNamespace, phrase: str, expected: float,
+) -> None:
+    words = [{"text": "Yes,", "start": 1.16, "end": 1.4},
+             {"text": "please. Mira", "start": 2.58, "end": 2.7},
+             {"text": "listens.", "start": 3.1, "end": 3.7}]
+    before = json.loads(json.dumps(words))
+    assert preparation.module.phrase_time(words, phrase) == expected
+    assert words == before, "lexical matching must not split/rewrite measured intervals"
+
+
+@pytest.mark.parametrize("phrase,expected", [
+    ("don't send", .8), ("DON’T SEND", .8), ("send", .8),
+    ("cafe's menu", 2.3), ("mobile-friendly", 3.4),
+])
+def test_measured_bundle_lexical_matching_handles_punctuation_and_contractions(
+    preparation: SimpleNamespace, phrase: str, expected: float,
+) -> None:
+    words = [{"text": "Mira: don't send!", "start": .8, "end": 1.8},
+             {"text": "Café’s menu", "start": 2.3, "end": 3.1},
+             {"text": "mobile-friendly.", "start": 3.4, "end": 4.1}]
+    assert preparation.module.phrase_time(words, phrase) == expected
+
+
+@pytest.mark.parametrize("phrase", ["order", "do", "ira", "pleas", "late"])
+def test_lexical_boundaries_inside_bundles_never_admit_partial_words(
+    preparation: SimpleNamespace, phrase: str,
+) -> None:
+    words = [{"text": "border. don't Mira please lately", "start": .7, "end": 2.1}]
+    with pytest.raises(ValueError, match="locate spoken beat"):
+        preparation.module.phrase_time(words, phrase)
+
+
 @pytest.mark.parametrize(
     "words,source,message",
     [

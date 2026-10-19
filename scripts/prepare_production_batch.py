@@ -46,23 +46,34 @@ def canonical(text: str) -> str:
 
 
 def phrase_time(words: list[dict[str, Any]], phrase: str) -> float:
-    joined = "".join(canonical(word["text"]) for word in words)
+    # ASR sometimes bundles a zero-duration word with its next measured word.
+    # Lexical matching may begin/end inside that bundle, but its only honest
+    # timestamp remains the containing bundle's measured start. Apostrophes stay
+    # inside a lexical word so "do" never matches the start of "don't".
+    pieces: list[str] = []
+    starts: dict[int, float] = {}
+    boundaries, cursor = {0}, 0
+    for word in words:
+        text = unicodedata.normalize("NFKD", word["text"].casefold())
+        text = text.replace("\u2019", "'").encode("ascii", "ignore").decode()
+        for token in re.findall(r"[a-z0-9]+(?:'[a-z0-9]+)*", text):
+            value = canonical(token)
+            if not value:
+                continue
+            starts[cursor] = float(word["start"])
+            pieces.append(value)
+            cursor += len(value)
+            boundaries.add(cursor)
+    joined = "".join(pieces)
     needle = canonical(phrase)
     if not needle:
         raise ValueError("Spoken beat cannot be empty")
-    boundaries, cursor = {0}, 0
-    for word in words:
-        cursor += len(canonical(word["text"]))
-        boundaries.add(cursor)
     position = next((match.start() for match in re.finditer(re.escape(needle), joined)
                      if match.start() in boundaries and match.end() in boundaries), -1)
     if position < 0:
         raise ValueError(f"Caption alignment cannot locate spoken beat: {phrase}")
-    consumed = 0
-    for word in words:
-        consumed += len(canonical(word["text"]))
-        if consumed > position:
-            return float(word["start"])
+    if position in starts:
+        return starts[position]
     raise ValueError(f"No measured timestamp for {phrase}")
 
 

@@ -1,0 +1,47 @@
+{
+  "frame_id": "story-12-12-the-preview",
+  "duration": 15.182999999999993,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-12-12-the-preview-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-12-12-the-preview-viewport"
+    }
+  ],
+  "reveal_times": [
+    0.8000000000000114,
+    11.180000000000007
+  ],
+  "events": [
+    {
+      "kind": "message",
+      "at": 0.8000000000000114,
+      "phrase": "seeing the notification"
+    },
+    {
+      "kind": "action",
+      "action": "wait",
+      "at": 11.180000000000007,
+      "phrase": "left the send button"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

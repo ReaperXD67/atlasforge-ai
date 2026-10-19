@@ -1,0 +1,47 @@
+{
+  "frame_id": "story-10-10-back-to-the-phone",
+  "duration": 12.111000000000004,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-10-10-back-to-the-phone-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-10-10-back-to-the-phone-viewport"
+    }
+  ],
+  "reveal_times": [
+    3.6400000000000006,
+    10.36
+  ],
+  "events": [
+    {
+      "kind": "message",
+      "at": 3.6400000000000006,
+      "phrase": "polished and ready"
+    },
+    {
+      "kind": "action",
+      "action": "reveal",
+      "at": 10.36,
+      "phrase": "dragged the conversation down"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

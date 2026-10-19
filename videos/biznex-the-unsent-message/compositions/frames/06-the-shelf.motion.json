@@ -1,0 +1,41 @@
+{
+  "frame_id": "story-06-06-the-shelf",
+  "duration": 14.265000000000008,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-06-06-the-shelf-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-06-06-the-shelf-viewport"
+    }
+  ],
+  "reveal_times": [
+    1.4400000000000048
+  ],
+  "events": [
+    {
+      "kind": "action",
+      "action": "reveal",
+      "at": 1.4400000000000048,
+      "phrase": "swung wide"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

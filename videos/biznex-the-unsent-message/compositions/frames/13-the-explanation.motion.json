@@ -1,0 +1,53 @@
+{
+  "frame_id": "story-13-13-the-explanation",
+  "duration": 13.006,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-13-13-the-explanation-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-13-13-the-explanation-viewport"
+    }
+  ],
+  "reveal_times": [
+    1.7199999999999989,
+    6.5800000000000125,
+    8.680000000000007
+  ],
+  "events": [
+    {
+      "kind": "message",
+      "at": 1.7199999999999989,
+      "phrase": "Sorry, I was just trying to be helpful."
+    },
+    {
+      "kind": "message",
+      "at": 6.5800000000000125,
+      "phrase": "another about the shopping list"
+    },
+    {
+      "kind": "action",
+      "action": "reveal",
+      "at": 8.680000000000007,
+      "phrase": "The explanation grew"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

@@ -1,0 +1,47 @@
+{
+  "frame_id": "story-01-01-eight-words",
+  "duration": 11.599,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-01-01-eight-words-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-01-01-eight-words-viewport"
+    }
+  ],
+  "reveal_times": [
+    0,
+    1.8
+  ],
+  "events": [
+    {
+      "kind": "message",
+      "at": 0,
+      "phrase": "At eleven fifty-eight"
+    },
+    {
+      "kind": "action",
+      "action": "delete",
+      "at": 1.8,
+      "phrase": "deleted a message"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

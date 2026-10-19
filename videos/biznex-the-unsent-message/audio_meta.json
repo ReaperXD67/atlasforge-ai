@@ -1,0 +1,6334 @@
+{
+  "voice_lock": {
+    "provider": "kokoro",
+    "voice": "af_heart",
+    "speed": 1.0
+  },
+  "timing_source": "faster-whisper-small.en measured ASR word alignment (estimated, not native timestamps)",
+  "cues": [
+    {
+      "id": "01-eight-words",
+      "title": "Three hours, eight words",
+      "kind": "story",
+      "text": "At eleven fifty-eight, Mira deleted a message that took three hours to write. The replacement had eight words. Nothing was for sale. First, she had to notice what was right above her draft.",
+      "display": [
+        "11:58",
+        "Three hours of writing",
+        "Eight words instead"
+      ],
+      "beat_phrases": [
+        "deleted a message",
+        "eight words",
+        "right above her draft"
+      ],
+      "narrative_role": "setup",
+      "visual": {
+        "type": "phone",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Could I show you some products?",
+            "at_phrase": "At eleven fifty-eight"
+          }
+        ],
+        "action": "delete",
+        "action_phrase": "deleted a message",
+        "note": "Cold-open glimpse, then rewind; the final eight-word message is not shown early.",
+        "headline": "DON'T HIT SEND",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 0.0,
+      "end": 11.499,
+      "beats": [
+        1.8,
+        5.86,
+        10.24
+      ]
+    },
+    {
+      "id": "02-one-evening",
+      "title": "Earlier that evening",
+      "kind": "story",
+      "text": "Earlier that evening, the kitchen lamp lit the table. Mira and Asha are fictional. Mira was writing an Atomy recommendation to Asha. She wanted it to sound helpful, not like the messages she usually ignored.",
+      "display": [
+        "Earlier that evening",
+        "An Atomy recommendation"
+      ],
+      "beat_phrases": [
+        "the kitchen lamp",
+        "Mira and Asha are fictional.",
+        "an Atomy recommendation"
+      ],
+      "narrative_role": "brand_connection",
+      "visual": {
+        "type": "room",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "An Atomy recommendation",
+            "at_phrase": "an Atomy recommendation"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "the kitchen lamp",
+        "note": "Original fictional story",
+        "headline": "Earlier that evening",
+        "items": [],
+        "camera": "wide"
+      },
+      "start": 11.599,
+      "end": 24.399,
+      "beats": [
+        1.26,
+        3.42,
+        6.32
+      ]
+    },
+    {
+      "id": "03-old-friend",
+      "title": "Before the draft",
+      "kind": "story",
+      "text": "Their chat was full of ordinary things. A crooked birthday cake. A bus missed. A photograph of two mugs after a long afternoon. Mira scrolled through them, smiling. She knew which picture would make Asha laugh.",
+      "display": [
+        "The crooked cake",
+        "Two mugs",
+        "Years of ordinary things"
+      ],
+      "beat_phrases": [
+        "A crooked birthday cake.",
+        "two mugs",
+        "Mira scrolled through them"
+      ],
+      "narrative_role": "relationship",
+      "visual": {
+        "type": "phone",
+        "expression": "relieved",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "The cake is leaning again.",
+            "at_phrase": "A crooked birthday cake."
+          },
+          {
+            "sender": "Mira",
+            "text": "Still saving you the bigger slice.",
+            "at_phrase": "two mugs"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "Mira scrolled through them",
+        "note": "Original small drawings of a cake and two mugs; no actual private photos.",
+        "headline": "Before the draft",
+        "items": [
+          {
+            "label": "Mugs",
+            "quantity": 2
+          }
+        ],
+        "camera": "close"
+      },
+      "start": 24.499,
+      "end": 37.832,
+      "beats": [
+        2.6,
+        6.18,
+        8.96
+      ]
+    },
+    {
+      "id": "04-perfecting",
+      "title": "The growing draft",
+      "kind": "story",
+      "text": "She kept rewriting a recommendation. Hello sounded stiff. Hey sounded careless. She changed a comma, removed a greeting, put it back. Her tea cooled beside the phone. The message grew longer while its purpose became less clear.",
+      "display": [
+        "Hello...",
+        "Hey...",
+        "The tea goes cold"
+      ],
+      "beat_phrases": [
+        "Hello sounded stiff.",
+        "Hey sounded careless.",
+        "Her tea cooled"
+      ],
+      "narrative_role": "complication",
+      "visual": {
+        "type": "paper",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Hello...",
+            "at_phrase": "Hello sounded stiff."
+          },
+          {
+            "sender": "draft",
+            "text": "Hey...",
+            "at_phrase": "Hey sounded careless."
+          }
+        ],
+        "action": "delete",
+        "action_phrase": "removed a greeting",
+        "note": "Specific greeting slips are removed and replaced beside one cooling mug.",
+        "headline": "Almost ready. Again.",
+        "items": [
+          {
+            "label": "Cooling mug",
+            "quantity": 1
+          }
+        ],
+        "camera": "over-shoulder"
+      },
+      "start": 37.932,
+      "end": 52.119,
+      "beats": [
+        2.74,
+        4.3,
+        9.06
+      ]
+    },
+    {
+      "id": "05-the-interruption",
+      "title": "A small interruption",
+      "kind": "story",
+      "text": "Then a drop of tea reached her shopping list. Mira lifted the paper and saw toiletries circled. Before she could return to the draft, she opened the cupboard to check what was missing.",
+      "display": [
+        "Toiletries",
+        "Check the cupboard"
+      ],
+      "beat_phrases": [
+        "a drop of tea",
+        "toiletries circled",
+        "opened the cupboard"
+      ],
+      "narrative_role": "interruption",
+      "visual": {
+        "type": "room",
+        "expression": "thinking",
+        "screen_title": "Shopping list",
+        "messages": [],
+        "action": "reveal",
+        "action_phrase": "opened the cupboard",
+        "note": "A small tea mark interrupts a hand-written personal shopping list.",
+        "headline": "One quick check",
+        "items": [
+          {
+            "label": "Personal shopping list",
+            "quantity": 1
+          }
+        ],
+        "camera": "wide"
+      },
+      "start": 52.219,
+      "end": 62.523,
+      "beats": [
+        0.22,
+        4.76,
+        8.34
+      ]
+    },
+    {
+      "id": "06-the-shelf",
+      "title": "Nothing was missing",
+      "kind": "story",
+      "text": "The door caught a towel, then swung wide. Three bottles stood behind it. Four unopened tubes lined the next shelf. Mira reached past them, looking for the gap she expected. There was no gap. She moved the towel and counted again.",
+      "display": [
+        "Three bottles",
+        "Four tubes",
+        "No empty space"
+      ],
+      "beat_phrases": [
+        "Three bottles",
+        "Four unopened tubes",
+        "There was no gap."
+      ],
+      "narrative_role": "discovery",
+      "visual": {
+        "type": "cupboard",
+        "expression": "concerned",
+        "screen_title": "Already at home",
+        "messages": [],
+        "action": "reveal",
+        "action_phrase": "swung wide",
+        "note": "Generic fictional household supplies, not Atomy packaging or an offer's pack size.",
+        "headline": "Already at home",
+        "items": [
+          {
+            "label": "Bottles",
+            "quantity": 3
+          },
+          {
+            "label": "Tubes",
+            "quantity": 4
+          }
+        ],
+        "camera": "close"
+      },
+      "start": 62.623,
+      "end": 76.788,
+      "beats": [
+        2.74,
+        4.74,
+        11.06
+      ]
+    },
+    {
+      "id": "07-counting",
+      "title": "Counting what was there",
+      "kind": "story",
+      "text": "She set the bottles on the counter. One, two, three. The shopping list waited beside them, much less convincing. Mira turned a tube, then put it back unopened. She had remembered wanting something, not whether she needed it.",
+      "display": [
+        "One. Two. Three.",
+        "The same shopping list"
+      ],
+      "beat_phrases": [
+        "One, two, three.",
+        "put it back unopened",
+        "whether she needed it"
+      ],
+      "narrative_role": "recognition",
+      "visual": {
+        "type": "cupboard",
+        "expression": "thinking",
+        "screen_title": "Shopping list",
+        "messages": [],
+        "action": "sort",
+        "action_phrase": "set the bottles on the counter",
+        "note": "Move the same three bottles from their shelf to the counter; retain four tubes.",
+        "headline": "Count what is here",
+        "items": [
+          {
+            "label": "Bottles",
+            "quantity": 3
+          },
+          {
+            "label": "Tubes",
+            "quantity": 4
+          }
+        ],
+        "camera": "over-shoulder"
+      },
+      "start": 76.888,
+      "end": 90.051,
+      "beats": [
+        2.3,
+        8.78,
+        12.18
+      ]
+    },
+    {
+      "id": "08-her-own-idea",
+      "title": "An idea she could change",
+      "kind": "story",
+      "text": "Nobody had told her to fill the cupboard. Nobody was waiting for an order. Adding more had been her own idea, wanting to feel organised. She looked at the crowded shelf, then crossed out the extra line.",
+      "display": [
+        "Her own idea",
+        "One line crossed out"
+      ],
+      "beat_phrases": [
+        "Nobody was waiting for an order.",
+        "her own idea",
+        "crossed out the extra line"
+      ],
+      "narrative_role": "choice",
+      "visual": {
+        "type": "paper",
+        "expression": "relieved",
+        "screen_title": "Shopping list",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Extra toiletries",
+            "at_phrase": "her own idea"
+          }
+        ],
+        "action": "delete",
+        "action_phrase": "crossed out the extra line",
+        "note": "The personal addition is removed; no company instruction is invented.",
+        "headline": "A choice she could change",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 90.151,
+      "end": 101.777,
+      "beats": [
+        2.46,
+        5.3,
+        10.1
+      ]
+    },
+    {
+      "id": "09-the-note",
+      "title": "A smaller list",
+      "kind": "story",
+      "text": "On the paper, she wrote: Use what we have first. She fixed it to the fridge beneath a crooked magnet. The supplies went back where she could see them. The list was shorter. For once, that felt better.",
+      "display": [
+        "Use what we have first."
+      ],
+      "beat_phrases": [
+        "Use what we have first.",
+        "a crooked magnet",
+        "The list was shorter."
+      ],
+      "narrative_role": "small_resolution",
+      "visual": {
+        "type": "paper",
+        "expression": "relieved",
+        "screen_title": "The fridge note",
+        "messages": [],
+        "action": "reveal",
+        "action_phrase": "she wrote",
+        "note": "Use what we have first.",
+        "headline": "A smaller list",
+        "items": [
+          {
+            "label": "Crooked magnet",
+            "quantity": 1
+          }
+        ],
+        "camera": "close"
+      },
+      "start": 101.877,
+      "end": 113.397,
+      "beats": [
+        1.64,
+        4.6,
+        8.44
+      ]
+    },
+    {
+      "id": "10-back-to-the-phone",
+      "title": "The waiting draft",
+      "kind": "story",
+      "text": "Her phone was on the table. The long draft filled the screen, polished and ready. Mira sat down. She almost pressed send, then noticed another message above it. She dragged the conversation down.",
+      "display": [
+        "The draft is still there",
+        "One message above it"
+      ],
+      "beat_phrases": [
+        "polished and ready",
+        "almost pressed send",
+        "dragged the conversation down"
+      ],
+      "narrative_role": "escalation",
+      "visual": {
+        "type": "phone",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Could I show you some products?",
+            "at_phrase": "polished and ready"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "dragged the conversation down",
+        "note": "An older chat bubble moves into view above the existing draft.",
+        "headline": "Something above the draft",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 113.497,
+      "end": 125.508,
+      "beats": [
+        3.64,
+        6.8,
+        10.36
+      ]
+    },
+    {
+      "id": "11-above-the-draft",
+      "title": "What Asha asked",
+      "kind": "story",
+      "text": "Asha had written: Can we talk? Rough day. Mira read it once, then again. The timestamp was from earlier that evening, before all the rewriting. Her friend had not asked for a recommendation. She had asked whether Mira had time for her.",
+      "display": [
+        "Can we talk?",
+        "Rough day."
+      ],
+      "beat_phrases": [
+        "Can we talk?",
+        "Rough day.",
+        "had time for her"
+      ],
+      "narrative_role": "turn",
+      "visual": {
+        "type": "phone",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Can we talk?",
+            "at_phrase": "Can we talk?"
+          },
+          {
+            "sender": "Asha",
+            "text": "Rough day.",
+            "at_phrase": "Rough day."
+          }
+        ],
+        "action": "wait",
+        "action_phrase": "Mira read it once",
+        "note": "The unanswered request holds clearly above the now less important draft.",
+        "headline": "What Asha actually asked",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 125.608,
+      "end": 139.816,
+      "beats": [
+        1.08,
+        2.12,
+        13.26
+      ]
+    },
+    {
+      "id": "12-the-preview",
+      "title": "The reply she only imagined",
+      "kind": "story",
+      "text": "Mira remembered seeing the notification while making tea. She had answered in her head, promising herself she would call after finishing one thing. Then one thing became another sentence. Her thumb left the send button. The kitchen suddenly felt very quiet.",
+      "display": [
+        "After this one thing...",
+        "No reply had been sent"
+      ],
+      "beat_phrases": [
+        "seeing the notification",
+        "answered in her head",
+        "left the send button"
+      ],
+      "narrative_role": "recognition",
+      "visual": {
+        "type": "room",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Can we talk?",
+            "at_phrase": "seeing the notification"
+          }
+        ],
+        "action": "wait",
+        "action_phrase": "left the send button",
+        "note": "A notification memory is explicitly a recollection, never an additional new message.",
+        "headline": "The reply she only imagined",
+        "items": [
+          {
+            "label": "Cold mug",
+            "quantity": 1
+          }
+        ],
+        "camera": "wide"
+      },
+      "start": 139.916,
+      "end": 154.999,
+      "beats": [
+        0.8,
+        3.8,
+        11.18
+      ]
+    },
+    {
+      "id": "13-the-explanation",
+      "title": "Another long message",
+      "kind": "story",
+      "text": "She began explaining. Sorry, I was just trying to be helpful. She added a paragraph about her evening, then another about the shopping list. The explanation grew until it pushed Asha's short request out of view again.",
+      "display": [
+        "Sorry, I was just...",
+        "Another growing draft"
+      ],
+      "beat_phrases": [
+        "Sorry, I was just trying to be helpful.",
+        "another about the shopping list",
+        "out of view again"
+      ],
+      "narrative_role": "false_solution",
+      "visual": {
+        "type": "paper",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Sorry, I was just trying to be helpful.",
+            "at_phrase": "Sorry, I was just trying to be helpful."
+          },
+          {
+            "sender": "draft",
+            "text": "I was making a shopping list...",
+            "at_phrase": "another about the shopping list"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "The explanation grew",
+        "note": "Draft slips visibly crowd the small unanswered request.",
+        "headline": "Another growing draft",
+        "items": [],
+        "camera": "over-shoulder"
+      },
+      "start": 155.099,
+      "end": 168.005,
+      "beats": [
+        1.72,
+        6.58,
+        11.94
+      ]
+    },
+    {
+      "id": "14-the-same-mistake",
+      "title": "Whose evening was this?",
+      "kind": "story",
+      "text": "Mira stopped. Her apology was filling the conversation with her own evening. She looked at the fridge note, then back at the screen. There was one person missing from those careful sentences. The person she was writing to.",
+      "display": [
+        "Her own evening",
+        "Asha's unanswered request"
+      ],
+      "beat_phrases": [
+        "Mira stopped.",
+        "the fridge note",
+        "The person she was writing to."
+      ],
+      "narrative_role": "recognition",
+      "visual": {
+        "type": "split",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Can we talk?",
+            "at_phrase": "The person she was writing to."
+          }
+        ],
+        "action": "wait",
+        "action_phrase": "Mira stopped.",
+        "note": "Use what we have first.",
+        "headline": "The person she was writing to",
+        "items": [],
+        "camera": "wide"
+      },
+      "start": 168.105,
+      "end": 181.375,
+      "beats": [
+        0.0,
+        5.58,
+        11.6
+      ]
+    },
+    {
+      "id": "15-the-deletion",
+      "title": "The part she removed",
+      "kind": "story",
+      "text": "She selected the recommendation, then the explanation. Delete. For a moment, the empty space looked uncomfortable. Three hours of polishing had disappeared. Mira set down the phone, took a breath, and picked it up without opening the shopping list again.",
+      "display": [
+        "Recommendation: deleted",
+        "Explanation: deleted",
+        "Room for an answer"
+      ],
+      "beat_phrases": [
+        "selected the recommendation",
+        "then the explanation",
+        "the empty space"
+      ],
+      "narrative_role": "decisive_action",
+      "visual": {
+        "type": "phone",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "The recommendation",
+            "at_phrase": "selected the recommendation"
+          },
+          {
+            "sender": "draft",
+            "text": "The explanation",
+            "at_phrase": "then the explanation"
+          }
+        ],
+        "action": "delete",
+        "action_phrase": "Delete.",
+        "note": "Select both draft parts before deleting them together, leaving the real request visible.",
+        "headline": "Room for an answer",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 181.475,
+      "end": 196.621,
+      "beats": [
+        0.18,
+        1.86,
+        5.14
+      ]
+    },
+    {
+      "id": "16-eight-words-sent",
+      "title": "The eight-word message",
+      "kind": "story",
+      "text": "This time she wrote: I’m here. Do you still want to talk? She read the eight words once. There was no link underneath them, no extra explanation. At eleven fifty-nine, Mira pressed send and left the conversation open.",
+      "display": [
+        "I’m here.",
+        "Do you still want to talk?",
+        "11:59 — sent"
+      ],
+      "beat_phrases": [
+        "I’m here.",
+        "eight words",
+        "Mira pressed send"
+      ],
+      "narrative_role": "choice",
+      "visual": {
+        "type": "phone",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "I’m here. Do you still want to talk?",
+            "at_phrase": "I’m here."
+          },
+          {
+            "sender": "Mira",
+            "text": "I’m here. Do you still want to talk?",
+            "at_phrase": "Mira pressed send"
+          }
+        ],
+        "action": "send",
+        "action_phrase": "Mira pressed send",
+        "note": "Exactly eight spoken words in the final message; no shopping link or hidden sales prompt.",
+        "headline": "Eight words instead",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 196.721,
+      "end": 209.969,
+      "beats": [
+        1.16,
+        3.88,
+        10.64
+      ]
+    },
+    {
+      "id": "17-the-wait",
+      "title": "No instant answer",
+      "kind": "story",
+      "text": "Nothing happened. The message sat there without an answer. Mira reached for the phone again, then let her hand rest on the table. Asha might be busy. She might not want to talk anymore. Another message would not make that choice belong to Mira.",
+      "display": [
+        "No instant answer",
+        "The message stays sent"
+      ],
+      "beat_phrases": [
+        "Nothing happened.",
+        "her hand rest on the table",
+        "might not want to talk anymore"
+      ],
+      "narrative_role": "consequence",
+      "visual": {
+        "type": "room",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Mira",
+            "text": "I’m here. Do you still want to talk?",
+            "at_phrase": "The message sat there"
+          }
+        ],
+        "action": "wait",
+        "action_phrase": "her hand rest on the table",
+        "note": "No fake typing notification or invented read receipt supplies instant validation.",
+        "headline": "No instant answer",
+        "items": [],
+        "camera": "wide"
+      },
+      "start": 210.069,
+      "end": 224.043,
+      "beats": [
+        0.0,
+        5.9,
+        9.3
+      ]
+    },
+    {
+      "id": "18-the-counter",
+      "title": "Something small she could finish",
+      "kind": "story",
+      "text": "She rinsed the cold mug and wiped the small tea mark from the table. The bottles were back on their shelf. She straightened them, closed the cupboard, and left the fridge note crooked. This was something she could finish without asking anyone to reply.",
+      "display": [
+        "The cold mug",
+        "The cupboard closes",
+        "The note stays"
+      ],
+      "beat_phrases": [
+        "rinsed the cold mug",
+        "closed the cupboard",
+        "left the fridge note crooked"
+      ],
+      "narrative_role": "quiet_action",
+      "visual": {
+        "type": "cupboard",
+        "expression": "thinking",
+        "screen_title": "The quiet kitchen",
+        "messages": [],
+        "action": "close",
+        "action_phrase": "closed the cupboard",
+        "note": "Use what we have first.",
+        "headline": "One small thing finished",
+        "items": [
+          {
+            "label": "Bottles",
+            "quantity": 3
+          },
+          {
+            "label": "Tubes",
+            "quantity": 4
+          }
+        ],
+        "camera": "wide"
+      },
+      "start": 224.143,
+      "end": 238.244,
+      "beats": [
+        0.18,
+        7.22,
+        8.6
+      ]
+    },
+    {
+      "id": "19-the-reply",
+      "title": "When Asha was ready",
+      "kind": "story",
+      "text": "A few minutes later, the screen lit up. Yes, please. Still awake? Mira pulled the chair out again. She did not search for a better opening or reopen the deleted draft. She pressed call, and waited for Asha to pick up.",
+      "display": [
+        "Yes, please.",
+        "Still awake?",
+        "CALL"
+      ],
+      "beat_phrases": [
+        "Yes, please.",
+        "Still awake?",
+        "She pressed call"
+      ],
+      "narrative_role": "response",
+      "visual": {
+        "type": "phone",
+        "expression": "relieved",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Yes, please.",
+            "at_phrase": "Yes, please."
+          },
+          {
+            "sender": "Asha",
+            "text": "Still awake?",
+            "at_phrase": "Still awake?"
+          }
+        ],
+        "action": "send",
+        "action_phrase": "She pressed call",
+        "note": "The reply arrives after the narrated wait, not as a guaranteed effect of wording.",
+        "headline": "When Asha was ready",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 238.344,
+      "end": 251.592,
+      "beats": [
+        2.3,
+        3.56,
+        10.66
+      ]
+    },
+    {
+      "id": "20-the-call",
+      "title": "Nothing for sale",
+      "kind": "story",
+      "text": "Asha answered from her sofa. The day had been difficult, and she did not need Mira to fix it before hearing it. Mira listened. Sometimes she asked a question. Sometimes neither spoke. At one point, Mira started to offer a solution. Then she put the idea aside and asked what happened next. On the counter, the shopping list stayed folded under an empty mug.",
+      "display": [
+        "Asha's evening",
+        "Mira listens",
+        "Nothing for sale"
+      ],
+      "beat_phrases": [
+        "Asha answered from her sofa.",
+        "Mira listened.",
+        "the shopping list stayed folded"
+      ],
+      "narrative_role": "emotional_resolution",
+      "visual": {
+        "type": "split",
+        "expression": "relieved",
+        "screen_title": "Call with Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Thanks for calling.",
+            "at_phrase": "Asha answered from her sofa."
+          },
+          {
+            "sender": "Mira",
+            "text": "What happened next?",
+            "at_phrase": "asked what happened next"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "Mira listened.",
+        "note": "Two original rooms joined by an ordinary call; no products enter the conversation.",
+        "headline": "Nothing for sale",
+        "items": [
+          {
+            "label": "Empty mug",
+            "quantity": 1
+          }
+        ],
+        "camera": "wide"
+      },
+      "start": 251.692,
+      "end": 273.345,
+      "beats": [
+        0.0,
+        6.26,
+        18.86
+      ]
+    },
+    {
+      "id": "21-saturday",
+      "title": "The next ordinary plan",
+      "kind": "story",
+      "text": "Before they hung up, Asha asked about Saturday. Same place for lunch? Mira found the little calendar on the fridge and circled the day. Same place, she said. Nothing needed to be ordered first. Nothing needed to be earned. They were simply making a plan.",
+      "display": [
+        "Saturday",
+        "Same place for lunch?",
+        "Same place."
+      ],
+      "beat_phrases": [
+        "Same place for lunch?",
+        "circled the day",
+        "They were simply making a plan."
+      ],
+      "narrative_role": "payoff",
+      "visual": {
+        "type": "calendar",
+        "expression": "relieved",
+        "screen_title": "Saturday",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Same place for lunch?",
+            "at_phrase": "Same place for lunch?"
+          },
+          {
+            "sender": "Mira",
+            "text": "Same place.",
+            "at_phrase": "Same place, she said."
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "circled the day",
+        "note": "Saturday: lunch with Asha",
+        "headline": "Just lunch",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 273.445,
+      "end": 288.315,
+      "beats": [
+        3.14,
+        6.8,
+        13.48
+      ]
+    },
+    {
+      "id": "22-the-room-after",
+      "title": "What remained",
+      "kind": "story",
+      "text": "After the call, Mira turned off the lamp. The perfect pitch was gone. The crooked note was still on the fridge, and Saturday was still on the calendar. Her phone held a much shorter conversation now. For tonight, there was nothing else she needed to send.",
+      "display": [
+        "The draft is gone",
+        "Saturday stays",
+        "Nothing else to send"
+      ],
+      "beat_phrases": [
+        "The perfect pitch was gone.",
+        "Saturday was still on the calendar",
+        "nothing else she needed to send"
+      ],
+      "narrative_role": "resolution",
+      "visual": {
+        "type": "room",
+        "expression": "relieved",
+        "screen_title": "Asha",
+        "messages": [],
+        "action": "close",
+        "action_phrase": "nothing else she needed to send",
+        "note": "Use what we have first.",
+        "headline": "Nothing else to send",
+        "items": [
+          {
+            "label": "Lunch plan",
+            "quantity": 1
+          }
+        ],
+        "camera": "wide"
+      },
+      "start": 288.415,
+      "end": 303.092,
+      "beats": [
+        2.62,
+        6.72,
+        13.12
+      ]
+    }
+  ],
+  "total_duration_s": 303.512,
+  "voices": [
+    {
+      "frame": 1,
+      "path": "assets/voice/01.wav",
+      "duration_s": 303.512,
+      "words": [
+        {
+          "text": "At",
+          "start": 0.0,
+          "end": 0.18,
+          "id": "w0"
+        },
+        {
+          "text": "eleven",
+          "start": 0.18,
+          "end": 0.46,
+          "id": "w1"
+        },
+        {
+          "text": "fifty",
+          "start": 0.46,
+          "end": 0.78,
+          "id": "w2"
+        },
+        {
+          "text": "-eight,",
+          "start": 0.78,
+          "end": 1.22,
+          "id": "w3"
+        },
+        {
+          "text": "Mira",
+          "start": 1.58,
+          "end": 1.8,
+          "id": "w4"
+        },
+        {
+          "text": "deleted",
+          "start": 1.8,
+          "end": 2.14,
+          "id": "w5"
+        },
+        {
+          "text": "a",
+          "start": 2.14,
+          "end": 2.34,
+          "id": "w6"
+        },
+        {
+          "text": "message",
+          "start": 2.34,
+          "end": 2.58,
+          "id": "w7"
+        },
+        {
+          "text": "that",
+          "start": 2.58,
+          "end": 2.9,
+          "id": "w8"
+        },
+        {
+          "text": "took",
+          "start": 2.9,
+          "end": 3.08,
+          "id": "w9"
+        },
+        {
+          "text": "three",
+          "start": 3.08,
+          "end": 3.46,
+          "id": "w10"
+        },
+        {
+          "text": "hours",
+          "start": 3.46,
+          "end": 3.74,
+          "id": "w11"
+        },
+        {
+          "text": "to",
+          "start": 3.74,
+          "end": 4.0,
+          "id": "w12"
+        },
+        {
+          "text": "write.",
+          "start": 4.0,
+          "end": 4.22,
+          "id": "w13"
+        },
+        {
+          "text": "The",
+          "start": 4.9,
+          "end": 5.0,
+          "id": "w14"
+        },
+        {
+          "text": "replacement",
+          "start": 5.0,
+          "end": 5.42,
+          "id": "w15"
+        },
+        {
+          "text": "had",
+          "start": 5.42,
+          "end": 5.86,
+          "id": "w16"
+        },
+        {
+          "text": "eight",
+          "start": 5.86,
+          "end": 6.1,
+          "id": "w17"
+        },
+        {
+          "text": "words.",
+          "start": 6.1,
+          "end": 6.46,
+          "id": "w18"
+        },
+        {
+          "text": "Nothing",
+          "start": 7.12,
+          "end": 7.3,
+          "id": "w19"
+        },
+        {
+          "text": "was",
+          "start": 7.3,
+          "end": 7.58,
+          "id": "w20"
+        },
+        {
+          "text": "for",
+          "start": 7.58,
+          "end": 7.78,
+          "id": "w21"
+        },
+        {
+          "text": "sale.",
+          "start": 7.78,
+          "end": 8.04,
+          "id": "w22"
+        },
+        {
+          "text": "First,",
+          "start": 8.74,
+          "end": 8.94,
+          "id": "w23"
+        },
+        {
+          "text": "she",
+          "start": 9.22,
+          "end": 9.4,
+          "id": "w24"
+        },
+        {
+          "text": "had",
+          "start": 9.4,
+          "end": 9.54,
+          "id": "w25"
+        },
+        {
+          "text": "to",
+          "start": 9.54,
+          "end": 9.66,
+          "id": "w26"
+        },
+        {
+          "text": "notice",
+          "start": 9.66,
+          "end": 9.92,
+          "id": "w27"
+        },
+        {
+          "text": "what",
+          "start": 9.92,
+          "end": 10.12,
+          "id": "w28"
+        },
+        {
+          "text": "was",
+          "start": 10.12,
+          "end": 10.24,
+          "id": "w29"
+        },
+        {
+          "text": "right",
+          "start": 10.24,
+          "end": 10.54,
+          "id": "w30"
+        },
+        {
+          "text": "above",
+          "start": 10.54,
+          "end": 10.8,
+          "id": "w31"
+        },
+        {
+          "text": "her",
+          "start": 10.8,
+          "end": 10.96,
+          "id": "w32"
+        },
+        {
+          "text": "draft.",
+          "start": 10.96,
+          "end": 11.24,
+          "id": "w33"
+        },
+        {
+          "text": "Earlier",
+          "start": 11.599,
+          "end": 11.859,
+          "id": "w34"
+        },
+        {
+          "text": "that",
+          "start": 11.859,
+          "end": 12.159,
+          "id": "w35"
+        },
+        {
+          "text": "evening,",
+          "start": 12.159,
+          "end": 12.479,
+          "id": "w36"
+        },
+        {
+          "text": "the",
+          "start": 12.859,
+          "end": 12.899,
+          "id": "w37"
+        },
+        {
+          "text": "kitchen",
+          "start": 12.899,
+          "end": 13.179,
+          "id": "w38"
+        },
+        {
+          "text": "lamp",
+          "start": 13.179,
+          "end": 13.499,
+          "id": "w39"
+        },
+        {
+          "text": "lit",
+          "start": 13.499,
+          "end": 13.699,
+          "id": "w40"
+        },
+        {
+          "text": "the",
+          "start": 13.699,
+          "end": 13.879,
+          "id": "w41"
+        },
+        {
+          "text": "table.",
+          "start": 13.879,
+          "end": 14.199,
+          "id": "w42"
+        },
+        {
+          "text": "Mira",
+          "start": 15.019,
+          "end": 15.219,
+          "id": "w43"
+        },
+        {
+          "text": "and",
+          "start": 15.219,
+          "end": 15.419,
+          "id": "w44"
+        },
+        {
+          "text": "Asha",
+          "start": 15.419,
+          "end": 15.759,
+          "id": "w45"
+        },
+        {
+          "text": "are",
+          "start": 15.759,
+          "end": 16.019,
+          "id": "w46"
+        },
+        {
+          "text": "fictional.",
+          "start": 16.019,
+          "end": 16.439,
+          "id": "w47"
+        },
+        {
+          "text": "Mira",
+          "start": 17.099,
+          "end": 17.519,
+          "id": "w48"
+        },
+        {
+          "text": "was",
+          "start": 17.519,
+          "end": 17.639,
+          "id": "w49"
+        },
+        {
+          "text": "writing",
+          "start": 17.639,
+          "end": 17.919,
+          "id": "w50"
+        },
+        {
+          "text": "an",
+          "start": 17.919,
+          "end": 18.139,
+          "id": "w51"
+        },
+        {
+          "text": "Atomy",
+          "start": 18.139,
+          "end": 18.519,
+          "id": "w52"
+        },
+        {
+          "text": "recommendation",
+          "start": 18.519,
+          "end": 19.019,
+          "id": "w53"
+        },
+        {
+          "text": "to",
+          "start": 19.019,
+          "end": 19.499,
+          "id": "w54"
+        },
+        {
+          "text": "Asha.",
+          "start": 19.499,
+          "end": 19.919,
+          "id": "w55"
+        },
+        {
+          "text": "She",
+          "start": 20.359,
+          "end": 20.539,
+          "id": "w56"
+        },
+        {
+          "text": "wanted",
+          "start": 20.539,
+          "end": 20.719,
+          "id": "w57"
+        },
+        {
+          "text": "it",
+          "start": 20.719,
+          "end": 20.899,
+          "id": "w58"
+        },
+        {
+          "text": "to",
+          "start": 20.899,
+          "end": 21.019,
+          "id": "w59"
+        },
+        {
+          "text": "sound",
+          "start": 21.019,
+          "end": 21.259,
+          "id": "w60"
+        },
+        {
+          "text": "helpful,",
+          "start": 21.259,
+          "end": 21.679,
+          "id": "w61"
+        },
+        {
+          "text": "not",
+          "start": 22.019,
+          "end": 22.239,
+          "id": "w62"
+        },
+        {
+          "text": "like",
+          "start": 22.239,
+          "end": 22.379,
+          "id": "w63"
+        },
+        {
+          "text": "the",
+          "start": 22.379,
+          "end": 22.539,
+          "id": "w64"
+        },
+        {
+          "text": "messages",
+          "start": 22.539,
+          "end": 22.919,
+          "id": "w65"
+        },
+        {
+          "text": "she",
+          "start": 22.919,
+          "end": 23.239,
+          "id": "w66"
+        },
+        {
+          "text": "usually",
+          "start": 23.239,
+          "end": 23.679,
+          "id": "w67"
+        },
+        {
+          "text": "ignored.",
+          "start": 23.679,
+          "end": 24.099,
+          "id": "w68"
+        },
+        {
+          "text": "Their",
+          "start": 24.499,
+          "end": 24.659,
+          "id": "w69"
+        },
+        {
+          "text": "chat",
+          "start": 24.659,
+          "end": 24.979,
+          "id": "w70"
+        },
+        {
+          "text": "was",
+          "start": 24.979,
+          "end": 25.179,
+          "id": "w71"
+        },
+        {
+          "text": "full",
+          "start": 25.179,
+          "end": 25.459,
+          "id": "w72"
+        },
+        {
+          "text": "of",
+          "start": 25.459,
+          "end": 25.639,
+          "id": "w73"
+        },
+        {
+          "text": "ordinary",
+          "start": 25.639,
+          "end": 26.099,
+          "id": "w74"
+        },
+        {
+          "text": "things.",
+          "start": 26.099,
+          "end": 26.599,
+          "id": "w75"
+        },
+        {
+          "text": "A",
+          "start": 27.099,
+          "end": 27.219,
+          "id": "w76"
+        },
+        {
+          "text": "crooked",
+          "start": 27.219,
+          "end": 27.479,
+          "id": "w77"
+        },
+        {
+          "text": "birthday",
+          "start": 27.479,
+          "end": 27.899,
+          "id": "w78"
+        },
+        {
+          "text": "cake.",
+          "start": 27.899,
+          "end": 28.259,
+          "id": "w79"
+        },
+        {
+          "text": "A",
+          "start": 28.599,
+          "end": 28.739,
+          "id": "w80"
+        },
+        {
+          "text": "bus",
+          "start": 28.739,
+          "end": 28.979,
+          "id": "w81"
+        },
+        {
+          "text": "missed.",
+          "start": 28.979,
+          "end": 29.299,
+          "id": "w82"
+        },
+        {
+          "text": "A",
+          "start": 29.899,
+          "end": 30.019,
+          "id": "w83"
+        },
+        {
+          "text": "photograph",
+          "start": 30.019,
+          "end": 30.439,
+          "id": "w84"
+        },
+        {
+          "text": "of",
+          "start": 30.439,
+          "end": 30.679,
+          "id": "w85"
+        },
+        {
+          "text": "two",
+          "start": 30.679,
+          "end": 30.939,
+          "id": "w86"
+        },
+        {
+          "text": "mugs",
+          "start": 30.939,
+          "end": 31.359,
+          "id": "w87"
+        },
+        {
+          "text": "after",
+          "start": 31.359,
+          "end": 31.679,
+          "id": "w88"
+        },
+        {
+          "text": "a",
+          "start": 31.679,
+          "end": 31.899,
+          "id": "w89"
+        },
+        {
+          "text": "long",
+          "start": 31.899,
+          "end": 32.119,
+          "id": "w90"
+        },
+        {
+          "text": "afternoon.",
+          "start": 32.119,
+          "end": 32.659,
+          "id": "w91"
+        },
+        {
+          "text": "Mira",
+          "start": 33.459,
+          "end": 33.699,
+          "id": "w92"
+        },
+        {
+          "text": "scrolled",
+          "start": 33.699,
+          "end": 34.079,
+          "id": "w93"
+        },
+        {
+          "text": "through",
+          "start": 34.079,
+          "end": 34.339,
+          "id": "w94"
+        },
+        {
+          "text": "them,",
+          "start": 34.339,
+          "end": 34.659,
+          "id": "w95"
+        },
+        {
+          "text": "smiling.",
+          "start": 34.779,
+          "end": 35.119,
+          "id": "w96"
+        },
+        {
+          "text": "She",
+          "start": 35.819,
+          "end": 35.939,
+          "id": "w97"
+        },
+        {
+          "text": "knew",
+          "start": 35.939,
+          "end": 36.059,
+          "id": "w98"
+        },
+        {
+          "text": "which",
+          "start": 36.059,
+          "end": 36.259,
+          "id": "w99"
+        },
+        {
+          "text": "picture",
+          "start": 36.259,
+          "end": 36.619,
+          "id": "w100"
+        },
+        {
+          "text": "would",
+          "start": 36.619,
+          "end": 36.799,
+          "id": "w101"
+        },
+        {
+          "text": "make",
+          "start": 36.799,
+          "end": 36.959,
+          "id": "w102"
+        },
+        {
+          "text": "Asha",
+          "start": 36.959,
+          "end": 37.259,
+          "id": "w103"
+        },
+        {
+          "text": "laugh.",
+          "start": 37.259,
+          "end": 37.539,
+          "id": "w104"
+        },
+        {
+          "text": "She",
+          "start": 37.932,
+          "end": 38.112,
+          "id": "w105"
+        },
+        {
+          "text": "kept",
+          "start": 38.112,
+          "end": 38.332,
+          "id": "w106"
+        },
+        {
+          "text": "rewriting",
+          "start": 38.332,
+          "end": 38.832,
+          "id": "w107"
+        },
+        {
+          "text": "a",
+          "start": 38.832,
+          "end": 39.072,
+          "id": "w108"
+        },
+        {
+          "text": "recommendation.",
+          "start": 39.072,
+          "end": 39.632,
+          "id": "w109"
+        },
+        {
+          "text": "Hello",
+          "start": 40.672,
+          "end": 40.692,
+          "id": "w110"
+        },
+        {
+          "text": "sounded",
+          "start": 40.692,
+          "end": 41.112,
+          "id": "w111"
+        },
+        {
+          "text": "stiff.",
+          "start": 41.112,
+          "end": 41.492,
+          "id": "w112"
+        },
+        {
+          "text": "Hey sounded",
+          "start": 42.232,
+          "end": 42.592,
+          "id": "w113"
+        },
+        {
+          "text": "careless.",
+          "start": 42.592,
+          "end": 43.012,
+          "id": "w114"
+        },
+        {
+          "text": "She",
+          "start": 43.692,
+          "end": 43.792,
+          "id": "w115"
+        },
+        {
+          "text": "changed",
+          "start": 43.792,
+          "end": 44.132,
+          "id": "w116"
+        },
+        {
+          "text": "a",
+          "start": 44.132,
+          "end": 44.292,
+          "id": "w117"
+        },
+        {
+          "text": "comma,",
+          "start": 44.292,
+          "end": 44.612,
+          "id": "w118"
+        },
+        {
+          "text": "removed",
+          "start": 44.912,
+          "end": 45.252,
+          "id": "w119"
+        },
+        {
+          "text": "a",
+          "start": 45.252,
+          "end": 45.412,
+          "id": "w120"
+        },
+        {
+          "text": "greeting,",
+          "start": 45.412,
+          "end": 45.692,
+          "id": "w121"
+        },
+        {
+          "text": "put",
+          "start": 45.972,
+          "end": 46.092,
+          "id": "w122"
+        },
+        {
+          "text": "it",
+          "start": 46.092,
+          "end": 46.212,
+          "id": "w123"
+        },
+        {
+          "text": "back.",
+          "start": 46.212,
+          "end": 46.472,
+          "id": "w124"
+        },
+        {
+          "text": "Her",
+          "start": 46.992,
+          "end": 47.092,
+          "id": "w125"
+        },
+        {
+          "text": "tea",
+          "start": 47.092,
+          "end": 47.332,
+          "id": "w126"
+        },
+        {
+          "text": "cooled",
+          "start": 47.332,
+          "end": 47.712,
+          "id": "w127"
+        },
+        {
+          "text": "beside",
+          "start": 47.712,
+          "end": 48.092,
+          "id": "w128"
+        },
+        {
+          "text": "the",
+          "start": 48.092,
+          "end": 48.272,
+          "id": "w129"
+        },
+        {
+          "text": "phone.",
+          "start": 48.272,
+          "end": 48.512,
+          "id": "w130"
+        },
+        {
+          "text": "The",
+          "start": 49.092,
+          "end": 49.212,
+          "id": "w131"
+        },
+        {
+          "text": "message",
+          "start": 49.212,
+          "end": 49.552,
+          "id": "w132"
+        },
+        {
+          "text": "grew",
+          "start": 49.552,
+          "end": 49.812,
+          "id": "w133"
+        },
+        {
+          "text": "longer",
+          "start": 49.812,
+          "end": 50.152,
+          "id": "w134"
+        },
+        {
+          "text": "while",
+          "start": 50.152,
+          "end": 50.412,
+          "id": "w135"
+        },
+        {
+          "text": "its",
+          "start": 50.412,
+          "end": 50.572,
+          "id": "w136"
+        },
+        {
+          "text": "purpose",
+          "start": 50.572,
+          "end": 50.912,
+          "id": "w137"
+        },
+        {
+          "text": "became",
+          "start": 50.912,
+          "end": 51.312,
+          "id": "w138"
+        },
+        {
+          "text": "less",
+          "start": 51.312,
+          "end": 51.592,
+          "id": "w139"
+        },
+        {
+          "text": "clear.",
+          "start": 51.592,
+          "end": 51.892,
+          "id": "w140"
+        },
+        {
+          "text": "Then",
+          "start": 52.219,
+          "end": 52.439,
+          "id": "w141"
+        },
+        {
+          "text": "a",
+          "start": 52.439,
+          "end": 52.599,
+          "id": "w142"
+        },
+        {
+          "text": "drop",
+          "start": 52.599,
+          "end": 52.859,
+          "id": "w143"
+        },
+        {
+          "text": "of",
+          "start": 52.859,
+          "end": 53.059,
+          "id": "w144"
+        },
+        {
+          "text": "tea",
+          "start": 53.059,
+          "end": 53.359,
+          "id": "w145"
+        },
+        {
+          "text": "reached",
+          "start": 53.359,
+          "end": 53.739,
+          "id": "w146"
+        },
+        {
+          "text": "her",
+          "start": 53.739,
+          "end": 53.979,
+          "id": "w147"
+        },
+        {
+          "text": "shopping",
+          "start": 53.979,
+          "end": 54.319,
+          "id": "w148"
+        },
+        {
+          "text": "list.",
+          "start": 54.319,
+          "end": 54.759,
+          "id": "w149"
+        },
+        {
+          "text": "Mira",
+          "start": 55.439,
+          "end": 55.599,
+          "id": "w150"
+        },
+        {
+          "text": "lifted",
+          "start": 55.599,
+          "end": 55.839,
+          "id": "w151"
+        },
+        {
+          "text": "the",
+          "start": 55.839,
+          "end": 56.039,
+          "id": "w152"
+        },
+        {
+          "text": "paper",
+          "start": 56.039,
+          "end": 56.399,
+          "id": "w153"
+        },
+        {
+          "text": "and",
+          "start": 56.399,
+          "end": 56.719,
+          "id": "w154"
+        },
+        {
+          "text": "saw",
+          "start": 56.719,
+          "end": 56.979,
+          "id": "w155"
+        },
+        {
+          "text": "toiletries",
+          "start": 56.979,
+          "end": 57.599,
+          "id": "w156"
+        },
+        {
+          "text": "circled.",
+          "start": 57.599,
+          "end": 57.959,
+          "id": "w157"
+        },
+        {
+          "text": "Before",
+          "start": 58.639,
+          "end": 58.819,
+          "id": "w158"
+        },
+        {
+          "text": "she",
+          "start": 58.819,
+          "end": 58.999,
+          "id": "w159"
+        },
+        {
+          "text": "could",
+          "start": 58.999,
+          "end": 59.139,
+          "id": "w160"
+        },
+        {
+          "text": "return",
+          "start": 59.139,
+          "end": 59.459,
+          "id": "w161"
+        },
+        {
+          "text": "to",
+          "start": 59.459,
+          "end": 59.619,
+          "id": "w162"
+        },
+        {
+          "text": "the",
+          "start": 59.619,
+          "end": 59.719,
+          "id": "w163"
+        },
+        {
+          "text": "draft,",
+          "start": 59.719,
+          "end": 60.079,
+          "id": "w164"
+        },
+        {
+          "text": "she",
+          "start": 60.479,
+          "end": 60.559,
+          "id": "w165"
+        },
+        {
+          "text": "opened",
+          "start": 60.559,
+          "end": 60.859,
+          "id": "w166"
+        },
+        {
+          "text": "the",
+          "start": 60.859,
+          "end": 61.039,
+          "id": "w167"
+        },
+        {
+          "text": "cupboard",
+          "start": 61.039,
+          "end": 61.339,
+          "id": "w168"
+        },
+        {
+          "text": "to",
+          "start": 61.339,
+          "end": 61.479,
+          "id": "w169"
+        },
+        {
+          "text": "check",
+          "start": 61.479,
+          "end": 61.679,
+          "id": "w170"
+        },
+        {
+          "text": "what",
+          "start": 61.679,
+          "end": 61.839,
+          "id": "w171"
+        },
+        {
+          "text": "was",
+          "start": 61.839,
+          "end": 61.979,
+          "id": "w172"
+        },
+        {
+          "text": "missing.",
+          "start": 61.979,
+          "end": 62.299,
+          "id": "w173"
+        },
+        {
+          "text": "The",
+          "start": 62.623,
+          "end": 62.743,
+          "id": "w174"
+        },
+        {
+          "text": "door",
+          "start": 62.743,
+          "end": 62.923,
+          "id": "w175"
+        },
+        {
+          "text": "caught",
+          "start": 62.923,
+          "end": 63.163,
+          "id": "w176"
+        },
+        {
+          "text": "a",
+          "start": 63.163,
+          "end": 63.323,
+          "id": "w177"
+        },
+        {
+          "text": "towel,",
+          "start": 63.323,
+          "end": 63.663,
+          "id": "w178"
+        },
+        {
+          "text": "then",
+          "start": 63.863,
+          "end": 64.063,
+          "id": "w179"
+        },
+        {
+          "text": "swung",
+          "start": 64.063,
+          "end": 64.383,
+          "id": "w180"
+        },
+        {
+          "text": "wide.",
+          "start": 64.383,
+          "end": 64.823,
+          "id": "w181"
+        },
+        {
+          "text": "Three",
+          "start": 65.363,
+          "end": 65.543,
+          "id": "w182"
+        },
+        {
+          "text": "bottles",
+          "start": 65.543,
+          "end": 65.903,
+          "id": "w183"
+        },
+        {
+          "text": "stood",
+          "start": 65.903,
+          "end": 66.183,
+          "id": "w184"
+        },
+        {
+          "text": "behind",
+          "start": 66.183,
+          "end": 66.583,
+          "id": "w185"
+        },
+        {
+          "text": "it.",
+          "start": 66.583,
+          "end": 66.923,
+          "id": "w186"
+        },
+        {
+          "text": "Four",
+          "start": 67.363,
+          "end": 67.583,
+          "id": "w187"
+        },
+        {
+          "text": "unopened",
+          "start": 67.583,
+          "end": 68.043,
+          "id": "w188"
+        },
+        {
+          "text": "tubes",
+          "start": 68.043,
+          "end": 68.603,
+          "id": "w189"
+        },
+        {
+          "text": "lined",
+          "start": 68.603,
+          "end": 68.863,
+          "id": "w190"
+        },
+        {
+          "text": "the",
+          "start": 68.863,
+          "end": 69.043,
+          "id": "w191"
+        },
+        {
+          "text": "next",
+          "start": 69.043,
+          "end": 69.223,
+          "id": "w192"
+        },
+        {
+          "text": "shelf.",
+          "start": 69.223,
+          "end": 69.603,
+          "id": "w193"
+        },
+        {
+          "text": "Mira",
+          "start": 70.423,
+          "end": 70.623,
+          "id": "w194"
+        },
+        {
+          "text": "reached",
+          "start": 70.623,
+          "end": 70.883,
+          "id": "w195"
+        },
+        {
+          "text": "past",
+          "start": 70.883,
+          "end": 71.223,
+          "id": "w196"
+        },
+        {
+          "text": "them,",
+          "start": 71.223,
+          "end": 71.563,
+          "id": "w197"
+        },
+        {
+          "text": "looking",
+          "start": 71.743,
+          "end": 71.983,
+          "id": "w198"
+        },
+        {
+          "text": "for",
+          "start": 71.983,
+          "end": 72.223,
+          "id": "w199"
+        },
+        {
+          "text": "the",
+          "start": 72.223,
+          "end": 72.363,
+          "id": "w200"
+        },
+        {
+          "text": "gap",
+          "start": 72.363,
+          "end": 72.543,
+          "id": "w201"
+        },
+        {
+          "text": "she",
+          "start": 72.543,
+          "end": 72.763,
+          "id": "w202"
+        },
+        {
+          "text": "expected.",
+          "start": 72.763,
+          "end": 73.163,
+          "id": "w203"
+        },
+        {
+          "text": "There",
+          "start": 73.683,
+          "end": 73.863,
+          "id": "w204"
+        },
+        {
+          "text": "was",
+          "start": 73.863,
+          "end": 73.963,
+          "id": "w205"
+        },
+        {
+          "text": "no",
+          "start": 73.963,
+          "end": 74.183,
+          "id": "w206"
+        },
+        {
+          "text": "gap.",
+          "start": 74.183,
+          "end": 74.483,
+          "id": "w207"
+        },
+        {
+          "text": "She",
+          "start": 74.963,
+          "end": 75.103,
+          "id": "w208"
+        },
+        {
+          "text": "moved",
+          "start": 75.103,
+          "end": 75.303,
+          "id": "w209"
+        },
+        {
+          "text": "the",
+          "start": 75.303,
+          "end": 75.503,
+          "id": "w210"
+        },
+        {
+          "text": "towel",
+          "start": 75.503,
+          "end": 75.843,
+          "id": "w211"
+        },
+        {
+          "text": "and",
+          "start": 75.843,
+          "end": 76.043,
+          "id": "w212"
+        },
+        {
+          "text": "counted",
+          "start": 76.043,
+          "end": 76.283,
+          "id": "w213"
+        },
+        {
+          "text": "again.",
+          "start": 76.283,
+          "end": 76.583,
+          "id": "w214"
+        },
+        {
+          "text": "She",
+          "start": 76.888,
+          "end": 77.048,
+          "id": "w215"
+        },
+        {
+          "text": "set",
+          "start": 77.048,
+          "end": 77.228,
+          "id": "w216"
+        },
+        {
+          "text": "the",
+          "start": 77.228,
+          "end": 77.388,
+          "id": "w217"
+        },
+        {
+          "text": "bottles",
+          "start": 77.388,
+          "end": 77.708,
+          "id": "w218"
+        },
+        {
+          "text": "on",
+          "start": 77.708,
+          "end": 77.968,
+          "id": "w219"
+        },
+        {
+          "text": "the",
+          "start": 77.968,
+          "end": 78.088,
+          "id": "w220"
+        },
+        {
+          "text": "counter.",
+          "start": 78.088,
+          "end": 78.448,
+          "id": "w221"
+        },
+        {
+          "text": "One,",
+          "start": 79.188,
+          "end": 79.288,
+          "id": "w222"
+        },
+        {
+          "text": "two,",
+          "start": 79.568,
+          "end": 79.588,
+          "id": "w223"
+        },
+        {
+          "text": "three.",
+          "start": 79.668,
+          "end": 79.988,
+          "id": "w224"
+        },
+        {
+          "text": "The",
+          "start": 80.568,
+          "end": 80.708,
+          "id": "w225"
+        },
+        {
+          "text": "shopping",
+          "start": 80.708,
+          "end": 81.088,
+          "id": "w226"
+        },
+        {
+          "text": "list",
+          "start": 81.088,
+          "end": 81.428,
+          "id": "w227"
+        },
+        {
+          "text": "waited",
+          "start": 81.428,
+          "end": 81.748,
+          "id": "w228"
+        },
+        {
+          "text": "beside",
+          "start": 81.748,
+          "end": 82.208,
+          "id": "w229"
+        },
+        {
+          "text": "them,",
+          "start": 82.208,
+          "end": 82.488,
+          "id": "w230"
+        },
+        {
+          "text": "much",
+          "start": 82.668,
+          "end": 82.888,
+          "id": "w231"
+        },
+        {
+          "text": "less",
+          "start": 82.888,
+          "end": 83.108,
+          "id": "w232"
+        },
+        {
+          "text": "convincing.",
+          "start": 83.108,
+          "end": 83.648,
+          "id": "w233"
+        },
+        {
+          "text": "Mira",
+          "start": 84.548,
+          "end": 84.688,
+          "id": "w234"
+        },
+        {
+          "text": "turned",
+          "start": 84.688,
+          "end": 84.888,
+          "id": "w235"
+        },
+        {
+          "text": "a",
+          "start": 84.888,
+          "end": 85.048,
+          "id": "w236"
+        },
+        {
+          "text": "tube,",
+          "start": 85.048,
+          "end": 85.348,
+          "id": "w237"
+        },
+        {
+          "text": "then",
+          "start": 85.488,
+          "end": 85.668,
+          "id": "w238"
+        },
+        {
+          "text": "put",
+          "start": 85.668,
+          "end": 85.828,
+          "id": "w239"
+        },
+        {
+          "text": "it",
+          "start": 85.828,
+          "end": 85.948,
+          "id": "w240"
+        },
+        {
+          "text": "back",
+          "start": 85.948,
+          "end": 86.148,
+          "id": "w241"
+        },
+        {
+          "text": "unopened.",
+          "start": 86.148,
+          "end": 86.628,
+          "id": "w242"
+        },
+        {
+          "text": "She",
+          "start": 87.228,
+          "end": 87.388,
+          "id": "w243"
+        },
+        {
+          "text": "had",
+          "start": 87.388,
+          "end": 87.488,
+          "id": "w244"
+        },
+        {
+          "text": "remembered",
+          "start": 87.488,
+          "end": 87.848,
+          "id": "w245"
+        },
+        {
+          "text": "wanting",
+          "start": 87.848,
+          "end": 88.208,
+          "id": "w246"
+        },
+        {
+          "text": "something,",
+          "start": 88.208,
+          "end": 88.648,
+          "id": "w247"
+        },
+        {
+          "text": "not",
+          "start": 88.868,
+          "end": 89.068,
+          "id": "w248"
+        },
+        {
+          "text": "whether",
+          "start": 89.068,
+          "end": 89.268,
+          "id": "w249"
+        },
+        {
+          "text": "she",
+          "start": 89.268,
+          "end": 89.488,
+          "id": "w250"
+        },
+        {
+          "text": "needed",
+          "start": 89.488,
+          "end": 89.708,
+          "id": "w251"
+        },
+        {
+          "text": "it.",
+          "start": 89.708,
+          "end": 89.968,
+          "id": "w252"
+        },
+        {
+          "text": "Nobody",
+          "start": 90.151,
+          "end": 90.511,
+          "id": "w253"
+        },
+        {
+          "text": "had",
+          "start": 90.511,
+          "end": 90.791,
+          "id": "w254"
+        },
+        {
+          "text": "told",
+          "start": 90.791,
+          "end": 91.011,
+          "id": "w255"
+        },
+        {
+          "text": "her",
+          "start": 91.011,
+          "end": 91.191,
+          "id": "w256"
+        },
+        {
+          "text": "to",
+          "start": 91.191,
+          "end": 91.331,
+          "id": "w257"
+        },
+        {
+          "text": "fill",
+          "start": 91.331,
+          "end": 91.531,
+          "id": "w258"
+        },
+        {
+          "text": "the",
+          "start": 91.531,
+          "end": 91.711,
+          "id": "w259"
+        },
+        {
+          "text": "cupboard.",
+          "start": 91.711,
+          "end": 92.071,
+          "id": "w260"
+        },
+        {
+          "text": "Nobody",
+          "start": 92.611,
+          "end": 92.811,
+          "id": "w261"
+        },
+        {
+          "text": "was",
+          "start": 92.811,
+          "end": 93.091,
+          "id": "w262"
+        },
+        {
+          "text": "waiting",
+          "start": 93.091,
+          "end": 93.411,
+          "id": "w263"
+        },
+        {
+          "text": "for",
+          "start": 93.411,
+          "end": 93.691,
+          "id": "w264"
+        },
+        {
+          "text": "an",
+          "start": 93.691,
+          "end": 93.811,
+          "id": "w265"
+        },
+        {
+          "text": "order.",
+          "start": 93.811,
+          "end": 94.111,
+          "id": "w266"
+        },
+        {
+          "text": "Adding",
+          "start": 94.711,
+          "end": 94.831,
+          "id": "w267"
+        },
+        {
+          "text": "more",
+          "start": 94.831,
+          "end": 95.111,
+          "id": "w268"
+        },
+        {
+          "text": "had",
+          "start": 95.111,
+          "end": 95.311,
+          "id": "w269"
+        },
+        {
+          "text": "been",
+          "start": 95.311,
+          "end": 95.451,
+          "id": "w270"
+        },
+        {
+          "text": "her",
+          "start": 95.451,
+          "end": 95.611,
+          "id": "w271"
+        },
+        {
+          "text": "own",
+          "start": 95.611,
+          "end": 95.871,
+          "id": "w272"
+        },
+        {
+          "text": "idea,",
+          "start": 95.871,
+          "end": 96.331,
+          "id": "w273"
+        },
+        {
+          "text": "wanting",
+          "start": 96.631,
+          "end": 96.811,
+          "id": "w274"
+        },
+        {
+          "text": "to",
+          "start": 96.811,
+          "end": 97.051,
+          "id": "w275"
+        },
+        {
+          "text": "feel",
+          "start": 97.051,
+          "end": 97.231,
+          "id": "w276"
+        },
+        {
+          "text": "organised.",
+          "start": 97.231,
+          "end": 97.751,
+          "id": "w277"
+        },
+        {
+          "text": "She",
+          "start": 98.551,
+          "end": 98.651,
+          "id": "w278"
+        },
+        {
+          "text": "looked",
+          "start": 98.651,
+          "end": 98.811,
+          "id": "w279"
+        },
+        {
+          "text": "at",
+          "start": 98.811,
+          "end": 98.971,
+          "id": "w280"
+        },
+        {
+          "text": "the",
+          "start": 98.971,
+          "end": 99.091,
+          "id": "w281"
+        },
+        {
+          "text": "crowded",
+          "start": 99.091,
+          "end": 99.351,
+          "id": "w282"
+        },
+        {
+          "text": "shelf,",
+          "start": 99.351,
+          "end": 99.751,
+          "id": "w283"
+        },
+        {
+          "text": "then",
+          "start": 100.131,
+          "end": 100.251,
+          "id": "w284"
+        },
+        {
+          "text": "crossed",
+          "start": 100.251,
+          "end": 100.551,
+          "id": "w285"
+        },
+        {
+          "text": "out",
+          "start": 100.551,
+          "end": 100.791,
+          "id": "w286"
+        },
+        {
+          "text": "the",
+          "start": 100.791,
+          "end": 100.911,
+          "id": "w287"
+        },
+        {
+          "text": "extra",
+          "start": 100.911,
+          "end": 101.271,
+          "id": "w288"
+        },
+        {
+          "text": "line.",
+          "start": 101.271,
+          "end": 101.571,
+          "id": "w289"
+        },
+        {
+          "text": "On",
+          "start": 101.877,
+          "end": 102.057,
+          "id": "w290"
+        },
+        {
+          "text": "the",
+          "start": 102.057,
+          "end": 102.177,
+          "id": "w291"
+        },
+        {
+          "text": "paper,",
+          "start": 102.177,
+          "end": 102.537,
+          "id": "w292"
+        },
+        {
+          "text": "she",
+          "start": 102.737,
+          "end": 102.897,
+          "id": "w293"
+        },
+        {
+          "text": "wrote,",
+          "start": 102.897,
+          "end": 103.117,
+          "id": "w294"
+        },
+        {
+          "text": "Use",
+          "start": 103.517,
+          "end": 103.677,
+          "id": "w295"
+        },
+        {
+          "text": "what",
+          "start": 103.677,
+          "end": 103.837,
+          "id": "w296"
+        },
+        {
+          "text": "we",
+          "start": 103.837,
+          "end": 103.937,
+          "id": "w297"
+        },
+        {
+          "text": "have",
+          "start": 103.937,
+          "end": 104.137,
+          "id": "w298"
+        },
+        {
+          "text": "first.",
+          "start": 104.137,
+          "end": 104.457,
+          "id": "w299"
+        },
+        {
+          "text": "She",
+          "start": 105.037,
+          "end": 105.157,
+          "id": "w300"
+        },
+        {
+          "text": "fixed",
+          "start": 105.157,
+          "end": 105.377,
+          "id": "w301"
+        },
+        {
+          "text": "it",
+          "start": 105.377,
+          "end": 105.577,
+          "id": "w302"
+        },
+        {
+          "text": "to",
+          "start": 105.577,
+          "end": 105.677,
+          "id": "w303"
+        },
+        {
+          "text": "the",
+          "start": 105.677,
+          "end": 105.817,
+          "id": "w304"
+        },
+        {
+          "text": "fridge",
+          "start": 105.817,
+          "end": 106.137,
+          "id": "w305"
+        },
+        {
+          "text": "beneath",
+          "start": 106.137,
+          "end": 106.477,
+          "id": "w306"
+        },
+        {
+          "text": "a",
+          "start": 106.477,
+          "end": 106.677,
+          "id": "w307"
+        },
+        {
+          "text": "crooked",
+          "start": 106.677,
+          "end": 106.937,
+          "id": "w308"
+        },
+        {
+          "text": "magnet.",
+          "start": 106.937,
+          "end": 107.397,
+          "id": "w309"
+        },
+        {
+          "text": "The",
+          "start": 107.917,
+          "end": 108.037,
+          "id": "w310"
+        },
+        {
+          "text": "supplies",
+          "start": 108.037,
+          "end": 108.417,
+          "id": "w311"
+        },
+        {
+          "text": "went",
+          "start": 108.417,
+          "end": 108.717,
+          "id": "w312"
+        },
+        {
+          "text": "back",
+          "start": 108.717,
+          "end": 108.977,
+          "id": "w313"
+        },
+        {
+          "text": "where",
+          "start": 108.977,
+          "end": 109.217,
+          "id": "w314"
+        },
+        {
+          "text": "she",
+          "start": 109.217,
+          "end": 109.397,
+          "id": "w315"
+        },
+        {
+          "text": "could",
+          "start": 109.397,
+          "end": 109.537,
+          "id": "w316"
+        },
+        {
+          "text": "see",
+          "start": 109.537,
+          "end": 109.737,
+          "id": "w317"
+        },
+        {
+          "text": "them.",
+          "start": 109.737,
+          "end": 109.977,
+          "id": "w318"
+        },
+        {
+          "text": "The",
+          "start": 110.317,
+          "end": 110.457,
+          "id": "w319"
+        },
+        {
+          "text": "list",
+          "start": 110.457,
+          "end": 110.697,
+          "id": "w320"
+        },
+        {
+          "text": "was",
+          "start": 110.697,
+          "end": 110.917,
+          "id": "w321"
+        },
+        {
+          "text": "shorter.",
+          "start": 110.917,
+          "end": 111.217,
+          "id": "w322"
+        },
+        {
+          "text": "For",
+          "start": 111.797,
+          "end": 111.917,
+          "id": "w323"
+        },
+        {
+          "text": "once,",
+          "start": 111.917,
+          "end": 112.237,
+          "id": "w324"
+        },
+        {
+          "text": "that",
+          "start": 112.437,
+          "end": 112.677,
+          "id": "w325"
+        },
+        {
+          "text": "felt",
+          "start": 112.677,
+          "end": 112.877,
+          "id": "w326"
+        },
+        {
+          "text": "better.",
+          "start": 112.877,
+          "end": 113.177,
+          "id": "w327"
+        },
+        {
+          "text": "Her",
+          "start": 113.497,
+          "end": 113.657,
+          "id": "w328"
+        },
+        {
+          "text": "phone",
+          "start": 113.657,
+          "end": 113.957,
+          "id": "w329"
+        },
+        {
+          "text": "was",
+          "start": 113.957,
+          "end": 114.217,
+          "id": "w330"
+        },
+        {
+          "text": "on",
+          "start": 114.217,
+          "end": 114.397,
+          "id": "w331"
+        },
+        {
+          "text": "the",
+          "start": 114.397,
+          "end": 114.517,
+          "id": "w332"
+        },
+        {
+          "text": "table.",
+          "start": 114.517,
+          "end": 114.837,
+          "id": "w333"
+        },
+        {
+          "text": "The",
+          "start": 115.357,
+          "end": 115.437,
+          "id": "w334"
+        },
+        {
+          "text": "long",
+          "start": 115.437,
+          "end": 115.717,
+          "id": "w335"
+        },
+        {
+          "text": "draft",
+          "start": 115.717,
+          "end": 116.057,
+          "id": "w336"
+        },
+        {
+          "text": "filled",
+          "start": 116.057,
+          "end": 116.377,
+          "id": "w337"
+        },
+        {
+          "text": "the",
+          "start": 116.377,
+          "end": 116.557,
+          "id": "w338"
+        },
+        {
+          "text": "screen,",
+          "start": 116.557,
+          "end": 116.917,
+          "id": "w339"
+        },
+        {
+          "text": "polished",
+          "start": 117.137,
+          "end": 117.497,
+          "id": "w340"
+        },
+        {
+          "text": "and",
+          "start": 117.497,
+          "end": 117.817,
+          "id": "w341"
+        },
+        {
+          "text": "ready.",
+          "start": 117.817,
+          "end": 118.077,
+          "id": "w342"
+        },
+        {
+          "text": "Mira",
+          "start": 118.857,
+          "end": 119.137,
+          "id": "w343"
+        },
+        {
+          "text": "sat",
+          "start": 119.137,
+          "end": 119.357,
+          "id": "w344"
+        },
+        {
+          "text": "down.",
+          "start": 119.357,
+          "end": 119.777,
+          "id": "w345"
+        },
+        {
+          "text": "She",
+          "start": 120.197,
+          "end": 120.297,
+          "id": "w346"
+        },
+        {
+          "text": "almost",
+          "start": 120.297,
+          "end": 120.537,
+          "id": "w347"
+        },
+        {
+          "text": "pressed",
+          "start": 120.537,
+          "end": 120.897,
+          "id": "w348"
+        },
+        {
+          "text": "send,",
+          "start": 120.897,
+          "end": 121.237,
+          "id": "w349"
+        },
+        {
+          "text": "then",
+          "start": 121.537,
+          "end": 121.717,
+          "id": "w350"
+        },
+        {
+          "text": "noticed",
+          "start": 121.717,
+          "end": 122.017,
+          "id": "w351"
+        },
+        {
+          "text": "another",
+          "start": 122.017,
+          "end": 122.397,
+          "id": "w352"
+        },
+        {
+          "text": "message",
+          "start": 122.397,
+          "end": 122.757,
+          "id": "w353"
+        },
+        {
+          "text": "above",
+          "start": 122.757,
+          "end": 123.037,
+          "id": "w354"
+        },
+        {
+          "text": "it.",
+          "start": 123.037,
+          "end": 123.317,
+          "id": "w355"
+        },
+        {
+          "text": "She",
+          "start": 123.737,
+          "end": 123.857,
+          "id": "w356"
+        },
+        {
+          "text": "dragged",
+          "start": 123.857,
+          "end": 124.137,
+          "id": "w357"
+        },
+        {
+          "text": "the",
+          "start": 124.137,
+          "end": 124.357,
+          "id": "w358"
+        },
+        {
+          "text": "conversation",
+          "start": 124.357,
+          "end": 124.837,
+          "id": "w359"
+        },
+        {
+          "text": "down.",
+          "start": 124.837,
+          "end": 125.297,
+          "id": "w360"
+        },
+        {
+          "text": "Asha",
+          "start": 125.608,
+          "end": 125.948,
+          "id": "w361"
+        },
+        {
+          "text": "had",
+          "start": 125.948,
+          "end": 126.088,
+          "id": "w362"
+        },
+        {
+          "text": "written,",
+          "start": 126.088,
+          "end": 126.368,
+          "id": "w363"
+        },
+        {
+          "text": "Can",
+          "start": 126.688,
+          "end": 126.748,
+          "id": "w364"
+        },
+        {
+          "text": "we",
+          "start": 126.748,
+          "end": 126.908,
+          "id": "w365"
+        },
+        {
+          "text": "talk?",
+          "start": 126.908,
+          "end": 127.208,
+          "id": "w366"
+        },
+        {
+          "text": "Rough",
+          "start": 127.728,
+          "end": 127.828,
+          "id": "w367"
+        },
+        {
+          "text": "day.",
+          "start": 127.828,
+          "end": 128.168,
+          "id": "w368"
+        },
+        {
+          "text": "Mira",
+          "start": 128.828,
+          "end": 128.988,
+          "id": "w369"
+        },
+        {
+          "text": "read",
+          "start": 128.988,
+          "end": 129.228,
+          "id": "w370"
+        },
+        {
+          "text": "it",
+          "start": 129.228,
+          "end": 129.348,
+          "id": "w371"
+        },
+        {
+          "text": "once,",
+          "start": 129.348,
+          "end": 129.568,
+          "id": "w372"
+        },
+        {
+          "text": "then",
+          "start": 129.748,
+          "end": 129.788,
+          "id": "w373"
+        },
+        {
+          "text": "again.",
+          "start": 129.788,
+          "end": 130.128,
+          "id": "w374"
+        },
+        {
+          "text": "The",
+          "start": 130.728,
+          "end": 130.828,
+          "id": "w375"
+        },
+        {
+          "text": "timestamp",
+          "start": 130.828,
+          "end": 131.328,
+          "id": "w376"
+        },
+        {
+          "text": "was",
+          "start": 131.328,
+          "end": 131.728,
+          "id": "w377"
+        },
+        {
+          "text": "from",
+          "start": 131.728,
+          "end": 131.928,
+          "id": "w378"
+        },
+        {
+          "text": "earlier",
+          "start": 131.928,
+          "end": 132.228,
+          "id": "w379"
+        },
+        {
+          "text": "that",
+          "start": 132.228,
+          "end": 132.568,
+          "id": "w380"
+        },
+        {
+          "text": "evening,",
+          "start": 132.568,
+          "end": 132.928,
+          "id": "w381"
+        },
+        {
+          "text": "before",
+          "start": 133.128,
+          "end": 133.348,
+          "id": "w382"
+        },
+        {
+          "text": "all",
+          "start": 133.348,
+          "end": 133.648,
+          "id": "w383"
+        },
+        {
+          "text": "the",
+          "start": 133.648,
+          "end": 133.808,
+          "id": "w384"
+        },
+        {
+          "text": "rewriting.",
+          "start": 133.808,
+          "end": 134.148,
+          "id": "w385"
+        },
+        {
+          "text": "Her",
+          "start": 134.928,
+          "end": 135.028,
+          "id": "w386"
+        },
+        {
+          "text": "friend",
+          "start": 135.028,
+          "end": 135.248,
+          "id": "w387"
+        },
+        {
+          "text": "had",
+          "start": 135.248,
+          "end": 135.448,
+          "id": "w388"
+        },
+        {
+          "text": "not",
+          "start": 135.448,
+          "end": 135.648,
+          "id": "w389"
+        },
+        {
+          "text": "asked",
+          "start": 135.648,
+          "end": 136.008,
+          "id": "w390"
+        },
+        {
+          "text": "for",
+          "start": 136.008,
+          "end": 136.248,
+          "id": "w391"
+        },
+        {
+          "text": "a",
+          "start": 136.248,
+          "end": 136.368,
+          "id": "w392"
+        },
+        {
+          "text": "recommendation.",
+          "start": 136.368,
+          "end": 136.748,
+          "id": "w393"
+        },
+        {
+          "text": "She",
+          "start": 137.608,
+          "end": 137.748,
+          "id": "w394"
+        },
+        {
+          "text": "had",
+          "start": 137.748,
+          "end": 137.848,
+          "id": "w395"
+        },
+        {
+          "text": "asked",
+          "start": 137.848,
+          "end": 138.188,
+          "id": "w396"
+        },
+        {
+          "text": "whether",
+          "start": 138.188,
+          "end": 138.448,
+          "id": "w397"
+        },
+        {
+          "text": "Mira",
+          "start": 138.448,
+          "end": 138.868,
+          "id": "w398"
+        },
+        {
+          "text": "had",
+          "start": 138.868,
+          "end": 139.048,
+          "id": "w399"
+        },
+        {
+          "text": "time",
+          "start": 139.048,
+          "end": 139.308,
+          "id": "w400"
+        },
+        {
+          "text": "for",
+          "start": 139.308,
+          "end": 139.548,
+          "id": "w401"
+        },
+        {
+          "text": "her.",
+          "start": 139.548,
+          "end": 139.688,
+          "id": "w402"
+        },
+        {
+          "text": "Mira",
+          "start": 139.916,
+          "end": 140.336,
+          "id": "w403"
+        },
+        {
+          "text": "remembered",
+          "start": 140.336,
+          "end": 140.716,
+          "id": "w404"
+        },
+        {
+          "text": "seeing",
+          "start": 140.716,
+          "end": 141.076,
+          "id": "w405"
+        },
+        {
+          "text": "the",
+          "start": 141.076,
+          "end": 141.276,
+          "id": "w406"
+        },
+        {
+          "text": "notification",
+          "start": 141.276,
+          "end": 141.836,
+          "id": "w407"
+        },
+        {
+          "text": "while",
+          "start": 141.836,
+          "end": 142.236,
+          "id": "w408"
+        },
+        {
+          "text": "making",
+          "start": 142.236,
+          "end": 142.576,
+          "id": "w409"
+        },
+        {
+          "text": "tea.",
+          "start": 142.576,
+          "end": 142.856,
+          "id": "w410"
+        },
+        {
+          "text": "She",
+          "start": 143.536,
+          "end": 143.616,
+          "id": "w411"
+        },
+        {
+          "text": "had",
+          "start": 143.616,
+          "end": 143.716,
+          "id": "w412"
+        },
+        {
+          "text": "answered",
+          "start": 143.716,
+          "end": 144.076,
+          "id": "w413"
+        },
+        {
+          "text": "in",
+          "start": 144.076,
+          "end": 144.256,
+          "id": "w414"
+        },
+        {
+          "text": "her",
+          "start": 144.256,
+          "end": 144.376,
+          "id": "w415"
+        },
+        {
+          "text": "head,",
+          "start": 144.376,
+          "end": 144.656,
+          "id": "w416"
+        },
+        {
+          "text": "promising",
+          "start": 145.036,
+          "end": 145.296,
+          "id": "w417"
+        },
+        {
+          "text": "herself",
+          "start": 145.296,
+          "end": 145.796,
+          "id": "w418"
+        },
+        {
+          "text": "she",
+          "start": 145.796,
+          "end": 146.036,
+          "id": "w419"
+        },
+        {
+          "text": "would",
+          "start": 146.036,
+          "end": 146.136,
+          "id": "w420"
+        },
+        {
+          "text": "call",
+          "start": 146.136,
+          "end": 146.456,
+          "id": "w421"
+        },
+        {
+          "text": "after",
+          "start": 146.456,
+          "end": 146.776,
+          "id": "w422"
+        },
+        {
+          "text": "finishing",
+          "start": 146.776,
+          "end": 147.156,
+          "id": "w423"
+        },
+        {
+          "text": "one",
+          "start": 147.156,
+          "end": 147.436,
+          "id": "w424"
+        },
+        {
+          "text": "thing.",
+          "start": 147.436,
+          "end": 147.696,
+          "id": "w425"
+        },
+        {
+          "text": "Then",
+          "start": 148.256,
+          "end": 148.396,
+          "id": "w426"
+        },
+        {
+          "text": "one",
+          "start": 148.396,
+          "end": 148.636,
+          "id": "w427"
+        },
+        {
+          "text": "thing",
+          "start": 148.636,
+          "end": 148.856,
+          "id": "w428"
+        },
+        {
+          "text": "became",
+          "start": 148.856,
+          "end": 149.236,
+          "id": "w429"
+        },
+        {
+          "text": "another",
+          "start": 149.236,
+          "end": 149.616,
+          "id": "w430"
+        },
+        {
+          "text": "sentence.",
+          "start": 149.616,
+          "end": 150.056,
+          "id": "w431"
+        },
+        {
+          "text": "Her",
+          "start": 150.676,
+          "end": 150.796,
+          "id": "w432"
+        },
+        {
+          "text": "thumb",
+          "start": 150.796,
+          "end": 151.096,
+          "id": "w433"
+        },
+        {
+          "text": "left",
+          "start": 151.096,
+          "end": 151.336,
+          "id": "w434"
+        },
+        {
+          "text": "the",
+          "start": 151.336,
+          "end": 151.596,
+          "id": "w435"
+        },
+        {
+          "text": "send",
+          "start": 151.596,
+          "end": 151.796,
+          "id": "w436"
+        },
+        {
+          "text": "button.",
+          "start": 151.796,
+          "end": 152.136,
+          "id": "w437"
+        },
+        {
+          "text": "The",
+          "start": 152.776,
+          "end": 152.916,
+          "id": "w438"
+        },
+        {
+          "text": "kitchen",
+          "start": 152.916,
+          "end": 153.236,
+          "id": "w439"
+        },
+        {
+          "text": "suddenly",
+          "start": 153.236,
+          "end": 153.776,
+          "id": "w440"
+        },
+        {
+          "text": "felt",
+          "start": 153.776,
+          "end": 154.016,
+          "id": "w441"
+        },
+        {
+          "text": "very",
+          "start": 154.016,
+          "end": 154.396,
+          "id": "w442"
+        },
+        {
+          "text": "quiet.",
+          "start": 154.396,
+          "end": 154.736,
+          "id": "w443"
+        },
+        {
+          "text": "She",
+          "start": 155.099,
+          "end": 155.279,
+          "id": "w444"
+        },
+        {
+          "text": "began",
+          "start": 155.279,
+          "end": 155.539,
+          "id": "w445"
+        },
+        {
+          "text": "explaining.",
+          "start": 155.539,
+          "end": 156.099,
+          "id": "w446"
+        },
+        {
+          "text": "Sorry,",
+          "start": 156.819,
+          "end": 157.079,
+          "id": "w447"
+        },
+        {
+          "text": "I",
+          "start": 157.419,
+          "end": 157.519,
+          "id": "w448"
+        },
+        {
+          "text": "was",
+          "start": 157.519,
+          "end": 157.659,
+          "id": "w449"
+        },
+        {
+          "text": "just",
+          "start": 157.659,
+          "end": 157.879,
+          "id": "w450"
+        },
+        {
+          "text": "trying",
+          "start": 157.879,
+          "end": 158.119,
+          "id": "w451"
+        },
+        {
+          "text": "to",
+          "start": 158.119,
+          "end": 158.259,
+          "id": "w452"
+        },
+        {
+          "text": "be",
+          "start": 158.259,
+          "end": 158.399,
+          "id": "w453"
+        },
+        {
+          "text": "helpful.",
+          "start": 158.399,
+          "end": 158.719,
+          "id": "w454"
+        },
+        {
+          "text": "She",
+          "start": 159.319,
+          "end": 159.419,
+          "id": "w455"
+        },
+        {
+          "text": "added",
+          "start": 159.419,
+          "end": 159.699,
+          "id": "w456"
+        },
+        {
+          "text": "a",
+          "start": 159.699,
+          "end": 159.879,
+          "id": "w457"
+        },
+        {
+          "text": "paragraph",
+          "start": 159.879,
+          "end": 160.299,
+          "id": "w458"
+        },
+        {
+          "text": "about",
+          "start": 160.299,
+          "end": 160.579,
+          "id": "w459"
+        },
+        {
+          "text": "her",
+          "start": 160.579,
+          "end": 160.759,
+          "id": "w460"
+        },
+        {
+          "text": "evening,",
+          "start": 160.759,
+          "end": 161.159,
+          "id": "w461"
+        },
+        {
+          "text": "then",
+          "start": 161.519,
+          "end": 161.679,
+          "id": "w462"
+        },
+        {
+          "text": "another",
+          "start": 161.679,
+          "end": 161.999,
+          "id": "w463"
+        },
+        {
+          "text": "about",
+          "start": 161.999,
+          "end": 162.279,
+          "id": "w464"
+        },
+        {
+          "text": "the",
+          "start": 162.279,
+          "end": 162.459,
+          "id": "w465"
+        },
+        {
+          "text": "shopping",
+          "start": 162.459,
+          "end": 162.779,
+          "id": "w466"
+        },
+        {
+          "text": "list.",
+          "start": 162.779,
+          "end": 163.159,
+          "id": "w467"
+        },
+        {
+          "text": "The",
+          "start": 163.779,
+          "end": 163.919,
+          "id": "w468"
+        },
+        {
+          "text": "explanation",
+          "start": 163.919,
+          "end": 164.399,
+          "id": "w469"
+        },
+        {
+          "text": "grew",
+          "start": 164.399,
+          "end": 164.919,
+          "id": "w470"
+        },
+        {
+          "text": "until",
+          "start": 164.919,
+          "end": 165.359,
+          "id": "w471"
+        },
+        {
+          "text": "it",
+          "start": 165.359,
+          "end": 165.519,
+          "id": "w472"
+        },
+        {
+          "text": "pushed",
+          "start": 165.519,
+          "end": 165.719,
+          "id": "w473"
+        },
+        {
+          "text": "Asha's",
+          "start": 165.719,
+          "end": 166.299,
+          "id": "w474"
+        },
+        {
+          "text": "short",
+          "start": 166.299,
+          "end": 166.599,
+          "id": "w475"
+        },
+        {
+          "text": "request",
+          "start": 166.599,
+          "end": 167.039,
+          "id": "w476"
+        },
+        {
+          "text": "out",
+          "start": 167.039,
+          "end": 167.299,
+          "id": "w477"
+        },
+        {
+          "text": "of",
+          "start": 167.299,
+          "end": 167.419,
+          "id": "w478"
+        },
+        {
+          "text": "view",
+          "start": 167.419,
+          "end": 167.539,
+          "id": "w479"
+        },
+        {
+          "text": "again.",
+          "start": 167.539,
+          "end": 167.799,
+          "id": "w480"
+        },
+        {
+          "text": "Mira",
+          "start": 168.105,
+          "end": 168.505,
+          "id": "w481"
+        },
+        {
+          "text": "stopped.",
+          "start": 168.505,
+          "end": 168.945,
+          "id": "w482"
+        },
+        {
+          "text": "Her",
+          "start": 169.485,
+          "end": 169.565,
+          "id": "w483"
+        },
+        {
+          "text": "apology",
+          "start": 169.565,
+          "end": 169.985,
+          "id": "w484"
+        },
+        {
+          "text": "was",
+          "start": 169.985,
+          "end": 170.325,
+          "id": "w485"
+        },
+        {
+          "text": "filling",
+          "start": 170.325,
+          "end": 170.625,
+          "id": "w486"
+        },
+        {
+          "text": "the",
+          "start": 170.625,
+          "end": 170.825,
+          "id": "w487"
+        },
+        {
+          "text": "conversation",
+          "start": 170.825,
+          "end": 171.325,
+          "id": "w488"
+        },
+        {
+          "text": "with",
+          "start": 171.325,
+          "end": 171.725,
+          "id": "w489"
+        },
+        {
+          "text": "her",
+          "start": 171.725,
+          "end": 171.865,
+          "id": "w490"
+        },
+        {
+          "text": "own",
+          "start": 171.865,
+          "end": 172.105,
+          "id": "w491"
+        },
+        {
+          "text": "evening.",
+          "start": 172.105,
+          "end": 172.525,
+          "id": "w492"
+        },
+        {
+          "text": "She",
+          "start": 173.225,
+          "end": 173.345,
+          "id": "w493"
+        },
+        {
+          "text": "looked",
+          "start": 173.345,
+          "end": 173.505,
+          "id": "w494"
+        },
+        {
+          "text": "at",
+          "start": 173.505,
+          "end": 173.685,
+          "id": "w495"
+        },
+        {
+          "text": "the",
+          "start": 173.685,
+          "end": 173.805,
+          "id": "w496"
+        },
+        {
+          "text": "fridge",
+          "start": 173.805,
+          "end": 174.005,
+          "id": "w497"
+        },
+        {
+          "text": "note,",
+          "start": 174.005,
+          "end": 174.385,
+          "id": "w498"
+        },
+        {
+          "text": "then",
+          "start": 174.685,
+          "end": 174.845,
+          "id": "w499"
+        },
+        {
+          "text": "back",
+          "start": 174.845,
+          "end": 175.105,
+          "id": "w500"
+        },
+        {
+          "text": "at",
+          "start": 175.105,
+          "end": 175.265,
+          "id": "w501"
+        },
+        {
+          "text": "the",
+          "start": 175.265,
+          "end": 175.345,
+          "id": "w502"
+        },
+        {
+          "text": "screen.",
+          "start": 175.345,
+          "end": 175.645,
+          "id": "w503"
+        },
+        {
+          "text": "There",
+          "start": 176.245,
+          "end": 176.345,
+          "id": "w504"
+        },
+        {
+          "text": "was",
+          "start": 176.345,
+          "end": 176.465,
+          "id": "w505"
+        },
+        {
+          "text": "one",
+          "start": 176.465,
+          "end": 176.725,
+          "id": "w506"
+        },
+        {
+          "text": "person",
+          "start": 176.725,
+          "end": 177.105,
+          "id": "w507"
+        },
+        {
+          "text": "missing",
+          "start": 177.105,
+          "end": 177.445,
+          "id": "w508"
+        },
+        {
+          "text": "from",
+          "start": 177.445,
+          "end": 177.825,
+          "id": "w509"
+        },
+        {
+          "text": "those",
+          "start": 177.825,
+          "end": 178.065,
+          "id": "w510"
+        },
+        {
+          "text": "careful",
+          "start": 178.065,
+          "end": 178.465,
+          "id": "w511"
+        },
+        {
+          "text": "sentences.",
+          "start": 178.465,
+          "end": 179.025,
+          "id": "w512"
+        },
+        {
+          "text": "The",
+          "start": 179.705,
+          "end": 179.845,
+          "id": "w513"
+        },
+        {
+          "text": "person",
+          "start": 179.845,
+          "end": 180.145,
+          "id": "w514"
+        },
+        {
+          "text": "she",
+          "start": 180.145,
+          "end": 180.425,
+          "id": "w515"
+        },
+        {
+          "text": "was",
+          "start": 180.425,
+          "end": 180.565,
+          "id": "w516"
+        },
+        {
+          "text": "writing",
+          "start": 180.565,
+          "end": 180.885,
+          "id": "w517"
+        },
+        {
+          "text": "to.",
+          "start": 180.885,
+          "end": 181.225,
+          "id": "w518"
+        },
+        {
+          "text": "She",
+          "start": 181.475,
+          "end": 181.655,
+          "id": "w519"
+        },
+        {
+          "text": "selected",
+          "start": 181.655,
+          "end": 182.015,
+          "id": "w520"
+        },
+        {
+          "text": "the",
+          "start": 182.015,
+          "end": 182.235,
+          "id": "w521"
+        },
+        {
+          "text": "recommendation,",
+          "start": 182.235,
+          "end": 182.815,
+          "id": "w522"
+        },
+        {
+          "text": "then",
+          "start": 183.335,
+          "end": 183.495,
+          "id": "w523"
+        },
+        {
+          "text": "the",
+          "start": 183.495,
+          "end": 183.655,
+          "id": "w524"
+        },
+        {
+          "text": "explanation.",
+          "start": 183.655,
+          "end": 184.195,
+          "id": "w525"
+        },
+        {
+          "text": "Delete. For",
+          "start": 185.975,
+          "end": 186.055,
+          "id": "w526"
+        },
+        {
+          "text": "a",
+          "start": 186.055,
+          "end": 186.175,
+          "id": "w527"
+        },
+        {
+          "text": "moment,",
+          "start": 186.175,
+          "end": 186.415,
+          "id": "w528"
+        },
+        {
+          "text": "the",
+          "start": 186.615,
+          "end": 186.715,
+          "id": "w529"
+        },
+        {
+          "text": "empty",
+          "start": 186.715,
+          "end": 187.035,
+          "id": "w530"
+        },
+        {
+          "text": "space",
+          "start": 187.035,
+          "end": 187.395,
+          "id": "w531"
+        },
+        {
+          "text": "looked",
+          "start": 187.395,
+          "end": 187.715,
+          "id": "w532"
+        },
+        {
+          "text": "uncomfortable.",
+          "start": 187.715,
+          "end": 188.395,
+          "id": "w533"
+        },
+        {
+          "text": "Three",
+          "start": 189.135,
+          "end": 189.335,
+          "id": "w534"
+        },
+        {
+          "text": "hours",
+          "start": 189.335,
+          "end": 189.635,
+          "id": "w535"
+        },
+        {
+          "text": "of",
+          "start": 189.635,
+          "end": 189.875,
+          "id": "w536"
+        },
+        {
+          "text": "polishing",
+          "start": 189.875,
+          "end": 190.315,
+          "id": "w537"
+        },
+        {
+          "text": "had",
+          "start": 190.315,
+          "end": 190.535,
+          "id": "w538"
+        },
+        {
+          "text": "disappeared.",
+          "start": 190.535,
+          "end": 191.055,
+          "id": "w539"
+        },
+        {
+          "text": "Mira",
+          "start": 191.875,
+          "end": 192.115,
+          "id": "w540"
+        },
+        {
+          "text": "set",
+          "start": 192.115,
+          "end": 192.355,
+          "id": "w541"
+        },
+        {
+          "text": "down",
+          "start": 192.355,
+          "end": 192.595,
+          "id": "w542"
+        },
+        {
+          "text": "the",
+          "start": 192.595,
+          "end": 192.735,
+          "id": "w543"
+        },
+        {
+          "text": "phone,",
+          "start": 192.735,
+          "end": 193.075,
+          "id": "w544"
+        },
+        {
+          "text": "took",
+          "start": 193.295,
+          "end": 193.435,
+          "id": "w545"
+        },
+        {
+          "text": "a",
+          "start": 193.435,
+          "end": 193.595,
+          "id": "w546"
+        },
+        {
+          "text": "breath,",
+          "start": 193.595,
+          "end": 193.835,
+          "id": "w547"
+        },
+        {
+          "text": "and",
+          "start": 194.055,
+          "end": 194.195,
+          "id": "w548"
+        },
+        {
+          "text": "picked",
+          "start": 194.195,
+          "end": 194.375,
+          "id": "w549"
+        },
+        {
+          "text": "it",
+          "start": 194.375,
+          "end": 194.515,
+          "id": "w550"
+        },
+        {
+          "text": "up",
+          "start": 194.515,
+          "end": 194.675,
+          "id": "w551"
+        },
+        {
+          "text": "without",
+          "start": 194.675,
+          "end": 194.915,
+          "id": "w552"
+        },
+        {
+          "text": "opening",
+          "start": 194.915,
+          "end": 195.315,
+          "id": "w553"
+        },
+        {
+          "text": "the",
+          "start": 195.315,
+          "end": 195.515,
+          "id": "w554"
+        },
+        {
+          "text": "shopping",
+          "start": 195.515,
+          "end": 195.815,
+          "id": "w555"
+        },
+        {
+          "text": "list",
+          "start": 195.815,
+          "end": 196.115,
+          "id": "w556"
+        },
+        {
+          "text": "again.",
+          "start": 196.115,
+          "end": 196.395,
+          "id": "w557"
+        },
+        {
+          "text": "This",
+          "start": 196.721,
+          "end": 196.921,
+          "id": "w558"
+        },
+        {
+          "text": "time",
+          "start": 196.921,
+          "end": 197.201,
+          "id": "w559"
+        },
+        {
+          "text": "she",
+          "start": 197.201,
+          "end": 197.381,
+          "id": "w560"
+        },
+        {
+          "text": "wrote,",
+          "start": 197.381,
+          "end": 197.601,
+          "id": "w561"
+        },
+        {
+          "text": "I’m",
+          "start": 197.881,
+          "end": 198.041,
+          "id": "w562"
+        },
+        {
+          "text": "here.",
+          "start": 198.041,
+          "end": 198.221,
+          "id": "w563"
+        },
+        {
+          "text": "Do",
+          "start": 198.641,
+          "end": 198.761,
+          "id": "w564"
+        },
+        {
+          "text": "you",
+          "start": 198.761,
+          "end": 198.861,
+          "id": "w565"
+        },
+        {
+          "text": "still",
+          "start": 198.861,
+          "end": 199.061,
+          "id": "w566"
+        },
+        {
+          "text": "want",
+          "start": 199.061,
+          "end": 199.261,
+          "id": "w567"
+        },
+        {
+          "text": "to",
+          "start": 199.261,
+          "end": 199.401,
+          "id": "w568"
+        },
+        {
+          "text": "talk?",
+          "start": 199.401,
+          "end": 199.701,
+          "id": "w569"
+        },
+        {
+          "text": "She",
+          "start": 200.141,
+          "end": 200.241,
+          "id": "w570"
+        },
+        {
+          "text": "read",
+          "start": 200.241,
+          "end": 200.441,
+          "id": "w571"
+        },
+        {
+          "text": "the",
+          "start": 200.441,
+          "end": 200.601,
+          "id": "w572"
+        },
+        {
+          "text": "eight",
+          "start": 200.601,
+          "end": 200.821,
+          "id": "w573"
+        },
+        {
+          "text": "words",
+          "start": 200.821,
+          "end": 201.081,
+          "id": "w574"
+        },
+        {
+          "text": "once.",
+          "start": 201.081,
+          "end": 201.481,
+          "id": "w575"
+        },
+        {
+          "text": "There",
+          "start": 202.141,
+          "end": 202.181,
+          "id": "w576"
+        },
+        {
+          "text": "was",
+          "start": 202.181,
+          "end": 202.281,
+          "id": "w577"
+        },
+        {
+          "text": "no",
+          "start": 202.281,
+          "end": 202.501,
+          "id": "w578"
+        },
+        {
+          "text": "link",
+          "start": 202.501,
+          "end": 202.781,
+          "id": "w579"
+        },
+        {
+          "text": "underneath",
+          "start": 202.781,
+          "end": 203.221,
+          "id": "w580"
+        },
+        {
+          "text": "them,",
+          "start": 203.221,
+          "end": 203.561,
+          "id": "w581"
+        },
+        {
+          "text": "no",
+          "start": 203.781,
+          "end": 203.921,
+          "id": "w582"
+        },
+        {
+          "text": "extra",
+          "start": 203.921,
+          "end": 204.341,
+          "id": "w583"
+        },
+        {
+          "text": "explanation.",
+          "start": 204.341,
+          "end": 204.921,
+          "id": "w584"
+        },
+        {
+          "text": "At",
+          "start": 205.841,
+          "end": 205.961,
+          "id": "w585"
+        },
+        {
+          "text": "eleven",
+          "start": 205.961,
+          "end": 206.221,
+          "id": "w586"
+        },
+        {
+          "text": "fifty",
+          "start": 206.221,
+          "end": 206.541,
+          "id": "w587"
+        },
+        {
+          "text": "-nine,",
+          "start": 206.541,
+          "end": 207.001,
+          "id": "w588"
+        },
+        {
+          "text": "Mira",
+          "start": 207.361,
+          "end": 207.561,
+          "id": "w589"
+        },
+        {
+          "text": "pressed",
+          "start": 207.561,
+          "end": 207.821,
+          "id": "w590"
+        },
+        {
+          "text": "send",
+          "start": 207.821,
+          "end": 208.161,
+          "id": "w591"
+        },
+        {
+          "text": "and",
+          "start": 208.161,
+          "end": 208.481,
+          "id": "w592"
+        },
+        {
+          "text": "left",
+          "start": 208.481,
+          "end": 208.661,
+          "id": "w593"
+        },
+        {
+          "text": "the",
+          "start": 208.661,
+          "end": 208.841,
+          "id": "w594"
+        },
+        {
+          "text": "conversation",
+          "start": 208.841,
+          "end": 209.301,
+          "id": "w595"
+        },
+        {
+          "text": "open.",
+          "start": 209.301,
+          "end": 209.721,
+          "id": "w596"
+        },
+        {
+          "text": "Nothing",
+          "start": 210.069,
+          "end": 210.429,
+          "id": "w597"
+        },
+        {
+          "text": "happened.",
+          "start": 210.429,
+          "end": 210.849,
+          "id": "w598"
+        },
+        {
+          "text": "The",
+          "start": 211.329,
+          "end": 211.449,
+          "id": "w599"
+        },
+        {
+          "text": "message",
+          "start": 211.449,
+          "end": 211.729,
+          "id": "w600"
+        },
+        {
+          "text": "sat",
+          "start": 211.729,
+          "end": 212.049,
+          "id": "w601"
+        },
+        {
+          "text": "there",
+          "start": 212.049,
+          "end": 212.309,
+          "id": "w602"
+        },
+        {
+          "text": "without",
+          "start": 212.309,
+          "end": 212.569,
+          "id": "w603"
+        },
+        {
+          "text": "an",
+          "start": 212.569,
+          "end": 212.729,
+          "id": "w604"
+        },
+        {
+          "text": "answer.",
+          "start": 212.729,
+          "end": 213.089,
+          "id": "w605"
+        },
+        {
+          "text": "Mira",
+          "start": 214.029,
+          "end": 214.169,
+          "id": "w606"
+        },
+        {
+          "text": "reached",
+          "start": 214.169,
+          "end": 214.429,
+          "id": "w607"
+        },
+        {
+          "text": "for",
+          "start": 214.429,
+          "end": 214.709,
+          "id": "w608"
+        },
+        {
+          "text": "the",
+          "start": 214.709,
+          "end": 214.809,
+          "id": "w609"
+        },
+        {
+          "text": "phone",
+          "start": 214.809,
+          "end": 215.009,
+          "id": "w610"
+        },
+        {
+          "text": "again,",
+          "start": 215.009,
+          "end": 215.329,
+          "id": "w611"
+        },
+        {
+          "text": "then",
+          "start": 215.609,
+          "end": 215.769,
+          "id": "w612"
+        },
+        {
+          "text": "let",
+          "start": 215.769,
+          "end": 215.969,
+          "id": "w613"
+        },
+        {
+          "text": "her",
+          "start": 215.969,
+          "end": 216.109,
+          "id": "w614"
+        },
+        {
+          "text": "hand",
+          "start": 216.109,
+          "end": 216.389,
+          "id": "w615"
+        },
+        {
+          "text": "rest",
+          "start": 216.389,
+          "end": 216.629,
+          "id": "w616"
+        },
+        {
+          "text": "on",
+          "start": 216.629,
+          "end": 216.849,
+          "id": "w617"
+        },
+        {
+          "text": "the",
+          "start": 216.849,
+          "end": 216.949,
+          "id": "w618"
+        },
+        {
+          "text": "table.",
+          "start": 216.949,
+          "end": 217.289,
+          "id": "w619"
+        },
+        {
+          "text": "Asha",
+          "start": 217.969,
+          "end": 218.209,
+          "id": "w620"
+        },
+        {
+          "text": "might",
+          "start": 218.209,
+          "end": 218.409,
+          "id": "w621"
+        },
+        {
+          "text": "be",
+          "start": 218.409,
+          "end": 218.589,
+          "id": "w622"
+        },
+        {
+          "text": "busy.",
+          "start": 218.589,
+          "end": 218.809,
+          "id": "w623"
+        },
+        {
+          "text": "She",
+          "start": 219.249,
+          "end": 219.369,
+          "id": "w624"
+        },
+        {
+          "text": "might",
+          "start": 219.369,
+          "end": 219.529,
+          "id": "w625"
+        },
+        {
+          "text": "not",
+          "start": 219.529,
+          "end": 219.749,
+          "id": "w626"
+        },
+        {
+          "text": "want",
+          "start": 219.749,
+          "end": 219.949,
+          "id": "w627"
+        },
+        {
+          "text": "to",
+          "start": 219.949,
+          "end": 220.089,
+          "id": "w628"
+        },
+        {
+          "text": "talk",
+          "start": 220.089,
+          "end": 220.309,
+          "id": "w629"
+        },
+        {
+          "text": "anymore.",
+          "start": 220.309,
+          "end": 220.529,
+          "id": "w630"
+        },
+        {
+          "text": "Another",
+          "start": 221.209,
+          "end": 221.489,
+          "id": "w631"
+        },
+        {
+          "text": "message",
+          "start": 221.489,
+          "end": 221.849,
+          "id": "w632"
+        },
+        {
+          "text": "would",
+          "start": 221.849,
+          "end": 222.089,
+          "id": "w633"
+        },
+        {
+          "text": "not",
+          "start": 222.089,
+          "end": 222.329,
+          "id": "w634"
+        },
+        {
+          "text": "make",
+          "start": 222.329,
+          "end": 222.529,
+          "id": "w635"
+        },
+        {
+          "text": "that",
+          "start": 222.529,
+          "end": 222.749,
+          "id": "w636"
+        },
+        {
+          "text": "choice",
+          "start": 222.749,
+          "end": 223.069,
+          "id": "w637"
+        },
+        {
+          "text": "belong",
+          "start": 223.069,
+          "end": 223.389,
+          "id": "w638"
+        },
+        {
+          "text": "to",
+          "start": 223.389,
+          "end": 223.609,
+          "id": "w639"
+        },
+        {
+          "text": "Mira.",
+          "start": 223.609,
+          "end": 223.929,
+          "id": "w640"
+        },
+        {
+          "text": "She",
+          "start": 224.143,
+          "end": 224.323,
+          "id": "w641"
+        },
+        {
+          "text": "rinsed",
+          "start": 224.323,
+          "end": 224.683,
+          "id": "w642"
+        },
+        {
+          "text": "the",
+          "start": 224.683,
+          "end": 224.763,
+          "id": "w643"
+        },
+        {
+          "text": "cold",
+          "start": 224.763,
+          "end": 225.063,
+          "id": "w644"
+        },
+        {
+          "text": "mug",
+          "start": 225.063,
+          "end": 225.343,
+          "id": "w645"
+        },
+        {
+          "text": "and",
+          "start": 225.343,
+          "end": 225.623,
+          "id": "w646"
+        },
+        {
+          "text": "wiped",
+          "start": 225.623,
+          "end": 225.843,
+          "id": "w647"
+        },
+        {
+          "text": "the",
+          "start": 225.843,
+          "end": 226.083,
+          "id": "w648"
+        },
+        {
+          "text": "small",
+          "start": 226.083,
+          "end": 226.383,
+          "id": "w649"
+        },
+        {
+          "text": "tea",
+          "start": 226.383,
+          "end": 226.643,
+          "id": "w650"
+        },
+        {
+          "text": "mark",
+          "start": 226.643,
+          "end": 226.863,
+          "id": "w651"
+        },
+        {
+          "text": "from",
+          "start": 226.863,
+          "end": 227.103,
+          "id": "w652"
+        },
+        {
+          "text": "the",
+          "start": 227.103,
+          "end": 227.243,
+          "id": "w653"
+        },
+        {
+          "text": "table.",
+          "start": 227.243,
+          "end": 227.543,
+          "id": "w654"
+        },
+        {
+          "text": "The",
+          "start": 228.123,
+          "end": 228.263,
+          "id": "w655"
+        },
+        {
+          "text": "bottles",
+          "start": 228.263,
+          "end": 228.563,
+          "id": "w656"
+        },
+        {
+          "text": "were",
+          "start": 228.563,
+          "end": 228.783,
+          "id": "w657"
+        },
+        {
+          "text": "back",
+          "start": 228.783,
+          "end": 229.003,
+          "id": "w658"
+        },
+        {
+          "text": "on",
+          "start": 229.003,
+          "end": 229.163,
+          "id": "w659"
+        },
+        {
+          "text": "their",
+          "start": 229.163,
+          "end": 229.303,
+          "id": "w660"
+        },
+        {
+          "text": "shelf.",
+          "start": 229.303,
+          "end": 229.583,
+          "id": "w661"
+        },
+        {
+          "text": "She",
+          "start": 230.243,
+          "end": 230.403,
+          "id": "w662"
+        },
+        {
+          "text": "straightened",
+          "start": 230.403,
+          "end": 230.843,
+          "id": "w663"
+        },
+        {
+          "text": "them,",
+          "start": 230.843,
+          "end": 231.143,
+          "id": "w664"
+        },
+        {
+          "text": "closed",
+          "start": 231.363,
+          "end": 231.683,
+          "id": "w665"
+        },
+        {
+          "text": "the",
+          "start": 231.683,
+          "end": 231.923,
+          "id": "w666"
+        },
+        {
+          "text": "cupboard,",
+          "start": 231.923,
+          "end": 232.263,
+          "id": "w667"
+        },
+        {
+          "text": "and",
+          "start": 232.523,
+          "end": 232.743,
+          "id": "w668"
+        },
+        {
+          "text": "left",
+          "start": 232.743,
+          "end": 232.903,
+          "id": "w669"
+        },
+        {
+          "text": "the",
+          "start": 232.903,
+          "end": 233.123,
+          "id": "w670"
+        },
+        {
+          "text": "fridge",
+          "start": 233.123,
+          "end": 233.403,
+          "id": "w671"
+        },
+        {
+          "text": "note",
+          "start": 233.403,
+          "end": 233.743,
+          "id": "w672"
+        },
+        {
+          "text": "crooked.",
+          "start": 233.743,
+          "end": 234.083,
+          "id": "w673"
+        },
+        {
+          "text": "This",
+          "start": 234.803,
+          "end": 235.003,
+          "id": "w674"
+        },
+        {
+          "text": "was",
+          "start": 235.003,
+          "end": 235.183,
+          "id": "w675"
+        },
+        {
+          "text": "something",
+          "start": 235.183,
+          "end": 235.423,
+          "id": "w676"
+        },
+        {
+          "text": "she",
+          "start": 235.423,
+          "end": 235.683,
+          "id": "w677"
+        },
+        {
+          "text": "could",
+          "start": 235.683,
+          "end": 235.863,
+          "id": "w678"
+        },
+        {
+          "text": "finish",
+          "start": 235.863,
+          "end": 236.143,
+          "id": "w679"
+        },
+        {
+          "text": "without",
+          "start": 236.143,
+          "end": 236.503,
+          "id": "w680"
+        },
+        {
+          "text": "asking",
+          "start": 236.503,
+          "end": 236.943,
+          "id": "w681"
+        },
+        {
+          "text": "anyone",
+          "start": 236.943,
+          "end": 237.363,
+          "id": "w682"
+        },
+        {
+          "text": "to",
+          "start": 237.363,
+          "end": 237.603,
+          "id": "w683"
+        },
+        {
+          "text": "reply.",
+          "start": 237.603,
+          "end": 237.943,
+          "id": "w684"
+        },
+        {
+          "text": "A",
+          "start": 238.344,
+          "end": 238.484,
+          "id": "w685"
+        },
+        {
+          "text": "few",
+          "start": 238.484,
+          "end": 238.624,
+          "id": "w686"
+        },
+        {
+          "text": "minutes",
+          "start": 238.624,
+          "end": 238.824,
+          "id": "w687"
+        },
+        {
+          "text": "later,",
+          "start": 238.824,
+          "end": 239.164,
+          "id": "w688"
+        },
+        {
+          "text": "the",
+          "start": 239.304,
+          "end": 239.364,
+          "id": "w689"
+        },
+        {
+          "text": "screen",
+          "start": 239.364,
+          "end": 239.664,
+          "id": "w690"
+        },
+        {
+          "text": "lit",
+          "start": 239.664,
+          "end": 239.884,
+          "id": "w691"
+        },
+        {
+          "text": "up.",
+          "start": 239.884,
+          "end": 240.164,
+          "id": "w692"
+        },
+        {
+          "text": "Yes,",
+          "start": 240.644,
+          "end": 240.824,
+          "id": "w693"
+        },
+        {
+          "text": "please.",
+          "start": 241.084,
+          "end": 241.304,
+          "id": "w694"
+        },
+        {
+          "text": "Still",
+          "start": 241.904,
+          "end": 242.024,
+          "id": "w695"
+        },
+        {
+          "text": "awake?",
+          "start": 242.024,
+          "end": 242.404,
+          "id": "w696"
+        },
+        {
+          "text": "Mira",
+          "start": 243.044,
+          "end": 243.304,
+          "id": "w697"
+        },
+        {
+          "text": "pulled",
+          "start": 243.304,
+          "end": 243.544,
+          "id": "w698"
+        },
+        {
+          "text": "the",
+          "start": 243.544,
+          "end": 243.704,
+          "id": "w699"
+        },
+        {
+          "text": "chair",
+          "start": 243.704,
+          "end": 243.904,
+          "id": "w700"
+        },
+        {
+          "text": "out",
+          "start": 243.904,
+          "end": 244.084,
+          "id": "w701"
+        },
+        {
+          "text": "again.",
+          "start": 244.084,
+          "end": 244.364,
+          "id": "w702"
+        },
+        {
+          "text": "She",
+          "start": 244.844,
+          "end": 244.924,
+          "id": "w703"
+        },
+        {
+          "text": "did",
+          "start": 244.924,
+          "end": 245.044,
+          "id": "w704"
+        },
+        {
+          "text": "not",
+          "start": 245.044,
+          "end": 245.264,
+          "id": "w705"
+        },
+        {
+          "text": "search",
+          "start": 245.264,
+          "end": 245.504,
+          "id": "w706"
+        },
+        {
+          "text": "for",
+          "start": 245.504,
+          "end": 245.764,
+          "id": "w707"
+        },
+        {
+          "text": "a",
+          "start": 245.764,
+          "end": 245.884,
+          "id": "w708"
+        },
+        {
+          "text": "better",
+          "start": 245.884,
+          "end": 246.084,
+          "id": "w709"
+        },
+        {
+          "text": "opening",
+          "start": 246.084,
+          "end": 246.604,
+          "id": "w710"
+        },
+        {
+          "text": "or",
+          "start": 246.604,
+          "end": 246.964,
+          "id": "w711"
+        },
+        {
+          "text": "reopen",
+          "start": 246.964,
+          "end": 247.344,
+          "id": "w712"
+        },
+        {
+          "text": "the",
+          "start": 247.344,
+          "end": 247.624,
+          "id": "w713"
+        },
+        {
+          "text": "deleted",
+          "start": 247.624,
+          "end": 247.964,
+          "id": "w714"
+        },
+        {
+          "text": "draft.",
+          "start": 247.964,
+          "end": 248.384,
+          "id": "w715"
+        },
+        {
+          "text": "She",
+          "start": 249.004,
+          "end": 249.144,
+          "id": "w716"
+        },
+        {
+          "text": "pressed",
+          "start": 249.144,
+          "end": 249.404,
+          "id": "w717"
+        },
+        {
+          "text": "call",
+          "start": 249.404,
+          "end": 249.744,
+          "id": "w718"
+        },
+        {
+          "text": "and",
+          "start": 249.744,
+          "end": 250.064,
+          "id": "w719"
+        },
+        {
+          "text": "waited",
+          "start": 250.064,
+          "end": 250.304,
+          "id": "w720"
+        },
+        {
+          "text": "for",
+          "start": 250.304,
+          "end": 250.584,
+          "id": "w721"
+        },
+        {
+          "text": "Asha",
+          "start": 250.584,
+          "end": 250.884,
+          "id": "w722"
+        },
+        {
+          "text": "to",
+          "start": 250.884,
+          "end": 251.084,
+          "id": "w723"
+        },
+        {
+          "text": "pick",
+          "start": 251.084,
+          "end": 251.224,
+          "id": "w724"
+        },
+        {
+          "text": "up.",
+          "start": 251.224,
+          "end": 251.444,
+          "id": "w725"
+        },
+        {
+          "text": "Asha",
+          "start": 251.692,
+          "end": 252.012,
+          "id": "w726"
+        },
+        {
+          "text": "answered",
+          "start": 252.012,
+          "end": 252.392,
+          "id": "w727"
+        },
+        {
+          "text": "from",
+          "start": 252.392,
+          "end": 252.612,
+          "id": "w728"
+        },
+        {
+          "text": "her",
+          "start": 252.612,
+          "end": 252.752,
+          "id": "w729"
+        },
+        {
+          "text": "sofa.",
+          "start": 252.752,
+          "end": 253.012,
+          "id": "w730"
+        },
+        {
+          "text": "The",
+          "start": 253.632,
+          "end": 253.712,
+          "id": "w731"
+        },
+        {
+          "text": "day",
+          "start": 253.712,
+          "end": 253.892,
+          "id": "w732"
+        },
+        {
+          "text": "had",
+          "start": 253.892,
+          "end": 254.052,
+          "id": "w733"
+        },
+        {
+          "text": "been",
+          "start": 254.052,
+          "end": 254.232,
+          "id": "w734"
+        },
+        {
+          "text": "difficult,",
+          "start": 254.232,
+          "end": 254.592,
+          "id": "w735"
+        },
+        {
+          "text": "and",
+          "start": 254.892,
+          "end": 254.952,
+          "id": "w736"
+        },
+        {
+          "text": "she",
+          "start": 254.952,
+          "end": 255.092,
+          "id": "w737"
+        },
+        {
+          "text": "did",
+          "start": 255.092,
+          "end": 255.212,
+          "id": "w738"
+        },
+        {
+          "text": "not",
+          "start": 255.212,
+          "end": 255.432,
+          "id": "w739"
+        },
+        {
+          "text": "need",
+          "start": 255.432,
+          "end": 255.732,
+          "id": "w740"
+        },
+        {
+          "text": "Mira",
+          "start": 255.732,
+          "end": 256.012,
+          "id": "w741"
+        },
+        {
+          "text": "to",
+          "start": 256.012,
+          "end": 256.192,
+          "id": "w742"
+        },
+        {
+          "text": "fix",
+          "start": 256.192,
+          "end": 256.352,
+          "id": "w743"
+        },
+        {
+          "text": "it",
+          "start": 256.352,
+          "end": 256.592,
+          "id": "w744"
+        },
+        {
+          "text": "before",
+          "start": 256.592,
+          "end": 256.832,
+          "id": "w745"
+        },
+        {
+          "text": "hearing",
+          "start": 256.832,
+          "end": 257.092,
+          "id": "w746"
+        },
+        {
+          "text": "it.",
+          "start": 257.092,
+          "end": 257.412,
+          "id": "w747"
+        },
+        {
+          "text": "Mira",
+          "start": 257.952,
+          "end": 258.192,
+          "id": "w748"
+        },
+        {
+          "text": "listened.",
+          "start": 258.192,
+          "end": 258.492,
+          "id": "w749"
+        },
+        {
+          "text": "Sometimes she",
+          "start": 259.572,
+          "end": 259.752,
+          "id": "w750"
+        },
+        {
+          "text": "asked",
+          "start": 259.752,
+          "end": 260.032,
+          "id": "w751"
+        },
+        {
+          "text": "a",
+          "start": 260.032,
+          "end": 260.212,
+          "id": "w752"
+        },
+        {
+          "text": "question.",
+          "start": 260.212,
+          "end": 260.552,
+          "id": "w753"
+        },
+        {
+          "text": "Sometimes",
+          "start": 261.112,
+          "end": 261.452,
+          "id": "w754"
+        },
+        {
+          "text": "neither",
+          "start": 261.452,
+          "end": 261.712,
+          "id": "w755"
+        },
+        {
+          "text": "spoke.",
+          "start": 261.712,
+          "end": 262.152,
+          "id": "w756"
+        },
+        {
+          "text": "At",
+          "start": 262.832,
+          "end": 262.932,
+          "id": "w757"
+        },
+        {
+          "text": "one",
+          "start": 262.932,
+          "end": 263.172,
+          "id": "w758"
+        },
+        {
+          "text": "point,",
+          "start": 263.172,
+          "end": 263.492,
+          "id": "w759"
+        },
+        {
+          "text": "Mira",
+          "start": 263.832,
+          "end": 264.012,
+          "id": "w760"
+        },
+        {
+          "text": "started",
+          "start": 264.012,
+          "end": 264.232,
+          "id": "w761"
+        },
+        {
+          "text": "to",
+          "start": 264.232,
+          "end": 264.432,
+          "id": "w762"
+        },
+        {
+          "text": "offer",
+          "start": 264.432,
+          "end": 264.652,
+          "id": "w763"
+        },
+        {
+          "text": "a",
+          "start": 264.652,
+          "end": 264.852,
+          "id": "w764"
+        },
+        {
+          "text": "solution.",
+          "start": 264.852,
+          "end": 265.172,
+          "id": "w765"
+        },
+        {
+          "text": "Then",
+          "start": 265.912,
+          "end": 266.052,
+          "id": "w766"
+        },
+        {
+          "text": "she",
+          "start": 266.052,
+          "end": 266.192,
+          "id": "w767"
+        },
+        {
+          "text": "put",
+          "start": 266.192,
+          "end": 266.352,
+          "id": "w768"
+        },
+        {
+          "text": "the",
+          "start": 266.352,
+          "end": 266.472,
+          "id": "w769"
+        },
+        {
+          "text": "idea",
+          "start": 266.472,
+          "end": 266.832,
+          "id": "w770"
+        },
+        {
+          "text": "aside",
+          "start": 266.832,
+          "end": 267.252,
+          "id": "w771"
+        },
+        {
+          "text": "and",
+          "start": 267.252,
+          "end": 267.632,
+          "id": "w772"
+        },
+        {
+          "text": "asked",
+          "start": 267.632,
+          "end": 267.932,
+          "id": "w773"
+        },
+        {
+          "text": "what",
+          "start": 267.932,
+          "end": 268.212,
+          "id": "w774"
+        },
+        {
+          "text": "happened",
+          "start": 268.212,
+          "end": 268.512,
+          "id": "w775"
+        },
+        {
+          "text": "next.",
+          "start": 268.512,
+          "end": 268.892,
+          "id": "w776"
+        },
+        {
+          "text": "On",
+          "start": 269.492,
+          "end": 269.692,
+          "id": "w777"
+        },
+        {
+          "text": "the",
+          "start": 269.692,
+          "end": 269.792,
+          "id": "w778"
+        },
+        {
+          "text": "counter,",
+          "start": 269.792,
+          "end": 270.172,
+          "id": "w779"
+        },
+        {
+          "text": "the",
+          "start": 270.552,
+          "end": 270.672,
+          "id": "w780"
+        },
+        {
+          "text": "shopping",
+          "start": 270.672,
+          "end": 271.052,
+          "id": "w781"
+        },
+        {
+          "text": "list",
+          "start": 271.052,
+          "end": 271.312,
+          "id": "w782"
+        },
+        {
+          "text": "stayed",
+          "start": 271.312,
+          "end": 271.652,
+          "id": "w783"
+        },
+        {
+          "text": "folded",
+          "start": 271.652,
+          "end": 272.032,
+          "id": "w784"
+        },
+        {
+          "text": "under",
+          "start": 272.032,
+          "end": 272.392,
+          "id": "w785"
+        },
+        {
+          "text": "an",
+          "start": 272.392,
+          "end": 272.552,
+          "id": "w786"
+        },
+        {
+          "text": "empty",
+          "start": 272.552,
+          "end": 272.852,
+          "id": "w787"
+        },
+        {
+          "text": "mug.",
+          "start": 272.852,
+          "end": 273.132,
+          "id": "w788"
+        },
+        {
+          "text": "Before",
+          "start": 273.445,
+          "end": 273.665,
+          "id": "w789"
+        },
+        {
+          "text": "they",
+          "start": 273.665,
+          "end": 273.865,
+          "id": "w790"
+        },
+        {
+          "text": "hung",
+          "start": 273.865,
+          "end": 274.045,
+          "id": "w791"
+        },
+        {
+          "text": "up,",
+          "start": 274.045,
+          "end": 274.305,
+          "id": "w792"
+        },
+        {
+          "text": "Asha",
+          "start": 274.545,
+          "end": 274.765,
+          "id": "w793"
+        },
+        {
+          "text": "asked",
+          "start": 274.765,
+          "end": 275.105,
+          "id": "w794"
+        },
+        {
+          "text": "about",
+          "start": 275.105,
+          "end": 275.405,
+          "id": "w795"
+        },
+        {
+          "text": "Saturday.",
+          "start": 275.405,
+          "end": 275.785,
+          "id": "w796"
+        },
+        {
+          "text": "Same",
+          "start": 276.585,
+          "end": 276.785,
+          "id": "w797"
+        },
+        {
+          "text": "place",
+          "start": 276.785,
+          "end": 277.045,
+          "id": "w798"
+        },
+        {
+          "text": "for",
+          "start": 277.045,
+          "end": 277.285,
+          "id": "w799"
+        },
+        {
+          "text": "lunch?",
+          "start": 277.285,
+          "end": 277.585,
+          "id": "w800"
+        },
+        {
+          "text": "Mira",
+          "start": 278.185,
+          "end": 278.405,
+          "id": "w801"
+        },
+        {
+          "text": "found",
+          "start": 278.405,
+          "end": 278.585,
+          "id": "w802"
+        },
+        {
+          "text": "the",
+          "start": 278.585,
+          "end": 278.725,
+          "id": "w803"
+        },
+        {
+          "text": "little",
+          "start": 278.725,
+          "end": 278.905,
+          "id": "w804"
+        },
+        {
+          "text": "calendar",
+          "start": 278.905,
+          "end": 279.305,
+          "id": "w805"
+        },
+        {
+          "text": "on",
+          "start": 279.305,
+          "end": 279.525,
+          "id": "w806"
+        },
+        {
+          "text": "the",
+          "start": 279.525,
+          "end": 279.645,
+          "id": "w807"
+        },
+        {
+          "text": "fridge",
+          "start": 279.645,
+          "end": 279.945,
+          "id": "w808"
+        },
+        {
+          "text": "and",
+          "start": 279.945,
+          "end": 280.245,
+          "id": "w809"
+        },
+        {
+          "text": "circled",
+          "start": 280.245,
+          "end": 280.565,
+          "id": "w810"
+        },
+        {
+          "text": "the",
+          "start": 280.565,
+          "end": 280.745,
+          "id": "w811"
+        },
+        {
+          "text": "day.",
+          "start": 280.745,
+          "end": 280.985,
+          "id": "w812"
+        },
+        {
+          "text": "Same",
+          "start": 281.625,
+          "end": 281.925,
+          "id": "w813"
+        },
+        {
+          "text": "place,",
+          "start": 281.925,
+          "end": 282.265,
+          "id": "w814"
+        },
+        {
+          "text": "she",
+          "start": 282.385,
+          "end": 282.565,
+          "id": "w815"
+        },
+        {
+          "text": "said.",
+          "start": 282.565,
+          "end": 282.825,
+          "id": "w816"
+        },
+        {
+          "text": "Nothing",
+          "start": 283.305,
+          "end": 283.565,
+          "id": "w817"
+        },
+        {
+          "text": "needed",
+          "start": 283.565,
+          "end": 283.865,
+          "id": "w818"
+        },
+        {
+          "text": "to",
+          "start": 283.865,
+          "end": 284.045,
+          "id": "w819"
+        },
+        {
+          "text": "be",
+          "start": 284.045,
+          "end": 284.165,
+          "id": "w820"
+        },
+        {
+          "text": "ordered",
+          "start": 284.165,
+          "end": 284.385,
+          "id": "w821"
+        },
+        {
+          "text": "first.",
+          "start": 284.385,
+          "end": 284.765,
+          "id": "w822"
+        },
+        {
+          "text": "Nothing",
+          "start": 285.345,
+          "end": 285.585,
+          "id": "w823"
+        },
+        {
+          "text": "needed",
+          "start": 285.585,
+          "end": 285.865,
+          "id": "w824"
+        },
+        {
+          "text": "to",
+          "start": 285.865,
+          "end": 286.065,
+          "id": "w825"
+        },
+        {
+          "text": "be",
+          "start": 286.065,
+          "end": 286.185,
+          "id": "w826"
+        },
+        {
+          "text": "earned.",
+          "start": 286.185,
+          "end": 286.445,
+          "id": "w827"
+        },
+        {
+          "text": "They",
+          "start": 286.925,
+          "end": 286.985,
+          "id": "w828"
+        },
+        {
+          "text": "were",
+          "start": 286.985,
+          "end": 287.105,
+          "id": "w829"
+        },
+        {
+          "text": "simply",
+          "start": 287.105,
+          "end": 287.325,
+          "id": "w830"
+        },
+        {
+          "text": "making",
+          "start": 287.325,
+          "end": 287.645,
+          "id": "w831"
+        },
+        {
+          "text": "a",
+          "start": 287.645,
+          "end": 287.825,
+          "id": "w832"
+        },
+        {
+          "text": "plan.",
+          "start": 287.825,
+          "end": 288.085,
+          "id": "w833"
+        },
+        {
+          "text": "After",
+          "start": 288.415,
+          "end": 288.675,
+          "id": "w834"
+        },
+        {
+          "text": "the",
+          "start": 288.675,
+          "end": 288.835,
+          "id": "w835"
+        },
+        {
+          "text": "call,",
+          "start": 288.835,
+          "end": 289.155,
+          "id": "w836"
+        },
+        {
+          "text": "Mira",
+          "start": 289.475,
+          "end": 289.655,
+          "id": "w837"
+        },
+        {
+          "text": "turned",
+          "start": 289.655,
+          "end": 289.915,
+          "id": "w838"
+        },
+        {
+          "text": "off",
+          "start": 289.915,
+          "end": 290.135,
+          "id": "w839"
+        },
+        {
+          "text": "the",
+          "start": 290.135,
+          "end": 290.315,
+          "id": "w840"
+        },
+        {
+          "text": "lamp.",
+          "start": 290.315,
+          "end": 290.515,
+          "id": "w841"
+        },
+        {
+          "text": "The",
+          "start": 291.035,
+          "end": 291.155,
+          "id": "w842"
+        },
+        {
+          "text": "perfect",
+          "start": 291.155,
+          "end": 291.475,
+          "id": "w843"
+        },
+        {
+          "text": "pitch",
+          "start": 291.475,
+          "end": 291.815,
+          "id": "w844"
+        },
+        {
+          "text": "was",
+          "start": 291.815,
+          "end": 292.055,
+          "id": "w845"
+        },
+        {
+          "text": "gone.",
+          "start": 292.055,
+          "end": 292.375,
+          "id": "w846"
+        },
+        {
+          "text": "The",
+          "start": 292.955,
+          "end": 293.055,
+          "id": "w847"
+        },
+        {
+          "text": "crooked",
+          "start": 293.055,
+          "end": 293.295,
+          "id": "w848"
+        },
+        {
+          "text": "note",
+          "start": 293.295,
+          "end": 293.575,
+          "id": "w849"
+        },
+        {
+          "text": "was",
+          "start": 293.575,
+          "end": 293.795,
+          "id": "w850"
+        },
+        {
+          "text": "still",
+          "start": 293.795,
+          "end": 294.035,
+          "id": "w851"
+        },
+        {
+          "text": "on",
+          "start": 294.035,
+          "end": 294.215,
+          "id": "w852"
+        },
+        {
+          "text": "the",
+          "start": 294.215,
+          "end": 294.355,
+          "id": "w853"
+        },
+        {
+          "text": "fridge,",
+          "start": 294.355,
+          "end": 294.695,
+          "id": "w854"
+        },
+        {
+          "text": "and",
+          "start": 294.975,
+          "end": 295.135,
+          "id": "w855"
+        },
+        {
+          "text": "Saturday",
+          "start": 295.135,
+          "end": 295.535,
+          "id": "w856"
+        },
+        {
+          "text": "was",
+          "start": 295.535,
+          "end": 295.815,
+          "id": "w857"
+        },
+        {
+          "text": "still",
+          "start": 295.815,
+          "end": 296.115,
+          "id": "w858"
+        },
+        {
+          "text": "on",
+          "start": 296.115,
+          "end": 296.295,
+          "id": "w859"
+        },
+        {
+          "text": "the",
+          "start": 296.295,
+          "end": 296.415,
+          "id": "w860"
+        },
+        {
+          "text": "calendar.",
+          "start": 296.415,
+          "end": 296.735,
+          "id": "w861"
+        },
+        {
+          "text": "Her",
+          "start": 297.535,
+          "end": 297.615,
+          "id": "w862"
+        },
+        {
+          "text": "phone",
+          "start": 297.615,
+          "end": 297.915,
+          "id": "w863"
+        },
+        {
+          "text": "held",
+          "start": 297.915,
+          "end": 298.175,
+          "id": "w864"
+        },
+        {
+          "text": "a",
+          "start": 298.175,
+          "end": 298.315,
+          "id": "w865"
+        },
+        {
+          "text": "much",
+          "start": 298.315,
+          "end": 298.475,
+          "id": "w866"
+        },
+        {
+          "text": "shorter",
+          "start": 298.475,
+          "end": 298.795,
+          "id": "w867"
+        },
+        {
+          "text": "conversation",
+          "start": 298.795,
+          "end": 299.395,
+          "id": "w868"
+        },
+        {
+          "text": "now.",
+          "start": 299.395,
+          "end": 299.855,
+          "id": "w869"
+        },
+        {
+          "text": "For",
+          "start": 300.395,
+          "end": 300.515,
+          "id": "w870"
+        },
+        {
+          "text": "tonight,",
+          "start": 300.515,
+          "end": 300.855,
+          "id": "w871"
+        },
+        {
+          "text": "there",
+          "start": 301.275,
+          "end": 301.395,
+          "id": "w872"
+        },
+        {
+          "text": "was",
+          "start": 301.395,
+          "end": 301.535,
+          "id": "w873"
+        },
+        {
+          "text": "nothing",
+          "start": 301.535,
+          "end": 301.815,
+          "id": "w874"
+        },
+        {
+          "text": "else",
+          "start": 301.815,
+          "end": 302.075,
+          "id": "w875"
+        },
+        {
+          "text": "she",
+          "start": 302.075,
+          "end": 302.255,
+          "id": "w876"
+        },
+        {
+          "text": "needed",
+          "start": 302.255,
+          "end": 302.435,
+          "id": "w877"
+        },
+        {
+          "text": "to",
+          "start": 302.435,
+          "end": 302.655,
+          "id": "w878"
+        },
+        {
+          "text": "send.",
+          "start": 302.655,
+          "end": 302.855,
+          "id": "w879"
+        }
+      ]
+    }
+  ],
+  "bgm_pending": false,
+  "bgm": {
+    "path": "assets/bgm/bed.m4a",
+    "duration_s": 303.512,
+    "volume": 0.055
+  },
+  "sfx": [
+    {
+      "file": "assets/sfx/chime.wav",
+      "offset_s": 11.799,
+      "duration_s": 0.57,
+      "volume": 0.09
+    }
+  ],
+  "series": {
+    "name": "The Unsent Message",
+    "angle": "Original fictional mini-dramas about ordinary friendship, shopping and the choice not to turn every conversation into an opportunity.",
+    "direction": "Warm illustrated rooms, authored phone conversations and meaningful prop actions. Story before instruction; Atomy is transparent context, never a hidden advertisement or the source of fictional pressure. Resolve the relationship without a later sale.",
+    "design_spec": "docs/UNSENT_STORIES_DESIGN.md"
+  },
+  "story": {
+    "fictional": true,
+    "protagonist": "Mira",
+    "disclosure": "Mira and Asha are fictional.",
+    "setup_segment": "01-eight-words",
+    "turn_segment": "11-above-the-draft",
+    "brand_connection_segment": "02-one-evening",
+    "payoff_segment": "21-saturday",
+    "measured_markers": {
+      "setup_segment": {
+        "segment_id": "01-eight-words",
+        "text": "At eleven fifty-eight, Mira deleted a message that took three hours to write. The replacement had eight words. Nothing was for sale. First, she had to notice what was right above her draft.",
+        "at_seconds": 0.0
+      },
+      "turn_segment": {
+        "segment_id": "11-above-the-draft",
+        "text": "Asha had written: Can we talk? Rough day. Mira read it once, then again. The timestamp was from earlier that evening, before all the rewriting. Her friend had not asked for a recommendation. She had asked whether Mira had time for her.",
+        "at_seconds": 125.608
+      },
+      "brand_connection_segment": {
+        "segment_id": "02-one-evening",
+        "text": "Earlier that evening, the kitchen lamp lit the table. Mira and Asha are fictional. Mira was writing an Atomy recommendation to Asha. She wanted it to sound helpful, not like the messages she usually ignored.",
+        "at_seconds": 11.599
+      },
+      "payoff_segment": {
+        "segment_id": "21-saturday",
+        "text": "Before they hung up, Asha asked about Saturday. Same place for lunch? Mira found the little calendar on the fridge and circled the day. Same place, she said. Nothing needed to be ordered first. Nothing needed to be earned. They were simply making a plan.",
+        "at_seconds": 273.445
+      }
+    }
+  }
+}

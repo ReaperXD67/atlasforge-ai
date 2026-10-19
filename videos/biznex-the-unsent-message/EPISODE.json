@@ -1,0 +1,1894 @@
+{
+  "id": "the-unsent-message",
+  "project": "videos/biznex-the-unsent-message",
+  "format": "youtube",
+  "delivery_bounds": {
+    "min_seconds": 300,
+    "max_seconds": 360
+  },
+  "title": "She Deleted the Perfect Pitch. Here’s What She Sent Instead.",
+  "audience_problem": "Trying to be useful or impressive can distract someone from listening to the person they hoped to help.",
+  "packaging_promise": "Follow one evening from a carefully written product recommendation through a cupboard interruption and a missed request, to the exact eight-word message and an ordinary friendship ending.",
+  "thumbnail_headline": "DON'T HIT SEND",
+  "thumbnail_visual": {
+    "type": "phone",
+    "headline": "DON'T HIT SEND"
+  },
+  "description": "She spends three hours perfecting a message, then deletes it. The replacement has eight words, and nothing is for sale. Follow one evening in Mira's kitchen as an overflowing cupboard and an unanswered chat change what she sends.\n\nThe Unsent Message is an original fictional BizNex film. Mira and Asha are fictional; all dialogue, rooms and shopping props are authored illustrations. Atomy is transparent context for Mira's personal recommendation, not a claimed cause of pressure or a promise of product, sales or income results. The story ends without a purchase. Independent and not endorsed by Atomy.\n\nCreator posting check: review applicable local member/media permissions and disclose any material connection before publication. No real customer conversation or result is depicted.",
+  "hashtags": [
+    "#AnimatedStory",
+    "#Friendship",
+    "#TheUnsentMessage",
+    "#MindfulShopping",
+    "#BizNex"
+  ],
+  "sources": [
+    {
+      "claim": "Strategy metadata only: YouTube recommends accessible universal framing, honest packaging and openings that deliver the promised value. These recommendations inform an experiment, not a guaranteed growth formula.",
+      "url": "https://support.google.com/youtube/answer/16559650?hl=en",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "claim": "Evaluation metadata only: video-level retention can identify intros, dips and compelling moments when sufficient data exists; tiny view counts do not establish why a video underperformed.",
+      "url": "https://support.google.com/youtube/answer/9314415",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "claim": "U.S.-specific ethics and posting-review context only: the current member agreement addresses consent, excessive purchasing, pressure after refusal and public advertising/IP approval. No local company approval or legal advice is supplied by this film.",
+      "url": "https://us.atomy.com/common/footerTermsInfo?isHtml=Y&tabIndex=1",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "story": {
+    "fictional": true,
+    "protagonist": "Mira",
+    "disclosure": "Mira and Asha are fictional.",
+    "setup_segment": "01-eight-words",
+    "turn_segment": "11-above-the-draft",
+    "brand_connection_segment": "02-one-evening",
+    "payoff_segment": "21-saturday"
+  },
+  "chapter_segments": [
+    {
+      "segment_id": "01-eight-words",
+      "title": "The message she deleted"
+    },
+    {
+      "segment_id": "05-the-interruption",
+      "title": "The cupboard interrupts"
+    },
+    {
+      "segment_id": "09-the-note",
+      "title": "A different kind of list"
+    },
+    {
+      "segment_id": "11-above-the-draft",
+      "title": "What Asha actually asked"
+    },
+    {
+      "segment_id": "16-eight-words-sent",
+      "title": "Eight words instead"
+    },
+    {
+      "segment_id": "20-the-call",
+      "title": "Nothing for sale"
+    }
+  ],
+  "segments": [
+    {
+      "id": "01-eight-words",
+      "title": "Three hours, eight words",
+      "kind": "story",
+      "text": "At eleven fifty-eight, Mira deleted a message that took three hours to write. The replacement had eight words. Nothing was for sale. First, she had to notice what was right above her draft.",
+      "display": [
+        "11:58",
+        "Three hours of writing",
+        "Eight words instead"
+      ],
+      "beat_phrases": [
+        "deleted a message",
+        "eight words",
+        "right above her draft"
+      ],
+      "narrative_role": "setup",
+      "visual": {
+        "type": "phone",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Could I show you some products?",
+            "at_phrase": "At eleven fifty-eight"
+          }
+        ],
+        "action": "delete",
+        "action_phrase": "deleted a message",
+        "note": "Cold-open glimpse, then rewind; the final eight-word message is not shown early.",
+        "headline": "DON'T HIT SEND",
+        "items": [],
+        "camera": "close"
+      }
+    },
+    {
+      "id": "02-one-evening",
+      "title": "Earlier that evening",
+      "kind": "story",
+      "text": "Earlier that evening, the kitchen lamp lit the table. Mira and Asha are fictional. Mira was writing an Atomy recommendation to Asha. She wanted it to sound helpful, not like the messages she usually ignored.",
+      "display": [
+        "Earlier that evening",
+        "An Atomy recommendation"
+      ],
+      "beat_phrases": [
+        "the kitchen lamp",
+        "Mira and Asha are fictional.",
+        "an Atomy recommendation"
+      ],
+      "narrative_role": "brand_connection",
+      "visual": {
+        "type": "room",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "An Atomy recommendation",
+            "at_phrase": "an Atomy recommendation"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "the kitchen lamp",
+        "note": "Original fictional story",
+        "headline": "Earlier that evening",
+        "items": [],
+        "camera": "wide"
+      }
+    },
+    {
+      "id": "03-old-friend",
+      "title": "Before the draft",
+      "kind": "story",
+      "text": "Their chat was full of ordinary things. A crooked birthday cake. A bus missed. A photograph of two mugs after a long afternoon. Mira scrolled through them, smiling. She knew which picture would make Asha laugh.",
+      "display": [
+        "The crooked cake",
+        "Two mugs",
+        "Years of ordinary things"
+      ],
+      "beat_phrases": [
+        "A crooked birthday cake.",
+        "two mugs",
+        "Mira scrolled through them"
+      ],
+      "narrative_role": "relationship",
+      "visual": {
+        "type": "phone",
+        "expression": "relieved",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "The cake is leaning again.",
+            "at_phrase": "A crooked birthday cake."
+          },
+          {
+            "sender": "Mira",
+            "text": "Still saving you the bigger slice.",
+            "at_phrase": "two mugs"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "Mira scrolled through them",
+        "note": "Original small drawings of a cake and two mugs; no actual private photos.",
+        "headline": "Before the draft",
+        "items": [
+          {
+            "label": "Mugs",
+            "quantity": 2
+          }
+        ],
+        "camera": "close"
+      }
+    },
+    {
+      "id": "04-perfecting",
+      "title": "The growing draft",
+      "kind": "story",
+      "text": "She kept rewriting a recommendation. Hello sounded stiff. Hey sounded careless. She changed a comma, removed a greeting, put it back. Her tea cooled beside the phone. The message grew longer while its purpose became less clear.",
+      "display": [
+        "Hello...",
+        "Hey...",
+        "The tea goes cold"
+      ],
+      "beat_phrases": [
+        "Hello sounded stiff.",
+        "Hey sounded careless.",
+        "Her tea cooled"
+      ],
+      "narrative_role": "complication",
+      "visual": {
+        "type": "paper",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Hello...",
+            "at_phrase": "Hello sounded stiff."
+          },
+          {
+            "sender": "draft",
+            "text": "Hey...",
+            "at_phrase": "Hey sounded careless."
+          }
+        ],
+        "action": "delete",
+        "action_phrase": "removed a greeting",
+        "note": "Specific greeting slips are removed and replaced beside one cooling mug.",
+        "headline": "Almost ready. Again.",
+        "items": [
+          {
+            "label": "Cooling mug",
+            "quantity": 1
+          }
+        ],
+        "camera": "over-shoulder"
+      }
+    },
+    {
+      "id": "05-the-interruption",
+      "title": "A small interruption",
+      "kind": "story",
+      "text": "Then a drop of tea reached her shopping list. Mira lifted the paper and saw toiletries circled. Before she could return to the draft, she opened the cupboard to check what was missing.",
+      "display": [
+        "Toiletries",
+        "Check the cupboard"
+      ],
+      "beat_phrases": [
+        "a drop of tea",
+        "toiletries circled",
+        "opened the cupboard"
+      ],
+      "narrative_role": "interruption",
+      "visual": {
+        "type": "room",
+        "expression": "thinking",
+        "screen_title": "Shopping list",
+        "messages": [],
+        "action": "reveal",
+        "action_phrase": "opened the cupboard",
+        "note": "A small tea mark interrupts a hand-written personal shopping list.",
+        "headline": "One quick check",
+        "items": [
+          {
+            "label": "Personal shopping list",
+            "quantity": 1
+          }
+        ],
+        "camera": "wide"
+      }
+    },
+    {
+      "id": "06-the-shelf",
+      "title": "Nothing was missing",
+      "kind": "story",
+      "text": "The door caught a towel, then swung wide. Three bottles stood behind it. Four unopened tubes lined the next shelf. Mira reached past them, looking for the gap she expected. There was no gap. She moved the towel and counted again.",
+      "display": [
+        "Three bottles",
+        "Four tubes",
+        "No empty space"
+      ],
+      "beat_phrases": [
+        "Three bottles",
+        "Four unopened tubes",
+        "There was no gap."
+      ],
+      "narrative_role": "discovery",
+      "visual": {
+        "type": "cupboard",
+        "expression": "concerned",
+        "screen_title": "Already at home",
+        "messages": [],
+        "action": "reveal",
+        "action_phrase": "swung wide",
+        "note": "Generic fictional household supplies, not Atomy packaging or an offer's pack size.",
+        "headline": "Already at home",
+        "items": [
+          {
+            "label": "Bottles",
+            "quantity": 3
+          },
+          {
+            "label": "Tubes",
+            "quantity": 4
+          }
+        ],
+        "camera": "close"
+      }
+    },
+    {
+      "id": "07-counting",
+      "title": "Counting what was there",
+      "kind": "story",
+      "text": "She set the bottles on the counter. One, two, three. The shopping list waited beside them, much less convincing. Mira turned a tube, then put it back unopened. She had remembered wanting something, not whether she needed it.",
+      "display": [
+        "One. Two. Three.",
+        "The same shopping list"
+      ],
+      "beat_phrases": [
+        "One, two, three.",
+        "put it back unopened",
+        "whether she needed it"
+      ],
+      "narrative_role": "recognition",
+      "visual": {
+        "type": "cupboard",
+        "expression": "thinking",
+        "screen_title": "Shopping list",
+        "messages": [],
+        "action": "sort",
+        "action_phrase": "set the bottles on the counter",
+        "note": "Move the same three bottles from their shelf to the counter; retain four tubes.",
+        "headline": "Count what is here",
+        "items": [
+          {
+            "label": "Bottles",
+            "quantity": 3
+          },
+          {
+            "label": "Tubes",
+            "quantity": 4
+          }
+        ],
+        "camera": "over-shoulder"
+      }
+    },
+    {
+      "id": "08-her-own-idea",
+      "title": "An idea she could change",
+      "kind": "story",
+      "text": "Nobody had told her to fill the cupboard. Nobody was waiting for an order. Adding more had been her own idea, wanting to feel organised. She looked at the crowded shelf, then crossed out the extra line.",
+      "display": [
+        "Her own idea",
+        "One line crossed out"
+      ],
+      "beat_phrases": [
+        "Nobody was waiting for an order.",
+        "her own idea",
+        "crossed out the extra line"
+      ],
+      "narrative_role": "choice",
+      "visual": {
+        "type": "paper",
+        "expression": "relieved",
+        "screen_title": "Shopping list",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Extra toiletries",
+            "at_phrase": "her own idea"
+          }
+        ],
+        "action": "delete",
+        "action_phrase": "crossed out the extra line",
+        "note": "The personal addition is removed; no company instruction is invented.",
+        "headline": "A choice she could change",
+        "items": [],
+        "camera": "close"
+      }
+    },
+    {
+      "id": "09-the-note",
+      "title": "A smaller list",
+      "kind": "story",
+      "text": "On the paper, she wrote: Use what we have first. She fixed it to the fridge beneath a crooked magnet. The supplies went back where she could see them. The list was shorter. For once, that felt better.",
+      "display": [
+        "Use what we have first."
+      ],
+      "beat_phrases": [
+        "Use what we have first.",
+        "a crooked magnet",
+        "The list was shorter."
+      ],
+      "narrative_role": "small_resolution",
+      "visual": {
+        "type": "paper",
+        "expression": "relieved",
+        "screen_title": "The fridge note",
+        "messages": [],
+        "action": "reveal",
+        "action_phrase": "she wrote",
+        "note": "Use what we have first.",
+        "headline": "A smaller list",
+        "items": [
+          {
+            "label": "Crooked magnet",
+            "quantity": 1
+          }
+        ],
+        "camera": "close"
+      }
+    },
+    {
+      "id": "10-back-to-the-phone",
+      "title": "The waiting draft",
+      "kind": "story",
+      "text": "Her phone was on the table. The long draft filled the screen, polished and ready. Mira sat down. She almost pressed send, then noticed another message above it. She dragged the conversation down.",
+      "display": [
+        "The draft is still there",
+        "One message above it"
+      ],
+      "beat_phrases": [
+        "polished and ready",
+        "almost pressed send",
+        "dragged the conversation down"
+      ],
+      "narrative_role": "escalation",
+      "visual": {
+        "type": "phone",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Could I show you some products?",
+            "at_phrase": "polished and ready"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "dragged the conversation down",
+        "note": "An older chat bubble moves into view above the existing draft.",
+        "headline": "Something above the draft",
+        "items": [],
+        "camera": "close"
+      }
+    },
+    {
+      "id": "11-above-the-draft",
+      "title": "What Asha asked",
+      "kind": "story",
+      "text": "Asha had written: Can we talk? Rough day. Mira read it once, then again. The timestamp was from earlier that evening, before all the rewriting. Her friend had not asked for a recommendation. She had asked whether Mira had time for her.",
+      "display": [
+        "Can we talk?",
+        "Rough day."
+      ],
+      "beat_phrases": [
+        "Can we talk?",
+        "Rough day.",
+        "had time for her"
+      ],
+      "narrative_role": "turn",
+      "visual": {
+        "type": "phone",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Can we talk?",
+            "at_phrase": "Can we talk?"
+          },
+          {
+            "sender": "Asha",
+            "text": "Rough day.",
+            "at_phrase": "Rough day."
+          }
+        ],
+        "action": "wait",
+        "action_phrase": "Mira read it once",
+        "note": "The unanswered request holds clearly above the now less important draft.",
+        "headline": "What Asha actually asked",
+        "items": [],
+        "camera": "close"
+      }
+    },
+    {
+      "id": "12-the-preview",
+      "title": "The reply she only imagined",
+      "kind": "story",
+      "text": "Mira remembered seeing the notification while making tea. She had answered in her head, promising herself she would call after finishing one thing. Then one thing became another sentence. Her thumb left the send button. The kitchen suddenly felt very quiet.",
+      "display": [
+        "After this one thing...",
+        "No reply had been sent"
+      ],
+      "beat_phrases": [
+        "seeing the notification",
+        "answered in her head",
+        "left the send button"
+      ],
+      "narrative_role": "recognition",
+      "visual": {
+        "type": "room",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Can we talk?",
+            "at_phrase": "seeing the notification"
+          }
+        ],
+        "action": "wait",
+        "action_phrase": "left the send button",
+        "note": "A notification memory is explicitly a recollection, never an additional new message.",
+        "headline": "The reply she only imagined",
+        "items": [
+          {
+            "label": "Cold mug",
+            "quantity": 1
+          }
+        ],
+        "camera": "wide"
+      }
+    },
+    {
+      "id": "13-the-explanation",
+      "title": "Another long message",
+      "kind": "story",
+      "text": "She began explaining. Sorry, I was just trying to be helpful. She added a paragraph about her evening, then another about the shopping list. The explanation grew until it pushed Asha's short request out of view again.",
+      "display": [
+        "Sorry, I was just...",
+        "Another growing draft"
+      ],
+      "beat_phrases": [
+        "Sorry, I was just trying to be helpful.",
+        "another about the shopping list",
+        "out of view again"
+      ],
+      "narrative_role": "false_solution",
+      "visual": {
+        "type": "paper",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Sorry, I was just trying to be helpful.",
+            "at_phrase": "Sorry, I was just trying to be helpful."
+          },
+          {
+            "sender": "draft",
+            "text": "I was making a shopping list...",
+            "at_phrase": "another about the shopping list"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "The explanation grew",
+        "note": "Draft slips visibly crowd the small unanswered request.",
+        "headline": "Another growing draft",
+        "items": [],
+        "camera": "over-shoulder"
+      }
+    },
+    {
+      "id": "14-the-same-mistake",
+      "title": "Whose evening was this?",
+      "kind": "story",
+      "text": "Mira stopped. Her apology was filling the conversation with her own evening. She looked at the fridge note, then back at the screen. There was one person missing from those careful sentences. The person she was writing to.",
+      "display": [
+        "Her own evening",
+        "Asha's unanswered request"
+      ],
+      "beat_phrases": [
+        "Mira stopped.",
+        "the fridge note",
+        "The person she was writing to."
+      ],
+      "narrative_role": "recognition",
+      "visual": {
+        "type": "split",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Can we talk?",
+            "at_phrase": "The person she was writing to."
+          }
+        ],
+        "action": "wait",
+        "action_phrase": "Mira stopped.",
+        "note": "Use what we have first.",
+        "headline": "The person she was writing to",
+        "items": [],
+        "camera": "wide"
+      }
+    },
+    {
+      "id": "15-the-deletion",
+      "title": "The part she removed",
+      "kind": "story",
+      "text": "She selected the recommendation, then the explanation. Delete. For a moment, the empty space looked uncomfortable. Three hours of polishing had disappeared. Mira set down the phone, took a breath, and picked it up without opening the shopping list again.",
+      "display": [
+        "Recommendation: deleted",
+        "Explanation: deleted",
+        "Room for an answer"
+      ],
+      "beat_phrases": [
+        "selected the recommendation",
+        "then the explanation",
+        "the empty space"
+      ],
+      "narrative_role": "decisive_action",
+      "visual": {
+        "type": "phone",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "The recommendation",
+            "at_phrase": "selected the recommendation"
+          },
+          {
+            "sender": "draft",
+            "text": "The explanation",
+            "at_phrase": "then the explanation"
+          }
+        ],
+        "action": "delete",
+        "action_phrase": "Delete.",
+        "note": "Select both draft parts before deleting them together, leaving the real request visible.",
+        "headline": "Room for an answer",
+        "items": [],
+        "camera": "close"
+      }
+    },
+    {
+      "id": "16-eight-words-sent",
+      "title": "The eight-word message",
+      "kind": "story",
+      "text": "This time she wrote: I’m here. Do you still want to talk? She read the eight words once. There was no link underneath them, no extra explanation. At eleven fifty-nine, Mira pressed send and left the conversation open.",
+      "display": [
+        "I’m here.",
+        "Do you still want to talk?",
+        "11:59 — sent"
+      ],
+      "beat_phrases": [
+        "I’m here.",
+        "eight words",
+        "Mira pressed send"
+      ],
+      "narrative_role": "choice",
+      "visual": {
+        "type": "phone",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "I’m here. Do you still want to talk?",
+            "at_phrase": "I’m here."
+          },
+          {
+            "sender": "Mira",
+            "text": "I’m here. Do you still want to talk?",
+            "at_phrase": "Mira pressed send"
+          }
+        ],
+        "action": "send",
+        "action_phrase": "Mira pressed send",
+        "note": "Exactly eight spoken words in the final message; no shopping link or hidden sales prompt.",
+        "headline": "Eight words instead",
+        "items": [],
+        "camera": "close"
+      }
+    },
+    {
+      "id": "17-the-wait",
+      "title": "No instant answer",
+      "kind": "story",
+      "text": "Nothing happened. The message sat there without an answer. Mira reached for the phone again, then let her hand rest on the table. Asha might be busy. She might not want to talk anymore. Another message would not make that choice belong to Mira.",
+      "display": [
+        "No instant answer",
+        "The message stays sent"
+      ],
+      "beat_phrases": [
+        "Nothing happened.",
+        "her hand rest on the table",
+        "might not want to talk anymore"
+      ],
+      "narrative_role": "consequence",
+      "visual": {
+        "type": "room",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Mira",
+            "text": "I’m here. Do you still want to talk?",
+            "at_phrase": "The message sat there"
+          }
+        ],
+        "action": "wait",
+        "action_phrase": "her hand rest on the table",
+        "note": "No fake typing notification or invented read receipt supplies instant validation.",
+        "headline": "No instant answer",
+        "items": [],
+        "camera": "wide"
+      }
+    },
+    {
+      "id": "18-the-counter",
+      "title": "Something small she could finish",
+      "kind": "story",
+      "text": "She rinsed the cold mug and wiped the small tea mark from the table. The bottles were back on their shelf. She straightened them, closed the cupboard, and left the fridge note crooked. This was something she could finish without asking anyone to reply.",
+      "display": [
+        "The cold mug",
+        "The cupboard closes",
+        "The note stays"
+      ],
+      "beat_phrases": [
+        "rinsed the cold mug",
+        "closed the cupboard",
+        "left the fridge note crooked"
+      ],
+      "narrative_role": "quiet_action",
+      "visual": {
+        "type": "cupboard",
+        "expression": "thinking",
+        "screen_title": "The quiet kitchen",
+        "messages": [],
+        "action": "close",
+        "action_phrase": "closed the cupboard",
+        "note": "Use what we have first.",
+        "headline": "One small thing finished",
+        "items": [
+          {
+            "label": "Bottles",
+            "quantity": 3
+          },
+          {
+            "label": "Tubes",
+            "quantity": 4
+          }
+        ],
+        "camera": "wide"
+      }
+    },
+    {
+      "id": "19-the-reply",
+      "title": "When Asha was ready",
+      "kind": "story",
+      "text": "A few minutes later, the screen lit up. Yes, please. Still awake? Mira pulled the chair out again. She did not search for a better opening or reopen the deleted draft. She pressed call, and waited for Asha to pick up.",
+      "display": [
+        "Yes, please.",
+        "Still awake?",
+        "CALL"
+      ],
+      "beat_phrases": [
+        "Yes, please.",
+        "Still awake?",
+        "She pressed call"
+      ],
+      "narrative_role": "response",
+      "visual": {
+        "type": "phone",
+        "expression": "relieved",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Yes, please.",
+            "at_phrase": "Yes, please."
+          },
+          {
+            "sender": "Asha",
+            "text": "Still awake?",
+            "at_phrase": "Still awake?"
+          }
+        ],
+        "action": "send",
+        "action_phrase": "She pressed call",
+        "note": "The reply arrives after the narrated wait, not as a guaranteed effect of wording.",
+        "headline": "When Asha was ready",
+        "items": [],
+        "camera": "close"
+      }
+    },
+    {
+      "id": "20-the-call",
+      "title": "Nothing for sale",
+      "kind": "story",
+      "text": "Asha answered from her sofa. The day had been difficult, and she did not need Mira to fix it before hearing it. Mira listened. Sometimes she asked a question. Sometimes neither spoke. At one point, Mira started to offer a solution. Then she put the idea aside and asked what happened next. On the counter, the shopping list stayed folded under an empty mug.",
+      "display": [
+        "Asha's evening",
+        "Mira listens",
+        "Nothing for sale"
+      ],
+      "beat_phrases": [
+        "Asha answered from her sofa.",
+        "Mira listened.",
+        "the shopping list stayed folded"
+      ],
+      "narrative_role": "emotional_resolution",
+      "visual": {
+        "type": "split",
+        "expression": "relieved",
+        "screen_title": "Call with Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Thanks for calling.",
+            "at_phrase": "Asha answered from her sofa."
+          },
+          {
+            "sender": "Mira",
+            "text": "What happened next?",
+            "at_phrase": "asked what happened next"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "Mira listened.",
+        "note": "Two original rooms joined by an ordinary call; no products enter the conversation.",
+        "headline": "Nothing for sale",
+        "items": [
+          {
+            "label": "Empty mug",
+            "quantity": 1
+          }
+        ],
+        "camera": "wide"
+      }
+    },
+    {
+      "id": "21-saturday",
+      "title": "The next ordinary plan",
+      "kind": "story",
+      "text": "Before they hung up, Asha asked about Saturday. Same place for lunch? Mira found the little calendar on the fridge and circled the day. Same place, she said. Nothing needed to be ordered first. Nothing needed to be earned. They were simply making a plan.",
+      "display": [
+        "Saturday",
+        "Same place for lunch?",
+        "Same place."
+      ],
+      "beat_phrases": [
+        "Same place for lunch?",
+        "circled the day",
+        "They were simply making a plan."
+      ],
+      "narrative_role": "payoff",
+      "visual": {
+        "type": "calendar",
+        "expression": "relieved",
+        "screen_title": "Saturday",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Same place for lunch?",
+            "at_phrase": "Same place for lunch?"
+          },
+          {
+            "sender": "Mira",
+            "text": "Same place.",
+            "at_phrase": "Same place, she said."
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "circled the day",
+        "note": "Saturday: lunch with Asha",
+        "headline": "Just lunch",
+        "items": [],
+        "camera": "close"
+      }
+    },
+    {
+      "id": "22-the-room-after",
+      "title": "What remained",
+      "kind": "story",
+      "text": "After the call, Mira turned off the lamp. The perfect pitch was gone. The crooked note was still on the fridge, and Saturday was still on the calendar. Her phone held a much shorter conversation now. For tonight, there was nothing else she needed to send.",
+      "display": [
+        "The draft is gone",
+        "Saturday stays",
+        "Nothing else to send"
+      ],
+      "beat_phrases": [
+        "The perfect pitch was gone.",
+        "Saturday was still on the calendar",
+        "nothing else she needed to send"
+      ],
+      "narrative_role": "resolution",
+      "visual": {
+        "type": "room",
+        "expression": "relieved",
+        "screen_title": "Asha",
+        "messages": [],
+        "action": "close",
+        "action_phrase": "nothing else she needed to send",
+        "note": "Use what we have first.",
+        "headline": "Nothing else to send",
+        "items": [
+          {
+            "label": "Lunch plan",
+            "quantity": 1
+          }
+        ],
+        "camera": "wide"
+      }
+    }
+  ],
+  "duration_s": 303.512,
+  "cues": [
+    {
+      "id": "01-eight-words",
+      "title": "Three hours, eight words",
+      "kind": "story",
+      "text": "At eleven fifty-eight, Mira deleted a message that took three hours to write. The replacement had eight words. Nothing was for sale. First, she had to notice what was right above her draft.",
+      "display": [
+        "11:58",
+        "Three hours of writing",
+        "Eight words instead"
+      ],
+      "beat_phrases": [
+        "deleted a message",
+        "eight words",
+        "right above her draft"
+      ],
+      "narrative_role": "setup",
+      "visual": {
+        "type": "phone",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Could I show you some products?",
+            "at_phrase": "At eleven fifty-eight"
+          }
+        ],
+        "action": "delete",
+        "action_phrase": "deleted a message",
+        "note": "Cold-open glimpse, then rewind; the final eight-word message is not shown early.",
+        "headline": "DON'T HIT SEND",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 0.0,
+      "end": 11.499,
+      "beats": [
+        1.8,
+        5.86,
+        10.24
+      ]
+    },
+    {
+      "id": "02-one-evening",
+      "title": "Earlier that evening",
+      "kind": "story",
+      "text": "Earlier that evening, the kitchen lamp lit the table. Mira and Asha are fictional. Mira was writing an Atomy recommendation to Asha. She wanted it to sound helpful, not like the messages she usually ignored.",
+      "display": [
+        "Earlier that evening",
+        "An Atomy recommendation"
+      ],
+      "beat_phrases": [
+        "the kitchen lamp",
+        "Mira and Asha are fictional.",
+        "an Atomy recommendation"
+      ],
+      "narrative_role": "brand_connection",
+      "visual": {
+        "type": "room",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "An Atomy recommendation",
+            "at_phrase": "an Atomy recommendation"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "the kitchen lamp",
+        "note": "Original fictional story",
+        "headline": "Earlier that evening",
+        "items": [],
+        "camera": "wide"
+      },
+      "start": 11.599,
+      "end": 24.399,
+      "beats": [
+        1.26,
+        3.42,
+        6.32
+      ]
+    },
+    {
+      "id": "03-old-friend",
+      "title": "Before the draft",
+      "kind": "story",
+      "text": "Their chat was full of ordinary things. A crooked birthday cake. A bus missed. A photograph of two mugs after a long afternoon. Mira scrolled through them, smiling. She knew which picture would make Asha laugh.",
+      "display": [
+        "The crooked cake",
+        "Two mugs",
+        "Years of ordinary things"
+      ],
+      "beat_phrases": [
+        "A crooked birthday cake.",
+        "two mugs",
+        "Mira scrolled through them"
+      ],
+      "narrative_role": "relationship",
+      "visual": {
+        "type": "phone",
+        "expression": "relieved",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "The cake is leaning again.",
+            "at_phrase": "A crooked birthday cake."
+          },
+          {
+            "sender": "Mira",
+            "text": "Still saving you the bigger slice.",
+            "at_phrase": "two mugs"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "Mira scrolled through them",
+        "note": "Original small drawings of a cake and two mugs; no actual private photos.",
+        "headline": "Before the draft",
+        "items": [
+          {
+            "label": "Mugs",
+            "quantity": 2
+          }
+        ],
+        "camera": "close"
+      },
+      "start": 24.499,
+      "end": 37.832,
+      "beats": [
+        2.6,
+        6.18,
+        8.96
+      ]
+    },
+    {
+      "id": "04-perfecting",
+      "title": "The growing draft",
+      "kind": "story",
+      "text": "She kept rewriting a recommendation. Hello sounded stiff. Hey sounded careless. She changed a comma, removed a greeting, put it back. Her tea cooled beside the phone. The message grew longer while its purpose became less clear.",
+      "display": [
+        "Hello...",
+        "Hey...",
+        "The tea goes cold"
+      ],
+      "beat_phrases": [
+        "Hello sounded stiff.",
+        "Hey sounded careless.",
+        "Her tea cooled"
+      ],
+      "narrative_role": "complication",
+      "visual": {
+        "type": "paper",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Hello...",
+            "at_phrase": "Hello sounded stiff."
+          },
+          {
+            "sender": "draft",
+            "text": "Hey...",
+            "at_phrase": "Hey sounded careless."
+          }
+        ],
+        "action": "delete",
+        "action_phrase": "removed a greeting",
+        "note": "Specific greeting slips are removed and replaced beside one cooling mug.",
+        "headline": "Almost ready. Again.",
+        "items": [
+          {
+            "label": "Cooling mug",
+            "quantity": 1
+          }
+        ],
+        "camera": "over-shoulder"
+      },
+      "start": 37.932,
+      "end": 52.119,
+      "beats": [
+        2.74,
+        4.3,
+        9.06
+      ]
+    },
+    {
+      "id": "05-the-interruption",
+      "title": "A small interruption",
+      "kind": "story",
+      "text": "Then a drop of tea reached her shopping list. Mira lifted the paper and saw toiletries circled. Before she could return to the draft, she opened the cupboard to check what was missing.",
+      "display": [
+        "Toiletries",
+        "Check the cupboard"
+      ],
+      "beat_phrases": [
+        "a drop of tea",
+        "toiletries circled",
+        "opened the cupboard"
+      ],
+      "narrative_role": "interruption",
+      "visual": {
+        "type": "room",
+        "expression": "thinking",
+        "screen_title": "Shopping list",
+        "messages": [],
+        "action": "reveal",
+        "action_phrase": "opened the cupboard",
+        "note": "A small tea mark interrupts a hand-written personal shopping list.",
+        "headline": "One quick check",
+        "items": [
+          {
+            "label": "Personal shopping list",
+            "quantity": 1
+          }
+        ],
+        "camera": "wide"
+      },
+      "start": 52.219,
+      "end": 62.523,
+      "beats": [
+        0.22,
+        4.76,
+        8.34
+      ]
+    },
+    {
+      "id": "06-the-shelf",
+      "title": "Nothing was missing",
+      "kind": "story",
+      "text": "The door caught a towel, then swung wide. Three bottles stood behind it. Four unopened tubes lined the next shelf. Mira reached past them, looking for the gap she expected. There was no gap. She moved the towel and counted again.",
+      "display": [
+        "Three bottles",
+        "Four tubes",
+        "No empty space"
+      ],
+      "beat_phrases": [
+        "Three bottles",
+        "Four unopened tubes",
+        "There was no gap."
+      ],
+      "narrative_role": "discovery",
+      "visual": {
+        "type": "cupboard",
+        "expression": "concerned",
+        "screen_title": "Already at home",
+        "messages": [],
+        "action": "reveal",
+        "action_phrase": "swung wide",
+        "note": "Generic fictional household supplies, not Atomy packaging or an offer's pack size.",
+        "headline": "Already at home",
+        "items": [
+          {
+            "label": "Bottles",
+            "quantity": 3
+          },
+          {
+            "label": "Tubes",
+            "quantity": 4
+          }
+        ],
+        "camera": "close"
+      },
+      "start": 62.623,
+      "end": 76.788,
+      "beats": [
+        2.74,
+        4.74,
+        11.06
+      ]
+    },
+    {
+      "id": "07-counting",
+      "title": "Counting what was there",
+      "kind": "story",
+      "text": "She set the bottles on the counter. One, two, three. The shopping list waited beside them, much less convincing. Mira turned a tube, then put it back unopened. She had remembered wanting something, not whether she needed it.",
+      "display": [
+        "One. Two. Three.",
+        "The same shopping list"
+      ],
+      "beat_phrases": [
+        "One, two, three.",
+        "put it back unopened",
+        "whether she needed it"
+      ],
+      "narrative_role": "recognition",
+      "visual": {
+        "type": "cupboard",
+        "expression": "thinking",
+        "screen_title": "Shopping list",
+        "messages": [],
+        "action": "sort",
+        "action_phrase": "set the bottles on the counter",
+        "note": "Move the same three bottles from their shelf to the counter; retain four tubes.",
+        "headline": "Count what is here",
+        "items": [
+          {
+            "label": "Bottles",
+            "quantity": 3
+          },
+          {
+            "label": "Tubes",
+            "quantity": 4
+          }
+        ],
+        "camera": "over-shoulder"
+      },
+      "start": 76.888,
+      "end": 90.051,
+      "beats": [
+        2.3,
+        8.78,
+        12.18
+      ]
+    },
+    {
+      "id": "08-her-own-idea",
+      "title": "An idea she could change",
+      "kind": "story",
+      "text": "Nobody had told her to fill the cupboard. Nobody was waiting for an order. Adding more had been her own idea, wanting to feel organised. She looked at the crowded shelf, then crossed out the extra line.",
+      "display": [
+        "Her own idea",
+        "One line crossed out"
+      ],
+      "beat_phrases": [
+        "Nobody was waiting for an order.",
+        "her own idea",
+        "crossed out the extra line"
+      ],
+      "narrative_role": "choice",
+      "visual": {
+        "type": "paper",
+        "expression": "relieved",
+        "screen_title": "Shopping list",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Extra toiletries",
+            "at_phrase": "her own idea"
+          }
+        ],
+        "action": "delete",
+        "action_phrase": "crossed out the extra line",
+        "note": "The personal addition is removed; no company instruction is invented.",
+        "headline": "A choice she could change",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 90.151,
+      "end": 101.777,
+      "beats": [
+        2.46,
+        5.3,
+        10.1
+      ]
+    },
+    {
+      "id": "09-the-note",
+      "title": "A smaller list",
+      "kind": "story",
+      "text": "On the paper, she wrote: Use what we have first. She fixed it to the fridge beneath a crooked magnet. The supplies went back where she could see them. The list was shorter. For once, that felt better.",
+      "display": [
+        "Use what we have first."
+      ],
+      "beat_phrases": [
+        "Use what we have first.",
+        "a crooked magnet",
+        "The list was shorter."
+      ],
+      "narrative_role": "small_resolution",
+      "visual": {
+        "type": "paper",
+        "expression": "relieved",
+        "screen_title": "The fridge note",
+        "messages": [],
+        "action": "reveal",
+        "action_phrase": "she wrote",
+        "note": "Use what we have first.",
+        "headline": "A smaller list",
+        "items": [
+          {
+            "label": "Crooked magnet",
+            "quantity": 1
+          }
+        ],
+        "camera": "close"
+      },
+      "start": 101.877,
+      "end": 113.397,
+      "beats": [
+        1.64,
+        4.6,
+        8.44
+      ]
+    },
+    {
+      "id": "10-back-to-the-phone",
+      "title": "The waiting draft",
+      "kind": "story",
+      "text": "Her phone was on the table. The long draft filled the screen, polished and ready. Mira sat down. She almost pressed send, then noticed another message above it. She dragged the conversation down.",
+      "display": [
+        "The draft is still there",
+        "One message above it"
+      ],
+      "beat_phrases": [
+        "polished and ready",
+        "almost pressed send",
+        "dragged the conversation down"
+      ],
+      "narrative_role": "escalation",
+      "visual": {
+        "type": "phone",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Could I show you some products?",
+            "at_phrase": "polished and ready"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "dragged the conversation down",
+        "note": "An older chat bubble moves into view above the existing draft.",
+        "headline": "Something above the draft",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 113.497,
+      "end": 125.508,
+      "beats": [
+        3.64,
+        6.8,
+        10.36
+      ]
+    },
+    {
+      "id": "11-above-the-draft",
+      "title": "What Asha asked",
+      "kind": "story",
+      "text": "Asha had written: Can we talk? Rough day. Mira read it once, then again. The timestamp was from earlier that evening, before all the rewriting. Her friend had not asked for a recommendation. She had asked whether Mira had time for her.",
+      "display": [
+        "Can we talk?",
+        "Rough day."
+      ],
+      "beat_phrases": [
+        "Can we talk?",
+        "Rough day.",
+        "had time for her"
+      ],
+      "narrative_role": "turn",
+      "visual": {
+        "type": "phone",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Can we talk?",
+            "at_phrase": "Can we talk?"
+          },
+          {
+            "sender": "Asha",
+            "text": "Rough day.",
+            "at_phrase": "Rough day."
+          }
+        ],
+        "action": "wait",
+        "action_phrase": "Mira read it once",
+        "note": "The unanswered request holds clearly above the now less important draft.",
+        "headline": "What Asha actually asked",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 125.608,
+      "end": 139.816,
+      "beats": [
+        1.08,
+        2.12,
+        13.26
+      ]
+    },
+    {
+      "id": "12-the-preview",
+      "title": "The reply she only imagined",
+      "kind": "story",
+      "text": "Mira remembered seeing the notification while making tea. She had answered in her head, promising herself she would call after finishing one thing. Then one thing became another sentence. Her thumb left the send button. The kitchen suddenly felt very quiet.",
+      "display": [
+        "After this one thing...",
+        "No reply had been sent"
+      ],
+      "beat_phrases": [
+        "seeing the notification",
+        "answered in her head",
+        "left the send button"
+      ],
+      "narrative_role": "recognition",
+      "visual": {
+        "type": "room",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Can we talk?",
+            "at_phrase": "seeing the notification"
+          }
+        ],
+        "action": "wait",
+        "action_phrase": "left the send button",
+        "note": "A notification memory is explicitly a recollection, never an additional new message.",
+        "headline": "The reply she only imagined",
+        "items": [
+          {
+            "label": "Cold mug",
+            "quantity": 1
+          }
+        ],
+        "camera": "wide"
+      },
+      "start": 139.916,
+      "end": 154.999,
+      "beats": [
+        0.8,
+        3.8,
+        11.18
+      ]
+    },
+    {
+      "id": "13-the-explanation",
+      "title": "Another long message",
+      "kind": "story",
+      "text": "She began explaining. Sorry, I was just trying to be helpful. She added a paragraph about her evening, then another about the shopping list. The explanation grew until it pushed Asha's short request out of view again.",
+      "display": [
+        "Sorry, I was just...",
+        "Another growing draft"
+      ],
+      "beat_phrases": [
+        "Sorry, I was just trying to be helpful.",
+        "another about the shopping list",
+        "out of view again"
+      ],
+      "narrative_role": "false_solution",
+      "visual": {
+        "type": "paper",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Sorry, I was just trying to be helpful.",
+            "at_phrase": "Sorry, I was just trying to be helpful."
+          },
+          {
+            "sender": "draft",
+            "text": "I was making a shopping list...",
+            "at_phrase": "another about the shopping list"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "The explanation grew",
+        "note": "Draft slips visibly crowd the small unanswered request.",
+        "headline": "Another growing draft",
+        "items": [],
+        "camera": "over-shoulder"
+      },
+      "start": 155.099,
+      "end": 168.005,
+      "beats": [
+        1.72,
+        6.58,
+        11.94
+      ]
+    },
+    {
+      "id": "14-the-same-mistake",
+      "title": "Whose evening was this?",
+      "kind": "story",
+      "text": "Mira stopped. Her apology was filling the conversation with her own evening. She looked at the fridge note, then back at the screen. There was one person missing from those careful sentences. The person she was writing to.",
+      "display": [
+        "Her own evening",
+        "Asha's unanswered request"
+      ],
+      "beat_phrases": [
+        "Mira stopped.",
+        "the fridge note",
+        "The person she was writing to."
+      ],
+      "narrative_role": "recognition",
+      "visual": {
+        "type": "split",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Can we talk?",
+            "at_phrase": "The person she was writing to."
+          }
+        ],
+        "action": "wait",
+        "action_phrase": "Mira stopped.",
+        "note": "Use what we have first.",
+        "headline": "The person she was writing to",
+        "items": [],
+        "camera": "wide"
+      },
+      "start": 168.105,
+      "end": 181.375,
+      "beats": [
+        0.0,
+        5.58,
+        11.6
+      ]
+    },
+    {
+      "id": "15-the-deletion",
+      "title": "The part she removed",
+      "kind": "story",
+      "text": "She selected the recommendation, then the explanation. Delete. For a moment, the empty space looked uncomfortable. Three hours of polishing had disappeared. Mira set down the phone, took a breath, and picked it up without opening the shopping list again.",
+      "display": [
+        "Recommendation: deleted",
+        "Explanation: deleted",
+        "Room for an answer"
+      ],
+      "beat_phrases": [
+        "selected the recommendation",
+        "then the explanation",
+        "the empty space"
+      ],
+      "narrative_role": "decisive_action",
+      "visual": {
+        "type": "phone",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "The recommendation",
+            "at_phrase": "selected the recommendation"
+          },
+          {
+            "sender": "draft",
+            "text": "The explanation",
+            "at_phrase": "then the explanation"
+          }
+        ],
+        "action": "delete",
+        "action_phrase": "Delete.",
+        "note": "Select both draft parts before deleting them together, leaving the real request visible.",
+        "headline": "Room for an answer",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 181.475,
+      "end": 196.621,
+      "beats": [
+        0.18,
+        1.86,
+        5.14
+      ]
+    },
+    {
+      "id": "16-eight-words-sent",
+      "title": "The eight-word message",
+      "kind": "story",
+      "text": "This time she wrote: I’m here. Do you still want to talk? She read the eight words once. There was no link underneath them, no extra explanation. At eleven fifty-nine, Mira pressed send and left the conversation open.",
+      "display": [
+        "I’m here.",
+        "Do you still want to talk?",
+        "11:59 — sent"
+      ],
+      "beat_phrases": [
+        "I’m here.",
+        "eight words",
+        "Mira pressed send"
+      ],
+      "narrative_role": "choice",
+      "visual": {
+        "type": "phone",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "I’m here. Do you still want to talk?",
+            "at_phrase": "I’m here."
+          },
+          {
+            "sender": "Mira",
+            "text": "I’m here. Do you still want to talk?",
+            "at_phrase": "Mira pressed send"
+          }
+        ],
+        "action": "send",
+        "action_phrase": "Mira pressed send",
+        "note": "Exactly eight spoken words in the final message; no shopping link or hidden sales prompt.",
+        "headline": "Eight words instead",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 196.721,
+      "end": 209.969,
+      "beats": [
+        1.16,
+        3.88,
+        10.64
+      ]
+    },
+    {
+      "id": "17-the-wait",
+      "title": "No instant answer",
+      "kind": "story",
+      "text": "Nothing happened. The message sat there without an answer. Mira reached for the phone again, then let her hand rest on the table. Asha might be busy. She might not want to talk anymore. Another message would not make that choice belong to Mira.",
+      "display": [
+        "No instant answer",
+        "The message stays sent"
+      ],
+      "beat_phrases": [
+        "Nothing happened.",
+        "her hand rest on the table",
+        "might not want to talk anymore"
+      ],
+      "narrative_role": "consequence",
+      "visual": {
+        "type": "room",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Mira",
+            "text": "I’m here. Do you still want to talk?",
+            "at_phrase": "The message sat there"
+          }
+        ],
+        "action": "wait",
+        "action_phrase": "her hand rest on the table",
+        "note": "No fake typing notification or invented read receipt supplies instant validation.",
+        "headline": "No instant answer",
+        "items": [],
+        "camera": "wide"
+      },
+      "start": 210.069,
+      "end": 224.043,
+      "beats": [
+        0.0,
+        5.9,
+        9.3
+      ]
+    },
+    {
+      "id": "18-the-counter",
+      "title": "Something small she could finish",
+      "kind": "story",
+      "text": "She rinsed the cold mug and wiped the small tea mark from the table. The bottles were back on their shelf. She straightened them, closed the cupboard, and left the fridge note crooked. This was something she could finish without asking anyone to reply.",
+      "display": [
+        "The cold mug",
+        "The cupboard closes",
+        "The note stays"
+      ],
+      "beat_phrases": [
+        "rinsed the cold mug",
+        "closed the cupboard",
+        "left the fridge note crooked"
+      ],
+      "narrative_role": "quiet_action",
+      "visual": {
+        "type": "cupboard",
+        "expression": "thinking",
+        "screen_title": "The quiet kitchen",
+        "messages": [],
+        "action": "close",
+        "action_phrase": "closed the cupboard",
+        "note": "Use what we have first.",
+        "headline": "One small thing finished",
+        "items": [
+          {
+            "label": "Bottles",
+            "quantity": 3
+          },
+          {
+            "label": "Tubes",
+            "quantity": 4
+          }
+        ],
+        "camera": "wide"
+      },
+      "start": 224.143,
+      "end": 238.244,
+      "beats": [
+        0.18,
+        7.22,
+        8.6
+      ]
+    },
+    {
+      "id": "19-the-reply",
+      "title": "When Asha was ready",
+      "kind": "story",
+      "text": "A few minutes later, the screen lit up. Yes, please. Still awake? Mira pulled the chair out again. She did not search for a better opening or reopen the deleted draft. She pressed call, and waited for Asha to pick up.",
+      "display": [
+        "Yes, please.",
+        "Still awake?",
+        "CALL"
+      ],
+      "beat_phrases": [
+        "Yes, please.",
+        "Still awake?",
+        "She pressed call"
+      ],
+      "narrative_role": "response",
+      "visual": {
+        "type": "phone",
+        "expression": "relieved",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Yes, please.",
+            "at_phrase": "Yes, please."
+          },
+          {
+            "sender": "Asha",
+            "text": "Still awake?",
+            "at_phrase": "Still awake?"
+          }
+        ],
+        "action": "send",
+        "action_phrase": "She pressed call",
+        "note": "The reply arrives after the narrated wait, not as a guaranteed effect of wording.",
+        "headline": "When Asha was ready",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 238.344,
+      "end": 251.592,
+      "beats": [
+        2.3,
+        3.56,
+        10.66
+      ]
+    },
+    {
+      "id": "20-the-call",
+      "title": "Nothing for sale",
+      "kind": "story",
+      "text": "Asha answered from her sofa. The day had been difficult, and she did not need Mira to fix it before hearing it. Mira listened. Sometimes she asked a question. Sometimes neither spoke. At one point, Mira started to offer a solution. Then she put the idea aside and asked what happened next. On the counter, the shopping list stayed folded under an empty mug.",
+      "display": [
+        "Asha's evening",
+        "Mira listens",
+        "Nothing for sale"
+      ],
+      "beat_phrases": [
+        "Asha answered from her sofa.",
+        "Mira listened.",
+        "the shopping list stayed folded"
+      ],
+      "narrative_role": "emotional_resolution",
+      "visual": {
+        "type": "split",
+        "expression": "relieved",
+        "screen_title": "Call with Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Thanks for calling.",
+            "at_phrase": "Asha answered from her sofa."
+          },
+          {
+            "sender": "Mira",
+            "text": "What happened next?",
+            "at_phrase": "asked what happened next"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "Mira listened.",
+        "note": "Two original rooms joined by an ordinary call; no products enter the conversation.",
+        "headline": "Nothing for sale",
+        "items": [
+          {
+            "label": "Empty mug",
+            "quantity": 1
+          }
+        ],
+        "camera": "wide"
+      },
+      "start": 251.692,
+      "end": 273.345,
+      "beats": [
+        0.0,
+        6.26,
+        18.86
+      ]
+    },
+    {
+      "id": "21-saturday",
+      "title": "The next ordinary plan",
+      "kind": "story",
+      "text": "Before they hung up, Asha asked about Saturday. Same place for lunch? Mira found the little calendar on the fridge and circled the day. Same place, she said. Nothing needed to be ordered first. Nothing needed to be earned. They were simply making a plan.",
+      "display": [
+        "Saturday",
+        "Same place for lunch?",
+        "Same place."
+      ],
+      "beat_phrases": [
+        "Same place for lunch?",
+        "circled the day",
+        "They were simply making a plan."
+      ],
+      "narrative_role": "payoff",
+      "visual": {
+        "type": "calendar",
+        "expression": "relieved",
+        "screen_title": "Saturday",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Same place for lunch?",
+            "at_phrase": "Same place for lunch?"
+          },
+          {
+            "sender": "Mira",
+            "text": "Same place.",
+            "at_phrase": "Same place, she said."
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "circled the day",
+        "note": "Saturday: lunch with Asha",
+        "headline": "Just lunch",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 273.445,
+      "end": 288.315,
+      "beats": [
+        3.14,
+        6.8,
+        13.48
+      ]
+    },
+    {
+      "id": "22-the-room-after",
+      "title": "What remained",
+      "kind": "story",
+      "text": "After the call, Mira turned off the lamp. The perfect pitch was gone. The crooked note was still on the fridge, and Saturday was still on the calendar. Her phone held a much shorter conversation now. For tonight, there was nothing else she needed to send.",
+      "display": [
+        "The draft is gone",
+        "Saturday stays",
+        "Nothing else to send"
+      ],
+      "beat_phrases": [
+        "The perfect pitch was gone.",
+        "Saturday was still on the calendar",
+        "nothing else she needed to send"
+      ],
+      "narrative_role": "resolution",
+      "visual": {
+        "type": "room",
+        "expression": "relieved",
+        "screen_title": "Asha",
+        "messages": [],
+        "action": "close",
+        "action_phrase": "nothing else she needed to send",
+        "note": "Use what we have first.",
+        "headline": "Nothing else to send",
+        "items": [
+          {
+            "label": "Lunch plan",
+            "quantity": 1
+          }
+        ],
+        "camera": "wide"
+      },
+      "start": 288.415,
+      "end": 303.092,
+      "beats": [
+        2.62,
+        6.72,
+        13.12
+      ]
+    }
+  ]
+}

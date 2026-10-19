@@ -1,0 +1,112 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Whose evening was this?</title></head><body><template><style>@font-face{font-family:Fraunces;src:url('../../assets/fonts/Fraunces.ttf') format('truetype');font-weight:100 900;font-display:block}
+@font-face{font-family:Montserrat;src:url('../../assets/fonts/Montserrat.ttf') format('truetype');font-weight:100 900;font-display:block}
+#story-14-14-the-same-mistake,#story-14-14-the-same-mistake *{box-sizing:border-box}#story-14-14-the-same-mistake{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:#f6efdf;color:#282425;font-family:Montserrat,sans-serif}
+#story-14-14-the-same-mistake .fiction-label{position:absolute;left:88px;top:54px;font-size:25px;line-height:1.2;font-weight:700;letter-spacing:.045em;z-index:8;padding:10px 0;border-bottom:3px solid #be4f3c}
+#story-14-14-the-same-mistake .episode-mark{position:absolute;right:88px;top:56px;font-size:24px;font-weight:700;z-index:8;color:#316b67}
+#story-14-14-the-same-mistake .story-heading{position:absolute;left:90px;top:190px;width:650px;z-index:5}
+#story-14-14-the-same-mistake h1{margin:0;font:900 92px/1.04 Fraunces,serif;letter-spacing:-.035em;overflow-wrap:break-word;max-width:100%}
+#story-14-14-the-same-mistake .scene-note{font:400 32px/1.35 Montserrat,sans-serif;max-width:590px;margin-top:38px;color:#282425}
+#story-14-14-the-same-mistake .world-viewport{position:absolute;left:775px;top:165px;width:1050px;height:675px;overflow:hidden;border-radius:38px;border:3px solid #282425;background:#f6efdf}
+#story-14-14-the-same-mistake .world{position:absolute;inset:0;transform-origin:50% 50%;overflow:visible}
+#story-14-14-the-same-mistake .world-room,#story-14-14-the-same-mistake .world-split{background:#f6efdf}
+#story-14-14-the-same-mistake .room-setting{position:absolute;inset:0}.room-art{width:100%;height:100%;display:block}
+#story-14-14-the-same-mistake .room-character{position:absolute;left:7%;top:28%;width:42%;height:66%}.character-portrait{display:block;width:100%;height:100%}
+#story-14-14-the-same-mistake .room-conversation{position:absolute;left:48%;top:24%;width:48%;height:63%}
+#story-14-14-the-same-mistake .story-phone{position:absolute;left:19%;top:4%;width:62%;height:92%;border:8px solid #282425;border-radius:44px;background:#f6efdf;overflow:hidden;display:flex;flex-direction:column}
+#story-14-14-the-same-mistake .phone-top{flex:none;padding:27px 23px 21px;border-bottom:3px solid #282425;font-size:29px;line-height:1.1;font-weight:700;text-align:center;display:flex;flex-direction:column;gap:17px;align-items:center}
+#story-14-14-the-same-mistake .phone-camera{display:block;width:92px;height:13px;border-radius:10px;background:#282425}
+#story-14-14-the-same-mistake .phone-content{position:relative;flex:1;min-height:0;padding:28px 24px}
+#story-14-14-the-same-mistake .message-state{position:absolute;left:25px;right:25px;top:28px;transform-origin:left bottom}
+#story-14-14-the-same-mistake .sender-mira,#story-14-14-the-same-mistake .sender-draft{transform-origin:right bottom}
+#story-14-14-the-same-mistake .sender-name{font-size:23px;line-height:1.2;font-weight:700;margin-bottom:13px}
+#story-14-14-the-same-mistake .message-bubble{background:#e6bd70;border:3px solid #282425;border-radius:23px 23px 23px 3px;padding:24px 21px;font-size:44px;line-height:1.16;font-weight:700;overflow-wrap:break-word}
+#story-14-14-the-same-mistake .sender-mira .message-bubble{background:#316b67;color:#f6efdf;border-radius:23px 23px 3px 23px}
+#story-14-14-the-same-mistake .sender-draft .message-bubble{background:#f6efdf;border-style:dashed;border-radius:23px 23px 3px 23px}
+#story-14-14-the-same-mistake .receipt{font-size:20px;line-height:1.3;font-weight:700;margin-top:13px}
+#story-14-14-the-same-mistake .phone-controls{margin:0 20px;flex:none;border-top:3px solid #282425;padding:15px 0;display:flex;justify-content:space-between;align-items:center;font-size:23px;font-weight:700}
+#story-14-14-the-same-mistake .send-control{display:flex;width:58px;height:58px;align-items:center;justify-content:center;background:#316b67;color:#f6efdf;border-radius:50%;font-size:48px;line-height:1}
+#story-14-14-the-same-mistake .phone-bottom{width:112px;height:8px;background:#282425;border-radius:9px;flex:none;margin:3px auto 14px}
+#story-14-14-the-same-mistake .compact-phone{left:0;top:0;width:100%;height:100%;border-width:6px;border-radius:30px}
+#story-14-14-the-same-mistake .compact-phone .phone-top{font-size:27px;padding:15px 13px;gap:10px}
+#story-14-14-the-same-mistake .compact-phone .phone-camera{width:65px;height:9px}
+#story-14-14-the-same-mistake .compact-phone .message-state{left:17px;right:17px;top:18px}
+#story-14-14-the-same-mistake .compact-phone .message-bubble{font-size:38px;padding:19px 16px;line-height:1.15}
+#story-14-14-the-same-mistake .compact-phone .sender-name{font-size:21px;margin-bottom:10px}
+#story-14-14-the-same-mistake .compact-phone .receipt{font-size:18px;margin-top:10px}
+#story-14-14-the-same-mistake .compact-phone .phone-controls{font-size:20px;padding:10px 0;margin:0 14px}
+#story-14-14-the-same-mistake .compact-phone .send-control{width:42px;height:42px;font-size:35px}
+#story-14-14-the-same-mistake .typing-indicator{position:absolute;left:26px;bottom:34px;width:122px;height:64px;border:3px solid #282425;border-radius:35px;display:flex;justify-content:center;align-items:center;gap:9px;background:#e6bd70}
+#story-14-14-the-same-mistake .typing-indicator span{display:block;width:15px;height:15px;border-radius:50%;background:#282425}
+#story-14-14-the-same-mistake .phone-portrait{position:absolute;left:-7%;bottom:-3%;width:34%;height:47%}
+#story-14-14-the-same-mistake .phone-scene-lines{position:absolute;left:6%;right:6%;top:15%;bottom:14%;border-top:3px solid #316b67;border-bottom:3px solid #be4f3c}
+#story-14-14-the-same-mistake .cupboard{position:absolute;left:8%;top:5%;width:80%;height:81%;border:7px solid #282425;background:#316b67;border-radius:8px}
+#story-14-14-the-same-mistake .cupboard-cornice{position:absolute;left:-4%;right:-4%;top:-4%;height:7%;background:#e6bd70;border:5px solid #282425;border-radius:7px}
+#story-14-14-the-same-mistake .cupboard-back{position:absolute;inset:0;overflow:hidden}
+#story-14-14-the-same-mistake .shelf-lines{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-evenly;padding-top:12%}
+#story-14-14-the-same-mistake .shelf-lines i{display:block;height:11px;background:#e6bd70;border-top:3px solid #282425;border-bottom:3px solid #282425}
+#story-14-14-the-same-mistake .supply{position:absolute;width:43%;height:25%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;color:#f6efdf}
+#story-14-14-the-same-mistake .supply:nth-of-type(even){left:5%}#story-14-14-the-same-mistake .supply:nth-of-type(odd){left:51%}
+#story-14-14-the-same-mistake .supply-0{left:5%;top:5%}#story-14-14-the-same-mistake .supply-1{left:51%;top:5%}#story-14-14-the-same-mistake .supply-2{left:5%;top:34%}#story-14-14-the-same-mistake .supply-3{left:51%;top:34%}#story-14-14-the-same-mistake .supply-4{left:5%;top:63%}#story-14-14-the-same-mistake .supply-5{left:51%;top:63%}
+#story-14-14-the-same-mistake .supply svg{display:block;width:61%;height:62%;flex:none}
+#story-14-14-the-same-mistake .single-shelf-groups .supply{left:5%;width:90%;height:28%}#story-14-14-the-same-mistake .single-shelf-groups .supply svg{width:86%;height:62%}
+#story-14-14-the-same-mistake .single-shelf-groups .supply-0{top:3%}#story-14-14-the-same-mistake .single-shelf-groups .supply-1{top:32%}#story-14-14-the-same-mistake .single-shelf-groups .supply-2{top:61%}
+#story-14-14-the-same-mistake .supply-label{font-size:30px;line-height:1.1;font-weight:700;text-align:center;background:#f6efdf;color:#282425;padding:4px 9px;max-width:100%}
+#story-14-14-the-same-mistake .supply-count{font-size:27px;line-height:1.3;font-weight:700}
+#story-14-14-the-same-mistake .cupboard-door{position:absolute;left:0;top:0;bottom:0;width:100%;background:#be4f3c;border:3px solid #282425;transform-origin:left center}
+#story-14-14-the-same-mistake .door-panel{position:absolute;inset:8%;border:4px solid #e6bd70}
+#story-14-14-the-same-mistake .cupboard-door>i{position:absolute;right:9%;top:47%;width:20px;height:52px;border-radius:8px;background:#e6bd70;border:3px solid #282425}
+#story-14-14-the-same-mistake .inventory-note{position:absolute;left:3%;bottom:3%;width:58%;padding:20px;background:#f6efdf;border:3px solid #282425;display:flex;flex-direction:column;gap:12px;transform-origin:left bottom}
+#story-14-14-the-same-mistake .inventory-note span{font-size:23px;font-weight:700}#story-14-14-the-same-mistake .inventory-note strong{font:900 42px/1.08 Fraunces,serif}
+#story-14-14-the-same-mistake .inventory-underline{width:100%;height:17px;display:block}#story-14-14-the-same-mistake .inventory-underline path{fill:none;stroke:#be4f3c;stroke-width:7;stroke-linecap:round}
+#story-14-14-the-same-mistake .cart-slip{position:absolute;right:2%;bottom:3%;width:34%;padding:20px;border:3px solid #282425;background:#e6bd70;display:flex;flex-direction:column;gap:14px}
+#story-14-14-the-same-mistake .cart-slip span{font-size:23px;font-weight:700}#story-14-14-the-same-mistake .cart-slip strong{font-size:32px;line-height:1.1}
+#story-14-14-the-same-mistake .table-surface{position:absolute;inset:0;background:#e6bd70;border-top:22px solid #be4f3c}
+#story-14-14-the-same-mistake .paper-sheet{position:absolute;left:8%;top:8%;width:79%;height:81%;background:#f6efdf;border:3px solid #282425;padding:8% 7% 4%;border-radius:4px}
+#story-14-14-the-same-mistake .paper-holes{position:absolute;left:3%;top:10%;bottom:9%;display:flex;flex-direction:column;justify-content:space-between}
+#story-14-14-the-same-mistake .paper-holes i{display:block;width:16px;height:16px;border:3px solid #282425;border-radius:50%;background:#e6bd70}
+#story-14-14-the-same-mistake .paper-title{font-size:30px;line-height:1.1;font-weight:700;margin-bottom:36px;color:#316b67}
+#story-14-14-the-same-mistake .paper-line{font-size:45px;line-height:1.17;font-weight:700;position:relative;margin-bottom:28px;overflow-wrap:break-word}
+#story-14-14-the-same-mistake .strike-svg{position:absolute;left:0;top:12%;width:100%;height:100%;pointer-events:none;overflow:visible}
+#story-14-14-the-same-mistake .strike-svg path{fill:none;stroke:#be4f3c;stroke-width:9px;stroke-linecap:round}
+#story-14-14-the-same-mistake .paper-rule{height:3px;background:#316b67;margin-top:10px}
+#story-14-14-the-same-mistake .hand-note{font:900 45px/1.09 Fraunces,serif;color:#316b67;margin-top:30px}
+#story-14-14-the-same-mistake .pencil{position:absolute;right:7%;top:17%;width:22px;height:62%;background:#be4f3c;border:3px solid #282425;border-radius:4px}
+#story-14-14-the-same-mistake .tea-cup{position:absolute;right:-7%;bottom:-6%;width:28%;height:29%;background:#f6efdf;border:7px solid #282425;border-radius:50%;padding:20px}
+#story-14-14-the-same-mistake .tea-cup i{display:block;width:100%;height:100%;background:#316b67;border-radius:50%;border:4px solid #282425}
+#story-14-14-the-same-mistake .calendar-page{position:absolute;left:4%;top:8%;width:55%;height:82%;padding:5% 5% 4%;border:5px solid #282425;background:#f6efdf;border-top:28px solid #be4f3c}
+#story-14-14-the-same-mistake .calendar-rings{position:absolute;left:18%;right:18%;top:-50px;display:flex;justify-content:space-between}
+#story-14-14-the-same-mistake .calendar-rings i{display:block;width:24px;height:60px;border:5px solid #282425;border-radius:18px;background:#e6bd70}
+#story-14-14-the-same-mistake .calendar-kicker{font-size:24px;font-weight:700;color:#316b67}
+#story-14-14-the-same-mistake .calendar-day{font:900 75px/1.05 Fraunces,serif;margin-top:20px}
+#story-14-14-the-same-mistake .calendar-line{height:4px;background:#282425;margin:22px 0}
+#story-14-14-the-same-mistake .calendar-plan{font-size:44px;line-height:1.13;font-weight:700;max-width:100%;overflow-wrap:break-word;position:relative;z-index:2}
+#story-14-14-the-same-mistake .calendar-circle{position:absolute;left:4%;top:34%;width:88%;height:31%;overflow:visible}
+#story-14-14-the-same-mistake .calendar-circle path{fill:none;stroke:#be4f3c;stroke-width:9;stroke-linecap:round}
+#story-14-14-the-same-mistake .calendar-note{font-size:31px;line-height:1.2;margin-top:28px;color:#316b67;font-weight:700;max-width:100%;overflow-wrap:break-word}
+#story-14-14-the-same-mistake .calendar-date{position:absolute;left:10%;bottom:6%;font-size:24px;font-weight:700}
+#story-14-14-the-same-mistake .lunch-plate{position:absolute;right:-5%;bottom:-13%;width:39%;height:44%;border-radius:50%;border:7px solid #282425;background:#e6bd70;display:flex;align-items:center;justify-content:center;gap:4%}
+#story-14-14-the-same-mistake .lunch-plate i{display:block;width:30%;height:40%;background:#f6efdf;border:5px solid #282425;border-radius:8px}
+#story-14-14-the-same-mistake .lunch-cup{position:absolute;right:4%;top:8%;width:14%;height:18%;border:6px solid #282425;border-radius:50%;background:#316b67}
+#story-14-14-the-same-mistake .calendar-reply{position:absolute;right:3%;top:27%;width:40%;height:67%}
+#story-14-14-the-same-mistake .calendar-reply .compact-phone .message-bubble{font-size:43px}
+#story-14-14-the-same-mistake .split-room{position:absolute;top:0;width:50%;height:100%;border-right:4px solid #282425}
+#story-14-14-the-same-mistake .mira-room{left:0;background:#e6bd70}#story-14-14-the-same-mistake .asha-room{left:50%;background:#f6efdf;border-right:0}
+#story-14-14-the-same-mistake .split-window{position:absolute;left:14%;top:7%;width:69%;height:36%;background:#316b67;border:5px solid #282425;border-radius:50% 50% 0 0}
+#story-14-14-the-same-mistake .asha-room .split-window{background:#be4f3c}
+#story-14-14-the-same-mistake .split-person{position:absolute;left:7%;top:20%;width:87%;height:72%}
+#story-14-14-the-same-mistake .split-room>span{position:absolute;left:12%;bottom:5%;font:900 46px/1 Fraunces,serif}
+#story-14-14-the-same-mistake .split-conversation{position:absolute;left:27%;top:29%;width:48%;height:58%}
+</style>
+<div id="story-14-14-the-same-mistake" data-composition-id="story-14-14-the-same-mistake" data-width="1920" data-height="1080" data-duration="13.370" data-story-world="split">
+<div class="fiction-label">ORIGINAL FICTIONAL STORY</div><div class="episode-mark">BIZNEX / UNSENT</div><div class="story-heading"><h1>The person she was writing to</h1></div>
+<div class="world-viewport" id="story-14-14-the-same-mistake-viewport"><div class="world world-split" id="story-14-14-the-same-mistake-world" data-layout-allow-overflow><div class="split-room mira-room"><div class="split-window" aria-hidden="true"></div><div class="split-person"><svg class="character-portrait" viewBox="0 0 320 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mira, concerned"><g id="story-14-14-the-same-mistake-mira-silhouette"><path d="M77 211 Q39 294 51 449 L271 449 Q287 284 237 213 Q218 188 203 188 L118 188 Q91 193 77 211" fill="#316b67" stroke="#282425" stroke-width="5"/><path d="M117 199 Q162 239 204 199 L195 187 L123 186Z" fill="#b9704f"/><path d="M91 87 Q93 21 157 20 Q232 20 231 95 L223 191 Q246 216 234 254 Q217 242 208 208 L103 207 Q74 232 69 259 Q49 187 80 147Z" fill="#282425"/><circle cx="227" cy="43" r="35" fill="#282425"/><path d="M207 21 Q243 24 245 55" fill="none" stroke="#e6bd70" stroke-width="6"/><ellipse cx="160" cy="120" rx="65" ry="83" fill="#c8825c" stroke="#282425" stroke-width="4"/><path d="M95 106 Q92 33 156 30 Q215 31 226 103 Q184 101 168 61 Q145 104 95 106" fill="#282425"/><path d="M121 123 L140 127 M177 127 L196 122" fill="none" stroke="#282425" stroke-width="5" stroke-linecap="round"/><ellipse cx="132" cy="136" rx="5" ry="7" fill="#282425"/><ellipse cx="187" cy="136" rx="5" ry="7" fill="#282425"/><path d="M159 139 L153 154 L162 155" fill="none" stroke="#8b4f39" stroke-width="3" stroke-linecap="round"/><path d="M145 169 Q160 157 176 168" fill="none" stroke="#282425" stroke-width="4" stroke-linecap="round"/><circle cx="100" cy="155" r="6" fill="#e6bd70"/><circle cx="220" cy="155" r="6" fill="#e6bd70"/><path d="M86 286 Q105 315 129 337 M231 287 Q206 321 183 337" fill="none" stroke="#282425" stroke-width="5" stroke-linecap="round"/><path d="M111 342 Q130 327 156 339 L194 339 Q205 354 186 366 L131 366 Q111 365 111 342" fill="#c8825c" stroke="#282425" stroke-width="4"/><path d="M66 445 L66 468 M253 445 L253 468" fill="none" stroke="#282425" stroke-width="7"/></g></svg></div><span>Mira</span></div><div class="split-room asha-room"><div class="split-window" aria-hidden="true"></div><div class="split-person"><svg class="character-portrait" viewBox="0 0 320 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Asha, thinking"><g id="story-14-14-the-same-mistake-asha-silhouette"><path d="M77 211 Q39 294 51 449 L271 449 Q287 284 237 213 Q218 188 203 188 L118 188 Q91 193 77 211" fill="#be4f3c" stroke="#282425" stroke-width="5"/><path d="M117 199 Q162 239 204 199 L195 187 L123 186Z" fill="#b9704f"/><path d="M91 87 Q93 21 157 20 Q232 20 231 95 L223 191 Q246 216 234 254 Q217 242 208 208 L103 207 Q74 232 69 259 Q49 187 80 147Z" fill="#282425"/><ellipse cx="160" cy="120" rx="65" ry="83" fill="#c8825c" stroke="#282425" stroke-width="4"/><path d="M95 106 Q92 33 156 30 Q215 31 226 103 Q184 101 168 61 Q145 104 95 106" fill="#282425"/><path d="M121 124 Q130 120 140 124 M178 124 Q187 120 197 125" fill="none" stroke="#282425" stroke-width="5" stroke-linecap="round"/><ellipse cx="132" cy="136" rx="5" ry="7" fill="#282425"/><ellipse cx="187" cy="136" rx="5" ry="7" fill="#282425"/><path d="M159 139 L153 154 L162 155" fill="none" stroke="#8b4f39" stroke-width="3" stroke-linecap="round"/><path d="M149 165 Q161 168 174 164" fill="none" stroke="#282425" stroke-width="4" stroke-linecap="round"/><circle cx="100" cy="155" r="6" fill="#e6bd70"/><circle cx="220" cy="155" r="6" fill="#e6bd70"/><path d="M86 286 Q105 315 129 337 M231 287 Q206 321 183 337" fill="none" stroke="#282425" stroke-width="5" stroke-linecap="round"/><path d="M111 342 Q130 327 156 339 L194 339 Q205 354 186 366 L131 366 Q111 365 111 342" fill="#c8825c" stroke="#282425" stroke-width="4"/><path d="M66 445 L66 468 M253 445 L253 468" fill="none" stroke="#282425" stroke-width="7"/></g></svg></div><span>Asha</span></div><div class="split-conversation"><div class="story-phone compact-phone" id="story-14-14-the-same-mistake-phone"><div class="phone-top"><span class="phone-camera" aria-hidden="true"></span><span>Asha</span></div><div class="phone-content"><div class="message-state sender-asha" id="story-14-14-the-same-mistake-message-0"><div class="sender-name">Asha</div><div class="message-bubble">Can we talk?</div><div class="receipt">RECEIVED</div></div><div class="typing-indicator" id="story-14-14-the-same-mistake-typing" aria-label="Pause, no new message"><span></span><span></span><span></span></div></div><div class="phone-controls"><span id="story-14-14-the-same-mistake-control-label">CONVERSATION</span><span class="send-control" id="story-14-14-the-same-mistake-send">↑</span></div><div class="phone-bottom" aria-hidden="true"></div></div></div></div></div></div>
+<script>(function(){var tl=gsap.timeline({paused:true});
+var world=document.getElementById('story-14-14-the-same-mistake-world');var camera={scale:1,x:0,y:0};function applyCamera(){world.style.transform='translate('+camera.x+'px,'+camera.y+'px) scale('+camera.scale+')';}
+applyCamera();tl.to(camera,{scale:1.025,x:0,y:0,duration:1.450,ease:'power2.inOut',onUpdate:applyCamera},11.600);
+tl.set('#story-14-14-the-same-mistake-message-0',{opacity:0},0);
+tl.fromTo('#story-14-14-the-same-mistake-message-0',{scale:.75,opacity:0,y:12},{scale:1,opacity:1,y:0,duration:.22,ease:'power2.out',immediateRender:false},11.600);
+tl.set('#story-14-14-the-same-mistake-control-label',{textContent:'CONVERSATION'},11.600);
+tl.set('#story-14-14-the-same-mistake-typing',{opacity:0},0);
+tl.addLabel('action-wait',0.000);
+tl.fromTo('#story-14-14-the-same-mistake-send',{backgroundColor:'#316b67'},{backgroundColor:'#282425',duration:.35,ease:'power1.out',immediateRender:false},0.000);
+window.__timelines['story-14-14-the-same-mistake']=tl;})();</script></template></body></html>

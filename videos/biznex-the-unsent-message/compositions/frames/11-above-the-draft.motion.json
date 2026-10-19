@@ -1,0 +1,53 @@
+{
+  "frame_id": "story-11-11-above-the-draft",
+  "duration": 14.307999999999993,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-11-11-above-the-draft-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-11-11-above-the-draft-viewport"
+    }
+  ],
+  "reveal_times": [
+    1.0799999999999983,
+    2.1199999999999903,
+    3.219999999999999
+  ],
+  "events": [
+    {
+      "kind": "message",
+      "at": 1.0799999999999983,
+      "phrase": "Can we talk?"
+    },
+    {
+      "kind": "message",
+      "at": 2.1199999999999903,
+      "phrase": "Rough day."
+    },
+    {
+      "kind": "action",
+      "action": "wait",
+      "at": 3.219999999999999,
+      "phrase": "Mira read it once"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

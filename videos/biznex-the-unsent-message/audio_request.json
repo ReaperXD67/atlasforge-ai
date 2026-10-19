@@ -1,0 +1,99 @@
+{
+  "provider": "kokoro",
+  "voice": "af_heart",
+  "speed": 1.0,
+  "lang": "en-us",
+  "lines": [
+    {
+      "id": "01-eight-words",
+      "text": "At eleven fifty-eight, Mira deleted a message that took three hours to write. The replacement had eight words. Nothing was for sale. First, she had to notice what was right above her draft."
+    },
+    {
+      "id": "02-one-evening",
+      "text": "Earlier that evening, the kitchen lamp lit the table. Mira and Asha are fictional. Mira was writing an Atomy recommendation to Asha. She wanted it to sound helpful, not like the messages she usually ignored."
+    },
+    {
+      "id": "03-old-friend",
+      "text": "Their chat was full of ordinary things. A crooked birthday cake. A bus missed. A photograph of two mugs after a long afternoon. Mira scrolled through them, smiling. She knew which picture would make Asha laugh."
+    },
+    {
+      "id": "04-perfecting",
+      "text": "She kept rewriting a recommendation. Hello sounded stiff. Hey sounded careless. She changed a comma, removed a greeting, put it back. Her tea cooled beside the phone. The message grew longer while its purpose became less clear."
+    },
+    {
+      "id": "05-the-interruption",
+      "text": "Then a drop of tea reached her shopping list. Mira lifted the paper and saw toiletries circled. Before she could return to the draft, she opened the cupboard to check what was missing."
+    },
+    {
+      "id": "06-the-shelf",
+      "text": "The door caught a towel, then swung wide. Three bottles stood behind it. Four unopened tubes lined the next shelf. Mira reached past them, looking for the gap she expected. There was no gap. She moved the towel and counted again."
+    },
+    {
+      "id": "07-counting",
+      "text": "She set the bottles on the counter. One, two, three. The shopping list waited beside them, much less convincing. Mira turned a tube, then put it back unopened. She had remembered wanting something, not whether she needed it."
+    },
+    {
+      "id": "08-her-own-idea",
+      "text": "Nobody had told her to fill the cupboard. Nobody was waiting for an order. Adding more had been her own idea, wanting to feel organised. She looked at the crowded shelf, then crossed out the extra line."
+    },
+    {
+      "id": "09-the-note",
+      "text": "On the paper, she wrote: Use what we have first. She fixed it to the fridge beneath a crooked magnet. The supplies went back where she could see them. The list was shorter. For once, that felt better."
+    },
+    {
+      "id": "10-back-to-the-phone",
+      "text": "Her phone was on the table. The long draft filled the screen, polished and ready. Mira sat down. She almost pressed send, then noticed another message above it. She dragged the conversation down."
+    },
+    {
+      "id": "11-above-the-draft",
+      "text": "Asha had written: Can we talk? Rough day. Mira read it once, then again. The timestamp was from earlier that evening, before all the rewriting. Her friend had not asked for a recommendation. She had asked whether Mira had time for her."
+    },
+    {
+      "id": "12-the-preview",
+      "text": "Mira remembered seeing the notification while making tea. She had answered in her head, promising herself she would call after finishing one thing. Then one thing became another sentence. Her thumb left the send button. The kitchen suddenly felt very quiet."
+    },
+    {
+      "id": "13-the-explanation",
+      "text": "She began explaining. Sorry, I was just trying to be helpful. She added a paragraph about her evening, then another about the shopping list. The explanation grew until it pushed Asha's short request out of view again."
+    },
+    {
+      "id": "14-the-same-mistake",
+      "text": "Mira stopped. Her apology was filling the conversation with her own evening. She looked at the fridge note, then back at the screen. There was one person missing from those careful sentences. The person she was writing to."
+    },
+    {
+      "id": "15-the-deletion",
+      "text": "She selected the recommendation, then the explanation. Delete. For a moment, the empty space looked uncomfortable. Three hours of polishing had disappeared. Mira set down the phone, took a breath, and picked it up without opening the shopping list again."
+    },
+    {
+      "id": "16-eight-words-sent",
+      "text": "This time she wrote: I’m here. Do you still want to talk? She read the eight words once. There was no link underneath them, no extra explanation. At eleven fifty-nine, Mira pressed send and left the conversation open."
+    },
+    {
+      "id": "17-the-wait",
+      "text": "Nothing happened. The message sat there without an answer. Mira reached for the phone again, then let her hand rest on the table. Asha might be busy. She might not want to talk anymore. Another message would not make that choice belong to Mira."
+    },
+    {
+      "id": "18-the-counter",
+      "text": "She rinsed the cold mug and wiped the small tea mark from the table. The bottles were back on their shelf. She straightened them, closed the cupboard, and left the fridge note crooked. This was something she could finish without asking anyone to reply."
+    },
+    {
+      "id": "19-the-reply",
+      "text": "A few minutes later, the screen lit up. Yes, please. Still awake? Mira pulled the chair out again. She did not search for a better opening or reopen the deleted draft. She pressed call, and waited for Asha to pick up."
+    },
+    {
+      "id": "20-the-call",
+      "text": "Asha answered from her sofa. The day had been difficult, and she did not need Mira to fix it before hearing it. Mira listened. Sometimes she asked a question. Sometimes neither spoke. At one point, Mira started to offer a solution. Then she put the idea aside and asked what happened next. On the counter, the shopping list stayed folded under an empty mug."
+    },
+    {
+      "id": "21-saturday",
+      "text": "Before they hung up, Asha asked about Saturday. Same place for lunch? Mira found the little calendar on the fridge and circled the day. Same place, she said. Nothing needed to be ordered first. Nothing needed to be earned. They were simply making a plan."
+    },
+    {
+      "id": "22-the-room-after",
+      "text": "After the call, Mira turned off the lamp. The perfect pitch was gone. The crooked note was still on the fridge, and Saturday was still on the calendar. Her phone held a much shorter conversation now. For tonight, there was nothing else she needed to send."
+    }
+  ],
+  "bgm": {
+    "mode": "project-owned"
+  }
+}

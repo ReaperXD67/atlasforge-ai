@@ -1,0 +1,41 @@
+{
+  "frame_id": "story-09-09-the-note",
+  "duration": 11.620000000000005,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-09-09-the-note-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-09-09-the-note-viewport"
+    }
+  ],
+  "reveal_times": [
+    0.8599999999999994
+  ],
+  "events": [
+    {
+      "kind": "action",
+      "action": "reveal",
+      "at": 0.8599999999999994,
+      "phrase": "she wrote"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

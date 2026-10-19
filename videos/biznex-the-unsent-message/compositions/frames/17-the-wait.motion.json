@@ -1,0 +1,47 @@
+{
+  "frame_id": "story-17-17-the-wait",
+  "duration": 14.074000000000012,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-17-17-the-wait-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-17-17-the-wait-viewport"
+    }
+  ],
+  "reveal_times": [
+    1.2600000000000193,
+    5.900000000000006
+  ],
+  "events": [
+    {
+      "kind": "message",
+      "at": 1.2600000000000193,
+      "phrase": "The message sat there"
+    },
+    {
+      "kind": "action",
+      "action": "wait",
+      "at": 5.900000000000006,
+      "phrase": "her hand rest on the table"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "script": "SCRIPT.md",
+  "thumbnail_copy": "THUMBNAIL_COPY.txt",
+  "audience_problem": "Someone can hear a polite refusal as an invitation to argue instead of an answer.",
+  "hook": {
+    "text": "Asha's answer was two words: No thanks",
+    "at_seconds": 0
+  },
+  "payoff": {
+    "text": "Asha sent a laughing face. Saturday stayed on the calendar. No order followed. Just lunch between friends.",
+    "at_seconds": 21.819
+  },
+  "packaging": {
+    "title": "Her Friend Said No. She Deleted the Follow-Up.",
+    "thumbnail_text": "SHE ALREADY ANSWERED",
+    "promise": "Show three unsent rebuttals disappearing after a clear no, then preserve an ordinary lunch plan without a product order.",
+    "evidence_anchor": "Asha sent a laughing face. Saturday stayed on the calendar. No order followed. Just lunch between friends.",
+    "reviewed": true
+  },
+  "sources": [
+    {
+      "claim": "Strategy metadata only: the official creator interview discusses immediate Shorts hooks and self-contained miniature stories, not a guaranteed algorithm formula.",
+      "url": "https://blog.youtube/creator-and-artist-stories/youtube-shorts-deep-dive/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "claim": "U.S.-specific ethics and posting-review context only: the member agreement addresses pressure after refusal and public advertising/IP approval. This fictional story does not provide legal advice or claim local approval.",
+      "url": "https://us.atomy.com/common/footerTermsInfo?isHtml=Y&tabIndex=1",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "retention_beats": [
+    {
+      "at_seconds": 0.0,
+      "purpose": "Two words, three reasons"
+    },
+    {
+      "at_seconds": 5.689,
+      "purpose": "An uninvited recommendation"
+    },
+    {
+      "at_seconds": 10.824,
+      "purpose": "The answer was already there"
+    },
+    {
+      "at_seconds": 16.193,
+      "purpose": "The ordinary invitation"
+    },
+    {
+      "at_seconds": 21.819,
+      "purpose": "Just lunch"
+    }
+  ],
+  "story": {
+    "fictional": true,
+    "protagonist": "Mira",
+    "disclosure": "Mira and Asha are fictional.",
+    "setup_segment": "01-no",
+    "turn_segment": "03-read-again",
+    "brand_connection_segment": "02-context",
+    "payoff_segment": "05-saturday",
+    "timing_manifest": "audio_meta.json"
+  }
+}

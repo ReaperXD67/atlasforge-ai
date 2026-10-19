@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "script": "SCRIPT.md",
+  "thumbnail_copy": "THUMBNAIL_COPY.txt",
+  "audience_problem": "The feeling of getting ahead can conceal supplies someone already owns.",
+  "hook": {
+    "text": "The cupboard door swung open",
+    "at_seconds": 0
+  },
+  "payoff": {
+    "text": "Then she put one note on the fridge: Use what we have first. The cupboard finally won.",
+    "at_seconds": 20.432
+  },
+  "packaging": {
+    "title": "Her Cart Was Full. So Was the Cupboard.",
+    "thumbnail_text": "YOU ALREADY HAVE IT",
+    "promise": "Show a full cupboard interrupting Mira's shopping, then resolve with counted supplies, a closed cart and a note to use what she has.",
+    "evidence_anchor": "Then she put one note on the fridge: Use what we have first. The cupboard finally won.",
+    "reviewed": true
+  },
+  "sources": [
+    {
+      "claim": "Strategy metadata only: relatable universal problems and immediate delivery of the title promise guide this fictional experiment; no performance outcome is established.",
+      "url": "https://support.google.com/youtube/answer/16559650?hl=en",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "claim": "U.S.-specific ethics context only: the member agreement prohibits excessive purchasing for advancement and addresses prior approval for public advertising/IP use. The plot does not attribute overbuying to Atomy or summarize other markets' rules.",
+      "url": "https://us.atomy.com/common/footerTermsInfo?isHtml=Y&tabIndex=1",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "retention_beats": [
+    {
+      "at_seconds": 0.0,
+      "purpose": "The other full thing"
+    },
+    {
+      "at_seconds": 4.772,
+      "purpose": "Mira's shopping list"
+    },
+    {
+      "at_seconds": 10.227,
+      "purpose": "The shelf answers"
+    },
+    {
+      "at_seconds": 15.66,
+      "purpose": "No order placed"
+    },
+    {
+      "at_seconds": 20.432,
+      "purpose": "The cupboard wins"
+    }
+  ],
+  "story": {
+    "fictional": true,
+    "protagonist": "Mira",
+    "disclosure": "Mira and Asha are fictional.",
+    "setup_segment": "01-door",
+    "turn_segment": "03-shelf",
+    "brand_connection_segment": "02-list",
+    "payoff_segment": "05-note",
+    "timing_manifest": "audio_meta.json"
+  }
+}

@@ -1,0 +1,109 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Nothing was missing</title></head><body><template><style>@font-face{font-family:Fraunces;src:url('../../assets/fonts/Fraunces.ttf') format('truetype');font-weight:100 900;font-display:block}
+@font-face{font-family:Montserrat;src:url('../../assets/fonts/Montserrat.ttf') format('truetype');font-weight:100 900;font-display:block}
+#story-06-06-the-shelf,#story-06-06-the-shelf *{box-sizing:border-box}#story-06-06-the-shelf{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:#f6efdf;color:#282425;font-family:Montserrat,sans-serif}
+#story-06-06-the-shelf .fiction-label{position:absolute;left:88px;top:54px;font-size:25px;line-height:1.2;font-weight:700;letter-spacing:.045em;z-index:8;padding:10px 0;border-bottom:3px solid #be4f3c}
+#story-06-06-the-shelf .episode-mark{position:absolute;right:88px;top:56px;font-size:24px;font-weight:700;z-index:8;color:#316b67}
+#story-06-06-the-shelf .story-heading{position:absolute;left:90px;top:190px;width:650px;z-index:5}
+#story-06-06-the-shelf h1{margin:0;font:900 92px/1.04 Fraunces,serif;letter-spacing:-.035em;overflow-wrap:break-word;max-width:100%}
+#story-06-06-the-shelf .scene-note{font:400 32px/1.35 Montserrat,sans-serif;max-width:590px;margin-top:38px;color:#282425}
+#story-06-06-the-shelf .world-viewport{position:absolute;left:775px;top:165px;width:1050px;height:675px;overflow:hidden;border-radius:38px;border:3px solid #282425;background:#f6efdf}
+#story-06-06-the-shelf .world{position:absolute;inset:0;transform-origin:50% 50%;overflow:visible}
+#story-06-06-the-shelf .world-room,#story-06-06-the-shelf .world-split{background:#f6efdf}
+#story-06-06-the-shelf .room-setting{position:absolute;inset:0}.room-art{width:100%;height:100%;display:block}
+#story-06-06-the-shelf .room-character{position:absolute;left:7%;top:28%;width:42%;height:66%}.character-portrait{display:block;width:100%;height:100%}
+#story-06-06-the-shelf .room-conversation{position:absolute;left:48%;top:24%;width:48%;height:63%}
+#story-06-06-the-shelf .story-phone{position:absolute;left:19%;top:4%;width:62%;height:92%;border:8px solid #282425;border-radius:44px;background:#f6efdf;overflow:hidden;display:flex;flex-direction:column}
+#story-06-06-the-shelf .phone-top{flex:none;padding:27px 23px 21px;border-bottom:3px solid #282425;font-size:29px;line-height:1.1;font-weight:700;text-align:center;display:flex;flex-direction:column;gap:17px;align-items:center}
+#story-06-06-the-shelf .phone-camera{display:block;width:92px;height:13px;border-radius:10px;background:#282425}
+#story-06-06-the-shelf .phone-content{position:relative;flex:1;min-height:0;padding:28px 24px}
+#story-06-06-the-shelf .message-state{position:absolute;left:25px;right:25px;top:28px;transform-origin:left bottom}
+#story-06-06-the-shelf .sender-mira,#story-06-06-the-shelf .sender-draft{transform-origin:right bottom}
+#story-06-06-the-shelf .sender-name{font-size:23px;line-height:1.2;font-weight:700;margin-bottom:13px}
+#story-06-06-the-shelf .message-bubble{background:#e6bd70;border:3px solid #282425;border-radius:23px 23px 23px 3px;padding:24px 21px;font-size:44px;line-height:1.16;font-weight:700;overflow-wrap:break-word}
+#story-06-06-the-shelf .sender-mira .message-bubble{background:#316b67;color:#f6efdf;border-radius:23px 23px 3px 23px}
+#story-06-06-the-shelf .sender-draft .message-bubble{background:#f6efdf;border-style:dashed;border-radius:23px 23px 3px 23px}
+#story-06-06-the-shelf .receipt{font-size:20px;line-height:1.3;font-weight:700;margin-top:13px}
+#story-06-06-the-shelf .phone-controls{margin:0 20px;flex:none;border-top:3px solid #282425;padding:15px 0;display:flex;justify-content:space-between;align-items:center;font-size:23px;font-weight:700}
+#story-06-06-the-shelf .send-control{display:flex;width:58px;height:58px;align-items:center;justify-content:center;background:#316b67;color:#f6efdf;border-radius:50%;font-size:48px;line-height:1}
+#story-06-06-the-shelf .phone-bottom{width:112px;height:8px;background:#282425;border-radius:9px;flex:none;margin:3px auto 14px}
+#story-06-06-the-shelf .compact-phone{left:0;top:0;width:100%;height:100%;border-width:6px;border-radius:30px}
+#story-06-06-the-shelf .compact-phone .phone-top{font-size:27px;padding:15px 13px;gap:10px}
+#story-06-06-the-shelf .compact-phone .phone-camera{width:65px;height:9px}
+#story-06-06-the-shelf .compact-phone .message-state{left:17px;right:17px;top:18px}
+#story-06-06-the-shelf .compact-phone .message-bubble{font-size:38px;padding:19px 16px;line-height:1.15}
+#story-06-06-the-shelf .compact-phone .sender-name{font-size:21px;margin-bottom:10px}
+#story-06-06-the-shelf .compact-phone .receipt{font-size:18px;margin-top:10px}
+#story-06-06-the-shelf .compact-phone .phone-controls{font-size:20px;padding:10px 0;margin:0 14px}
+#story-06-06-the-shelf .compact-phone .send-control{width:42px;height:42px;font-size:35px}
+#story-06-06-the-shelf .typing-indicator{position:absolute;left:26px;bottom:34px;width:122px;height:64px;border:3px solid #282425;border-radius:35px;display:flex;justify-content:center;align-items:center;gap:9px;background:#e6bd70}
+#story-06-06-the-shelf .typing-indicator span{display:block;width:15px;height:15px;border-radius:50%;background:#282425}
+#story-06-06-the-shelf .phone-portrait{position:absolute;left:-7%;bottom:-3%;width:34%;height:47%}
+#story-06-06-the-shelf .phone-scene-lines{position:absolute;left:6%;right:6%;top:15%;bottom:14%;border-top:3px solid #316b67;border-bottom:3px solid #be4f3c}
+#story-06-06-the-shelf .cupboard{position:absolute;left:8%;top:5%;width:80%;height:81%;border:7px solid #282425;background:#316b67;border-radius:8px}
+#story-06-06-the-shelf .cupboard-cornice{position:absolute;left:-4%;right:-4%;top:-4%;height:7%;background:#e6bd70;border:5px solid #282425;border-radius:7px}
+#story-06-06-the-shelf .cupboard-back{position:absolute;inset:0;overflow:hidden}
+#story-06-06-the-shelf .shelf-lines{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-evenly;padding-top:12%}
+#story-06-06-the-shelf .shelf-lines i{display:block;height:11px;background:#e6bd70;border-top:3px solid #282425;border-bottom:3px solid #282425}
+#story-06-06-the-shelf .supply{position:absolute;width:43%;height:25%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;color:#f6efdf}
+#story-06-06-the-shelf .supply:nth-of-type(even){left:5%}#story-06-06-the-shelf .supply:nth-of-type(odd){left:51%}
+#story-06-06-the-shelf .supply-0{left:5%;top:5%}#story-06-06-the-shelf .supply-1{left:51%;top:5%}#story-06-06-the-shelf .supply-2{left:5%;top:34%}#story-06-06-the-shelf .supply-3{left:51%;top:34%}#story-06-06-the-shelf .supply-4{left:5%;top:63%}#story-06-06-the-shelf .supply-5{left:51%;top:63%}
+#story-06-06-the-shelf .supply svg{display:block;width:61%;height:62%;flex:none}
+#story-06-06-the-shelf .single-shelf-groups .supply{left:5%;width:90%;height:28%}#story-06-06-the-shelf .single-shelf-groups .supply svg{width:86%;height:62%}
+#story-06-06-the-shelf .single-shelf-groups .supply-0{top:3%}#story-06-06-the-shelf .single-shelf-groups .supply-1{top:32%}#story-06-06-the-shelf .single-shelf-groups .supply-2{top:61%}
+#story-06-06-the-shelf .supply-label{font-size:30px;line-height:1.1;font-weight:700;text-align:center;background:#f6efdf;color:#282425;padding:4px 9px;max-width:100%}
+#story-06-06-the-shelf .supply-count{font-size:27px;line-height:1.3;font-weight:700}
+#story-06-06-the-shelf .cupboard-door{position:absolute;left:0;top:0;bottom:0;width:100%;background:#be4f3c;border:3px solid #282425;transform-origin:left center}
+#story-06-06-the-shelf .door-panel{position:absolute;inset:8%;border:4px solid #e6bd70}
+#story-06-06-the-shelf .cupboard-door>i{position:absolute;right:9%;top:47%;width:20px;height:52px;border-radius:8px;background:#e6bd70;border:3px solid #282425}
+#story-06-06-the-shelf .inventory-note{position:absolute;left:3%;bottom:3%;width:58%;padding:20px;background:#f6efdf;border:3px solid #282425;display:flex;flex-direction:column;gap:12px;transform-origin:left bottom}
+#story-06-06-the-shelf .inventory-note span{font-size:23px;font-weight:700}#story-06-06-the-shelf .inventory-note strong{font:900 42px/1.08 Fraunces,serif}
+#story-06-06-the-shelf .inventory-underline{width:100%;height:17px;display:block}#story-06-06-the-shelf .inventory-underline path{fill:none;stroke:#be4f3c;stroke-width:7;stroke-linecap:round}
+#story-06-06-the-shelf .cart-slip{position:absolute;right:2%;bottom:3%;width:34%;padding:20px;border:3px solid #282425;background:#e6bd70;display:flex;flex-direction:column;gap:14px}
+#story-06-06-the-shelf .cart-slip span{font-size:23px;font-weight:700}#story-06-06-the-shelf .cart-slip strong{font-size:32px;line-height:1.1}
+#story-06-06-the-shelf .table-surface{position:absolute;inset:0;background:#e6bd70;border-top:22px solid #be4f3c}
+#story-06-06-the-shelf .paper-sheet{position:absolute;left:8%;top:8%;width:79%;height:81%;background:#f6efdf;border:3px solid #282425;padding:8% 7% 4%;border-radius:4px}
+#story-06-06-the-shelf .paper-holes{position:absolute;left:3%;top:10%;bottom:9%;display:flex;flex-direction:column;justify-content:space-between}
+#story-06-06-the-shelf .paper-holes i{display:block;width:16px;height:16px;border:3px solid #282425;border-radius:50%;background:#e6bd70}
+#story-06-06-the-shelf .paper-title{font-size:30px;line-height:1.1;font-weight:700;margin-bottom:36px;color:#316b67}
+#story-06-06-the-shelf .paper-line{font-size:45px;line-height:1.17;font-weight:700;position:relative;margin-bottom:28px;overflow-wrap:break-word}
+#story-06-06-the-shelf .strike-svg{position:absolute;left:0;top:12%;width:100%;height:100%;pointer-events:none;overflow:visible}
+#story-06-06-the-shelf .strike-svg path{fill:none;stroke:#be4f3c;stroke-width:9px;stroke-linecap:round}
+#story-06-06-the-shelf .paper-rule{height:3px;background:#316b67;margin-top:10px}
+#story-06-06-the-shelf .hand-note{font:900 45px/1.09 Fraunces,serif;color:#316b67;margin-top:30px}
+#story-06-06-the-shelf .pencil{position:absolute;right:7%;top:17%;width:22px;height:62%;background:#be4f3c;border:3px solid #282425;border-radius:4px}
+#story-06-06-the-shelf .tea-cup{position:absolute;right:-7%;bottom:-6%;width:28%;height:29%;background:#f6efdf;border:7px solid #282425;border-radius:50%;padding:20px}
+#story-06-06-the-shelf .tea-cup i{display:block;width:100%;height:100%;background:#316b67;border-radius:50%;border:4px solid #282425}
+#story-06-06-the-shelf .calendar-page{position:absolute;left:4%;top:8%;width:55%;height:82%;padding:5% 5% 4%;border:5px solid #282425;background:#f6efdf;border-top:28px solid #be4f3c}
+#story-06-06-the-shelf .calendar-rings{position:absolute;left:18%;right:18%;top:-50px;display:flex;justify-content:space-between}
+#story-06-06-the-shelf .calendar-rings i{display:block;width:24px;height:60px;border:5px solid #282425;border-radius:18px;background:#e6bd70}
+#story-06-06-the-shelf .calendar-kicker{font-size:24px;font-weight:700;color:#316b67}
+#story-06-06-the-shelf .calendar-day{font:900 75px/1.05 Fraunces,serif;margin-top:20px}
+#story-06-06-the-shelf .calendar-line{height:4px;background:#282425;margin:22px 0}
+#story-06-06-the-shelf .calendar-plan{font-size:44px;line-height:1.13;font-weight:700;max-width:100%;overflow-wrap:break-word;position:relative;z-index:2}
+#story-06-06-the-shelf .calendar-circle{position:absolute;left:4%;top:34%;width:88%;height:31%;overflow:visible}
+#story-06-06-the-shelf .calendar-circle path{fill:none;stroke:#be4f3c;stroke-width:9;stroke-linecap:round}
+#story-06-06-the-shelf .calendar-note{font-size:31px;line-height:1.2;margin-top:28px;color:#316b67;font-weight:700;max-width:100%;overflow-wrap:break-word}
+#story-06-06-the-shelf .calendar-date{position:absolute;left:10%;bottom:6%;font-size:24px;font-weight:700}
+#story-06-06-the-shelf .lunch-plate{position:absolute;right:-5%;bottom:-13%;width:39%;height:44%;border-radius:50%;border:7px solid #282425;background:#e6bd70;display:flex;align-items:center;justify-content:center;gap:4%}
+#story-06-06-the-shelf .lunch-plate i{display:block;width:30%;height:40%;background:#f6efdf;border:5px solid #282425;border-radius:8px}
+#story-06-06-the-shelf .lunch-cup{position:absolute;right:4%;top:8%;width:14%;height:18%;border:6px solid #282425;border-radius:50%;background:#316b67}
+#story-06-06-the-shelf .calendar-reply{position:absolute;right:3%;top:27%;width:40%;height:67%}
+#story-06-06-the-shelf .calendar-reply .compact-phone .message-bubble{font-size:43px}
+#story-06-06-the-shelf .split-room{position:absolute;top:0;width:50%;height:100%;border-right:4px solid #282425}
+#story-06-06-the-shelf .mira-room{left:0;background:#e6bd70}#story-06-06-the-shelf .asha-room{left:50%;background:#f6efdf;border-right:0}
+#story-06-06-the-shelf .split-window{position:absolute;left:14%;top:7%;width:69%;height:36%;background:#316b67;border:5px solid #282425;border-radius:50% 50% 0 0}
+#story-06-06-the-shelf .asha-room .split-window{background:#be4f3c}
+#story-06-06-the-shelf .split-person{position:absolute;left:7%;top:20%;width:87%;height:72%}
+#story-06-06-the-shelf .split-room>span{position:absolute;left:12%;bottom:5%;font:900 46px/1 Fraunces,serif}
+#story-06-06-the-shelf .split-conversation{position:absolute;left:27%;top:29%;width:48%;height:58%}
+</style>
+<div id="story-06-06-the-shelf" data-composition-id="story-06-06-the-shelf" data-width="1920" data-height="1080" data-duration="14.265" data-story-world="cupboard">
+<div class="fiction-label">ORIGINAL FICTIONAL STORY</div><div class="episode-mark">BIZNEX / UNSENT</div><div class="story-heading"><h1>Already at home</h1></div>
+<div class="world-viewport" id="story-06-06-the-shelf-viewport"><div class="world world-cupboard" id="story-06-06-the-shelf-world" data-layout-allow-overflow><div class="cupboard single-shelf-groups" id="story-06-06-the-shelf-cupboard"><div class="cupboard-cornice"></div><div class="cupboard-back"><div class="shelf-lines" aria-hidden="true"><i></i><i></i><i></i></div><div class="supply supply-0" id="story-06-06-the-shelf-supply-0"><svg viewBox="0 0 460 160" aria-hidden="true"><g class="supply-object" transform="translate(0 0)"><path d="M25 35H135V150H25Z M47 9H113V36H47Z" fill="#f6efdf" stroke="#282425" stroke-width="5"/><path d="M44 54H116V119H44Z" fill="#316b67"/><path d="M59 73H102 M59 89H102 M59 105H90" stroke="#f6efdf" stroke-width="6"/></g><g class="supply-object" transform="translate(150 0)"><path d="M25 35H135V150H25Z M47 9H113V36H47Z" fill="#f6efdf" stroke="#282425" stroke-width="5"/><path d="M44 54H116V119H44Z" fill="#316b67"/><path d="M59 73H102 M59 89H102 M59 105H90" stroke="#f6efdf" stroke-width="6"/></g><g class="supply-object" transform="translate(300 0)"><path d="M25 35H135V150H25Z M47 9H113V36H47Z" fill="#f6efdf" stroke="#282425" stroke-width="5"/><path d="M44 54H116V119H44Z" fill="#316b67"/><path d="M59 73H102 M59 89H102 M59 105H90" stroke="#f6efdf" stroke-width="6"/></g></svg><div class="supply-label">Bottles</div><div class="supply-count">3 here</div></div><div class="supply supply-1" id="story-06-06-the-shelf-supply-1"><svg viewBox="0 0 610 160" aria-hidden="true"><g class="supply-object" transform="translate(0 0)"><path d="M38 12H126L116 143H48Z M48 143H116V157H48Z" fill="#e6bd70" stroke="#282425" stroke-width="5"/><path d="M44 54H116V119H44Z" fill="#f6efdf"/><path d="M59 73H102 M59 89H102 M59 105H90" stroke="#316b67" stroke-width="6"/></g><g class="supply-object" transform="translate(150 0)"><path d="M38 12H126L116 143H48Z M48 143H116V157H48Z" fill="#e6bd70" stroke="#282425" stroke-width="5"/><path d="M44 54H116V119H44Z" fill="#f6efdf"/><path d="M59 73H102 M59 89H102 M59 105H90" stroke="#316b67" stroke-width="6"/></g><g class="supply-object" transform="translate(300 0)"><path d="M38 12H126L116 143H48Z M48 143H116V157H48Z" fill="#e6bd70" stroke="#282425" stroke-width="5"/><path d="M44 54H116V119H44Z" fill="#f6efdf"/><path d="M59 73H102 M59 89H102 M59 105H90" stroke="#316b67" stroke-width="6"/></g><g class="supply-object" transform="translate(450 0)"><path d="M38 12H126L116 143H48Z M48 143H116V157H48Z" fill="#e6bd70" stroke="#282425" stroke-width="5"/><path d="M44 54H116V119H44Z" fill="#f6efdf"/><path d="M59 73H102 M59 89H102 M59 105H90" stroke="#316b67" stroke-width="6"/></g></svg><div class="supply-label">Tubes</div><div class="supply-count">4 here</div></div></div><div class="cupboard-door" id="story-06-06-the-shelf-door"><div class="door-panel"></div><i></i></div></div><div class="inventory-note" id="story-06-06-the-shelf-inventory"><span>BEFORE ADDING MORE</span><strong>Use what we have first.</strong><svg class="inventory-underline" viewBox="0 0 480 24" aria-hidden="true"><path id="story-06-06-the-shelf-inventory-stroke" d="M6 15Q232 4 472 15"/></svg></div><div class="cart-slip" id="story-06-06-the-shelf-cart"><span>SHOPPING LIST</span><strong>Already at home</strong><span id="story-06-06-the-shelf-cart-state">OPEN</span></div></div></div></div>
+<script>(function(){var tl=gsap.timeline({paused:true});
+var world=document.getElementById('story-06-06-the-shelf-world');var camera={scale:1,x:0,y:0};function applyCamera(){world.style.transform='translate('+camera.x+'px,'+camera.y+'px) scale('+camera.scale+')';}
+applyCamera();tl.to(camera,{scale:1.065,x:0,y:0,duration:1.450,ease:'power2.inOut',onUpdate:applyCamera},1.440);
+tl.set('#story-06-06-the-shelf-door',{scaleX:1},0);var inventoryStroke=document.getElementById('story-06-06-the-shelf-inventory-stroke');var inventoryLength=inventoryStroke.getTotalLength();inventoryStroke.style.strokeDasharray=inventoryLength;tl.set(inventoryStroke,{strokeDashoffset:inventoryLength},0);
+tl.addLabel('action-reveal',1.440);
+tl.fromTo('#story-06-06-the-shelf-door',{scaleX:1},{scaleX:0,duration:.62,ease:'power3.inOut',immediateRender:false},1.440);tl.fromTo('#story-06-06-the-shelf-inventory',{scale:.87,opacity:0},{scale:1,opacity:1,duration:.4,ease:'power3.out'},1.790);tl.to(inventoryStroke,{strokeDashoffset:0,duration:.5,ease:'power2.out'},2.090);
+window.__timelines['story-06-06-the-shelf']=tl;})();</script></template></body></html>

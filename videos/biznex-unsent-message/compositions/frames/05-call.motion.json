@@ -1,0 +1,47 @@
+{
+  "frame_id": "story-05-05-call",
+  "duration": 5.1129999999999995,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-05-05-call-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-05-05-call-viewport"
+    }
+  ],
+  "reveal_times": [
+    1.1599999999999966,
+    3.9599999999999973
+  ],
+  "events": [
+    {
+      "kind": "message",
+      "at": 1.1599999999999966,
+      "phrase": "Yes, please."
+    },
+    {
+      "kind": "action",
+      "action": "send",
+      "at": 3.9599999999999973,
+      "phrase": "pressed call"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

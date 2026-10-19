@@ -244,7 +244,14 @@ def source_fingerprint(
     """Hash authored files and media, excluding render products and tool caches."""
     if not episode.project.is_dir():
         raise ShortsBatchError(f"project directory is missing: {episode.project}")
-    excluded = {manifest.report_path, manifest.report_path.with_suffix(".json.tmp")}
+    # Root README delivery notes do not participate in the rendered program.
+    # Keep this exception narrow: other Markdown plans and nested READMEs remain
+    # source inputs, and explicit deliverable paths are re-added below.
+    excluded = {
+        manifest.report_path,
+        manifest.report_path.with_suffix(".json.tmp"),
+        episode.project / "README.md",
+    }
     for item in manifest.episodes:
         excluded.update((item.output, item.raw_output, item.mastered_output))
     files: set[Path] = set()

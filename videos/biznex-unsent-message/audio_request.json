@@ -1,0 +1,31 @@
+{
+  "provider": "kokoro",
+  "voice": "af_heart",
+  "speed": 1.0,
+  "lang": "en-us",
+  "lines": [
+    {
+      "id": "01-hover",
+      "text": "Mira's thumb hovered over send. Then she noticed the message hidden above her draft."
+    },
+    {
+      "id": "02-draft",
+      "text": "Mira and Asha are fictional. She had written an Atomy recommendation for her oldest friend."
+    },
+    {
+      "id": "03-scroll",
+      "text": "Above it, Asha had asked: Can we talk? Rough day. Mira had never answered."
+    },
+    {
+      "id": "04-choice",
+      "text": "She deleted the pitch. I’m here. Do you still want to talk? This time, she sent it."
+    },
+    {
+      "id": "05-call",
+      "text": "Asha replied: Yes, please. Mira put away the shopping list and pressed call."
+    }
+  ],
+  "bgm": {
+    "mode": "project-owned"
+  }
+}

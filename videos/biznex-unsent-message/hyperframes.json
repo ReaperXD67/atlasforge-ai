@@ -1,0 +1,25 @@
+{
+  "$schema": "https://hyperframes.heygen.com/schema/hyperframes.json",
+  "registry": "https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry",
+  "paths": {
+    "blocks": "compositions",
+    "components": "compositions/components",
+    "assets": "assets"
+  },
+  "media": {
+    "autoProxy": true
+  },
+  "authoringSkill": "general-video",
+  "registryItems": [
+    {
+      "name": "chat-message",
+      "type": "hyperframes:component",
+      "target": "compositions/components/chat-message.html"
+    },
+    {
+      "name": "typing-indicator",
+      "type": "hyperframes:component",
+      "target": "compositions/components/typing-indicator.html"
+    }
+  ]
+}

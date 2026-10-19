@@ -1,0 +1,47 @@
+{
+  "frame_id": "story-05-05-saturday",
+  "duration": 6.990000000000002,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-05-05-saturday-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-05-05-saturday-viewport"
+    }
+  ],
+  "reveal_times": [
+    0.6000000000000014,
+    2.16
+  ],
+  "events": [
+    {
+      "kind": "message",
+      "at": 0.6000000000000014,
+      "phrase": "a laughing face"
+    },
+    {
+      "kind": "action",
+      "action": "reveal",
+      "at": 2.16,
+      "phrase": "Saturday stayed on the calendar"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

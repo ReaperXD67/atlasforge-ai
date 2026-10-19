@@ -1,0 +1,47 @@
+{
+  "frame_id": "story-02-02-draft",
+  "duration": 5.518000000000001,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-02-02-draft-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-02-02-draft-viewport"
+    }
+  ],
+  "reveal_times": [
+    2.4400000000000004,
+    2.8200000000000003
+  ],
+  "events": [
+    {
+      "kind": "action",
+      "action": "reveal",
+      "at": 2.4400000000000004,
+      "phrase": "She had written"
+    },
+    {
+      "kind": "message",
+      "at": 2.8200000000000003,
+      "phrase": "an Atomy recommendation"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

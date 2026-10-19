@@ -1,0 +1,451 @@
+{
+  "id": "full-cupboard",
+  "project": "videos/biznex-full-cupboard",
+  "format": "shorts",
+  "delivery_bounds": {
+    "min_seconds": 20,
+    "max_seconds": 35
+  },
+  "title": "Her Cart Was Full. So Was the Cupboard.",
+  "audience_problem": "The feeling of getting ahead can conceal supplies someone already owns.",
+  "packaging_promise": "Show a full cupboard interrupting Mira's shopping, then resolve with counted supplies, a closed cart and a note to use what she has.",
+  "thumbnail_headline": "YOU ALREADY HAVE IT",
+  "thumbnail_visual": {
+    "type": "cupboard",
+    "headline": "YOU ALREADY HAVE IT"
+  },
+  "description": "Mira opens the cupboard and discovers the thing her shopping list forgot: what she already owns. The ending is a choice, not a checkout.\n\nAn original fictional BizNex story: Mira and Asha are fictional. Generic toiletries are illustration props, not representations of Atomy prices, packaging or pack sizes. The temptation to overbuy is Mira's own, not a company requirement. Independent and not endorsed by Atomy; no real customer result is depicted.\n\nCreator posting check: review applicable local member/media permissions and disclose any material connection before publication.",
+  "hashtags": [
+    "#AnimatedStory",
+    "#MindfulShopping",
+    "#TheUnsentMessage",
+    "#BizNex",
+    "#Shorts"
+  ],
+  "sources": [
+    {
+      "claim": "Strategy metadata only: relatable universal problems and immediate delivery of the title promise guide this fictional experiment; no performance outcome is established.",
+      "url": "https://support.google.com/youtube/answer/16559650?hl=en",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "claim": "U.S.-specific ethics context only: the member agreement prohibits excessive purchasing for advancement and addresses prior approval for public advertising/IP use. The plot does not attribute overbuying to Atomy or summarize other markets' rules.",
+      "url": "https://us.atomy.com/common/footerTermsInfo?isHtml=Y&tabIndex=1",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "story": {
+    "fictional": true,
+    "protagonist": "Mira",
+    "disclosure": "Mira and Asha are fictional.",
+    "setup_segment": "01-door",
+    "turn_segment": "03-shelf",
+    "brand_connection_segment": "02-list",
+    "payoff_segment": "05-note"
+  },
+  "segments": [
+    {
+      "id": "01-door",
+      "title": "The other full thing",
+      "kind": "story",
+      "text": "The cupboard door swung open. Mira stopped with a full shopping cart on her phone.",
+      "display": [
+        "A full cart",
+        "A closed cupboard"
+      ],
+      "beat_phrases": [
+        "cupboard door swung open",
+        "a full shopping cart"
+      ],
+      "narrative_role": "setup",
+      "visual": {
+        "type": "cupboard",
+        "expression": "concerned",
+        "screen_title": "Shopping list",
+        "messages": [],
+        "action": "reveal",
+        "action_phrase": "cupboard door swung open",
+        "note": "The original generic cupboard and its supplies are already present behind the door.",
+        "headline": "Something she forgot",
+        "items": [
+          {
+            "label": "Bottles",
+            "quantity": 3
+          },
+          {
+            "label": "Tubes",
+            "quantity": 4
+          }
+        ],
+        "camera": "wide"
+      }
+    },
+    {
+      "id": "02-list",
+      "title": "Mira's shopping list",
+      "kind": "story",
+      "text": "Mira and Asha are fictional. Mira had added toiletries to her Atomy shopping list.",
+      "display": [
+        "Atomy shopping list",
+        "Toiletries"
+      ],
+      "beat_phrases": [
+        "Mira and Asha are fictional.",
+        "added toiletries",
+        "Atomy shopping list"
+      ],
+      "narrative_role": "brand_connection",
+      "visual": {
+        "type": "phone",
+        "expression": "thinking",
+        "screen_title": "Mira's shopping list",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Atomy shopping list: toiletries",
+            "at_phrase": "Atomy shopping list"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "added toiletries",
+        "note": "A personal list, not a copied store interface or actual SKU offer.",
+        "headline": "The list on her phone",
+        "items": [],
+        "camera": "close"
+      }
+    },
+    {
+      "id": "03-shelf",
+      "title": "The shelf answers",
+      "kind": "story",
+      "text": "On the shelf sat unused supplies. She had forgotten them. Buying more had been her idea.",
+      "display": [
+        "Already here",
+        "Her idea to buy more"
+      ],
+      "beat_phrases": [
+        "unused supplies",
+        "She had forgotten them.",
+        "her idea"
+      ],
+      "narrative_role": "turn",
+      "visual": {
+        "type": "cupboard",
+        "expression": "concerned",
+        "screen_title": "Already at home",
+        "messages": [],
+        "action": "reveal",
+        "action_phrase": "unused supplies",
+        "note": "Match the same three generic bottles and four tubes from the opening.",
+        "headline": "Already at home",
+        "items": [
+          {
+            "label": "Bottles",
+            "quantity": 3
+          },
+          {
+            "label": "Tubes",
+            "quantity": 4
+          }
+        ],
+        "camera": "close"
+      }
+    },
+    {
+      "id": "04-count",
+      "title": "No order placed",
+      "kind": "story",
+      "text": "She counted the bottles, crossed out the extras, and closed the cart without ordering.",
+      "display": [
+        "Counted",
+        "Crossed out",
+        "No order placed"
+      ],
+      "beat_phrases": [
+        "counted the bottles",
+        "crossed out the extras",
+        "closed the cart without ordering"
+      ],
+      "narrative_role": "choice",
+      "visual": {
+        "type": "paper",
+        "expression": "relieved",
+        "screen_title": "Shopping list",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Extra toiletries",
+            "at_phrase": "counted the bottles"
+          }
+        ],
+        "action": "delete",
+        "action_phrase": "crossed out the extras",
+        "note": "A physical line crosses the unnecessary addition. The cart remains unpurchased.",
+        "headline": "No order placed",
+        "items": [
+          {
+            "label": "Bottles at home",
+            "quantity": 3
+          }
+        ],
+        "camera": "over-shoulder"
+      }
+    },
+    {
+      "id": "05-note",
+      "title": "The cupboard wins",
+      "kind": "story",
+      "text": "Then she put one note on the fridge: Use what we have first. The cupboard finally won.",
+      "display": [
+        "Use what we have first."
+      ],
+      "beat_phrases": [
+        "one note on the fridge",
+        "Use what we have first.",
+        "The cupboard finally won."
+      ],
+      "narrative_role": "payoff",
+      "visual": {
+        "type": "room",
+        "expression": "relieved",
+        "screen_title": "Shopping list closed",
+        "messages": [],
+        "action": "close",
+        "action_phrase": "The cupboard finally won.",
+        "note": "Use what we have first.",
+        "headline": "The cupboard finally won",
+        "items": [
+          {
+            "label": "Bottles",
+            "quantity": 3
+          },
+          {
+            "label": "Tubes",
+            "quantity": 4
+          }
+        ],
+        "camera": "wide"
+      }
+    }
+  ],
+  "duration_s": 25.588,
+  "cues": [
+    {
+      "id": "01-door",
+      "title": "The other full thing",
+      "kind": "story",
+      "text": "The cupboard door swung open. Mira stopped with a full shopping cart on her phone.",
+      "display": [
+        "A full cart",
+        "A closed cupboard"
+      ],
+      "beat_phrases": [
+        "cupboard door swung open",
+        "a full shopping cart"
+      ],
+      "narrative_role": "setup",
+      "visual": {
+        "type": "cupboard",
+        "expression": "concerned",
+        "screen_title": "Shopping list",
+        "messages": [],
+        "action": "reveal",
+        "action_phrase": "cupboard door swung open",
+        "note": "The original generic cupboard and its supplies are already present behind the door.",
+        "headline": "Something she forgot",
+        "items": [
+          {
+            "label": "Bottles",
+            "quantity": 3
+          },
+          {
+            "label": "Tubes",
+            "quantity": 4
+          }
+        ],
+        "camera": "wide"
+      },
+      "start": 0.0,
+      "end": 4.672,
+      "beats": [
+        0.14,
+        2.88
+      ]
+    },
+    {
+      "id": "02-list",
+      "title": "Mira's shopping list",
+      "kind": "story",
+      "text": "Mira and Asha are fictional. Mira had added toiletries to her Atomy shopping list.",
+      "display": [
+        "Atomy shopping list",
+        "Toiletries"
+      ],
+      "beat_phrases": [
+        "Mira and Asha are fictional.",
+        "added toiletries",
+        "Atomy shopping list"
+      ],
+      "narrative_role": "brand_connection",
+      "visual": {
+        "type": "phone",
+        "expression": "thinking",
+        "screen_title": "Mira's shopping list",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Atomy shopping list: toiletries",
+            "at_phrase": "Atomy shopping list"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "added toiletries",
+        "note": "A personal list, not a copied store interface or actual SKU offer.",
+        "headline": "The list on her phone",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 4.772,
+      "end": 10.127,
+      "beats": [
+        0.0,
+        2.82,
+        4.1
+      ]
+    },
+    {
+      "id": "03-shelf",
+      "title": "The shelf answers",
+      "kind": "story",
+      "text": "On the shelf sat unused supplies. She had forgotten them. Buying more had been her idea.",
+      "display": [
+        "Already here",
+        "Her idea to buy more"
+      ],
+      "beat_phrases": [
+        "unused supplies",
+        "She had forgotten them.",
+        "her idea"
+      ],
+      "narrative_role": "turn",
+      "visual": {
+        "type": "cupboard",
+        "expression": "concerned",
+        "screen_title": "Already at home",
+        "messages": [],
+        "action": "reveal",
+        "action_phrase": "unused supplies",
+        "note": "Match the same three generic bottles and four tubes from the opening.",
+        "headline": "Already at home",
+        "items": [
+          {
+            "label": "Bottles",
+            "quantity": 3
+          },
+          {
+            "label": "Tubes",
+            "quantity": 4
+          }
+        ],
+        "camera": "close"
+      },
+      "start": 10.227,
+      "end": 15.56,
+      "beats": [
+        0.82,
+        2.46,
+        4.56
+      ]
+    },
+    {
+      "id": "04-count",
+      "title": "No order placed",
+      "kind": "story",
+      "text": "She counted the bottles, crossed out the extras, and closed the cart without ordering.",
+      "display": [
+        "Counted",
+        "Crossed out",
+        "No order placed"
+      ],
+      "beat_phrases": [
+        "counted the bottles",
+        "crossed out the extras",
+        "closed the cart without ordering"
+      ],
+      "narrative_role": "choice",
+      "visual": {
+        "type": "paper",
+        "expression": "relieved",
+        "screen_title": "Shopping list",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Extra toiletries",
+            "at_phrase": "counted the bottles"
+          }
+        ],
+        "action": "delete",
+        "action_phrase": "crossed out the extras",
+        "note": "A physical line crosses the unnecessary addition. The cart remains unpurchased.",
+        "headline": "No order placed",
+        "items": [
+          {
+            "label": "Bottles at home",
+            "quantity": 3
+          }
+        ],
+        "camera": "over-shoulder"
+      },
+      "start": 15.66,
+      "end": 20.332,
+      "beats": [
+        0.18,
+        1.42,
+        3.02
+      ]
+    },
+    {
+      "id": "05-note",
+      "title": "The cupboard wins",
+      "kind": "story",
+      "text": "Then she put one note on the fridge: Use what we have first. The cupboard finally won.",
+      "display": [
+        "Use what we have first."
+      ],
+      "beat_phrases": [
+        "one note on the fridge",
+        "Use what we have first.",
+        "The cupboard finally won."
+      ],
+      "narrative_role": "payoff",
+      "visual": {
+        "type": "room",
+        "expression": "relieved",
+        "screen_title": "Shopping list closed",
+        "messages": [],
+        "action": "close",
+        "action_phrase": "The cupboard finally won.",
+        "note": "Use what we have first.",
+        "headline": "The cupboard finally won",
+        "items": [
+          {
+            "label": "Bottles",
+            "quantity": 3
+          },
+          {
+            "label": "Tubes",
+            "quantity": 4
+          }
+        ],
+        "camera": "wide"
+      },
+      "start": 20.432,
+      "end": 25.168,
+      "beats": [
+        0.46,
+        1.98,
+        3.4
+      ]
+    }
+  ]
+}

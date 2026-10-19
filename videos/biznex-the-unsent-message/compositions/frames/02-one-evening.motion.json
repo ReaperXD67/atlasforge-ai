@@ -1,0 +1,47 @@
+{
+  "frame_id": "story-02-02-one-evening",
+  "duration": 12.899999999999999,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-02-02-one-evening-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-02-02-one-evening-viewport"
+    }
+  ],
+  "reveal_times": [
+    1.2599999999999998,
+    6.32
+  ],
+  "events": [
+    {
+      "kind": "action",
+      "action": "reveal",
+      "at": 1.2599999999999998,
+      "phrase": "the kitchen lamp"
+    },
+    {
+      "kind": "message",
+      "at": 6.32,
+      "phrase": "an Atomy recommendation"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

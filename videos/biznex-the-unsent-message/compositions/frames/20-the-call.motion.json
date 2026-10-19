@@ -1,0 +1,53 @@
+{
+  "frame_id": "story-20-20-the-call",
+  "duration": 21.752999999999986,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-20-20-the-call-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-20-20-the-call-viewport"
+    }
+  ],
+  "reveal_times": [
+    0,
+    6.259999999999991,
+    15.939999999999998
+  ],
+  "events": [
+    {
+      "kind": "message",
+      "at": 0,
+      "phrase": "Asha answered from her sofa."
+    },
+    {
+      "kind": "action",
+      "action": "reveal",
+      "at": 6.259999999999991,
+      "phrase": "Mira listened."
+    },
+    {
+      "kind": "message",
+      "at": 15.939999999999998,
+      "phrase": "asked what happened next"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

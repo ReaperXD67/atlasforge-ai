@@ -1,0 +1,53 @@
+{
+  "frame_id": "story-04-04-choice",
+  "duration": 4.857000000000001,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-04-04-choice-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-04-04-choice-viewport"
+    }
+  ],
+  "reveal_times": [
+    0,
+    1.5199999999999978,
+    4.019999999999998
+  ],
+  "events": [
+    {
+      "kind": "action",
+      "action": "delete",
+      "at": 0,
+      "phrase": "She deleted the pitch."
+    },
+    {
+      "kind": "message",
+      "at": 1.5199999999999978,
+      "phrase": "I’m here."
+    },
+    {
+      "kind": "message",
+      "at": 4.019999999999998,
+      "phrase": "she sent it"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

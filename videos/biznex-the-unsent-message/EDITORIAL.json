@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "script": "SCRIPT.md",
+  "thumbnail_copy": "THUMBNAIL_COPY.txt",
+  "audience_problem": "Trying to be useful or impressive can distract someone from listening to the person they hoped to help.",
+  "hook": {
+    "text": "At eleven fifty-eight, Mira deleted a message that took three hours to write",
+    "at_seconds": 0
+  },
+  "payoff": {
+    "text": "Before they hung up, Asha asked about Saturday. Same place for lunch? Mira found the little calendar on the fridge and circled the day. Same place, she said. Nothing needed to be ordered first. Nothing needed to be earned. They were simply making a plan.",
+    "at_seconds": 273.445
+  },
+  "packaging": {
+    "title": "She Deleted the Perfect Pitch. Here’s What She Sent Instead.",
+    "thumbnail_text": "DON'T HIT SEND",
+    "promise": "Follow one evening from a carefully written product recommendation through a cupboard interruption and a missed request, to the exact eight-word message and an ordinary friendship ending.",
+    "evidence_anchor": "Before they hung up, Asha asked about Saturday. Same place for lunch? Mira found the little calendar on the fridge and circled the day. Same place, she said. Nothing needed to be ordered first. Nothing needed to be earned. They were simply making a plan.",
+    "reviewed": true
+  },
+  "sources": [
+    {
+      "claim": "Strategy metadata only: YouTube recommends accessible universal framing, honest packaging and openings that deliver the promised value. These recommendations inform an experiment, not a guaranteed growth formula.",
+      "url": "https://support.google.com/youtube/answer/16559650?hl=en",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "claim": "Evaluation metadata only: video-level retention can identify intros, dips and compelling moments when sufficient data exists; tiny view counts do not establish why a video underperformed.",
+      "url": "https://support.google.com/youtube/answer/9314415",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "claim": "U.S.-specific ethics and posting-review context only: the current member agreement addresses consent, excessive purchasing, pressure after refusal and public advertising/IP approval. No local company approval or legal advice is supplied by this film.",
+      "url": "https://us.atomy.com/common/footerTermsInfo?isHtml=Y&tabIndex=1",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "retention_beats": [
+    {
+      "at_seconds": 0.0,
+      "purpose": "Three hours, eight words"
+    },
+    {
+      "at_seconds": 11.599,
+      "purpose": "Earlier that evening"
+    },
+    {
+      "at_seconds": 24.499,
+      "purpose": "Before the draft"
+    },
+    {
+      "at_seconds": 37.932,
+      "purpose": "The growing draft"
+    },
+    {
+      "at_seconds": 52.219,
+      "purpose": "A small interruption"
+    },
+    {
+      "at_seconds": 62.623,
+      "purpose": "Nothing was missing"
+    },
+    {
+      "at_seconds": 76.888,
+      "purpose": "Counting what was there"
+    },
+    {
+      "at_seconds": 90.151,
+      "purpose": "An idea she could change"
+    },
+    {
+      "at_seconds": 101.877,
+      "purpose": "A smaller list"
+    },
+    {
+      "at_seconds": 113.497,
+      "purpose": "The waiting draft"
+    },
+    {
+      "at_seconds": 125.608,
+      "purpose": "What Asha asked"
+    },
+    {
+      "at_seconds": 139.916,
+      "purpose": "The reply she only imagined"
+    },
+    {
+      "at_seconds": 155.099,
+      "purpose": "Another long message"
+    },
+    {
+      "at_seconds": 168.105,
+      "purpose": "Whose evening was this?"
+    },
+    {
+      "at_seconds": 181.475,
+      "purpose": "The part she removed"
+    },
+    {
+      "at_seconds": 196.721,
+      "purpose": "The eight-word message"
+    },
+    {
+      "at_seconds": 210.069,
+      "purpose": "No instant answer"
+    },
+    {
+      "at_seconds": 224.143,
+      "purpose": "Something small she could finish"
+    },
+    {
+      "at_seconds": 238.344,
+      "purpose": "When Asha was ready"
+    },
+    {
+      "at_seconds": 251.692,
+      "purpose": "Nothing for sale"
+    },
+    {
+      "at_seconds": 273.445,
+      "purpose": "The next ordinary plan"
+    },
+    {
+      "at_seconds": 288.415,
+      "purpose": "What remained"
+    }
+  ],
+  "story": {
+    "fictional": true,
+    "protagonist": "Mira",
+    "disclosure": "Mira and Asha are fictional.",
+    "setup_segment": "01-eight-words",
+    "turn_segment": "11-above-the-draft",
+    "brand_connection_segment": "02-one-evening",
+    "payoff_segment": "21-saturday",
+    "timing_manifest": "audio_meta.json"
+  }
+}

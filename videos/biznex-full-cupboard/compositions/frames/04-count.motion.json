@@ -1,0 +1,47 @@
+{
+  "frame_id": "story-04-04-count",
+  "duration": 4.7719999999999985,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-04-04-count-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-04-04-count-viewport"
+    }
+  ],
+  "reveal_times": [
+    0.17999999999999972,
+    1.4199999999999982
+  ],
+  "events": [
+    {
+      "kind": "message",
+      "at": 0.17999999999999972,
+      "phrase": "counted the bottles"
+    },
+    {
+      "kind": "action",
+      "action": "delete",
+      "at": 1.4199999999999982,
+      "phrase": "crossed out the extras"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

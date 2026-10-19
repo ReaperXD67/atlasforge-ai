@@ -1,0 +1,716 @@
+{
+  "voice_lock": {
+    "provider": "kokoro",
+    "voice": "af_heart",
+    "speed": 1.0
+  },
+  "timing_source": "faster-whisper-small.en measured ASR word alignment (estimated, not native timestamps)",
+  "cues": [
+    {
+      "id": "01-hover",
+      "title": "The hidden message",
+      "kind": "story",
+      "text": "Mira's thumb hovered over send. Then she noticed the message hidden above her draft.",
+      "display": [
+        "SEND",
+        "One unread message"
+      ],
+      "beat_phrases": [
+        "thumb hovered over send",
+        "hidden above her draft"
+      ],
+      "narrative_role": "setup",
+      "visual": {
+        "type": "phone",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "Could I show you some products?",
+            "at_phrase": "thumb hovered over send"
+          }
+        ],
+        "action": "wait",
+        "action_phrase": "Then she noticed",
+        "note": "An older message is obscured above the draft, not falsely shown as read.",
+        "headline": "DON'T HIT SEND",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 0.0,
+      "end": 4.971,
+      "beats": [
+        0.58,
+        3.62
+      ]
+    },
+    {
+      "id": "02-draft",
+      "title": "A recommendation, not an answer",
+      "kind": "story",
+      "text": "Mira and Asha are fictional. She had written an Atomy recommendation for her oldest friend.",
+      "display": [
+        "An Atomy recommendation",
+        "Oldest friend"
+      ],
+      "beat_phrases": [
+        "Mira and Asha are fictional.",
+        "an Atomy recommendation",
+        "her oldest friend"
+      ],
+      "narrative_role": "brand_connection",
+      "visual": {
+        "type": "paper",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "An Atomy recommendation",
+            "at_phrase": "an Atomy recommendation"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "She had written",
+        "note": "Original fictional story",
+        "headline": "One carefully written draft",
+        "items": [],
+        "camera": "over-shoulder"
+      },
+      "start": 5.071,
+      "end": 10.489,
+      "beats": [
+        0.0,
+        2.82,
+        4.3
+      ]
+    },
+    {
+      "id": "03-scroll",
+      "title": "What Asha actually asked",
+      "kind": "story",
+      "text": "Above it, Asha had asked: Can we talk? Rough day. Mira had never answered.",
+      "display": [
+        "Can we talk?",
+        "Rough day."
+      ],
+      "beat_phrases": [
+        "Can we talk?",
+        "Rough day.",
+        "Mira had never answered."
+      ],
+      "narrative_role": "turn",
+      "visual": {
+        "type": "phone",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Can we talk?",
+            "at_phrase": "Can we talk?"
+          },
+          {
+            "sender": "Asha",
+            "text": "Rough day.",
+            "at_phrase": "Rough day."
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "Above it",
+        "note": "The older request is finally unobscured.",
+        "headline": "The unanswered message",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 10.589,
+      "end": 14.963,
+      "beats": [
+        1.48,
+        2.38,
+        3.18
+      ]
+    },
+    {
+      "id": "04-choice",
+      "title": "Eight words instead",
+      "kind": "story",
+      "text": "She deleted the pitch. I’m here. Do you still want to talk? This time, she sent it.",
+      "display": [
+        "I’m here.",
+        "Do you still want to talk?"
+      ],
+      "beat_phrases": [
+        "She deleted the pitch.",
+        "I’m here.",
+        "she sent it"
+      ],
+      "narrative_role": "choice",
+      "visual": {
+        "type": "phone",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "I’m here. Do you still want to talk?",
+            "at_phrase": "I’m here."
+          },
+          {
+            "sender": "Mira",
+            "text": "I’m here. Do you still want to talk?",
+            "at_phrase": "she sent it"
+          }
+        ],
+        "action": "delete",
+        "action_phrase": "She deleted the pitch.",
+        "note": "The product draft disappears before the replacement is sent.",
+        "headline": "A different message",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 15.063,
+      "end": 19.82,
+      "beats": [
+        0.0,
+        1.52,
+        4.02
+      ]
+    },
+    {
+      "id": "05-call",
+      "title": "Nothing to buy",
+      "kind": "story",
+      "text": "Asha replied: Yes, please. Mira put away the shopping list and pressed call.",
+      "display": [
+        "Yes, please.",
+        "CALL"
+      ],
+      "beat_phrases": [
+        "Yes, please.",
+        "put away the shopping list",
+        "pressed call"
+      ],
+      "narrative_role": "payoff",
+      "visual": {
+        "type": "split",
+        "expression": "relieved",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "Yes, please.",
+            "at_phrase": "Yes, please."
+          }
+        ],
+        "action": "send",
+        "action_phrase": "pressed call",
+        "note": "A call connects the two rooms. No order, referral or later sale.",
+        "headline": "A friend, not an audience",
+        "items": [],
+        "camera": "wide"
+      },
+      "start": 19.92,
+      "end": 24.613,
+      "beats": [
+        1.16,
+        2.7,
+        3.96
+      ]
+    }
+  ],
+  "total_duration_s": 25.033,
+  "voices": [
+    {
+      "frame": 1,
+      "path": "assets/voice/01.wav",
+      "duration_s": 25.033,
+      "words": [
+        {
+          "text": "Mira's",
+          "start": 0.0,
+          "end": 0.58,
+          "id": "w0"
+        },
+        {
+          "text": "thumb",
+          "start": 0.58,
+          "end": 0.88,
+          "id": "w1"
+        },
+        {
+          "text": "hovered",
+          "start": 0.88,
+          "end": 1.26,
+          "id": "w2"
+        },
+        {
+          "text": "over",
+          "start": 1.26,
+          "end": 1.54,
+          "id": "w3"
+        },
+        {
+          "text": "send.",
+          "start": 1.54,
+          "end": 1.8,
+          "id": "w4"
+        },
+        {
+          "text": "Then",
+          "start": 2.48,
+          "end": 2.62,
+          "id": "w5"
+        },
+        {
+          "text": "she",
+          "start": 2.62,
+          "end": 2.84,
+          "id": "w6"
+        },
+        {
+          "text": "noticed",
+          "start": 2.84,
+          "end": 3.04,
+          "id": "w7"
+        },
+        {
+          "text": "the",
+          "start": 3.04,
+          "end": 3.28,
+          "id": "w8"
+        },
+        {
+          "text": "message",
+          "start": 3.28,
+          "end": 3.62,
+          "id": "w9"
+        },
+        {
+          "text": "hidden",
+          "start": 3.62,
+          "end": 3.92,
+          "id": "w10"
+        },
+        {
+          "text": "above",
+          "start": 3.92,
+          "end": 4.26,
+          "id": "w11"
+        },
+        {
+          "text": "her",
+          "start": 4.26,
+          "end": 4.44,
+          "id": "w12"
+        },
+        {
+          "text": "draft.",
+          "start": 4.44,
+          "end": 4.74,
+          "id": "w13"
+        },
+        {
+          "text": "Mira",
+          "start": 5.071,
+          "end": 5.531,
+          "id": "w14"
+        },
+        {
+          "text": "and",
+          "start": 5.531,
+          "end": 5.711,
+          "id": "w15"
+        },
+        {
+          "text": "Asha",
+          "start": 5.711,
+          "end": 6.111,
+          "id": "w16"
+        },
+        {
+          "text": "are",
+          "start": 6.111,
+          "end": 6.451,
+          "id": "w17"
+        },
+        {
+          "text": "fictional.",
+          "start": 6.451,
+          "end": 6.811,
+          "id": "w18"
+        },
+        {
+          "text": "She",
+          "start": 7.511,
+          "end": 7.591,
+          "id": "w19"
+        },
+        {
+          "text": "had",
+          "start": 7.591,
+          "end": 7.691,
+          "id": "w20"
+        },
+        {
+          "text": "written",
+          "start": 7.691,
+          "end": 7.891,
+          "id": "w21"
+        },
+        {
+          "text": "an",
+          "start": 7.891,
+          "end": 8.091,
+          "id": "w22"
+        },
+        {
+          "text": "Atomy",
+          "start": 8.091,
+          "end": 8.391,
+          "id": "w23"
+        },
+        {
+          "text": "recommendation",
+          "start": 8.391,
+          "end": 8.871,
+          "id": "w24"
+        },
+        {
+          "text": "for",
+          "start": 8.871,
+          "end": 9.371,
+          "id": "w25"
+        },
+        {
+          "text": "her",
+          "start": 9.371,
+          "end": 9.531,
+          "id": "w26"
+        },
+        {
+          "text": "oldest",
+          "start": 9.531,
+          "end": 9.911,
+          "id": "w27"
+        },
+        {
+          "text": "friend.",
+          "start": 9.911,
+          "end": 10.231,
+          "id": "w28"
+        },
+        {
+          "text": "Above",
+          "start": 10.589,
+          "end": 10.829,
+          "id": "w29"
+        },
+        {
+          "text": "it,",
+          "start": 10.829,
+          "end": 11.029,
+          "id": "w30"
+        },
+        {
+          "text": "Asha",
+          "start": 11.109,
+          "end": 11.309,
+          "id": "w31"
+        },
+        {
+          "text": "had",
+          "start": 11.309,
+          "end": 11.409,
+          "id": "w32"
+        },
+        {
+          "text": "asked,",
+          "start": 11.409,
+          "end": 11.729,
+          "id": "w33"
+        },
+        {
+          "text": "Can",
+          "start": 12.069,
+          "end": 12.149,
+          "id": "w34"
+        },
+        {
+          "text": "we",
+          "start": 12.149,
+          "end": 12.269,
+          "id": "w35"
+        },
+        {
+          "text": "talk?",
+          "start": 12.269,
+          "end": 12.529,
+          "id": "w36"
+        },
+        {
+          "text": "Rough",
+          "start": 12.969,
+          "end": 13.069,
+          "id": "w37"
+        },
+        {
+          "text": "day.",
+          "start": 13.069,
+          "end": 13.409,
+          "id": "w38"
+        },
+        {
+          "text": "Mira",
+          "start": 13.769,
+          "end": 13.969,
+          "id": "w39"
+        },
+        {
+          "text": "had",
+          "start": 13.969,
+          "end": 14.089,
+          "id": "w40"
+        },
+        {
+          "text": "never",
+          "start": 14.089,
+          "end": 14.349,
+          "id": "w41"
+        },
+        {
+          "text": "answered.",
+          "start": 14.349,
+          "end": 14.729,
+          "id": "w42"
+        },
+        {
+          "text": "She",
+          "start": 15.063,
+          "end": 15.243,
+          "id": "w43"
+        },
+        {
+          "text": "deleted",
+          "start": 15.243,
+          "end": 15.583,
+          "id": "w44"
+        },
+        {
+          "text": "the",
+          "start": 15.583,
+          "end": 15.803,
+          "id": "w45"
+        },
+        {
+          "text": "pitch.",
+          "start": 15.803,
+          "end": 16.103,
+          "id": "w46"
+        },
+        {
+          "text": "I’m",
+          "start": 16.583,
+          "end": 16.723,
+          "id": "w47"
+        },
+        {
+          "text": "here.",
+          "start": 16.723,
+          "end": 16.923,
+          "id": "w48"
+        },
+        {
+          "text": "Do",
+          "start": 17.203,
+          "end": 17.223,
+          "id": "w49"
+        },
+        {
+          "text": "you",
+          "start": 17.223,
+          "end": 17.323,
+          "id": "w50"
+        },
+        {
+          "text": "still",
+          "start": 17.323,
+          "end": 17.563,
+          "id": "w51"
+        },
+        {
+          "text": "want",
+          "start": 17.563,
+          "end": 17.763,
+          "id": "w52"
+        },
+        {
+          "text": "to",
+          "start": 17.763,
+          "end": 17.903,
+          "id": "w53"
+        },
+        {
+          "text": "talk?",
+          "start": 17.903,
+          "end": 18.163,
+          "id": "w54"
+        },
+        {
+          "text": "This",
+          "start": 18.623,
+          "end": 18.763,
+          "id": "w55"
+        },
+        {
+          "text": "time,",
+          "start": 18.763,
+          "end": 19.083,
+          "id": "w56"
+        },
+        {
+          "text": "she",
+          "start": 19.083,
+          "end": 19.323,
+          "id": "w57"
+        },
+        {
+          "text": "sent",
+          "start": 19.323,
+          "end": 19.523,
+          "id": "w58"
+        },
+        {
+          "text": "it.",
+          "start": 19.523,
+          "end": 19.683,
+          "id": "w59"
+        },
+        {
+          "text": "Asha",
+          "start": 19.92,
+          "end": 20.22,
+          "id": "w60"
+        },
+        {
+          "text": "replied,",
+          "start": 20.22,
+          "end": 20.58,
+          "id": "w61"
+        },
+        {
+          "text": "Yes,",
+          "start": 21.08,
+          "end": 21.32,
+          "id": "w62"
+        },
+        {
+          "text": "please. Mira",
+          "start": 22.5,
+          "end": 22.62,
+          "id": "w63"
+        },
+        {
+          "text": "put",
+          "start": 22.62,
+          "end": 22.76,
+          "id": "w64"
+        },
+        {
+          "text": "away",
+          "start": 22.76,
+          "end": 22.92,
+          "id": "w65"
+        },
+        {
+          "text": "the",
+          "start": 22.92,
+          "end": 23.08,
+          "id": "w66"
+        },
+        {
+          "text": "shopping",
+          "start": 23.08,
+          "end": 23.34,
+          "id": "w67"
+        },
+        {
+          "text": "list",
+          "start": 23.34,
+          "end": 23.66,
+          "id": "w68"
+        },
+        {
+          "text": "and",
+          "start": 23.66,
+          "end": 23.88,
+          "id": "w69"
+        },
+        {
+          "text": "pressed",
+          "start": 23.88,
+          "end": 24.12,
+          "id": "w70"
+        },
+        {
+          "text": "call.",
+          "start": 24.12,
+          "end": 24.4,
+          "id": "w71"
+        }
+      ]
+    }
+  ],
+  "bgm_pending": false,
+  "bgm": {
+    "path": "assets/bgm/bed.m4a",
+    "duration_s": 25.033,
+    "volume": 0.055
+  },
+  "sfx": [
+    {
+      "file": "assets/sfx/chime.wav",
+      "offset_s": 5.271,
+      "duration_s": 0.57,
+      "volume": 0.09
+    }
+  ],
+  "series": {
+    "name": "The Unsent Message",
+    "angle": "Original fictional mini-dramas about ordinary friendship, shopping and the choice not to turn every conversation into an opportunity.",
+    "direction": "Warm illustrated rooms, authored phone conversations and meaningful prop actions. Story before instruction; Atomy is transparent context, never a hidden advertisement or the source of fictional pressure. Resolve the relationship without a later sale.",
+    "design_spec": "docs/UNSENT_STORIES_DESIGN.md"
+  },
+  "story": {
+    "fictional": true,
+    "protagonist": "Mira",
+    "disclosure": "Mira and Asha are fictional.",
+    "setup_segment": "01-hover",
+    "turn_segment": "03-scroll",
+    "brand_connection_segment": "02-draft",
+    "payoff_segment": "05-call",
+    "measured_markers": {
+      "setup_segment": {
+        "segment_id": "01-hover",
+        "text": "Mira's thumb hovered over send. Then she noticed the message hidden above her draft.",
+        "at_seconds": 0.0
+      },
+      "turn_segment": {
+        "segment_id": "03-scroll",
+        "text": "Above it, Asha had asked: Can we talk? Rough day. Mira had never answered.",
+        "at_seconds": 10.589
+      },
+      "brand_connection_segment": {
+        "segment_id": "02-draft",
+        "text": "Mira and Asha are fictional. She had written an Atomy recommendation for her oldest friend.",
+        "at_seconds": 5.071
+      },
+      "payoff_segment": {
+        "segment_id": "05-call",
+        "text": "Asha replied: Yes, please. Mira put away the shopping list and pressed call.",
+        "at_seconds": 19.92
+      }
+    }
+  }
+}

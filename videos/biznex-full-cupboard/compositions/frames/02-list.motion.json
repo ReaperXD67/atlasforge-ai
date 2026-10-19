@@ -1,0 +1,47 @@
+{
+  "frame_id": "story-02-02-list",
+  "duration": 5.455,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-02-02-list-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-02-02-list-viewport"
+    }
+  ],
+  "reveal_times": [
+    2.8199999999999994,
+    4.1
+  ],
+  "events": [
+    {
+      "kind": "action",
+      "action": "reveal",
+      "at": 2.8199999999999994,
+      "phrase": "added toiletries"
+    },
+    {
+      "kind": "message",
+      "at": 4.1,
+      "phrase": "Atomy shopping list"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

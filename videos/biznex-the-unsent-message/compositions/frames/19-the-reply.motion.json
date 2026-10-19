@@ -1,0 +1,53 @@
+{
+  "frame_id": "story-19-19-the-reply",
+  "duration": 13.348000000000013,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-19-19-the-reply-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-19-19-the-reply-viewport"
+    }
+  ],
+  "reveal_times": [
+    2.3000000000000114,
+    3.5600000000000023,
+    10.659999999999997
+  ],
+  "events": [
+    {
+      "kind": "message",
+      "at": 2.3000000000000114,
+      "phrase": "Yes, please."
+    },
+    {
+      "kind": "message",
+      "at": 3.5600000000000023,
+      "phrase": "Still awake?"
+    },
+    {
+      "kind": "action",
+      "action": "send",
+      "at": 10.659999999999997,
+      "phrase": "She pressed call"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

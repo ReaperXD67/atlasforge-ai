@@ -1,0 +1,53 @@
+{
+  "frame_id": "story-01-01-no",
+  "duration": 5.689,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-01-01-no-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-01-01-no-viewport"
+    }
+  ],
+  "reveal_times": [
+    0,
+    1.94,
+    3.88
+  ],
+  "events": [
+    {
+      "kind": "action",
+      "action": "reveal",
+      "at": 0,
+      "phrase": "Asha's answer"
+    },
+    {
+      "kind": "message",
+      "at": 1.94,
+      "phrase": "No thanks."
+    },
+    {
+      "kind": "message",
+      "at": 3.88,
+      "phrase": "three reasons"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

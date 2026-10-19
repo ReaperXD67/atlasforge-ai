@@ -1,0 +1,47 @@
+{
+  "frame_id": "story-08-08-her-own-idea",
+  "duration": 11.725999999999999,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-08-08-her-own-idea-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-08-08-her-own-idea-viewport"
+    }
+  ],
+  "reveal_times": [
+    5.299999999999997,
+    10.100000000000009
+  ],
+  "events": [
+    {
+      "kind": "message",
+      "at": 5.299999999999997,
+      "phrase": "her own idea"
+    },
+    {
+      "kind": "action",
+      "action": "delete",
+      "at": 10.100000000000009,
+      "phrase": "crossed out the extra line"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

@@ -1,0 +1,41 @@
+{
+  "frame_id": "story-03-03-shelf",
+  "duration": 5.433,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-03-03-shelf-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-03-03-shelf-viewport"
+    }
+  ],
+  "reveal_times": [
+    0.8200000000000003
+  ],
+  "events": [
+    {
+      "kind": "action",
+      "action": "reveal",
+      "at": 0.8200000000000003,
+      "phrase": "unused supplies"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

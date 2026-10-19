@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "batch_id": "biznex-unsent-stories",
+  "expected_voice": "af_heart",
+  "episodes": [
+    {
+      "id": "unsent-message",
+      "project": "videos/biznex-unsent-message",
+      "format": "shorts",
+      "output": "renders/final.mp4",
+      "thumbnail": "assets/thumbnails/thumbnail.png",
+      "upload_package": "UPLOAD_PACKAGE.md",
+      "voice_manifest": "audio_request.json",
+      "editorial_manifest": "EDITORIAL.json",
+      "min_seconds": 20.0,
+      "max_seconds": 35.0
+    },
+    {
+      "id": "full-cupboard",
+      "project": "videos/biznex-full-cupboard",
+      "format": "shorts",
+      "output": "renders/final.mp4",
+      "thumbnail": "assets/thumbnails/thumbnail.png",
+      "upload_package": "UPLOAD_PACKAGE.md",
+      "voice_manifest": "audio_request.json",
+      "editorial_manifest": "EDITORIAL.json",
+      "min_seconds": 20.0,
+      "max_seconds": 35.0
+    },
+    {
+      "id": "already-answered",
+      "project": "videos/biznex-already-answered",
+      "format": "shorts",
+      "output": "renders/final.mp4",
+      "thumbnail": "assets/thumbnails/thumbnail.png",
+      "upload_package": "UPLOAD_PACKAGE.md",
+      "voice_manifest": "audio_request.json",
+      "editorial_manifest": "EDITORIAL.json",
+      "min_seconds": 20.0,
+      "max_seconds": 35.0
+    },
+    {
+      "id": "the-unsent-message",
+      "project": "videos/biznex-the-unsent-message",
+      "format": "youtube",
+      "output": "renders/final.mp4",
+      "thumbnail": "assets/thumbnails/thumbnail.png",
+      "upload_package": "UPLOAD_PACKAGE.md",
+      "voice_manifest": "audio_request.json",
+      "editorial_manifest": "EDITORIAL.json",
+      "min_seconds": 300.0,
+      "max_seconds": 360.0
+    }
+  ]
+}

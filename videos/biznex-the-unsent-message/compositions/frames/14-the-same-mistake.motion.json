@@ -1,0 +1,47 @@
+{
+  "frame_id": "story-14-14-the-same-mistake",
+  "duration": 13.370000000000005,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-14-14-the-same-mistake-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-14-14-the-same-mistake-viewport"
+    }
+  ],
+  "reveal_times": [
+    0,
+    11.600000000000023
+  ],
+  "events": [
+    {
+      "kind": "action",
+      "action": "wait",
+      "at": 0,
+      "phrase": "Mira stopped."
+    },
+    {
+      "kind": "message",
+      "at": 11.600000000000023,
+      "phrase": "The person she was writing to."
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

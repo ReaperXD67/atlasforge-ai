@@ -1,0 +1,53 @@
+{
+  "frame_id": "story-03-03-read-again",
+  "duration": 5.3690000000000015,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-03-03-read-again-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-03-03-read-again-viewport"
+    }
+  ],
+  "reveal_times": [
+    0.3800000000000008,
+    2.5199999999999996,
+    4.4
+  ],
+  "events": [
+    {
+      "kind": "message",
+      "at": 0.3800000000000008,
+      "phrase": "began another reply"
+    },
+    {
+      "kind": "message",
+      "at": 2.5199999999999996,
+      "phrase": "two words again"
+    },
+    {
+      "kind": "action",
+      "action": "wait",
+      "at": 4.4,
+      "phrase": "already answered"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

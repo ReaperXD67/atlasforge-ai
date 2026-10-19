@@ -166,12 +166,17 @@ Run from the repository root after authoring the creative file and project brief
 
 ```powershell
 .venv/Scripts/python.exe scripts/prepare_production_batch.py --creative config/batches/biznex-unsent-stories.creative.json
-node scripts/build_production_compositions.mjs --creative config/batches/biznex-unsent-stories.creative.json
+node scripts/build_story_compositions.mjs --creative config/batches/biznex-unsent-stories.creative.json
 node scripts/capture_production_thumbnails.mjs --creative config/batches/biznex-unsent-stories.creative.json
 .venv/Scripts/python.exe -m daily_video_factory.cli render-production-batch --manifest config/batches/biznex-unsent-stories.creative.production.json --dry-run
 .venv/Scripts/python.exe -m daily_video_factory.cli render-production-batch --manifest config/batches/biznex-unsent-stories.creative.production.json
 .venv/Scripts/python.exe scripts/package_production_batch.py --manifest config/batches/biznex-unsent-stories.creative.production.json
 ```
+
+Use the story builder for this illustrated batch; the older
+`build_production_compositions.mjs` remains the Repair Lab card renderer.
+The [story rebuild guide](STORY_BATCH.md) covers its local assets, voice-aware
+music finishing and editable preview review before rendering.
 
 Preparation caches approved narration and ASR per spoken line; visual-only edits
 reuse that speech. `--only <episode-id>` on preparation and the composition builder
@@ -255,7 +260,12 @@ gates apply equally to both formats.
 source/implementation fingerprints, format/duration contract and final output
 hashes match, and all current delivery gates pass again. Missing or replaced MP4s
 are never accepted merely because an earlier report exists. Tool caches and
-render outputs do not invalidate source fingerprints. `--fresh` rerenders all
+render outputs do not invalidate source fingerprints. A project's root `README.md`
+is also excluded, so documenting a verified delivery does not trigger another
+encode. This is not a general Markdown exclusion: `BRIEF.md`, `frame.md`,
+`SCRIPT.md`, upload copy, thumbnail copy and nested READMEs remain source inputs;
+explicit deliverable paths are always included even if named `README.md`.
+`--fresh` rerenders all
 episodes; `--dry-run` validates preparation and prints commands without encoding
 or overwriting a completed report.
 

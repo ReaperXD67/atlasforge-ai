@@ -1,0 +1,31 @@
+{
+  "provider": "kokoro",
+  "voice": "af_heart",
+  "speed": 1.0,
+  "lang": "en-us",
+  "lines": [
+    {
+      "id": "01-no",
+      "text": "Asha's answer was two words: No thanks. Mira already had three reasons to change her mind."
+    },
+    {
+      "id": "02-context",
+      "text": "Mira and Asha are fictional. It was an Atomy recommendation she hadn't asked for."
+    },
+    {
+      "id": "03-read-again",
+      "text": "Mira began another reply, then read those two words again. Asha had already answered."
+    },
+    {
+      "id": "04-delete",
+      "text": "She deleted every reason. No problem. Lunch on Saturday? Her thumb moved to send."
+    },
+    {
+      "id": "05-saturday",
+      "text": "Asha sent a laughing face. Saturday stayed on the calendar. No order followed. Just lunch between friends."
+    }
+  ],
+  "bgm": {
+    "mode": "project-owned"
+  }
+}

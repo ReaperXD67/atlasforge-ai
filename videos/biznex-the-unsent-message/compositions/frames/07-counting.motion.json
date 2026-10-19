@@ -1,0 +1,41 @@
+{
+  "frame_id": "story-07-07-counting",
+  "duration": 13.262999999999991,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-07-07-counting-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-07-07-counting-viewport"
+    }
+  ],
+  "reveal_times": [
+    0.1599999999999966
+  ],
+  "events": [
+    {
+      "kind": "action",
+      "action": "sort",
+      "at": 0.1599999999999966,
+      "phrase": "set the bottles on the counter"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

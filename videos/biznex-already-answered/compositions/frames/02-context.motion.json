@@ -1,0 +1,47 @@
+{
+  "frame_id": "story-02-02-context",
+  "duration": 5.135,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-02-02-context-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-02-02-context-viewport"
+    }
+  ],
+  "reveal_times": [
+    2.619999999999999,
+    4.119999999999999
+  ],
+  "events": [
+    {
+      "kind": "message",
+      "at": 2.619999999999999,
+      "phrase": "an Atomy recommendation"
+    },
+    {
+      "kind": "action",
+      "action": "wait",
+      "at": 4.119999999999999,
+      "phrase": "hadn't asked for"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

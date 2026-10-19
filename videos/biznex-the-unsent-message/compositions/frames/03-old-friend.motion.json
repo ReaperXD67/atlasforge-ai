@@ -1,0 +1,53 @@
+{
+  "frame_id": "story-03-03-old-friend",
+  "duration": 13.433000000000003,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-03-03-old-friend-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-03-03-old-friend-viewport"
+    }
+  ],
+  "reveal_times": [
+    2.6000000000000014,
+    6.18,
+    8.960000000000004
+  ],
+  "events": [
+    {
+      "kind": "message",
+      "at": 2.6000000000000014,
+      "phrase": "A crooked birthday cake."
+    },
+    {
+      "kind": "message",
+      "at": 6.18,
+      "phrase": "two mugs"
+    },
+    {
+      "kind": "action",
+      "action": "reveal",
+      "at": 8.960000000000004,
+      "phrase": "Mira scrolled through them"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

@@ -35,6 +35,8 @@ videos/**/thumbnail-capture/
 videos/**/thumbnail-clean/
 videos/**/thumbnail-snapshot/
 videos/**/.hyperframes/frame-packets/
+videos/**/.hyperframes/artifacts/
+videos/**/.hyperframes/video-state.json
 videos/**/.hyperframes/caption-skin.html
 videos/**/.hyperframes/anim-map/
 videos/**/.hyperframes/thumbnail-profile/

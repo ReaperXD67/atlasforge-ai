@@ -1,0 +1,463 @@
+{
+  "id": "already-answered",
+  "project": "videos/biznex-already-answered",
+  "format": "shorts",
+  "delivery_bounds": {
+    "min_seconds": 20,
+    "max_seconds": 35
+  },
+  "title": "Her Friend Said No. She Deleted the Follow-Up.",
+  "audience_problem": "Someone can hear a polite refusal as an invitation to argue instead of an answer.",
+  "packaging_promise": "Show three unsent rebuttals disappearing after a clear no, then preserve an ordinary lunch plan without a product order.",
+  "thumbnail_headline": "SHE ALREADY ANSWERED",
+  "thumbnail_visual": {
+    "type": "phone",
+    "headline": "SHE ALREADY ANSWERED"
+  },
+  "description": "Asha says no. Mira has three reasons ready, but the message she sends instead has nothing to do with shopping.\n\nAn original fictional BizNex story: Mira and Asha are fictional. Atomy is conversational context, not a claim that pressure is company policy. Respecting a refusal is the ending, not a tactic for a later sale. Independent and not endorsed by Atomy; no real customer conversation or result is depicted.\n\nCreator posting check: review applicable local member/media permissions and disclose any material connection before publication.",
+  "hashtags": [
+    "#AnimatedStory",
+    "#Friendship",
+    "#Boundaries",
+    "#TheUnsentMessage",
+    "#Shorts"
+  ],
+  "sources": [
+    {
+      "claim": "Strategy metadata only: the official creator interview discusses immediate Shorts hooks and self-contained miniature stories, not a guaranteed algorithm formula.",
+      "url": "https://blog.youtube/creator-and-artist-stories/youtube-shorts-deep-dive/",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "claim": "U.S.-specific ethics and posting-review context only: the member agreement addresses pressure after refusal and public advertising/IP approval. This fictional story does not provide legal advice or claim local approval.",
+      "url": "https://us.atomy.com/common/footerTermsInfo?isHtml=Y&tabIndex=1",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "story": {
+    "fictional": true,
+    "protagonist": "Mira",
+    "disclosure": "Mira and Asha are fictional.",
+    "setup_segment": "01-no",
+    "turn_segment": "03-read-again",
+    "brand_connection_segment": "02-context",
+    "payoff_segment": "05-saturday"
+  },
+  "segments": [
+    {
+      "id": "01-no",
+      "title": "Two words, three reasons",
+      "kind": "story",
+      "text": "Asha's answer was two words: No thanks. Mira already had three reasons to change her mind.",
+      "display": [
+        "No thanks.",
+        "Three unsent reasons"
+      ],
+      "beat_phrases": [
+        "No thanks.",
+        "three reasons"
+      ],
+      "narrative_role": "setup",
+      "visual": {
+        "type": "phone",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "No thanks.",
+            "at_phrase": "No thanks."
+          },
+          {
+            "sender": "draft",
+            "text": "But I thought...",
+            "at_phrase": "three reasons"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "Asha's answer",
+        "note": "Three blank draft slips represent Mira's reasons without inventing product claims.",
+        "headline": "SHE ALREADY ANSWERED",
+        "items": [
+          {
+            "label": "Unsent reasons",
+            "quantity": 3
+          }
+        ],
+        "camera": "close"
+      }
+    },
+    {
+      "id": "02-context",
+      "title": "An uninvited recommendation",
+      "kind": "story",
+      "text": "Mira and Asha are fictional. It was an Atomy recommendation she hadn't asked for.",
+      "display": [
+        "An Atomy recommendation",
+        "Not requested"
+      ],
+      "beat_phrases": [
+        "Mira and Asha are fictional.",
+        "an Atomy recommendation",
+        "hadn't asked for"
+      ],
+      "narrative_role": "brand_connection",
+      "visual": {
+        "type": "room",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "An Atomy recommendation",
+            "at_phrase": "an Atomy recommendation"
+          }
+        ],
+        "action": "wait",
+        "action_phrase": "hadn't asked for",
+        "note": "Mira's personal choice; no attributed company instruction.",
+        "headline": "The conversation had changed",
+        "items": [],
+        "camera": "over-shoulder"
+      }
+    },
+    {
+      "id": "03-read-again",
+      "title": "The answer was already there",
+      "kind": "story",
+      "text": "Mira began another reply, then read those two words again. Asha had already answered.",
+      "display": [
+        "No thanks.",
+        "Already answered"
+      ],
+      "beat_phrases": [
+        "began another reply",
+        "two words again",
+        "already answered"
+      ],
+      "narrative_role": "turn",
+      "visual": {
+        "type": "phone",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "But I thought...",
+            "at_phrase": "began another reply"
+          },
+          {
+            "sender": "Asha",
+            "text": "No thanks.",
+            "at_phrase": "two words again"
+          }
+        ],
+        "action": "wait",
+        "action_phrase": "already answered",
+        "note": "The refusal holds still while the cursor stops.",
+        "headline": "Already answered",
+        "items": [],
+        "camera": "close"
+      }
+    },
+    {
+      "id": "04-delete",
+      "title": "The ordinary invitation",
+      "kind": "story",
+      "text": "She deleted every reason. No problem. Lunch on Saturday? Her thumb moved to send.",
+      "display": [
+        "No problem.",
+        "Lunch on Saturday?"
+      ],
+      "beat_phrases": [
+        "deleted every reason",
+        "Lunch on Saturday?",
+        "moved to send"
+      ],
+      "narrative_role": "choice",
+      "visual": {
+        "type": "phone",
+        "expression": "relieved",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "No problem. Lunch on Saturday?",
+            "at_phrase": "No problem."
+          },
+          {
+            "sender": "Mira",
+            "text": "No problem. Lunch on Saturday?",
+            "at_phrase": "moved to send"
+          }
+        ],
+        "action": "delete",
+        "action_phrase": "deleted every reason",
+        "note": "Remove all three rebuttal slips before showing the lunch invitation.",
+        "headline": "Just an invitation",
+        "items": [],
+        "camera": "close"
+      }
+    },
+    {
+      "id": "05-saturday",
+      "title": "Just lunch",
+      "kind": "story",
+      "text": "Asha sent a laughing face. Saturday stayed on the calendar. No order followed. Just lunch between friends.",
+      "display": [
+        "Saturday: lunch",
+        "No order followed"
+      ],
+      "beat_phrases": [
+        "a laughing face",
+        "Saturday stayed on the calendar",
+        "Just lunch between friends."
+      ],
+      "narrative_role": "payoff",
+      "visual": {
+        "type": "calendar",
+        "expression": "relieved",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "☺",
+            "at_phrase": "a laughing face"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "Saturday stayed on the calendar",
+        "note": "Saturday: lunch with Asha",
+        "headline": "Just lunch",
+        "items": [],
+        "camera": "wide"
+      }
+    }
+  ],
+  "duration_s": 28.809,
+  "cues": [
+    {
+      "id": "01-no",
+      "title": "Two words, three reasons",
+      "kind": "story",
+      "text": "Asha's answer was two words: No thanks. Mira already had three reasons to change her mind.",
+      "display": [
+        "No thanks.",
+        "Three unsent reasons"
+      ],
+      "beat_phrases": [
+        "No thanks.",
+        "three reasons"
+      ],
+      "narrative_role": "setup",
+      "visual": {
+        "type": "phone",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "No thanks.",
+            "at_phrase": "No thanks."
+          },
+          {
+            "sender": "draft",
+            "text": "But I thought...",
+            "at_phrase": "three reasons"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "Asha's answer",
+        "note": "Three blank draft slips represent Mira's reasons without inventing product claims.",
+        "headline": "SHE ALREADY ANSWERED",
+        "items": [
+          {
+            "label": "Unsent reasons",
+            "quantity": 3
+          }
+        ],
+        "camera": "close"
+      },
+      "start": 0.0,
+      "end": 5.589,
+      "beats": [
+        1.94,
+        3.88
+      ]
+    },
+    {
+      "id": "02-context",
+      "title": "An uninvited recommendation",
+      "kind": "story",
+      "text": "Mira and Asha are fictional. It was an Atomy recommendation she hadn't asked for.",
+      "display": [
+        "An Atomy recommendation",
+        "Not requested"
+      ],
+      "beat_phrases": [
+        "Mira and Asha are fictional.",
+        "an Atomy recommendation",
+        "hadn't asked for"
+      ],
+      "narrative_role": "brand_connection",
+      "visual": {
+        "type": "room",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "An Atomy recommendation",
+            "at_phrase": "an Atomy recommendation"
+          }
+        ],
+        "action": "wait",
+        "action_phrase": "hadn't asked for",
+        "note": "Mira's personal choice; no attributed company instruction.",
+        "headline": "The conversation had changed",
+        "items": [],
+        "camera": "over-shoulder"
+      },
+      "start": 5.689,
+      "end": 10.724,
+      "beats": [
+        0.0,
+        2.62,
+        4.12
+      ]
+    },
+    {
+      "id": "03-read-again",
+      "title": "The answer was already there",
+      "kind": "story",
+      "text": "Mira began another reply, then read those two words again. Asha had already answered.",
+      "display": [
+        "No thanks.",
+        "Already answered"
+      ],
+      "beat_phrases": [
+        "began another reply",
+        "two words again",
+        "already answered"
+      ],
+      "narrative_role": "turn",
+      "visual": {
+        "type": "phone",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "But I thought...",
+            "at_phrase": "began another reply"
+          },
+          {
+            "sender": "Asha",
+            "text": "No thanks.",
+            "at_phrase": "two words again"
+          }
+        ],
+        "action": "wait",
+        "action_phrase": "already answered",
+        "note": "The refusal holds still while the cursor stops.",
+        "headline": "Already answered",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 10.824,
+      "end": 16.093,
+      "beats": [
+        0.38,
+        2.52,
+        4.4
+      ]
+    },
+    {
+      "id": "04-delete",
+      "title": "The ordinary invitation",
+      "kind": "story",
+      "text": "She deleted every reason. No problem. Lunch on Saturday? Her thumb moved to send.",
+      "display": [
+        "No problem.",
+        "Lunch on Saturday?"
+      ],
+      "beat_phrases": [
+        "deleted every reason",
+        "Lunch on Saturday?",
+        "moved to send"
+      ],
+      "narrative_role": "choice",
+      "visual": {
+        "type": "phone",
+        "expression": "relieved",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "No problem. Lunch on Saturday?",
+            "at_phrase": "No problem."
+          },
+          {
+            "sender": "Mira",
+            "text": "No problem. Lunch on Saturday?",
+            "at_phrase": "moved to send"
+          }
+        ],
+        "action": "delete",
+        "action_phrase": "deleted every reason",
+        "note": "Remove all three rebuttal slips before showing the lunch invitation.",
+        "headline": "Just an invitation",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 16.193,
+      "end": 21.719,
+      "beats": [
+        0.18,
+        2.96,
+        4.56
+      ]
+    },
+    {
+      "id": "05-saturday",
+      "title": "Just lunch",
+      "kind": "story",
+      "text": "Asha sent a laughing face. Saturday stayed on the calendar. No order followed. Just lunch between friends.",
+      "display": [
+        "Saturday: lunch",
+        "No order followed"
+      ],
+      "beat_phrases": [
+        "a laughing face",
+        "Saturday stayed on the calendar",
+        "Just lunch between friends."
+      ],
+      "narrative_role": "payoff",
+      "visual": {
+        "type": "calendar",
+        "expression": "relieved",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "☺",
+            "at_phrase": "a laughing face"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "Saturday stayed on the calendar",
+        "note": "Saturday: lunch with Asha",
+        "headline": "Just lunch",
+        "items": [],
+        "camera": "wide"
+      },
+      "start": 21.819,
+      "end": 28.389,
+      "beats": [
+        0.6,
+        2.16,
+        5.08
+      ]
+    }
+  ]
+}

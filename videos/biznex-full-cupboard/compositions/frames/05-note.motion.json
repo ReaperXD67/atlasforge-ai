@@ -1,0 +1,41 @@
+{
+  "frame_id": "story-05-05-note",
+  "duration": 5.156000000000002,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-05-05-note-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-05-05-note-viewport"
+    }
+  ],
+  "reveal_times": [
+    3.400000000000002
+  ],
+  "events": [
+    {
+      "kind": "action",
+      "action": "close",
+      "at": 3.400000000000002,
+      "phrase": "The cupboard finally won."
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

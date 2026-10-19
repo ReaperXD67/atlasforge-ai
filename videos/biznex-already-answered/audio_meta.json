@@ -1,0 +1,744 @@
+{
+  "voice_lock": {
+    "provider": "kokoro",
+    "voice": "af_heart",
+    "speed": 1.0
+  },
+  "timing_source": "faster-whisper-small.en measured ASR word alignment (estimated, not native timestamps)",
+  "cues": [
+    {
+      "id": "01-no",
+      "title": "Two words, three reasons",
+      "kind": "story",
+      "text": "Asha's answer was two words: No thanks. Mira already had three reasons to change her mind.",
+      "display": [
+        "No thanks.",
+        "Three unsent reasons"
+      ],
+      "beat_phrases": [
+        "No thanks.",
+        "three reasons"
+      ],
+      "narrative_role": "setup",
+      "visual": {
+        "type": "phone",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "No thanks.",
+            "at_phrase": "No thanks."
+          },
+          {
+            "sender": "draft",
+            "text": "But I thought...",
+            "at_phrase": "three reasons"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "Asha's answer",
+        "note": "Three blank draft slips represent Mira's reasons without inventing product claims.",
+        "headline": "SHE ALREADY ANSWERED",
+        "items": [
+          {
+            "label": "Unsent reasons",
+            "quantity": 3
+          }
+        ],
+        "camera": "close"
+      },
+      "start": 0.0,
+      "end": 5.589,
+      "beats": [
+        1.94,
+        3.88
+      ]
+    },
+    {
+      "id": "02-context",
+      "title": "An uninvited recommendation",
+      "kind": "story",
+      "text": "Mira and Asha are fictional. It was an Atomy recommendation she hadn't asked for.",
+      "display": [
+        "An Atomy recommendation",
+        "Not requested"
+      ],
+      "beat_phrases": [
+        "Mira and Asha are fictional.",
+        "an Atomy recommendation",
+        "hadn't asked for"
+      ],
+      "narrative_role": "brand_connection",
+      "visual": {
+        "type": "room",
+        "expression": "thinking",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "An Atomy recommendation",
+            "at_phrase": "an Atomy recommendation"
+          }
+        ],
+        "action": "wait",
+        "action_phrase": "hadn't asked for",
+        "note": "Mira's personal choice; no attributed company instruction.",
+        "headline": "The conversation had changed",
+        "items": [],
+        "camera": "over-shoulder"
+      },
+      "start": 5.689,
+      "end": 10.724,
+      "beats": [
+        0.0,
+        2.62,
+        4.12
+      ]
+    },
+    {
+      "id": "03-read-again",
+      "title": "The answer was already there",
+      "kind": "story",
+      "text": "Mira began another reply, then read those two words again. Asha had already answered.",
+      "display": [
+        "No thanks.",
+        "Already answered"
+      ],
+      "beat_phrases": [
+        "began another reply",
+        "two words again",
+        "already answered"
+      ],
+      "narrative_role": "turn",
+      "visual": {
+        "type": "phone",
+        "expression": "concerned",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "But I thought...",
+            "at_phrase": "began another reply"
+          },
+          {
+            "sender": "Asha",
+            "text": "No thanks.",
+            "at_phrase": "two words again"
+          }
+        ],
+        "action": "wait",
+        "action_phrase": "already answered",
+        "note": "The refusal holds still while the cursor stops.",
+        "headline": "Already answered",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 10.824,
+      "end": 16.093,
+      "beats": [
+        0.38,
+        2.52,
+        4.4
+      ]
+    },
+    {
+      "id": "04-delete",
+      "title": "The ordinary invitation",
+      "kind": "story",
+      "text": "She deleted every reason. No problem. Lunch on Saturday? Her thumb moved to send.",
+      "display": [
+        "No problem.",
+        "Lunch on Saturday?"
+      ],
+      "beat_phrases": [
+        "deleted every reason",
+        "Lunch on Saturday?",
+        "moved to send"
+      ],
+      "narrative_role": "choice",
+      "visual": {
+        "type": "phone",
+        "expression": "relieved",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "draft",
+            "text": "No problem. Lunch on Saturday?",
+            "at_phrase": "No problem."
+          },
+          {
+            "sender": "Mira",
+            "text": "No problem. Lunch on Saturday?",
+            "at_phrase": "moved to send"
+          }
+        ],
+        "action": "delete",
+        "action_phrase": "deleted every reason",
+        "note": "Remove all three rebuttal slips before showing the lunch invitation.",
+        "headline": "Just an invitation",
+        "items": [],
+        "camera": "close"
+      },
+      "start": 16.193,
+      "end": 21.719,
+      "beats": [
+        0.18,
+        2.96,
+        4.56
+      ]
+    },
+    {
+      "id": "05-saturday",
+      "title": "Just lunch",
+      "kind": "story",
+      "text": "Asha sent a laughing face. Saturday stayed on the calendar. No order followed. Just lunch between friends.",
+      "display": [
+        "Saturday: lunch",
+        "No order followed"
+      ],
+      "beat_phrases": [
+        "a laughing face",
+        "Saturday stayed on the calendar",
+        "Just lunch between friends."
+      ],
+      "narrative_role": "payoff",
+      "visual": {
+        "type": "calendar",
+        "expression": "relieved",
+        "screen_title": "Asha",
+        "messages": [
+          {
+            "sender": "Asha",
+            "text": "☺",
+            "at_phrase": "a laughing face"
+          }
+        ],
+        "action": "reveal",
+        "action_phrase": "Saturday stayed on the calendar",
+        "note": "Saturday: lunch with Asha",
+        "headline": "Just lunch",
+        "items": [],
+        "camera": "wide"
+      },
+      "start": 21.819,
+      "end": 28.389,
+      "beats": [
+        0.6,
+        2.16,
+        5.08
+      ]
+    }
+  ],
+  "total_duration_s": 28.809,
+  "voices": [
+    {
+      "frame": 1,
+      "path": "assets/voice/01.wav",
+      "duration_s": 28.809,
+      "words": [
+        {
+          "text": "Asha's",
+          "start": 0.0,
+          "end": 0.48,
+          "id": "w0"
+        },
+        {
+          "text": "answer",
+          "start": 0.48,
+          "end": 0.72,
+          "id": "w1"
+        },
+        {
+          "text": "was",
+          "start": 0.72,
+          "end": 0.94,
+          "id": "w2"
+        },
+        {
+          "text": "two",
+          "start": 0.94,
+          "end": 1.18,
+          "id": "w3"
+        },
+        {
+          "text": "words.",
+          "start": 1.18,
+          "end": 1.5,
+          "id": "w4"
+        },
+        {
+          "text": "No",
+          "start": 1.94,
+          "end": 2.04,
+          "id": "w5"
+        },
+        {
+          "text": "thanks.",
+          "start": 2.04,
+          "end": 2.46,
+          "id": "w6"
+        },
+        {
+          "text": "Mira",
+          "start": 3.22,
+          "end": 3.38,
+          "id": "w7"
+        },
+        {
+          "text": "already",
+          "start": 3.38,
+          "end": 3.6,
+          "id": "w8"
+        },
+        {
+          "text": "had",
+          "start": 3.6,
+          "end": 3.88,
+          "id": "w9"
+        },
+        {
+          "text": "three",
+          "start": 3.88,
+          "end": 4.1,
+          "id": "w10"
+        },
+        {
+          "text": "reasons",
+          "start": 4.1,
+          "end": 4.42,
+          "id": "w11"
+        },
+        {
+          "text": "to",
+          "start": 4.42,
+          "end": 4.66,
+          "id": "w12"
+        },
+        {
+          "text": "change",
+          "start": 4.66,
+          "end": 4.88,
+          "id": "w13"
+        },
+        {
+          "text": "her",
+          "start": 4.88,
+          "end": 5.08,
+          "id": "w14"
+        },
+        {
+          "text": "mind.",
+          "start": 5.08,
+          "end": 5.34,
+          "id": "w15"
+        },
+        {
+          "text": "Mira",
+          "start": 5.689,
+          "end": 6.149,
+          "id": "w16"
+        },
+        {
+          "text": "and",
+          "start": 6.149,
+          "end": 6.329,
+          "id": "w17"
+        },
+        {
+          "text": "Asha",
+          "start": 6.329,
+          "end": 6.709,
+          "id": "w18"
+        },
+        {
+          "text": "are",
+          "start": 6.709,
+          "end": 7.089,
+          "id": "w19"
+        },
+        {
+          "text": "fictional.",
+          "start": 7.089,
+          "end": 7.429,
+          "id": "w20"
+        },
+        {
+          "text": "It",
+          "start": 8.109,
+          "end": 8.209,
+          "id": "w21"
+        },
+        {
+          "text": "was",
+          "start": 8.209,
+          "end": 8.309,
+          "id": "w22"
+        },
+        {
+          "text": "an",
+          "start": 8.309,
+          "end": 8.489,
+          "id": "w23"
+        },
+        {
+          "text": "Atomy",
+          "start": 8.489,
+          "end": 8.829,
+          "id": "w24"
+        },
+        {
+          "text": "recommendation",
+          "start": 8.829,
+          "end": 9.369,
+          "id": "w25"
+        },
+        {
+          "text": "she",
+          "start": 9.369,
+          "end": 9.809,
+          "id": "w26"
+        },
+        {
+          "text": "hadn't",
+          "start": 9.809,
+          "end": 10.049,
+          "id": "w27"
+        },
+        {
+          "text": "asked",
+          "start": 10.049,
+          "end": 10.289,
+          "id": "w28"
+        },
+        {
+          "text": "for.",
+          "start": 10.289,
+          "end": 10.569,
+          "id": "w29"
+        },
+        {
+          "text": "Mira",
+          "start": 10.824,
+          "end": 11.204,
+          "id": "w30"
+        },
+        {
+          "text": "began",
+          "start": 11.204,
+          "end": 11.484,
+          "id": "w31"
+        },
+        {
+          "text": "another",
+          "start": 11.484,
+          "end": 11.824,
+          "id": "w32"
+        },
+        {
+          "text": "reply,",
+          "start": 11.824,
+          "end": 12.324,
+          "id": "w33"
+        },
+        {
+          "text": "then",
+          "start": 12.664,
+          "end": 12.844,
+          "id": "w34"
+        },
+        {
+          "text": "read",
+          "start": 12.844,
+          "end": 13.084,
+          "id": "w35"
+        },
+        {
+          "text": "those",
+          "start": 13.084,
+          "end": 13.344,
+          "id": "w36"
+        },
+        {
+          "text": "two",
+          "start": 13.344,
+          "end": 13.604,
+          "id": "w37"
+        },
+        {
+          "text": "words",
+          "start": 13.604,
+          "end": 13.844,
+          "id": "w38"
+        },
+        {
+          "text": "again.",
+          "start": 13.844,
+          "end": 14.204,
+          "id": "w39"
+        },
+        {
+          "text": "Asha",
+          "start": 14.844,
+          "end": 15.044,
+          "id": "w40"
+        },
+        {
+          "text": "had",
+          "start": 15.044,
+          "end": 15.224,
+          "id": "w41"
+        },
+        {
+          "text": "already",
+          "start": 15.224,
+          "end": 15.464,
+          "id": "w42"
+        },
+        {
+          "text": "answered.",
+          "start": 15.464,
+          "end": 15.864,
+          "id": "w43"
+        },
+        {
+          "text": "She",
+          "start": 16.193,
+          "end": 16.373,
+          "id": "w44"
+        },
+        {
+          "text": "deleted",
+          "start": 16.373,
+          "end": 16.733,
+          "id": "w45"
+        },
+        {
+          "text": "every",
+          "start": 16.733,
+          "end": 17.133,
+          "id": "w46"
+        },
+        {
+          "text": "reason.",
+          "start": 17.133,
+          "end": 17.513,
+          "id": "w47"
+        },
+        {
+          "text": "No",
+          "start": 18.113,
+          "end": 18.233,
+          "id": "w48"
+        },
+        {
+          "text": "problem.",
+          "start": 18.233,
+          "end": 18.653,
+          "id": "w49"
+        },
+        {
+          "text": "Lunch",
+          "start": 19.153,
+          "end": 19.233,
+          "id": "w50"
+        },
+        {
+          "text": "on",
+          "start": 19.233,
+          "end": 19.453,
+          "id": "w51"
+        },
+        {
+          "text": "Saturday?",
+          "start": 19.453,
+          "end": 19.893,
+          "id": "w52"
+        },
+        {
+          "text": "Her",
+          "start": 20.433,
+          "end": 20.473,
+          "id": "w53"
+        },
+        {
+          "text": "thumb",
+          "start": 20.473,
+          "end": 20.753,
+          "id": "w54"
+        },
+        {
+          "text": "moved",
+          "start": 20.753,
+          "end": 20.993,
+          "id": "w55"
+        },
+        {
+          "text": "to",
+          "start": 20.993,
+          "end": 21.253,
+          "id": "w56"
+        },
+        {
+          "text": "send.",
+          "start": 21.253,
+          "end": 21.453,
+          "id": "w57"
+        },
+        {
+          "text": "Asha",
+          "start": 21.819,
+          "end": 22.219,
+          "id": "w58"
+        },
+        {
+          "text": "sent",
+          "start": 22.219,
+          "end": 22.419,
+          "id": "w59"
+        },
+        {
+          "text": "a",
+          "start": 22.419,
+          "end": 22.579,
+          "id": "w60"
+        },
+        {
+          "text": "laughing",
+          "start": 22.579,
+          "end": 22.879,
+          "id": "w61"
+        },
+        {
+          "text": "face.",
+          "start": 22.879,
+          "end": 23.279,
+          "id": "w62"
+        },
+        {
+          "text": "Saturday",
+          "start": 23.979,
+          "end": 24.219,
+          "id": "w63"
+        },
+        {
+          "text": "stayed",
+          "start": 24.219,
+          "end": 24.559,
+          "id": "w64"
+        },
+        {
+          "text": "on",
+          "start": 24.559,
+          "end": 24.719,
+          "id": "w65"
+        },
+        {
+          "text": "the",
+          "start": 24.719,
+          "end": 24.819,
+          "id": "w66"
+        },
+        {
+          "text": "calendar.",
+          "start": 24.819,
+          "end": 25.199,
+          "id": "w67"
+        },
+        {
+          "text": "No",
+          "start": 25.659,
+          "end": 25.799,
+          "id": "w68"
+        },
+        {
+          "text": "order",
+          "start": 25.799,
+          "end": 26.039,
+          "id": "w69"
+        },
+        {
+          "text": "followed.",
+          "start": 26.039,
+          "end": 26.439,
+          "id": "w70"
+        },
+        {
+          "text": "Just",
+          "start": 26.899,
+          "end": 27.059,
+          "id": "w71"
+        },
+        {
+          "text": "lunch",
+          "start": 27.059,
+          "end": 27.359,
+          "id": "w72"
+        },
+        {
+          "text": "between",
+          "start": 27.359,
+          "end": 27.719,
+          "id": "w73"
+        },
+        {
+          "text": "friends.",
+          "start": 27.719,
+          "end": 28.059,
+          "id": "w74"
+        }
+      ]
+    }
+  ],
+  "bgm_pending": false,
+  "bgm": {
+    "path": "assets/bgm/bed.m4a",
+    "duration_s": 28.809,
+    "volume": 0.055
+  },
+  "sfx": [
+    {
+      "file": "assets/sfx/chime.wav",
+      "offset_s": 5.889,
+      "duration_s": 0.57,
+      "volume": 0.09
+    }
+  ],
+  "series": {
+    "name": "The Unsent Message",
+    "angle": "Original fictional mini-dramas about ordinary friendship, shopping and the choice not to turn every conversation into an opportunity.",
+    "direction": "Warm illustrated rooms, authored phone conversations and meaningful prop actions. Story before instruction; Atomy is transparent context, never a hidden advertisement or the source of fictional pressure. Resolve the relationship without a later sale.",
+    "design_spec": "docs/UNSENT_STORIES_DESIGN.md"
+  },
+  "story": {
+    "fictional": true,
+    "protagonist": "Mira",
+    "disclosure": "Mira and Asha are fictional.",
+    "setup_segment": "01-no",
+    "turn_segment": "03-read-again",
+    "brand_connection_segment": "02-context",
+    "payoff_segment": "05-saturday",
+    "measured_markers": {
+      "setup_segment": {
+        "segment_id": "01-no",
+        "text": "Asha's answer was two words: No thanks. Mira already had three reasons to change her mind.",
+        "at_seconds": 0.0
+      },
+      "turn_segment": {
+        "segment_id": "03-read-again",
+        "text": "Mira began another reply, then read those two words again. Asha had already answered.",
+        "at_seconds": 10.824
+      },
+      "brand_connection_segment": {
+        "segment_id": "02-context",
+        "text": "Mira and Asha are fictional. It was an Atomy recommendation she hadn't asked for.",
+        "at_seconds": 5.689
+      },
+      "payoff_segment": {
+        "segment_id": "05-saturday",
+        "text": "Asha sent a laughing face. Saturday stayed on the calendar. No order followed. Just lunch between friends.",
+        "at_seconds": 21.819
+      }
+    }
+  }
+}

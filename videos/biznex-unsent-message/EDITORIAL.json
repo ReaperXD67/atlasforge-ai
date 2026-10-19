@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "script": "SCRIPT.md",
+  "thumbnail_copy": "THUMBNAIL_COPY.txt",
+  "audience_problem": "A recommendation can distract someone from a friend's actual request for connection.",
+  "hook": {
+    "text": "Mira's thumb hovered over send",
+    "at_seconds": 0
+  },
+  "payoff": {
+    "text": "Asha replied: Yes, please. Mira put away the shopping list and pressed call.",
+    "at_seconds": 19.92
+  },
+  "packaging": {
+    "title": "She Almost Sent the Wrong Message",
+    "thumbnail_text": "DON'T HIT SEND",
+    "promise": "Reveal the unanswered message above Mira's draft, show her delete the pitch and send a human response, then end with a call rather than a purchase.",
+    "evidence_anchor": "Asha replied: Yes, please. Mira put away the shopping list and pressed call.",
+    "reviewed": true
+  },
+  "sources": [
+    {
+      "claim": "Strategy metadata only: YouTube recommends framing niche topics around universal problems and fulfilling packaging expectations in the opening. This does not verify the fictional story or guarantee reach.",
+      "url": "https://support.google.com/youtube/answer/16559650?hl=en",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "claim": "U.S.-specific ethics and posting-review context only: the member agreement addresses consent, purchasing pressure and public advertising/IP approval. It is not a global rule summary or legal advice; no company approval is claimed.",
+      "url": "https://us.atomy.com/common/footerTermsInfo?isHtml=Y&tabIndex=1",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "retention_beats": [
+    {
+      "at_seconds": 0.0,
+      "purpose": "The hidden message"
+    },
+    {
+      "at_seconds": 5.071,
+      "purpose": "A recommendation, not an answer"
+    },
+    {
+      "at_seconds": 10.589,
+      "purpose": "What Asha actually asked"
+    },
+    {
+      "at_seconds": 15.063,
+      "purpose": "Eight words instead"
+    },
+    {
+      "at_seconds": 19.92,
+      "purpose": "Nothing to buy"
+    }
+  ],
+  "story": {
+    "fictional": true,
+    "protagonist": "Mira",
+    "disclosure": "Mira and Asha are fictional.",
+    "setup_segment": "01-hover",
+    "turn_segment": "03-scroll",
+    "brand_connection_segment": "02-draft",
+    "payoff_segment": "05-call",
+    "timing_manifest": "audio_meta.json"
+  }
+}

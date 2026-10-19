@@ -28,4 +28,4 @@ jobs:
       - run: pip install -e ".[dev]"
       - run: ruff check src tests
       - run: python -m pytest --cov=daily_video_factory --cov-report=term-missing
-      - run: node --test tests/test_production_compositions.mjs
+      - run: node --test tests/test_production_compositions.mjs tests/test_story_compositions.mjs

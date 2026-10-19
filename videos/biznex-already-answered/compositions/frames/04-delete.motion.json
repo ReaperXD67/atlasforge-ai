@@ -1,0 +1,53 @@
+{
+  "frame_id": "story-04-04-delete",
+  "duration": 5.625999999999998,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-04-04-delete-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-04-04-delete-viewport"
+    }
+  ],
+  "reveal_times": [
+    0.17999999999999972,
+    1.9199999999999982,
+    4.559999999999999
+  ],
+  "events": [
+    {
+      "kind": "action",
+      "action": "delete",
+      "at": 0.17999999999999972,
+      "phrase": "deleted every reason"
+    },
+    {
+      "kind": "message",
+      "at": 1.9199999999999982,
+      "phrase": "No problem."
+    },
+    {
+      "kind": "message",
+      "at": 4.559999999999999,
+      "phrase": "moved to send"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}

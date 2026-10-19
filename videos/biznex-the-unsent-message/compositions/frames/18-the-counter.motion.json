@@ -1,0 +1,41 @@
+{
+  "frame_id": "story-18-18-the-counter",
+  "duration": 14.200999999999993,
+  "rules": [
+    "discrete-text-sequence",
+    "viewport-change",
+    "spring-pop-entrance",
+    "svg-path-draw"
+  ],
+  "entry": {
+    "direction": "held-established-state",
+    "duration": 0
+  },
+  "exit": {
+    "type": "hard-cut",
+    "duration": 0
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#story-18-18-the-counter-viewport",
+      "bySec": 0.1
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#story-18-18-the-counter-viewport"
+    }
+  ],
+  "reveal_times": [
+    7.219999999999999
+  ],
+  "events": [
+    {
+      "kind": "action",
+      "action": "close",
+      "at": 7.219999999999999,
+      "phrase": "closed the cupboard"
+    }
+  ],
+  "note": "Literal measured speech drives message and action states. Original illustrated still characters; active props, not fake jointed performance. Final state holds without black."
+}
