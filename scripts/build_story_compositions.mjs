@@ -78,7 +78,8 @@ function roomSvg(id, name = 'Mira', expression = 'thinking') {
 
 function messagesMarkup(id, visual, events, compact = false) {
   const messages = visual.messages ?? [];
-  const content = messages.length ? messages.map((message, index) => `<div class="message-state sender-${message.sender.toLowerCase()}" id="${id}-message-${index}"><div class="sender-name">${message.sender === 'draft' ? 'MIRA / UNSENT DRAFT' : esc(message.sender)}</div><div class="message-bubble">${esc(message.text)}</div><div class="receipt">${message.sender === 'draft' ? 'DRAFT · NOT SENT' : message.sender === 'Asha' ? 'RECEIVED' : 'MIRA’S MESSAGE'}</div></div>`).join('') : `<div class="message-state" id="${id}-message-empty"><div class="sender-name">MIRA</div><div class="message-bubble">${esc(visual.screen_title || visual.note || 'A moment to think.')}</div></div>`;
+  const empty = /shopping|list/i.test(visual.screen_title ?? '') ? `<div class="message-state" id="${id}-message-empty"><div class="sender-name">MIRA</div><div class="message-bubble">${esc(visual.screen_title || 'Shopping list')}</div></div>` : `<div class="conversation-empty" id="${id}-message-empty"><svg viewBox="0 0 160 120" aria-hidden="true"><path d="M12 20H148V98H12Z M12 20L80 71L148 20" fill="none" stroke="${teal}" stroke-width="7" stroke-linejoin="round"/></svg><div class="empty-state-title">No new draft</div></div>`;
+  const content = messages.length ? messages.map((message, index) => `<div class="message-state sender-${message.sender.toLowerCase()}" id="${id}-message-${index}"><div class="sender-name">${message.sender === 'draft' ? 'MIRA / UNSENT DRAFT' : esc(message.sender)}</div><div class="message-bubble">${esc(message.text)}</div><div class="receipt">${message.sender === 'draft' ? 'DRAFT · NOT SENT' : message.sender === 'Asha' ? 'RECEIVED' : 'MIRA’S MESSAGE'}</div></div>`).join('') : empty;
   const prior = visual.prior_draft ? `<div class="message-state sender-draft" id="${id}-prior-draft"><div class="sender-name">MIRA / UNSENT DRAFT</div><div class="message-bubble">${esc(visual.prior_draft)}</div><div class="receipt">DRAFT · NOT SENT</div></div>` : '';
   const call = /call/i.test(visual.action_phrase ?? '') || /^Call /i.test(visual.screen_title ?? '');
   const control = call ? `<svg viewBox="0 0 48 48" width="35" height="35" aria-hidden="true"><path d="M11 7L18 6L23 18L18 23Q23 32 31 34L36 28L45 34L43 42Q22 47 7 22Q3 14 11 7Z" fill="${cream}"/></svg>` : '↑';
@@ -144,6 +145,8 @@ function sceneCss(id, portrait, visual = {}) {
 #${id} .phone-top{flex:none;padding:27px 23px 21px;border-bottom:3px solid ${ink};font-size:${portrait ? 28 : 29}px;line-height:1.1;font-weight:700;text-align:center;display:flex;flex-direction:column;gap:17px;align-items:center}
 #${id} .phone-camera{display:block;width:92px;height:13px;border-radius:10px;background:${ink}}
 #${id} .phone-content{position:relative;flex:1;min-height:0;padding:28px 24px}
+#${id} .conversation-empty{position:absolute;left:23px;right:23px;top:20px;bottom:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;color:${teal}}
+#${id} .conversation-empty svg{display:block;width:105px;height:80px;flex:none}#${id} .empty-state-title{font-size:${portrait ? 36 : 36}px;line-height:1.16;font-weight:700;text-align:center}
 #${id} .message-state{position:absolute;left:25px;right:25px;top:28px;transform-origin:left bottom}
 #${id} .sender-mira,#${id} .sender-draft{transform-origin:right bottom}
 #${id} .sender-name{font-size:${portrait ? 23 : 23}px;line-height:1.2;font-weight:700;margin-bottom:13px}
@@ -242,9 +245,10 @@ function eventScript(id, cue, events, duration) {
     messages.forEach((event, index) => {
       const selector = `#${id}-message-${event.index}`;
       const next = messages[index + 1]?.at;
-      code += `tl.set('${selector}',{opacity:0},0);\n`;
-      if (event.at === 0) code += `tl.set('${selector}',{opacity:1,scale:1,y:0},0);\n`;
-      else code += `tl.fromTo('${selector}',{scale:.75,opacity:0,y:12},{scale:1,opacity:1,y:0,duration:.22,ease:'power2.out',immediateRender:false},${n(event.at)});\n`;
+      // An established first state already exists in static HTML. Two opposing
+      // zero-time sets can leave it hidden when an assembled child is seeked.
+      // Only genuinely later arrivals start hidden.
+      if (event.at > 0) code += `tl.set('${selector}',{opacity:0},0);\ntl.fromTo('${selector}',{scale:.75,opacity:0,y:12},{scale:1,opacity:1,y:0,duration:.22,ease:'power2.out',immediateRender:false},${n(event.at)});\n`;
       const calling = /call/i.test(visual.action_phrase ?? '') || /^Call /i.test(visual.screen_title ?? '');
       const status = calling ? 'CALL' : event.sender === 'draft' ? 'UNSENT' : event.sender === 'Mira' ? 'SENT' : 'CONVERSATION';
       code += `tl.set('#${id}-control-label',{textContent:'${status}'},${n(event.at)});\n`;
@@ -269,8 +273,8 @@ function eventScript(id, cue, events, duration) {
         code += `tl.to('#${id}-strike-0',{strokeDashoffset:0,duration:.42,ease:'power2.out'},${at});\ntl.fromTo('#${id}-pencil',{x:0,y:0},{x:-48,y:32,duration:.42,ease:'power2.out'},${at});\n`;
       } else if (hasPhone && messages.length) {
         const draft = [...messages].reverse().find(item => item.sender === 'draft' && item.at <= event.at) ?? [...messages].reverse().find(item => item.at <= event.at);
-        if (draft) code += `tl.to('#${id}-message-${draft.index}',{x:62,y:-18,opacity:0,scale:.92,duration:.36,ease:'power2.in'},${at});\n`;
-        else if (visual.prior_draft) code += `tl.to('#${id}-prior-draft',{x:62,y:-18,opacity:0,scale:.92,duration:.36,ease:'power2.in'},${at});\n`;
+        if (draft) code += `tl.fromTo('#${id}-message-${draft.index}',{x:0,y:0,opacity:1,scale:1},{x:62,y:-18,opacity:0,scale:.92,duration:.36,ease:'power2.in',immediateRender:false},${at});\n`;
+        else if (visual.prior_draft) code += `tl.fromTo('#${id}-prior-draft',{x:0,y:0,opacity:1,scale:1},{x:62,y:-18,opacity:0,scale:.92,duration:.36,ease:'power2.in',immediateRender:false},${at});\n`;
         code += `tl.set('#${id}-control-label',{textContent:'DRAFT DELETED'},${n(event.at + .38)});\n`;
       }
     } else if (event.action === 'send' && hasPhone) {

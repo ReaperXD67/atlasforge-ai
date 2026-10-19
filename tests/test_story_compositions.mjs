@@ -173,13 +173,52 @@ test('waiting does not fabricate a typing notification from the other person', (
   assert.ok(!html.includes("{scale:.6,opacity:0},{scale:1,opacity:1"));
 });
 
+test('an empty conversation is a quiet UI state, never an invented message or receipt', () => {
+  const empty = worldMarkup('empty', { type: 'room', screen_title: 'Asha', messages: [], expression: 'relieved' });
+  assert.ok(empty.includes('No new draft'));
+  assert.ok(empty.includes('class="conversation-empty"'));
+  assert.ok(!empty.includes('class="sender-name"'));
+  assert.ok(!empty.includes('class="message-bubble"'));
+  assert.ok(!empty.includes('class="receipt"'));
+  const shopping = worldMarkup('shopping', { type: 'room', screen_title: 'Shopping list closed', messages: [], expression: 'relieved' });
+  assert.ok(shopping.includes('Shopping list closed'));
+  assert.ok(!shopping.includes('No new draft'), 'shopping status remains a list, not a chat');
+});
+
 test('deleting an old draft does not delete the later human replacement', () => {
   const value = structuredClone(cue); value.visual.action = 'delete'; value.visual.action_phrase = 'Mira read';
   const prior = { ...cue, id: 'prior', visual: { ...cue.visual, messages: [{ sender: 'draft', text: 'An old recommendation' }] } };
   const html = buildScene(value, { ...episode, segments: [prior, value] }, 1, words).html;
   assert.ok(html.includes('An old recommendation'));
-  assert.ok(html.includes("-prior-draft',{x:62"));
-  assert.ok(!html.includes("-message-0',{x:62"));
+  assert.ok(html.includes("-prior-draft',{x:0,y:0,opacity:1,scale:1},{x:62"));
+  assert.ok(!html.includes("-message-0',{x:0,y:0,opacity:1,scale:1},{x:62"));
+});
+
+test('established first draft survives zero seek, holds before deletion and is removed afterwards', () => {
+  const exports = {};
+  const runtime = { module: { exports }, exports, setTimeout, clearTimeout, Date, console };
+  vm.runInNewContext(fs.readFileSync(new URL('../videos/biznex-sales-message-repair/assets/vendor/gsap.min.js', import.meta.url), 'utf8'), runtime);
+  const { gsap } = exports;
+  const localWords = ['At', 'eleven', 'Mira', 'deleted', 'a', 'message'].map((text, index) => ({ text, start: index * .6, end: index * .6 + .45 }));
+  const value = { id: 'opening', title: 'The unsent draft', start: 0, end: 5, text: 'At eleven Mira deleted a message', visual: { type: 'phone', headline: 'DON’T HIT SEND', screen_title: 'Asha', expression: 'concerned', camera: 'close', messages: [{ sender: 'draft', text: 'Could I show you some products?', at_phrase: 'At eleven' }], action: 'delete', action_phrase: 'deleted a message' } };
+  const html = buildScene(value, { ...episode, format: 'youtube', segments: [value] }, 0, localWords).html;
+  const nodes = new Map();
+  const target = selector => {
+    if (typeof selector !== 'string') return selector;
+    if (!nodes.has(selector)) nodes.set(selector, { opacity: 1, x: 0, y: 0, scale: 1, textContent: 'UNSENT', style: {} });
+    return nodes.get(selector);
+  };
+  let real;
+  const timeline = { set(selector, props, at) { real.set(target(selector), props, at); return this; }, fromTo(selector, from, to, at) { real.fromTo(target(selector), from, to, at); return this; }, to(selector, to, at) { real.to(target(selector), to, at); return this; }, addLabel(label, at) { real.addLabel(label, at); return this; } };
+  vm.runInNewContext(html.match(/<script>([\s\S]*?)<\/script>/)[1], { gsap: { timeline: () => { real = gsap.timeline({ paused: true }); return timeline; } }, document: { getElementById: id => target('#' + id) }, window: { __timelines: {} } });
+  const draft = target('#story-01-opening-message-0');
+  try {
+    real.seek(0); assert.equal(draft.opacity, 1);
+    real.seek(1.2); assert.equal(draft.opacity, 1);
+    real.seek(1.79); assert.equal(draft.opacity, 1);
+    real.seek(2.6); assert.equal(draft.opacity, 0);
+    real.seek(0); assert.equal(draft.opacity, 1, 'backward seek restores the established message');
+  } finally { real.kill(); gsap.ticker.sleep(); }
 });
 
 test('thumbnail promise is the authored title and uses actual episode props', () => {
