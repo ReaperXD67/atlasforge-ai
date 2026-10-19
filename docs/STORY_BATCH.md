@@ -106,3 +106,12 @@ See [combined titles, descriptions, hashtags and chapters](../videos/BIZNEX_UNSE
 and the [measured delivery summary](BIZNEX_UNSENT_STORIES_DELIVERY.json). Summary media paths refer
 to files inside the ZIP; project READMEs are the repository's clickable media entry points.
 No YouTube upload or audience-outcome claim is made.
+
+## Share the complete bundle
+
+[Download the public Discord-ready ZIP](https://raw.githubusercontent.com/ReaperXD67/atlasforge-ai/main/deliveries/biznex-unsent-stories-discord.zip).
+Share that URL directly; the recipient does not need access to the creator's local files.
+This distribution copy preserves all 14 original archive members and adds `START_HERE.txt`,
+which explains the folders and supplies four comma-separated YouTube tag lists, separate from
+the supplied hashtags. Its 15 members passed CRC verification and the original members' hashes
+match the verified delivery archive. Extract it before using the media and upload copy.

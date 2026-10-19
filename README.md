@@ -42,6 +42,9 @@ three Shorts (25.1, 25.6 and 28.9 seconds) and one 5:03.6 film, with four custom
 [complete publishing copy](videos/BIZNEX_UNSENT_STORIES_UPLOADS.md). The earlier female `af_heart`
 voice is retained. These are delivered production samples, not evidence of improved audience results.
 
+[Download the complete shareable ZIP](https://raw.githubusercontent.com/ReaperXD67/atlasforge-ai/main/deliveries/biznex-unsent-stories-discord.zip)
+for all four videos, thumbnails, publishing copy and a plain-text guide with YouTube tag lists.
+
 > [!CAUTION]
 > AtlasForge AI automates production, not editorial responsibility. Its gates block obvious earnings promises, medical claims, early sales pitches, missing disclosures, and malformed media. You remain responsible for factual accuracy, licensing, product claims, and channel compliance.
 
