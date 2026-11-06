@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "status": "planned_not_scheduled",
+  "research_checked_on": "2026-11-06",
+  "brand": {
+    "display_name": "BizNex",
+    "editorial_line": "Better questions. Clearer choices.",
+    "handle_candidates_unverified": ["biznexexplains", "biznexnotes", "biznexguide"],
+    "bio": "Everyday product decisions, explained with evidence. Atomy guides without the hype. Independent education; not Atomy's official account."
+  },
+  "audience": {
+    "market": "US",
+    "language": "en",
+    "basis": "Current repository profiles and official U.S. source pack; confirm intended market before a regional expansion.",
+    "description": "Adults evaluating everyday product choices and Atomy consumer or distributor membership."
+  },
+  "experiment": {
+    "id": "opening-01",
+    "hypothesis": "Showing the decision evidence immediately may improve audience response compared with asking the decision question first.",
+    "variants": [
+      {"id": "question-first", "opening": "State one concrete viewer question, then reveal its source or demonstration."},
+      {"id": "evidence-first", "opening": "Show the source or demonstration, then name the viewer decision it changes."}
+    ],
+    "controls": ["audience", "language", "topic family", "20-35 second duration band", "voice identity", "posting-time band", "CTA"],
+    "design": "Matched observational batches with original episodes; no causal claim and no repeated identical uploads.",
+    "platform_primary_metrics": {
+      "youtube": "average_percentage_viewed",
+      "instagram": "share_rate",
+      "facebook": "share_rate"
+    },
+    "secondary_metrics": ["share_rate", "save_rate", "qualified_click_rate"],
+    "measurement": {
+      "window_hours": 72,
+      "tolerance_hours": 12,
+      "followup_window_hours": 168,
+      "min_videos_per_variant": 3,
+      "min_views_per_variant": 1000,
+      "threshold_meaning": "Workflow minimums only; not a statistical significance calculation."
+    },
+    "qualified_click_definition": "Aggregate tagged website events that open the source/decision checklist; not a signup or sale."
+  },
+  "schedule_relative_to_authorized_launch": [
+    {"days": "1-3", "action": "Verify account ownership, sources, licenses, publishing authorization and one private delivery."},
+    {"days": "4-15", "action": "Publish six original episodes, three per opening variant, alternating assignments."},
+    {"days": "16", "action": "Import each video's cumulative 72-hour snapshot and review per-platform comparisons."},
+    {"days": "17-27", "action": "Publish six fresh matched episodes to replicate both variants."},
+    {"days": "28-30", "action": "Compare matured 72-hour checkpoints; inspect seven-day measurements separately; prepare the next hypothesis."}
+  ],
+  "topic_families": [
+    {"id": "membership-choice", "viewer_question": "Am I making a shopping decision or a business decision?", "source": "https://us.atomy.com/cst/userGuide/24100000001691"},
+    {"id": "source-check", "viewer_question": "Which official detail should I verify before I follow somebody's recommendation?", "source": "https://us.atomy.com/cst/userGuide"},
+    {"id": "useful-comparison", "viewer_question": "What evidence would actually change my everyday product choice?", "source_requirement": "The exact current product page and a demonstrated criterion; no invented efficacy claims."}
+  ],
+  "success_definition": "Repeatable per-platform improvement on the predeclared metric with useful, accurately sourced content and no material quality failures.",
+  "limitations": [
+    "No account has been created or connected by this plan file.",
+    "No account analytics were available during planning.",
+    "A new account does not itself establish increased reach.",
+    "No guarantees of views, membership conversion, revenue or income.",
+    "The plan is not a production batch manifest and does not schedule publication."
+  ]
+}

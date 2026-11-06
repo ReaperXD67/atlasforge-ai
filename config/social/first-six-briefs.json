@@ -1,0 +1,929 @@
+{
+  "schema_version": 1,
+  "brief_set_id": "biznex-first-six-pilots",
+  "status": "authored_briefs_only",
+  "checked_on": "2026-11-06",
+  "market": "US",
+  "language": "en",
+  "purpose": "Six original pilot scripts testing question-first versus evidence-first openings with source-backed practical payoffs.",
+  "not_a_production_manifest": true,
+  "not_a_campaign_manifest": true,
+  "creative_system": {
+    "format": "1080x1920 portrait, 30fps target; verify after rendering",
+    "look": "Tactile original desk cinema: warm side light, deep paper shadows, restrained macro focus, readable physical props.",
+    "narrator": "One consistent licensed af_heart voice; adults are fictional and are not endorsing products.",
+    "caption_rules": "Speech-aligned short phrases, strong contrast, platform-safe placement; never substitute captions for the spoken fiction disclosure.",
+    "voice_capability_note": "Kokoro uses per-beat pace and pauses; emotion labels are creative intent, not proof of acted emotion. OpenAI uses instructions and Chatterbox maps limited controls when configured. Listen to measured output; no ElevenLabs parity claim.",
+    "reference_note": "Original concepts; no claim of shot-level replication or copied assets from the referenced Instagram reel."
+  },
+  "validation": {
+    "json_parse": "passed",
+    "voice_direction_schema": "passed",
+    "exact_transcript_matches": "passed",
+    "prohibited_claim_regex": "passed for all narration, captions and titles",
+    "duration": "planning estimates only, all 20-35 seconds; no audio rendered",
+    "human_or_live_outcome": "No account, media, publication or audience result established by these briefs."
+  },
+  "episodes": [
+    {
+      "id": "biznex-two-paper-doors",
+      "status": "authored_brief_not_rendered_or_scheduled",
+      "sequence": 1,
+      "title": "Two Signup Paths. One Real Question.",
+      "thumbnail_copy": "WHICH PATH?",
+      "topic_family": "membership-choice",
+      "experiment": {
+        "id": "opening-01",
+        "variant": "question-first",
+        "matched_pair": "membership-01",
+        "primary_metric_by_platform": {
+          "youtube": "average_percentage_viewed",
+          "instagram": "share_rate",
+          "facebook": "share_rate"
+        },
+        "checkpoint_hours": 72,
+        "tolerance_hours": 12,
+        "controls": [
+          "English, U.S. audience",
+          "same narrator identity",
+          "20-35 second duration band",
+          "pair-matched CTA and source",
+          "posting-time band"
+        ],
+        "assignment_note": "Three videos per variant across three topic families. Observational matched batch, not a randomized causal test."
+      },
+      "premise": "A fictional adult folds two paper doors, then writes what she actually came to do on a tiny shopping list.",
+      "payoff": "A purpose note turns an abstract account choice into a concrete reading task.",
+      "narration": "Which door matches why you came here? A fictional scene. Mira folds two paper doors, then notices her tiny shopping list. Atomy’s U.S. guide separates consumer and distributor registration. The distributor path includes Social Security and bank information. She puts the list between the doors. First name your purpose. Then read the matching path. The official guide is in the caption.",
+      "spoken_fiction_disclosure": "A fictional scene.",
+      "voice_direction": {
+        "schema_version": 1,
+        "beats": [
+          {
+            "text": "Which door matches why you came here? A fictional scene.",
+            "emotion": "curious",
+            "energy": 0.55,
+            "pace": 0.98,
+            "pause_after_ms": 180
+          },
+          {
+            "text": "Mira folds two paper doors, then notices her tiny shopping list.",
+            "emotion": "neutral",
+            "energy": 0.4,
+            "pace": 1.0,
+            "pause_after_ms": 180
+          },
+          {
+            "text": "Atomy’s U.S. guide separates consumer and distributor registration. The distributor path includes Social Security and bank information.",
+            "emotion": "serious",
+            "energy": 0.42,
+            "pace": 0.98,
+            "pause_after_ms": 260
+          },
+          {
+            "text": "She puts the list between the doors. First name your purpose. Then read the matching path.",
+            "emotion": "reassuring",
+            "energy": 0.42,
+            "pace": 0.97,
+            "pause_after_ms": 200
+          },
+          {
+            "text": "The official guide is in the caption.",
+            "emotion": "neutral",
+            "energy": 0.35,
+            "pace": 1.0,
+            "pause_after_ms": 100
+          }
+        ]
+      },
+      "timing": {
+        "target_seconds": 29,
+        "allowed_seconds": [
+          20,
+          35
+        ],
+        "word_count": 61,
+        "planning_estimate_seconds": 25.3,
+        "estimate_basis": "150 words per minute plus authored end-of-beat pauses; not measured audio.",
+        "measurement_required": "Retarget shots to actual aligned narration; reject rather than truncate or speed beyond configured limits."
+      },
+      "shot_beats": [
+        {
+          "planned_seconds": "0-4",
+          "visual": "Macro tabletop: two paper doors cast long shadows; an adult hand stops between them.",
+          "speech_anchor": "Which door matches why you came here?",
+          "on_screen_text": "WHICH PATH?",
+          "sound": "Paper creak; no impact hit."
+        },
+        {
+          "planned_seconds": "4-9",
+          "visual": "Overhead pullback reveals a small handwritten shopping list; persistent FICTION label is visible.",
+          "speech_anchor": "Mira folds two paper doors",
+          "on_screen_text": "A FICTIONAL SCENE",
+          "sound": "One pencil tap."
+        },
+        {
+          "planned_seconds": "9-18",
+          "visual": "Doors unfold into original typography cards labeled Consumer and Distributor; the latter gains an Information checklist.",
+          "speech_anchor": "Atomy’s U.S. guide separates",
+          "on_screen_text": "U.S. REGISTRATION GUIDE",
+          "sound": "Music dips; narrator remains dry and centered."
+        },
+        {
+          "planned_seconds": "18-25",
+          "visual": "Hand places the purpose note between the cards, then underlines it. No account is chosen or submitted.",
+          "speech_anchor": "First name your purpose.",
+          "on_screen_text": "PURPOSE FIRST",
+          "sound": "A restrained paper slide."
+        },
+        {
+          "planned_seconds": "25-29",
+          "visual": "Hold on the completed decision diagram; small source credit and caption pointer.",
+          "speech_anchor": "The official guide is in the caption.",
+          "on_screen_text": "READ THE OFFICIAL GUIDE",
+          "sound": "Soft resolved tone; no sales crescendo."
+        }
+      ],
+      "caption": "Before choosing a signup path, write down your purpose. U.S. registration details only.\n\nFictional scene; original characters and props, not a customer testimonial. AI-generated narration. Independent education, not an official Atomy corporate account. No financial or medical advice.\n\nSource: https://us.atomy.com/cst/userGuide/24100000001691\nChecked: 2026-11-06. U.S. scope. Read the source before deciding.\n\n#BizNex #InformedChoices #SourceCheck",
+      "cta": "The official guide is in the caption.",
+      "sources": [
+        {
+          "url": "https://us.atomy.com/cst/userGuide/24100000001691",
+          "checked_on": "2026-11-06",
+          "section": "Consumer steps 1-7; Distributor steps 1-8, particularly step 5.",
+          "supported_claim": "The U.S. registration guide has consumer and distributor paths and lists SSN/bank information in the distributor path.",
+          "use": "Paraphrased factual summary only. These notes do not license site screenshots, branding or third-party media."
+        }
+      ],
+      "visual_disclosures": [
+        "A FICTIONAL SCENE visible during the opening; no staged customer testimonial.",
+        "U.S. scope on the source card.",
+        "AI/synthetic-media disclosure in the platform package when applicable."
+      ],
+      "rights_requirements": [
+        "Original tabletop props/typography or appropriately licensed footage with per-asset records.",
+        "Fictional adults or consenting performers; no real customer likeness, ID, account details or private messages.",
+        "Project-owned music/SFX or licenses covering every destination platform.",
+        "No copied reel, voice identity, commercial soundtrack, official UI screenshot or logo without the needed rights.",
+        "Use a licensed stock TTS voice; preserve af_heart identity unless a different authorized voice is selected."
+      ],
+      "release_checks": [
+        "Confirm current source still supports the exact line.",
+        "Record and disclose any actual commercial relationship; do not invent one.",
+        "Measure complete narration and exact captions; watch first frame, reveal and ending.",
+        "Verify final media/thumbnail/editorial manifests and platform-specific metadata.",
+        "Only then create production and campaign manifests; this brief is not accepted as either."
+      ]
+    },
+    {
+      "id": "biznex-card-under-the-cup",
+      "status": "authored_brief_not_rendered_or_scheduled",
+      "sequence": 2,
+      "title": "The Card Under the Cup",
+      "thumbnail_copy": "READ THIS CARD",
+      "topic_family": "membership-choice",
+      "experiment": {
+        "id": "opening-01",
+        "variant": "evidence-first",
+        "matched_pair": "membership-01",
+        "primary_metric_by_platform": {
+          "youtube": "average_percentage_viewed",
+          "instagram": "share_rate",
+          "facebook": "share_rate"
+        },
+        "checkpoint_hours": 72,
+        "tolerance_hours": 12,
+        "controls": [
+          "English, U.S. audience",
+          "same narrator identity",
+          "20-35 second duration band",
+          "pair-matched CTA and source",
+          "posting-time band"
+        ],
+        "assignment_note": "Three videos per variant across three topic families. Observational matched batch, not a randomized causal test."
+      },
+      "premise": "A fictional adult lifts a cup and finds the purpose card that makes two registration checklists readable.",
+      "payoff": "The overlooked purpose card becomes the tool for reading the requirements.",
+      "narration": "Consumer. Distributor. Two paths in the U.S. signup guide. A fictional scene. Jon lifts his cup. Under it is the question he skipped: what am I here to do? Atomy’s guide lists Social Security and bank information for distributor registration. He slides that checklist beside his purpose card. Now he knows which details to read. The official guide is in the caption.",
+      "spoken_fiction_disclosure": "A fictional scene.",
+      "voice_direction": {
+        "schema_version": 1,
+        "beats": [
+          {
+            "text": "Consumer. Distributor. Two paths in the U.S. signup guide. A fictional scene.",
+            "emotion": "serious",
+            "energy": 0.48,
+            "pace": 1.0,
+            "pause_after_ms": 180
+          },
+          {
+            "text": "Jon lifts his cup. Under it is the question he skipped: what am I here to do?",
+            "emotion": "curious",
+            "energy": 0.48,
+            "pace": 0.99,
+            "pause_after_ms": 180
+          },
+          {
+            "text": "Atomy’s guide lists Social Security and bank information for distributor registration.",
+            "emotion": "neutral",
+            "energy": 0.42,
+            "pace": 0.98,
+            "pause_after_ms": 260
+          },
+          {
+            "text": "He slides that checklist beside his purpose card. Now he knows which details to read.",
+            "emotion": "reassuring",
+            "energy": 0.42,
+            "pace": 0.97,
+            "pause_after_ms": 200
+          },
+          {
+            "text": "The official guide is in the caption.",
+            "emotion": "neutral",
+            "energy": 0.35,
+            "pace": 1.0,
+            "pause_after_ms": 100
+          }
+        ]
+      },
+      "timing": {
+        "target_seconds": 29,
+        "allowed_seconds": [
+          20,
+          35
+        ],
+        "word_count": 62,
+        "planning_estimate_seconds": 25.7,
+        "estimate_basis": "150 words per minute plus authored end-of-beat pauses; not measured audio.",
+        "measurement_required": "Retarget shots to actual aligned narration; reject rather than truncate or speed beyond configured limits."
+      },
+      "shot_beats": [
+        {
+          "planned_seconds": "0-4",
+          "visual": "Start already focused on two clear original checklist cards, Consumer and Distributor; warm cup edge partly obscures a third card.",
+          "speech_anchor": "Consumer. Distributor.",
+          "on_screen_text": "TWO U.S. PATHS",
+          "sound": "Cup ceramic contact; no intro logo."
+        },
+        {
+          "planned_seconds": "4-9",
+          "visual": "Adult hand lifts cup; a circular condensation mark frames a handwritten question beneath it.",
+          "speech_anchor": "Jon lifts his cup.",
+          "on_screen_text": "A FICTIONAL SCENE",
+          "sound": "Room tone and a quiet inhale."
+        },
+        {
+          "planned_seconds": "9-18",
+          "visual": "Rack focus to the distributor information card; use field names only, with no identity numbers or filled form.",
+          "speech_anchor": "Atomy’s guide lists",
+          "on_screen_text": "READ THE REQUIREMENTS",
+          "sound": "Lower score under the factual sentence."
+        },
+        {
+          "planned_seconds": "18-25",
+          "visual": "Single deliberate lateral slide joins the purpose card to the checklist; all elements remain legible.",
+          "speech_anchor": "He slides that checklist",
+          "on_screen_text": "WHAT AM I HERE TO DO?",
+          "sound": "Paper friction on the beat."
+        },
+        {
+          "planned_seconds": "25-29",
+          "visual": "Locked final frame of the three-card arrangement and source credit.",
+          "speech_anchor": "The official guide is in the caption.",
+          "on_screen_text": "READ THE OFFICIAL GUIDE",
+          "sound": "Same quiet ending as episode one."
+        }
+      ],
+      "caption": "Two registration paths deserve a deliberate choice. This example uses Atomy USA’s guide.\n\nFictional scene; original characters and props, not a customer testimonial. AI-generated narration. Independent education, not an official Atomy corporate account. No financial or medical advice.\n\nSource: https://us.atomy.com/cst/userGuide/24100000001691\nChecked: 2026-11-06. U.S. scope. Read the source before deciding.\n\n#BizNex #InformedChoices #SourceCheck",
+      "cta": "The official guide is in the caption.",
+      "sources": [
+        {
+          "url": "https://us.atomy.com/cst/userGuide/24100000001691",
+          "checked_on": "2026-11-06",
+          "section": "Consumer and Distributor registration; Distributor step 5.",
+          "supported_claim": "The U.S. guide distinguishes consumer/distributor registration and lists SSN/bank details for the distributor flow.",
+          "use": "Paraphrased factual summary only. These notes do not license site screenshots, branding or third-party media."
+        }
+      ],
+      "visual_disclosures": [
+        "A FICTIONAL SCENE visible during the opening; no staged customer testimonial.",
+        "U.S. scope on the source card.",
+        "AI/synthetic-media disclosure in the platform package when applicable."
+      ],
+      "rights_requirements": [
+        "Original tabletop props/typography or appropriately licensed footage with per-asset records.",
+        "Fictional adults or consenting performers; no real customer likeness, ID, account details or private messages.",
+        "Project-owned music/SFX or licenses covering every destination platform.",
+        "No copied reel, voice identity, commercial soundtrack, official UI screenshot or logo without the needed rights.",
+        "Use a licensed stock TTS voice; preserve af_heart identity unless a different authorized voice is selected."
+      ],
+      "release_checks": [
+        "Confirm current source still supports the exact line.",
+        "Record and disclose any actual commercial relationship; do not invent one.",
+        "Measure complete narration and exact captions; watch first frame, reveal and ending.",
+        "Verify final media/thumbnail/editorial manifests and platform-specific metadata.",
+        "Only then create production and campaign manifests; this brief is not accepted as either."
+      ]
+    },
+    {
+      "id": "biznex-missing-index-card",
+      "status": "authored_brief_not_rendered_or_scheduled",
+      "sequence": 3,
+      "title": "One Card Was Missing From Her Checklist",
+      "thumbnail_copy": "ONE CARD MISSING",
+      "topic_family": "source-check",
+      "experiment": {
+        "id": "opening-01",
+        "variant": "question-first",
+        "matched_pair": "source-01",
+        "primary_metric_by_platform": {
+          "youtube": "average_percentage_viewed",
+          "instagram": "share_rate",
+          "facebook": "share_rate"
+        },
+        "checkpoint_hours": 72,
+        "tolerance_hours": 12,
+        "controls": [
+          "English, U.S. audience",
+          "same narrator identity",
+          "20-35 second duration band",
+          "pair-matched CTA and source",
+          "posting-time band"
+        ],
+        "assignment_note": "Three videos per variant across three topic families. Observational matched batch, not a randomized causal test."
+      },
+      "premise": "A fictional adult arranges a self-made checklist; a blank gap leads her back to the official guide.",
+      "payoff": "The empty space becomes a specific question to verify, not a recruitment prompt.",
+      "narration": "What did her neat little checklist leave out? A fictional scene. Mira lines up three cards. The empty space bothers her, so she opens the source. Atomy’s U.S. registration guide requires a sponsor and describes automatic or manual designation. She adds a fourth card: understand the sponsor step. A tidy summary can still miss a decision. The official guide is in the caption.",
+      "spoken_fiction_disclosure": "A fictional scene.",
+      "voice_direction": {
+        "schema_version": 1,
+        "beats": [
+          {
+            "text": "What did her neat little checklist leave out? A fictional scene.",
+            "emotion": "curious",
+            "energy": 0.55,
+            "pace": 0.98,
+            "pause_after_ms": 200
+          },
+          {
+            "text": "Mira lines up three cards. The empty space bothers her, so she opens the source.",
+            "emotion": "neutral",
+            "energy": 0.42,
+            "pace": 1.0,
+            "pause_after_ms": 160
+          },
+          {
+            "text": "Atomy’s U.S. registration guide requires a sponsor and describes automatic or manual designation.",
+            "emotion": "serious",
+            "energy": 0.43,
+            "pace": 0.98,
+            "pause_after_ms": 280
+          },
+          {
+            "text": "She adds a fourth card: understand the sponsor step. A tidy summary can still miss a decision.",
+            "emotion": "reassuring",
+            "energy": 0.43,
+            "pace": 0.98,
+            "pause_after_ms": 200
+          },
+          {
+            "text": "The official guide is in the caption.",
+            "emotion": "neutral",
+            "energy": 0.35,
+            "pace": 1.0,
+            "pause_after_ms": 100
+          }
+        ]
+      },
+      "timing": {
+        "target_seconds": 29,
+        "allowed_seconds": [
+          20,
+          35
+        ],
+        "word_count": 63,
+        "planning_estimate_seconds": 26.1,
+        "estimate_basis": "150 words per minute plus authored end-of-beat pauses; not measured audio.",
+        "measurement_required": "Retarget shots to actual aligned narration; reject rather than truncate or speed beyond configured limits."
+      },
+      "shot_beats": [
+        {
+          "planned_seconds": "0-4",
+          "visual": "A top-down camera tracks three index cards across felt, then stops on an unmistakable empty card-shaped space.",
+          "speech_anchor": "What did her neat little checklist leave out?",
+          "on_screen_text": "WHAT IS MISSING?",
+          "sound": "Three soft taps, then silence."
+        },
+        {
+          "planned_seconds": "4-10",
+          "visual": "Adult hand opens a plain notebook labeled Source notes; show FICTION and SELF-MADE CHECKLIST, not a real adviser’s message.",
+          "speech_anchor": "The empty space bothers her",
+          "on_screen_text": "A FICTIONAL SCENE",
+          "sound": "Page turn replaces music for half a beat."
+        },
+        {
+          "planned_seconds": "10-18",
+          "visual": "An original fact card rises into the gap: Sponsor, with two small labels Automatic and Manual; credit the U.S. guide.",
+          "speech_anchor": "Atomy’s U.S. registration guide requires",
+          "on_screen_text": "SPONSOR STEP",
+          "sound": "Low, clear factual delivery."
+        },
+        {
+          "planned_seconds": "18-25",
+          "visual": "The fourth card is handwritten in one continuous stroke; the camera stops moving as the sentence resolves.",
+          "speech_anchor": "understand the sponsor step.",
+          "on_screen_text": "READ BEFORE DECIDING",
+          "sound": "Pencil texture; no alarm sound."
+        },
+        {
+          "planned_seconds": "25-29",
+          "visual": "Overhead complete checklist with source credit; no link to enrollment.",
+          "speech_anchor": "The official guide is in the caption.",
+          "on_screen_text": "READ THE OFFICIAL GUIDE",
+          "sound": "Quiet cadence."
+        }
+      ],
+      "caption": "A self-made checklist can omit a real step. Check the official U.S. guide before deciding.\n\nFictional scene; original characters and props, not a customer testimonial. AI-generated narration. Independent education, not an official Atomy corporate account. No financial or medical advice.\n\nSource: https://us.atomy.com/cst/userGuide/24100000001691\nChecked: 2026-11-06. U.S. scope. Read the source before deciding.\n\n#BizNex #InformedChoices #SourceCheck",
+      "cta": "The official guide is in the caption.",
+      "sources": [
+        {
+          "url": "https://us.atomy.com/cst/userGuide/24100000001691",
+          "checked_on": "2026-11-06",
+          "section": "Consumer step 5 and Distributor step 6, Designation of Sponsor.",
+          "supported_claim": "The U.S. registration guide requires a sponsor and describes automatic or manual sponsor designation.",
+          "use": "Paraphrased factual summary only. These notes do not license site screenshots, branding or third-party media."
+        }
+      ],
+      "visual_disclosures": [
+        "A FICTIONAL SCENE visible during the opening; no staged customer testimonial.",
+        "U.S. scope on the source card.",
+        "AI/synthetic-media disclosure in the platform package when applicable."
+      ],
+      "rights_requirements": [
+        "Original tabletop props/typography or appropriately licensed footage with per-asset records.",
+        "Fictional adults or consenting performers; no real customer likeness, ID, account details or private messages.",
+        "Project-owned music/SFX or licenses covering every destination platform.",
+        "No copied reel, voice identity, commercial soundtrack, official UI screenshot or logo without the needed rights.",
+        "Use a licensed stock TTS voice; preserve af_heart identity unless a different authorized voice is selected."
+      ],
+      "release_checks": [
+        "Confirm current source still supports the exact line.",
+        "Record and disclose any actual commercial relationship; do not invent one.",
+        "Measure complete narration and exact captions; watch first frame, reveal and ending.",
+        "Verify final media/thumbnail/editorial manifests and platform-specific metadata.",
+        "Only then create production and campaign manifests; this brief is not accepted as either."
+      ]
+    },
+    {
+      "id": "biznex-two-ribbons",
+      "status": "authored_brief_not_rendered_or_scheduled",
+      "sequence": 4,
+      "title": "The Two Ribbons on His Source Card",
+      "thumbnail_copy": "FOLLOW THE SOURCE",
+      "topic_family": "source-check",
+      "experiment": {
+        "id": "opening-01",
+        "variant": "evidence-first",
+        "matched_pair": "source-01",
+        "primary_metric_by_platform": {
+          "youtube": "average_percentage_viewed",
+          "instagram": "share_rate",
+          "facebook": "share_rate"
+        },
+        "checkpoint_hours": 72,
+        "tolerance_hours": 12,
+        "controls": [
+          "English, U.S. audience",
+          "same narrator identity",
+          "20-35 second duration band",
+          "pair-matched CTA and source",
+          "posting-time band"
+        ],
+        "assignment_note": "Three videos per variant across three topic families. Observational matched batch, not a randomized causal test."
+      },
+      "premise": "A fictional adult follows two ribbons back to one source card and replaces a vague instruction with a sourced question.",
+      "payoff": "Two ribbons make the relationship between a short note and its source tangible.",
+      "narration": "Sponsor required. Automatic or manual designation. That is in the U.S. guide. A fictional scene. Jon follows two ribbons back to one card. His own notes had only said: finish signup. The Atomy source gives him a better question: how will this sponsor step work? He replaces the vague note. Understanding comes before the next click. The official guide is in the caption.",
+      "spoken_fiction_disclosure": "A fictional scene.",
+      "voice_direction": {
+        "schema_version": 1,
+        "beats": [
+          {
+            "text": "Sponsor required. Automatic or manual designation. That is in the U.S. guide. A fictional scene.",
+            "emotion": "serious",
+            "energy": 0.5,
+            "pace": 1.0,
+            "pause_after_ms": 180
+          },
+          {
+            "text": "Jon follows two ribbons back to one card. His own notes had only said: finish signup.",
+            "emotion": "curious",
+            "energy": 0.48,
+            "pace": 1.0,
+            "pause_after_ms": 160
+          },
+          {
+            "text": "The Atomy source gives him a better question: how will this sponsor step work?",
+            "emotion": "neutral",
+            "energy": 0.42,
+            "pace": 0.98,
+            "pause_after_ms": 280
+          },
+          {
+            "text": "He replaces the vague note. Understanding comes before the next click.",
+            "emotion": "reassuring",
+            "energy": 0.43,
+            "pace": 0.97,
+            "pause_after_ms": 200
+          },
+          {
+            "text": "The official guide is in the caption.",
+            "emotion": "neutral",
+            "energy": 0.35,
+            "pace": 1.0,
+            "pause_after_ms": 100
+          }
+        ]
+      },
+      "timing": {
+        "target_seconds": 29,
+        "allowed_seconds": [
+          20,
+          35
+        ],
+        "word_count": 63,
+        "planning_estimate_seconds": 26.1,
+        "estimate_basis": "150 words per minute plus authored end-of-beat pauses; not measured audio.",
+        "measurement_required": "Retarget shots to actual aligned narration; reject rather than truncate or speed beyond configured limits."
+      },
+      "shot_beats": [
+        {
+          "planned_seconds": "0-4",
+          "visual": "Close original source-summary card: Sponsor, Automatic, Manual. Two ribbons lead out of frame; U.S. scope is visible.",
+          "speech_anchor": "Sponsor required.",
+          "on_screen_text": "U.S. SOURCE CHECK",
+          "sound": "A short fabric movement, no ominous bass."
+        },
+        {
+          "planned_seconds": "4-10",
+          "visual": "Reverse overhead tracking follows the ribbons to Jon’s own notebook; fictional hand only, no implied real testimonial.",
+          "speech_anchor": "Jon follows two ribbons",
+          "on_screen_text": "A FICTIONAL SCENE",
+          "sound": "Two restrained plucked notes."
+        },
+        {
+          "planned_seconds": "10-18",
+          "visual": "The page turns to the credited source summary. Ribbons form a bracket around the specific question.",
+          "speech_anchor": "The Atomy source gives him",
+          "on_screen_text": "HOW DOES THIS STEP WORK?",
+          "sound": "Voice clear over reduced music."
+        },
+        {
+          "planned_seconds": "18-25",
+          "visual": "A removable sticky note is replaced; no live form, no account creation, no implied sponsor endorsement.",
+          "speech_anchor": "He replaces the vague note.",
+          "on_screen_text": "UNDERSTAND, THEN DECIDE",
+          "sound": "Peel and paper press."
+        },
+        {
+          "planned_seconds": "25-29",
+          "visual": "Hold the completed source-note spread with the same guide CTA as the paired episode.",
+          "speech_anchor": "The official guide is in the caption.",
+          "on_screen_text": "READ THE OFFICIAL GUIDE",
+          "sound": "Quiet cadence."
+        }
+      ],
+      "caption": "Replace a vague signup note with a question you can answer from the current U.S. guide.\n\nFictional scene; original characters and props, not a customer testimonial. AI-generated narration. Independent education, not an official Atomy corporate account. No financial or medical advice.\n\nSource: https://us.atomy.com/cst/userGuide/24100000001691\nChecked: 2026-11-06. U.S. scope. Read the source before deciding.\n\n#BizNex #InformedChoices #SourceCheck",
+      "cta": "The official guide is in the caption.",
+      "sources": [
+        {
+          "url": "https://us.atomy.com/cst/userGuide/24100000001691",
+          "checked_on": "2026-11-06",
+          "section": "Consumer step 5 and Distributor step 6, Designation of Sponsor.",
+          "supported_claim": "Atomy USA’s registration guide says a sponsor is needed and supports automatic or manual designation.",
+          "use": "Paraphrased factual summary only. These notes do not license site screenshots, branding or third-party media."
+        }
+      ],
+      "visual_disclosures": [
+        "A FICTIONAL SCENE visible during the opening; no staged customer testimonial.",
+        "U.S. scope on the source card.",
+        "AI/synthetic-media disclosure in the platform package when applicable."
+      ],
+      "rights_requirements": [
+        "Original tabletop props/typography or appropriately licensed footage with per-asset records.",
+        "Fictional adults or consenting performers; no real customer likeness, ID, account details or private messages.",
+        "Project-owned music/SFX or licenses covering every destination platform.",
+        "No copied reel, voice identity, commercial soundtrack, official UI screenshot or logo without the needed rights.",
+        "Use a licensed stock TTS voice; preserve af_heart identity unless a different authorized voice is selected."
+      ],
+      "release_checks": [
+        "Confirm current source still supports the exact line.",
+        "Record and disclose any actual commercial relationship; do not invent one.",
+        "Measure complete narration and exact captions; watch first frame, reveal and ending.",
+        "Verify final media/thumbnail/editorial manifests and platform-specific metadata.",
+        "Only then create production and campaign manifests; this brief is not accepted as either."
+      ]
+    },
+    {
+      "id": "biznex-receipt-fold",
+      "status": "authored_brief_not_rendered_or_scheduled",
+      "sequence": 5,
+      "title": "She Nearly Folded Away the Useful Number",
+      "thumbnail_copy": "UNFOLD THIS FIRST",
+      "topic_family": "useful-comparison",
+      "experiment": {
+        "id": "opening-01",
+        "variant": "question-first",
+        "matched_pair": "comparison-01",
+        "primary_metric_by_platform": {
+          "youtube": "average_percentage_viewed",
+          "instagram": "share_rate",
+          "facebook": "share_rate"
+        },
+        "checkpoint_hours": 72,
+        "tolerance_hours": 12,
+        "controls": [
+          "English, U.S. audience",
+          "same narrator identity",
+          "20-35 second duration band",
+          "pair-matched CTA and source",
+          "posting-time band"
+        ],
+        "assignment_note": "Three videos per variant across three topic families. Observational matched batch, not a randomized causal test."
+      },
+      "premise": "A fictional adult almost folds a paper comparison above its final-cost row, then unfolds it into a useful shopping tool.",
+      "payoff": "The dramatic paper reveal exposes a useful comparison criterion, not a fabricated discount.",
+      "narration": "Which number was she about to fold away? A fictional scene. Mira circles a price, then notices the bottom of her comparison sheet. The FTC recommends comparing product details and the full cost, including delivery and other fees. She unfolds the page. Atomy or another shop: match the item, check the size, then compare the total. The shopping guide is in the caption.",
+      "spoken_fiction_disclosure": "A fictional scene.",
+      "voice_direction": {
+        "schema_version": 1,
+        "beats": [
+          {
+            "text": "Which number was she about to fold away? A fictional scene.",
+            "emotion": "curious",
+            "energy": 0.55,
+            "pace": 0.98,
+            "pause_after_ms": 180
+          },
+          {
+            "text": "Mira circles a price, then notices the bottom of her comparison sheet.",
+            "emotion": "neutral",
+            "energy": 0.42,
+            "pace": 1.0,
+            "pause_after_ms": 180
+          },
+          {
+            "text": "The FTC recommends comparing product details and the full cost, including delivery and other fees.",
+            "emotion": "serious",
+            "energy": 0.43,
+            "pace": 0.98,
+            "pause_after_ms": 260
+          },
+          {
+            "text": "She unfolds the page. Atomy or another shop: match the item, check the size, then compare the total.",
+            "emotion": "reassuring",
+            "energy": 0.43,
+            "pace": 0.98,
+            "pause_after_ms": 200
+          },
+          {
+            "text": "The shopping guide is in the caption.",
+            "emotion": "neutral",
+            "energy": 0.35,
+            "pace": 1.0,
+            "pause_after_ms": 100
+          }
+        ]
+      },
+      "timing": {
+        "target_seconds": 29,
+        "allowed_seconds": [
+          20,
+          35
+        ],
+        "word_count": 63,
+        "planning_estimate_seconds": 26.1,
+        "estimate_basis": "150 words per minute plus authored end-of-beat pauses; not measured audio.",
+        "measurement_required": "Retarget shots to actual aligned narration; reject rather than truncate or speed beyond configured limits."
+      },
+      "shot_beats": [
+        {
+          "planned_seconds": "0-4",
+          "visual": "Macro paper fold begins to conceal a row labeled Total; a pencil tip freezes above it.",
+          "speech_anchor": "Which number was she about to fold away?",
+          "on_screen_text": "BEFORE YOU FOLD",
+          "sound": "Crisp paper fold and a pause."
+        },
+        {
+          "planned_seconds": "4-10",
+          "visual": "Wide desk shot shows an original comparison sheet with symbolic amount fields, no actual seller prices or logos.",
+          "speech_anchor": "Mira circles a price",
+          "on_screen_text": "A FICTIONAL SCENE",
+          "sound": "One pencil circle sound."
+        },
+        {
+          "planned_seconds": "10-18",
+          "visual": "The sheet unfolds as three graphic labels become readable: Exact item, Size, Full cost. FTC source credit sits below.",
+          "speech_anchor": "The FTC recommends comparing",
+          "on_screen_text": "COMPARE LIKE WITH LIKE",
+          "sound": "Warm sustained chord; speech stays foremost."
+        },
+        {
+          "planned_seconds": "18-25",
+          "visual": "A hand aligns two unbranded item cards at the same baseline, then points to total cost; neither item is recommended.",
+          "speech_anchor": "match the item, check the size",
+          "on_screen_text": "ITEM · SIZE · TOTAL",
+          "sound": "Two paper slides timed to narration."
+        },
+        {
+          "planned_seconds": "25-29",
+          "visual": "Final overhead frame preserves the completed checklist and source CTA; no savings figure.",
+          "speech_anchor": "The shopping guide is in the caption.",
+          "on_screen_text": "READ THE SHOPPING GUIDE",
+          "sound": "Small release into room tone."
+        }
+      ],
+      "caption": "An original comparison-sheet story. Match the item and size, then compare the full checkout total.\n\nFictional scene; original characters and props, not a customer testimonial. AI-generated narration. Independent education, not an official Atomy corporate account. No financial or medical advice.\n\nSource: https://consumer.ftc.gov/articles/online-shopping\nChecked: 2026-11-06. U.S. scope. Read the source before deciding.\n\n#BizNex #InformedChoices #SourceCheck",
+      "cta": "The shopping guide is in the caption.",
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/articles/online-shopping",
+          "checked_on": "2026-11-06",
+          "section": "Comparison Shopping; How to comparison shop.",
+          "supported_claim": "FTC online-shopping guidance recommends comparing item details and total cost including shipping/delivery and other fees.",
+          "use": "Paraphrased factual summary only. These notes do not license site screenshots, branding or third-party media."
+        }
+      ],
+      "visual_disclosures": [
+        "A FICTIONAL SCENE visible during the opening; no staged customer testimonial.",
+        "U.S. scope on the source card.",
+        "AI/synthetic-media disclosure in the platform package when applicable."
+      ],
+      "rights_requirements": [
+        "Original tabletop props/typography or appropriately licensed footage with per-asset records.",
+        "Fictional adults or consenting performers; no real customer likeness, ID, account details or private messages.",
+        "Project-owned music/SFX or licenses covering every destination platform.",
+        "No copied reel, voice identity, commercial soundtrack, official UI screenshot or logo without the needed rights.",
+        "Use a licensed stock TTS voice; preserve af_heart identity unless a different authorized voice is selected."
+      ],
+      "release_checks": [
+        "Confirm current source still supports the exact line.",
+        "Record and disclose any actual commercial relationship; do not invent one.",
+        "Measure complete narration and exact captions; watch first frame, reveal and ending.",
+        "Verify final media/thumbnail/editorial manifests and platform-specific metadata.",
+        "Only then create production and campaign manifests; this brief is not accepted as either."
+      ]
+    },
+    {
+      "id": "biznex-three-empty-boxes",
+      "status": "authored_brief_not_rendered_or_scheduled",
+      "sequence": 6,
+      "title": "Three Boxes Before the Buy Button",
+      "thumbnail_copy": "FILL THESE FIRST",
+      "topic_family": "useful-comparison",
+      "experiment": {
+        "id": "opening-01",
+        "variant": "evidence-first",
+        "matched_pair": "comparison-01",
+        "primary_metric_by_platform": {
+          "youtube": "average_percentage_viewed",
+          "instagram": "share_rate",
+          "facebook": "share_rate"
+        },
+        "checkpoint_hours": 72,
+        "tolerance_hours": 12,
+        "controls": [
+          "English, U.S. audience",
+          "same narrator identity",
+          "20-35 second duration band",
+          "pair-matched CTA and source",
+          "posting-time band"
+        ],
+        "assignment_note": "Three videos per variant across three topic families. Observational matched batch, not a randomized causal test."
+      },
+      "premise": "A fictional adult arranges three clear comparison boxes beside a shopping card and discovers why an attractive price alone is incomplete.",
+      "payoff": "Blank comparison boxes turn an incomplete shopping impression into an explicit checklist.",
+      "narration": "Exact item. Size. Total cost. Three checks before a price comparison. A fictional scene. Jon lays three empty boxes beside a shopping card. The bold price fills only one. FTC shopping guidance says to compare product details and include delivery and other fees. Atomy or another shop, he completes the comparison before choosing. The empty boxes were the useful part. The shopping guide is in the caption.",
+      "spoken_fiction_disclosure": "A fictional scene.",
+      "voice_direction": {
+        "schema_version": 1,
+        "beats": [
+          {
+            "text": "Exact item. Size. Total cost. Three checks before a price comparison. A fictional scene.",
+            "emotion": "serious",
+            "energy": 0.48,
+            "pace": 1.0,
+            "pause_after_ms": 180
+          },
+          {
+            "text": "Jon lays three empty boxes beside a shopping card. The bold price fills only one.",
+            "emotion": "curious",
+            "energy": 0.48,
+            "pace": 0.99,
+            "pause_after_ms": 180
+          },
+          {
+            "text": "FTC shopping guidance says to compare product details and include delivery and other fees.",
+            "emotion": "neutral",
+            "energy": 0.42,
+            "pace": 0.98,
+            "pause_after_ms": 260
+          },
+          {
+            "text": "Atomy or another shop, he completes the comparison before choosing. The empty boxes were the useful part.",
+            "emotion": "reassuring",
+            "energy": 0.43,
+            "pace": 0.97,
+            "pause_after_ms": 200
+          },
+          {
+            "text": "The shopping guide is in the caption.",
+            "emotion": "neutral",
+            "energy": 0.35,
+            "pace": 1.0,
+            "pause_after_ms": 100
+          }
+        ]
+      },
+      "timing": {
+        "target_seconds": 29,
+        "allowed_seconds": [
+          20,
+          35
+        ],
+        "word_count": 67,
+        "planning_estimate_seconds": 27.7,
+        "estimate_basis": "150 words per minute plus authored end-of-beat pauses; not measured audio.",
+        "measurement_required": "Retarget shots to actual aligned narration; reject rather than truncate or speed beyond configured limits."
+      },
+      "shot_beats": [
+        {
+          "planned_seconds": "0-4",
+          "visual": "Start on three glassless paper frames labeled Exact item, Size, Full cost; title already readable with a real desk shadow.",
+          "speech_anchor": "Exact item. Size. Total cost.",
+          "on_screen_text": "THREE CHECKS",
+          "sound": "Three soft taps at a measured pace."
+        },
+        {
+          "planned_seconds": "4-10",
+          "visual": "Adult hand aligns frames with a fictional shopping card; incomplete fields remain visibly blank, not prefilled data.",
+          "speech_anchor": "Jon lays three empty boxes",
+          "on_screen_text": "A FICTIONAL SCENE",
+          "sound": "Light paper-on-wood sound."
+        },
+        {
+          "planned_seconds": "10-18",
+          "visual": "Original typography summary explains the full-cost row; a delivery label slides into the same row, not onto a fake invoice.",
+          "speech_anchor": "FTC shopping guidance says",
+          "on_screen_text": "COUNT THE FULL COST",
+          "sound": "Music ducks through source sentence."
+        },
+        {
+          "planned_seconds": "18-25",
+          "visual": "One continuous top-down move reveals completed category labels; the item remains unchosen.",
+          "speech_anchor": "he completes the comparison before choosing.",
+          "on_screen_text": "COMPARE BEFORE CHOOSING",
+          "sound": "A final deliberate tap."
+        },
+        {
+          "planned_seconds": "25-29",
+          "visual": "Hold a calm three-box composition with source CTA; no checkout animation or sale graphic.",
+          "speech_anchor": "The shopping guide is in the caption.",
+          "on_screen_text": "READ THE SHOPPING GUIDE",
+          "sound": "Same resolved tone as the paired episode."
+        }
+      ],
+      "caption": "A bold price is one part of a comparison. Use the exact item, size and full cost when comparing shops.\n\nFictional scene; original characters and props, not a customer testimonial. AI-generated narration. Independent education, not an official Atomy corporate account. No financial or medical advice.\n\nSource: https://consumer.ftc.gov/articles/online-shopping\nChecked: 2026-11-06. U.S. scope. Read the source before deciding.\n\n#BizNex #InformedChoices #SourceCheck",
+      "cta": "The shopping guide is in the caption.",
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/articles/online-shopping",
+          "checked_on": "2026-11-06",
+          "section": "Comparison Shopping; How to comparison shop.",
+          "supported_claim": "FTC online-shopping guidance advises comparing product details and the total cost, including shipping/delivery and other fees.",
+          "use": "Paraphrased factual summary only. These notes do not license site screenshots, branding or third-party media."
+        }
+      ],
+      "visual_disclosures": [
+        "A FICTIONAL SCENE visible during the opening; no staged customer testimonial.",
+        "U.S. scope on the source card.",
+        "AI/synthetic-media disclosure in the platform package when applicable."
+      ],
+      "rights_requirements": [
+        "Original tabletop props/typography or appropriately licensed footage with per-asset records.",
+        "Fictional adults or consenting performers; no real customer likeness, ID, account details or private messages.",
+        "Project-owned music/SFX or licenses covering every destination platform.",
+        "No copied reel, voice identity, commercial soundtrack, official UI screenshot or logo without the needed rights.",
+        "Use a licensed stock TTS voice; preserve af_heart identity unless a different authorized voice is selected."
+      ],
+      "release_checks": [
+        "Confirm current source still supports the exact line.",
+        "Record and disclose any actual commercial relationship; do not invent one.",
+        "Measure complete narration and exact captions; watch first frame, reveal and ending.",
+        "Verify final media/thumbnail/editorial manifests and platform-specific metadata.",
+        "Only then create production and campaign manifests; this brief is not accepted as either."
+      ]
+    }
+  ]
+}

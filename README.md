@@ -4,7 +4,7 @@
 
 </div>
 
-**A local-first video production system with cost controls, editorial gates, and provider fallbacks.**
+**A local-first video and social publishing system with measured experiments, editorial gates, and provider fallbacks.**
 
 [![CI](https://github.com/ReaperXD67/atlasforge-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/ReaperXD67/atlasforge-ai/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)](pyproject.toml)
@@ -19,6 +19,7 @@ and can optionally publish an original 6–8 minute YouTube video.
 
 | Workflow | What it produces | Start here |
 | --- | --- | --- |
+| **Social Operator** | A durable YouTube/Instagram/Facebook queue for verified videos, account-specific publishing receipts, and matched-age analytics reports | [Social automation](docs/SOCIAL_AUTOMATION.md) · [Growth experiments](docs/SOCIAL_GROWTH.md) |
 | **Editorial Studio** | Researched, narrated videos using matched real footage, owned cards, captions, and reviewable upload packages | [Windows setup](SETUP.md) |
 | **Custom cinematic films · HyperFrames** | Authored full-song films with supplied photographs, generated artwork, reviewed motion inserts, deterministic camera/atmosphere movement, and measured lyric subtitles | [Cinematic workflow below](#custom-cinematic-music-films) · [reference project](videos/for-my-sweetheart/README.md) |
 | **Remotion Music Film · Studio** | Song-driven racing/event edits: Remotion graphics preview, local music analysis, CLIP-ranked footage, and FFmpeg/NVENC final rendering. The Pragon profile requires licensed footage for its human and event scenes | [Racing/event workflow](docs/MUSIC_VIDEO.md) |
@@ -47,6 +48,50 @@ for all four videos, thumbnails, publishing copy and a plain-text guide with You
 
 > [!CAUTION]
 > AtlasForge AI automates production, not editorial responsibility. Its gates block obvious earnings promises, medical claims, early sales pitches, missing disclosures, and malformed media. You remain responsible for factual accuracy, licensing, product claims, and channel compliance.
+
+## Social Operator
+
+Queue verified production episodes once and run the worker on a schedule. It rechecks the local
+delivery before publishing, keeps each destination's receipt, and stops ambiguous uploads for
+reconciliation instead of blindly sending another copy. Meta publishing uses the official Page-token
+API for a Facebook Page and its linked professional Instagram account. Hosted Meta media must match
+the verified local MP4 byte for byte.
+
+```powershell
+.\.venv\Scripts\python.exe -m daily_video_factory.cli social doctor
+.\.venv\Scripts\python.exe -m daily_video_factory.cli social enqueue --campaign config/campaigns/biznex-launch.example.json
+.\.venv\Scripts\python.exe -m daily_video_factory.cli social run-due
+# After replacing example account IDs, connecting accounts, and checking the preview:
+.\.venv\Scripts\python.exe -m daily_video_factory.cli social watch --execute
+```
+
+The example needs real account IDs, verified local renders, dates and public media URLs before use.
+The worker runs while this computer and process are running. Account registration, OAuth/app review,
+hosting and account recovery are separate setup steps; a password does not authorize an API upload.
+This delivery did not create or connect social accounts, perform a live upload, or establish audience
+results. See [setup and recovery](docs/SOCIAL_AUTOMATION.md) and [Meta prerequisites](docs/META_PUBLISHING.md).
+
+Import actual platform measurements to evaluate original hook experiments:
+
+```powershell
+.\.venv\Scripts\python.exe -m daily_video_factory.cli social import-metrics --source output/social/observations.json
+.\.venv\Scripts\python.exe -m daily_video_factory.cli social report --primary-metric average_percentage_viewed --output output/social/learning.json
+```
+
+Missing measurements remain unknown. Reports compare cumulative snapshots at the same age and
+separate platforms, accounts and video formats. Small samples do not produce a winner. The
+[30-day plan](config/social/experiment-plan.json) is an explicit experiment, not a promise of virality
+or an activated publishing schedule.
+
+The [first six pilot briefs](docs/BIZNEX_LAUNCH_BRIEFS.md) supply original scripts, shot plans,
+source mappings and voice directions for the first matched experiment. They are authored plans;
+their videos have not been rendered or published.
+
+Narration can take an optional `--direction` JSON plan with exact spoken text, emotion, energy,
+pace and pauses. Providers expose different controls, and each run records what was actually
+applied. See [voice direction](docs/VOICE_DIRECTION.md) and the
+[upstream license and maintenance review](docs/UPSTREAM_RESEARCH.md), including BRAG, Qwen3-TTS,
+Chatterbox, F5-TTS and WhisperX. No proprietary voice model was copied.
 
 ## Custom cinematic music films
 
@@ -95,7 +140,8 @@ The diagram is the product vision. The repository implements the complete core p
 | 7. QA and quality control | Partial | Script-policy validation, media checks, deterministic synthetic-clip metrics, and an OpenRouter contact-sheet realism supervisor | Comprehensive factual and copyright scanning remain roadmap items |
 | 8. SEO and metadata | Implemented | CTR-oriented title, description, tags, hashtags, chapters/timestamps, category, and disclosures | End-screen suggestions are not generated yet |
 | 9. Thumbnail generation | Partial | Automatic 1280x720 local composition from a scene image and generated copy | Flux/Imagen/SD concept generation and CTR ranking are roadmap items |
-| 10. Publishing automation | Implemented | One-click Studio package for the final MP4, editable title/description/tags, privacy or scheduling, custom thumbnail, timed captions, synthetic-media disclosure, browser OAuth, progress, and duplicate-safe retry | Cards, community posts, and analytics ingestion are roadmap items |
+| 10. Publishing automation | Implemented with setup requirements | Studio YouTube uploads plus a CLI queue for YouTube and Meta Reels; local delivery revalidation, configured-account checks, durable receipts and bounded processing polls | Owner-created accounts, API authorization, and HTTPS hosting for Meta media remain required; live platform integration needs an account test |
+| 11. Audience learning | Local export ingestion implemented | JSON/CSV observations, idempotent imports, matched-age comparisons within each platform/account/format and minimum-evidence gates | Automatic analytics API synchronization and proven reach improvement are not shipped |
 
 The diagram's PostgreSQL, Redis, cloud-backup, notification, and model-manager boxes are also roadmap items. The current single-workstation design uses SQLite, filesystem artifacts, structured logs, retries, checkpoints, an overlap lock, and per-run cost records. That is simpler and less expensive for one daily job; PostgreSQL and Redis become useful when the system is distributed across multiple workers. Docker profiles now provide CPU-safe, GPU-render, and fully local Ollama execution without introducing distributed infrastructure.
 
@@ -321,6 +367,11 @@ The former `dailyvideo` command remains available as a backward-compatible alias
 ## Documentation
 
 - [Fresh Windows setup](SETUP.md)
+- [Social Operator: accounts, queue, execution and recovery](docs/SOCIAL_AUTOMATION.md)
+- [Meta Reels API setup and limitations](docs/META_PUBLISHING.md)
+- [Measured social growth and 30-day experiments](docs/SOCIAL_GROWTH.md)
+- [Voice direction and provider capability reports](docs/VOICE_DIRECTION.md)
+- [Upstream research, exact licenses and adoption decisions](docs/UPSTREAM_RESEARCH.md)
 - [Architecture and extension points](ARCHITECTURE.md)
 - [Cost model](COSTS.md)
 - [Custom cinematic music film: project, rebuild, and delivery checks](videos/for-my-sweetheart/README.md)

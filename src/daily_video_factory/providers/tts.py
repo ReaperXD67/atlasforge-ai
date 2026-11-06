@@ -24,22 +24,17 @@ from ..media.subtitles import (
     write_exact_caption_sidecars,
     write_forced_aligned_caption_sidecars,
 )
+from ..voice_direction import (
+    VoiceDirection,
+    bounded_speech_chunks,
+    chatterbox_controls,
+    directed_speech_chunks,
+)
 from .base import Provider, ProviderChain, ProviderResult
 
 
 def split_for_tts(text: str, max_chars: int = 4500) -> list[str]:
-    sentences = re.split(r"(?<=[.!?])\s+", re.sub(r"\s+", " ", text).strip())
-    chunks: list[str] = []
-    current = ""
-    for sentence in sentences:
-        if current and len(current) + len(sentence) + 1 > max_chars:
-            chunks.append(current)
-            current = sentence
-        else:
-            current = f"{current} {sentence}".strip()
-    if current:
-        chunks.append(current)
-    return chunks
+    return bounded_speech_chunks(text, max_chars)
 
 
 def apply_pronunciations(text: str, pronunciations: dict[str, str]) -> str:
@@ -62,20 +57,18 @@ def split_for_expressive_tts(text: str, max_chars: int = 280) -> list[tuple[str,
     beats: list[tuple[str, bool]] = []
     paragraphs = [part.strip() for part in re.split(r"\n\s*\n", text) if part.strip()]
     for paragraph in paragraphs:
-        sentences = re.split(r"(?<=[.!?])\s+(?=[A-Z0-9])", re.sub(r"\s+", " ", paragraph))
-        current = ""
-        for sentence in sentences:
-            if current and len(current) + len(sentence) + 1 > max_chars:
-                beats.append((current, False))
-                current = sentence
-            else:
-                current = f"{current} {sentence}".strip()
-        if current:
-            beats.append((current, True))
+        chunks = bounded_speech_chunks(paragraph, max_chars)
+        beats.extend((chunk, index == len(chunks) - 1) for index, chunk in enumerate(chunks))
     return beats
 
 
 class TTSProvider(Provider[Path]):
+    direction_mode = "plain_transcript_fallback"
+    semantic_emotion_supported = False
+
+    def synthesize_directed(self, direction: VoiceDirection, output_dir: Path) -> Path:
+        return self.synthesize(direction.narration, output_dir)
+
     @abstractmethod
     def synthesize(self, text: str, output_dir: Path) -> Path:
         pass
@@ -83,6 +76,8 @@ class TTSProvider(Provider[Path]):
 
 class OpenAITTSProvider(TTSProvider):
     name = "openai"
+    direction_mode = "per_beat_instructions"
+    semantic_emotion_supported = True
 
     def __init__(self, settings: Settings, ffmpeg: FFmpeg) -> None:
         self.cfg = settings.voice
@@ -97,7 +92,7 @@ class OpenAITTSProvider(TTSProvider):
         retry=retry_if_exception_type((httpx.HTTPError, ProviderFailed)),
         reraise=True,
     )
-    def _one(self, text: str, path: Path) -> None:
+    def _one(self, text: str, path: Path, *, instructions: str | None = None) -> None:
         response = httpx.post(
             "https://api.openai.com/v1/audio/speech",
             headers={"Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}"},
@@ -105,7 +100,7 @@ class OpenAITTSProvider(TTSProvider):
                 "model": self.cfg.openai_model,
                 "voice": self.cfg.openai_voice,
                 "input": text,
-                "instructions": self.cfg.openai_instructions,
+                "instructions": instructions if instructions is not None else self.cfg.openai_instructions,
                 "response_format": "wav",
             },
             timeout=180,
@@ -115,6 +110,24 @@ class OpenAITTSProvider(TTSProvider):
                 f"OpenAI TTS returned HTTP {response.status_code}: {response.text[:300]}"
             )
         path.write_bytes(response.content)
+
+    def synthesize_directed(self, direction: VoiceDirection, output_dir: Path) -> Path:
+        output_dir.mkdir(parents=True, exist_ok=True)
+        parts: list[Path] = []
+        pauses: list[int] = []
+        for index, beat in enumerate(direction.beats):
+            part = output_dir / f"openai_directed_{index:03d}.wav"
+            self._one(
+                apply_pronunciations(beat.text, self.cfg.pronunciations),
+                part,
+                instructions=f"{self.cfg.openai_instructions}\n{beat.instruction()}",
+            )
+            parts.append(part)
+            pauses.append(beat.pause_after_ms if index < len(direction.beats) - 1 else 0)
+        return concatenate_and_normalize(
+            parts, output_dir / "narration.wav", self.cfg.target_lufs, self.ffmpeg,
+            pauses_ms=pauses,
+        )
 
     def synthesize(self, text: str, output_dir: Path) -> Path:
         output_dir.mkdir(parents=True, exist_ok=True)
@@ -242,6 +255,7 @@ class GeminiTTSProvider(TTSProvider):
 
 class KokoroTTSProvider(TTSProvider):
     name = "kokoro"
+    direction_mode = "pace_and_pauses_only"
 
     def __init__(self, settings: Settings, ffmpeg: FFmpeg) -> None:
         self.cfg = settings.voice
@@ -255,6 +269,68 @@ class KokoroTTSProvider(TTSProvider):
             return self.ffmpeg.available
         except ImportError:
             return False
+
+    def synthesize_directed(self, direction: VoiceDirection, output_dir: Path) -> Path:
+        try:
+            import soundfile as sf
+            from kokoro import KPipeline
+        except ImportError as exc:
+            raise ProviderFailed("Install the local-tts extra to use Kokoro") from exc
+        output_dir.mkdir(parents=True, exist_ok=True)
+        pipeline = KPipeline(lang_code=self.cfg.kokoro_language)
+        sample_rate = 24000
+        clips: list[np.ndarray] = []
+        performance: list[dict[str, object]] = []
+        cursor = 0
+        for index, beat in enumerate(direction.beats):
+            speed = self.cfg.kokoro_speed * beat.pace
+            generated = [
+                np.asarray(audio, dtype=np.float32)
+                for _graphemes, _phonemes, audio in pipeline(
+                    apply_pronunciations(beat.text, self.cfg.pronunciations),
+                    voice=self.cfg.kokoro_voice,
+                    speed=speed,
+                )
+            ]
+            if not generated or any(
+                audio.ndim != 1 or not audio.size or not np.isfinite(audio).all()
+                for audio in generated
+            ):
+                raise ProviderFailed("Kokoro returned empty or invalid directed audio")
+            audio = np.concatenate(generated)
+            pause_samples = (
+                round(sample_rate * beat.pause_after_ms / 1000)
+                if index < len(direction.beats) - 1 else 0
+            )
+            performance.append({
+                "beat_index": index,
+                "text": beat.text,
+                "speed": speed,
+                "start_sample": cursor,
+                "speech_samples": audio.size,
+                "appended_pause_samples": pause_samples,
+            })
+            clips.append(audio)
+            if pause_samples:
+                clips.append(np.zeros(pause_samples, dtype=np.float32))
+            cursor += audio.size + pause_samples
+        raw = output_dir / "kokoro_raw.wav"
+        sf.write(raw, np.concatenate(clips), sample_rate)
+        result = concatenate_and_normalize(
+            [raw], output_dir / "narration.wav", self.cfg.target_lufs, self.ffmpeg
+        )
+        (output_dir / "narration.performance.json").write_text(
+            json.dumps({
+                "provider": self.name,
+                "voice": self.cfg.kokoro_voice,
+                "direction_mode": self.direction_mode,
+                "semantic_emotion_supported": False,
+                "ignored_controls": ["emotion", "energy"],
+                "sample_rate": sample_rate,
+                "beats": performance,
+            }, indent=2) + "\n", encoding="utf-8",
+        )
+        return result
 
     def synthesize(self, text: str, output_dir: Path) -> Path:
         try:
@@ -449,6 +525,7 @@ class ChatterboxTTSProvider(TTSProvider):
     """Expressive local narration with stable identity and optional consented voice reference."""
 
     name = "chatterbox"
+    direction_mode = "numeric_prosody_approximation"
 
     def __init__(self, settings: Settings, ffmpeg: FFmpeg) -> None:
         self.cfg = settings.voice
@@ -465,6 +542,14 @@ class ChatterboxTTSProvider(TTSProvider):
             return False
 
     def synthesize(self, text: str, output_dir: Path) -> Path:
+        return self._synthesize(text, output_dir)
+
+    def synthesize_directed(self, direction: VoiceDirection, output_dir: Path) -> Path:
+        return self._synthesize(direction.narration, output_dir, direction=direction)
+
+    def _synthesize(
+        self, text: str, output_dir: Path, *, direction: VoiceDirection | None = None
+    ) -> Path:
         try:
             import soundfile as sf
             import torch
@@ -485,7 +570,12 @@ class ChatterboxTTSProvider(TTSProvider):
                     str(reference), exaggeration=self.cfg.chatterbox_exaggeration
                 )
             spoken_text = apply_pronunciations(text, self.cfg.pronunciations)
-            beats = split_for_expressive_tts(spoken_text)
+            directed_beats = directed_speech_chunks(direction, 280) if direction else []
+            beats = (
+                [(apply_pronunciations(beat.text, self.cfg.pronunciations), False)
+                 for beat in directed_beats]
+                if direction else split_for_expressive_tts(spoken_text)
+            )
             clips: list[np.ndarray] = []
             sample_rate = int(model.sr)
             sentence_pause = np.zeros(
@@ -501,6 +591,10 @@ class ChatterboxTTSProvider(TTSProvider):
                 # intention while keeping ordinary explanation restrained and credible.
                 lift = 0.08 if index == 0 or index == len(beats) - 1 else 0.04 if index % 4 == 0 else -0.03
                 exaggeration = min(1.1, max(0.25, self.cfg.chatterbox_exaggeration + lift))
+                if direction:
+                    exaggeration = chatterbox_controls(
+                        directed_beats[index], self.cfg.chatterbox_exaggeration
+                    )["exaggeration"]
                 generated = model.generate(
                     beat,
                     exaggeration=exaggeration,
@@ -508,9 +602,24 @@ class ChatterboxTTSProvider(TTSProvider):
                     temperature=self.cfg.chatterbox_temperature,
                 )
                 audio = generated.squeeze().detach().cpu().numpy().astype(np.float32)
+                if audio.ndim != 1 or not audio.size or not np.isfinite(audio).all():
+                    raise ProviderFailed("Chatterbox returned empty or invalid audio")
+                if direction and abs(directed_beats[index].pace - 1.0) > 0.005:
+                    raw_beat = output_dir / f"chatterbox_beat_{index:03d}.wav"
+                    paced_beat = output_dir / f"chatterbox_beat_{index:03d}_paced.wav"
+                    sf.write(raw_beat, audio, sample_rate)
+                    self.ffmpeg.run([
+                        "-i", str(raw_beat), "-filter:a",
+                        _atempo_chain(directed_beats[index].pace),
+                        "-ar", str(sample_rate), str(paced_beat),
+                    ])
+                    audio, _ = sf.read(paced_beat, dtype="float32")
                 clips.append(audio)
                 if index < len(beats) - 1:
-                    clips.append(paragraph_pause if paragraph_end else sentence_pause)
+                    clips.append(
+                        np.zeros(round(sample_rate * directed_beats[index].pause_after_ms / 1000), dtype=np.float32)
+                        if direction else paragraph_pause if paragraph_end else sentence_pause
+                    )
             if not clips:
                 raise ProviderFailed("Chatterbox produced no audio")
             raw = output_dir / "chatterbox_raw.wav"
@@ -521,7 +630,7 @@ class ChatterboxTTSProvider(TTSProvider):
             target_wpm = self.cfg.chatterbox_target_wpm * self.cfg.chatterbox_speed
             target_duration = max(1.0, word_count / target_wpm * 60)
             tempo = min(1.2, max(0.7, raw_duration / target_duration))
-            if abs(tempo - 1.0) > 0.005:
+            if direction is None and abs(tempo - 1.0) > 0.005:
                 mastered_source = output_dir / "chatterbox_paced.wav"
                 self.ffmpeg.run(
                     [
@@ -713,8 +822,11 @@ class NarrationGenerator:
         )
 
     def run(
-        self, text: str, output_dir: Path, *, target_seconds: float | None = None
+        self, text: str, output_dir: Path, *, target_seconds: float | None = None,
+        direction: VoiceDirection | None = None,
     ) -> ProviderResult[Path]:
+        if direction is not None:
+            direction.validate_transcript(text)
         output_dir.mkdir(parents=True, exist_ok=True)
         for name in (
             "narration.words.json",
@@ -722,13 +834,28 @@ class NarrationGenerator:
             "narration.exact.srt",
             "narration.caption-verification.json",
             "narration.performance.json",
+            "narration.direction-report.json",
         ):
             with suppress(FileNotFoundError):
                 (output_dir / name).unlink()
-        result = self.chain.run(
-            "narration",
-            lambda provider: cast(TTSProvider, provider).synthesize(text, output_dir),
-        )
+        attempts: list[dict[str, str]] = []
+
+        def invoke(provider: Provider[Path]) -> Path:
+            narrator = cast(TTSProvider, provider)
+            # A failed earlier provider must not leave timing from a different voice.
+            for sidecar in ("narration.words.json", "narration.captions.json",
+                            "narration.exact.srt", "narration.caption-verification.json",
+                            "narration.performance.json"):
+                with suppress(FileNotFoundError):
+                    (output_dir / sidecar).unlink()
+            attempt = {"provider": provider.name, "status": "failed"}
+            attempts.append(attempt)
+            value = (narrator.synthesize_directed(direction, output_dir) if direction
+                     else narrator.synthesize(text, output_dir))
+            attempt["status"] = "succeeded"
+            return value
+
+        result = self.chain.run("narration", invoke)
         if not (output_dir / "narration.words.json").is_file():
             write_forced_aligned_caption_sidecars(
                 text,
@@ -744,4 +871,22 @@ class NarrationGenerator:
         )
         if target_seconds is not None:
             result.value = fit_narration_to_seconds(result.value, target_seconds, self.ffmpeg)
+        selected = next(provider for provider in self.chain.providers if provider.name == result.provider)
+        mode = cast(TTSProvider, selected).direction_mode
+        (output_dir / "narration.direction-report.json").write_text(
+            json.dumps({
+                "schema_version": 1,
+                "requested_provider_order": self.settings.voice.providers,
+                "selected_provider": result.provider,
+                "fallback_used": result.provider != self.settings.voice.providers[0],
+                "attempts": attempts,
+                "direction_requested": direction is not None,
+                "direction_mode": mode if direction else "provider_default",
+                "direction_applied": direction is not None and mode != "plain_transcript_fallback",
+                "semantic_emotion_supported": cast(TTSProvider, selected).semantic_emotion_supported,
+                "emotion_fidelity_verified": False,
+                "duration_seconds": self.ffmpeg.duration(result.value),
+                "direction": direction.model_dump() if direction else None,
+            }, indent=2) + "\n", encoding="utf-8",
+        )
         return result

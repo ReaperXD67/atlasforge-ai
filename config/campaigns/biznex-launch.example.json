@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "campaign_id": "biznex-pilot-01",
+  "production_manifest": "config/batches/biznex-unsent-stories.creative.production.json",
+  "posts": [
+    {
+      "id": "unsent-youtube",
+      "episode_id": "unsent-message",
+      "platform": "youtube",
+      "account_id": "REPLACE_WITH_YOUR_UC_PREFIXED_CHANNEL_ID",
+      "publish_at": "2026-11-07T18:30:00+05:30",
+      "caption": "A recommendation can wait. What did your friend actually ask?",
+      "privacy": "private"
+    },
+    {
+      "id": "unsent-instagram",
+      "episode_id": "unsent-message",
+      "platform": "instagram",
+      "account_id": "REPLACE_WITH_INSTAGRAM_ACCOUNT_ID",
+      "publish_at": "2026-11-07T18:45:00+05:30",
+      "caption": "She almost sent a pitch. Then she reread the message. An original fictional BizNex story; independent and not endorsed by Atomy. #AnimatedStory #Friendship #BizNex",
+      "video_url": "https://media.example.com/replace-with-immutable-approved-video.mp4",
+      "privacy": "public"
+    },
+    {
+      "id": "unsent-facebook",
+      "episode_id": "unsent-message",
+      "platform": "facebook",
+      "account_id": "REPLACE_WITH_FACEBOOK_PAGE_ID",
+      "publish_at": "2026-11-07T19:00:00+05:30",
+      "caption": "A small pause can change a conversation. This original fictional BizNex story uses Atomy as context, without promising product or income results. Independent and not endorsed by Atomy.",
+      "video_url": "https://media.example.com/replace-with-immutable-approved-video.mp4",
+      "privacy": "public"
+    }
+  ]
+}

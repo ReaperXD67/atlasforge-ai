@@ -26,14 +26,18 @@ from .scheduler import run_scheduler
 from .shorts import extract_hyperframes_narration, write_short_experiment_manifest
 from .shorts_batch import ShortsBatchError, run_shorts_batch
 from .shorts_delivery import ShortsDeliveryError, validate_short_delivery
+from .social_cli import app as social_app
 from .viral_video import ViralShortPipeline
+from .voice_direction import VoiceDirection
 from .youtube_delivery import YouTubeDeliveryError, validate_youtube_delivery
 
 app = typer.Typer(
     no_args_is_help=True,
+    pretty_exceptions_show_locals=False,
     help="AtlasForge AI builds one complete, policy-aware YouTube video per day.",
 )
 console = Console()
+app.add_typer(social_app, name="social")
 
 
 @app.command("browser-capture")
@@ -55,13 +59,17 @@ def narrate_command(
     target_seconds: float | None = typer.Option(
         None, min=1, help="Fit narration and exact captions to this edit duration."
     ),
+    direction: Path | None = typer.Option(
+        None, exists=True, dir_okay=False, help="Exact-transcript voice direction JSON."
+    ),
 ) -> None:
     """Generate mastered narration from an authored text file using the provider chain."""
     configure_logging()
     settings = load_settings(config)
     ffmpeg = FFmpeg()
     result = NarrationGenerator(settings, ffmpeg).run(
-        text_file.read_text(encoding="utf-8"), output, target_seconds=target_seconds
+        text_file.read_text(encoding="utf-8"), output, target_seconds=target_seconds,
+        direction=VoiceDirection.load(direction) if direction else None,
     )
     console.print(f"[bold green]Narration complete:[/] {result.value}")
     console.print(f"Provider: {result.provider}")
@@ -79,6 +87,9 @@ def narrate_script_command(
     target_seconds: float | None = typer.Option(
         None, min=1, help="Optionally fit narration and exact captions to this duration."
     ),
+    direction: Path | None = typer.Option(
+        None, exists=True, dir_okay=False, help="Exact-transcript voice direction JSON."
+    ),
 ) -> None:
     """Narrate the spoken blocks in SCRIPT.md without maintaining a duplicate text file."""
     configure_logging()
@@ -86,7 +97,8 @@ def narrate_script_command(
     ffmpeg = FFmpeg()
     narration = extract_hyperframes_narration(script.read_text(encoding="utf-8"))
     result = NarrationGenerator(settings, ffmpeg).run(
-        narration, output, target_seconds=target_seconds
+        narration, output, target_seconds=target_seconds,
+        direction=VoiceDirection.load(direction) if direction else None,
     )
     console.print(f"[bold green]Narration complete:[/] {result.value}")
     console.print(f"Provider: {result.provider}")

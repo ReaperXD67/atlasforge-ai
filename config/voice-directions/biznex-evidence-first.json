@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "beats": [
+    {
+      "text": "One sentence can change how you read a product label.",
+      "emotion": "curious",
+      "energy": 0.6,
+      "pace": 0.95,
+      "pause_after_ms": 300
+    },
+    {
+      "text": "What does the evidence actually show?",
+      "emotion": "serious",
+      "energy": 0.35,
+      "pace": 0.9,
+      "pause_after_ms": 400
+    },
+    {
+      "text": "For Atomy or any other brand, separate the product description from a promise. Check the current official source before you decide.",
+      "emotion": "reassuring",
+      "energy": 0.45,
+      "pace": 1.0,
+      "pause_after_ms": 0
+    }
+  ]
+}

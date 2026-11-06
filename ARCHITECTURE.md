@@ -20,7 +20,8 @@
 | Orchestration | `pipeline.py`, `scheduler.py`, `state.py` | checkpoints, locking, retries/fallback, one-run lifecycle |
 | Providers | `providers/` | text, TTS, images, Pexels Video, local Wan video, premium cloud video |
 | Media | `media/` | deterministic stereo music/SFX, forced-aligned subtitles, FFmpeg render/mix |
-| Delivery | `publishing/youtube.py` | minimal-scope OAuth upload, thumbnail, optional captions |
+| Delivery | `publishing/youtube.py`, `publishing/meta.py`, `social_campaign.py` | OAuth/Page-token uploads, verified campaign queue, receipts and ambiguity handling |
+| Learning | `social_analytics.py` | normalized export ingestion, cumulative snapshots and matched-age comparisons |
 | Operations | `doctor.py`, `dashboard.py`, CLI | preflight, visibility, human controls |
 
 ## State and idempotency
@@ -30,6 +31,20 @@
 Artifacts are written before the corresponding stage is marked complete. Model-shaped checkpoints are revalidated through Pydantic on resume. Media checkpoints are accepted only when the stage is complete and the expected file exists.
 
 ## Fallback semantics
+
+The Social Operator keeps a separate queue in `output/social/queue.sqlite`. Enqueue validates
+production deliveries and binds jobs to source/media fingerprints, destination and schedule.
+A unique platform/account/video-hash constraint prevents duplicates across campaigns; the worker
+holds a process lock, revalidates artifacts and confirms the configured account before publication.
+Meta-hosted media is downloaded and hash-checked before submission. Persisted upload markers and
+remote IDs distinguish pending processing from ambiguous mutations; uncertain jobs need
+reconciliation and cannot be reset through the ordinary blocked-job retry command.
+
+`output/social/analytics.sqlite` retains normalized cumulative observations. Reports select one
+checkpoint per video and compare only within a platform, account, format and experiment. Missing
+metrics remain unknown; count/view minimums are operational gates, not statistical significance.
+There is no live analytics polling, autonomous account creation or reach prediction in these modules.
+See [Social Operator operations](docs/SOCIAL_AUTOMATION.md).
 
 Providers fail closed at their own boundary and fail over only within the same capability:
 

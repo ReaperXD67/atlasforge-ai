@@ -91,6 +91,7 @@ ignore = ["E501"]
 
 [tool.ruff.lint.per-file-ignores]
 "src/daily_video_factory/cli.py" = ["B008"]
+"src/daily_video_factory/social_cli.py" = ["B008"]
 
 [tool.mypy]
 python_version = "3.11"

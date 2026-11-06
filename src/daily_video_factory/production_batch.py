@@ -392,6 +392,11 @@ def _verify(video: Path, episode: ProductionBatchEpisode) -> dict[str, Any]:
     return delivery
 
 
+def verify_production_episode(episode: ProductionBatchEpisode) -> dict[str, Any]:
+    """Recheck the completed artifact, approved voice and editorial evidence."""
+    return _verify(episode.output, episode)
+
+
 def source_fingerprint(
     episode: ProductionBatchEpisode, manifest: ProductionBatchManifest
 ) -> tuple[str, list[dict[str, Any]]]:

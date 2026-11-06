@@ -1,0 +1,106 @@
+# Voice direction and the local audio proof
+
+Voice direction controls delivery without changing the approved transcript. Both
+`narrate` and `narrate-script` accept `--direction path/to/plan.json`. The example
+[plan](../config/voice-directions/biznex-evidence-first.json) separates spoken words
+from emotion, energy, pace, and pauses. A punctuation, case or word mismatch with
+the narration is rejected before synthesis; whitespace differences are allowed.
+
+| Provider | Applied controls | Report mode |
+| --- | --- | --- |
+| Kokoro | Configured voice; baseline speed × beat pace; explicit pauses | `pace_and_pauses_only` |
+| OpenAI | Per-beat instructions and explicit pauses; requires an instruction-capable speech model | `per_beat_instructions` |
+| Chatterbox | Bounded exaggeration approximation; pitch-preserving beat pace; pauses | `numeric_prosody_approximation` |
+| Other configured providers | Plain approved transcript | `plain_transcript_fallback` |
+
+Kokoro ignores emotion and energy labels. The system does not claim that speed or
+silence expresses the requested emotion. Provider selection and fallback are written
+to `narration.direction-report.json`; `semantic_emotion_supported` and
+`emotion_fidelity_verified` remain false for the local Kokoro proof. Chatterbox is
+retained for compatibility but its upstream is retired; see [research](UPSTREAM_RESEARCH.md).
+
+## Verified local proof · 6 November 2026
+
+The same **37-word transcript** was rendered twice using the existing **af_heart**
+Kokoro voice, then aligned with the cached Whisper `small.en` model. Both real CLI
+calls completed with Hugging Face and Transformers offline flags enabled, a local-only
+provider list, and no paid API call or model download.
+
+| Measurement | Baseline | Directed |
+| --- | --- | --- |
+| WAV duration | 14.175 s | 15.575 s |
+| Format | 48 kHz mono | 48 kHz mono |
+| Voice | `af_heart` | `af_heart` |
+| Kokoro speed | 0.97 | 0.9215 → 0.873 → 0.97 |
+| Explicit inserted silence | None requested | 300 ms and 400 ms |
+| Exact script words / caption cues | 37 / 11 | 37 / 11 |
+| Last word end | 13.48 s | 14.92 s |
+| Caption timing | Monotonic; inside audio | Monotonic; inside audio |
+| Peak sample amplitude | 0.8414 | 0.8414 |
+
+The directed raw waveform contains exactly 7,200 zero samples at 3.800–4.100 s
+and 9,600 at 6.675–7.075 s, measured at its 24 kHz generation rate. These are added
+pauses; the speech itself can contain natural silence. The mastered export is 1.4 s
+longer. Caption text matched the approved transcript; cue bounds were checked
+against both exported WAV durations. Canonical caption alignment does not by itself
+prove that the synthesizer pronounced every word correctly.
+This proves usable rhythm control with the retained narrator. Listener preference,
+semantic emotion fidelity and improved audience retention have **not** been established.
+
+The local deliverables are intentionally Git-ignored:
+
+```text
+output/social/voice-proof/
+  transcript.txt
+  verification.json
+  baseline/narration.wav
+  baseline/narration.exact.srt
+  baseline/narration.direction-report.json
+  directed/narration.wav
+  directed/narration.exact.srt
+  directed/narration.performance.json
+  directed/narration.direction-report.json
+```
+
+## Reproduce with cached models
+
+Run from the repository root. The [local-only profile](../config/profiles/biznex-local-voice-proof.yaml)
+selects only Kokoro `af_heart` and CPU/int8 Whisper alignment. This requires the
+existing `local-tts` and `transcription` extras, FFmpeg, and cached Kokoro/Whisper
+assets. Offline mode deliberately fails if required model files are unavailable.
+
+```powershell
+$env:HF_HUB_OFFLINE = '1'
+$env:TRANSFORMERS_OFFLINE = '1'
+$env:HF_HOME = Join-Path $env:USERPROFILE '.cache\huggingface'
+
+.\.venv\Scripts\python.exe -c "from pathlib import Path; from daily_video_factory.voice_direction import VoiceDirection; p=Path('output/social/voice-proof'); p.mkdir(parents=True,exist_ok=True); p.joinpath('transcript.txt').write_text(VoiceDirection.load(Path('config/voice-directions/biznex-evidence-first.json')).narration,encoding='utf-8')"
+
+.\.venv\Scripts\python.exe -m daily_video_factory.cli narrate `
+  --text-file output/social/voice-proof/transcript.txt `
+  --output output/social/voice-proof/baseline `
+  --config config/profiles/biznex-local-voice-proof.yaml
+
+.\.venv\Scripts\python.exe -m daily_video_factory.cli narrate `
+  --text-file output/social/voice-proof/transcript.txt `
+  --output output/social/voice-proof/directed `
+  --config config/profiles/biznex-local-voice-proof.yaml `
+  --direction config/voice-directions/biznex-evidence-first.json
+```
+
+On the tested workstation, Windows Application Control blocked the generated
+`atlasforge.exe` launcher; the equivalent Python module invocation above worked.
+Its normal user Hugging Face cache contained complete Kokoro files. The separate
+project-local cache had unusable snapshot links, so it was not used or modified.
+
+`--target-seconds` remains available on both narration commands. It resizes the
+finished delivery and caption timings together, so it also changes the duration
+of inserted pauses. Omit it when preserving the direction plan's timing matters.
+
+## Checks
+
+The focused voice/provider suite passes 31 tests, including instruction/transcript
+separation, oversized-sentence handling, Kokoro identity/speed/pause routing,
+Chatterbox routing, exact text validation and stale-caption cleanup on fallback.
+The two existing CLI tests also pass. Actual baseline and directed CLI executions
+establish that the added `--direction` option reaches the new runtime correctly.
