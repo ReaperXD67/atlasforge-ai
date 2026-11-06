@@ -1,0 +1,15 @@
+# Preserve the exact source bytes bound to the verified six-pilot deliveries.
+# These inputs intentionally contain both LF and CRLF files. Do not normalize
+# them on add/checkout: changing either form invalidates the recorded hashes.
+/videos/biznex-two-paper-doors/** -text
+/videos/biznex-card-under-the-cup/** -text
+/videos/biznex-missing-index-card/** -text
+/videos/biznex-two-ribbons/** -text
+/videos/biznex-receipt-fold/** -text
+/videos/biznex-three-empty-boxes/** -text
+/config/batches/biznex-first-six.production.json -text
+/scripts/render_hyperframes_windows.ps1 -text
+/src/daily_video_factory/production_batch.py -text
+/src/daily_video_factory/shorts_batch.py -text
+/src/daily_video_factory/shorts_delivery.py -text
+/src/daily_video_factory/youtube_delivery.py -text

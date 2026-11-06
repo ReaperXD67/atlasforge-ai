@@ -114,6 +114,10 @@ Preparation requires the cached local speech/alignment models. Source changes re
 thumbnails and validation; the packager refuses stale or incomplete batch reports. Generated media,
 credentials, account receipts and campaign databases stay outside Git.
 
+Scoped `.gitattributes` rules preserve the exact LF/CRLF bytes of the six pilot source
+trees and their fingerprinted pipeline inputs across checkouts, including on Windows.
+Byte-level fingerprint checks remain strict; do not normalize these verified inputs.
+
 Narration can take an optional `--direction` JSON plan with exact spoken text, emotion, energy,
 pace and pauses. Providers expose different controls, and each run records what was actually
 applied. See [voice direction](docs/VOICE_DIRECTION.md) and the

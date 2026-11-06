@@ -55,6 +55,12 @@ compositions before delivery. The commands above do not authorize or perform a p
 upload. For an already prepared source checkout, start with the render command and then
 export; do not rerun preparation just to package an existing verified batch.
 
+The six pilot source trees, production manifest and fingerprinted runner/verifier files
+use scoped `-text` rules in `.gitattributes`. Their verified inputs contain both LF and
+CRLF files; Git must preserve those exact bytes rather than normalize them on checkout.
+This prevents `core.autocrlf` from invalidating an unchanged delivery. It does not relax
+source or media hash checks, and deliberate content changes still require verification.
+
 ## Export verified files
 
 The helper exports local final MP4s, thumbnails, upload copy, SRT/JSON captions, transcripts
