@@ -77,7 +77,7 @@ These licenses are separate from AtlasForge's MIT license.
 Model files and the isolated runtime are local-only, Git-ignored dependencies.
 The reference persona comes from original local Kokoro af_heart synthesis; no
 external person's recording or proprietary speech service was copied. The
-[expressive voice guide](docs/EXPRESSIVE_VOICE.md) records the exact revision,
+[expressive voice guide](https://github.com/ReaperXD67/atlasforge-ai/blob/main/docs/EXPRESSIVE_VOICE.md) records the exact revision,
 dependencies, hash verification, controls and measured limitations. A reference
 conditioned output is not a promise of exact speaker identity or emotion fidelity.
 

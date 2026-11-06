@@ -46,7 +46,7 @@ The Yes Machine uses no image/video generation; The Second Question retains its 
 
 **Measured, end to end:** the Yes Machine's ten-stage production run took **365.4 seconds**
 with its freshly prepared narration. Exact cached resume revalidated the delivery in
-**4.46 seconds**, with all ten stages reused. Its prepared source archive passed
+**3.83 seconds**, with all ten stages reused. Its prepared source archive passed
 **139 checksum checks** plus extracted-source and voice-evidence verification.
 [See the run evidence](videos/biznex-the-yes-machine/PIPELINE_VALIDATION.json) and
 [rebuild check](videos/biznex-the-yes-machine/SOURCE_SMOKE.json). These measurements

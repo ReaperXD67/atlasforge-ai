@@ -1,6 +1,6 @@
 # HyperFrames composition brief
 
-Read [BRIEF.md](BRIEF.md), [brag-plan.md](brag-plan.md) and [script.txt](script.txt). These are the source of creative intent. Use the measured timing and compiled edit plan as the time source.
+Read [BRIEF.md](https://github.com/ReaperXD67/atlasforge-ai/blob/main/videos/biznex-the-yes-machine/BRIEF.md), [brag-plan.md](brag-plan.md) and [script.txt](https://github.com/ReaperXD67/atlasforge-ai/blob/main/videos/biznex-the-yes-machine/script.txt). These are the source of creative intent. Use the measured timing and compiled edit plan as the time source.
 
 - Project: `videos/biznex-the-yes-machine`; final `renders/final.mp4`.
 - 1080 × 1920, 30 fps; duration follows measured narration and end hold.
