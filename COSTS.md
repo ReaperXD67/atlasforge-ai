@@ -8,6 +8,7 @@ Provider prices and free tiers change. The values below are planning assumptions
 | Script | Gemini eligible free tier, then OpenRouter | $0 to a few cents |
 | Storyboard/metadata | deterministic local code | $0 |
 | Narration | OpenAI or Gemini; local fallback | typically low; provider/token dependent |
+| Expressive narration | opt-in isolated CosyVoice3 worker | local GPU time and electricity; no paid inference endpoint |
 | Images | Pexels or local card | $0 |
 | Music/SFX | project-generated waveforms | $0 |
 | Captions/edit/render | FFmpeg/NVENC | electricity only |
@@ -24,6 +25,13 @@ Current Gemini pricing lists Veo 3.1 Standard at $0.40/second, Fast at $0.10/sec
 The MiniMax package system uses model-dependent units and package pricing, so the configured `$0.30` estimate is deliberately conservative rather than an invoice promise. Review [MiniMax video pricing](https://platform.minimax.io/docs/guides/pricing-video) and update `minimax_estimated_usd_per_clip` for the plan actually purchased.
 
 ## Recommended modes
+
+The **6 November cinematic trial** downloaded about 5.4 GB of pinned CosyVoice model assets
+and used a separate Python/CUDA environment. Its six-take voice audition took 89.7 seconds,
+including model loading, with 3.51 GiB peak PyTorch allocation on the available RTX 4070.
+The two Wan character clips reused cached models. These measurements describe this workstation,
+not a hardware guarantee or a cost estimate for generated artwork. See the
+[runtime setup and evidence](docs/EXPRESSIVE_VOICE.md) before choosing this optional path.
 
 ### Minimum recurring cost
 

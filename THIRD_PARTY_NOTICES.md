@@ -31,7 +31,7 @@ checked on 6 November 2026. SHA-256 identifies the audited files:
 ```
 
 For an example of the actual notices, see the first project's
-[font directory](videos/biznex-two-paper-doors/assets/fonts).
+[font directory](https://github.com/ReaperXD67/atlasforge-ai/tree/main/videos/biznex-two-paper-doors/assets/fonts).
 
 ## GSAP
 
@@ -50,16 +50,33 @@ byte-for-byte, with SHA-256:
 c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280  gsap.min.js
 ```
 
-The shareable delivery ZIP contains MP4s, thumbnails, copy and captions, not the vendored
-GSAP implementation. Source redistribution retains its original banner and terms.
+The six-pilot viewing ZIP contains MP4s, thumbnails, copy and captions. The optional cinematic
+prepared-source ZIP also includes vendored GSAP, retaining its original banner and terms.
 
 ## Original artwork and audio
 
 Paper props, textures, desk scenes and SVG constructions are authored procedural assets.
 The project provenance files record no reused creator-reel footage, voice, music or script.
-Score and foley are generated locally by AtlasForge code; narration uses the configured
-Kokoro `af_heart` voice without reference-voice cloning. These statements describe the
+For the first six pilots, score and foley are generated locally by AtlasForge code;
+narration uses the configured Kokoro `af_heart` voice without reference-voice cloning. These statements describe the
 recorded inputs; they do not grant additional rights over Atomy trademarks or change a
-speech model's separate terms. See [upstream research](docs/UPSTREAM_RESEARCH.md) for model
+speech model's separate terms. See [upstream research](https://github.com/ReaperXD67/atlasforge-ai/blob/main/docs/UPSTREAM_RESEARCH.md) for model
 and tool decisions, and per-project `assets/audio/provenance.json` for the actual audio
 sources.
+
+## Optional expressive speech model
+
+The new hero voice experiment uses [CosyVoice 3](https://github.com/QwenAudio/CosyVoice)
+at commit `074ca6dc9e80a2f424f1f74b48bdd7d3fea531cc` and the
+[Fun-CosyVoice3-0.5B-2512 weights](https://huggingface.co/FunAudioLLM/Fun-CosyVoice3-0.5B-2512)
+at revision `29e01c4e8d000f4bcd70751be16fa94bf3d85a18`. Code and model card declare
+Apache-2.0. The source checkout retains its license and notices. Its Matcha-TTS
+submodule `dd9105b34bf2be2230f4aa1e4769fb586a3c824e` retains its MIT license.
+These licenses are separate from AtlasForge's MIT license.
+
+Model files and the isolated runtime are local-only, Git-ignored dependencies.
+The reference persona comes from original local Kokoro af_heart synthesis; no
+external person's recording or proprietary speech service was copied. The
+[expressive voice guide](docs/EXPRESSIVE_VOICE.md) records the exact revision,
+dependencies, hash verification, controls and measured limitations. A reference
+conditioned output is not a promise of exact speaker identity or emotion fidelity.

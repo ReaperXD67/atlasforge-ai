@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "reference_audio": "videos/biznex-second-question/assets/audio/voice-reference.wav",
+  "reference_provenance": "Original authorized local Kokoro af_heart synthesis; same SHA256 as initial audition reference",
+  "beats": [
+    {
+      "id": "beat-005",
+      "text": "Mira closed the sign-up page and opened a blank note.",
+      "instruction": "You are a helpful assistant. Speak calmly, as if remembering a small but important moment.<|endofprompt|>",
+      "seed": 1986,
+      "pause_after_ms": 300,
+      "caption_text": "Mira closed the signup page and opened a blank note."
+    }
+  ],
+  "pronunciations": {
+    "signup": "sign-up"
+  }
+}

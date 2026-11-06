@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "file": "voice-reference.wav",
+  "sha256": "45b687b4567ca160de01382212e4bd0860c75b163175650b1ee5b65add438da6",
+  "origin": "Original local Kokoro synthesis generated for this project",
+  "provider": "kokoro",
+  "voice": "af_heart",
+  "model": "hexgrad/Kokoro-82M",
+  "model_license": "Apache-2.0 per publisher model card",
+  "model_revision": "Not recorded at initial reference generation",
+  "source": "https://huggingface.co/hexgrad/Kokoro-82M",
+  "authorized_use": "User-authorized synthetic narrator reference; no human recording",
+  "duration_seconds": 14.175,
+  "sample_rate": 48000,
+  "channels": 1,
+  "transcript": "One sentence can change how you read a product label. What does the evidence actually show? For Atomy or any other brand, separate the product description from a promise. Check the current official source before you decide."
+}

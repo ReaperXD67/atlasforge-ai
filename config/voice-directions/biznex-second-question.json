@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "beats": [
+    {
+      "text": "She was one tap away.",
+      "emotion": "serious",
+      "delivery": "Please say a sentence in a very soft voice.",
+      "energy": 0.3,
+      "pace": 0.95,
+      "pause_after_ms": 300
+    },
+    {
+      "text": "A new account. A fresh start.",
+      "emotion": "reassuring",
+      "delivery": "Speak with gentle hope and a small smile.",
+      "energy": 0.48,
+      "pace": 1.02,
+      "pause_after_ms": 280
+    },
+    {
+      "text": "Then a smaller thought stopped her.",
+      "emotion": "serious",
+      "delivery": "Please say a sentence in a very soft voice.",
+      "energy": 0.3,
+      "pace": 0.97,
+      "pause_after_ms": 240
+    },
+    {
+      "text": "A fresh start... doing what?",
+      "emotion": "curious",
+      "delivery": "Ask a vulnerable question in a hushed voice, uncertain and thoughtful.",
+      "energy": 0.25,
+      "pace": 0.9,
+      "pause_after_ms": 620
+    },
+    {
+      "text": "This is a fictional scene.",
+      "emotion": "neutral",
+      "energy": 0.4,
+      "pace": 1.08,
+      "pause_after_ms": 200
+    },
+    {
+      "text": "Mira closed the signup page and opened a blank note.",
+      "emotion": "neutral",
+      "delivery": "Speak calmly, as if remembering a small but important moment.",
+      "energy": 0.4,
+      "pace": 1.0,
+      "pause_after_ms": 300
+    },
+    {
+      "text": "What do I need?",
+      "emotion": "curious",
+      "delivery": "Ask an honest, gentle question with curiosity.",
+      "energy": 0.4,
+      "pace": 0.95,
+      "pause_after_ms": 300
+    },
+    {
+      "text": "What will it cost?",
+      "emotion": "curious",
+      "delivery": "Ask a thoughtful question, clear and grounded.",
+      "energy": 0.42,
+      "pace": 0.95,
+      "pause_after_ms": 300
+    },
+    {
+      "text": "What am I agreeing to?",
+      "emotion": "curious",
+      "delivery": "Ask with calm seriousness and a little vulnerability.",
+      "energy": 0.4,
+      "pace": 0.95,
+      "pause_after_ms": 450
+    },
+    {
+      "text": "Atomy was the business she was researching.",
+      "emotion": "neutral",
+      "energy": 0.4,
+      "pace": 0.99,
+      "pause_after_ms": 220,
+      "seed": 1987
+    },
+    {
+      "text": "This time, she'd read the current local terms before deciding.",
+      "emotion": "serious",
+      "delivery": "Speak calmly and thoughtfully, with quiet confidence.",
+      "energy": 0.45,
+      "pace": 0.99,
+      "pause_after_ms": 350
+    },
+    {
+      "text": "She still wanted a new beginning.",
+      "emotion": "reassuring",
+      "delivery": "Speak warmly, with gentle hope.",
+      "energy": 0.45,
+      "pace": 0.98,
+      "pause_after_ms": 220
+    },
+    {
+      "text": "Now, she wanted to understand it.",
+      "emotion": "reassuring",
+      "delivery": "Speak with relief and quiet, growing confidence.",
+      "energy": 0.5,
+      "pace": 0.97,
+      "pause_after_ms": 380
+    },
+    {
+      "text": "Before the next tap... ask the second question.",
+      "emotion": "reassuring",
+      "delivery": "Please say a sentence in a very soft voice.",
+      "energy": 0.4,
+      "pace": 0.93,
+      "pause_after_ms": 0
+    }
+  ]
+}

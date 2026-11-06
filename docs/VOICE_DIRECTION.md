@@ -1,23 +1,32 @@
 # Voice direction and the local audio proof
 
+These CLI/provider workflows require a full repository checkout. The portable cinematic source bundle supplies prepared narration and separate `sources/REBUILD.md` instructions; it does not include the general narration CLI, legacy pilot inputs or these optional local profiles.
+
 Voice direction controls delivery without changing the approved transcript. Both
 `narrate` and `narrate-script` accept `--direction path/to/plan.json`. The example
-[plan](../config/voice-directions/biznex-evidence-first.json) separates spoken words
+[plan](https://github.com/ReaperXD67/atlasforge-ai/blob/main/config/voice-directions/biznex-evidence-first.json) separates spoken words
 from emotion, energy, pace, and pauses. A punctuation, case or word mismatch with
 the narration is rejected before synthesis; whitespace differences are allowed.
 
 | Provider | Applied controls | Report mode |
 | --- | --- | --- |
 | Kokoro | Configured voice; baseline speed × beat pace; explicit pauses | `pace_and_pauses_only` |
+| CosyVoice 3 (optional isolated worker) | Reference voice plus semantic instructions; explicit pauses | `reference_conditioned_semantic_instructions` |
 | OpenAI | Per-beat instructions and explicit pauses; requires an instruction-capable speech model | `per_beat_instructions` |
 | Chatterbox | Bounded exaggeration approximation; pitch-preserving beat pace; pauses | `numeric_prosody_approximation` |
 | Other configured providers | Plain approved transcript | `plain_transcript_fallback` |
 
-Kokoro ignores emotion and energy labels. The system does not claim that speed or
+Kokoro ignores emotion, energy and free-form `delivery` instructions. The system does not claim that speed or
 silence expresses the requested emotion. Provider selection and fallback are written
 to `narration.direction-report.json`; `semantic_emotion_supported` and
 `emotion_fidelity_verified` remain false for the local Kokoro proof. Chatterbox is
-retained for compatibility but its upstream is retired; see [research](UPSTREAM_RESEARCH.md).
+retained for compatibility but its upstream is retired; see [research](https://github.com/ReaperXD67/atlasforge-ai/blob/main/docs/UPSTREAM_RESEARCH.md).
+
+The optional CosyVoice path adds actual model instruction conditioning. It does not
+establish ElevenLabs parity, guaranteed emotion fidelity, or exact speaker identity.
+See [the isolated expressive voice workflow](EXPRESSIVE_VOICE.md) for its pinned
+dependencies, audition method and current measured results. `delivery` is an optional
+per-beat field; it remains separate from the exact spoken/caption transcript.
 
 ## Verified local proof · 6 November 2026
 
@@ -64,7 +73,7 @@ output/social/voice-proof/
 
 ## Reproduce with cached models
 
-Run from the repository root. The [local-only profile](../config/profiles/biznex-local-voice-proof.yaml)
+Run from the repository root. The [local-only profile](https://github.com/ReaperXD67/atlasforge-ai/blob/main/config/profiles/biznex-local-voice-proof.yaml)
 selects only Kokoro `af_heart` and CPU/int8 Whisper alignment. This requires the
 existing `local-tts` and `transcription` extras, FFmpeg, and cached Kokoro/Whisper
 assets. Offline mode deliberately fails if required model files are unavailable.
@@ -107,7 +116,7 @@ establish that the added `--direction` option reaches the new runtime correctly.
 
 ## First six pilot production audio
 
-The [first-six production manifest](../config/batches/biznex-first-six.production.json)
+The [first-six production manifest](https://github.com/ReaperXD67/atlasforge-ai/blob/main/config/batches/biznex-first-six.production.json)
 now points to six prepared projects with actual directed `af_heart` narration,
 measured captions, and original scored stereo mixes. Audio preparation and the
 source/story/packaging validators completed successfully on 6 November 2026.

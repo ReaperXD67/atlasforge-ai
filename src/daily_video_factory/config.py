@@ -107,6 +107,12 @@ class VoiceConfig(BaseModel):
     edge_caption_max_words: int = Field(default=12, ge=4, le=24)
     edge_caption_min_seconds: float = Field(default=3.0, ge=0.5, le=8.0)
     chatterbox_reference_audio: Path | None = None
+    cosyvoice_python: Path = Path("models/runtime/cosyvoice/Scripts/python.exe")
+    cosyvoice_upstream: Path = Path("models/upstream/CosyVoice")
+    cosyvoice_model: Path = Path("models/expressive/Fun-CosyVoice3-0.5B")
+    cosyvoice_reference_audio: Path | None = None
+    cosyvoice_reference_provenance: str = ""
+    cosyvoice_timeout_seconds: int = Field(default=1800, ge=60, le=7200)
     chatterbox_exaggeration: float = Field(default=0.68, ge=0.25, le=1.25)
     chatterbox_cfg_weight: float = Field(default=0.32, ge=0, le=1)
     chatterbox_temperature: float = Field(default=0.78, ge=0.2, le=1.5)

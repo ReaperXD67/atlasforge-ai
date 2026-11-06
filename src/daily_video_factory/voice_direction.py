@@ -17,6 +17,8 @@ class VoiceBeat(BaseModel):
     energy: float = Field(default=0.5, ge=0, le=1)
     pace: float = Field(default=1.0, ge=0.85, le=1.15)
     pause_after_ms: int = Field(default=180, ge=0, le=1500)
+    delivery: str = Field(default="", max_length=400)
+    seed: int = Field(default=1986, ge=0, lt=2**32)
 
     @field_validator("text")
     @classmethod
@@ -28,6 +30,7 @@ class VoiceBeat(BaseModel):
     def instruction(self) -> str:
         return (
             f"Delivery: {self.emotion}, energy {self.energy:.2f} on a 0 to 1 scale. "
+            f"{self.delivery.strip()} "
             f"Speak at approximately {self.pace:.2f} times your natural pace. "
             "Keep the same speaker identity. Speak only the supplied transcript, "
             "without reading these directions or adding words."

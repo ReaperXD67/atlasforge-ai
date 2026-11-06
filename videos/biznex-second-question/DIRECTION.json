@@ -1,0 +1,276 @@
+{
+  "schema_version": 1,
+  "title": "The Second Question \u2014 BizNex Stories",
+  "audio_master": "assets/audio/master.wav",
+  "shots": {
+    "s01": {
+      "mode": "phone",
+      "camera_from": [
+        1.02,
+        0,
+        0
+      ],
+      "camera_to": [
+        1.1,
+        -15,
+        15
+      ],
+      "heading": "A fresh|start?",
+      "button": "Create account",
+      "small": "One tap can wait."
+    },
+    "s02": {
+      "mode": "signup",
+      "camera_from": [
+        1,
+        0,
+        0
+      ],
+      "camera_to": [
+        1.02,
+        0,
+        10
+      ],
+      "hide_captions": true
+    },
+    "s03": {
+      "mode": "photo",
+      "camera_from": [
+        1.11,
+        12,
+        12
+      ],
+      "camera_to": [
+        1.03,
+        0,
+        0
+      ]
+    },
+    "s04": {
+      "mode": "photo",
+      "camera_from": [
+        1.04,
+        0,
+        0
+      ],
+      "camera_to": [
+        1.04,
+        0,
+        0
+      ],
+      "focus": {
+        "anchorX": 51,
+        "anchorY": 42,
+        "startZoom": 1.04,
+        "endZoom": 1.04,
+        "driftX": 0,
+        "driftY": 0
+      }
+    },
+    "s05": {
+      "mode": "photo",
+      "camera_from": [
+        1.02,
+        0,
+        0
+      ],
+      "camera_to": [
+        1.1,
+        -15,
+        15
+      ]
+    },
+    "s06": {
+      "mode": "thought",
+      "camera_from": [
+        1.04,
+        0,
+        0
+      ],
+      "camera_to": [
+        1.04,
+        0,
+        0
+      ],
+      "heading": "doing|what?",
+      "hide_captions": true
+    },
+    "s07": {
+      "mode": "photo",
+      "camera_from": [
+        1.08,
+        -32,
+        0
+      ],
+      "camera_to": [
+        1.08,
+        32,
+        0
+      ],
+      "disclosure": true
+    },
+    "s08": {
+      "mode": "phone",
+      "camera_from": [
+        1.04,
+        0,
+        0
+      ],
+      "camera_to": [
+        1.04,
+        0,
+        0
+      ],
+      "heading": "Not|quite yet.",
+      "button": "Back",
+      "small": "First, a question."
+    },
+    "s09": {
+      "mode": "notes",
+      "camera_from": [
+        1,
+        0,
+        0
+      ],
+      "camera_to": [
+        1.02,
+        0,
+        10
+      ]
+    },
+    "s10": {
+      "mode": "note-question",
+      "camera_from": [
+        1.02,
+        0,
+        0
+      ],
+      "camera_to": [
+        1.1,
+        -15,
+        15
+      ],
+      "heading": "What do|I need?",
+      "detail": "Start with your own reason.",
+      "hide_captions": true
+    },
+    "s11": {
+      "mode": "question",
+      "camera_from": [
+        1.08,
+        -32,
+        0
+      ],
+      "camera_to": [
+        1.08,
+        32,
+        0
+      ],
+      "heading": "What will|it cost?",
+      "detail": "Understand the full commitment.",
+      "hide_captions": true
+    },
+    "s12": {
+      "mode": "thought",
+      "camera_from": [
+        1.04,
+        0,
+        0
+      ],
+      "camera_to": [
+        1.04,
+        0,
+        0
+      ],
+      "heading": "What am I|agreeing to?",
+      "detail": "Read before you decide.",
+      "hide_captions": true,
+      "prefix": "BEFORE THE DECISION"
+    },
+    "s13": {
+      "mode": "photo",
+      "camera_from": [
+        1.11,
+        12,
+        12
+      ],
+      "camera_to": [
+        1.03,
+        0,
+        0
+      ],
+      "caption_y": 1160
+    },
+    "s14": {
+      "mode": "terms",
+      "camera_from": [
+        1.02,
+        0,
+        0
+      ],
+      "camera_to": [
+        1.1,
+        -15,
+        15
+      ]
+    },
+    "s15": {
+      "mode": "photo",
+      "camera_from": [
+        1.04,
+        0,
+        0
+      ],
+      "camera_to": [
+        1.04,
+        0,
+        0
+      ],
+      "caption_y": 1160
+    },
+    "s16": {
+      "mode": "photo",
+      "camera_from": [
+        1.11,
+        12,
+        12
+      ],
+      "camera_to": [
+        1.03,
+        0,
+        0
+      ]
+    },
+    "s17": {
+      "mode": "phone",
+      "camera_from": [
+        1.02,
+        0,
+        0
+      ],
+      "camera_to": [
+        1.1,
+        -15,
+        15
+      ],
+      "heading": "Before|the tap.",
+      "button": "Understand first",
+      "small": "The second question matters."
+    },
+    "s18": {
+      "mode": "ending",
+      "camera_from": [
+        1.04,
+        0,
+        0
+      ],
+      "camera_to": [
+        1.04,
+        0,
+        0
+      ],
+      "hide_captions": true
+    }
+  },
+  "review_state": "expressive candidate"
+}

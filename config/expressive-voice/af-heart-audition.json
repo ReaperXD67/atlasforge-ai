@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "reference_audio": "videos/biznex-second-question/assets/audio/voice-reference.wav",
+  "reference_provenance": "Original local Kokoro af_heart synthetic narration; no human voice impersonation",
+  "beats": [
+    {
+      "id": "01-suspended-opening",
+      "text": "I thought saying yes would make me brave.",
+      "instruction": "You are a helpful assistant. Please say a sentence in a very soft voice.<|endofprompt|>",
+      "intention": "An intimate, uncertain admission, almost whispered.",
+      "pause_after_ms": 500,
+      "seed": 1986
+    },
+    {
+      "id": "02-vulnerable-question",
+      "text": "But what if the question I was afraid to ask was the one that mattered?",
+      "instruction": "You are a helpful assistant. 请非常伤心地说一句话。<|endofprompt|>",
+      "intention": "A vulnerable question; evaluate sadness and speaker continuity by listening.",
+      "pause_after_ms": 650,
+      "seed": 1986
+    },
+    {
+      "id": "03-warm-resolution",
+      "text": "So I asked. And for the first time, the choice felt like mine.",
+      "instruction": "You are a helpful assistant. 请非常开心地说一句话。<|endofprompt|>",
+      "intention": "Relief and a smile; evaluate whether the supported happy instruction is too strong.",
+      "pause_after_ms": 0,
+      "seed": 1986
+    }
+  ]
+}

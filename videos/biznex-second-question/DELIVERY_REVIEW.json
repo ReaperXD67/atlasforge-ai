@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "video_sha256": "511bb20e58f0b7497899f22e400af553d0c54b8338ede961f1cf88d5578945b6",
+  "evidence_source_sha256": {
+    "audio": "5f6ac35a564a724450cb1293f71de2283a4ec371a2142c1f8950b6413c6436a1",
+    "mix_balance": "834f9b1b8fed5bc0054ba879814cded0e43c4aec0b9c187e8da989cad64c981f",
+    "visual_samples": "acd6a737dd98f9376b448c520d779e6a0ab2d29f44125941b91c06237d927dbc",
+    "pixel_comparison": "9a405b7199ab0b99570f940fc682ae1f74ea8583d509da20efd5b1ef01fc50ed"
+  },
+  "audio": {
+    "schema_version": 1,
+    "video_sha256": "511bb20e58f0b7497899f22e400af553d0c54b8338ede961f1cf88d5578945b6",
+    "encoded_audio_duration": 40.766666666666666,
+    "master_duration": 40.766666666666666,
+    "narration_duration": 40.76,
+    "sample_rate": 48000,
+    "channels": 2,
+    "integrated_lufs": -16.01,
+    "true_peak_dbtp": -3.65,
+    "loudness_range_lu": 2.2,
+    "sample_peak": 0.656890869140625,
+    "clipped_sample_fraction": 0.0,
+    "all_samples_finite": true,
+    "encoded_vs_master": {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998822138157825,
+      "linear_gain": 0.9982262328413731,
+      "normalized_residual_rms": 0.015348748179612171
+    },
+    "master_vs_voice": {
+      "lag_seconds": 0.0,
+      "correlation": 0.9755503973882781,
+      "linear_gain": 0.7395776010538546,
+      "normalized_residual_rms": 0.2197756474756839
+    },
+    "master_sha_matches_receipt": true,
+    "voice_sha_matches_receipt": true,
+    "subjective_listening_verified": false,
+    "voice_emotion_verified": false,
+    "asr_pass_count": 14,
+    "asr_total": 14,
+    "asr_mismatches": [],
+    "technical_passed": true,
+    "asr_all_passed": true
+  },
+  "mix_balance": {
+    "compiled_plan_sha256": "daef19019da1684b827e4811169de8c37d45e7618121f071020067190dfb3e0d",
+    "master_sha256": "36bc859da88183de7ea99e21c6200d0bbbd7ae0a7e7c6298ab0381c332560d81",
+    "last_line_voice_to_bed": {
+      "voice_rms": 0.07640795409679413,
+      "bed_rms": 0.015983479097485542,
+      "voice_over_bed_db": 13.589345074361532
+    },
+    "tap_word_voice_to_bed": {
+      "voice_rms": 0.08979447931051254,
+      "bed_rms": 0.012157128192484379,
+      "voice_over_bed_db": 17.368372805214037
+    },
+    "measurement_basis": "Decoded original sources with exact compiled gain envelopes, before common linear master gain",
+    "subjective_listening_verified": false
+  },
+  "visual_samples": {
+    "schema_version": 1,
+    "status": "no_blocking_visual_defects_in_reviewed_samples",
+    "run_id": "87c9a15597d94848a80990822726de05",
+    "video_sha256": "511bb20e58f0b7497899f22e400af553d0c54b8338ede961f1cf88d5578945b6",
+    "review_scope": {
+      "unique_decoded_frames": 85,
+      "shot_midpoints": 18,
+      "cut_before_boundary_after_samples": 51,
+      "motion_and_dissolve_handle_samples": 14,
+      "opening_and_ending_samples": 5,
+      "contact_sheets_visually_inspected": 11,
+      "full_speed_playback_reviewed": false,
+      "listened_to_audio": false,
+      "independent_audience_performance_validation": false
+    },
+    "resolved_previous_defects": [
+      {
+        "frames": [
+          142,
+          143,
+          583,
+          584,
+          979,
+          980
+        ],
+        "finding": "The incoming room, cost-phone and dawn shots begin with their intended camera pose. No one-frame base-scale reset appears in the inspected cut pairs."
+      },
+      {
+        "frames": [
+          915,
+          916,
+          921,
+          922,
+          923,
+          927,
+          928
+        ],
+        "finding": "The morning dissolve begins on the terms screen, advances through blended frames and resolves to the morning scene. The previous fully opaque morning flash at frame916 is absent."
+      }
+    ],
+    "observations": [
+      "No blank or unintended black frames in the inspected midpoint, boundary or bookend samples.",
+      "No duplicate caption stacks; primary headings and speech captions are legible at the 270px-wide review scale and do not cover eyes or action buttons.",
+      "The 18 sampled shots contain distinct phone, account form, room, character, mirror, note, source-screen and morning compositions with a completed question payoff.",
+      "Night facial movement and morning writing-hand movement are visible across the decoded samples; no obvious anatomy warping appears in those samples.",
+      "Small secondary interface labels and brand subcopy remain less prominent than primary content; they are not necessary to understand the spoken story."
+    ],
+    "blocking_findings": [],
+    "mechanical_comparison": {
+      "baseline_scene_events": 0,
+      "candidate_scene_events": 7,
+      "baseline_low_change_sample_fraction": 0.8995433789954338,
+      "candidate_low_change_sample_fraction": 0.44,
+      "limitation": "The same pixel-change method includes camera, subject, cuts and captions. It measures neither creative quality nor retention; no reach or virality conclusion is supported."
+    }
+  },
+  "pixel_comparison": {
+    "schema_version": 1,
+    "status": "measured_comparison",
+    "checked_at": "2026-11-06T15:59:02.322987+00:00",
+    "ffmpeg_version": "ffmpeg version 9.0-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+    "method": {
+      "scene_threshold": 0.3,
+      "scene_size": [
+        270,
+        480
+      ],
+      "motion_size": [
+        90,
+        160
+      ],
+      "sample_fps": 8,
+      "low_change_luma_threshold": 1.0,
+      "luma_units": "mean absolute difference on an unsigned 8-bit grayscale scale (0..255)",
+      "region": "full frame, including captions and overlays",
+      "limitations": "Scene events are pixel changes, not human-labeled cuts. Luma change includes camera motion, subject movement, edits and text. Small motion can be missed. Neither metric measures storytelling, naturalness, retention or audience reach. No pass/fail, winner or creative quality score is assigned."
+    },
+    "baseline": {
+      "filename": "final.mp4",
+      "sha256": "2fee8da017e175ebccba8be641868642fad4c2d664275f3d704fd0c2e6c79212",
+      "container_seconds": 27.5,
+      "video_stream": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "duration": "27.500000",
+        "nb_frames": "825"
+      },
+      "scene_change_events_seconds": [],
+      "scene_change_event_count": 0,
+      "scene_change_events_per_minute": 0.0,
+      "luma_change": {
+        "adjacent_sample_pairs": 219,
+        "median": 0.06145833333333333,
+        "p90": 0.9847361111111115,
+        "maximum": 4.230763888888889,
+        "fraction_at_or_below_low_change_threshold": 0.8995433789954338
+      }
+    },
+    "candidate": {
+      "filename": "final.mp4",
+      "sha256": "511bb20e58f0b7497899f22e400af553d0c54b8338ede961f1cf88d5578945b6",
+      "container_seconds": 40.766667,
+      "video_stream": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "duration": "40.766667",
+        "nb_frames": "1223"
+      },
+      "scene_change_events_seconds": [
+        3.333333,
+        4.733333,
+        16.066667,
+        19.433333,
+        25.4,
+        35.866667,
+        38.733333
+      ],
+      "scene_change_event_count": 7,
+      "scene_change_events_per_minute": 10.3025,
+      "luma_change": {
+        "adjacent_sample_pairs": 325,
+        "median": 1.2741666666666667,
+        "p90": 5.511958333333339,
+        "maximum": 194.88590277777777,
+        "fraction_at_or_below_low_change_threshold": 0.44
+      }
+    }
+  }
+}

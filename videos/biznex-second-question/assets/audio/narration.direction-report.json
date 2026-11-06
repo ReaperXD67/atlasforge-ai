@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "requested_provider_order": [
+    "cosyvoice3"
+  ],
+  "selected_provider": "cosyvoice3",
+  "fallback_used": false,
+  "direction_requested": true,
+  "direction_applied": true,
+  "direction_mode": "reference_conditioned_semantic_instructions",
+  "semantic_emotion_supported": true,
+  "emotion_fidelity_verified": false,
+  "duration_seconds": 40.76,
+  "direction": {
+    "schema_version": 1,
+    "beats": [
+      {
+        "text": "She was one tap away.",
+        "emotion": "serious",
+        "energy": 0.3,
+        "pace": 0.95,
+        "pause_after_ms": 300,
+        "delivery": "Please say a sentence in a very soft voice.",
+        "seed": 1986
+      },
+      {
+        "text": "A new account. A fresh start.",
+        "emotion": "reassuring",
+        "energy": 0.48,
+        "pace": 1.02,
+        "pause_after_ms": 280,
+        "delivery": "Speak with gentle hope and a small smile.",
+        "seed": 1986
+      },
+      {
+        "text": "Then a smaller thought stopped her.",
+        "emotion": "serious",
+        "energy": 0.3,
+        "pace": 0.97,
+        "pause_after_ms": 240,
+        "delivery": "Please say a sentence in a very soft voice.",
+        "seed": 1986
+      },
+      {
+        "text": "A fresh start... doing what?",
+        "emotion": "curious",
+        "energy": 0.25,
+        "pace": 0.9,
+        "pause_after_ms": 620,
+        "delivery": "Ask a vulnerable question in a hushed voice, uncertain and thoughtful.",
+        "seed": 1986
+      },
+      {
+        "text": "This is a fictional scene.",
+        "emotion": "neutral",
+        "energy": 0.4,
+        "pace": 1.08,
+        "pause_after_ms": 200,
+        "delivery": "",
+        "seed": 1986
+      },
+      {
+        "text": "Mira closed the signup page and opened a blank note.",
+        "emotion": "neutral",
+        "energy": 0.4,
+        "pace": 1.0,
+        "pause_after_ms": 300,
+        "delivery": "Speak calmly, as if remembering a small but important moment.",
+        "seed": 1986
+      },
+      {
+        "text": "What do I need?",
+        "emotion": "curious",
+        "energy": 0.4,
+        "pace": 0.95,
+        "pause_after_ms": 300,
+        "delivery": "Ask an honest, gentle question with curiosity.",
+        "seed": 1986
+      },
+      {
+        "text": "What will it cost?",
+        "emotion": "curious",
+        "energy": 0.42,
+        "pace": 0.95,
+        "pause_after_ms": 300,
+        "delivery": "Ask a thoughtful question, clear and grounded.",
+        "seed": 1986
+      },
+      {
+        "text": "What am I agreeing to?",
+        "emotion": "curious",
+        "energy": 0.4,
+        "pace": 0.95,
+        "pause_after_ms": 450,
+        "delivery": "Ask with calm seriousness and a little vulnerability.",
+        "seed": 1986
+      },
+      {
+        "text": "Atomy was the business she was researching.",
+        "emotion": "neutral",
+        "energy": 0.4,
+        "pace": 0.99,
+        "pause_after_ms": 220,
+        "delivery": "",
+        "seed": 1987
+      },
+      {
+        "text": "This time, she'd read the current local terms before deciding.",
+        "emotion": "serious",
+        "energy": 0.45,
+        "pace": 0.99,
+        "pause_after_ms": 350,
+        "delivery": "Speak calmly and thoughtfully, with quiet confidence.",
+        "seed": 1986
+      },
+      {
+        "text": "She still wanted a new beginning.",
+        "emotion": "reassuring",
+        "energy": 0.45,
+        "pace": 0.98,
+        "pause_after_ms": 220,
+        "delivery": "Speak warmly, with gentle hope.",
+        "seed": 1986
+      },
+      {
+        "text": "Now, she wanted to understand it.",
+        "emotion": "reassuring",
+        "energy": 0.5,
+        "pace": 0.97,
+        "pause_after_ms": 380,
+        "delivery": "Speak with relief and quiet, growing confidence.",
+        "seed": 1986
+      },
+      {
+        "text": "Before the next tap... ask the second question.",
+        "emotion": "reassuring",
+        "energy": 0.4,
+        "pace": 0.93,
+        "pause_after_ms": 0,
+        "delivery": "Please say a sentence in a very soft voice.",
+        "seed": 1986
+      }
+    ]
+  },
+  "generation_method": "Selected verified takes; see performance source receipts"
+}

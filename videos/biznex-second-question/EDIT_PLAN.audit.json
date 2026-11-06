@@ -1,0 +1,33 @@
+{
+  "audience_performance_predicted": false,
+  "findings": [],
+  "metrics": {
+    "audio_roles": [
+      "ambience",
+      "foley",
+      "music",
+      "voice"
+    ],
+    "caption_word_count": 87,
+    "coverage_frames": 1223,
+    "declared_variety": {
+      "asset": 8,
+      "camera_moves": 4,
+      "framing": 5,
+      "layout": 12,
+      "location": 2,
+      "subject": 8,
+      "visual_kind": 5
+    },
+    "dominant_layout_fraction": 0.1929681112019624,
+    "longest_declared_static_seconds": 2.033333333333333,
+    "longest_layout_run_seconds": 5.333333333333333,
+    "shot_count": 18,
+    "typography_fraction": 0.035977105478331974
+  },
+  "passed": true,
+  "rendered_motion_measured": false,
+  "schema_version": 1,
+  "semantic_accuracy_automatically_verified": false,
+  "visual_quality_automatically_verified": false
+}

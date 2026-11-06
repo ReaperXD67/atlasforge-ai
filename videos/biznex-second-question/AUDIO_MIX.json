@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "sample_rate": 48000,
+  "channels": 2,
+  "compiled_plan_sha256": "daef19019da1684b827e4811169de8c37d45e7618121f071020067190dfb3e0d",
+  "samples": 1956800,
+  "duration_seconds": 40.766666666666666,
+  "sources": [
+    {
+      "id": "voice",
+      "role": "voice",
+      "asset": "assets/audio/narration.wav",
+      "sha256": "60c3aefa827d175881b9136b9eccdfe1dc78c3bd9a9d1086108df18a5e0500ea",
+      "start_frame": 0,
+      "end_frame": 1223
+    },
+    {
+      "id": "score",
+      "role": "music",
+      "asset": "assets/audio/hiraeth.mp3",
+      "sha256": "f790c7d53b8d802981ff7cdd8c59e22cdfe103ea66aba296c6cf1a65fe7fcf01",
+      "start_frame": 0,
+      "end_frame": 1223
+    },
+    {
+      "id": "rain",
+      "role": "ambience",
+      "asset": "assets/audio/rain.wav",
+      "sha256": "0bb295dd7695c73bfb33c057c451c46e426dcbda2fbf85a0b6968616ae35f73c",
+      "start_frame": 0,
+      "end_frame": 922
+    },
+    {
+      "id": "open-note",
+      "role": "foley",
+      "asset": "assets/audio/click.wav",
+      "sha256": "941a4c82321a72d56eedb469d08d4ef1e27355c947e45e698e83617ed17d1293",
+      "start_frame": 482,
+      "end_frame": 488
+    },
+    {
+      "id": "turn-back",
+      "role": "foley",
+      "asset": "assets/audio/click.wav",
+      "sha256": "941a4c82321a72d56eedb469d08d4ef1e27355c947e45e698e83617ed17d1293",
+      "start_frame": 432,
+      "end_frame": 438
+    }
+  ],
+  "before_normalization": {
+    "input_i": "-16.39",
+    "input_tp": "-3.98",
+    "input_lra": "2.10",
+    "input_thresh": "-26.65",
+    "output_i": "-15.99",
+    "output_tp": "-3.38",
+    "output_lra": "2.10",
+    "output_thresh": "-26.23",
+    "normalization_type": "dynamic",
+    "target_offset": "-0.01"
+  },
+  "normalization": {
+    "input_i": "-16.31",
+    "input_tp": "-4.01",
+    "input_lra": "2.20",
+    "input_thresh": "-26.56",
+    "output_i": "-15.92",
+    "output_tp": "-3.62",
+    "output_lra": "2.10",
+    "output_thresh": "-26.17",
+    "normalization_type": "linear",
+    "target_offset": "-0.08"
+  },
+  "master_sha256": "36bc859da88183de7ea99e21c6200d0bbbd7ae0a7e7c6298ab0381c332560d81",
+  "subjective_listening_verified": false,
+  "voice_emotion_verified": false
+}

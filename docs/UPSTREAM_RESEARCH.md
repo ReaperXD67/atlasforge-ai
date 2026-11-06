@@ -4,6 +4,12 @@ Inspected **6 November 2026**. This record distinguishes upstream capabilities,
 our implementation decisions, and results that still need audience or listening tests.
 No proprietary ElevenLabs code, voice, account, or model was reverse engineered.
 
+The subsequent cinematic upgrade **adopted and ran CosyVoice3** in an isolated local
+runtime. It combines the original synthetic `af_heart` reference with per-beat delivery
+instructions. See the [current voice comparison, exact licenses and measured runs](EXPRESSIVE_VOICE.md)
+and [editing research and reused HyperFrames primitives](CINEMATIC_EDIT_PLANS.md).
+The table below records the other evaluated options; none was substituted for the selected model.
+
 ## Decisions and provenance
 
 | Source and inspected revision | License and maintenance evidence | Fit and decision |
@@ -34,6 +40,9 @@ never inserted into the spoken text or captions.
 - Kokoro retains the configured voice, multiplies its baseline speed by each beat's
   pace, and inserts the requested pauses. Its report explicitly lists emotion and
   energy as ignored; this controls rhythm, not semantic emotion.
+- The opt-in CosyVoice3 worker uses a pinned reference waveform, model and instruction
+  per beat. It records ignored numeric controls, supports repeatable seed selection,
+  and rejects stale or mismatched take evidence when assembling pronunciation repairs.
 - Other providers receive the approved plain transcript. The report says that
   direction was not applied; fallback never implies equivalent expression.
 - All narration writes `narration.direction-report.json` with selected provider,
@@ -43,9 +52,11 @@ never inserted into the spoken text or captions.
   oversized single token fails explicitly. Failed providers cannot leave stale word
   timestamps that are silently reused for a different voice.
 
-This implementation uses original project code and existing dependencies. The
-research informed integration choices; no upstream skill, code, asset or model was
-vendored. Existing provider and voice settings remain valid.
+The earlier adapter changes used original project code and existing dependencies.
+The cinematic upgrade adds a separately installed CosyVoice runtime and pinned weights
+outside Git, plus attributed HyperFrames camera and match-cut patterns. Their costs,
+licenses and provenance are documented in the linked decisions. Existing default
+provider and voice settings remain valid.
 
 ## Use a directed narration plan
 
@@ -89,3 +100,16 @@ GPU memory and cost per finished minute. The [local voice proof](VOICE_DIRECTION
 uses the existing `af_heart` narrator. Retain the old narrator unless the new one
 improves that comparison. Then compare retention on original published episodes;
 voices, effects and repository popularity cannot by themselves establish reach.
+
+## Follow-up: actual reference-conditioned emotion trial
+
+The later hero-video request expanded the local trial to
+[CosyVoice 3, IndexTTS2 and Qwen3-TTS](EXPRESSIVE_VOICE.md). CosyVoice 3 was selected
+for its Apache-2.0 code/weights and combined reference-voice/instruction interface.
+The guide records current pins, alternative license constraints, the isolated CUDA
+runtime, six real neutral/directed audition takes and the completed 40.760-second
+hero narration. Three directed audition takes and all 14 selected hero takes passed
+independent ASR comparison; rejected pronunciation takes were retained and repaired.
+This opt-in provider leaves the default Kokoro narrator and published pilots intact.
+Measured speech generation is established; subjective emotion fidelity, exact speaker
+identity, ElevenLabs parity and retention improvements are not claimed.

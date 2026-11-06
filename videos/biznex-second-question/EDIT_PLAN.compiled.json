@@ -1,0 +1,2241 @@
+{
+  "audio": [
+    {
+      "asset": "assets/audio/narration.wav",
+      "duck_attack_frames": 3,
+      "duck_db": null,
+      "duck_release_frames": 9,
+      "duration_frames": 1223,
+      "end_frame": 1223,
+      "fade_in_frames": 0,
+      "fade_out_frames": 0,
+      "gain_db": 0.0,
+      "gain_envelope": [
+        {
+          "frame": 0,
+          "gain_db": 0.0
+        },
+        {
+          "frame": 1223,
+          "gain_db": 0.0
+        }
+      ],
+      "id": "voice",
+      "role": "voice",
+      "source_start_frame": 0,
+      "start_frame": 0
+    },
+    {
+      "asset": "assets/audio/hiraeth.mp3",
+      "duck_attack_frames": 3,
+      "duck_db": -10.0,
+      "duck_release_frames": 9,
+      "duration_frames": 1223,
+      "end_frame": 1223,
+      "fade_in_frames": 30,
+      "fade_out_frames": 45,
+      "gain_db": -10.0,
+      "gain_envelope": [
+        {
+          "frame": 0,
+          "gain_db": -96
+        },
+        {
+          "frame": 4.666666666666667,
+          "gain_db": -96.0
+        },
+        {
+          "frame": 30,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 82,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 91,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 97,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 100,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 162,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 171,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 178,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 181,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 192,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 201,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 207,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 210,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 325,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 334,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 336,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 339,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 353,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 362,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 380,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 383,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 417,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 426,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 429,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 432,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 533,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 542,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 545,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 548,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 570,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 579,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 580,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 583,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 605,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 614,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 623,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 626,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 665,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 674,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 680,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 683,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 743,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 752,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 759,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 762,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 895,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 904,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 919,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 922,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 965,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 974,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 976,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 979,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 990,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 999,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 1009,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 1012,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 1059,
+          "gain_db": -20.0
+        },
+        {
+          "frame": 1068,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 1070,
+          "gain_db": -10.0
+        },
+        {
+          "frame": 1073,
+          "gain_db": -13.0
+        },
+        {
+          "frame": 1076,
+          "gain_db": -26.0
+        },
+        {
+          "frame": 1137,
+          "gain_db": -26.0
+        },
+        {
+          "frame": 1146,
+          "gain_db": -16.0
+        },
+        {
+          "frame": 1159,
+          "gain_db": -16.0
+        },
+        {
+          "frame": 1162,
+          "gain_db": -26.0
+        },
+        {
+          "frame": 1178,
+          "gain_db": -26.0
+        },
+        {
+          "frame": 1212,
+          "gain_db": -94.0
+        },
+        {
+          "frame": 1214.25,
+          "gain_db": -96.0
+        },
+        {
+          "frame": 1221,
+          "gain_db": -96
+        },
+        {
+          "frame": 1223,
+          "gain_db": -96
+        }
+      ],
+      "gain_keyframes": [
+        {
+          "frame": 0,
+          "offset_db": 0.0,
+          "voice_anchor": {
+            "frame": 0,
+            "locator": {
+              "boundary": "start",
+              "edge": "start",
+              "offset_frames": 0
+            },
+            "measured_seconds": 0.0,
+            "word_indices": []
+          }
+        },
+        {
+          "frame": 1070,
+          "offset_db": 0.0,
+          "voice_anchor": {
+            "frame": 1070,
+            "locator": {
+              "edge": "start",
+              "offset_frames": -6,
+              "phrase": "Before the next tap"
+            },
+            "measured_seconds": 35.88,
+            "word_indices": [
+              79,
+              80,
+              81,
+              82
+            ]
+          }
+        },
+        {
+          "frame": 1076,
+          "offset_db": -6.0,
+          "voice_anchor": {
+            "frame": 1076,
+            "locator": {
+              "edge": "start",
+              "offset_frames": 0,
+              "phrase": "Before the next tap"
+            },
+            "measured_seconds": 35.88,
+            "word_indices": [
+              79,
+              80,
+              81,
+              82
+            ]
+          }
+        },
+        {
+          "frame": 1223,
+          "offset_db": -6.0,
+          "voice_anchor": {
+            "frame": 1223,
+            "locator": {
+              "boundary": "end",
+              "edge": "start",
+              "offset_frames": 0
+            },
+            "measured_seconds": 40.766666666666666,
+            "word_indices": []
+          }
+        }
+      ],
+      "id": "score",
+      "role": "music",
+      "source_start_frame": 2040,
+      "start_frame": 0
+    },
+    {
+      "asset": "assets/audio/rain.wav",
+      "duck_attack_frames": 3,
+      "duck_db": -3.0,
+      "duck_release_frames": 9,
+      "duration_frames": 922,
+      "end_frame": 922,
+      "fade_in_frames": 12,
+      "fade_out_frames": 24,
+      "gain_db": -24.0,
+      "gain_envelope": [
+        {
+          "frame": 0,
+          "gain_db": -96
+        },
+        {
+          "frame": 12,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 82,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 91,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 97,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 100,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 162,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 171,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 178,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 181,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 192,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 201,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 207,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 210,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 325,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 334,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 336,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 339,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 353,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 362,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 380,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 383,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 417,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 426,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 429,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 432,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 533,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 542,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 545,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 548,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 570,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 579,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 580,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 583,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 605,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 614,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 623,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 626,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 665,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 674,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 680,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 683,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 743,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 752,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 759,
+          "gain_db": -24.0
+        },
+        {
+          "frame": 762,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 895,
+          "gain_db": -27.0
+        },
+        {
+          "frame": 898,
+          "gain_db": -26.0
+        },
+        {
+          "frame": 904,
+          "gain_db": -46.5
+        },
+        {
+          "frame": 919,
+          "gain_db": -96
+        },
+        {
+          "frame": 922,
+          "gain_db": -96
+        }
+      ],
+      "id": "rain",
+      "role": "ambience",
+      "source_start_frame": 0,
+      "start_frame": 0
+    },
+    {
+      "asset": "assets/audio/click.wav",
+      "duck_attack_frames": 3,
+      "duck_db": null,
+      "duck_release_frames": 9,
+      "duration_frames": 6,
+      "end_frame": 488,
+      "fade_in_frames": 0,
+      "fade_out_frames": 2,
+      "gain_db": -18.0,
+      "gain_envelope": [
+        {
+          "frame": 482,
+          "gain_db": -18.0
+        },
+        {
+          "frame": 486,
+          "gain_db": -18.0
+        },
+        {
+          "frame": 488,
+          "gain_db": -96
+        }
+      ],
+      "id": "open-note",
+      "role": "foley",
+      "source_start_frame": 0,
+      "start_frame": 482
+    },
+    {
+      "asset": "assets/audio/click.wav",
+      "duck_attack_frames": 3,
+      "duck_db": null,
+      "duck_release_frames": 9,
+      "duration_frames": 6,
+      "end_frame": 438,
+      "fade_in_frames": 0,
+      "fade_out_frames": 2,
+      "gain_db": -18.0,
+      "gain_envelope": [
+        {
+          "frame": 432,
+          "gain_db": -18.0
+        },
+        {
+          "frame": 436,
+          "gain_db": -18.0
+        },
+        {
+          "frame": 438,
+          "gain_db": -96
+        }
+      ],
+      "id": "turn-back",
+      "role": "foley",
+      "source_start_frame": 0,
+      "start_frame": 432
+    }
+  ],
+  "captions": [
+    {
+      "end_frame": 69,
+      "id": "caption-001",
+      "start_frame": 0,
+      "text": "She was one tap",
+      "words": [
+        {
+          "end_frame": 10,
+          "index": 0,
+          "start_frame": 0,
+          "text": "She"
+        },
+        {
+          "end_frame": 23,
+          "index": 1,
+          "start_frame": 10,
+          "text": "was"
+        },
+        {
+          "end_frame": 54,
+          "index": 2,
+          "start_frame": 22,
+          "text": "one"
+        },
+        {
+          "end_frame": 69,
+          "index": 3,
+          "start_frame": 54,
+          "text": "tap"
+        }
+      ]
+    },
+    {
+      "end_frame": 85,
+      "id": "caption-002",
+      "start_frame": 69,
+      "text": "away.",
+      "words": [
+        {
+          "end_frame": 82,
+          "index": 4,
+          "start_frame": 69,
+          "text": "away."
+        }
+      ]
+    },
+    {
+      "end_frame": 135,
+      "id": "caption-003",
+      "start_frame": 100,
+      "text": "A new account.",
+      "words": [
+        {
+          "end_frame": 114,
+          "index": 5,
+          "start_frame": 100,
+          "text": "A"
+        },
+        {
+          "end_frame": 119,
+          "index": 6,
+          "start_frame": 113,
+          "text": "new"
+        },
+        {
+          "end_frame": 132,
+          "index": 7,
+          "start_frame": 118,
+          "text": "account."
+        }
+      ]
+    },
+    {
+      "end_frame": 165,
+      "id": "caption-004",
+      "start_frame": 142,
+      "text": "A fresh start.",
+      "words": [
+        {
+          "end_frame": 144,
+          "index": 8,
+          "start_frame": 142,
+          "text": "A"
+        },
+        {
+          "end_frame": 150,
+          "index": 9,
+          "start_frame": 144,
+          "text": "fresh"
+        },
+        {
+          "end_frame": 162,
+          "index": 10,
+          "start_frame": 150,
+          "text": "start."
+        }
+      ]
+    },
+    {
+      "end_frame": 195,
+      "id": "caption-005",
+      "start_frame": 181,
+      "text": "Then",
+      "words": [
+        {
+          "end_frame": 192,
+          "index": 11,
+          "start_frame": 181,
+          "text": "Then"
+        }
+      ]
+    },
+    {
+      "end_frame": 271,
+      "id": "caption-006",
+      "start_frame": 210,
+      "text": "a smaller thought stopped",
+      "words": [
+        {
+          "end_frame": 213,
+          "index": 12,
+          "start_frame": 210,
+          "text": "a"
+        },
+        {
+          "end_frame": 230,
+          "index": 13,
+          "start_frame": 212,
+          "text": "smaller"
+        },
+        {
+          "end_frame": 245,
+          "index": 14,
+          "start_frame": 229,
+          "text": "thought"
+        },
+        {
+          "end_frame": 271,
+          "index": 15,
+          "start_frame": 245,
+          "text": "stopped"
+        }
+      ]
+    },
+    {
+      "end_frame": 284,
+      "id": "caption-007",
+      "start_frame": 271,
+      "text": "her.",
+      "words": [
+        {
+          "end_frame": 281,
+          "index": 16,
+          "start_frame": 271,
+          "text": "her."
+        }
+      ]
+    },
+    {
+      "end_frame": 328,
+      "id": "caption-008",
+      "start_frame": 293,
+      "text": "A fresh start...",
+      "words": [
+        {
+          "end_frame": 305,
+          "index": 17,
+          "start_frame": 293,
+          "text": "A"
+        },
+        {
+          "end_frame": 311,
+          "index": 18,
+          "start_frame": 304,
+          "text": "fresh"
+        },
+        {
+          "end_frame": 325,
+          "index": 19,
+          "start_frame": 310,
+          "text": "start..."
+        }
+      ]
+    },
+    {
+      "end_frame": 356,
+      "id": "caption-009",
+      "start_frame": 339,
+      "text": "doing what?",
+      "words": [
+        {
+          "end_frame": 344,
+          "index": 20,
+          "start_frame": 339,
+          "text": "doing"
+        },
+        {
+          "end_frame": 353,
+          "index": 21,
+          "start_frame": 344,
+          "text": "what?"
+        }
+      ]
+    },
+    {
+      "end_frame": 405,
+      "id": "caption-010",
+      "start_frame": 383,
+      "text": "This is a fictional",
+      "words": [
+        {
+          "end_frame": 388,
+          "index": 22,
+          "start_frame": 383,
+          "text": "This"
+        },
+        {
+          "end_frame": 392,
+          "index": 23,
+          "start_frame": 388,
+          "text": "is"
+        },
+        {
+          "end_frame": 396,
+          "index": 24,
+          "start_frame": 391,
+          "text": "a"
+        },
+        {
+          "end_frame": 405,
+          "index": 25,
+          "start_frame": 396,
+          "text": "fictional"
+        }
+      ]
+    },
+    {
+      "end_frame": 420,
+      "id": "caption-011",
+      "start_frame": 405,
+      "text": "scene.",
+      "words": [
+        {
+          "end_frame": 417,
+          "index": 26,
+          "start_frame": 405,
+          "text": "scene."
+        }
+      ]
+    },
+    {
+      "end_frame": 472,
+      "id": "caption-012",
+      "start_frame": 432,
+      "text": "Mira closed the signup",
+      "words": [
+        {
+          "end_frame": 443,
+          "index": 27,
+          "start_frame": 432,
+          "text": "Mira"
+        },
+        {
+          "end_frame": 452,
+          "index": 28,
+          "start_frame": 442,
+          "text": "closed"
+        },
+        {
+          "end_frame": 459,
+          "index": 29,
+          "start_frame": 452,
+          "text": "the"
+        },
+        {
+          "end_frame": 472,
+          "index": 30,
+          "start_frame": 459,
+          "text": "signup"
+        }
+      ]
+    },
+    {
+      "end_frame": 515,
+      "id": "caption-013",
+      "start_frame": 472,
+      "text": "page and opened a",
+      "words": [
+        {
+          "end_frame": 482,
+          "index": 31,
+          "start_frame": 472,
+          "text": "page"
+        },
+        {
+          "end_frame": 499,
+          "index": 32,
+          "start_frame": 482,
+          "text": "and"
+        },
+        {
+          "end_frame": 510,
+          "index": 33,
+          "start_frame": 499,
+          "text": "opened"
+        },
+        {
+          "end_frame": 515,
+          "index": 34,
+          "start_frame": 509,
+          "text": "a"
+        }
+      ]
+    },
+    {
+      "end_frame": 536,
+      "id": "caption-014",
+      "start_frame": 515,
+      "text": "blank note.",
+      "words": [
+        {
+          "end_frame": 522,
+          "index": 35,
+          "start_frame": 515,
+          "text": "blank"
+        },
+        {
+          "end_frame": 533,
+          "index": 36,
+          "start_frame": 521,
+          "text": "note."
+        }
+      ]
+    },
+    {
+      "end_frame": 573,
+      "id": "caption-015",
+      "start_frame": 548,
+      "text": "What do I need?",
+      "words": [
+        {
+          "end_frame": 554,
+          "index": 37,
+          "start_frame": 548,
+          "text": "What"
+        },
+        {
+          "end_frame": 558,
+          "index": 38,
+          "start_frame": 553,
+          "text": "do"
+        },
+        {
+          "end_frame": 562,
+          "index": 39,
+          "start_frame": 557,
+          "text": "I"
+        },
+        {
+          "end_frame": 570,
+          "index": 40,
+          "start_frame": 562,
+          "text": "need?"
+        }
+      ]
+    },
+    {
+      "end_frame": 608,
+      "id": "caption-016",
+      "start_frame": 583,
+      "text": "What will it cost?",
+      "words": [
+        {
+          "end_frame": 588,
+          "index": 41,
+          "start_frame": 583,
+          "text": "What"
+        },
+        {
+          "end_frame": 591,
+          "index": 42,
+          "start_frame": 588,
+          "text": "will"
+        },
+        {
+          "end_frame": 596,
+          "index": 43,
+          "start_frame": 591,
+          "text": "it"
+        },
+        {
+          "end_frame": 605,
+          "index": 44,
+          "start_frame": 596,
+          "text": "cost?"
+        }
+      ]
+    },
+    {
+      "end_frame": 652,
+      "id": "caption-017",
+      "start_frame": 626,
+      "text": "What am I agreeing",
+      "words": [
+        {
+          "end_frame": 632,
+          "index": 45,
+          "start_frame": 626,
+          "text": "What"
+        },
+        {
+          "end_frame": 636,
+          "index": 46,
+          "start_frame": 631,
+          "text": "am"
+        },
+        {
+          "end_frame": 642,
+          "index": 47,
+          "start_frame": 635,
+          "text": "I"
+        },
+        {
+          "end_frame": 652,
+          "index": 48,
+          "start_frame": 642,
+          "text": "agreeing"
+        }
+      ]
+    },
+    {
+      "end_frame": 668,
+      "id": "caption-018",
+      "start_frame": 652,
+      "text": "to?",
+      "words": [
+        {
+          "end_frame": 665,
+          "index": 49,
+          "start_frame": 652,
+          "text": "to?"
+        }
+      ]
+    },
+    {
+      "end_frame": 714,
+      "id": "caption-019",
+      "start_frame": 683,
+      "text": "Atomy was the business",
+      "words": [
+        {
+          "end_frame": 694,
+          "index": 50,
+          "start_frame": 683,
+          "text": "Atomy"
+        },
+        {
+          "end_frame": 700,
+          "index": 51,
+          "start_frame": 694,
+          "text": "was"
+        },
+        {
+          "end_frame": 705,
+          "index": 52,
+          "start_frame": 699,
+          "text": "the"
+        },
+        {
+          "end_frame": 714,
+          "index": 53,
+          "start_frame": 704,
+          "text": "business"
+        }
+      ]
+    },
+    {
+      "end_frame": 746,
+      "id": "caption-020",
+      "start_frame": 714,
+      "text": "she was researching.",
+      "words": [
+        {
+          "end_frame": 723,
+          "index": 54,
+          "start_frame": 714,
+          "text": "she"
+        },
+        {
+          "end_frame": 727,
+          "index": 55,
+          "start_frame": 722,
+          "text": "was"
+        },
+        {
+          "end_frame": 743,
+          "index": 56,
+          "start_frame": 726,
+          "text": "researching."
+        }
+      ]
+    },
+    {
+      "end_frame": 818,
+      "id": "caption-021",
+      "start_frame": 762,
+      "text": "This time, she'd read",
+      "words": [
+        {
+          "end_frame": 779,
+          "index": 57,
+          "start_frame": 762,
+          "text": "This"
+        },
+        {
+          "end_frame": 793,
+          "index": 58,
+          "start_frame": 779,
+          "text": "time,"
+        },
+        {
+          "end_frame": 811,
+          "index": 59,
+          "start_frame": 800,
+          "text": "she'd"
+        },
+        {
+          "end_frame": 818,
+          "index": 60,
+          "start_frame": 811,
+          "text": "read"
+        }
+      ]
+    },
+    {
+      "end_frame": 866,
+      "id": "caption-022",
+      "start_frame": 818,
+      "text": "the current local terms",
+      "words": [
+        {
+          "end_frame": 825,
+          "index": 61,
+          "start_frame": 818,
+          "text": "the"
+        },
+        {
+          "end_frame": 837,
+          "index": 62,
+          "start_frame": 825,
+          "text": "current"
+        },
+        {
+          "end_frame": 849,
+          "index": 63,
+          "start_frame": 837,
+          "text": "local"
+        },
+        {
+          "end_frame": 866,
+          "index": 64,
+          "start_frame": 848,
+          "text": "terms"
+        }
+      ]
+    },
+    {
+      "end_frame": 898,
+      "id": "caption-023",
+      "start_frame": 866,
+      "text": "before deciding.",
+      "words": [
+        {
+          "end_frame": 879,
+          "index": 65,
+          "start_frame": 866,
+          "text": "before"
+        },
+        {
+          "end_frame": 895,
+          "index": 66,
+          "start_frame": 878,
+          "text": "deciding."
+        }
+      ]
+    },
+    {
+      "end_frame": 952,
+      "id": "caption-024",
+      "start_frame": 922,
+      "text": "She still wanted a",
+      "words": [
+        {
+          "end_frame": 929,
+          "index": 67,
+          "start_frame": 922,
+          "text": "She"
+        },
+        {
+          "end_frame": 938,
+          "index": 68,
+          "start_frame": 929,
+          "text": "still"
+        },
+        {
+          "end_frame": 948,
+          "index": 69,
+          "start_frame": 937,
+          "text": "wanted"
+        },
+        {
+          "end_frame": 952,
+          "index": 70,
+          "start_frame": 947,
+          "text": "a"
+        }
+      ]
+    },
+    {
+      "end_frame": 968,
+      "id": "caption-025",
+      "start_frame": 952,
+      "text": "new beginning.",
+      "words": [
+        {
+          "end_frame": 957,
+          "index": 71,
+          "start_frame": 952,
+          "text": "new"
+        },
+        {
+          "end_frame": 965,
+          "index": 72,
+          "start_frame": 956,
+          "text": "beginning."
+        }
+      ]
+    },
+    {
+      "end_frame": 993,
+      "id": "caption-026",
+      "start_frame": 979,
+      "text": "Now,",
+      "words": [
+        {
+          "end_frame": 990,
+          "index": 73,
+          "start_frame": 979,
+          "text": "Now,"
+        }
+      ]
+    },
+    {
+      "end_frame": 1049,
+      "id": "caption-027",
+      "start_frame": 1012,
+      "text": "she wanted to understand",
+      "words": [
+        {
+          "end_frame": 1019,
+          "index": 74,
+          "start_frame": 1012,
+          "text": "she"
+        },
+        {
+          "end_frame": 1028,
+          "index": 75,
+          "start_frame": 1019,
+          "text": "wanted"
+        },
+        {
+          "end_frame": 1035,
+          "index": 76,
+          "start_frame": 1027,
+          "text": "to"
+        },
+        {
+          "end_frame": 1049,
+          "index": 77,
+          "start_frame": 1035,
+          "text": "understand"
+        }
+      ]
+    },
+    {
+      "end_frame": 1062,
+      "id": "caption-028",
+      "start_frame": 1049,
+      "text": "it.",
+      "words": [
+        {
+          "end_frame": 1059,
+          "index": 78,
+          "start_frame": 1049,
+          "text": "it."
+        }
+      ]
+    },
+    {
+      "end_frame": 1140,
+      "id": "caption-029",
+      "start_frame": 1076,
+      "text": "Before the next tap...",
+      "words": [
+        {
+          "end_frame": 1096,
+          "index": 79,
+          "start_frame": 1076,
+          "text": "Before"
+        },
+        {
+          "end_frame": 1116,
+          "index": 80,
+          "start_frame": 1096,
+          "text": "the"
+        },
+        {
+          "end_frame": 1125,
+          "index": 81,
+          "start_frame": 1115,
+          "text": "next"
+        },
+        {
+          "end_frame": 1137,
+          "index": 82,
+          "start_frame": 1124,
+          "text": "tap..."
+        }
+      ]
+    },
+    {
+      "end_frame": 1215,
+      "id": "caption-030",
+      "start_frame": 1162,
+      "text": "ask the second question.",
+      "words": [
+        {
+          "end_frame": 1172,
+          "index": 83,
+          "start_frame": 1162,
+          "text": "ask"
+        },
+        {
+          "end_frame": 1180,
+          "index": 84,
+          "start_frame": 1172,
+          "text": "the"
+        },
+        {
+          "end_frame": 1191,
+          "index": 85,
+          "start_frame": 1180,
+          "text": "second"
+        },
+        {
+          "end_frame": 1212,
+          "index": 86,
+          "start_frame": 1191,
+          "text": "question."
+        }
+      ]
+    }
+  ],
+  "duration_frames": 1223,
+  "duration_seconds": 40.766666666666666,
+  "fps": 30,
+  "height": 1920,
+  "project_id": "biznex-second-question",
+  "provenance": {
+    "asset_sha256": {
+      "assets/audio/click.wav": "941a4c82321a72d56eedb469d08d4ef1e27355c947e45e698e83617ed17d1293",
+      "assets/audio/hiraeth.mp3": "f790c7d53b8d802981ff7cdd8c59e22cdfe103ea66aba296c6cf1a65fe7fcf01",
+      "assets/audio/narration.wav": "60c3aefa827d175881b9136b9eccdfe1dc78c3bd9a9d1086108df18a5e0500ea",
+      "assets/audio/rain.wav": "0bb295dd7695c73bfb33c057c451c46e426dcbda2fbf85a0b6968616ae35f73c",
+      "assets/motion/mira-morning.mp4": "a3649b30963797dcbc0939185e9856ef065d6a5cfda9f710edd0e86ff5b7a84c",
+      "assets/motion/mira-night.mp4": "d77946d22ec71310d0485423cd817de50160f0a025677594b39101976eee22ef",
+      "assets/plates/mira-dawn.png": "a0496752895a5429779416598a8dfbf169026bfc95ccf2955c29361e4cb22fa3",
+      "assets/plates/mira-mirror.png": "1ce9193dc58c9a40532cb1049e1c658d18b15f853e122640fadb862df33f1367",
+      "assets/plates/mira-night.png": "b3a970309424acb3786570f610e2a7b5fa5d00d94c39b9f817ddbe27bd10f830",
+      "assets/plates/mira-wide.png": "50ccb378687d63c825172ab1ab2bd35359923be171c02ac771c5d3b0f37acd11",
+      "assets/plates/phone-morning.png": "5cec0401cf0b62f0ef2b96866922da800ff6188d39ed8e66273d8564385b2a3e",
+      "assets/plates/phone.png": "492bec10a00d3b39de1d9a163d4a9e32abca66930a89b8874189eb48fc2de0c9"
+    },
+    "plan_sha256": "a556b0d19bb46a1144cb5ab2ef113438d6620d5ccb7129c064c487cca47d2387",
+    "timing_sha256": "becec23aebd6327bec9ead0c1eff33b48c84ba6f0f8e7f1cc5b33f3fad1fb1e0"
+  },
+  "schema_version": 1,
+  "shots": [
+    {
+      "action": "A fingertip pauses just above the account button.",
+      "asset": "assets/plates/phone.png",
+      "camera": "push_in",
+      "cut_reason": "A fingertip pauses just above the account button.",
+      "display_end_frame": 100,
+      "display_start_frame": 0,
+      "duration_frames": 100,
+      "end_frame": 100,
+      "expression": "Reflective, then quietly hopeful.",
+      "framing": "extreme_close",
+      "id": "s01",
+      "layout": "phone-macro",
+      "location": "night-apartment",
+      "start_frame": 0,
+      "subject": "phone",
+      "subject_motion": "still",
+      "visual_kind": "object",
+      "voice_anchor": {
+        "frame": 0,
+        "locator": {
+          "boundary": "start",
+          "edge": "start",
+          "offset_frames": 0
+        },
+        "measured_seconds": 0.0,
+        "word_indices": []
+      }
+    },
+    {
+      "action": "Move into an editable illustrated account screen.",
+      "asset": "assets/plates/phone.png",
+      "camera": "tracking",
+      "cut_reason": "Move into an editable illustrated account screen.",
+      "display_end_frame": 142,
+      "display_start_frame": 100,
+      "duration_frames": 42,
+      "end_frame": 142,
+      "expression": "Reflective, then quietly hopeful.",
+      "framing": "insert",
+      "id": "s02",
+      "layout": "full-signup",
+      "location": "night-apartment",
+      "start_frame": 100,
+      "subject": "signup",
+      "subject_motion": "action",
+      "visual_kind": "interface",
+      "voice_anchor": {
+        "frame": 100,
+        "locator": {
+          "edge": "start",
+          "offset_frames": 0,
+          "phrase": "A new account"
+        },
+        "measured_seconds": 3.34,
+        "word_indices": [
+          5,
+          6,
+          7
+        ]
+      }
+    },
+    {
+      "action": "Reveal Mira alone in her room beside the rainy window.",
+      "asset": "assets/plates/mira-wide.png",
+      "camera": "pull_out",
+      "cut_reason": "Reveal Mira alone in her room beside the rainy window.",
+      "display_end_frame": 181,
+      "display_start_frame": 142,
+      "duration_frames": 39,
+      "end_frame": 181,
+      "expression": "Reflective, then quietly hopeful.",
+      "framing": "wide",
+      "id": "s03",
+      "layout": "room-wide",
+      "location": "night-apartment",
+      "start_frame": 142,
+      "subject": "apartment",
+      "subject_motion": "still",
+      "visual_kind": "environment",
+      "voice_anchor": {
+        "frame": 142,
+        "locator": {
+          "edge": "start",
+          "occurrence": 1,
+          "offset_frames": 0,
+          "phrase": "A fresh start"
+        },
+        "measured_seconds": 4.72,
+        "word_indices": [
+          8,
+          9,
+          10
+        ]
+      }
+    },
+    {
+      "action": "Mira breathes and hesitates before her decision.",
+      "asset": "assets/motion/mira-night.mp4",
+      "camera": "locked",
+      "cut_reason": "Mira breathes and hesitates before her decision.",
+      "display_end_frame": 293,
+      "display_start_frame": 181,
+      "duration_frames": 112,
+      "end_frame": 293,
+      "expression": "Reflective, then quietly hopeful.",
+      "framing": "close",
+      "id": "s04",
+      "layout": "night-closeup",
+      "location": "night-apartment",
+      "start_frame": 181,
+      "subject": "mira",
+      "subject_motion": "performance",
+      "visual_kind": "character",
+      "voice_anchor": {
+        "frame": 181,
+        "locator": {
+          "edge": "start",
+          "offset_frames": 0,
+          "phrase": "Then a smaller thought"
+        },
+        "measured_seconds": 6.02,
+        "word_indices": [
+          11,
+          12,
+          13,
+          14
+        ]
+      }
+    },
+    {
+      "action": "Her own reflection redirects her attention inward.",
+      "asset": "assets/plates/mira-mirror.png",
+      "camera": "push_in",
+      "cut_reason": "Her own reflection redirects her attention inward.",
+      "display_end_frame": 339,
+      "display_start_frame": 293,
+      "duration_frames": 46,
+      "end_frame": 339,
+      "expression": "Reflective, then quietly hopeful.",
+      "framing": "medium",
+      "id": "s05",
+      "layout": "mirror-medium",
+      "location": "night-apartment",
+      "start_frame": 293,
+      "subject": "reflection",
+      "subject_motion": "still",
+      "visual_kind": "character",
+      "voice_anchor": {
+        "frame": 293,
+        "locator": {
+          "edge": "start",
+          "occurrence": 2,
+          "offset_frames": 0,
+          "phrase": "A fresh start"
+        },
+        "measured_seconds": 9.78,
+        "word_indices": [
+          17,
+          18,
+          19
+        ]
+      }
+    },
+    {
+      "action": "The unresolved question replaces the promise of a new start.",
+      "asset": "assets/plates/mira-mirror.png",
+      "camera": "locked",
+      "cut_reason": "The unresolved question replaces the promise of a new start.",
+      "display_end_frame": 383,
+      "display_start_frame": 339,
+      "duration_frames": 44,
+      "end_frame": 383,
+      "expression": "Reflective, then quietly hopeful.",
+      "framing": "close",
+      "id": "s06",
+      "layout": "mirror-question",
+      "location": "night-apartment",
+      "start_frame": 339,
+      "subject": "question",
+      "subject_motion": "still",
+      "visual_kind": "typography",
+      "voice_anchor": {
+        "frame": 339,
+        "locator": {
+          "edge": "start",
+          "offset_frames": 0,
+          "phrase": "doing what"
+        },
+        "measured_seconds": 11.3,
+        "word_indices": [
+          20,
+          21
+        ]
+      }
+    },
+    {
+      "action": "Return to her room and state that this scene is fictional.",
+      "asset": "assets/plates/mira-wide.png",
+      "camera": "pan",
+      "cut_reason": "Return to her room and state that this scene is fictional.",
+      "display_end_frame": 432,
+      "display_start_frame": 383,
+      "duration_frames": 49,
+      "end_frame": 432,
+      "expression": "Reflective, then quietly hopeful.",
+      "framing": "wide",
+      "id": "s07",
+      "layout": "room-wide",
+      "location": "night-apartment",
+      "start_frame": 383,
+      "subject": "apartment",
+      "subject_motion": "still",
+      "visual_kind": "environment",
+      "voice_anchor": {
+        "frame": 383,
+        "locator": {
+          "edge": "start",
+          "offset_frames": 0,
+          "phrase": "This is a fictional scene"
+        },
+        "measured_seconds": 12.76,
+        "word_indices": [
+          22,
+          23,
+          24,
+          25,
+          26
+        ]
+      }
+    },
+    {
+      "action": "The signup screen recedes from her unfinished action.",
+      "asset": "assets/plates/phone.png",
+      "camera": "locked",
+      "cut_reason": "The signup screen recedes from her unfinished action.",
+      "display_end_frame": 482,
+      "display_start_frame": 432,
+      "duration_frames": 50,
+      "end_frame": 482,
+      "expression": "Reflective, then quietly hopeful.",
+      "framing": "insert",
+      "id": "s08",
+      "layout": "phone-macro",
+      "location": "night-apartment",
+      "start_frame": 432,
+      "subject": "phone",
+      "subject_motion": "still",
+      "visual_kind": "object",
+      "voice_anchor": {
+        "frame": 432,
+        "locator": {
+          "edge": "start",
+          "offset_frames": 0,
+          "phrase": "Mira closed the signup page"
+        },
+        "measured_seconds": 14.4,
+        "word_indices": [
+          27,
+          28,
+          29,
+          30,
+          31
+        ]
+      }
+    },
+    {
+      "action": "A clean note opens, ready for her own questions.",
+      "asset": "assets/plates/phone.png",
+      "camera": "tracking",
+      "cut_reason": "A clean note opens, ready for her own questions.",
+      "display_end_frame": 548,
+      "display_start_frame": 482,
+      "duration_frames": 66,
+      "end_frame": 548,
+      "expression": "Reflective, then quietly hopeful.",
+      "framing": "insert",
+      "id": "s09",
+      "layout": "full-note",
+      "location": "night-apartment",
+      "start_frame": 482,
+      "subject": "note",
+      "subject_motion": "action",
+      "visual_kind": "interface",
+      "voice_anchor": {
+        "frame": 482,
+        "locator": {
+          "edge": "start",
+          "offset_frames": 0,
+          "phrase": "and opened a blank note"
+        },
+        "measured_seconds": 16.06,
+        "word_indices": [
+          32,
+          33,
+          34,
+          35,
+          36
+        ]
+      }
+    },
+    {
+      "action": "Write the first concrete question about her needs.",
+      "asset": "assets/plates/phone.png",
+      "camera": "push_in",
+      "cut_reason": "Write the first concrete question about her needs.",
+      "display_end_frame": 583,
+      "display_start_frame": 548,
+      "duration_frames": 35,
+      "end_frame": 583,
+      "expression": "Reflective, then quietly hopeful.",
+      "framing": "insert",
+      "id": "s10",
+      "layout": "full-note",
+      "location": "night-apartment",
+      "start_frame": 548,
+      "subject": "note",
+      "subject_motion": "still",
+      "visual_kind": "interface",
+      "voice_anchor": {
+        "frame": 548,
+        "locator": {
+          "edge": "start",
+          "offset_frames": 0,
+          "phrase": "What do I need"
+        },
+        "measured_seconds": 18.26,
+        "word_indices": [
+          37,
+          38,
+          39,
+          40
+        ]
+      }
+    },
+    {
+      "action": "Change scale and write the practical question about cost.",
+      "asset": "assets/plates/phone.png",
+      "camera": "pan",
+      "cut_reason": "Change scale and write the practical question about cost.",
+      "display_end_frame": 626,
+      "display_start_frame": 583,
+      "duration_frames": 43,
+      "end_frame": 626,
+      "expression": "Reflective, then quietly hopeful.",
+      "framing": "close",
+      "id": "s11",
+      "layout": "cost-question",
+      "location": "night-apartment",
+      "start_frame": 583,
+      "subject": "question",
+      "subject_motion": "action",
+      "visual_kind": "interface",
+      "voice_anchor": {
+        "frame": 583,
+        "locator": {
+          "edge": "start",
+          "offset_frames": 0,
+          "phrase": "What will it cost"
+        },
+        "measured_seconds": 19.44,
+        "word_indices": [
+          41,
+          42,
+          43,
+          44
+        ]
+      }
+    },
+    {
+      "action": "Finish the note by asking what the agreement means.",
+      "asset": "assets/plates/mira-mirror.png",
+      "camera": "locked",
+      "cut_reason": "Finish the note by asking what the agreement means.",
+      "display_end_frame": 683,
+      "display_start_frame": 626,
+      "duration_frames": 57,
+      "end_frame": 683,
+      "expression": "Reflective, then quietly hopeful.",
+      "framing": "medium",
+      "id": "s12",
+      "layout": "mirror-question",
+      "location": "night-apartment",
+      "start_frame": 626,
+      "subject": "reflection",
+      "subject_motion": "still",
+      "visual_kind": "character",
+      "voice_anchor": {
+        "frame": 626,
+        "locator": {
+          "edge": "start",
+          "offset_frames": 0,
+          "phrase": "What am I agreeing to"
+        },
+        "measured_seconds": 20.86,
+        "word_indices": [
+          45,
+          46,
+          47,
+          48,
+          49
+        ]
+      }
+    },
+    {
+      "action": "Name Atomy as the subject of her research, without a promised outcome.",
+      "asset": "assets/plates/mira-night.png",
+      "camera": "pull_out",
+      "cut_reason": "Name Atomy as the subject of her research, without a promised outcome.",
+      "display_end_frame": 762,
+      "display_start_frame": 683,
+      "duration_frames": 79,
+      "end_frame": 762,
+      "expression": "Reflective, then quietly hopeful.",
+      "framing": "close",
+      "id": "s13",
+      "layout": "night-closeup",
+      "location": "night-apartment",
+      "start_frame": 683,
+      "subject": "mira",
+      "subject_motion": "still",
+      "visual_kind": "character",
+      "voice_anchor": {
+        "frame": 683,
+        "locator": {
+          "edge": "start",
+          "offset_frames": 0,
+          "phrase": "Atomy was the business"
+        },
+        "measured_seconds": 22.75,
+        "word_indices": [
+          50,
+          51,
+          52,
+          53
+        ]
+      }
+    },
+    {
+      "action": "Show the next research step: current local terms before deciding.",
+      "asset": "assets/plates/mira-wide.png",
+      "camera": "push_in",
+      "cut_reason": "Show the next research step: current local terms before deciding.",
+      "display_end_frame": 928,
+      "display_start_frame": 762,
+      "duration_frames": 160,
+      "end_frame": 922,
+      "expression": "Reflective, then quietly hopeful.",
+      "framing": "insert",
+      "id": "s14",
+      "layout": "research-terms",
+      "location": "night-apartment",
+      "start_frame": 762,
+      "subject": "terms",
+      "subject_motion": "still",
+      "visual_kind": "interface",
+      "voice_anchor": {
+        "frame": 762,
+        "locator": {
+          "edge": "start",
+          "offset_frames": 0,
+          "phrase": "This time"
+        },
+        "measured_seconds": 25.41,
+        "word_indices": [
+          57,
+          58
+        ]
+      }
+    },
+    {
+      "action": "Morning light finds Mira writing rather than rushing.",
+      "asset": "assets/motion/mira-morning.mp4",
+      "camera": "locked",
+      "cut_reason": "Morning light finds Mira writing rather than rushing.",
+      "display_end_frame": 979,
+      "display_start_frame": 916,
+      "duration_frames": 57,
+      "end_frame": 979,
+      "expression": "Reflective, then quietly hopeful.",
+      "framing": "medium",
+      "id": "s15",
+      "layout": "morning-writing",
+      "location": "morning-apartment",
+      "start_frame": 922,
+      "subject": "mira",
+      "subject_motion": "performance",
+      "visual_kind": "character",
+      "voice_anchor": {
+        "frame": 922,
+        "locator": {
+          "edge": "start",
+          "offset_frames": 0,
+          "phrase": "She still wanted a new beginning"
+        },
+        "measured_seconds": 30.72,
+        "word_indices": [
+          67,
+          68,
+          69,
+          70,
+          71,
+          72
+        ]
+      }
+    },
+    {
+      "action": "Widen to show her calmer posture and the open window.",
+      "asset": "assets/plates/mira-dawn.png",
+      "camera": "pull_out",
+      "cut_reason": "Widen to show her calmer posture and the open window.",
+      "display_end_frame": 1076,
+      "display_start_frame": 979,
+      "duration_frames": 97,
+      "end_frame": 1076,
+      "expression": "Reflective, then quietly hopeful.",
+      "framing": "wide",
+      "id": "s16",
+      "layout": "morning-window",
+      "location": "morning-apartment",
+      "start_frame": 979,
+      "subject": "apartment",
+      "subject_motion": "still",
+      "visual_kind": "environment",
+      "voice_anchor": {
+        "frame": 979,
+        "locator": {
+          "edge": "start",
+          "offset_frames": 0,
+          "phrase": "Now she wanted to understand it"
+        },
+        "measured_seconds": 32.62,
+        "word_indices": [
+          73,
+          74,
+          75,
+          76,
+          77,
+          78
+        ]
+      }
+    },
+    {
+      "action": "Return to the opening fingertip with a different question.",
+      "asset": "assets/plates/phone-morning.png",
+      "camera": "push_in",
+      "cut_reason": "Return to the opening fingertip with a different question.",
+      "display_end_frame": 1162,
+      "display_start_frame": 1076,
+      "duration_frames": 86,
+      "end_frame": 1162,
+      "expression": "Reflective, then quietly hopeful.",
+      "framing": "extreme_close",
+      "id": "s17",
+      "layout": "phone-macro",
+      "location": "morning-apartment",
+      "start_frame": 1076,
+      "subject": "phone",
+      "subject_motion": "still",
+      "visual_kind": "object",
+      "voice_anchor": {
+        "frame": 1076,
+        "locator": {
+          "edge": "start",
+          "offset_frames": 0,
+          "phrase": "Before the next tap"
+        },
+        "measured_seconds": 35.88,
+        "word_indices": [
+          79,
+          80,
+          81,
+          82
+        ]
+      }
+    },
+    {
+      "action": "Resolve with one useful action and the BizNex Stories identity.",
+      "asset": "assets/plates/mira-dawn.png",
+      "camera": "locked",
+      "cut_reason": "Resolve with one useful action and the BizNex Stories identity.",
+      "display_end_frame": 1223,
+      "display_start_frame": 1162,
+      "duration_frames": 61,
+      "end_frame": 1223,
+      "expression": "Reflective, then quietly hopeful.",
+      "framing": "wide",
+      "id": "s18",
+      "layout": "final-resolve",
+      "location": "morning-apartment",
+      "start_frame": 1162,
+      "subject": "mira",
+      "subject_motion": "still",
+      "visual_kind": "character",
+      "voice_anchor": {
+        "frame": 1162,
+        "locator": {
+          "edge": "start",
+          "offset_frames": 0,
+          "phrase": "ask the second question"
+        },
+        "measured_seconds": 38.74,
+        "word_indices": [
+          83,
+          84,
+          85,
+          86
+        ]
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "cut_frame": 100,
+      "end_frame": 100,
+      "frames": 0,
+      "from_shot": "s01",
+      "kind": "match_cut",
+      "start_frame": 100,
+      "to_shot": "s02"
+    },
+    {
+      "cut_frame": 142,
+      "end_frame": 142,
+      "frames": 0,
+      "from_shot": "s02",
+      "kind": "cut",
+      "start_frame": 142,
+      "to_shot": "s03"
+    },
+    {
+      "cut_frame": 181,
+      "end_frame": 181,
+      "frames": 0,
+      "from_shot": "s03",
+      "kind": "cut",
+      "start_frame": 181,
+      "to_shot": "s04"
+    },
+    {
+      "cut_frame": 293,
+      "end_frame": 293,
+      "frames": 0,
+      "from_shot": "s04",
+      "kind": "cut",
+      "start_frame": 293,
+      "to_shot": "s05"
+    },
+    {
+      "cut_frame": 339,
+      "end_frame": 339,
+      "frames": 0,
+      "from_shot": "s05",
+      "kind": "cut",
+      "start_frame": 339,
+      "to_shot": "s06"
+    },
+    {
+      "cut_frame": 383,
+      "end_frame": 383,
+      "frames": 0,
+      "from_shot": "s06",
+      "kind": "cut",
+      "start_frame": 383,
+      "to_shot": "s07"
+    },
+    {
+      "cut_frame": 432,
+      "end_frame": 432,
+      "frames": 0,
+      "from_shot": "s07",
+      "kind": "cut",
+      "start_frame": 432,
+      "to_shot": "s08"
+    },
+    {
+      "cut_frame": 482,
+      "end_frame": 482,
+      "frames": 0,
+      "from_shot": "s08",
+      "kind": "match_cut",
+      "start_frame": 482,
+      "to_shot": "s09"
+    },
+    {
+      "cut_frame": 548,
+      "end_frame": 548,
+      "frames": 0,
+      "from_shot": "s09",
+      "kind": "cut",
+      "start_frame": 548,
+      "to_shot": "s10"
+    },
+    {
+      "cut_frame": 583,
+      "end_frame": 583,
+      "frames": 0,
+      "from_shot": "s10",
+      "kind": "cut",
+      "start_frame": 583,
+      "to_shot": "s11"
+    },
+    {
+      "cut_frame": 626,
+      "end_frame": 626,
+      "frames": 0,
+      "from_shot": "s11",
+      "kind": "cut",
+      "start_frame": 626,
+      "to_shot": "s12"
+    },
+    {
+      "cut_frame": 683,
+      "end_frame": 683,
+      "frames": 0,
+      "from_shot": "s12",
+      "kind": "cut",
+      "start_frame": 683,
+      "to_shot": "s13"
+    },
+    {
+      "cut_frame": 762,
+      "end_frame": 762,
+      "frames": 0,
+      "from_shot": "s13",
+      "kind": "cut",
+      "start_frame": 762,
+      "to_shot": "s14"
+    },
+    {
+      "cut_frame": 922,
+      "end_frame": 928,
+      "frames": 12,
+      "from_shot": "s14",
+      "kind": "dissolve",
+      "start_frame": 916,
+      "to_shot": "s15"
+    },
+    {
+      "cut_frame": 979,
+      "end_frame": 979,
+      "frames": 0,
+      "from_shot": "s15",
+      "kind": "cut",
+      "start_frame": 979,
+      "to_shot": "s16"
+    },
+    {
+      "cut_frame": 1076,
+      "end_frame": 1076,
+      "frames": 0,
+      "from_shot": "s16",
+      "kind": "cut",
+      "start_frame": 1076,
+      "to_shot": "s17"
+    },
+    {
+      "cut_frame": 1162,
+      "end_frame": 1162,
+      "frames": 0,
+      "from_shot": "s17",
+      "kind": "cut",
+      "start_frame": 1162,
+      "to_shot": "s18"
+    }
+  ],
+  "width": 1080
+}

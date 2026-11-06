@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "file": "kenney-click-001.ogg",
+      "creator": "Kenney",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_page": "https://opengameart.org/content/interface-sounds",
+      "archive_url": "https://opengameart.org/sites/default/files/kenney_interfaceSounds.zip",
+      "archive_entry": "Audio/click_001.ogg",
+      "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+      "sha256": "ccfb7fa0cccdd9faec0eb16033c732b1e308d139d80f799161495d58f7adcdb9",
+      "bytes": 4876,
+      "duration_seconds": 0.10002267573696146,
+      "sample_rate": 44100,
+      "channels": 1,
+      "modifications": "None; extracted original OGG bytes",
+      "retrieved_on": "2026-11-06"
+    },
+    {
+      "file": "kenney-switch-001.ogg",
+      "creator": "Kenney",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_page": "https://opengameart.org/content/interface-sounds",
+      "archive_url": "https://opengameart.org/sites/default/files/kenney_interfaceSounds.zip",
+      "archive_entry": "Audio/switch_001.ogg",
+      "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+      "sha256": "3b74efad87f1e69dbd1d05c5ad952ab90859b5a3d11da6ec5bd79b4f03b42afa",
+      "bytes": 6753,
+      "duration_seconds": 0.6176643990929706,
+      "sample_rate": 44100,
+      "channels": 2,
+      "modifications": "None; extracted original OGG bytes",
+      "retrieved_on": "2026-11-06"
+    },
+    {
+      "file": "ylmir-rain-01.ogg",
+      "creator": "Ylmir",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_page": "https://opengameart.org/content/rain-loopable",
+      "archive_url": "https://opengameart.org/sites/default/files/Rain%20OGG.zip",
+      "archive_entry": "1.ogg",
+      "archive_sha256": "e68f3e1c77493cf43bec84cebff5043bff6be9ce16d59b24caa988cd460aa75b",
+      "sha256": "4f659f68cf5219007d0bb0969a1862491ceee4057fda4c491c6001e8608fa2cb",
+      "bytes": 550049,
+      "duration_seconds": 27.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "modifications": "None; extracted original OGG bytes",
+      "retrieved_on": "2026-11-06"
+    }
+  ],
+  "rain_recording_note": "Ylmir describes a mono microphone recording made at a window, then processed for a stereo impression. Source is a field recording, not generated noise.",
+  "credit": "Interface sounds: Kenney (CC0). Rain recording: Ylmir (CC0).",
+  "audio_content_listened_reviewed": false,
+  "derived_assets": [
+    {
+      "file": "click.wav",
+      "parent_file": "kenney-click-001.ogg",
+      "license": "CC0-1.0",
+      "sha256": "941a4c82321a72d56eedb469d08d4ef1e27355c947e45e698e83617ed17d1293",
+      "duration_seconds": 0.25,
+      "sample_rate": 48000,
+      "channels": 2,
+      "peak_linear_before_quantization": 0.850034773349762,
+      "modifications": "Resampled to stereo 48 kHz PCM16; amplitude retained. Silence padded to 0.25 s; click itself not stretched."
+    },
+    {
+      "file": "switch.wav",
+      "parent_file": "kenney-switch-001.ogg",
+      "license": "CC0-1.0",
+      "sha256": "0a4b349c9ec9f9b356e4bb2a5e478107f1e2b8ddb2bdcf4d03b22bf314bbb525",
+      "duration_seconds": 0.6176666666666667,
+      "sample_rate": 48000,
+      "channels": 2,
+      "peak_linear_before_quantization": 0.8884142637252808,
+      "modifications": "Resampled to stereo 48 kHz PCM16; amplitude retained."
+    },
+    {
+      "file": "rain.wav",
+      "parent_file": "ylmir-rain-01.ogg",
+      "license": "CC0-1.0",
+      "sha256": "0bb295dd7695c73bfb33c057c451c46e426dcbda2fbf85a0b6968616ae35f73c",
+      "duration_seconds": 41.0,
+      "sample_rate": 48000,
+      "channels": 2,
+      "peak_linear_before_quantization": 0.5865508913993835,
+      "modifications": "Resampled to stereo 48 kHz PCM16; amplitude retained. Source is explicitly loopable; repeated with 0.25 s overlap crossfade and trimmed to 41 s."
+    }
+  ]
+}

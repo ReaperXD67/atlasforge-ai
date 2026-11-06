@@ -60,3 +60,8 @@ videos/biznex-revive-pitch-001/assets/
 videos/biznex-revive-pitch-001/thumbnail/assets/
 .DS_Store
 Thumbs.db
+videos/biznex-second-question/assets/plates/
+videos/biznex-second-question/assets/motion/
+videos/biznex-second-question/assets/audio/*
+!videos/biznex-second-question/assets/audio/*.json
+!videos/biznex-second-question/assets/audio/*LICENSE.txt

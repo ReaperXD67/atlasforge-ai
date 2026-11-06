@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "path": "assets/plates/mira-dawn.png",
+      "sha256": "a0496752895a5429779416598a8dfbf169026bfc95ccf2955c29361e4cb22fa3",
+      "bytes": 2101486,
+      "origin": "Generated with the image_gen tool for this project",
+      "generated_on": "2026-11-06",
+      "fictional_subject": true,
+      "brief": "PROMPTS.md",
+      "reference": "assets/plates/mira-night.png"
+    },
+    {
+      "path": "assets/plates/mira-mirror.png",
+      "sha256": "1ce9193dc58c9a40532cb1049e1c658d18b15f853e122640fadb862df33f1367",
+      "bytes": 1909584,
+      "origin": "Generated with the image_gen tool for this project",
+      "generated_on": "2026-11-06",
+      "fictional_subject": true,
+      "brief": "PROMPTS.md",
+      "reference": "assets/plates/mira-night.png"
+    },
+    {
+      "path": "assets/plates/mira-morning.png",
+      "sha256": "8200746574d6d2ade143546f8dc3e35819e9d7ddecbbc6af08bd44f5161eaaaa",
+      "bytes": 2150704,
+      "origin": "Generated with the image_gen tool for this project",
+      "generated_on": "2026-11-06",
+      "fictional_subject": true,
+      "brief": "PROMPTS.md",
+      "reference": "assets/plates/mira-night.png"
+    },
+    {
+      "path": "assets/plates/mira-night.png",
+      "sha256": "b3a970309424acb3786570f610e2a7b5fa5d00d94c39b9f817ddbe27bd10f830",
+      "bytes": 1926286,
+      "origin": "Generated with the image_gen tool for this project",
+      "generated_on": "2026-11-06",
+      "fictional_subject": true,
+      "brief": "PROMPTS.md",
+      "reference": null
+    },
+    {
+      "path": "assets/plates/mira-wide.png",
+      "sha256": "50ccb378687d63c825172ab1ab2bd35359923be171c02ac771c5d3b0f37acd11",
+      "bytes": 2123431,
+      "origin": "Generated with the image_gen tool for this project",
+      "generated_on": "2026-11-06",
+      "fictional_subject": true,
+      "brief": "PROMPTS.md",
+      "reference": "assets/plates/mira-night.png"
+    },
+    {
+      "path": "assets/plates/phone-morning.png",
+      "sha256": "5cec0401cf0b62f0ef2b96866922da800ff6188d39ed8e66273d8564385b2a3e",
+      "bytes": 2000534,
+      "origin": "Generated with the image_gen tool for this project",
+      "generated_on": "2026-11-06",
+      "fictional_subject": true,
+      "brief": "PROMPTS.md",
+      "reference": "assets/plates/mira-night.png"
+    },
+    {
+      "path": "assets/plates/phone.png",
+      "sha256": "492bec10a00d3b39de1d9a163d4a9e32abca66930a89b8874189eb48fc2de0c9",
+      "bytes": 1934735,
+      "origin": "Generated with the image_gen tool for this project",
+      "generated_on": "2026-11-06",
+      "fictional_subject": true,
+      "brief": "PROMPTS.md",
+      "reference": "assets/plates/mira-night.png"
+    }
+  ],
+  "exact_regeneration_guaranteed": false
+}

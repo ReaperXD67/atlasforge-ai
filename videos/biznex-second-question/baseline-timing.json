@@ -1,0 +1,800 @@
+{
+  "schema_version": 1,
+  "voice_variant": "baseline",
+  "fps": 30,
+  "duration_seconds": 40.1,
+  "narration_duration_seconds": 40.085,
+  "beats": [
+    {
+      "index": 0,
+      "id": "beat-01",
+      "text": "She was one tap away.",
+      "emotion": "serious",
+      "energy": 0.3,
+      "pace": 0.95,
+      "pause_after_ms": 300,
+      "delivery": "Please say a sentence in a very soft voice.",
+      "start": 0.0,
+      "end": 2.325
+    },
+    {
+      "index": 1,
+      "id": "beat-02",
+      "text": "A new account. A fresh start.",
+      "emotion": "reassuring",
+      "energy": 0.48,
+      "pace": 1.02,
+      "pause_after_ms": 280,
+      "delivery": "Speak with gentle hope and a small smile.",
+      "start": 2.325,
+      "end": 4.905
+    },
+    {
+      "index": 2,
+      "id": "beat-03",
+      "text": "Then a smaller thought stopped her.",
+      "emotion": "serious",
+      "energy": 0.3,
+      "pace": 0.97,
+      "pause_after_ms": 240,
+      "delivery": "Please say a sentence in a very soft voice.",
+      "start": 4.905,
+      "end": 7.42
+    },
+    {
+      "index": 3,
+      "id": "beat-04",
+      "text": "A fresh start... doing what?",
+      "emotion": "curious",
+      "energy": 0.25,
+      "pace": 0.9,
+      "pause_after_ms": 620,
+      "delivery": "Ask a vulnerable question in a hushed voice, uncertain and thoughtful.",
+      "start": 7.42,
+      "end": 10.565
+    },
+    {
+      "index": 4,
+      "id": "beat-05",
+      "text": "This is a fictional scene.",
+      "emotion": "neutral",
+      "energy": 0.4,
+      "pace": 1.08,
+      "pause_after_ms": 200,
+      "delivery": "",
+      "start": 10.565,
+      "end": 12.715
+    },
+    {
+      "index": 5,
+      "id": "beat-06",
+      "text": "Mira closed the signup page and opened a blank note.",
+      "emotion": "neutral",
+      "energy": 0.4,
+      "pace": 1.0,
+      "pause_after_ms": 300,
+      "delivery": "Speak calmly, as if remembering a small but important moment.",
+      "start": 12.715,
+      "end": 16.74
+    },
+    {
+      "index": 6,
+      "id": "beat-07",
+      "text": "What do I need?",
+      "emotion": "curious",
+      "energy": 0.4,
+      "pace": 0.95,
+      "pause_after_ms": 300,
+      "delivery": "Ask an honest, gentle question with curiosity.",
+      "start": 16.74,
+      "end": 18.79
+    },
+    {
+      "index": 7,
+      "id": "beat-08",
+      "text": "What will it cost?",
+      "emotion": "curious",
+      "energy": 0.42,
+      "pace": 0.95,
+      "pause_after_ms": 300,
+      "delivery": "Ask a thoughtful question, clear and grounded.",
+      "start": 18.79,
+      "end": 20.79
+    },
+    {
+      "index": 8,
+      "id": "beat-09",
+      "text": "What am I agreeing to?",
+      "emotion": "curious",
+      "energy": 0.4,
+      "pace": 0.95,
+      "pause_after_ms": 450,
+      "delivery": "Ask with calm seriousness and a little vulnerability.",
+      "start": 20.79,
+      "end": 23.19
+    },
+    {
+      "index": 9,
+      "id": "beat-10",
+      "text": "Atomy was the business she was researching.",
+      "emotion": "neutral",
+      "energy": 0.4,
+      "pace": 0.99,
+      "pause_after_ms": 220,
+      "delivery": "",
+      "start": 23.19,
+      "end": 26.51
+    },
+    {
+      "index": 10,
+      "id": "beat-11",
+      "text": "This time, she'd read the current local terms before deciding.",
+      "emotion": "serious",
+      "energy": 0.45,
+      "pace": 0.99,
+      "pause_after_ms": 350,
+      "delivery": "Speak calmly and thoughtfully, with quiet confidence.",
+      "start": 26.51,
+      "end": 30.96
+    },
+    {
+      "index": 11,
+      "id": "beat-12",
+      "text": "She still wanted a new beginning.",
+      "emotion": "reassuring",
+      "energy": 0.45,
+      "pace": 0.98,
+      "pause_after_ms": 220,
+      "delivery": "Speak warmly, with gentle hope.",
+      "start": 30.96,
+      "end": 33.655
+    },
+    {
+      "index": 12,
+      "id": "beat-13",
+      "text": "Now, she wanted to understand it.",
+      "emotion": "reassuring",
+      "energy": 0.5,
+      "pace": 0.97,
+      "pause_after_ms": 380,
+      "delivery": "Speak with relief and quiet, growing confidence.",
+      "start": 33.655,
+      "end": 36.56
+    },
+    {
+      "index": 13,
+      "id": "beat-14",
+      "text": "Before the next tap... ask the second question.",
+      "emotion": "reassuring",
+      "energy": 0.4,
+      "pace": 0.93,
+      "pause_after_ms": 0,
+      "delivery": "Please say a sentence in a very soft voice.",
+      "start": 36.56,
+      "end": 40.085
+    }
+  ],
+  "words": [
+    {
+      "text": "She",
+      "start": 0.0,
+      "end": 0.46
+    },
+    {
+      "text": "was",
+      "start": 0.46,
+      "end": 0.58
+    },
+    {
+      "text": "one",
+      "start": 0.58,
+      "end": 0.86
+    },
+    {
+      "text": "tap",
+      "start": 0.86,
+      "end": 1.12
+    },
+    {
+      "text": "away.",
+      "start": 1.12,
+      "end": 1.44
+    },
+    {
+      "text": "A",
+      "start": 2.36,
+      "end": 2.72
+    },
+    {
+      "text": "new",
+      "start": 2.72,
+      "end": 2.88
+    },
+    {
+      "text": "account.",
+      "start": 2.88,
+      "end": 3.26
+    },
+    {
+      "text": "A",
+      "start": 3.48,
+      "end": 3.54
+    },
+    {
+      "text": "fresh",
+      "start": 3.54,
+      "end": 3.74
+    },
+    {
+      "text": "start.",
+      "start": 3.74,
+      "end": 4.1
+    },
+    {
+      "text": "Then",
+      "start": 5.1,
+      "end": 5.34
+    },
+    {
+      "text": "a",
+      "start": 5.34,
+      "end": 5.46
+    },
+    {
+      "text": "smaller",
+      "start": 5.46,
+      "end": 5.78
+    },
+    {
+      "text": "thought",
+      "start": 5.78,
+      "end": 6.08
+    },
+    {
+      "text": "stopped",
+      "start": 6.08,
+      "end": 6.38
+    },
+    {
+      "text": "her.",
+      "start": 6.38,
+      "end": 6.84
+    },
+    {
+      "text": "A",
+      "start": 7.68,
+      "end": 7.86
+    },
+    {
+      "text": "fresh",
+      "start": 7.86,
+      "end": 8.1
+    },
+    {
+      "text": "start...",
+      "start": 8.1,
+      "end": 8.54
+    },
+    {
+      "text": "doing",
+      "start": 8.74,
+      "end": 9.0
+    },
+    {
+      "text": "what?",
+      "start": 9.0,
+      "end": 9.34
+    },
+    {
+      "text": "This",
+      "start": 10.62,
+      "end": 11.0
+    },
+    {
+      "text": "is",
+      "start": 11.0,
+      "end": 11.16
+    },
+    {
+      "text": "a",
+      "start": 11.16,
+      "end": 11.28
+    },
+    {
+      "text": "fictional",
+      "start": 11.28,
+      "end": 11.54
+    },
+    {
+      "text": "scene.",
+      "start": 11.54,
+      "end": 12.04
+    },
+    {
+      "text": "Mira",
+      "start": 12.715,
+      "end": 13.34
+    },
+    {
+      "text": "closed",
+      "start": 13.34,
+      "end": 13.66
+    },
+    {
+      "text": "the",
+      "start": 13.66,
+      "end": 13.88
+    },
+    {
+      "text": "signup",
+      "start": 13.88,
+      "end": 14.2
+    },
+    {
+      "text": "page",
+      "start": 14.2,
+      "end": 14.58
+    },
+    {
+      "text": "and",
+      "start": 14.58,
+      "end": 14.98
+    },
+    {
+      "text": "opened",
+      "start": 14.98,
+      "end": 15.22
+    },
+    {
+      "text": "a",
+      "start": 15.22,
+      "end": 15.36
+    },
+    {
+      "text": "blank",
+      "start": 15.36,
+      "end": 15.56
+    },
+    {
+      "text": "note.",
+      "start": 15.56,
+      "end": 15.88
+    },
+    {
+      "text": "What",
+      "start": 17.14,
+      "end": 17.28
+    },
+    {
+      "text": "do",
+      "start": 17.28,
+      "end": 17.42
+    },
+    {
+      "text": "I",
+      "start": 17.42,
+      "end": 17.54
+    },
+    {
+      "text": "need?",
+      "start": 17.54,
+      "end": 17.86
+    },
+    {
+      "text": "What",
+      "start": 18.98,
+      "end": 19.28
+    },
+    {
+      "text": "will",
+      "start": 19.28,
+      "end": 19.38
+    },
+    {
+      "text": "it",
+      "start": 19.38,
+      "end": 19.52
+    },
+    {
+      "text": "cost?",
+      "start": 19.52,
+      "end": 19.78
+    },
+    {
+      "text": "What",
+      "start": 20.88,
+      "end": 21.26
+    },
+    {
+      "text": "am",
+      "start": 21.26,
+      "end": 21.36
+    },
+    {
+      "text": "I",
+      "start": 21.36,
+      "end": 21.48
+    },
+    {
+      "text": "agreeing",
+      "start": 21.48,
+      "end": 21.76
+    },
+    {
+      "text": "to?",
+      "start": 21.76,
+      "end": 22.16
+    },
+    {
+      "text": "Atomy",
+      "start": 23.46,
+      "end": 23.9
+    },
+    {
+      "text": "was",
+      "start": 23.9,
+      "end": 24.26
+    },
+    {
+      "text": "the",
+      "start": 24.26,
+      "end": 24.42
+    },
+    {
+      "text": "business",
+      "start": 24.42,
+      "end": 24.74
+    },
+    {
+      "text": "she",
+      "start": 24.74,
+      "end": 24.96
+    },
+    {
+      "text": "was",
+      "start": 24.96,
+      "end": 25.1
+    },
+    {
+      "text": "researching.",
+      "start": 25.1,
+      "end": 25.66
+    },
+    {
+      "text": "This",
+      "start": 26.51,
+      "end": 26.96
+    },
+    {
+      "text": "time,",
+      "start": 26.96,
+      "end": 27.34
+    },
+    {
+      "text": "she'd",
+      "start": 27.62,
+      "end": 27.86
+    },
+    {
+      "text": "read",
+      "start": 27.86,
+      "end": 28.02
+    },
+    {
+      "text": "the",
+      "start": 28.02,
+      "end": 28.18
+    },
+    {
+      "text": "current",
+      "start": 28.18,
+      "end": 28.44
+    },
+    {
+      "text": "local",
+      "start": 28.44,
+      "end": 28.7
+    },
+    {
+      "text": "terms",
+      "start": 28.7,
+      "end": 29.2
+    },
+    {
+      "text": "before",
+      "start": 29.2,
+      "end": 29.54
+    },
+    {
+      "text": "deciding.",
+      "start": 29.54,
+      "end": 29.92
+    },
+    {
+      "text": "She",
+      "start": 31.16,
+      "end": 31.42
+    },
+    {
+      "text": "still",
+      "start": 31.42,
+      "end": 31.7
+    },
+    {
+      "text": "wanted",
+      "start": 31.7,
+      "end": 32.0
+    },
+    {
+      "text": "a",
+      "start": 32.0,
+      "end": 32.22
+    },
+    {
+      "text": "new",
+      "start": 32.22,
+      "end": 32.4
+    },
+    {
+      "text": "beginning.",
+      "start": 32.4,
+      "end": 32.78
+    },
+    {
+      "text": "Now,",
+      "start": 34.08,
+      "end": 34.26
+    },
+    {
+      "text": "she",
+      "start": 34.46,
+      "end": 34.66
+    },
+    {
+      "text": "wanted",
+      "start": 34.66,
+      "end": 34.84
+    },
+    {
+      "text": "to",
+      "start": 34.84,
+      "end": 35.02
+    },
+    {
+      "text": "understand",
+      "start": 35.02,
+      "end": 35.38
+    },
+    {
+      "text": "it.",
+      "start": 35.38,
+      "end": 35.78
+    },
+    {
+      "text": "Before",
+      "start": 36.92,
+      "end": 37.16
+    },
+    {
+      "text": "the",
+      "start": 37.16,
+      "end": 37.32
+    },
+    {
+      "text": "next",
+      "start": 37.32,
+      "end": 37.52
+    },
+    {
+      "text": "tap...",
+      "start": 37.52,
+      "end": 37.84
+    },
+    {
+      "text": "ask",
+      "start": 38.26,
+      "end": 38.46
+    },
+    {
+      "text": "the",
+      "start": 38.46,
+      "end": 38.66
+    },
+    {
+      "text": "second",
+      "start": 38.66,
+      "end": 38.92
+    },
+    {
+      "text": "question.",
+      "start": 38.92,
+      "end": 39.42
+    }
+  ],
+  "captions": [
+    {
+      "index": 1,
+      "start": 0.0,
+      "end": 1.12,
+      "duration": 1.12,
+      "text": "She was one tap"
+    },
+    {
+      "index": 2,
+      "start": 1.12,
+      "end": 3.26,
+      "duration": 2.14,
+      "text": "away. A new account."
+    },
+    {
+      "index": 3,
+      "start": 3.48,
+      "end": 4.1,
+      "duration": 0.62,
+      "text": "A fresh start."
+    },
+    {
+      "index": 4,
+      "start": 5.1,
+      "end": 6.08,
+      "duration": 0.98,
+      "text": "Then a smaller thought"
+    },
+    {
+      "index": 5,
+      "start": 6.08,
+      "end": 6.84,
+      "duration": 0.76,
+      "text": "stopped her."
+    },
+    {
+      "index": 6,
+      "start": 7.68,
+      "end": 8.54,
+      "duration": 0.86,
+      "text": "A fresh start..."
+    },
+    {
+      "index": 7,
+      "start": 8.74,
+      "end": 9.34,
+      "duration": 0.6,
+      "text": "doing what?"
+    },
+    {
+      "index": 8,
+      "start": 10.62,
+      "end": 11.54,
+      "duration": 0.92,
+      "text": "This is a fictional"
+    },
+    {
+      "index": 9,
+      "start": 11.54,
+      "end": 12.04,
+      "duration": 0.5,
+      "text": "scene."
+    },
+    {
+      "index": 10,
+      "start": 12.715,
+      "end": 14.2,
+      "duration": 1.485,
+      "text": "Mira closed the signup"
+    },
+    {
+      "index": 11,
+      "start": 14.2,
+      "end": 15.36,
+      "duration": 1.16,
+      "text": "page and opened a"
+    },
+    {
+      "index": 12,
+      "start": 15.36,
+      "end": 15.88,
+      "duration": 0.52,
+      "text": "blank note."
+    },
+    {
+      "index": 13,
+      "start": 17.14,
+      "end": 17.86,
+      "duration": 0.72,
+      "text": "What do I need?"
+    },
+    {
+      "index": 14,
+      "start": 18.98,
+      "end": 19.78,
+      "duration": 0.8,
+      "text": "What will it cost?"
+    },
+    {
+      "index": 15,
+      "start": 20.88,
+      "end": 21.76,
+      "duration": 0.88,
+      "text": "What am I agreeing"
+    },
+    {
+      "index": 16,
+      "start": 21.76,
+      "end": 24.42,
+      "duration": 2.66,
+      "text": "to? Atomy was the"
+    },
+    {
+      "index": 17,
+      "start": 24.42,
+      "end": 25.66,
+      "duration": 1.24,
+      "text": "business she was researching."
+    },
+    {
+      "index": 18,
+      "start": 26.51,
+      "end": 28.02,
+      "duration": 1.51,
+      "text": "This time, she'd read"
+    },
+    {
+      "index": 19,
+      "start": 28.02,
+      "end": 29.2,
+      "duration": 1.18,
+      "text": "the current local terms"
+    },
+    {
+      "index": 20,
+      "start": 29.2,
+      "end": 29.92,
+      "duration": 0.72,
+      "text": "before deciding."
+    },
+    {
+      "index": 21,
+      "start": 31.16,
+      "end": 32.22,
+      "duration": 1.06,
+      "text": "She still wanted a"
+    },
+    {
+      "index": 22,
+      "start": 32.22,
+      "end": 32.78,
+      "duration": 0.56,
+      "text": "new beginning."
+    },
+    {
+      "index": 23,
+      "start": 34.08,
+      "end": 35.02,
+      "duration": 0.94,
+      "text": "Now, she wanted to"
+    },
+    {
+      "index": 24,
+      "start": 35.02,
+      "end": 35.78,
+      "duration": 0.76,
+      "text": "understand it."
+    },
+    {
+      "index": 25,
+      "start": 36.92,
+      "end": 37.84,
+      "duration": 0.92,
+      "text": "Before the next tap..."
+    },
+    {
+      "index": 26,
+      "start": 38.26,
+      "end": 39.42,
+      "duration": 1.16,
+      "text": "ask the second question."
+    }
+  ],
+  "timing_basis": "ASR word evidence bounded to measured synthesis windows; exact approved transcript",
+  "anchors_constrained_to_speech_beats": 2
+}

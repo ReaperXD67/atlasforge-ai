@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "clips": {
+    "mira-night": {
+      "shot": "mira-night",
+      "reference": "videos/biznex-second-question/assets/plates/mira-night.png",
+      "reference_sha256": "b3a970309424acb3786570f610e2a7b5fa5d00d94c39b9f817ddbe27bd10f830",
+      "output": "videos/biznex-second-question/assets/motion/mira-night.mp4",
+      "provider": "ComfyUIWan22Provider",
+      "model": "Wan2.2 TI2V 5B",
+      "model_source": "https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B",
+      "model_license": "Apache-2.0",
+      "model_license_checked_on": "2026-11-06",
+      "model_files": [
+        "wan2.2_ti2v_5B_fp16.safetensors",
+        "wan2.2_vae.safetensors",
+        "umt5_xxl_fp8_e4m3fn_scaled.safetensors"
+      ],
+      "synthetic_media": true,
+      "depicts": "fictional adult, not a real testimonial",
+      "seed": 2611062101,
+      "prompt": "An intimate locked-off cinematic close-up of the same fictional adult woman in the reference photograph, sitting beside a rain-streaked window at night. She stays in the same pose and location. Her eyelids close once naturally, then open; she takes one quiet breath and raises her gaze a little, reconsidering a decision. Restrained thoughtful emotion. Preserve her face, hair, cream shirt and blue-amber lighting exactly. Subtle rain streaks move on the glass. No speech, no lip-sync, no smile, no camera pan, no zoom, no new objects, no text. Continuous realistic gentle motion.",
+      "negative_prompt": "text, subtitles, logo, watermark, static frame, flicker, jitter, camera shake, deformed hands, distorted face, low quality, oversaturated, duplicate people, toy, miniature, diorama, plastic, rubber, melting, liquefying, bent architecture",
+      "subject_action": "one slow natural blink, a quiet inhale, then a slight thoughtful upward gaze",
+      "parameters": {
+        "comfyui_width": 384,
+        "comfyui_height": 672,
+        "comfyui_frames": 65,
+        "comfyui_fps": 20,
+        "comfyui_steps": 20,
+        "comfyui_cfg": 5.0,
+        "comfyui_rife_enabled": false,
+        "comfyui_timeout_minutes": 60
+      },
+      "audio": "silent source; narration and score are mixed separately",
+      "status": "generated_frame_reviewed",
+      "visual_review": {
+        "method": "13 decoded frames at 4fps, inspected in chronological contact sheet; no claim of full-speed playback or final edit approval",
+        "observed": "Blink and subtle brow/cheek expression change; stable room/identity. Expression is doubtful with a slight wince rather than a neutral inhale.",
+        "limitations": "384x672 generated source must be assessed in the 1080x1920 final crop; silent source, no lip-sync. Full export playback and transition review remain required.",
+        "contact_sheet": "output/social/cinematic-benchmark/motion/mira-night-contact.png",
+        "checked_on": "2026-11-06"
+      },
+      "generated_at": "2026-11-06T14:49:31.311262+00:00",
+      "output_sha256": "d77946d22ec71310d0485423cd817de50160f0a025677594b39101976eee22ef",
+      "media_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 384,
+            "height": 672,
+            "r_frame_rate": "20/1",
+            "nb_frames": "65"
+          }
+        ],
+        "format": {
+          "duration": "3.250000"
+        }
+      },
+      "decoded_frame_count": 65,
+      "unique_decoded_frames": 65,
+      "hyperframes_inventory_id": "video_001"
+    },
+    "mira-morning": {
+      "shot": "mira-morning",
+      "reference": "videos/biznex-second-question/assets/plates/mira-morning.png",
+      "reference_sha256": "8200746574d6d2ade143546f8dc3e35819e9d7ddecbbc6af08bd44f5161eaaaa",
+      "output": "videos/biznex-second-question/assets/motion/mira-morning.mp4",
+      "provider": "ComfyUIWan22Provider",
+      "model": "Wan2.2 TI2V 5B",
+      "model_source": "https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B",
+      "model_license": "Apache-2.0",
+      "model_license_checked_on": "2026-11-06",
+      "model_files": [
+        "wan2.2_ti2v_5B_fp16.safetensors",
+        "wan2.2_vae.safetensors",
+        "umt5_xxl_fp8_e4m3fn_scaled.safetensors"
+      ],
+      "synthetic_media": true,
+      "depicts": "fictional adult, not a real testimonial",
+      "seed": 2611062102,
+      "prompt": "A locked-off cinematic medium close-up of the same fictional adult woman in the reference photograph, writing in her notebook beside a sunlit apartment window. Keep her seated posture, face, shirt, hands, pen and every object consistent. Her pen makes two small deliberate strokes on the page while her other hand rests still. She breathes gently and forms a small relaxed smile without looking at the camera. The sheer curtain moves very slightly. No readable writing, no speech, no lip-sync, no camera pan, no zoom, no object additions or transformations. Anatomically coherent fingers and pen grip. Quiet natural live-action motion.",
+      "negative_prompt": "text, subtitles, logo, watermark, static frame, flicker, jitter, camera shake, deformed hands, distorted face, low quality, oversaturated, duplicate people, toy, miniature, diorama, plastic, rubber, melting, liquefying, bent architecture",
+      "subject_action": "a small deliberate writing stroke, relaxed breathing and a very slight smile",
+      "parameters": {
+        "comfyui_width": 384,
+        "comfyui_height": 672,
+        "comfyui_frames": 65,
+        "comfyui_fps": 20,
+        "comfyui_steps": 20,
+        "comfyui_cfg": 5.0,
+        "comfyui_rife_enabled": false,
+        "comfyui_timeout_minutes": 60
+      },
+      "audio": "silent source; narration and score are mixed separately",
+      "status": "generated_frame_reviewed",
+      "visual_review": {
+        "method": "13 decoded frames at 4fps, inspected in chronological contact sheet; no claim of full-speed playback or final edit approval",
+        "observed": "Writing wrist/pen movement and subtle expression change; stable notebook, cup, phone and facial identity in sampled frames.",
+        "limitations": "384x672 generated source must be assessed in the 1080x1920 final crop; silent source, no lip-sync. Full export playback and transition review remain required.",
+        "contact_sheet": "output/social/cinematic-benchmark/motion/mira-morning-contact.png",
+        "checked_on": "2026-11-06"
+      },
+      "generated_at": "2026-11-06T14:53:38.090567+00:00",
+      "output_sha256": "a3649b30963797dcbc0939185e9856ef065d6a5cfda9f710edd0e86ff5b7a84c",
+      "media_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 384,
+            "height": 672,
+            "r_frame_rate": "20/1",
+            "nb_frames": "65"
+          }
+        ],
+        "format": {
+          "duration": "3.250000"
+        }
+      },
+      "decoded_frame_count": 65,
+      "unique_decoded_frames": 65,
+      "hyperframes_inventory_id": "video_002"
+    }
+  }
+}

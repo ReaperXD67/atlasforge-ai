@@ -27,6 +27,7 @@ def test_social_help_exposes_operator_commands() -> None:
     assert result.exit_code == 0
     for command in (
         "doctor", "enqueue", "status", "run-due", "watch", "import-metrics", "report", "retry-blocked",
+        "hold", "resume",
     ):
         assert command in result.output
 
@@ -206,3 +207,44 @@ def test_database_failure_is_nonzero_and_does_not_echo_exception(monkeypatch) ->
     assert result.exit_code != 0
     assert "DO-NOT-PRINT" not in result.output
     assert "worker lock" in result.output
+
+
+@pytest.mark.parametrize("command,expected_state", [("hold", "held"), ("resume", "pending")])
+def test_hold_resume_forwards_an_exact_group_without_running_worker(monkeypatch, command, expected_state):
+    calls = []
+
+    class Manager:
+        def hold_posts(self, keys):
+            calls.append(("hold", keys))
+            return [{"post_key": key, "state": "held"} for key in keys]
+
+        def resume_posts(self, keys):
+            calls.append(("resume", keys))
+            return [{"post_key": key, "state": "pending"} for key in keys]
+
+        def run_due(self, **kwargs):
+            raise AssertionError("hold/resume must not run publication")
+
+    monkeypatch.setattr(social_cli, "_manager", lambda *args: Manager())
+    result = runner.invoke(social_cli.app, [
+        command, "--post-key", "campaign:one", "--post-key", "campaign:two",
+    ])
+    assert result.exit_code == 0
+    assert calls == [(command, ["campaign:one", "campaign:two"])]
+    assert {row["state"] for row in json.loads(result.output)} == {expected_state}
+
+
+@pytest.mark.parametrize("command", ["hold", "resume"])
+def test_hold_resume_requires_explicit_selection_and_redacts_failure(monkeypatch, command):
+    class Manager:
+        def hold_posts(self, keys):
+            raise RuntimeError("https://private.example/?token=DO-NOT-PRINT")
+
+        resume_posts = hold_posts
+
+    monkeypatch.setattr(social_cli, "_manager", lambda *args: Manager())
+    assert runner.invoke(social_cli.app, [command]).exit_code != 0
+    result = runner.invoke(social_cli.app, [command, "--post-key", "campaign:one"])
+    assert result.exit_code != 0
+    assert "DO-NOT-PRINT" not in result.output
+    assert "private.example" not in result.output

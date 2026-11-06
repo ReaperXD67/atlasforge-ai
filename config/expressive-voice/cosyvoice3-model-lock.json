@@ -1,0 +1,102 @@
+{
+  "repository": "FunAudioLLM/Fun-CosyVoice3-0.5B-2512",
+  "revision": "29e01c4e8d000f4bcd70751be16fa94bf3d85a18",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "size": 1574,
+      "sha256": null,
+      "git_blob_sha1": "cb90d04a72c0b51e3a115db0a9342dd88af903a4"
+    },
+    {
+      "path": "CosyVoice-BlankEN/config.json",
+      "size": 659,
+      "sha256": null,
+      "git_blob_sha1": "463b055262b6c66c4629a74a4b300bfe2ed31d3c"
+    },
+    {
+      "path": "CosyVoice-BlankEN/generation_config.json",
+      "size": 242,
+      "sha256": null,
+      "git_blob_sha1": "dfc11073787daf1b0f9c0f1499487ab5f4c93738"
+    },
+    {
+      "path": "CosyVoice-BlankEN/merges.txt",
+      "size": 1402109,
+      "sha256": null,
+      "git_blob_sha1": "90d3d82d027eadcc6a5e77c38eb82d43fc51b53b"
+    },
+    {
+      "path": "CosyVoice-BlankEN/model.safetensors",
+      "size": 988097824,
+      "sha256": "130282af0dfa9fe5840737cc49a0d339d06075f83c5a315c3372c9a0740d0b96",
+      "git_blob_sha1": null
+    },
+    {
+      "path": "CosyVoice-BlankEN/tokenizer_config.json",
+      "size": 1287,
+      "sha256": null,
+      "git_blob_sha1": "ff55d7b9eb1384e5d4d7e75dc0f564c1a8833d6e"
+    },
+    {
+      "path": "CosyVoice-BlankEN/vocab.json",
+      "size": 2776833,
+      "sha256": null,
+      "git_blob_sha1": "4783fe10ac3adce15ac8f358ef5462739852c569"
+    },
+    {
+      "path": "README.md",
+      "size": 11982,
+      "sha256": null,
+      "git_blob_sha1": "d816a921470cff1b6926d31c89e4ec7dea185f32"
+    },
+    {
+      "path": "campplus.onnx",
+      "size": 28303423,
+      "sha256": "a6ac6a63997761ae2997373e2ee1c47040854b4b759ea41ec48e4e42df0f4d73",
+      "git_blob_sha1": null
+    },
+    {
+      "path": "config.json",
+      "size": 2,
+      "sha256": null,
+      "git_blob_sha1": "9e26dfeeb6e641a33dae4961196235bdb965b21b"
+    },
+    {
+      "path": "configuration.json",
+      "size": 47,
+      "sha256": null,
+      "git_blob_sha1": "5e812fae901c12933ac69ebf3eb79d0eb49bbab4"
+    },
+    {
+      "path": "cosyvoice3.yaml",
+      "size": 6934,
+      "sha256": null,
+      "git_blob_sha1": "2eda7e5007d99f6b17fbe7bd751cf54e3cde29ea"
+    },
+    {
+      "path": "flow.pt",
+      "size": 1329116148,
+      "sha256": "a6fab32a7825e5b0bc855ddd948f8db9370b0a786fbc249caa4595e95b608e4b",
+      "git_blob_sha1": null
+    },
+    {
+      "path": "hift.pt",
+      "size": 83202622,
+      "sha256": "b279d7641eb97ae55b3b540cfba4f953c26492a2df758328a89a4d007ab87a65",
+      "git_blob_sha1": null
+    },
+    {
+      "path": "llm.pt",
+      "size": 2024669519,
+      "sha256": "69f43bd545131c30e98947fb360ea8b4dc9916d8e83dded7757c7ea4f5a24970",
+      "git_blob_sha1": null
+    },
+    {
+      "path": "speech_tokenizer_v3.onnx",
+      "size": 969451503,
+      "sha256": "23236a74175dbdda47afc66dbadd5bcb41303c467a57c261cb8539ad9db9208d",
+      "git_blob_sha1": null
+    }
+  ]
+}

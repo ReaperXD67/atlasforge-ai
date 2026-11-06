@@ -1,0 +1,588 @@
+{
+  "$defs": {
+    "AudioCue": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "voice",
+            "music",
+            "ambience",
+            "foley",
+            "accent"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "asset": {
+          "title": "Asset",
+          "type": "string"
+        },
+        "start": {
+          "$ref": "#/$defs/VoiceAnchor"
+        },
+        "end": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/VoiceAnchor"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "duration_frames": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Duration Frames"
+        },
+        "source_start_frame": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Source Start Frame",
+          "type": "integer"
+        },
+        "gain_db": {
+          "default": 0,
+          "maximum": 12,
+          "minimum": -60,
+          "title": "Gain Db",
+          "type": "number"
+        },
+        "gain_keyframes": {
+          "items": {
+            "$ref": "#/$defs/AudioGainKeyframe"
+          },
+          "maxItems": 200,
+          "title": "Gain Keyframes",
+          "type": "array"
+        },
+        "fade_in_frames": {
+          "default": 0,
+          "maximum": 600,
+          "minimum": 0,
+          "title": "Fade In Frames",
+          "type": "integer"
+        },
+        "fade_out_frames": {
+          "default": 0,
+          "maximum": 600,
+          "minimum": 0,
+          "title": "Fade Out Frames",
+          "type": "integer"
+        },
+        "duck_db": {
+          "anyOf": [
+            {
+              "maximum": 0,
+              "minimum": -30,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Duck Db"
+        },
+        "duck_attack_frames": {
+          "default": 3,
+          "maximum": 60,
+          "minimum": 1,
+          "title": "Duck Attack Frames",
+          "type": "integer"
+        },
+        "duck_release_frames": {
+          "default": 9,
+          "maximum": 120,
+          "minimum": 1,
+          "title": "Duck Release Frames",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "role",
+        "asset",
+        "start"
+      ],
+      "title": "AudioCue",
+      "type": "object"
+    },
+    "AudioGainKeyframe": {
+      "additionalProperties": false,
+      "properties": {
+        "at": {
+          "$ref": "#/$defs/VoiceAnchor"
+        },
+        "offset_db": {
+          "description": "Additive offset from the cue's base gain, in decibels",
+          "maximum": 12,
+          "minimum": -60,
+          "title": "Offset Db",
+          "type": "number"
+        }
+      },
+      "required": [
+        "at",
+        "offset_db"
+      ],
+      "title": "AudioGainKeyframe",
+      "type": "object"
+    },
+    "CaptionPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "max_words": {
+          "default": 4,
+          "maximum": 8,
+          "minimum": 1,
+          "title": "Max Words",
+          "type": "integer"
+        },
+        "max_characters": {
+          "default": 32,
+          "maximum": 64,
+          "minimum": 8,
+          "title": "Max Characters",
+          "type": "integer"
+        },
+        "max_gap_seconds": {
+          "default": 0.35,
+          "maximum": 2,
+          "minimum": 0,
+          "title": "Max Gap Seconds",
+          "type": "number"
+        },
+        "hold_frames": {
+          "default": 3,
+          "maximum": 15,
+          "minimum": 0,
+          "title": "Hold Frames",
+          "type": "integer"
+        }
+      },
+      "title": "CaptionPolicy",
+      "type": "object"
+    },
+    "EditQualityPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "min_shots": {
+          "default": 12,
+          "maximum": 100,
+          "minimum": 2,
+          "title": "Min Shots",
+          "type": "integer"
+        },
+        "min_visual_kinds": {
+          "default": 3,
+          "maximum": 7,
+          "minimum": 1,
+          "title": "Min Visual Kinds",
+          "type": "integer"
+        },
+        "min_visual_assets": {
+          "default": 4,
+          "maximum": 100,
+          "minimum": 1,
+          "title": "Min Visual Assets",
+          "type": "integer"
+        },
+        "min_layouts": {
+          "default": 5,
+          "maximum": 100,
+          "minimum": 2,
+          "title": "Min Layouts",
+          "type": "integer"
+        },
+        "min_subjects": {
+          "default": 3,
+          "maximum": 100,
+          "minimum": 1,
+          "title": "Min Subjects",
+          "type": "integer"
+        },
+        "min_framings": {
+          "default": 4,
+          "maximum": 5,
+          "minimum": 1,
+          "title": "Min Framings",
+          "type": "integer"
+        },
+        "min_camera_moves": {
+          "default": 3,
+          "maximum": 7,
+          "minimum": 1,
+          "title": "Min Camera Moves",
+          "type": "integer"
+        },
+        "min_shot_seconds": {
+          "default": 0.45,
+          "maximum": 5,
+          "minimum": 0.1,
+          "title": "Min Shot Seconds",
+          "type": "number"
+        },
+        "max_shot_seconds": {
+          "default": 5.5,
+          "maximum": 30,
+          "minimum": 1,
+          "title": "Max Shot Seconds",
+          "type": "number"
+        },
+        "max_same_layout_seconds": {
+          "default": 7,
+          "maximum": 60,
+          "minimum": 1,
+          "title": "Max Same Layout Seconds",
+          "type": "number"
+        },
+        "max_static_seconds": {
+          "default": 4.5,
+          "maximum": 30,
+          "minimum": 1,
+          "title": "Max Static Seconds",
+          "type": "number"
+        },
+        "max_dominant_layout_fraction": {
+          "default": 0.4,
+          "exclusiveMinimum": 0,
+          "maximum": 1,
+          "title": "Max Dominant Layout Fraction",
+          "type": "number"
+        },
+        "max_typography_fraction": {
+          "default": 0.18,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Max Typography Fraction",
+          "type": "number"
+        },
+        "max_cut_anchor_offset_frames": {
+          "default": 15,
+          "maximum": 120,
+          "minimum": 0,
+          "title": "Max Cut Anchor Offset Frames",
+          "type": "integer"
+        },
+        "require_layered_audio": {
+          "default": true,
+          "title": "Require Layered Audio",
+          "type": "boolean"
+        }
+      },
+      "title": "EditQualityPolicy",
+      "type": "object"
+    },
+    "EditShot": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-zA-Z][a-zA-Z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "start": {
+          "$ref": "#/$defs/VoiceAnchor"
+        },
+        "asset": {
+          "title": "Asset",
+          "type": "string"
+        },
+        "visual_kind": {
+          "enum": [
+            "character",
+            "environment",
+            "object",
+            "interface",
+            "diagram",
+            "typography",
+            "footage"
+          ],
+          "title": "Visual Kind",
+          "type": "string"
+        },
+        "subject": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Subject",
+          "type": "string"
+        },
+        "location": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Location",
+          "type": "string"
+        },
+        "layout": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Layout",
+          "type": "string"
+        },
+        "framing": {
+          "enum": [
+            "extreme_close",
+            "close",
+            "medium",
+            "wide",
+            "insert"
+          ],
+          "title": "Framing",
+          "type": "string"
+        },
+        "camera": {
+          "enum": [
+            "locked",
+            "push_in",
+            "pull_out",
+            "pan",
+            "tilt",
+            "tracking",
+            "orbit",
+            "handheld"
+          ],
+          "title": "Camera",
+          "type": "string"
+        },
+        "subject_motion": {
+          "default": "still",
+          "enum": [
+            "still",
+            "performance",
+            "action"
+          ],
+          "title": "Subject Motion",
+          "type": "string"
+        },
+        "action": {
+          "maxLength": 1000,
+          "minLength": 8,
+          "title": "Action",
+          "type": "string"
+        },
+        "expression": {
+          "default": "",
+          "maxLength": 240,
+          "title": "Expression",
+          "type": "string"
+        },
+        "cut_reason": {
+          "maxLength": 600,
+          "minLength": 8,
+          "title": "Cut Reason",
+          "type": "string"
+        },
+        "transition": {
+          "$ref": "#/$defs/Transition"
+        }
+      },
+      "required": [
+        "id",
+        "start",
+        "asset",
+        "visual_kind",
+        "subject",
+        "location",
+        "layout",
+        "framing",
+        "camera",
+        "action",
+        "cut_reason"
+      ],
+      "title": "EditShot",
+      "type": "object"
+    },
+    "Transition": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "default": "cut",
+          "enum": [
+            "cut",
+            "match_cut",
+            "dissolve",
+            "whip",
+            "wipe"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "frames": {
+          "default": 0,
+          "maximum": 120,
+          "minimum": 0,
+          "title": "Frames",
+          "type": "integer"
+        }
+      },
+      "title": "Transition",
+      "type": "object"
+    },
+    "VoiceAnchor": {
+      "additionalProperties": false,
+      "properties": {
+        "boundary": {
+          "anyOf": [
+            {
+              "enum": [
+                "start",
+                "end"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Boundary"
+        },
+        "phrase": {
+          "anyOf": [
+            {
+              "maxLength": 240,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Phrase"
+        },
+        "word_index": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Word Index"
+        },
+        "occurrence": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Occurrence"
+        },
+        "edge": {
+          "default": "start",
+          "enum": [
+            "start",
+            "end"
+          ],
+          "title": "Edge",
+          "type": "string"
+        },
+        "offset_frames": {
+          "default": 0,
+          "maximum": 120,
+          "minimum": -120,
+          "title": "Offset Frames",
+          "type": "integer"
+        }
+      },
+      "title": "VoiceAnchor",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "project_id": {
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,99}$",
+      "title": "Project Id",
+      "type": "string"
+    },
+    "fps": {
+      "default": 30,
+      "maximum": 60,
+      "minimum": 24,
+      "title": "Fps",
+      "type": "integer"
+    },
+    "width": {
+      "default": 1080,
+      "maximum": 7680,
+      "minimum": 320,
+      "title": "Width",
+      "type": "integer"
+    },
+    "height": {
+      "default": 1920,
+      "maximum": 7680,
+      "minimum": 320,
+      "title": "Height",
+      "type": "integer"
+    },
+    "timing_file": {
+      "default": "timing.json",
+      "title": "Timing File",
+      "type": "string"
+    },
+    "shots": {
+      "items": {
+        "$ref": "#/$defs/EditShot"
+      },
+      "maxItems": 200,
+      "minItems": 2,
+      "title": "Shots",
+      "type": "array"
+    },
+    "audio": {
+      "items": {
+        "$ref": "#/$defs/AudioCue"
+      },
+      "maxItems": 500,
+      "minItems": 1,
+      "title": "Audio",
+      "type": "array"
+    },
+    "captions": {
+      "$ref": "#/$defs/CaptionPolicy"
+    },
+    "policy": {
+      "$ref": "#/$defs/EditQualityPolicy"
+    }
+  },
+  "required": [
+    "project_id",
+    "shots",
+    "audio"
+  ],
+  "title": "EditPlan",
+  "type": "object"
+}

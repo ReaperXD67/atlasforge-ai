@@ -1,0 +1,466 @@
+{
+  "schema_version": 1,
+  "provider": "cosyvoice3",
+  "upstream_commit": "074ca6dc9e80a2f424f1f74b48bdd7d3fea531cc",
+  "model_id": "FunAudioLLM/Fun-CosyVoice3-0.5B-2512",
+  "model_revision": "29e01c4e8d000f4bcd70751be16fa94bf3d85a18",
+  "verified_model_files": [
+    {
+      "path": ".gitattributes",
+      "hash": "cb90d04a72c0b51e3a115db0a9342dd88af903a4"
+    },
+    {
+      "path": "CosyVoice-BlankEN/config.json",
+      "hash": "463b055262b6c66c4629a74a4b300bfe2ed31d3c"
+    },
+    {
+      "path": "CosyVoice-BlankEN/generation_config.json",
+      "hash": "dfc11073787daf1b0f9c0f1499487ab5f4c93738"
+    },
+    {
+      "path": "CosyVoice-BlankEN/merges.txt",
+      "hash": "90d3d82d027eadcc6a5e77c38eb82d43fc51b53b"
+    },
+    {
+      "path": "CosyVoice-BlankEN/model.safetensors",
+      "hash": "130282af0dfa9fe5840737cc49a0d339d06075f83c5a315c3372c9a0740d0b96"
+    },
+    {
+      "path": "CosyVoice-BlankEN/tokenizer_config.json",
+      "hash": "ff55d7b9eb1384e5d4d7e75dc0f564c1a8833d6e"
+    },
+    {
+      "path": "CosyVoice-BlankEN/vocab.json",
+      "hash": "4783fe10ac3adce15ac8f358ef5462739852c569"
+    },
+    {
+      "path": "README.md",
+      "hash": "d816a921470cff1b6926d31c89e4ec7dea185f32"
+    },
+    {
+      "path": "campplus.onnx",
+      "hash": "a6ac6a63997761ae2997373e2ee1c47040854b4b759ea41ec48e4e42df0f4d73"
+    },
+    {
+      "path": "config.json",
+      "hash": "9e26dfeeb6e641a33dae4961196235bdb965b21b"
+    },
+    {
+      "path": "configuration.json",
+      "hash": "5e812fae901c12933ac69ebf3eb79d0eb49bbab4"
+    },
+    {
+      "path": "cosyvoice3.yaml",
+      "hash": "2eda7e5007d99f6b17fbe7bd751cf54e3cde29ea"
+    },
+    {
+      "path": "flow.pt",
+      "hash": "a6fab32a7825e5b0bc855ddd948f8db9370b0a786fbc249caa4595e95b608e4b"
+    },
+    {
+      "path": "hift.pt",
+      "hash": "b279d7641eb97ae55b3b540cfba4f953c26492a2df758328a89a4d007ab87a65"
+    },
+    {
+      "path": "llm.pt",
+      "hash": "69f43bd545131c30e98947fb360ea8b4dc9916d8e83dded7757c7ea4f5a24970"
+    },
+    {
+      "path": "speech_tokenizer_v3.onnx",
+      "hash": "23236a74175dbdda47afc66dbadd5bcb41303c467a57c261cb8539ad9db9208d"
+    }
+  ],
+  "code_license": "Apache-2.0",
+  "model_license": "Apache-2.0",
+  "reference_audio": "voice-reference.wav",
+  "reference_sha256": "45b687b4567ca160de01382212e4bd0860c75b163175650b1ee5b65add438da6",
+  "reference_provenance": "Original local Kokoro af_heart synthetic narration; generated in this project and authorized as its reference persona.",
+  "device": "cuda",
+  "torch_version": "2.13.0+cu130",
+  "sample_rate": 24000,
+  "reference_feature_extractions": {
+    "_extract_speech_feat": 1,
+    "_extract_speech_token": 1,
+    "_extract_spk_embedding": 1
+  },
+  "direction_mode": "reference_conditioned_semantic_instructions",
+  "semantic_emotion_supported": true,
+  "emotion_fidelity_verified": false,
+  "speaker_similarity_verified": false,
+  "notes": [
+    "Instruction support is a model capability, not a listening-quality verdict.",
+    "No pitch shifting, tempo scaling, or paid API was used.",
+    "CPU ONNX frontend and CUDA fp16 acoustic model; no TensorRT/vLLM."
+  ],
+  "cuda_peak_allocated_bytes": 3769166848,
+  "cuda_peak_reserved_bytes": 4016046080,
+  "assembly": "Selected independently ASR-verified model takes; explicit pauses",
+  "source_runs": [
+    {
+      "receipt_id": "hero-directed",
+      "source_report_sha256": "6bfc16f2d03c462e7895becbc5f0694dbba68950107a4256f9899619005d2197",
+      "source_asr_sha256": "31649cd42c135601a60d1b54c80985f3b863b95aba5913b37e8c81609bbffdb2"
+    },
+    {
+      "receipt_id": "hero-repair-1987",
+      "source_report_sha256": "7afb36161c0ed4537e318e1ce713bc3c782b61bf4c000ab6dec8b07b2916bd3f",
+      "source_asr_sha256": "85ffa093842a7a3d71d368f07fa7bf28a52aa1f5e4ab094c78fab59350f5f8b1"
+    },
+    {
+      "receipt_id": "hero-repair-signup",
+      "source_report_sha256": "2cd6f4e712ec7c47cc5c29fc7e54d8eaaf9e78f37c8dc6583d9e7055d6386399",
+      "source_asr_sha256": "fa0a1fe8d8ca097f1ee91c1066bfb236283f5695d7e66a99391c9415de83fab8"
+    }
+  ],
+  "direction_sha256": "3937d591442929d483535e808849bbeb6510e076df49722e8ec828e8aaf14865",
+  "takes": [
+    {
+      "mode": "directed",
+      "id": "beat-000",
+      "text": "She was one tap away.",
+      "instruction": "You are a helpful assistant. Please say a sentence in a very soft voice.<|endofprompt|>",
+      "seed": 1986,
+      "path": "voice-takes/beat-000.wav",
+      "sha256": "f4b8056b77ae676354094ec87cea419511c5bc77b3235418e366c99429e4d4f2",
+      "start_sample": 0,
+      "speech_samples": 72960,
+      "appended_pause_samples": 7200,
+      "duration_seconds": 3.04,
+      "inference_seconds": 9.833,
+      "peak_abs": 0.66492
+    },
+    {
+      "mode": "directed",
+      "id": "beat-001",
+      "text": "A new account. A fresh start.",
+      "instruction": "You are a helpful assistant. Speak with gentle hope and a small smile.<|endofprompt|>",
+      "seed": 1986,
+      "path": "voice-takes/beat-001.wav",
+      "sha256": "fa84ef1cbd7a02cabb6d23c8b4054cb4ec0c74ec15ce9f263b9459e8bc9ebc73",
+      "start_sample": 80160,
+      "speech_samples": 57600,
+      "appended_pause_samples": 6720,
+      "duration_seconds": 2.4,
+      "inference_seconds": 4.354,
+      "peak_abs": 0.99
+    },
+    {
+      "mode": "directed",
+      "id": "beat-002",
+      "text": "Then a smaller thought stopped her.",
+      "instruction": "You are a helpful assistant. Please say a sentence in a very soft voice.<|endofprompt|>",
+      "seed": 1986,
+      "path": "voice-takes/beat-002.wav",
+      "sha256": "209320e6ab1a96b3021eb75bf61d5687bc8162ce5e717f8a92fece432a4ca63b",
+      "start_sample": 144480,
+      "speech_samples": 84480,
+      "appended_pause_samples": 5760,
+      "duration_seconds": 3.52,
+      "inference_seconds": 6.506,
+      "peak_abs": 0.94474
+    },
+    {
+      "mode": "directed",
+      "id": "beat-003",
+      "text": "A fresh start... doing what?",
+      "instruction": "You are a helpful assistant. Ask a vulnerable question in a hushed voice, uncertain and thoughtful.<|endofprompt|>",
+      "seed": 1986,
+      "path": "voice-takes/beat-003.wav",
+      "sha256": "213298fdabde2c5a568e95d51b175005a3f3cbb337fad2804321fabef7fce180",
+      "start_sample": 234720,
+      "speech_samples": 56640,
+      "appended_pause_samples": 14880,
+      "duration_seconds": 2.36,
+      "inference_seconds": 4.131,
+      "peak_abs": 0.91431
+    },
+    {
+      "mode": "directed",
+      "id": "beat-004",
+      "text": "This is a fictional scene.",
+      "instruction": "You are a helpful assistant.<|endofprompt|>",
+      "seed": 1986,
+      "path": "voice-takes/beat-004.wav",
+      "sha256": "c318a3e5fef218647929e502bb157e2827d2719d2caf6d03436c4d3d153d98f0",
+      "start_sample": 306240,
+      "speech_samples": 34560,
+      "appended_pause_samples": 4800,
+      "duration_seconds": 1.44,
+      "inference_seconds": 2.899,
+      "peak_abs": 0.71679
+    },
+    {
+      "mode": "directed",
+      "id": "beat-005",
+      "text": "Mira closed the sign-up page and opened a blank note.",
+      "caption_text": "Mira closed the signup page and opened a blank note.",
+      "instruction": "You are a helpful assistant. Speak calmly, as if remembering a small but important moment.<|endofprompt|>",
+      "seed": 1986,
+      "path": "voice-takes/beat-005.wav",
+      "sha256": "de14d9aa0a27d77ae3669bd129af9b4be7f71df3c10e8dca2fb38e7fb8d3341e",
+      "start_sample": 345600,
+      "speech_samples": 85440,
+      "appended_pause_samples": 7200,
+      "duration_seconds": 3.56,
+      "inference_seconds": 11.091,
+      "peak_abs": 0.96825
+    },
+    {
+      "mode": "directed",
+      "id": "beat-006",
+      "text": "What do I need?",
+      "instruction": "You are a helpful assistant. Ask an honest, gentle question with curiosity.<|endofprompt|>",
+      "seed": 1986,
+      "path": "voice-takes/beat-006.wav",
+      "sha256": "7559647971133f6dac018d4afe5e535ec66e31c31100800b67153a7be442fb57",
+      "start_sample": 438240,
+      "speech_samples": 21120,
+      "appended_pause_samples": 7200,
+      "duration_seconds": 0.88,
+      "inference_seconds": 2.612,
+      "peak_abs": 0.75668
+    },
+    {
+      "mode": "directed",
+      "id": "beat-007",
+      "text": "What will it cost?",
+      "instruction": "You are a helpful assistant. Ask a thoughtful question, clear and grounded.<|endofprompt|>",
+      "seed": 1986,
+      "path": "voice-takes/beat-007.wav",
+      "sha256": "6170615ab2356e77472704cf9c8a150e5b2d51f9ecf85df7da3ed7764000474c",
+      "start_sample": 466560,
+      "speech_samples": 26880,
+      "appended_pause_samples": 7200,
+      "duration_seconds": 1.12,
+      "inference_seconds": 3.016,
+      "peak_abs": 0.92705
+    },
+    {
+      "mode": "directed",
+      "id": "beat-008",
+      "text": "What am I agreeing to?",
+      "instruction": "You are a helpful assistant. Ask with calm seriousness and a little vulnerability.<|endofprompt|>",
+      "seed": 1986,
+      "path": "voice-takes/beat-008.wav",
+      "sha256": "544ada18dad1cbf941ef9ebd6f852e5b34d3733058b4295eb0c26004466fabfe",
+      "start_sample": 500640,
+      "speech_samples": 34560,
+      "appended_pause_samples": 10800,
+      "duration_seconds": 1.44,
+      "inference_seconds": 2.999,
+      "peak_abs": 0.85616
+    },
+    {
+      "mode": "directed",
+      "id": "beat-009",
+      "text": "Atomy was the business she was researching.",
+      "instruction": "You are a helpful assistant.<|endofprompt|>",
+      "seed": 1987,
+      "path": "voice-takes/beat-009.wav",
+      "sha256": "36f3d2f8059302eeb0aad0e27835ca7fe342acd8374ef18636b15463e70fed7a",
+      "start_sample": 546000,
+      "speech_samples": 58560,
+      "appended_pause_samples": 5280,
+      "duration_seconds": 2.44,
+      "inference_seconds": 4.739,
+      "peak_abs": 0.98998
+    },
+    {
+      "mode": "directed",
+      "id": "beat-010",
+      "text": "This time, she'd read the current local terms before deciding.",
+      "instruction": "You are a helpful assistant. Speak calmly and thoughtfully, with quiet confidence.<|endofprompt|>",
+      "seed": 1986,
+      "path": "voice-takes/beat-010.wav",
+      "sha256": "8a9c090a2ca8d7399ffe2119fd64fbcdf96f17a6e1cbf4e52d29e96fc793d4c6",
+      "start_sample": 609840,
+      "speech_samples": 119040,
+      "appended_pause_samples": 8400,
+      "duration_seconds": 4.96,
+      "inference_seconds": 9.301,
+      "peak_abs": 0.89032
+    },
+    {
+      "mode": "directed",
+      "id": "beat-011",
+      "text": "She still wanted a new beginning.",
+      "instruction": "You are a helpful assistant. Speak warmly, with gentle hope.<|endofprompt|>",
+      "seed": 1986,
+      "path": "voice-takes/beat-011.wav",
+      "sha256": "3f0aff045588cd68c1112c2369d49976d3cd690607878020f6312e32e61d67e1",
+      "start_sample": 737280,
+      "speech_samples": 40320,
+      "appended_pause_samples": 5280,
+      "duration_seconds": 1.68,
+      "inference_seconds": 4.101,
+      "peak_abs": 0.71664
+    },
+    {
+      "mode": "directed",
+      "id": "beat-012",
+      "text": "Now, she wanted to understand it.",
+      "instruction": "You are a helpful assistant. Speak with relief and quiet, growing confidence.<|endofprompt|>",
+      "seed": 1986,
+      "path": "voice-takes/beat-012.wav",
+      "sha256": "4632990824198de4e58e0bb5cf1846c8e874ada38506edec51c2b7131812ab48",
+      "start_sample": 782880,
+      "speech_samples": 69120,
+      "appended_pause_samples": 9120,
+      "duration_seconds": 2.88,
+      "inference_seconds": 5.649,
+      "peak_abs": 0.73331
+    },
+    {
+      "mode": "directed",
+      "id": "beat-013",
+      "text": "Before the next tap... ask the second question.",
+      "instruction": "You are a helpful assistant. Please say a sentence in a very soft voice.<|endofprompt|>",
+      "seed": 1986,
+      "path": "voice-takes/beat-013.wav",
+      "sha256": "34c3e3b2d9f2f3062acc7d56387d9373e3af60ff71c3230949759c1916f8619e",
+      "start_sample": 861120,
+      "speech_samples": 117120,
+      "appended_pause_samples": 0,
+      "duration_seconds": 4.88,
+      "inference_seconds": 7.857,
+      "peak_abs": 0.69612
+    }
+  ],
+  "duration_seconds": 40.76,
+  "ignored_numeric_controls": [
+    "energy",
+    "pace"
+  ],
+  "requested_direction": {
+    "schema_version": 1,
+    "beats": [
+      {
+        "text": "She was one tap away.",
+        "emotion": "serious",
+        "energy": 0.3,
+        "pace": 0.95,
+        "pause_after_ms": 300,
+        "delivery": "Please say a sentence in a very soft voice.",
+        "seed": 1986
+      },
+      {
+        "text": "A new account. A fresh start.",
+        "emotion": "reassuring",
+        "energy": 0.48,
+        "pace": 1.02,
+        "pause_after_ms": 280,
+        "delivery": "Speak with gentle hope and a small smile.",
+        "seed": 1986
+      },
+      {
+        "text": "Then a smaller thought stopped her.",
+        "emotion": "serious",
+        "energy": 0.3,
+        "pace": 0.97,
+        "pause_after_ms": 240,
+        "delivery": "Please say a sentence in a very soft voice.",
+        "seed": 1986
+      },
+      {
+        "text": "A fresh start... doing what?",
+        "emotion": "curious",
+        "energy": 0.25,
+        "pace": 0.9,
+        "pause_after_ms": 620,
+        "delivery": "Ask a vulnerable question in a hushed voice, uncertain and thoughtful.",
+        "seed": 1986
+      },
+      {
+        "text": "This is a fictional scene.",
+        "emotion": "neutral",
+        "energy": 0.4,
+        "pace": 1.08,
+        "pause_after_ms": 200,
+        "delivery": "",
+        "seed": 1986
+      },
+      {
+        "text": "Mira closed the signup page and opened a blank note.",
+        "emotion": "neutral",
+        "energy": 0.4,
+        "pace": 1.0,
+        "pause_after_ms": 300,
+        "delivery": "Speak calmly, as if remembering a small but important moment.",
+        "seed": 1986
+      },
+      {
+        "text": "What do I need?",
+        "emotion": "curious",
+        "energy": 0.4,
+        "pace": 0.95,
+        "pause_after_ms": 300,
+        "delivery": "Ask an honest, gentle question with curiosity.",
+        "seed": 1986
+      },
+      {
+        "text": "What will it cost?",
+        "emotion": "curious",
+        "energy": 0.42,
+        "pace": 0.95,
+        "pause_after_ms": 300,
+        "delivery": "Ask a thoughtful question, clear and grounded.",
+        "seed": 1986
+      },
+      {
+        "text": "What am I agreeing to?",
+        "emotion": "curious",
+        "energy": 0.4,
+        "pace": 0.95,
+        "pause_after_ms": 450,
+        "delivery": "Ask with calm seriousness and a little vulnerability.",
+        "seed": 1986
+      },
+      {
+        "text": "Atomy was the business she was researching.",
+        "emotion": "neutral",
+        "energy": 0.4,
+        "pace": 0.99,
+        "pause_after_ms": 220,
+        "delivery": "",
+        "seed": 1987
+      },
+      {
+        "text": "This time, she'd read the current local terms before deciding.",
+        "emotion": "serious",
+        "energy": 0.45,
+        "pace": 0.99,
+        "pause_after_ms": 350,
+        "delivery": "Speak calmly and thoughtfully, with quiet confidence.",
+        "seed": 1986
+      },
+      {
+        "text": "She still wanted a new beginning.",
+        "emotion": "reassuring",
+        "energy": 0.45,
+        "pace": 0.98,
+        "pause_after_ms": 220,
+        "delivery": "Speak warmly, with gentle hope.",
+        "seed": 1986
+      },
+      {
+        "text": "Now, she wanted to understand it.",
+        "emotion": "reassuring",
+        "energy": 0.5,
+        "pace": 0.97,
+        "pause_after_ms": 380,
+        "delivery": "Speak with relief and quiet, growing confidence.",
+        "seed": 1986
+      },
+      {
+        "text": "Before the next tap... ask the second question.",
+        "emotion": "reassuring",
+        "energy": 0.4,
+        "pace": 0.93,
+        "pause_after_ms": 0,
+        "delivery": "Please say a sentence in a very soft voice.",
+        "seed": 1986
+      }
+    ]
+  },
+  "private_performance_receipt_sha256": "84c99c479a881647a89ca9ebe379c16e67db9a1764ae5842d03c2a7dd775348e"
+}

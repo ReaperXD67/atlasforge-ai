@@ -18,6 +18,7 @@ from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_ex
 
 from ..config import Settings
 from ..exceptions import ProviderFailed
+from ..expressive_voice import instruction_for_delivery, validate_request
 from ..media.ffmpeg import FFmpeg
 from ..media.subtitles import (
     scale_exact_caption_sidecars,
@@ -25,6 +26,7 @@ from ..media.subtitles import (
     write_forced_aligned_caption_sidecars,
 )
 from ..voice_direction import (
+    VoiceBeat,
     VoiceDirection,
     bounded_speech_chunks,
     chatterbox_controls,
@@ -72,6 +74,83 @@ class TTSProvider(Provider[Path]):
     @abstractmethod
     def synthesize(self, text: str, output_dir: Path) -> Path:
         pass
+
+
+class CosyVoice3TTSProvider(TTSProvider):
+    """Opt-in semantic direction in a separate, pinned local model environment."""
+
+    name = "cosyvoice3"
+    direction_mode = "reference_conditioned_semantic_instructions"
+    semantic_emotion_supported = True
+
+    def __init__(self, settings: Settings, ffmpeg: FFmpeg) -> None:
+        self.cfg = settings.voice
+        self.ffmpeg = ffmpeg
+        self.worker = Path(__file__).resolve().parents[3] / "scripts/expressive_voice_worker.py"
+
+    def available(self) -> bool:
+        return (
+            self.ffmpeg.available
+            and self.cfg.cosyvoice_python.is_file()
+            and self.worker.is_file()
+            and (self.cfg.cosyvoice_upstream / "cosyvoice/cli/cosyvoice.py").is_file()
+            and (self.cfg.cosyvoice_model / "llm.pt").is_file()
+            and self.cfg.cosyvoice_reference_audio is not None
+            and self.cfg.cosyvoice_reference_audio.is_file()
+            and bool(self.cfg.cosyvoice_reference_provenance.strip())
+        )
+
+    def synthesize(self, text: str, output_dir: Path) -> Path:
+        return self.synthesize_directed(
+            VoiceDirection(beats=[VoiceBeat(text=chunk) for chunk in bounded_speech_chunks(text, 500)]),
+            output_dir,
+        )
+
+    def synthesize_directed(self, direction: VoiceDirection, output_dir: Path) -> Path:
+        output_dir.mkdir(parents=True, exist_ok=True)
+        request = {
+            "schema_version": 1,
+            "reference_audio": str(self.cfg.cosyvoice_reference_audio.resolve()),
+            "reference_provenance": self.cfg.cosyvoice_reference_provenance,
+            "beats": [
+                {"id": f"beat-{index:03d}",
+                 "text": apply_pronunciations(beat.text, self.cfg.pronunciations),
+                 "caption_text": beat.text,
+                 "instruction": instruction_for_delivery(beat.emotion, beat.delivery),
+                 "pause_after_ms": beat.pause_after_ms, "seed": beat.seed}
+                for index, beat in enumerate(directed_speech_chunks(direction, 500))
+            ],
+        }
+        validate_request(request)
+        request_path = output_dir / "cosyvoice-request.json"
+        request_path.write_text(json.dumps(request, ensure_ascii=False, indent=2), encoding="utf-8")
+        # Do not expose app API/OAuth secrets to a separately installed model runtime.
+        allowed = {"PATH", "SYSTEMROOT", "WINDIR", "TEMP", "TMP", "USERPROFILE",
+                   "APPDATA", "LOCALAPPDATA", "PROGRAMDATA", "COMSPEC",
+                   "CUDA_PATH", "CUDA_VISIBLE_DEVICES"}
+        environment = {key: value for key, value in os.environ.items() if key.upper() in allowed}
+        environment.update({"HF_HUB_OFFLINE": "1", "TRANSFORMERS_OFFLINE": "1",
+                            "PYTHONUTF8": "1", "TOKENIZERS_PARALLELISM": "false"})
+        with (output_dir / "cosyvoice-worker.log").open("w", encoding="utf-8") as log:
+            try:
+                subprocess.run(
+                    [str(self.cfg.cosyvoice_python.resolve()), str(self.worker),
+                     "--request", str(request_path.resolve()), "--output", str(output_dir.resolve()),
+                     "--upstream", str(self.cfg.cosyvoice_upstream.resolve()),
+                     "--model", str(self.cfg.cosyvoice_model.resolve())],
+                    env=environment, stdout=log, stderr=subprocess.STDOUT, check=True,
+                    timeout=self.cfg.cosyvoice_timeout_seconds,
+                )
+            except (subprocess.SubprocessError, OSError) as exc:
+                raise ProviderFailed("CosyVoice worker failed; inspect cosyvoice-worker.log") from exc
+        raw = output_dir / "directed/narration.wav"
+        report = json.loads((output_dir / "audition-report.json").read_text(encoding="utf-8"))
+        report["ignored_numeric_controls"] = ["energy", "pace"]
+        report["requested_direction"] = direction.model_dump()
+        (output_dir / "narration.performance.json").write_text(
+            json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8",
+        )
+        return concatenate_and_normalize([raw], output_dir / "narration.wav", self.cfg.target_lufs, self.ffmpeg)
 
 
 class OpenAITTSProvider(TTSProvider):
@@ -333,7 +412,9 @@ class KokoroTTSProvider(TTSProvider):
                 "voice": self.cfg.kokoro_voice,
                 "direction_mode": self.direction_mode,
                 "semantic_emotion_supported": False,
-                "ignored_controls": ["emotion", "energy"],
+                "ignored_controls": ["emotion", "energy"] + (
+                    ["delivery"] if any(beat.delivery for beat in direction.beats) else []
+                ),
                 "sample_rate": sample_rate,
                 "beats": performance,
             }, indent=2) + "\n", encoding="utf-8",
@@ -823,6 +904,7 @@ class NarrationGenerator:
             "kokoro": KokoroTTSProvider(settings, ffmpeg),
             "edge": EdgeTTSProvider(settings, ffmpeg),
             "chatterbox": ChatterboxTTSProvider(settings, ffmpeg),
+            "cosyvoice3": CosyVoice3TTSProvider(settings, ffmpeg),
             "piper": PiperTTSProvider(settings, ffmpeg),
         }
         self.chain: ProviderChain[Path] = ProviderChain(

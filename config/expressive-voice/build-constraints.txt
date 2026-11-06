@@ -1,0 +1,2 @@
+# Whisper 20231117 imports pkg_resources in setup.py.
+setuptools==80.9.0

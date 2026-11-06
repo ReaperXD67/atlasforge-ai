@@ -1,0 +1,16 @@
+extends: biznex-local-voice-proof.yaml
+
+# Opt-in; no paid provider and no silent Kokoro fallback.
+voice:
+  providers: [cosyvoice3]
+  cosyvoice_python: models/runtime/cosyvoice/Scripts/python.exe
+  cosyvoice_upstream: models/upstream/CosyVoice
+  cosyvoice_model: models/expressive/Fun-CosyVoice3-0.5B
+  cosyvoice_reference_audio: videos/biznex-second-question/assets/audio/voice-reference.wav
+  cosyvoice_reference_provenance: Original local Kokoro af_heart synthetic narration; generated in this project and authorized as its reference persona.
+  cosyvoice_timeout_seconds: 1800
+  pronunciations:
+    signup: sign-up
+
+publishing:
+  enabled: false

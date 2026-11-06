@@ -10,16 +10,20 @@ service. Run from this repository and preserve its instructions, source policy a
 2. Import only real, explicitly normalized observations placed in `output/social/inbox/`.
    Validate each import through `social import-metrics`; retain missing values. Run reports
    for each predeclared primary metric. Never invent metrics or scrape private account data.
-3. Follow the 30-day experimental cadence. The first six pilots are already rendered and
-   verified; reuse them instead of regenerating a backlog. The first is public on all three
-   platforms. Five YouTube follow-ups are due November 7–11 at 09:00 Asia/Calcutta in the local
-   public campaign. Use primary sources, record observation dates and market, and apply POLICY.md.
+3. The user rejected the first batch's creative quality. Its first pilot remains public on
+   all three platforms; the exact five unpublished YouTube follow-ups are now `held` in the
+   dedicated queue. They retain their November 7–11 dates, payloads and receipts but cannot
+   run, including through manual `--execute`. Do not resume or re-enqueue them to bypass the
+   hold. Build and inspect the cinematic replacement against [the acceptance brief](CINEMATIC_ACCEPTANCE.md)
+   before planning a new campaign. Use primary sources, record observation dates and market,
+   and apply POLICY.md. Preserve old renders and published receipts as the comparison baseline.
 4. For an episode due in the approved plan, produce original narration and visuals with the
    existing HyperFrames/production workflow, exact captions and delivery checks. Use local
    providers by default; do not enable paid providers or increase budgets. Respect asset
    licenses and voice rights. Inspect the rendered result; passing technical checks alone
    does not establish good storytelling or factual accuracy.
-5. Queue only verified original episodes under real account IDs and timezone-aware dates.
+5. Keep the rejected follow-ups held until the user approves their release. Queue only verified
+   replacement episodes under new episode/post IDs, real accounts and timezone-aware dates.
    Run a preview. Execute due jobs only when platform access is connected, setup has been
    verified, and the approved campaign explicitly declares the destination and privacy.
    The initial private YouTube integration test is complete; video `bQlvLxzPRSc` was promoted

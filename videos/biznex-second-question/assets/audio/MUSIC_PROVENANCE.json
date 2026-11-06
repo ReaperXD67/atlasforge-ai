@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "file": "hiraeth.mp3",
+  "title": "Hiraeth",
+  "creator": "Scott Buckley",
+  "source_page": "https://www.scottbuckley.com.au/library/hiraeth/",
+  "source_url": "https://www.scottbuckley.com.au/library/wp-content/uploads/2020/06/sb_hiraeth.mp3",
+  "license": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "verified_on": "2026-11-06",
+  "sha256": "f790c7d53b8d802981ff7cdd8c59e22cdfe103ea66aba296c6cf1a65fe7fcf01",
+  "modifications": "Excerpt, fade in/out, voice-aware ducking and final mix loudness normalization. No pitch or tempo changes.",
+  "required_credit": "'Hiraeth' by Scott Buckley - released under CC-BY 4.0. www.scottbuckley.com.au"
+}

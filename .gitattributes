@@ -13,3 +13,16 @@
 /src/daily_video_factory/shorts_batch.py -text
 /src/daily_video_factory/shorts_delivery.py -text
 /src/daily_video_factory/youtube_delivery.py -text
+/videos/biznex-second-question/** -text
+/src/daily_video_factory/edit_plan.py -text
+/src/daily_video_factory/cinematic_audio.py -text
+/src/daily_video_factory/expressive_voice.py -text
+/scripts/build_cinematic_short.mjs -text
+/scripts/run_cinematic_project.py -text
+/scripts/compile_edit_plan.py -text
+/scripts/mix_cinematic_audio.py -text
+/scripts/lib/cinematic_primitives.js -text
+/scripts/lib/cinematic_build.mjs -text
+/scripts/templates/cinematic/** -text
+/config/voice-directions/biznex-second-question.json -text
+/config/expressive-voice/** -text

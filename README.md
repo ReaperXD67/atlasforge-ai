@@ -11,14 +11,24 @@
 [![Policy](https://img.shields.io/badge/editorial-policy_gated-16a085)](POLICY.md)
 [![Cost model](https://img.shields.io/badge/costs-explicit-4d8dff)](COSTS.md)
 
-AtlasForge AI supports daily editorial production, custom cinematic music films, and reusable video
-batches. Its daily pipeline researches, scripts, narrates, storyboards, edits, captions, packages,
-and can optionally publish an original 6–8 minute YouTube video.
+AtlasForge AI combines expressive local narration, speech-timed cinematic editing, verified video
+exports and a durable social publishing queue. Use it for short fictional stories, custom music
+films or researched editorial videos. The daily editorial pipeline researches, scripts, narrates,
+storyboards, edits, captions and packages an original 6–8 minute YouTube video, with optional publishing.
+
+<p align="center">
+  <a href="https://github.com/ReaperXD67/atlasforge-ai/releases/tag/biznex-cinematic-2026-11-06">
+    <img src="docs/assets/readme/second-question-preview.gif" width="270" alt="Actual rendered opening: a paused signup, a night apartment and Mira's reaction">
+  </a>
+  <br><strong>The Second Question</strong> · 41 seconds · local expressive voice · 18 authored shots
+  <br><a href="https://github.com/ReaperXD67/atlasforge-ai/releases/download/biznex-cinematic-2026-11-06/final.mp4">Watch the complete film with sound</a> · <a href="https://github.com/ReaperXD67/atlasforge-ai/releases/download/biznex-cinematic-2026-11-06/biznex-second-question.zip">Download film + prepared sources</a>
+</p>
 
 ## Choose a workflow
 
 | Workflow | What it produces | Start here |
 | --- | --- | --- |
+| **Cinematic Shorts** | A measured voice performance, frame-based shot plan, character motion, licensed sound mix and verified 1080p export | [The Second Question](videos/biznex-second-question/README.md) · [One-command rebuild](docs/CINEMATIC_PROJECT_WORKFLOW.md) |
 | **Social Operator** | A durable YouTube/Instagram/Facebook queue for verified videos, account-specific publishing receipts, and matched-age analytics reports | [Social automation](docs/SOCIAL_AUTOMATION.md) · [Growth experiments](docs/SOCIAL_GROWTH.md) |
 | **Editorial Studio** | Researched, narrated videos using matched real footage, owned cards, captions, and reviewable upload packages | [Windows setup](SETUP.md) |
 | **Custom cinematic films · HyperFrames** | Authored full-song films with supplied photographs, generated artwork, reviewed motion inserts, deterministic camera/atmosphere movement, and measured lyric subtitles | [Cinematic workflow below](#custom-cinematic-music-films) · [reference project](videos/for-my-sweetheart/README.md) |
@@ -100,9 +110,11 @@ and foley, aligned captions and individual thumbnails. Their measured runtimes a
 No audience improvement or viral outcome has been established.
 
 [Download all six videos, covers and captions](https://github.com/ReaperXD67/atlasforge-ai/releases/download/biznex-first-six-2026-11-06/biznex-first-six.zip).
-Five YouTube follow-ups are queued for November 7–11 at 09:00 IST in the local daily operator.
-They are queued jobs, not platform-confirmed future posts; the computer and valid authorization
-must be available. The November 6 source validation passed 495 Python tests, 34 Node tests and Ruff.
+The five unpublished follow-ups are **held** after the owner rejected their visual quality, and
+the daily operator is paused. The first published pilot remains intact. Held jobs retain their
+original payloads, dates and receipts but cannot be selected by the publishing worker; resuming
+them is an explicit operation. The original delivery validation passed 495 Python tests,
+34 Node tests and Ruff.
 
 ```powershell
 .\.venv\Scripts\python.exe -m daily_video_factory.cli render-production-batch --manifest config/batches/biznex-first-six.production.json --resume
@@ -123,6 +135,46 @@ pace and pauses. Providers expose different controls, and each run records what 
 applied. See [voice direction](docs/VOICE_DIRECTION.md) and the
 [upstream license and maintenance review](docs/UPSTREAM_RESEARCH.md), including BRAG, Qwen3-TTS,
 Chatterbox, F5-TTS and WhisperX. No proprietary voice model was copied.
+
+## Cinematic editorial pipeline
+
+The new opted-in workflow compiles exact spoken-word anchors into frame-based shots, transitions,
+captions and layered sound. It mixes licensed score, environmental audio and Foley around measured
+speech, then builds and renders a HyperFrames project with source fingerprints. Changes to the
+narration, media, timing or mix invalidate previous receipts instead of silently reusing an export.
+Music can follow spoken-word gain cues, keeping a soft closing line clear without changing the
+narrator's performance. Scene and caption visibility use one frame clock to avoid cut-boundary flashes.
+
+```mermaid
+flowchart LR
+  A[Script and acting directions] --> B[Local voice and checked takes]
+  B --> C[Words mapped to video frames]
+  M[Original plates and character motion] --> C
+  C --> D[Shot composition and sound mix]
+  D --> E[Render and decode verification]
+  E --> F[Film, captions and portable sources]
+```
+
+```powershell
+.venv/Scripts/python.exe scripts/run_cinematic_project.py videos/biznex-second-question --check-only
+# With the prepared local project assets and measured voice:
+.venv/Scripts/python.exe scripts/run_cinematic_project.py videos/biznex-second-question --render
+```
+
+The [Second Question project](videos/biznex-second-question/README.md) is a completed **40.767-second,
+1080 × 1920, 30 fps** export with **18 shots** and **1,223 fully decoded frames**. It uses an original
+fictional character, photographic environments, authored phone interfaces and two local Wan
+performance clips. The optional [CosyVoice3 voice path](docs/EXPRESSIVE_VOICE.md) uses the original
+synthetic `af_heart` reference with per-beat acting instructions; all 14 selected takes passed
+independent transcript checks. A neutral/directed voice audition is included in the delivery.
+The motion inserts originate at 384 × 672, and emotional fidelity remains a listening judgment.
+This proves a working production path, not audience reach or ElevenLabs quality parity.
+
+See the [one-command workflow](docs/CINEMATIC_PROJECT_WORKFLOW.md),
+[edit schema and upstream decisions](docs/CINEMATIC_EDIT_PLANS.md), and
+[portable delivery export](docs/CINEMATIC_DELIVERY.md). The
+[actual-film acceptance criteria](docs/CINEMATIC_ACCEPTANCE.md) describe and verify
+media production; they do not predict audience retention or virality.
 
 ## Custom cinematic music films
 

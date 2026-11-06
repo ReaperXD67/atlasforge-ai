@@ -203,6 +203,105 @@ def test_dry_run_has_no_remote_reads_uploads_or_queue_mutations(queue):
     assert checks == []
 
 
+def test_hold_survives_restart_and_excludes_manual_execute_without_resetting_receipts(queue):
+    manager, root, checks = queue
+    manager.enqueue(campaign(root, posts=[meta_post()]))
+    manager._update(
+        "launch:ig", attempts=3, next_attempt_at=(NOW + timedelta(hours=1)).isoformat(),
+        receipt=json.dumps({"container_id": "existing-container"}), error="Safe retry status",
+    )
+    with manager._connect() as conn:
+        before = dict(conn.execute("SELECT * FROM social_posts").fetchone())
+    result = manager.hold_posts(["launch:ig"])
+    assert result[0]["state"] == "held"
+    assert "never-echo-this" not in json.dumps(result)
+    assert "video_url" not in json.dumps(result)
+    restarted = SocialCampaignManager(manager.settings, root, database=manager.database)
+    restarted.meta.close()
+    restarted.youtube = manager.youtube
+    restarted.meta = manager.meta
+    try:
+        assert restarted.run_due(execute=True, now=NOW + timedelta(days=10)) == []
+        assert restarted.list_posts()[0]["state"] == "held"
+    finally:
+        restarted.close()
+    with manager._connect() as conn:
+        held = dict(conn.execute("SELECT * FROM social_posts").fetchone())
+    assert {k: v for k, v in held.items() if k not in {"state", "updated_at"}} == {
+        k: v for k, v in before.items() if k not in {"state", "updated_at"}
+    }
+    assert manager.youtube.uploads == manager.meta.calls == 0
+    assert checks == []
+
+
+def test_hold_and_resume_are_idempotent_and_keep_backoff_and_approved_payload(queue, monkeypatch):
+    manager, root, _ = queue
+    manager.enqueue(campaign(root))
+    retry_at = (NOW + timedelta(hours=1)).isoformat()
+    manager._update("launch:one", attempts=3, next_attempt_at=retry_at)
+    held = manager.hold_posts(["launch:one"])
+    monkeypatch.setattr(module, "_clock", lambda value=None: value or NOW + timedelta(minutes=2))
+    assert manager.hold_posts(["launch:one"]) == held
+    resumed = manager.resume_posts(["launch:one"])
+    assert resumed[0]["state"] == "pending"
+    assert resumed[0]["attempts"] == 3
+    assert resumed[0]["next_attempt_at"] == retry_at
+    monkeypatch.setattr(module, "_clock", lambda value=None: value or NOW + timedelta(minutes=3))
+    assert manager.resume_posts(["launch:one"]) == resumed
+    assert manager.run_due(execute=True, now=NOW) == []
+    assert manager.run_due(execute=True, now=NOW + timedelta(hours=2))[0]["state"] == "published"
+    assert manager.youtube.uploads == 1
+
+
+@pytest.mark.parametrize("state", ["published", "uploading", "uncertain", "blocked"])
+@pytest.mark.parametrize("operation", ["hold_posts", "resume_posts"])
+def test_hold_resume_reject_mixed_groups_atomically_and_preserve_terminal_rows(queue, state, operation):
+    manager, root, _ = queue
+    path = campaign(root)
+    data = json.loads(path.read_text())
+    data["posts"].append({**data["posts"][0], "id": "two", "episode_id": "long"})
+    path.write_text(json.dumps(data))
+    manager.enqueue(path)
+    manager._update("launch:two", state=state, receipt='{"video_id":"keep-me"}')
+    before = manager.list_posts()
+    with pytest.raises(ConfigurationError, match="pending or held"):
+        getattr(manager, operation)(["launch:one", "launch:two"])
+    assert manager.list_posts() == before
+
+
+@pytest.mark.parametrize("keys", [[], [""], [" "], ["launch:one", "launch:one"], ["launch:one", "missing"]])
+def test_hold_refuses_invalid_selection_without_partial_mutation(queue, keys):
+    manager, root, _ = queue
+    manager.enqueue(campaign(root))
+    before = manager.list_posts()
+    with pytest.raises(ConfigurationError):
+        manager.hold_posts(keys)
+    assert manager.list_posts() == before
+
+
+def test_hold_uses_worker_lock_and_does_not_claim_to_interrupt_an_active_worker(queue):
+    manager, root, _ = queue
+    manager.enqueue(campaign(root))
+    before = manager.list_posts()
+    with (
+        module.portalocker.Lock(str(manager.database) + ".worker.lock", timeout=0),
+        pytest.raises(module.portalocker.exceptions.LockException),
+    ):
+        manager.hold_posts(["launch:one"])
+    assert manager.list_posts() == before
+
+
+def test_reenqueue_and_retry_blocked_cannot_release_a_hold(queue):
+    manager, root, _ = queue
+    path = campaign(root)
+    manager.enqueue(path)
+    held = manager.hold_posts(["launch:one"])
+    assert manager.enqueue(path) == held
+    with pytest.raises(ConfigurationError):
+        manager.retry_blocked("launch:one")
+    assert manager.list_posts() == held
+
+
 def test_schedule_requires_timezone_and_future_posts_wait(queue):
     manager, root, _ = queue
     path = campaign(root, posts=[meta_post(publish_at="2026-11-06T12:00:00")])

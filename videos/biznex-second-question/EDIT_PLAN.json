@@ -1,0 +1,504 @@
+{
+  "schema_version": 1,
+  "project_id": "biznex-second-question",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "timing_file": "timing.json",
+  "shots": [
+    {
+      "id": "s01",
+      "start": {
+        "boundary": "start"
+      },
+      "asset": "assets/plates/phone.png",
+      "visual_kind": "object",
+      "subject": "phone",
+      "location": "night-apartment",
+      "layout": "phone-macro",
+      "framing": "extreme_close",
+      "camera": "push_in",
+      "subject_motion": "still",
+      "action": "A fingertip pauses just above the account button.",
+      "expression": "Reflective, then quietly hopeful.",
+      "cut_reason": "A fingertip pauses just above the account button.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s02",
+      "start": {
+        "phrase": "A new account"
+      },
+      "asset": "assets/plates/phone.png",
+      "visual_kind": "interface",
+      "subject": "signup",
+      "location": "night-apartment",
+      "layout": "full-signup",
+      "framing": "insert",
+      "camera": "tracking",
+      "subject_motion": "action",
+      "action": "Move into an editable illustrated account screen.",
+      "expression": "Reflective, then quietly hopeful.",
+      "cut_reason": "Move into an editable illustrated account screen.",
+      "transition": {
+        "kind": "match_cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s03",
+      "start": {
+        "phrase": "A fresh start",
+        "occurrence": 1
+      },
+      "asset": "assets/plates/mira-wide.png",
+      "visual_kind": "environment",
+      "subject": "apartment",
+      "location": "night-apartment",
+      "layout": "room-wide",
+      "framing": "wide",
+      "camera": "pull_out",
+      "subject_motion": "still",
+      "action": "Reveal Mira alone in her room beside the rainy window.",
+      "expression": "Reflective, then quietly hopeful.",
+      "cut_reason": "Reveal Mira alone in her room beside the rainy window.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s04",
+      "start": {
+        "phrase": "Then a smaller thought"
+      },
+      "asset": "assets/motion/mira-night.mp4",
+      "visual_kind": "character",
+      "subject": "mira",
+      "location": "night-apartment",
+      "layout": "night-closeup",
+      "framing": "close",
+      "camera": "locked",
+      "subject_motion": "performance",
+      "action": "Mira breathes and hesitates before her decision.",
+      "expression": "Reflective, then quietly hopeful.",
+      "cut_reason": "Mira breathes and hesitates before her decision.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s05",
+      "start": {
+        "phrase": "A fresh start",
+        "occurrence": 2
+      },
+      "asset": "assets/plates/mira-mirror.png",
+      "visual_kind": "character",
+      "subject": "reflection",
+      "location": "night-apartment",
+      "layout": "mirror-medium",
+      "framing": "medium",
+      "camera": "push_in",
+      "subject_motion": "still",
+      "action": "Her own reflection redirects her attention inward.",
+      "expression": "Reflective, then quietly hopeful.",
+      "cut_reason": "Her own reflection redirects her attention inward.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s06",
+      "start": {
+        "phrase": "doing what"
+      },
+      "asset": "assets/plates/mira-mirror.png",
+      "visual_kind": "typography",
+      "subject": "question",
+      "location": "night-apartment",
+      "layout": "mirror-question",
+      "framing": "close",
+      "camera": "locked",
+      "subject_motion": "still",
+      "action": "The unresolved question replaces the promise of a new start.",
+      "expression": "Reflective, then quietly hopeful.",
+      "cut_reason": "The unresolved question replaces the promise of a new start.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s07",
+      "start": {
+        "phrase": "This is a fictional scene"
+      },
+      "asset": "assets/plates/mira-wide.png",
+      "visual_kind": "environment",
+      "subject": "apartment",
+      "location": "night-apartment",
+      "layout": "room-wide",
+      "framing": "wide",
+      "camera": "pan",
+      "subject_motion": "still",
+      "action": "Return to her room and state that this scene is fictional.",
+      "expression": "Reflective, then quietly hopeful.",
+      "cut_reason": "Return to her room and state that this scene is fictional.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s08",
+      "start": {
+        "phrase": "Mira closed the signup page"
+      },
+      "asset": "assets/plates/phone.png",
+      "visual_kind": "object",
+      "subject": "phone",
+      "location": "night-apartment",
+      "layout": "phone-macro",
+      "framing": "insert",
+      "camera": "locked",
+      "subject_motion": "still",
+      "action": "The signup screen recedes from her unfinished action.",
+      "expression": "Reflective, then quietly hopeful.",
+      "cut_reason": "The signup screen recedes from her unfinished action.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s09",
+      "start": {
+        "phrase": "and opened a blank note"
+      },
+      "asset": "assets/plates/phone.png",
+      "visual_kind": "interface",
+      "subject": "note",
+      "location": "night-apartment",
+      "layout": "full-note",
+      "framing": "insert",
+      "camera": "tracking",
+      "subject_motion": "action",
+      "action": "A clean note opens, ready for her own questions.",
+      "expression": "Reflective, then quietly hopeful.",
+      "cut_reason": "A clean note opens, ready for her own questions.",
+      "transition": {
+        "kind": "match_cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s10",
+      "start": {
+        "phrase": "What do I need"
+      },
+      "asset": "assets/plates/phone.png",
+      "visual_kind": "interface",
+      "subject": "note",
+      "location": "night-apartment",
+      "layout": "full-note",
+      "framing": "insert",
+      "camera": "push_in",
+      "subject_motion": "still",
+      "action": "Write the first concrete question about her needs.",
+      "expression": "Reflective, then quietly hopeful.",
+      "cut_reason": "Write the first concrete question about her needs.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s11",
+      "start": {
+        "phrase": "What will it cost"
+      },
+      "asset": "assets/plates/phone.png",
+      "visual_kind": "interface",
+      "subject": "question",
+      "location": "night-apartment",
+      "layout": "cost-question",
+      "framing": "close",
+      "camera": "pan",
+      "subject_motion": "action",
+      "action": "Change scale and write the practical question about cost.",
+      "expression": "Reflective, then quietly hopeful.",
+      "cut_reason": "Change scale and write the practical question about cost.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s12",
+      "start": {
+        "phrase": "What am I agreeing to"
+      },
+      "asset": "assets/plates/mira-mirror.png",
+      "visual_kind": "character",
+      "subject": "reflection",
+      "location": "night-apartment",
+      "layout": "mirror-question",
+      "framing": "medium",
+      "camera": "locked",
+      "subject_motion": "still",
+      "action": "Finish the note by asking what the agreement means.",
+      "expression": "Reflective, then quietly hopeful.",
+      "cut_reason": "Finish the note by asking what the agreement means.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s13",
+      "start": {
+        "phrase": "Atomy was the business"
+      },
+      "asset": "assets/plates/mira-night.png",
+      "visual_kind": "character",
+      "subject": "mira",
+      "location": "night-apartment",
+      "layout": "night-closeup",
+      "framing": "close",
+      "camera": "pull_out",
+      "subject_motion": "still",
+      "action": "Name Atomy as the subject of her research, without a promised outcome.",
+      "expression": "Reflective, then quietly hopeful.",
+      "cut_reason": "Name Atomy as the subject of her research, without a promised outcome.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s14",
+      "start": {
+        "phrase": "This time"
+      },
+      "asset": "assets/plates/mira-wide.png",
+      "visual_kind": "interface",
+      "subject": "terms",
+      "location": "night-apartment",
+      "layout": "research-terms",
+      "framing": "insert",
+      "camera": "push_in",
+      "subject_motion": "still",
+      "action": "Show the next research step: current local terms before deciding.",
+      "expression": "Reflective, then quietly hopeful.",
+      "cut_reason": "Show the next research step: current local terms before deciding.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s15",
+      "start": {
+        "phrase": "She still wanted a new beginning"
+      },
+      "asset": "assets/motion/mira-morning.mp4",
+      "visual_kind": "character",
+      "subject": "mira",
+      "location": "morning-apartment",
+      "layout": "morning-writing",
+      "framing": "medium",
+      "camera": "locked",
+      "subject_motion": "performance",
+      "action": "Morning light finds Mira writing rather than rushing.",
+      "expression": "Reflective, then quietly hopeful.",
+      "cut_reason": "Morning light finds Mira writing rather than rushing.",
+      "transition": {
+        "kind": "dissolve",
+        "frames": 12
+      }
+    },
+    {
+      "id": "s16",
+      "start": {
+        "phrase": "Now she wanted to understand it"
+      },
+      "asset": "assets/plates/mira-dawn.png",
+      "visual_kind": "environment",
+      "subject": "apartment",
+      "location": "morning-apartment",
+      "layout": "morning-window",
+      "framing": "wide",
+      "camera": "pull_out",
+      "subject_motion": "still",
+      "action": "Widen to show her calmer posture and the open window.",
+      "expression": "Reflective, then quietly hopeful.",
+      "cut_reason": "Widen to show her calmer posture and the open window.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s17",
+      "start": {
+        "phrase": "Before the next tap"
+      },
+      "asset": "assets/plates/phone-morning.png",
+      "visual_kind": "object",
+      "subject": "phone",
+      "location": "morning-apartment",
+      "layout": "phone-macro",
+      "framing": "extreme_close",
+      "camera": "push_in",
+      "subject_motion": "still",
+      "action": "Return to the opening fingertip with a different question.",
+      "expression": "Reflective, then quietly hopeful.",
+      "cut_reason": "Return to the opening fingertip with a different question.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s18",
+      "start": {
+        "phrase": "ask the second question"
+      },
+      "asset": "assets/plates/mira-dawn.png",
+      "visual_kind": "character",
+      "subject": "mira",
+      "location": "morning-apartment",
+      "layout": "final-resolve",
+      "framing": "wide",
+      "camera": "locked",
+      "subject_motion": "still",
+      "action": "Resolve with one useful action and the BizNex Stories identity.",
+      "expression": "Reflective, then quietly hopeful.",
+      "cut_reason": "Resolve with one useful action and the BizNex Stories identity.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    }
+  ],
+  "audio": [
+    {
+      "id": "voice",
+      "role": "voice",
+      "asset": "assets/audio/narration.wav",
+      "start": {
+        "boundary": "start"
+      },
+      "end": {
+        "boundary": "end"
+      },
+      "gain_db": 0
+    },
+    {
+      "id": "score",
+      "role": "music",
+      "asset": "assets/audio/hiraeth.mp3",
+      "start": {
+        "boundary": "start"
+      },
+      "end": {
+        "boundary": "end"
+      },
+      "source_start_frame": 2040,
+      "gain_db": -10,
+      "duck_db": -10,
+      "fade_in_frames": 30,
+      "fade_out_frames": 45,
+      "gain_keyframes": [
+        {
+          "at": {
+            "boundary": "start"
+          },
+          "offset_db": 0
+        },
+        {
+          "at": {
+            "phrase": "Before the next tap",
+            "offset_frames": -6
+          },
+          "offset_db": 0
+        },
+        {
+          "at": {
+            "phrase": "Before the next tap"
+          },
+          "offset_db": -6
+        },
+        {
+          "at": {
+            "boundary": "end"
+          },
+          "offset_db": -6
+        }
+      ]
+    },
+    {
+      "id": "rain",
+      "role": "ambience",
+      "asset": "assets/audio/rain.wav",
+      "start": {
+        "boundary": "start"
+      },
+      "end": {
+        "phrase": "She still wanted a new beginning"
+      },
+      "gain_db": -24,
+      "duck_db": -3,
+      "fade_in_frames": 12,
+      "fade_out_frames": 24
+    },
+    {
+      "id": "open-note",
+      "role": "foley",
+      "asset": "assets/audio/click.wav",
+      "start": {
+        "phrase": "and opened a blank note"
+      },
+      "duration_frames": 6,
+      "gain_db": -18,
+      "fade_in_frames": 0,
+      "fade_out_frames": 2
+    },
+    {
+      "id": "turn-back",
+      "role": "foley",
+      "asset": "assets/audio/click.wav",
+      "start": {
+        "phrase": "Mira closed the signup page"
+      },
+      "duration_frames": 6,
+      "gain_db": -18,
+      "fade_in_frames": 0,
+      "fade_out_frames": 2
+    }
+  ],
+  "captions": {
+    "max_words": 4,
+    "max_characters": 32,
+    "hold_frames": 3
+  },
+  "policy": {
+    "min_shots": 12,
+    "min_visual_kinds": 3,
+    "min_visual_assets": 4,
+    "min_layouts": 5,
+    "min_subjects": 3,
+    "min_framings": 4,
+    "min_camera_moves": 3,
+    "max_shot_seconds": 6,
+    "max_same_layout_seconds": 7,
+    "max_static_seconds": 4.5,
+    "require_layered_audio": true
+  }
+}

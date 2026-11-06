@@ -175,6 +175,32 @@ def watch(
             close()
 
 
+@app.command("hold")
+@_safe_io
+def hold(
+    post_key: list[str] = typer.Option(..., help="Exact post_key from status; repeat for an atomic group."),
+    config: Path = typer.Option(Path("config/default.yaml"), exists=True, dir_okay=False),
+    root: Path = typer.Option(Path("."), exists=True, file_okay=False),
+    database: Path | None = typer.Option(None, dir_okay=False),
+) -> None:
+    """Hold exact pending posts locally; workers cannot publish held jobs."""
+    with _managed(config, root, database) as manager:
+        console.print_json(data=manager.hold_posts(post_key))
+
+
+@app.command("resume")
+@_safe_io
+def resume(
+    post_key: list[str] = typer.Option(..., help="Exact held post_key; repeat for an atomic group."),
+    config: Path = typer.Option(Path("config/default.yaml"), exists=True, dir_okay=False),
+    root: Path = typer.Option(Path("."), exists=True, file_okay=False),
+    database: Path | None = typer.Option(None, dir_okay=False),
+) -> None:
+    """Release exact held jobs. Original due times remain; overdue jobs become eligible."""
+    with _managed(config, root, database) as manager:
+        console.print_json(data=manager.resume_posts(post_key))
+
+
 @app.command("import-metrics")
 @_safe_io
 def import_metrics(

@@ -1,0 +1,95 @@
+{
+  "authored_caption_word_count": 87,
+  "authored_shot_count": 18,
+  "delivery_verified": true,
+  "finished_at": "2026-11-06T15:58:23.757530+00:00",
+  "mode": "build",
+  "output": {
+    "audio_codec": "aac",
+    "bytes": 41026438,
+    "channels": 2,
+    "decoded_video_frames": 1223,
+    "duration_seconds": 40.766667,
+    "file": "renders/final.mp4",
+    "fps": "30",
+    "full_video_audio_decode_passed": true,
+    "height": 1920,
+    "pixel_format": "yuv420p",
+    "sample_rate": 48000,
+    "sha256": "511bb20e58f0b7497899f22e400af553d0c54b8338ede961f1cf88d5578945b6",
+    "video_codec": "h264",
+    "width": 1080
+  },
+  "project_id": "biznex-second-question",
+  "published": false,
+  "render_requested": true,
+  "rendered": true,
+  "review_state": "expressive candidate",
+  "run_id": "87c9a15597d94848a80990822726de05",
+  "schema_version": 1,
+  "source_files": {
+    "AUDIO_MIX.json": "2ecaedd5e1c69db6a5f35c83b44e6bb2265624399a57c9778657b07298796efe",
+    "CINEMATIC_BUILD.json": "a32d68871b8eacade8c6d97d2d3e4e83f632ad2d95bf3c65efb73803a3b87e6d",
+    "DIRECTION.json": "62a50a799c161f30b29fc86a2599457844d7f72990abb9df4d130ec71b4c4adf",
+    "EDIT_PLAN.audit.json": "fbb47c5e32d6f06920b6fe8a2c0440f178e5884ceaaab0d91333c56237d6e565",
+    "EDIT_PLAN.compiled.js": "f5a071e1357e0b6cb233de9f1d21c9b73b6fe6df66d1d557ab6973001fd2019c",
+    "EDIT_PLAN.compiled.json": "daef19019da1684b827e4811169de8c37d45e7618121f071020067190dfb3e0d",
+    "EDIT_PLAN.json": "a556b0d19bb46a1144cb5ab2ef113438d6620d5ccb7129c064c487cca47d2387",
+    "assets/audio/click.wav": "941a4c82321a72d56eedb469d08d4ef1e27355c947e45e698e83617ed17d1293",
+    "assets/audio/hiraeth.mp3": "f790c7d53b8d802981ff7cdd8c59e22cdfe103ea66aba296c6cf1a65fe7fcf01",
+    "assets/audio/master.wav": "36bc859da88183de7ea99e21c6200d0bbbd7ae0a7e7c6298ab0381c332560d81",
+    "assets/audio/narration.wav": "60c3aefa827d175881b9136b9eccdfe1dc78c3bd9a9d1086108df18a5e0500ea",
+    "assets/audio/rain.wav": "0bb295dd7695c73bfb33c057c451c46e426dcbda2fbf85a0b6968616ae35f73c",
+    "assets/fonts/Montserrat.ttf": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7",
+    "assets/motion/mira-morning.mp4": "a3649b30963797dcbc0939185e9856ef065d6a5cfda9f710edd0e86ff5b7a84c",
+    "assets/motion/mira-night.mp4": "d77946d22ec71310d0485423cd817de50160f0a025677594b39101976eee22ef",
+    "assets/plates/mira-dawn.png": "a0496752895a5429779416598a8dfbf169026bfc95ccf2955c29361e4cb22fa3",
+    "assets/plates/mira-mirror.png": "1ce9193dc58c9a40532cb1049e1c658d18b15f853e122640fadb862df33f1367",
+    "assets/plates/mira-night.png": "b3a970309424acb3786570f610e2a7b5fa5d00d94c39b9f817ddbe27bd10f830",
+    "assets/plates/mira-wide.png": "50ccb378687d63c825172ab1ab2bd35359923be171c02ac771c5d3b0f37acd11",
+    "assets/plates/phone-morning.png": "5cec0401cf0b62f0ef2b96866922da800ff6188d39ed8e66273d8564385b2a3e",
+    "assets/plates/phone.png": "492bec10a00d3b39de1d9a163d4a9e32abca66930a89b8874189eb48fc2de0c9",
+    "assets/vendor/cinematic_primitives.js": "8fb8b27ba46d3cbfbf1ca4d45edf8a5eaf33556f1b3fcfe621e5245d81e1ef48",
+    "assets/vendor/gsap.min.js": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280",
+    "cinematic.css": "c3fca76b7cd7a3970ab227231c9501d5ae9baa8747a344d790d448384c808f24",
+    "cinematic.js": "d68c63b7e189e6f431a8575a9e5db2fa779e36075547716f39d132a2f78dd605",
+    "hyperframes.json": "0a710eddc067db42da49c15f1bf7d67b1618b61ccbf9cc5ce54285520d101111",
+    "index.html": "9f0c96b63acae1cc3f18cbc9c09dffef15adde9a37b6895679e4f897bee4bd96",
+    "package.json": "289915010540dbc662d8b37c2a7a7754e1d39d64e3a523cc8067cf710027eb58",
+    "timing.json": "becec23aebd6327bec9ead0c1eff33b48c84ba6f0f8e7f1cc5b33f3fad1fb1e0"
+  },
+  "stages": [
+    {
+      "name": "compile",
+      "status": "passed"
+    },
+    {
+      "name": "mix",
+      "status": "passed"
+    },
+    {
+      "name": "build",
+      "status": "passed"
+    },
+    {
+      "name": "source-verification",
+      "status": "passed"
+    },
+    {
+      "name": "render-with-check",
+      "status": "passed"
+    },
+    {
+      "name": "media-verification",
+      "status": "passed"
+    },
+    {
+      "name": "final-source-verification",
+      "status": "passed"
+    }
+  ],
+  "started_at": "2026-11-06T15:55:08.205934+00:00",
+  "status": "verified_delivery",
+  "visual_review_verified": false,
+  "voice_emotion_verified": false
+}

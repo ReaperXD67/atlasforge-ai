@@ -32,11 +32,14 @@ All six MP4s are rendered and passed the matching production batch's delivery ve
 1080 x 1920 at 30fps, H.264 video and stereo 48kHz AAC audio. See the
 [delivery guide](PILOT_DELIVERY.md) for reproducible export and review commands.
 The verified 40,642,538-byte ZIP was exported, and 18 decoded frames from the six actual
-videos were reviewed. Five follow-up YouTube posts are enqueued for 7–11 November 2026
-at 09:00 Asia/Kolkata, one per day, with public visibility. The active operator heartbeat
-references `output/social/biznex-next-five.public.campaign.json` and the dedicated
-`output/social/biznex-first-six.queue.sqlite`. These are queued future jobs, not completed
-publications; Meta follow-ups are not included in this queue.
+videos were reviewed. The user subsequently rejected the batch's creative quality. The five
+unpublished YouTube follow-ups are now **held**, retaining their original 7–11 November dates
+and immutable inputs in `output/social/biznex-first-six.queue.sqlite`. A future dry run finds
+zero eligible posts; the first published row and all receipts remain unchanged. The private
+campaign is `output/social/biznex-next-five.public.campaign.json`. Re-enqueueing it does not
+release the hold. Meta follow-ups are not included in this queue. Technical delivery passes
+did not establish creative acceptance; [the cinematic acceptance brief](CINEMATIC_ACCEPTANCE.md)
+sets the replacement review criteria.
 No audience improvement is claimed. No audience measurements were
 available; the analytics report correctly returns `no_observations`.
 
@@ -146,6 +149,7 @@ publication. Re-enqueueing an unchanged campaign is safe; it does not reset rece
 | State | Meaning | Action |
 | --- | --- | --- |
 | `pending` | Due later, processing remotely, or awaiting a bounded read retry | Run the worker on its schedule; inspect `next_attempt_at` |
+| `held` | Scheduling deliberately suspended in the persistent database | Preserve the approved payload and receipts; explicitly resume selected keys only when release is authorized |
 | `blocked` | Setup, verification or retry limit requires attention | Correct the cause, then use `retry-blocked` |
 | `uploading` | A YouTube mutation began; a crash may leave its result unknown | Next executing worker changes an interrupted job to `uncertain` |
 | `uncertain` | A remote mutation may have succeeded | Reconcile with the actual platform; never delete the receipt or blindly upload again |
@@ -160,6 +164,31 @@ an ambiguous result. A confirmed YouTube video ID survives accessory failures. A
 caption insertion stops for reconciliation too. Meta receipt files live beside the queue;
 do not discard them. An `--execute` run returns a nonzero status when a processed job becomes
 blocked/uncertain. `status` shows all jobs, including ones no longer eligible for automatic retry.
+
+Hold or resume exact keys with repeatable options; neither command publishes anything:
+
+```powershell
+.\.venv\Scripts\python.exe -m daily_video_factory.cli social hold --database output/social/queue.sqlite --post-key campaign-id:post-id --post-key campaign-id:another-post
+.\.venv\Scripts\python.exe -m daily_video_factory.cli social resume --database output/social/queue.sqlite --post-key campaign-id:post-id
+```
+
+The full selection is validated and changed atomically under the same lock as the worker.
+Missing, published, uploading, blocked or uncertain keys reject the entire operation. Repeated
+hold/resume calls are idempotent. Only state and its update timestamp change; payloads, receipts,
+attempt counts, original publication dates and retry delays stay intact. Held rows survive
+restarts and are skipped by both `watch` and manual `run-due --execute`. This is a local queue
+hold, not a cancellation of an already completed or in-flight platform operation: an active
+worker owns the lock and the hold fails until it finishes. Verify `status` after a lock error.
+
+**Resuming an overdue job makes it eligible for the next worker run.** Resume does not re-date
+it, run it, or revalidate it immediately; normal source, source-age and delivery checks still
+run before publication. For this rejected batch, leave all five held. Replacement creative
+needs new production and post IDs and a reviewed schedule; do not reset old receipts.
+
+The existing APScheduler 3.11.3 dependency (MIT) supports pausing scheduler jobs, but that
+does not protect a separate manual queue execution. The persistent queue-state design uses
+the existing SQLite/portalocker stack with no additional dependency or copied upstream code.
+See the [APScheduler pause/resume contract](https://apscheduler.readthedocs.io/en/3.x/userguide.html#pausing-and-resuming-jobs).
 
 If a signed media URL expires after enqueue, the immutable job cannot silently change that
 input. Reconcile any remote receipt before replacing a job through a reviewed migration;

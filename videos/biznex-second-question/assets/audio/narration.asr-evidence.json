@@ -1,0 +1,674 @@
+{
+  "source_runs": [
+    {
+      "receipt_id": "hero-directed",
+      "source_report_sha256": "6bfc16f2d03c462e7895becbc5f0694dbba68950107a4256f9899619005d2197",
+      "source_asr_sha256": "31649cd42c135601a60d1b54c80985f3b863b95aba5913b37e8c81609bbffdb2"
+    },
+    {
+      "receipt_id": "hero-repair-1987",
+      "source_report_sha256": "7afb36161c0ed4537e318e1ce713bc3c782b61bf4c000ab6dec8b07b2916bd3f",
+      "source_asr_sha256": "85ffa093842a7a3d71d368f07fa7bf28a52aa1f5e4ab094c78fab59350f5f8b1"
+    },
+    {
+      "receipt_id": "hero-repair-signup",
+      "source_report_sha256": "2cd6f4e712ec7c47cc5c29fc7e54d8eaaf9e78f37c8dc6583d9e7055d6386399",
+      "source_asr_sha256": "fa0a1fe8d8ca097f1ee91c1066bfb236283f5695d7e66a99391c9415de83fab8"
+    }
+  ],
+  "takes": [
+    {
+      "id": "beat-000",
+      "mode": "directed",
+      "expected_text": "She was one tap away.",
+      "asr_transcript": "She was one tap away.",
+      "normalized_asr_matches": true,
+      "duration_seconds": 3.04,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.6649169921875,
+      "rms": 0.12326653301715851,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "She",
+          "start": 0.0,
+          "end": 0.32
+        },
+        {
+          "text": "was",
+          "start": 0.32,
+          "end": 0.74
+        },
+        {
+          "text": "one",
+          "start": 0.74,
+          "end": 1.8
+        },
+        {
+          "text": "tap",
+          "start": 1.8,
+          "end": 2.3
+        },
+        {
+          "text": "away.",
+          "start": 2.3,
+          "end": 2.72
+        }
+      ]
+    },
+    {
+      "id": "beat-001",
+      "mode": "directed",
+      "expected_text": "A new account. A fresh start.",
+      "asr_transcript": "A new account, a fresh start.",
+      "normalized_asr_matches": true,
+      "duration_seconds": 2.4,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.989990234375,
+      "rms": 0.1406739056110382,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "A",
+          "start": 0.0,
+          "end": 0.44
+        },
+        {
+          "text": "new",
+          "start": 0.44,
+          "end": 0.6
+        },
+        {
+          "text": "account,",
+          "start": 0.6,
+          "end": 1.06
+        },
+        {
+          "text": "a",
+          "start": 1.38,
+          "end": 1.46
+        },
+        {
+          "text": "fresh",
+          "start": 1.46,
+          "end": 1.66
+        },
+        {
+          "text": "start.",
+          "start": 1.66,
+          "end": 2.06
+        }
+      ]
+    },
+    {
+      "id": "beat-002",
+      "mode": "directed",
+      "expected_text": "Then a smaller thought stopped her.",
+      "asr_transcript": "Then, a smaller thought stopped her.",
+      "normalized_asr_matches": true,
+      "duration_seconds": 3.52,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.944732666015625,
+      "rms": 0.12480396032333374,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "Then,",
+          "start": 0.0,
+          "end": 0.38
+        },
+        {
+          "text": "a",
+          "start": 0.98,
+          "end": 1.06
+        },
+        {
+          "text": "smaller",
+          "start": 1.06,
+          "end": 1.62
+        },
+        {
+          "text": "thought",
+          "start": 1.62,
+          "end": 2.14
+        },
+        {
+          "text": "stopped",
+          "start": 2.14,
+          "end": 3.0
+        },
+        {
+          "text": "her.",
+          "start": 3.0,
+          "end": 3.32
+        }
+      ]
+    },
+    {
+      "id": "beat-003",
+      "mode": "directed",
+      "expected_text": "A fresh start... doing what?",
+      "asr_transcript": "A fresh start. Doing what?",
+      "normalized_asr_matches": true,
+      "duration_seconds": 2.36,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.914306640625,
+      "rms": 0.1293964684009552,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "A",
+          "start": 0.0,
+          "end": 0.36
+        },
+        {
+          "text": "fresh",
+          "start": 0.36,
+          "end": 0.56
+        },
+        {
+          "text": "start.",
+          "start": 0.56,
+          "end": 1.04
+        },
+        {
+          "text": "Doing",
+          "start": 1.52,
+          "end": 1.68
+        },
+        {
+          "text": "what?",
+          "start": 1.68,
+          "end": 1.96
+        }
+      ]
+    },
+    {
+      "id": "beat-004",
+      "mode": "directed",
+      "expected_text": "This is a fictional scene.",
+      "asr_transcript": "This is a fictional scene.",
+      "normalized_asr_matches": true,
+      "duration_seconds": 1.44,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.716766357421875,
+      "rms": 0.11134858429431915,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "This",
+          "start": 0.0,
+          "end": 0.16
+        },
+        {
+          "text": "is",
+          "start": 0.16,
+          "end": 0.28
+        },
+        {
+          "text": "a",
+          "start": 0.28,
+          "end": 0.44
+        },
+        {
+          "text": "fictional",
+          "start": 0.44,
+          "end": 0.74
+        },
+        {
+          "text": "scene.",
+          "start": 0.74,
+          "end": 1.14
+        }
+      ]
+    },
+    {
+      "id": "beat-005",
+      "mode": "directed",
+      "expected_text": "Mira closed the signup page and opened a blank note.",
+      "synthesis_text": "Mira closed the sign-up page and opened a blank note.",
+      "asr_transcript": "Mira closed the sign-up page and opened a blank note.",
+      "normalized_asr_matches": true,
+      "duration_seconds": 3.56,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.968231201171875,
+      "rms": 0.14218026399612427,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "Mira",
+          "start": 0.0,
+          "end": 0.34
+        },
+        {
+          "text": "closed",
+          "start": 0.34,
+          "end": 0.66
+        },
+        {
+          "text": "the",
+          "start": 0.66,
+          "end": 0.9
+        },
+        {
+          "text": "sign",
+          "start": 0.9,
+          "end": 1.16
+        },
+        {
+          "text": "-up",
+          "start": 1.16,
+          "end": 1.34
+        },
+        {
+          "text": "page",
+          "start": 1.34,
+          "end": 1.66
+        },
+        {
+          "text": "and",
+          "start": 1.66,
+          "end": 2.22
+        },
+        {
+          "text": "opened",
+          "start": 2.22,
+          "end": 2.58
+        },
+        {
+          "text": "a",
+          "start": 2.58,
+          "end": 2.76
+        },
+        {
+          "text": "blank",
+          "start": 2.76,
+          "end": 2.98
+        },
+        {
+          "text": "note.",
+          "start": 2.98,
+          "end": 3.34
+        }
+      ]
+    },
+    {
+      "id": "beat-006",
+      "mode": "directed",
+      "expected_text": "What do I need?",
+      "asr_transcript": "What do I need?",
+      "normalized_asr_matches": true,
+      "duration_seconds": 0.88,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.75665283203125,
+      "rms": 0.17420423030853271,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "What",
+          "start": 0.0,
+          "end": 0.18
+        },
+        {
+          "text": "do",
+          "start": 0.18,
+          "end": 0.32
+        },
+        {
+          "text": "I",
+          "start": 0.32,
+          "end": 0.46
+        },
+        {
+          "text": "need?",
+          "start": 0.46,
+          "end": 0.72
+        }
+      ]
+    },
+    {
+      "id": "beat-007",
+      "mode": "directed",
+      "expected_text": "What will it cost?",
+      "asr_transcript": "What will it cost?",
+      "normalized_asr_matches": true,
+      "duration_seconds": 1.12,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.927032470703125,
+      "rms": 0.16189371049404144,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "What",
+          "start": 0.0,
+          "end": 0.16
+        },
+        {
+          "text": "will",
+          "start": 0.16,
+          "end": 0.26
+        },
+        {
+          "text": "it",
+          "start": 0.26,
+          "end": 0.42
+        },
+        {
+          "text": "cost?",
+          "start": 0.42,
+          "end": 0.72
+        }
+      ]
+    },
+    {
+      "id": "beat-008",
+      "mode": "directed",
+      "expected_text": "What am I agreeing to?",
+      "asr_transcript": "What am I agreeing to?",
+      "normalized_asr_matches": true,
+      "duration_seconds": 1.44,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.856170654296875,
+      "rms": 0.18524658679962158,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "What",
+          "start": 0.0,
+          "end": 0.18
+        },
+        {
+          "text": "am",
+          "start": 0.18,
+          "end": 0.32
+        },
+        {
+          "text": "I",
+          "start": 0.32,
+          "end": 0.54
+        },
+        {
+          "text": "agreeing",
+          "start": 0.54,
+          "end": 0.88
+        },
+        {
+          "text": "to?",
+          "start": 0.88,
+          "end": 1.3
+        }
+      ]
+    },
+    {
+      "id": "beat-009",
+      "mode": "directed",
+      "expected_text": "Atomy was the business she was researching.",
+      "asr_transcript": "Atomy was the business she was researching.",
+      "normalized_asr_matches": true,
+      "duration_seconds": 2.44,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.989959716796875,
+      "rms": 0.14501209557056427,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "Atomy",
+          "start": 0.0,
+          "end": 0.38
+        },
+        {
+          "text": "was",
+          "start": 0.38,
+          "end": 0.56
+        },
+        {
+          "text": "the",
+          "start": 0.56,
+          "end": 0.72
+        },
+        {
+          "text": "business",
+          "start": 0.72,
+          "end": 1.04
+        },
+        {
+          "text": "she",
+          "start": 1.04,
+          "end": 1.32
+        },
+        {
+          "text": "was",
+          "start": 1.32,
+          "end": 1.46
+        },
+        {
+          "text": "researching.",
+          "start": 1.46,
+          "end": 2.0
+        }
+      ]
+    },
+    {
+      "id": "beat-010",
+      "mode": "directed",
+      "expected_text": "This time, she'd read the current local terms before deciding.",
+      "asr_transcript": "This time, she'd read the current local terms before deciding.",
+      "normalized_asr_matches": true,
+      "duration_seconds": 4.96,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.89031982421875,
+      "rms": 0.13974040746688843,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "This",
+          "start": 0.0,
+          "end": 0.54
+        },
+        {
+          "text": "time,",
+          "start": 0.54,
+          "end": 1.02
+        },
+        {
+          "text": "she'd",
+          "start": 1.24,
+          "end": 1.62
+        },
+        {
+          "text": "read",
+          "start": 1.62,
+          "end": 1.86
+        },
+        {
+          "text": "the",
+          "start": 1.86,
+          "end": 2.08
+        },
+        {
+          "text": "current",
+          "start": 2.08,
+          "end": 2.48
+        },
+        {
+          "text": "local",
+          "start": 2.48,
+          "end": 2.86
+        },
+        {
+          "text": "terms",
+          "start": 2.86,
+          "end": 3.44
+        },
+        {
+          "text": "before",
+          "start": 3.44,
+          "end": 3.86
+        },
+        {
+          "text": "deciding.",
+          "start": 3.86,
+          "end": 4.42
+        }
+      ]
+    },
+    {
+      "id": "beat-011",
+      "mode": "directed",
+      "expected_text": "She still wanted a new beginning.",
+      "asr_transcript": "She still wanted a new beginning.",
+      "normalized_asr_matches": true,
+      "duration_seconds": 1.68,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.716644287109375,
+      "rms": 0.12880195677280426,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "She",
+          "start": 0.0,
+          "end": 0.24
+        },
+        {
+          "text": "still",
+          "start": 0.24,
+          "end": 0.52
+        },
+        {
+          "text": "wanted",
+          "start": 0.52,
+          "end": 0.86
+        },
+        {
+          "text": "a",
+          "start": 0.86,
+          "end": 1.02
+        },
+        {
+          "text": "new",
+          "start": 1.02,
+          "end": 1.16
+        },
+        {
+          "text": "beginning.",
+          "start": 1.16,
+          "end": 1.44
+        }
+      ]
+    },
+    {
+      "id": "beat-012",
+      "mode": "directed",
+      "expected_text": "Now, she wanted to understand it.",
+      "asr_transcript": "Now, she wanted to understand it.",
+      "normalized_asr_matches": true,
+      "duration_seconds": 2.88,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.733306884765625,
+      "rms": 0.14824186265468597,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "Now,",
+          "start": 0.0,
+          "end": 0.36
+        },
+        {
+          "text": "she",
+          "start": 1.12,
+          "end": 1.34
+        },
+        {
+          "text": "wanted",
+          "start": 1.34,
+          "end": 1.62
+        },
+        {
+          "text": "to",
+          "start": 1.62,
+          "end": 1.88
+        },
+        {
+          "text": "understand",
+          "start": 1.88,
+          "end": 2.36
+        },
+        {
+          "text": "it.",
+          "start": 2.36,
+          "end": 2.66
+        }
+      ]
+    },
+    {
+      "id": "beat-013",
+      "mode": "directed",
+      "expected_text": "Before the next tap... ask the second question.",
+      "asr_transcript": "Before the next tap, ask the second question.",
+      "normalized_asr_matches": true,
+      "duration_seconds": 4.88,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.696136474609375,
+      "rms": 0.0808948203921318,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "Before",
+          "start": 0.0,
+          "end": 0.64
+        },
+        {
+          "text": "the",
+          "start": 0.64,
+          "end": 1.3
+        },
+        {
+          "text": "next",
+          "start": 1.3,
+          "end": 1.6
+        },
+        {
+          "text": "tap,",
+          "start": 1.6,
+          "end": 2.02
+        },
+        {
+          "text": "ask",
+          "start": 2.86,
+          "end": 3.18
+        },
+        {
+          "text": "the",
+          "start": 3.18,
+          "end": 3.44
+        },
+        {
+          "text": "second",
+          "start": 3.44,
+          "end": 3.82
+        },
+        {
+          "text": "question.",
+          "start": 3.82,
+          "end": 4.5
+        }
+      ]
+    }
+  ],
+  "all_selected_takes_normalized_asr_match": true,
+  "emotion_fidelity_verified": false
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "reference_audio": "videos/biznex-second-question/assets/audio/voice-reference.wav",
+  "reference_provenance": "Original authorized local Kokoro af_heart synthesis; same SHA256 as initial audition reference",
+  "beats": [
+    {
+      "id": "beat-005",
+      "text": "Mira closed the signup page and opened a blank note.",
+      "instruction": "You are a helpful assistant.<|endofprompt|>",
+      "seed": 1987,
+      "pause_after_ms": 300
+    },
+    {
+      "id": "beat-009",
+      "text": "Atomy was the business she was researching.",
+      "instruction": "You are a helpful assistant.<|endofprompt|>",
+      "seed": 1987,
+      "pause_after_ms": 220
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "duration_seconds": 40.766666666666666,
+  "narration_seconds": 40.76,
+  "words": 87,
+  "beats": 14,
+  "all_selected_takes_asr_match": true,
+  "canonical_narration_sha256": "60c3aefa827d175881b9136b9eccdfe1dc78c3bd9a9d1086108df18a5e0500ea",
+  "reference_sha256": "45b687b4567ca160de01382212e4bd0860c75b163175650b1ee5b65add438da6"
+}

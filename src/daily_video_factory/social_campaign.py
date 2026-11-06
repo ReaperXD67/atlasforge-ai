@@ -411,6 +411,53 @@ class SocialCampaignManager:
                 post_key, state="pending", attempts=0, error=None, next_attempt_at=None
             )
 
+    def _set_hold(
+        self, post_keys: list[str], *, held: bool
+    ) -> list[dict[str, Any]]:
+        """Atomically change scheduling eligibility, preserving approval and receipts."""
+        if (
+            not 1 <= len(post_keys) <= 500
+            or any(not isinstance(key, str) or not key.strip() for key in post_keys)
+            or len(set(post_keys)) != len(post_keys)
+        ):
+            raise ConfigurationError("Provide between 1 and 500 distinct, nonblank post keys.")
+        source, target = ("pending", "held") if held else ("held", "pending")
+        with (
+            portalocker.Lock(str(self.database) + ".worker.lock", timeout=0),
+            self._connect() as conn,
+        ):
+            conn.execute("BEGIN IMMEDIATE")
+            rows = [
+                conn.execute("SELECT * FROM social_posts WHERE post_key=?", (key,)).fetchone()
+                for key in post_keys
+            ]
+            if any(row is None or row["state"] not in {source, target} for row in rows):
+                raise ConfigurationError(
+                    "Hold/resume requires existing pending or held posts only; "
+                    "published, active, blocked and uncertain posts are unchanged."
+                )
+            now = _clock().isoformat()
+            for row in rows:
+                if row["state"] == source:
+                    conn.execute(
+                        "UPDATE social_posts SET state=?,updated_at=? WHERE post_key=? AND state=?",
+                        (target, now, row["post_key"], source),
+                    )
+            return [
+                self._public(conn.execute(
+                    "SELECT * FROM social_posts WHERE post_key=?", (key,)
+                ).fetchone())
+                for key in post_keys
+            ]
+
+    def hold_posts(self, post_keys: list[str]) -> list[dict[str, Any]]:
+        """Hold exact pending jobs; repeated holds are no-ops and never publish."""
+        return self._set_hold(post_keys, held=True)
+
+    def resume_posts(self, post_keys: list[str]) -> list[dict[str, Any]]:
+        """Release exact held jobs without changing their original due/retry times."""
+        return self._set_hold(post_keys, held=False)
+
     def _account_ready(self, post: CampaignPost, *, live: bool) -> None:
         if post.platform == "youtube":
             if not self.youtube.authorization_status().get("authorized"):
