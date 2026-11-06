@@ -1,0 +1,53 @@
+{
+  "provider": "kokoro",
+  "voice": "af_heart",
+  "direction_mode": "pace_and_pauses_only",
+  "semantic_emotion_supported": false,
+  "ignored_controls": [
+    "emotion",
+    "energy"
+  ],
+  "sample_rate": 24000,
+  "beats": [
+    {
+      "beat_index": 0,
+      "text": "Sponsor required. Automatic or manual designation. That is in the U.S. guide. A fictional scene.",
+      "speed": 0.97,
+      "start_sample": 0,
+      "speech_samples": 174600,
+      "appended_pause_samples": 4320
+    },
+    {
+      "beat_index": 1,
+      "text": "Jon follows two ribbons back to one card. His own notes had only said: finish signup.",
+      "speed": 0.97,
+      "start_sample": 178920,
+      "speech_samples": 143400,
+      "appended_pause_samples": 3840
+    },
+    {
+      "beat_index": 2,
+      "text": "The Atomy source gives him a better question: how will this sponsor step work?",
+      "speed": 0.9506,
+      "start_sample": 326160,
+      "speech_samples": 121800,
+      "appended_pause_samples": 6720
+    },
+    {
+      "beat_index": 3,
+      "text": "He replaces the vague note. Understanding comes before the next click.",
+      "speed": 0.9409,
+      "start_sample": 454680,
+      "speech_samples": 115800,
+      "appended_pause_samples": 4800
+    },
+    {
+      "beat_index": 4,
+      "text": "The official guide is in the caption.",
+      "speed": 0.97,
+      "start_sample": 575280,
+      "speech_samples": 60600,
+      "appended_pause_samples": 0
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "narration": {
+    "engine": "Kokoro",
+    "voice": "af_heart",
+    "reference_voice_cloning": false
+  },
+  "music": {
+    "type": "original procedural score",
+    "generator": "daily_video_factory.media.audio.generate_original_music",
+    "external_samples": false
+  },
+  "foley": {
+    "type": "original seeded synthesis",
+    "generator": "scripts/prepare_pilot_batch.py",
+    "external_samples": false
+  },
+  "mix": {
+    "speech_sidechain_ducking": true,
+    "channels": 2,
+    "sample_rate": 48000
+  }
+}

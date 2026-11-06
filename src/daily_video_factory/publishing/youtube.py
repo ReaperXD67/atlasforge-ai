@@ -83,7 +83,7 @@ class YouTubePublisher:
         self.token_file.parent.mkdir(parents=True, exist_ok=True)
         atomic_write(self.token_file, credentials.to_json())
 
-    def authenticate(self, interactive: bool = True):
+    def authenticate(self, interactive: bool = True, *, open_browser: bool = True):
         Request, Credentials, InstalledAppFlow, build, _ = self._imports()
         if not self.client_secrets.exists():
             raise ConfigurationError(
@@ -106,7 +106,8 @@ class YouTubePublisher:
                 str(self.client_secrets), list(YOUTUBE_SCOPES)
             )
             credentials = flow.run_local_server(
-                host="127.0.0.1", port=0, access_type="offline", prompt="consent"
+                host="127.0.0.1", port=0, access_type="offline", prompt="consent",
+                open_browser=open_browser,
             )
         self._save_credentials(credentials)
         return build("youtube", "v3", credentials=credentials, cache_discovery=False)

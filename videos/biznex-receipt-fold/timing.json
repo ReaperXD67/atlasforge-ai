@@ -1,0 +1,581 @@
+{
+  "schema_version": 1,
+  "duration_seconds": 26.066666666666666,
+  "narration_duration_seconds": 26.045,
+  "fps": 30,
+  "beats": [
+    {
+      "index": 0,
+      "id": "beat-01",
+      "text": "Which number was she about to fold away? A fictional scene.",
+      "emotion": "curious",
+      "energy": 0.55,
+      "pace": 0.98,
+      "pause_after_ms": 180,
+      "start": 0.0,
+      "end": 3.905
+    },
+    {
+      "index": 1,
+      "id": "beat-02",
+      "text": "Mira circles a price, then notices the bottom of her comparison sheet.",
+      "emotion": "neutral",
+      "energy": 0.42,
+      "pace": 1.0,
+      "pause_after_ms": 180,
+      "start": 3.905,
+      "end": 8.885
+    },
+    {
+      "index": 2,
+      "id": "beat-03",
+      "text": "The FTC recommends comparing product details and the full cost, including delivery and other fees.",
+      "emotion": "serious",
+      "energy": 0.43,
+      "pace": 0.98,
+      "pause_after_ms": 260,
+      "start": 8.885,
+      "end": 16.245
+    },
+    {
+      "index": 3,
+      "id": "beat-04",
+      "text": "She unfolds the page. Atomy or another shop: match the item, check the size, then compare the total.",
+      "emotion": "reassuring",
+      "energy": 0.43,
+      "pace": 0.98,
+      "pause_after_ms": 200,
+      "start": 16.245,
+      "end": 23.645
+    },
+    {
+      "index": 4,
+      "id": "beat-05",
+      "text": "The shopping guide is in the caption.",
+      "emotion": "neutral",
+      "energy": 0.35,
+      "pace": 1.0,
+      "pause_after_ms": 100,
+      "start": 23.645,
+      "end": 26.045
+    }
+  ],
+  "shots": [
+    {
+      "index": 0,
+      "planned_seconds": "0-4",
+      "visual": "Macro paper fold begins to conceal a row labeled Total; a pencil tip freezes above it.",
+      "speech_anchor": "Which number was she about to fold away?",
+      "on_screen_text": "BEFORE YOU FOLD",
+      "sound": "Crisp paper fold and a pause.",
+      "start": 0.0,
+      "end": 3.905
+    },
+    {
+      "index": 1,
+      "planned_seconds": "4-10",
+      "visual": "Wide desk shot shows an original comparison sheet with symbolic amount fields, no actual seller prices or logos.",
+      "speech_anchor": "Mira circles a price",
+      "on_screen_text": "A FICTIONAL SCENE",
+      "sound": "One pencil circle sound.",
+      "start": 3.905,
+      "end": 9.18
+    },
+    {
+      "index": 2,
+      "planned_seconds": "10-18",
+      "visual": "The sheet unfolds as three graphic labels become readable: Exact item, Size, Full cost. FTC source credit sits below.",
+      "speech_anchor": "The FTC recommends comparing",
+      "on_screen_text": "COMPARE LIKE WITH LIKE",
+      "sound": "Warm sustained chord; speech stays foremost.",
+      "start": 9.18,
+      "end": 20.02
+    },
+    {
+      "index": 3,
+      "planned_seconds": "18-25",
+      "visual": "A hand aligns two unbranded item cards at the same baseline, then points to total cost; neither item is recommended.",
+      "speech_anchor": "match the item, check the size",
+      "on_screen_text": "ITEM · SIZE · TOTAL",
+      "sound": "Two paper slides timed to narration.",
+      "start": 20.02,
+      "end": 23.8
+    },
+    {
+      "index": 4,
+      "planned_seconds": "25-29",
+      "visual": "Final overhead frame preserves the completed checklist and source CTA; no savings figure.",
+      "speech_anchor": "The shopping guide is in the caption.",
+      "on_screen_text": "READ THE SHOPPING GUIDE",
+      "sound": "Small release into room tone.",
+      "start": 23.8,
+      "end": 26.066666666666666
+    }
+  ],
+  "captions": [
+    {
+      "index": 1,
+      "start": 0.0,
+      "end": 0.98,
+      "duration": 0.98,
+      "text": "Which number was she"
+    },
+    {
+      "index": 2,
+      "start": 0.98,
+      "end": 1.82,
+      "duration": 0.84,
+      "text": "about to fold away?"
+    },
+    {
+      "index": 3,
+      "start": 2.28,
+      "end": 3.1,
+      "duration": 0.82,
+      "text": "A fictional scene."
+    },
+    {
+      "index": 4,
+      "start": 3.905,
+      "end": 5.44,
+      "duration": 1.535,
+      "text": "Mira circles a price,"
+    },
+    {
+      "index": 5,
+      "start": 5.76,
+      "end": 6.92,
+      "duration": 1.16,
+      "text": "then notices the bottom"
+    },
+    {
+      "index": 6,
+      "start": 6.92,
+      "end": 8.16,
+      "duration": 1.24,
+      "text": "of her comparison sheet."
+    },
+    {
+      "index": 7,
+      "start": 9.18,
+      "end": 11.1,
+      "duration": 1.92,
+      "text": "The FTC recommends comparing"
+    },
+    {
+      "index": 8,
+      "start": 11.1,
+      "end": 12.48,
+      "duration": 1.38,
+      "text": "product details and the"
+    },
+    {
+      "index": 9,
+      "start": 12.48,
+      "end": 14.34,
+      "duration": 1.86,
+      "text": "full cost, including delivery"
+    },
+    {
+      "index": 10,
+      "start": 14.34,
+      "end": 15.26,
+      "duration": 0.92,
+      "text": "and other fees."
+    },
+    {
+      "index": 11,
+      "start": 16.54,
+      "end": 17.76,
+      "duration": 1.22,
+      "text": "She unfolds the page."
+    },
+    {
+      "index": 12,
+      "start": 18.42,
+      "end": 19.54,
+      "duration": 1.12,
+      "text": "Atomy or another shop:"
+    },
+    {
+      "index": 13,
+      "start": 20.02,
+      "end": 21.14,
+      "duration": 1.12,
+      "text": "match the item, check"
+    },
+    {
+      "index": 14,
+      "start": 21.14,
+      "end": 22.4,
+      "duration": 1.26,
+      "text": "the size, then compare"
+    },
+    {
+      "index": 15,
+      "start": 22.4,
+      "end": 24.34,
+      "duration": 1.94,
+      "text": "the total. The shopping"
+    },
+    {
+      "index": 16,
+      "start": 24.34,
+      "end": 25.1,
+      "duration": 0.76,
+      "text": "guide is in the"
+    },
+    {
+      "index": 17,
+      "start": 25.1,
+      "end": 25.38,
+      "duration": 0.28,
+      "text": "caption."
+    }
+  ],
+  "words": [
+    {
+      "text": "Which",
+      "start": 0.0,
+      "end": 0.44
+    },
+    {
+      "text": "number",
+      "start": 0.44,
+      "end": 0.62
+    },
+    {
+      "text": "was",
+      "start": 0.62,
+      "end": 0.84
+    },
+    {
+      "text": "she",
+      "start": 0.84,
+      "end": 0.98
+    },
+    {
+      "text": "about",
+      "start": 0.98,
+      "end": 1.16
+    },
+    {
+      "text": "to",
+      "start": 1.16,
+      "end": 1.34
+    },
+    {
+      "text": "fold",
+      "start": 1.34,
+      "end": 1.54
+    },
+    {
+      "text": "away?",
+      "start": 1.54,
+      "end": 1.82
+    },
+    {
+      "text": "A",
+      "start": 2.28,
+      "end": 2.36
+    },
+    {
+      "text": "fictional",
+      "start": 2.36,
+      "end": 2.64
+    },
+    {
+      "text": "scene.",
+      "start": 2.64,
+      "end": 3.1
+    },
+    {
+      "text": "Mira",
+      "start": 3.905,
+      "end": 4.58
+    },
+    {
+      "text": "circles",
+      "start": 4.58,
+      "end": 4.92
+    },
+    {
+      "text": "a",
+      "start": 4.92,
+      "end": 5.12
+    },
+    {
+      "text": "price,",
+      "start": 5.12,
+      "end": 5.44
+    },
+    {
+      "text": "then",
+      "start": 5.76,
+      "end": 5.98
+    },
+    {
+      "text": "notices",
+      "start": 5.98,
+      "end": 6.4
+    },
+    {
+      "text": "the",
+      "start": 6.4,
+      "end": 6.66
+    },
+    {
+      "text": "bottom",
+      "start": 6.66,
+      "end": 6.92
+    },
+    {
+      "text": "of",
+      "start": 6.92,
+      "end": 7.16
+    },
+    {
+      "text": "her",
+      "start": 7.16,
+      "end": 7.28
+    },
+    {
+      "text": "comparison",
+      "start": 7.28,
+      "end": 7.68
+    },
+    {
+      "text": "sheet.",
+      "start": 7.68,
+      "end": 8.16
+    },
+    {
+      "text": "The",
+      "start": 9.18,
+      "end": 9.3
+    },
+    {
+      "text": "FTC",
+      "start": 9.3,
+      "end": 9.76
+    },
+    {
+      "text": "recommends",
+      "start": 9.76,
+      "end": 10.48
+    },
+    {
+      "text": "comparing",
+      "start": 10.48,
+      "end": 11.1
+    },
+    {
+      "text": "product",
+      "start": 11.1,
+      "end": 11.5
+    },
+    {
+      "text": "details",
+      "start": 11.5,
+      "end": 11.98
+    },
+    {
+      "text": "and",
+      "start": 11.98,
+      "end": 12.36
+    },
+    {
+      "text": "the",
+      "start": 12.36,
+      "end": 12.48
+    },
+    {
+      "text": "full",
+      "start": 12.48,
+      "end": 12.7
+    },
+    {
+      "text": "cost,",
+      "start": 12.7,
+      "end": 13.06
+    },
+    {
+      "text": "including",
+      "start": 13.56,
+      "end": 13.88
+    },
+    {
+      "text": "delivery",
+      "start": 13.88,
+      "end": 14.34
+    },
+    {
+      "text": "and",
+      "start": 14.34,
+      "end": 14.72
+    },
+    {
+      "text": "other",
+      "start": 14.72,
+      "end": 14.96
+    },
+    {
+      "text": "fees.",
+      "start": 14.96,
+      "end": 15.26
+    },
+    {
+      "text": "She",
+      "start": 16.54,
+      "end": 16.72
+    },
+    {
+      "text": "unfolds",
+      "start": 16.72,
+      "end": 17.1
+    },
+    {
+      "text": "the",
+      "start": 17.1,
+      "end": 17.38
+    },
+    {
+      "text": "page.",
+      "start": 17.38,
+      "end": 17.76
+    },
+    {
+      "text": "Atomy",
+      "start": 18.42,
+      "end": 18.64
+    },
+    {
+      "text": "or",
+      "start": 18.64,
+      "end": 18.9
+    },
+    {
+      "text": "another",
+      "start": 18.9,
+      "end": 19.18
+    },
+    {
+      "text": "shop:",
+      "start": 19.18,
+      "end": 19.54
+    },
+    {
+      "text": "match",
+      "start": 20.02,
+      "end": 20.26
+    },
+    {
+      "text": "the",
+      "start": 20.26,
+      "end": 20.46
+    },
+    {
+      "text": "item,",
+      "start": 20.46,
+      "end": 20.78
+    },
+    {
+      "text": "check",
+      "start": 20.96,
+      "end": 21.14
+    },
+    {
+      "text": "the",
+      "start": 21.14,
+      "end": 21.34
+    },
+    {
+      "text": "size,",
+      "start": 21.34,
+      "end": 21.7
+    },
+    {
+      "text": "then",
+      "start": 21.9,
+      "end": 22.04
+    },
+    {
+      "text": "compare",
+      "start": 22.04,
+      "end": 22.4
+    },
+    {
+      "text": "the",
+      "start": 22.4,
+      "end": 22.56
+    },
+    {
+      "text": "total.",
+      "start": 22.56,
+      "end": 22.84
+    },
+    {
+      "text": "The",
+      "start": 23.8,
+      "end": 24.06
+    },
+    {
+      "text": "shopping",
+      "start": 24.06,
+      "end": 24.34
+    },
+    {
+      "text": "guide",
+      "start": 24.34,
+      "end": 24.7
+    },
+    {
+      "text": "is",
+      "start": 24.7,
+      "end": 24.9
+    },
+    {
+      "text": "in",
+      "start": 24.9,
+      "end": 25.0
+    },
+    {
+      "text": "the",
+      "start": 25.0,
+      "end": 25.1
+    },
+    {
+      "text": "caption.",
+      "start": 25.1,
+      "end": 25.38
+    }
+  ],
+  "cues": [
+    {
+      "id": "setup",
+      "text": "Which number was she about to fold away?",
+      "start": 0.0,
+      "end": 3.905
+    },
+    {
+      "id": "turn",
+      "text": "Mira circles a price,",
+      "start": 3.905,
+      "end": 18.42
+    },
+    {
+      "id": "brand",
+      "text": "Atomy or another shop:",
+      "start": 18.42,
+      "end": 20.02
+    },
+    {
+      "id": "payoff",
+      "text": "match the item, check the size, then compare the total.",
+      "start": 20.02,
+      "end": 26.066666666666666
+    }
+  ],
+  "timing_basis": "Synthesis sample counts for beats; ASR word anchors constrained to exact speech-beat bounds, preserving canonical text.",
+  "anchors_constrained_to_speech_beats": 0
+}

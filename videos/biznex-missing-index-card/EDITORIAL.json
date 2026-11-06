@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "script": "narration.txt",
+  "thumbnail_copy": "THUMBNAIL_COPY.txt",
+  "audience_problem": "A fictional adult arranges a self-made checklist; a blank gap leads her back to the official guide.",
+  "hook": {
+    "text": "What did her neat little checklist leave out?",
+    "at_seconds": 0
+  },
+  "payoff": {
+    "text": "She adds a fourth card:",
+    "at_seconds": 18.0
+  },
+  "packaging": {
+    "title": "One Card Was Missing From Her Checklist",
+    "thumbnail_text": "ONE CARD MISSING",
+    "promise": "The empty space becomes a specific question to verify, not a recruitment prompt.",
+    "evidence_anchor": "She adds a fourth card:",
+    "reviewed": true
+  },
+  "sources": [
+    {
+      "claim": "The U.S. registration guide requires a sponsor and describes automatic or manual sponsor designation.",
+      "url": "https://us.atomy.com/cst/userGuide/24100000001691",
+      "checked_on": "2026-11-06"
+    }
+  ],
+  "retention_beats": [
+    {
+      "at_seconds": 0.0,
+      "purpose": "WHAT IS MISSING?"
+    },
+    {
+      "at_seconds": 4.15,
+      "purpose": "Narration turn: Mira lines up three cards. The empty space bothers her, so she opens the source."
+    },
+    {
+      "at_seconds": 6.42,
+      "purpose": "A FICTIONAL SCENE"
+    },
+    {
+      "at_seconds": 9.935,
+      "purpose": "Narration turn: Atomy’s U.S. registration guide requires a sponsor and describes automatic or manual designation."
+    },
+    {
+      "at_seconds": 10.42,
+      "purpose": "SPONSOR STEP"
+    },
+    {
+      "at_seconds": 17.715,
+      "purpose": "Narration turn: She adds a fourth card: understand the sponsor step. A tidy summary can still miss a decision."
+    },
+    {
+      "at_seconds": 19.5,
+      "purpose": "READ BEFORE DECIDING"
+    },
+    {
+      "at_seconds": 24.365,
+      "purpose": "Narration turn: The official guide is in the caption."
+    },
+    {
+      "at_seconds": 24.54,
+      "purpose": "READ THE OFFICIAL GUIDE"
+    }
+  ],
+  "story": {
+    "fictional": true,
+    "protagonist": "Mira",
+    "disclosure": "A fictional scene.",
+    "setup_segment": "setup",
+    "turn_segment": "turn",
+    "brand_connection_segment": "brand",
+    "payoff_segment": "payoff",
+    "timing_manifest": "timing.json"
+  },
+  "experiment": {
+    "id": "opening-01",
+    "variant": "question-first",
+    "matched_pair": "source-01",
+    "primary_metric_by_platform": {
+      "youtube": "average_percentage_viewed",
+      "instagram": "share_rate",
+      "facebook": "share_rate"
+    },
+    "checkpoint_hours": 72,
+    "tolerance_hours": 12,
+    "controls": [
+      "English, U.S. audience",
+      "same narrator identity",
+      "20-35 second duration band",
+      "pair-matched CTA and source",
+      "posting-time band"
+    ],
+    "assignment_note": "Three videos per variant across three topic families. Observational matched batch, not a randomized causal test."
+  },
+  "review_scope": "Packaging-to-script alignment reviewed. No claim of audience performance or automatic fact checking."
+}

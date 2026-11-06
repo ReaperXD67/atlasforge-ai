@@ -68,8 +68,17 @@ the verified local MP4 byte for byte.
 The example needs real account IDs, verified local renders, dates and public media URLs before use.
 The worker runs while this computer and process are running. Account registration, OAuth/app review,
 hosting and account recovery are separate setup steps; a password does not authorize an API upload.
-This delivery did not create or connect social accounts, perform a live upload, or establish audience
-results. See [setup and recovery](docs/SOCIAL_AUTOMATION.md) and [Meta prerequisites](docs/META_PUBLISHING.md).
+The BizNex Gmail, [YouTube channel](https://www.youtube.com/@biznexstories),
+[Instagram creator profile](https://www.instagram.com/biznex.stories/) and
+[Facebook Page](https://www.facebook.com/profile.php?id=61595985973734) now exist.
+The local YouTube publisher is authorized: its first private integration upload was verified and
+then made [public on the same video ID](https://www.youtube.com/watch?v=bQlvLxzPRSc).
+The same pilot is also published on [Instagram](https://www.instagram.com/p/DfZZeJoKLBl/) and the
+Facebook Page through their publishing screens.
+Meta API setup still needs developer phone verification, and Meta currently refuses the
+Instagram–Page link. Google OAuth remains in Testing, whose refresh tokens normally expire after
+seven days; this is not yet an indefinitely unattended installation. See
+[setup and recovery](docs/SOCIAL_AUTOMATION.md) and [Meta prerequisites](docs/META_PUBLISHING.md).
 
 Import actual platform measurements to evaluate original hook experiments:
 
@@ -83,9 +92,27 @@ separate platforms, accounts and video formats. Small samples do not produce a w
 [30-day plan](config/social/experiment-plan.json) is an explicit experiment, not a promise of virality
 or an activated publishing schedule.
 
-The [first six pilot briefs](docs/BIZNEX_LAUNCH_BRIEFS.md) supply original scripts, shot plans,
-source mappings and voice directions for the first matched experiment. They are authored plans;
-their videos have not been rendered or published.
+The [first six pilots](docs/BIZNEX_LAUNCH_BRIEFS.md) are rendered and verified: six 1080×1920,
+30 fps MP4s with original paper-story compositions, measured narration, locally synthesized music
+and foley, aligned captions and individual thumbnails. Their measured runtimes are 27.5, 26.5,
+26.9, 26.5, 26.1 and 30.8 seconds. The export includes upload copy, captions and checksums. See
+[pilot preparation and delivery](docs/PILOT_DELIVERY.md) for the verified export workflow.
+No audience improvement or viral outcome has been established.
+
+[Download all six videos, covers and captions](https://github.com/ReaperXD67/atlasforge-ai/releases/download/biznex-first-six-2026-11-06/biznex-first-six.zip).
+Five YouTube follow-ups are queued for November 7–11 at 09:00 IST in the local daily operator.
+They are queued jobs, not platform-confirmed future posts; the computer and valid authorization
+must be available. The November 6 source validation passed 495 Python tests, 34 Node tests and Ruff.
+
+```powershell
+.\.venv\Scripts\python.exe -m daily_video_factory.cli render-production-batch --manifest config/batches/biznex-first-six.production.json --resume
+.\.venv\Scripts\python.exe scripts/package_pilot_delivery.py package
+```
+
+These commands use prepared local assets; the linked guide includes the full rebuild sequence.
+Preparation requires the cached local speech/alignment models. Source changes require fresh
+thumbnails and validation; the packager refuses stale or incomplete batch reports. Generated media,
+credentials, account receipts and campaign databases stay outside Git.
 
 Narration can take an optional `--direction` JSON plan with exact spoken text, emotion, energy,
 pace and pauses. Providers expose different controls, and each run records what was actually
@@ -140,7 +167,7 @@ The diagram is the product vision. The repository implements the complete core p
 | 7. QA and quality control | Partial | Script-policy validation, media checks, deterministic synthetic-clip metrics, and an OpenRouter contact-sheet realism supervisor | Comprehensive factual and copyright scanning remain roadmap items |
 | 8. SEO and metadata | Implemented | CTR-oriented title, description, tags, hashtags, chapters/timestamps, category, and disclosures | End-screen suggestions are not generated yet |
 | 9. Thumbnail generation | Partial | Automatic 1280x720 local composition from a scene image and generated copy | Flux/Imagen/SD concept generation and CTR ranking are roadmap items |
-| 10. Publishing automation | Implemented with setup requirements | Studio YouTube uploads plus a CLI queue for YouTube and Meta Reels; local delivery revalidation, configured-account checks, durable receipts and bounded processing polls | Owner-created accounts, API authorization, and HTTPS hosting for Meta media remain required; live platform integration needs an account test |
+| 10. Publishing automation | YouTube live integration exercised; Meta API setup incomplete | Studio YouTube uploads plus a CLI queue for YouTube and Meta Reels; local delivery revalidation, configured-account checks, durable receipts and bounded processing polls | First BizNex video is public on all three platforms; Meta publication used browser screens. Meta API still requires developer verification, account linking and HTTPS media hosting; OAuth Testing has a limited token lifetime |
 | 11. Audience learning | Local export ingestion implemented | JSON/CSV observations, idempotent imports, matched-age comparisons within each platform/account/format and minimum-evidence gates | Automatic analytics API synchronization and proven reach improvement are not shipped |
 
 The diagram's PostgreSQL, Redis, cloud-backup, notification, and model-manager boxes are also roadmap items. The current single-workstation design uses SQLite, filesystem artifacts, structured logs, retries, checkpoints, an overlap lock, and per-run cost records. That is simpler and less expensive for one daily job; PostgreSQL and Redis become useful when the system is distributed across multiple workers. Docker profiles now provide CPU-safe, GPU-render, and fully local Ollama execution without introducing distributed infrastructure.
@@ -389,4 +416,8 @@ The implementation follows the official documentation for [Pexels API](https://w
 
 ## License
 
-MIT. Atomy is a trademark of its respective owner. This project is independent and is not endorsed by or affiliated with Atomy.
+Project code is MIT. Bundled fonts retain their SIL Open Font License notices; GSAP retains its
+separate [Standard License](https://gsap.com/standard-license/). Model weights and other assets have
+their own terms; see [third-party notices](THIRD_PARTY_NOTICES.md) and
+[upstream research](docs/UPSTREAM_RESEARCH.md). Atomy is a trademark of its
+respective owner. This project is independent and is not endorsed by or affiliated with Atomy.

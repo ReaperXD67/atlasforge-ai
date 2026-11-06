@@ -1,0 +1,337 @@
+[
+  {
+    "text": "Exact",
+    "start": 0.0,
+    "end": 0.66
+  },
+  {
+    "text": "item.",
+    "start": 0.66,
+    "end": 1.0
+  },
+  {
+    "text": "Size.",
+    "start": 1.5,
+    "end": 1.72
+  },
+  {
+    "text": "Total",
+    "start": 1.98,
+    "end": 2.16
+  },
+  {
+    "text": "cost.",
+    "start": 2.16,
+    "end": 2.58
+  },
+  {
+    "text": "Three",
+    "start": 3.1,
+    "end": 3.28
+  },
+  {
+    "text": "checks",
+    "start": 3.28,
+    "end": 3.58
+  },
+  {
+    "text": "before",
+    "start": 3.58,
+    "end": 3.94
+  },
+  {
+    "text": "a",
+    "start": 3.94,
+    "end": 4.12
+  },
+  {
+    "text": "price",
+    "start": 4.12,
+    "end": 4.3
+  },
+  {
+    "text": "comparison.",
+    "start": 4.3,
+    "end": 4.9
+  },
+  {
+    "text": "A",
+    "start": 5.2,
+    "end": 5.28
+  },
+  {
+    "text": "fictional",
+    "start": 5.28,
+    "end": 5.56
+  },
+  {
+    "text": "scene.",
+    "start": 5.56,
+    "end": 6.04
+  },
+  {
+    "text": "Jon",
+    "start": 6.755,
+    "end": 7.36
+  },
+  {
+    "text": "lays",
+    "start": 7.36,
+    "end": 7.62
+  },
+  {
+    "text": "three",
+    "start": 7.62,
+    "end": 8.04
+  },
+  {
+    "text": "empty",
+    "start": 8.04,
+    "end": 8.4
+  },
+  {
+    "text": "boxes",
+    "start": 8.4,
+    "end": 8.84
+  },
+  {
+    "text": "beside",
+    "start": 8.84,
+    "end": 9.26
+  },
+  {
+    "text": "a",
+    "start": 9.26,
+    "end": 9.42
+  },
+  {
+    "text": "shopping",
+    "start": 9.42,
+    "end": 9.68
+  },
+  {
+    "text": "card.",
+    "start": 9.68,
+    "end": 10.04
+  },
+  {
+    "text": "The",
+    "start": 10.62,
+    "end": 10.7
+  },
+  {
+    "text": "bold",
+    "start": 10.7,
+    "end": 10.98
+  },
+  {
+    "text": "price",
+    "start": 10.98,
+    "end": 11.34
+  },
+  {
+    "text": "leaves",
+    "start": 11.34,
+    "end": 11.74
+  },
+  {
+    "text": "questions",
+    "start": 11.74,
+    "end": 12.28
+  },
+  {
+    "text": "unanswered.",
+    "start": 12.28,
+    "end": 12.86
+  },
+  {
+    "text": "FTC",
+    "start": 14.04,
+    "end": 14.4
+  },
+  {
+    "text": "shopping",
+    "start": 14.4,
+    "end": 15.0
+  },
+  {
+    "text": "guidance",
+    "start": 15.0,
+    "end": 15.54
+  },
+  {
+    "text": "says",
+    "start": 15.54,
+    "end": 15.96
+  },
+  {
+    "text": "to",
+    "start": 15.96,
+    "end": 16.18
+  },
+  {
+    "text": "compare",
+    "start": 16.18,
+    "end": 16.48
+  },
+  {
+    "text": "product",
+    "start": 16.48,
+    "end": 16.84
+  },
+  {
+    "text": "details",
+    "start": 16.84,
+    "end": 17.38
+  },
+  {
+    "text": "and",
+    "start": 17.38,
+    "end": 18.02
+  },
+  {
+    "text": "include",
+    "start": 18.02,
+    "end": 18.3
+  },
+  {
+    "text": "delivery",
+    "start": 18.3,
+    "end": 18.7
+  },
+  {
+    "text": "and",
+    "start": 18.7,
+    "end": 19.04
+  },
+  {
+    "text": "other",
+    "start": 19.04,
+    "end": 19.28
+  },
+  {
+    "text": "fees.",
+    "start": 19.28,
+    "end": 19.68
+  },
+  {
+    "text": "Atomy",
+    "start": 21.0,
+    "end": 21.3
+  },
+  {
+    "text": "or",
+    "start": 21.3,
+    "end": 21.58
+  },
+  {
+    "text": "another",
+    "start": 21.58,
+    "end": 21.88
+  },
+  {
+    "text": "shop,",
+    "start": 21.88,
+    "end": 22.32
+  },
+  {
+    "text": "he",
+    "start": 22.64,
+    "end": 22.8
+  },
+  {
+    "text": "completes",
+    "start": 22.8,
+    "end": 23.18
+  },
+  {
+    "text": "the",
+    "start": 23.18,
+    "end": 23.4
+  },
+  {
+    "text": "comparison",
+    "start": 23.4,
+    "end": 23.9
+  },
+  {
+    "text": "before",
+    "start": 23.9,
+    "end": 24.34
+  },
+  {
+    "text": "choosing.",
+    "start": 24.34,
+    "end": 24.8
+  },
+  {
+    "text": "The",
+    "start": 25.46,
+    "end": 25.62
+  },
+  {
+    "text": "empty",
+    "start": 25.62,
+    "end": 25.92
+  },
+  {
+    "text": "boxes",
+    "start": 25.92,
+    "end": 26.36
+  },
+  {
+    "text": "were",
+    "start": 26.36,
+    "end": 26.68
+  },
+  {
+    "text": "the",
+    "start": 26.68,
+    "end": 26.84
+  },
+  {
+    "text": "useful",
+    "start": 26.84,
+    "end": 27.14
+  },
+  {
+    "text": "part.",
+    "start": 27.14,
+    "end": 27.56
+  },
+  {
+    "text": "The",
+    "start": 28.345,
+    "end": 28.74
+  },
+  {
+    "text": "shopping",
+    "start": 28.74,
+    "end": 29.06
+  },
+  {
+    "text": "guide",
+    "start": 29.06,
+    "end": 29.4
+  },
+  {
+    "text": "is",
+    "start": 29.4,
+    "end": 29.6
+  },
+  {
+    "text": "in",
+    "start": 29.6,
+    "end": 29.7
+  },
+  {
+    "text": "the",
+    "start": 29.7,
+    "end": 29.8
+  },
+  {
+    "text": "caption.",
+    "start": 29.8,
+    "end": 30.1
+  }
+]

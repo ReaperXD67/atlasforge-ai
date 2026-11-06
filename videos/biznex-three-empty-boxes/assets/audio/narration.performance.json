@@ -1,0 +1,53 @@
+{
+  "provider": "kokoro",
+  "voice": "af_heart",
+  "direction_mode": "pace_and_pauses_only",
+  "semantic_emotion_supported": false,
+  "ignored_controls": [
+    "emotion",
+    "energy"
+  ],
+  "sample_rate": 24000,
+  "beats": [
+    {
+      "beat_index": 0,
+      "text": "Exact item. Size. Total cost. Three checks before a price comparison. A fictional scene.",
+      "speed": 0.97,
+      "start_sample": 0,
+      "speech_samples": 157800,
+      "appended_pause_samples": 4320
+    },
+    {
+      "beat_index": 1,
+      "text": "Jon lays three empty boxes beside a shopping card. The bold price leaves questions unanswered.",
+      "speed": 0.9602999999999999,
+      "start_sample": 162120,
+      "speech_samples": 162000,
+      "appended_pause_samples": 4320
+    },
+    {
+      "beat_index": 2,
+      "text": "FTC shopping guidance says to compare product details and include delivery and other fees.",
+      "speed": 0.9506,
+      "start_sample": 328440,
+      "speech_samples": 158400,
+      "appended_pause_samples": 6240
+    },
+    {
+      "beat_index": 3,
+      "text": "Atomy or another shop, he completes the comparison before choosing. The empty boxes were the useful part.",
+      "speed": 0.9409,
+      "start_sample": 493080,
+      "speech_samples": 182400,
+      "appended_pause_samples": 4800
+    },
+    {
+      "beat_index": 4,
+      "text": "The shopping guide is in the caption.",
+      "speed": 0.97,
+      "start_sample": 680280,
+      "speech_samples": 57600,
+      "appended_pause_samples": 0
+    }
+  ]
+}

@@ -409,9 +409,15 @@ def viral_film_command(
 @app.command("youtube-auth")
 def youtube_auth_command(
     config: Path = typer.Option(Path("config/default.yaml"), exists=True, dir_okay=False),
+    no_browser: bool = typer.Option(
+        False, "--no-browser",
+        help="Print the official authorization URL without opening the default browser; keep this process running for the callback.",
+    ),
 ) -> None:
     """Perform the one-time local OAuth flow for YouTube upload."""
-    YouTubePublisher(load_settings(config)).authenticate(interactive=True)
+    YouTubePublisher(load_settings(config)).authenticate(
+        interactive=True, open_browser=not no_browser,
+    )
     console.print("[green]YouTube authorization saved.[/]")
 
 

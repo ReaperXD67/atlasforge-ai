@@ -1,0 +1,41 @@
+{
+  "provider": "kokoro",
+  "voice": "af_heart",
+  "speed": 0.97,
+  "lang": "en-us",
+  "direction": "direction.json",
+  "direction_mode": "pace_and_pauses_only",
+  "semantic_emotion_supported": false,
+  "emotion_fidelity_verified": false,
+  "lines": [
+    {
+      "id": "beat-01",
+      "text": "Consumer. Distributor. Two paths in the U.S. signup guide. A fictional scene."
+    },
+    {
+      "id": "beat-02",
+      "text": "Jon lifts his cup. Under it is the question he skipped: what am I here to do?"
+    },
+    {
+      "id": "beat-03",
+      "text": "Atomy’s guide lists Social Security and bank information for distributor registration."
+    },
+    {
+      "id": "beat-04",
+      "text": "He slides that checklist beside his purpose card. Now he knows which details to read."
+    },
+    {
+      "id": "beat-05",
+      "text": "The official guide is in the caption."
+    }
+  ],
+  "bgm": {
+    "mode": "project-owned",
+    "source": "assets/audio/original_score.wav"
+  },
+  "sfx": {
+    "mode": "project-owned",
+    "source": "assets/audio/original_foley.wav"
+  },
+  "measured_duration_seconds": 26.5
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "requested_provider_order": [
+    "kokoro"
+  ],
+  "selected_provider": "kokoro",
+  "fallback_used": false,
+  "attempts": [
+    {
+      "provider": "kokoro",
+      "status": "succeeded"
+    }
+  ],
+  "direction_requested": true,
+  "direction_mode": "pace_and_pauses_only",
+  "direction_applied": true,
+  "semantic_emotion_supported": false,
+  "emotion_fidelity_verified": false,
+  "duration_seconds": 27.47,
+  "direction": {
+    "schema_version": 1,
+    "beats": [
+      {
+        "text": "Which door matches why you came here? A fictional scene.",
+        "emotion": "curious",
+        "energy": 0.55,
+        "pace": 0.98,
+        "pause_after_ms": 180
+      },
+      {
+        "text": "Mira folds two paper doors, then notices her tiny shopping list.",
+        "emotion": "neutral",
+        "energy": 0.4,
+        "pace": 1.0,
+        "pause_after_ms": 180
+      },
+      {
+        "text": "Atomy\u2019s U.S. guide separates consumer and distributor registration. The distributor path includes Social Security and bank information.",
+        "emotion": "serious",
+        "energy": 0.42,
+        "pace": 0.98,
+        "pause_after_ms": 260
+      },
+      {
+        "text": "She puts the list between the doors. First name your purpose. Then read the matching path.",
+        "emotion": "reassuring",
+        "energy": 0.42,
+        "pace": 0.97,
+        "pause_after_ms": 200
+      },
+      {
+        "text": "The official guide is in the caption.",
+        "emotion": "neutral",
+        "energy": 0.35,
+        "pace": 1.0,
+        "pause_after_ms": 100
+      }
+    ]
+  }
+}

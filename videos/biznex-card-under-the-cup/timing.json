@@ -1,0 +1,590 @@
+{
+  "schema_version": 1,
+  "duration_seconds": 26.5,
+  "narration_duration_seconds": 26.47,
+  "fps": 30,
+  "beats": [
+    {
+      "index": 0,
+      "id": "beat-01",
+      "text": "Consumer. Distributor. Two paths in the U.S. signup guide. A fictional scene.",
+      "emotion": "serious",
+      "energy": 0.48,
+      "pace": 1.0,
+      "pause_after_ms": 180,
+      "start": 0.0,
+      "end": 5.83
+    },
+    {
+      "index": 1,
+      "id": "beat-02",
+      "text": "Jon lifts his cup. Under it is the question he skipped: what am I here to do?",
+      "emotion": "curious",
+      "energy": 0.48,
+      "pace": 0.99,
+      "pause_after_ms": 180,
+      "start": 5.83,
+      "end": 11.21
+    },
+    {
+      "index": 2,
+      "id": "beat-03",
+      "text": "Atomy’s guide lists Social Security and bank information for distributor registration.",
+      "emotion": "neutral",
+      "energy": 0.42,
+      "pace": 0.98,
+      "pause_after_ms": 260,
+      "start": 11.21,
+      "end": 17.87
+    },
+    {
+      "index": 3,
+      "id": "beat-04",
+      "text": "He slides that checklist beside his purpose card. Now he knows which details to read.",
+      "emotion": "reassuring",
+      "energy": 0.42,
+      "pace": 0.97,
+      "pause_after_ms": 200,
+      "start": 17.87,
+      "end": 23.945
+    },
+    {
+      "index": 4,
+      "id": "beat-05",
+      "text": "The official guide is in the caption.",
+      "emotion": "neutral",
+      "energy": 0.35,
+      "pace": 1.0,
+      "pause_after_ms": 100,
+      "start": 23.945,
+      "end": 26.47
+    }
+  ],
+  "shots": [
+    {
+      "index": 0,
+      "planned_seconds": "0-4",
+      "visual": "Start already focused on two clear original checklist cards, Consumer and Distributor; warm cup edge partly obscures a third card.",
+      "speech_anchor": "Consumer. Distributor.",
+      "on_screen_text": "TWO U.S. PATHS",
+      "sound": "Cup ceramic contact; no intro logo.",
+      "start": 0.0,
+      "end": 5.83
+    },
+    {
+      "index": 1,
+      "planned_seconds": "4-9",
+      "visual": "Adult hand lifts cup; a circular condensation mark frames a handwritten question beneath it.",
+      "speech_anchor": "Jon lifts his cup.",
+      "on_screen_text": "A FICTIONAL SCENE",
+      "sound": "Room tone and a quiet inhale.",
+      "start": 5.83,
+      "end": 11.58
+    },
+    {
+      "index": 2,
+      "planned_seconds": "9-18",
+      "visual": "Rack focus to the distributor information card; use field names only, with no identity numbers or filled form.",
+      "speech_anchor": "Atomy’s guide lists",
+      "on_screen_text": "READ THE REQUIREMENTS",
+      "sound": "Lower score under the factual sentence.",
+      "start": 11.58,
+      "end": 18.06
+    },
+    {
+      "index": 3,
+      "planned_seconds": "18-25",
+      "visual": "Single deliberate lateral slide joins the purpose card to the checklist; all elements remain legible.",
+      "speech_anchor": "He slides that checklist",
+      "on_screen_text": "WHAT AM I HERE TO DO?",
+      "sound": "Paper friction on the beat.",
+      "start": 18.06,
+      "end": 24.12
+    },
+    {
+      "index": 4,
+      "planned_seconds": "25-29",
+      "visual": "Locked final frame of the three-card arrangement and source credit.",
+      "speech_anchor": "The official guide is in the caption.",
+      "on_screen_text": "READ THE OFFICIAL GUIDE",
+      "sound": "Same quiet ending as episode one.",
+      "start": 24.12,
+      "end": 26.5
+    }
+  ],
+  "captions": [
+    {
+      "index": 1,
+      "start": 0.0,
+      "end": 0.8,
+      "duration": 0.8,
+      "text": "Consumer."
+    },
+    {
+      "index": 2,
+      "start": 0.8,
+      "end": 1.4,
+      "duration": 0.6,
+      "text": "Distributor."
+    },
+    {
+      "index": 3,
+      "start": 1.96,
+      "end": 2.88,
+      "duration": 0.92,
+      "text": "Two paths in the"
+    },
+    {
+      "index": 4,
+      "start": 2.88,
+      "end": 3.88,
+      "duration": 1.0,
+      "text": "U.S. signup guide."
+    },
+    {
+      "index": 5,
+      "start": 4.28,
+      "end": 5.06,
+      "duration": 0.78,
+      "text": "A fictional scene."
+    },
+    {
+      "index": 6,
+      "start": 5.83,
+      "end": 7.14,
+      "duration": 1.31,
+      "text": "Jon lifts his cup."
+    },
+    {
+      "index": 7,
+      "start": 7.66,
+      "end": 8.32,
+      "duration": 0.66,
+      "text": "Under it is the"
+    },
+    {
+      "index": 8,
+      "start": 8.32,
+      "end": 9.14,
+      "duration": 0.82,
+      "text": "question he skipped:"
+    },
+    {
+      "index": 9,
+      "start": 9.58,
+      "end": 10.1,
+      "duration": 0.52,
+      "text": "what am I here"
+    },
+    {
+      "index": 10,
+      "start": 10.1,
+      "end": 12.28,
+      "duration": 2.18,
+      "text": "to do? Atomy’s guide"
+    },
+    {
+      "index": 11,
+      "start": 12.28,
+      "end": 14.18,
+      "duration": 1.9,
+      "text": "lists Social Security and"
+    },
+    {
+      "index": 12,
+      "start": 14.18,
+      "end": 16.18,
+      "duration": 2.0,
+      "text": "bank information for distributor"
+    },
+    {
+      "index": 13,
+      "start": 16.18,
+      "end": 16.82,
+      "duration": 0.64,
+      "text": "registration."
+    },
+    {
+      "index": 14,
+      "start": 18.06,
+      "end": 19.36,
+      "duration": 1.3,
+      "text": "He slides that checklist"
+    },
+    {
+      "index": 15,
+      "start": 19.36,
+      "end": 20.74,
+      "duration": 1.38,
+      "text": "beside his purpose card."
+    },
+    {
+      "index": 16,
+      "start": 21.24,
+      "end": 22.16,
+      "duration": 0.92,
+      "text": "Now he knows which"
+    },
+    {
+      "index": 17,
+      "start": 22.16,
+      "end": 23.14,
+      "duration": 0.98,
+      "text": "details to read."
+    },
+    {
+      "index": 18,
+      "start": 24.12,
+      "end": 25.32,
+      "duration": 1.2,
+      "text": "The official guide is"
+    },
+    {
+      "index": 19,
+      "start": 25.32,
+      "end": 25.78,
+      "duration": 0.46,
+      "text": "in the caption."
+    }
+  ],
+  "words": [
+    {
+      "text": "Consumer.",
+      "start": 0.0,
+      "end": 0.8
+    },
+    {
+      "text": "Distributor.",
+      "start": 0.8,
+      "end": 1.4
+    },
+    {
+      "text": "Two",
+      "start": 1.96,
+      "end": 2.2
+    },
+    {
+      "text": "paths",
+      "start": 2.2,
+      "end": 2.58
+    },
+    {
+      "text": "in",
+      "start": 2.58,
+      "end": 2.78
+    },
+    {
+      "text": "the",
+      "start": 2.78,
+      "end": 2.88
+    },
+    {
+      "text": "U.S.",
+      "start": 2.88,
+      "end": 3.18
+    },
+    {
+      "text": "signup",
+      "start": 3.18,
+      "end": 3.54
+    },
+    {
+      "text": "guide.",
+      "start": 3.54,
+      "end": 3.88
+    },
+    {
+      "text": "A",
+      "start": 4.28,
+      "end": 4.34
+    },
+    {
+      "text": "fictional",
+      "start": 4.34,
+      "end": 4.62
+    },
+    {
+      "text": "scene.",
+      "start": 4.62,
+      "end": 5.06
+    },
+    {
+      "text": "Jon",
+      "start": 5.83,
+      "end": 6.42
+    },
+    {
+      "text": "lifts",
+      "start": 6.42,
+      "end": 6.66
+    },
+    {
+      "text": "his",
+      "start": 6.66,
+      "end": 6.9
+    },
+    {
+      "text": "cup.",
+      "start": 6.9,
+      "end": 7.14
+    },
+    {
+      "text": "Under",
+      "start": 7.66,
+      "end": 7.86
+    },
+    {
+      "text": "it",
+      "start": 7.86,
+      "end": 8.02
+    },
+    {
+      "text": "is",
+      "start": 8.02,
+      "end": 8.16
+    },
+    {
+      "text": "the",
+      "start": 8.16,
+      "end": 8.32
+    },
+    {
+      "text": "question",
+      "start": 8.32,
+      "end": 8.62
+    },
+    {
+      "text": "he",
+      "start": 8.62,
+      "end": 8.84
+    },
+    {
+      "text": "skipped:",
+      "start": 8.84,
+      "end": 9.14
+    },
+    {
+      "text": "what",
+      "start": 9.58,
+      "end": 9.7
+    },
+    {
+      "text": "am",
+      "start": 9.7,
+      "end": 9.8
+    },
+    {
+      "text": "I",
+      "start": 9.8,
+      "end": 9.92
+    },
+    {
+      "text": "here",
+      "start": 9.92,
+      "end": 10.1
+    },
+    {
+      "text": "to",
+      "start": 10.1,
+      "end": 10.28
+    },
+    {
+      "text": "do?",
+      "start": 10.28,
+      "end": 10.54
+    },
+    {
+      "text": "Atomy’s",
+      "start": 11.58,
+      "end": 12.04
+    },
+    {
+      "text": "guide",
+      "start": 12.04,
+      "end": 12.28
+    },
+    {
+      "text": "lists",
+      "start": 12.28,
+      "end": 12.62
+    },
+    {
+      "text": "Social",
+      "start": 12.62,
+      "end": 13.06
+    },
+    {
+      "text": "Security",
+      "start": 13.06,
+      "end": 13.64
+    },
+    {
+      "text": "and",
+      "start": 13.64,
+      "end": 14.18
+    },
+    {
+      "text": "bank",
+      "start": 14.18,
+      "end": 14.42
+    },
+    {
+      "text": "information",
+      "start": 14.42,
+      "end": 15.02
+    },
+    {
+      "text": "for",
+      "start": 15.02,
+      "end": 15.64
+    },
+    {
+      "text": "distributor",
+      "start": 15.64,
+      "end": 16.18
+    },
+    {
+      "text": "registration.",
+      "start": 16.18,
+      "end": 16.82
+    },
+    {
+      "text": "He",
+      "start": 18.06,
+      "end": 18.3
+    },
+    {
+      "text": "slides",
+      "start": 18.3,
+      "end": 18.64
+    },
+    {
+      "text": "that",
+      "start": 18.64,
+      "end": 18.94
+    },
+    {
+      "text": "checklist",
+      "start": 18.94,
+      "end": 19.36
+    },
+    {
+      "text": "beside",
+      "start": 19.36,
+      "end": 19.84
+    },
+    {
+      "text": "his",
+      "start": 19.84,
+      "end": 20.06
+    },
+    {
+      "text": "purpose",
+      "start": 20.06,
+      "end": 20.32
+    },
+    {
+      "text": "card.",
+      "start": 20.32,
+      "end": 20.74
+    },
+    {
+      "text": "Now",
+      "start": 21.24,
+      "end": 21.44
+    },
+    {
+      "text": "he",
+      "start": 21.44,
+      "end": 21.64
+    },
+    {
+      "text": "knows",
+      "start": 21.64,
+      "end": 21.88
+    },
+    {
+      "text": "which",
+      "start": 21.88,
+      "end": 22.16
+    },
+    {
+      "text": "details",
+      "start": 22.16,
+      "end": 22.6
+    },
+    {
+      "text": "to",
+      "start": 22.6,
+      "end": 22.86
+    },
+    {
+      "text": "read.",
+      "start": 22.86,
+      "end": 23.14
+    },
+    {
+      "text": "The",
+      "start": 24.12,
+      "end": 24.38
+    },
+    {
+      "text": "official",
+      "start": 24.38,
+      "end": 24.7
+    },
+    {
+      "text": "guide",
+      "start": 24.7,
+      "end": 25.1
+    },
+    {
+      "text": "is",
+      "start": 25.1,
+      "end": 25.32
+    },
+    {
+      "text": "in",
+      "start": 25.32,
+      "end": 25.44
+    },
+    {
+      "text": "the",
+      "start": 25.44,
+      "end": 25.52
+    },
+    {
+      "text": "caption.",
+      "start": 25.52,
+      "end": 25.78
+    }
+  ],
+  "cues": [
+    {
+      "id": "setup",
+      "text": "Consumer. Distributor.",
+      "start": 0.0,
+      "end": 5.83
+    },
+    {
+      "id": "turn",
+      "text": "Jon lifts his cup.",
+      "start": 5.83,
+      "end": 11.58
+    },
+    {
+      "id": "brand",
+      "text": "Atomy’s guide lists Social Security and bank information for distributor registration.",
+      "start": 11.58,
+      "end": 18.06
+    },
+    {
+      "id": "payoff",
+      "text": "He slides that checklist beside his purpose card.",
+      "start": 18.06,
+      "end": 26.5
+    }
+  ],
+  "timing_basis": "Synthesis sample counts for beats; ASR word anchors constrained to exact speech-beat bounds, preserving canonical text.",
+  "anchors_constrained_to_speech_beats": 1
+}

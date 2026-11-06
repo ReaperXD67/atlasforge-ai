@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "script": "narration.txt",
+  "thumbnail_copy": "THUMBNAIL_COPY.txt",
+  "audience_problem": "A fictional adult almost folds a paper comparison above its final-cost row, then unfolds it into a useful shopping tool.",
+  "hook": {
+    "text": "Which number was she about to fold away?",
+    "at_seconds": 0
+  },
+  "payoff": {
+    "text": "match the item, check the size, then compare the total.",
+    "at_seconds": 20.02
+  },
+  "packaging": {
+    "title": "She Nearly Folded Away the Useful Number",
+    "thumbnail_text": "UNFOLD THIS FIRST",
+    "promise": "The dramatic paper reveal exposes a useful comparison criterion, not a fabricated discount.",
+    "evidence_anchor": "match the item, check the size, then compare the total.",
+    "reviewed": true
+  },
+  "sources": [
+    {
+      "claim": "FTC online-shopping guidance recommends comparing item details and total cost including shipping/delivery and other fees.",
+      "url": "https://consumer.ftc.gov/articles/online-shopping",
+      "checked_on": "2026-11-06"
+    }
+  ],
+  "retention_beats": [
+    {
+      "at_seconds": 0.0,
+      "purpose": "BEFORE YOU FOLD"
+    },
+    {
+      "at_seconds": 3.905,
+      "purpose": "A FICTIONAL SCENE"
+    },
+    {
+      "at_seconds": 8.885,
+      "purpose": "Narration turn: The FTC recommends comparing product details and the full cost, including delivery and other fees."
+    },
+    {
+      "at_seconds": 9.18,
+      "purpose": "COMPARE LIKE WITH LIKE"
+    },
+    {
+      "at_seconds": 16.245,
+      "purpose": "Narration turn: She unfolds the page. Atomy or another shop: match the item, check the size, then compare the total."
+    },
+    {
+      "at_seconds": 20.02,
+      "purpose": "ITEM · SIZE · TOTAL"
+    },
+    {
+      "at_seconds": 23.645,
+      "purpose": "Narration turn: The shopping guide is in the caption."
+    },
+    {
+      "at_seconds": 23.8,
+      "purpose": "READ THE SHOPPING GUIDE"
+    }
+  ],
+  "story": {
+    "fictional": true,
+    "protagonist": "Mira",
+    "disclosure": "A fictional scene.",
+    "setup_segment": "setup",
+    "turn_segment": "turn",
+    "brand_connection_segment": "brand",
+    "payoff_segment": "payoff",
+    "timing_manifest": "timing.json"
+  },
+  "experiment": {
+    "id": "opening-01",
+    "variant": "question-first",
+    "matched_pair": "comparison-01",
+    "primary_metric_by_platform": {
+      "youtube": "average_percentage_viewed",
+      "instagram": "share_rate",
+      "facebook": "share_rate"
+    },
+    "checkpoint_hours": 72,
+    "tolerance_hours": 12,
+    "controls": [
+      "English, U.S. audience",
+      "same narrator identity",
+      "20-35 second duration band",
+      "pair-matched CTA and source",
+      "posting-time band"
+    ],
+    "assignment_note": "Three videos per variant across three topic families. Observational matched batch, not a randomized causal test."
+  },
+  "review_scope": "Packaging-to-script alignment reviewed. No claim of audience performance or automatic fact checking."
+}

@@ -24,6 +24,7 @@ from .shorts_delivery import (
 APPROVED_VOICE = "af_heart"
 _EXCLUDED_DIRECTORIES = {
     ".hyperframes",
+    ".thumbnails",  # HyperFrames preview cache, not authored assets/thumbnails.
     ".git",
     ".venv",
     "node_modules",

@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "script": "narration.txt",
+  "thumbnail_copy": "THUMBNAIL_COPY.txt",
+  "audience_problem": "A fictional adult folds two paper doors, then writes what she actually came to do on a tiny shopping list.",
+  "hook": {
+    "text": "Which door matches why you came here?",
+    "at_seconds": 0
+  },
+  "payoff": {
+    "text": "First name your purpose.",
+    "at_seconds": 21.38
+  },
+  "packaging": {
+    "title": "Two Signup Paths. One Real Question.",
+    "thumbnail_text": "WHICH PATH?",
+    "promise": "A purpose note turns an abstract account choice into a concrete reading task.",
+    "evidence_anchor": "First name your purpose.",
+    "reviewed": true
+  },
+  "sources": [
+    {
+      "claim": "The U.S. registration guide has consumer and distributor paths and lists SSN/bank information in the distributor path.",
+      "url": "https://us.atomy.com/cst/userGuide/24100000001691",
+      "checked_on": "2026-11-06"
+    }
+  ],
+  "retention_beats": [
+    {
+      "at_seconds": 0.0,
+      "purpose": "WHICH PATH?"
+    },
+    {
+      "at_seconds": 3.88,
+      "purpose": "A FICTIONAL SCENE"
+    },
+    {
+      "at_seconds": 8.785,
+      "purpose": "Narration turn: Atomy’s U.S. guide separates consumer and distributor registration. The distributor path includes Social Security and bank information."
+    },
+    {
+      "at_seconds": 9.26,
+      "purpose": "U.S. REGISTRATION GUIDE"
+    },
+    {
+      "at_seconds": 19.07,
+      "purpose": "Narration turn: She puts the list between the doors. First name your purpose. Then read the matching path."
+    },
+    {
+      "at_seconds": 21.38,
+      "purpose": "PURPOSE FIRST"
+    },
+    {
+      "at_seconds": 24.945,
+      "purpose": "Narration turn: The official guide is in the caption."
+    },
+    {
+      "at_seconds": 25.16,
+      "purpose": "READ THE OFFICIAL GUIDE"
+    }
+  ],
+  "story": {
+    "fictional": true,
+    "protagonist": "Mira",
+    "disclosure": "A fictional scene.",
+    "setup_segment": "setup",
+    "turn_segment": "turn",
+    "brand_connection_segment": "brand",
+    "payoff_segment": "payoff",
+    "timing_manifest": "timing.json"
+  },
+  "experiment": {
+    "id": "opening-01",
+    "variant": "question-first",
+    "matched_pair": "membership-01",
+    "primary_metric_by_platform": {
+      "youtube": "average_percentage_viewed",
+      "instagram": "share_rate",
+      "facebook": "share_rate"
+    },
+    "checkpoint_hours": 72,
+    "tolerance_hours": 12,
+    "controls": [
+      "English, U.S. audience",
+      "same narrator identity",
+      "20-35 second duration band",
+      "pair-matched CTA and source",
+      "posting-time band"
+    ],
+    "assignment_note": "Three videos per variant across three topic families. Observational matched batch, not a randomized causal test."
+  },
+  "review_scope": "Packaging-to-script alignment reviewed. No claim of audience performance or automatic fact checking."
+}

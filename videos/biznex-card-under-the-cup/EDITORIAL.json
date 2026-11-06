@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "script": "narration.txt",
+  "thumbnail_copy": "THUMBNAIL_COPY.txt",
+  "audience_problem": "A fictional adult lifts a cup and finds the purpose card that makes two registration checklists readable.",
+  "hook": {
+    "text": "Consumer. Distributor.",
+    "at_seconds": 0
+  },
+  "payoff": {
+    "text": "He slides that checklist beside his purpose card.",
+    "at_seconds": 18.06
+  },
+  "packaging": {
+    "title": "The Card Under the Cup",
+    "thumbnail_text": "READ THIS CARD",
+    "promise": "The overlooked purpose card becomes the tool for reading the requirements.",
+    "evidence_anchor": "He slides that checklist beside his purpose card.",
+    "reviewed": true
+  },
+  "sources": [
+    {
+      "claim": "The U.S. guide distinguishes consumer/distributor registration and lists SSN/bank details for the distributor flow.",
+      "url": "https://us.atomy.com/cst/userGuide/24100000001691",
+      "checked_on": "2026-11-06"
+    }
+  ],
+  "retention_beats": [
+    {
+      "at_seconds": 0.0,
+      "purpose": "TWO U.S. PATHS"
+    },
+    {
+      "at_seconds": 5.83,
+      "purpose": "A FICTIONAL SCENE"
+    },
+    {
+      "at_seconds": 11.21,
+      "purpose": "Narration turn: Atomy’s guide lists Social Security and bank information for distributor registration."
+    },
+    {
+      "at_seconds": 11.58,
+      "purpose": "READ THE REQUIREMENTS"
+    },
+    {
+      "at_seconds": 17.87,
+      "purpose": "Narration turn: He slides that checklist beside his purpose card. Now he knows which details to read."
+    },
+    {
+      "at_seconds": 18.06,
+      "purpose": "WHAT AM I HERE TO DO?"
+    },
+    {
+      "at_seconds": 23.945,
+      "purpose": "Narration turn: The official guide is in the caption."
+    },
+    {
+      "at_seconds": 24.12,
+      "purpose": "READ THE OFFICIAL GUIDE"
+    }
+  ],
+  "story": {
+    "fictional": true,
+    "protagonist": "Jon",
+    "disclosure": "A fictional scene.",
+    "setup_segment": "setup",
+    "turn_segment": "turn",
+    "brand_connection_segment": "brand",
+    "payoff_segment": "payoff",
+    "timing_manifest": "timing.json"
+  },
+  "experiment": {
+    "id": "opening-01",
+    "variant": "evidence-first",
+    "matched_pair": "membership-01",
+    "primary_metric_by_platform": {
+      "youtube": "average_percentage_viewed",
+      "instagram": "share_rate",
+      "facebook": "share_rate"
+    },
+    "checkpoint_hours": 72,
+    "tolerance_hours": 12,
+    "controls": [
+      "English, U.S. audience",
+      "same narrator identity",
+      "20-35 second duration band",
+      "pair-matched CTA and source",
+      "posting-time band"
+    ],
+    "assignment_note": "Three videos per variant across three topic families. Observational matched batch, not a randomized causal test."
+  },
+  "review_scope": "Packaging-to-script alignment reviewed. No claim of audience performance or automatic fact checking."
+}

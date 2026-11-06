@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "beats": [
+    {
+      "text": "Sponsor required. Automatic or manual designation. That is in the U.S. guide. A fictional scene.",
+      "emotion": "serious",
+      "energy": 0.5,
+      "pace": 1.0,
+      "pause_after_ms": 180
+    },
+    {
+      "text": "Jon follows two ribbons back to one card. His own notes had only said: finish signup.",
+      "emotion": "curious",
+      "energy": 0.48,
+      "pace": 1.0,
+      "pause_after_ms": 160
+    },
+    {
+      "text": "The Atomy source gives him a better question: how will this sponsor step work?",
+      "emotion": "neutral",
+      "energy": 0.42,
+      "pace": 0.98,
+      "pause_after_ms": 280
+    },
+    {
+      "text": "He replaces the vague note. Understanding comes before the next click.",
+      "emotion": "reassuring",
+      "energy": 0.43,
+      "pace": 0.97,
+      "pause_after_ms": 200
+    },
+    {
+      "text": "The official guide is in the caption.",
+      "emotion": "neutral",
+      "energy": 0.35,
+      "pace": 1.0,
+      "pause_after_ms": 100
+    }
+  ]
+}

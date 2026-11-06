@@ -1,0 +1,53 @@
+{
+  "provider": "kokoro",
+  "voice": "af_heart",
+  "direction_mode": "pace_and_pauses_only",
+  "semantic_emotion_supported": false,
+  "ignored_controls": [
+    "emotion",
+    "energy"
+  ],
+  "sample_rate": 24000,
+  "beats": [
+    {
+      "beat_index": 0,
+      "text": "Which number was she about to fold away? A fictional scene.",
+      "speed": 0.9506,
+      "start_sample": 0,
+      "speech_samples": 89400,
+      "appended_pause_samples": 4320
+    },
+    {
+      "beat_index": 1,
+      "text": "Mira circles a price, then notices the bottom of her comparison sheet.",
+      "speed": 0.97,
+      "start_sample": 93720,
+      "speech_samples": 115200,
+      "appended_pause_samples": 4320
+    },
+    {
+      "beat_index": 2,
+      "text": "The FTC recommends comparing product details and the full cost, including delivery and other fees.",
+      "speed": 0.9506,
+      "start_sample": 213240,
+      "speech_samples": 170400,
+      "appended_pause_samples": 6240
+    },
+    {
+      "beat_index": 3,
+      "text": "She unfolds the page. Atomy or another shop: match the item, check the size, then compare the total.",
+      "speed": 0.9506,
+      "start_sample": 389880,
+      "speech_samples": 172800,
+      "appended_pause_samples": 4800
+    },
+    {
+      "beat_index": 4,
+      "text": "The shopping guide is in the caption.",
+      "speed": 0.97,
+      "start_sample": 567480,
+      "speech_samples": 57600,
+      "appended_pause_samples": 0
+    }
+  ]
+}

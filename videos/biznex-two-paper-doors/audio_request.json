@@ -1,0 +1,41 @@
+{
+  "provider": "kokoro",
+  "voice": "af_heart",
+  "speed": 0.97,
+  "lang": "en-us",
+  "direction": "direction.json",
+  "direction_mode": "pace_and_pauses_only",
+  "semantic_emotion_supported": false,
+  "emotion_fidelity_verified": false,
+  "lines": [
+    {
+      "id": "beat-01",
+      "text": "Which door matches why you came here? A fictional scene."
+    },
+    {
+      "id": "beat-02",
+      "text": "Mira folds two paper doors, then notices her tiny shopping list."
+    },
+    {
+      "id": "beat-03",
+      "text": "Atomy’s U.S. guide separates consumer and distributor registration. The distributor path includes Social Security and bank information."
+    },
+    {
+      "id": "beat-04",
+      "text": "She puts the list between the doors. First name your purpose. Then read the matching path."
+    },
+    {
+      "id": "beat-05",
+      "text": "The official guide is in the caption."
+    }
+  ],
+  "bgm": {
+    "mode": "project-owned",
+    "source": "assets/audio/original_score.wav"
+  },
+  "sfx": {
+    "mode": "project-owned",
+    "source": "assets/audio/original_foley.wav"
+  },
+  "measured_duration_seconds": 27.5
+}

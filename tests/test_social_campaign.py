@@ -50,6 +50,7 @@ class FakeYouTube:
 
     def upload_video(self, *args, **kwargs):
         self.uploads += 1
+        self.uploaded_metadata = args[1]
         if self.fail_upload:
             raise RuntimeError("token=never-echo-this")
         return "video-id-123"
@@ -280,6 +281,37 @@ def test_youtube_upload_once_and_private_default_retained(queue):
     assert manager.run_due(execute=True, now=NOW + timedelta(days=1)) == []
     assert manager.youtube.uploads == 1
     assert manager.youtube.thumbnails == 0  # Shorts cover is not a long-form thumbnail.
+
+
+def test_youtube_description_appends_only_hashtags_missing_from_upload_copy(queue):
+    manager, root, _ = queue
+    (root / "videos/short/UPLOAD_PACKAGE.md").write_text(
+        "## Title\nA useful story\n\n## Description\nIndependent education.\n\n"
+        "#BizNex #InformedChoices #SourceCheck\n\n## Hashtags\n"
+        "#BizNex #informedchoices #SourceCheck #Shorts\n"
+    )
+    manager.enqueue(campaign(root))
+    assert manager.run_due(execute=True, now=NOW)[0]["state"] == "published"
+    metadata = manager.youtube.uploaded_metadata
+    for tag in ("#biznex", "#informedchoices", "#sourcecheck", "#shorts"):
+        assert metadata.description.casefold().count(tag) == 1
+    assert metadata.hashtags == ["#BizNex", "#InformedChoices", "#SourceCheck", "#Shorts"]
+    assert "Independent education." in metadata.description
+    assert metadata.description.endswith("Disclosure: AI-generated narration.")
+
+
+def test_youtube_caption_hashtags_are_detected_without_matching_tag_prefixes(queue):
+    manager, root, _ = queue
+    path = campaign(root)
+    payload = json.loads(path.read_text())
+    payload["posts"][0]["caption"] = "A useful question. #ATOMY #Storyline"
+    path.write_text(json.dumps(payload))
+    manager.enqueue(path)
+    assert manager.run_due(execute=True, now=NOW)[0]["state"] == "published"
+    description = manager.youtube.uploaded_metadata.description
+    assert description.casefold().count("#atomy") == 1
+    assert "#Education #Story" in description  # #Storyline must not suppress #Story.
+    assert "#Storyline" in description
 
 
 def test_youtube_ambiguous_upload_is_not_automatically_replayed(queue):

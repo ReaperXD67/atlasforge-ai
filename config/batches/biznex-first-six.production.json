@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "batch_id": "biznex-first-six",
+  "expected_voice": "af_heart",
+  "episodes": [
+    {
+      "id": "biznex-two-paper-doors",
+      "project": "videos/biznex-two-paper-doors",
+      "format": "shorts",
+      "output": "renders/final.mp4",
+      "thumbnail": "assets/thumbnails/thumbnail.png",
+      "upload_package": "UPLOAD_PACKAGE.md",
+      "voice_manifest": "audio_request.json",
+      "editorial_manifest": "EDITORIAL.json",
+      "min_seconds": 20.0,
+      "max_seconds": 35.0
+    },
+    {
+      "id": "biznex-card-under-the-cup",
+      "project": "videos/biznex-card-under-the-cup",
+      "format": "shorts",
+      "output": "renders/final.mp4",
+      "thumbnail": "assets/thumbnails/thumbnail.png",
+      "upload_package": "UPLOAD_PACKAGE.md",
+      "voice_manifest": "audio_request.json",
+      "editorial_manifest": "EDITORIAL.json",
+      "min_seconds": 20.0,
+      "max_seconds": 35.0
+    },
+    {
+      "id": "biznex-missing-index-card",
+      "project": "videos/biznex-missing-index-card",
+      "format": "shorts",
+      "output": "renders/final.mp4",
+      "thumbnail": "assets/thumbnails/thumbnail.png",
+      "upload_package": "UPLOAD_PACKAGE.md",
+      "voice_manifest": "audio_request.json",
+      "editorial_manifest": "EDITORIAL.json",
+      "min_seconds": 20.0,
+      "max_seconds": 35.0
+    },
+    {
+      "id": "biznex-two-ribbons",
+      "project": "videos/biznex-two-ribbons",
+      "format": "shorts",
+      "output": "renders/final.mp4",
+      "thumbnail": "assets/thumbnails/thumbnail.png",
+      "upload_package": "UPLOAD_PACKAGE.md",
+      "voice_manifest": "audio_request.json",
+      "editorial_manifest": "EDITORIAL.json",
+      "min_seconds": 20.0,
+      "max_seconds": 35.0
+    },
+    {
+      "id": "biznex-receipt-fold",
+      "project": "videos/biznex-receipt-fold",
+      "format": "shorts",
+      "output": "renders/final.mp4",
+      "thumbnail": "assets/thumbnails/thumbnail.png",
+      "upload_package": "UPLOAD_PACKAGE.md",
+      "voice_manifest": "audio_request.json",
+      "editorial_manifest": "EDITORIAL.json",
+      "min_seconds": 20.0,
+      "max_seconds": 35.0
+    },
+    {
+      "id": "biznex-three-empty-boxes",
+      "project": "videos/biznex-three-empty-boxes",
+      "format": "shorts",
+      "output": "renders/final.mp4",
+      "thumbnail": "assets/thumbnails/thumbnail.png",
+      "upload_package": "UPLOAD_PACKAGE.md",
+      "voice_manifest": "audio_request.json",
+      "editorial_manifest": "EDITORIAL.json",
+      "min_seconds": 20.0,
+      "max_seconds": 35.0
+    }
+  ]
+}

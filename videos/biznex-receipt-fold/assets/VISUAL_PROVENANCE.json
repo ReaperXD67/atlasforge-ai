@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-06",
+  "original_art": [
+    "HTML/CSS paper constructions",
+    "SVG illustrated hand",
+    "SVG ribbon paths and handwriting strokes",
+    "paper-fibers.svg",
+    "wood-lines.svg"
+  ],
+  "fonts": {
+    "source": "Existing repository licensed font assets",
+    "licenses": [
+      "fonts/Fraunces-OFL.txt",
+      "fonts/Montserrat-OFL.txt",
+      "fonts/PlexMono-OFL.txt"
+    ]
+  },
+  "gsap": {
+    "source": "Existing repository bundled GSAP",
+    "file": "vendor/gsap.min.js",
+    "license_notice": "Preserved upstream banner in vendored file."
+  },
+  "reference_reuse": "No creator reel footage, voice, music or script reused."
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "requested_provider_order": [
+    "kokoro"
+  ],
+  "selected_provider": "kokoro",
+  "fallback_used": false,
+  "attempts": [
+    {
+      "provider": "kokoro",
+      "status": "succeeded"
+    }
+  ],
+  "direction_requested": true,
+  "direction_mode": "pace_and_pauses_only",
+  "direction_applied": true,
+  "semantic_emotion_supported": false,
+  "emotion_fidelity_verified": false,
+  "duration_seconds": 26.89,
+  "direction": {
+    "schema_version": 1,
+    "beats": [
+      {
+        "text": "What did her neat little checklist leave out? A fictional scene.",
+        "emotion": "curious",
+        "energy": 0.55,
+        "pace": 0.98,
+        "pause_after_ms": 200
+      },
+      {
+        "text": "Mira lines up three cards. The empty space bothers her, so she opens the source.",
+        "emotion": "neutral",
+        "energy": 0.42,
+        "pace": 1.0,
+        "pause_after_ms": 160
+      },
+      {
+        "text": "Atomy\u2019s U.S. registration guide requires a sponsor and describes automatic or manual designation.",
+        "emotion": "serious",
+        "energy": 0.43,
+        "pace": 0.98,
+        "pause_after_ms": 280
+      },
+      {
+        "text": "She adds a fourth card: understand the sponsor step. A tidy summary can still miss a decision.",
+        "emotion": "reassuring",
+        "energy": 0.43,
+        "pace": 0.98,
+        "pause_after_ms": 200
+      },
+      {
+        "text": "The official guide is in the caption.",
+        "emotion": "neutral",
+        "energy": 0.35,
+        "pace": 1.0,
+        "pause_after_ms": 100
+      }
+    ]
+  }
+}

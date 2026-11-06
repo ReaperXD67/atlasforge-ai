@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "beats": [
+    {
+      "text": "Exact item. Size. Total cost. Three checks before a price comparison. A fictional scene.",
+      "emotion": "serious",
+      "energy": 0.48,
+      "pace": 1.0,
+      "pause_after_ms": 180
+    },
+    {
+      "text": "Jon lays three empty boxes beside a shopping card. The bold price leaves questions unanswered.",
+      "emotion": "curious",
+      "energy": 0.48,
+      "pace": 0.99,
+      "pause_after_ms": 180
+    },
+    {
+      "text": "FTC shopping guidance says to compare product details and include delivery and other fees.",
+      "emotion": "neutral",
+      "energy": 0.42,
+      "pace": 0.98,
+      "pause_after_ms": 260
+    },
+    {
+      "text": "Atomy or another shop, he completes the comparison before choosing. The empty boxes were the useful part.",
+      "emotion": "reassuring",
+      "energy": 0.43,
+      "pace": 0.97,
+      "pause_after_ms": 200
+    },
+    {
+      "text": "The shopping guide is in the caption.",
+      "emotion": "neutral",
+      "energy": 0.35,
+      "pace": 1.0,
+      "pause_after_ms": 100
+    }
+  ]
+}

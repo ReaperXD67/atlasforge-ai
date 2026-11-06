@@ -141,7 +141,8 @@ def test_kokoro_direction_keeps_voice_and_applies_only_pace_and_pauses(
         calls.append((text, voice, speed))
         return [(text, "phonemes", np.ones(240, dtype=np.float32))]
 
-    monkeypatch.setitem(sys.modules, "kokoro", SimpleNamespace(KPipeline=lambda **kwargs: pipeline))
+    pipeline_factory = Mock(return_value=pipeline)
+    monkeypatch.setitem(sys.modules, "kokoro", SimpleNamespace(KPipeline=pipeline_factory))
     monkeypatch.setitem(
         sys.modules, "soundfile", SimpleNamespace(write=lambda path, data, sr: written.append(data))
     )
@@ -169,6 +170,8 @@ def test_kokoro_direction_keeps_voice_and_applies_only_pace_and_pauses(
     assert performance["ignored_controls"] == ["emotion", "energy"]
     assert performance["beats"][-1]["appended_pause_samples"] == 0
     assert provider.direction_mode == "pace_and_pauses_only"
+    provider.synthesize_directed(plan, tmp_path / "second_episode")
+    pipeline_factory.assert_called_once_with(lang_code=settings.voice.kokoro_language)
 
 
 def test_fallback_report_does_not_claim_emotion_and_removes_failed_timing(

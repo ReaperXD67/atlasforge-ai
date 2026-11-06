@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "requested_provider_order": [
+    "kokoro"
+  ],
+  "selected_provider": "kokoro",
+  "fallback_used": false,
+  "attempts": [
+    {
+      "provider": "kokoro",
+      "status": "succeeded"
+    }
+  ],
+  "direction_requested": true,
+  "direction_mode": "pace_and_pauses_only",
+  "direction_applied": true,
+  "semantic_emotion_supported": false,
+  "emotion_fidelity_verified": false,
+  "duration_seconds": 26.47,
+  "direction": {
+    "schema_version": 1,
+    "beats": [
+      {
+        "text": "Consumer. Distributor. Two paths in the U.S. signup guide. A fictional scene.",
+        "emotion": "serious",
+        "energy": 0.48,
+        "pace": 1.0,
+        "pause_after_ms": 180
+      },
+      {
+        "text": "Jon lifts his cup. Under it is the question he skipped: what am I here to do?",
+        "emotion": "curious",
+        "energy": 0.48,
+        "pace": 0.99,
+        "pause_after_ms": 180
+      },
+      {
+        "text": "Atomy\u2019s guide lists Social Security and bank information for distributor registration.",
+        "emotion": "neutral",
+        "energy": 0.42,
+        "pace": 0.98,
+        "pause_after_ms": 260
+      },
+      {
+        "text": "He slides that checklist beside his purpose card. Now he knows which details to read.",
+        "emotion": "reassuring",
+        "energy": 0.42,
+        "pace": 0.97,
+        "pause_after_ms": 200
+      },
+      {
+        "text": "The official guide is in the caption.",
+        "emotion": "neutral",
+        "energy": 0.35,
+        "pace": 1.0,
+        "pause_after_ms": 100
+      }
+    ]
+  }
+}

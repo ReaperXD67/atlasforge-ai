@@ -1,0 +1,11 @@
+{
+  "fingerprint": "259a87ca0d3f433a4f01c0669f15b8f334bc2a5fada6ab1663bddf5bbba0585c",
+  "provider": "kokoro",
+  "voice": "af_heart",
+  "narration_seconds": 30.745,
+  "duration_seconds": 30.766666666666666,
+  "status": "audio_and_measured_timing_ready",
+  "video_rendered": false,
+  "exact_caption_text": true,
+  "caption_timing_inside_audio": true
+}

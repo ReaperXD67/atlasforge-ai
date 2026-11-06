@@ -1,0 +1,571 @@
+{
+  "schema_version": 1,
+  "duration_seconds": 27.5,
+  "narration_duration_seconds": 27.47,
+  "fps": 30,
+  "beats": [
+    {
+      "index": 0,
+      "id": "beat-01",
+      "text": "Which door matches why you came here? A fictional scene.",
+      "emotion": "curious",
+      "energy": 0.55,
+      "pace": 0.98,
+      "pause_after_ms": 180,
+      "start": 0.0,
+      "end": 3.88
+    },
+    {
+      "index": 1,
+      "id": "beat-02",
+      "text": "Mira folds two paper doors, then notices her tiny shopping list.",
+      "emotion": "neutral",
+      "energy": 0.4,
+      "pace": 1.0,
+      "pause_after_ms": 180,
+      "start": 3.88,
+      "end": 8.785
+    },
+    {
+      "index": 2,
+      "id": "beat-03",
+      "text": "Atomy’s U.S. guide separates consumer and distributor registration. The distributor path includes Social Security and bank information.",
+      "emotion": "serious",
+      "energy": 0.42,
+      "pace": 0.98,
+      "pause_after_ms": 260,
+      "start": 8.785,
+      "end": 19.07
+    },
+    {
+      "index": 3,
+      "id": "beat-04",
+      "text": "She puts the list between the doors. First name your purpose. Then read the matching path.",
+      "emotion": "reassuring",
+      "energy": 0.42,
+      "pace": 0.97,
+      "pause_after_ms": 200,
+      "start": 19.07,
+      "end": 24.945
+    },
+    {
+      "index": 4,
+      "id": "beat-05",
+      "text": "The official guide is in the caption.",
+      "emotion": "neutral",
+      "energy": 0.35,
+      "pace": 1.0,
+      "pause_after_ms": 100,
+      "start": 24.945,
+      "end": 27.47
+    }
+  ],
+  "shots": [
+    {
+      "index": 0,
+      "planned_seconds": "0-4",
+      "visual": "Macro tabletop: two paper doors cast long shadows; an adult hand stops between them.",
+      "speech_anchor": "Which door matches why you came here?",
+      "on_screen_text": "WHICH PATH?",
+      "sound": "Paper creak; no impact hit.",
+      "start": 0.0,
+      "end": 3.88
+    },
+    {
+      "index": 1,
+      "planned_seconds": "4-9",
+      "visual": "Overhead pullback reveals a small handwritten shopping list; persistent FICTION label is visible.",
+      "speech_anchor": "Mira folds two paper doors",
+      "on_screen_text": "A FICTIONAL SCENE",
+      "sound": "One pencil tap.",
+      "start": 3.88,
+      "end": 9.26
+    },
+    {
+      "index": 2,
+      "planned_seconds": "9-18",
+      "visual": "Doors unfold into original typography cards labeled Consumer and Distributor; the latter gains an Information checklist.",
+      "speech_anchor": "Atomy’s U.S. guide separates",
+      "on_screen_text": "U.S. REGISTRATION GUIDE",
+      "sound": "Music dips; narrator remains dry and centered.",
+      "start": 9.26,
+      "end": 21.38
+    },
+    {
+      "index": 3,
+      "planned_seconds": "18-25",
+      "visual": "Hand places the purpose note between the cards, then underlines it. No account is chosen or submitted.",
+      "speech_anchor": "First name your purpose.",
+      "on_screen_text": "PURPOSE FIRST",
+      "sound": "A restrained paper slide.",
+      "start": 21.38,
+      "end": 25.16
+    },
+    {
+      "index": 4,
+      "planned_seconds": "25-29",
+      "visual": "Hold on the completed decision diagram; small source credit and caption pointer.",
+      "speech_anchor": "The official guide is in the caption.",
+      "on_screen_text": "READ THE OFFICIAL GUIDE",
+      "sound": "Soft resolved tone; no sales crescendo.",
+      "start": 25.16,
+      "end": 27.5
+    }
+  ],
+  "captions": [
+    {
+      "index": 1,
+      "start": 0.0,
+      "end": 1.28,
+      "duration": 1.28,
+      "text": "Which door matches why"
+    },
+    {
+      "index": 2,
+      "start": 1.28,
+      "end": 1.9,
+      "duration": 0.62,
+      "text": "you came here?"
+    },
+    {
+      "index": 3,
+      "start": 2.26,
+      "end": 3.1,
+      "duration": 0.84,
+      "text": "A fictional scene."
+    },
+    {
+      "index": 4,
+      "start": 3.88,
+      "end": 5.44,
+      "duration": 1.56,
+      "text": "Mira folds two paper"
+    },
+    {
+      "index": 5,
+      "start": 5.44,
+      "end": 7.04,
+      "duration": 1.6,
+      "text": "doors, then notices her"
+    },
+    {
+      "index": 6,
+      "start": 7.04,
+      "end": 8.12,
+      "duration": 1.08,
+      "text": "tiny shopping list."
+    },
+    {
+      "index": 7,
+      "start": 9.26,
+      "end": 10.06,
+      "duration": 0.8,
+      "text": "Atomy’s U.S."
+    },
+    {
+      "index": 8,
+      "start": 10.06,
+      "end": 12.34,
+      "duration": 2.28,
+      "text": "guide separates consumer and"
+    },
+    {
+      "index": 9,
+      "start": 12.34,
+      "end": 13.52,
+      "duration": 1.18,
+      "text": "distributor registration."
+    },
+    {
+      "index": 10,
+      "start": 14.28,
+      "end": 15.86,
+      "duration": 1.58,
+      "text": "The distributor path includes"
+    },
+    {
+      "index": 11,
+      "start": 15.86,
+      "end": 17.56,
+      "duration": 1.7,
+      "text": "Social Security and bank"
+    },
+    {
+      "index": 12,
+      "start": 17.56,
+      "end": 19.88,
+      "duration": 2.32,
+      "text": "information. She puts the"
+    },
+    {
+      "index": 13,
+      "start": 19.88,
+      "end": 20.86,
+      "duration": 0.98,
+      "text": "list between the doors."
+    },
+    {
+      "index": 14,
+      "start": 21.38,
+      "end": 22.3,
+      "duration": 0.92,
+      "text": "First name your purpose."
+    },
+    {
+      "index": 15,
+      "start": 22.78,
+      "end": 23.8,
+      "duration": 1.02,
+      "text": "Then read the matching"
+    },
+    {
+      "index": 16,
+      "start": 23.8,
+      "end": 26.1,
+      "duration": 2.3,
+      "text": "path. The official guide"
+    },
+    {
+      "index": 17,
+      "start": 26.1,
+      "end": 26.78,
+      "duration": 0.68,
+      "text": "is in the caption."
+    }
+  ],
+  "words": [
+    {
+      "text": "Which",
+      "start": 0.0,
+      "end": 0.46
+    },
+    {
+      "text": "door",
+      "start": 0.46,
+      "end": 0.68
+    },
+    {
+      "text": "matches",
+      "start": 0.68,
+      "end": 1.06
+    },
+    {
+      "text": "why",
+      "start": 1.06,
+      "end": 1.28
+    },
+    {
+      "text": "you",
+      "start": 1.28,
+      "end": 1.42
+    },
+    {
+      "text": "came",
+      "start": 1.42,
+      "end": 1.62
+    },
+    {
+      "text": "here?",
+      "start": 1.62,
+      "end": 1.9
+    },
+    {
+      "text": "A",
+      "start": 2.26,
+      "end": 2.38
+    },
+    {
+      "text": "fictional",
+      "start": 2.38,
+      "end": 2.66
+    },
+    {
+      "text": "scene.",
+      "start": 2.66,
+      "end": 3.1
+    },
+    {
+      "text": "Mira",
+      "start": 3.88,
+      "end": 4.52
+    },
+    {
+      "text": "folds",
+      "start": 4.52,
+      "end": 4.86
+    },
+    {
+      "text": "two",
+      "start": 4.86,
+      "end": 5.14
+    },
+    {
+      "text": "paper",
+      "start": 5.14,
+      "end": 5.44
+    },
+    {
+      "text": "doors,",
+      "start": 5.44,
+      "end": 5.86
+    },
+    {
+      "text": "then",
+      "start": 6.18,
+      "end": 6.42
+    },
+    {
+      "text": "notices",
+      "start": 6.42,
+      "end": 6.82
+    },
+    {
+      "text": "her",
+      "start": 6.82,
+      "end": 7.04
+    },
+    {
+      "text": "tiny",
+      "start": 7.04,
+      "end": 7.36
+    },
+    {
+      "text": "shopping",
+      "start": 7.36,
+      "end": 7.72
+    },
+    {
+      "text": "list.",
+      "start": 7.72,
+      "end": 8.12
+    },
+    {
+      "text": "Atomy’s",
+      "start": 9.26,
+      "end": 9.64
+    },
+    {
+      "text": "U.S.",
+      "start": 9.64,
+      "end": 10.06
+    },
+    {
+      "text": "guide",
+      "start": 10.06,
+      "end": 10.52
+    },
+    {
+      "text": "separates",
+      "start": 10.52,
+      "end": 11.3
+    },
+    {
+      "text": "consumer",
+      "start": 11.3,
+      "end": 11.88
+    },
+    {
+      "text": "and",
+      "start": 11.88,
+      "end": 12.34
+    },
+    {
+      "text": "distributor",
+      "start": 12.34,
+      "end": 12.84
+    },
+    {
+      "text": "registration.",
+      "start": 12.84,
+      "end": 13.52
+    },
+    {
+      "text": "The",
+      "start": 14.28,
+      "end": 14.46
+    },
+    {
+      "text": "distributor",
+      "start": 14.46,
+      "end": 14.88
+    },
+    {
+      "text": "path",
+      "start": 14.88,
+      "end": 15.36
+    },
+    {
+      "text": "includes",
+      "start": 15.36,
+      "end": 15.86
+    },
+    {
+      "text": "Social",
+      "start": 15.86,
+      "end": 16.32
+    },
+    {
+      "text": "Security",
+      "start": 16.32,
+      "end": 16.88
+    },
+    {
+      "text": "and",
+      "start": 16.88,
+      "end": 17.34
+    },
+    {
+      "text": "bank",
+      "start": 17.34,
+      "end": 17.56
+    },
+    {
+      "text": "information.",
+      "start": 17.56,
+      "end": 18.0
+    },
+    {
+      "text": "She",
+      "start": 19.26,
+      "end": 19.5
+    },
+    {
+      "text": "puts",
+      "start": 19.5,
+      "end": 19.68
+    },
+    {
+      "text": "the",
+      "start": 19.68,
+      "end": 19.88
+    },
+    {
+      "text": "list",
+      "start": 19.88,
+      "end": 20.08
+    },
+    {
+      "text": "between",
+      "start": 20.08,
+      "end": 20.4
+    },
+    {
+      "text": "the",
+      "start": 20.4,
+      "end": 20.56
+    },
+    {
+      "text": "doors.",
+      "start": 20.56,
+      "end": 20.86
+    },
+    {
+      "text": "First",
+      "start": 21.38,
+      "end": 21.56
+    },
+    {
+      "text": "name",
+      "start": 21.56,
+      "end": 21.78
+    },
+    {
+      "text": "your",
+      "start": 21.78,
+      "end": 21.94
+    },
+    {
+      "text": "purpose.",
+      "start": 21.94,
+      "end": 22.3
+    },
+    {
+      "text": "Then",
+      "start": 22.78,
+      "end": 23.04
+    },
+    {
+      "text": "read",
+      "start": 23.04,
+      "end": 23.32
+    },
+    {
+      "text": "the",
+      "start": 23.32,
+      "end": 23.46
+    },
+    {
+      "text": "matching",
+      "start": 23.46,
+      "end": 23.8
+    },
+    {
+      "text": "path.",
+      "start": 23.8,
+      "end": 24.16
+    },
+    {
+      "text": "The",
+      "start": 25.16,
+      "end": 25.38
+    },
+    {
+      "text": "official",
+      "start": 25.38,
+      "end": 25.68
+    },
+    {
+      "text": "guide",
+      "start": 25.68,
+      "end": 26.1
+    },
+    {
+      "text": "is",
+      "start": 26.1,
+      "end": 26.32
+    },
+    {
+      "text": "in",
+      "start": 26.32,
+      "end": 26.42
+    },
+    {
+      "text": "the",
+      "start": 26.42,
+      "end": 26.52
+    },
+    {
+      "text": "caption.",
+      "start": 26.52,
+      "end": 26.78
+    }
+  ],
+  "cues": [
+    {
+      "id": "setup",
+      "text": "Which door matches why you came here?",
+      "start": 0.0,
+      "end": 3.88
+    },
+    {
+      "id": "turn",
+      "text": "Mira folds two paper doors,",
+      "start": 3.88,
+      "end": 9.26
+    },
+    {
+      "id": "brand",
+      "text": "Atomy’s U.S. guide separates consumer and distributor registration.",
+      "start": 9.26,
+      "end": 21.38
+    },
+    {
+      "id": "payoff",
+      "text": "First name your purpose.",
+      "start": 21.38,
+      "end": 27.5
+    }
+  ],
+  "timing_basis": "Synthesis sample counts for beats; ASR word anchors constrained to exact speech-beat bounds, preserving canonical text.",
+  "anchors_constrained_to_speech_beats": 1
+}

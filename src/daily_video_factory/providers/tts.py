@@ -260,6 +260,14 @@ class KokoroTTSProvider(TTSProvider):
     def __init__(self, settings: Settings, ffmpeg: FFmpeg) -> None:
         self.cfg = settings.voice
         self.ffmpeg = ffmpeg
+        self._pipeline = None
+
+    def _get_pipeline(self):
+        from kokoro import KPipeline
+
+        if self._pipeline is None:
+            self._pipeline = KPipeline(lang_code=self.cfg.kokoro_language)
+        return self._pipeline
 
     def available(self) -> bool:
         try:
@@ -272,12 +280,12 @@ class KokoroTTSProvider(TTSProvider):
 
     def synthesize_directed(self, direction: VoiceDirection, output_dir: Path) -> Path:
         try:
+            import kokoro  # noqa: F401
             import soundfile as sf
-            from kokoro import KPipeline
         except ImportError as exc:
             raise ProviderFailed("Install the local-tts extra to use Kokoro") from exc
         output_dir.mkdir(parents=True, exist_ok=True)
-        pipeline = KPipeline(lang_code=self.cfg.kokoro_language)
+        pipeline = self._get_pipeline()
         sample_rate = 24000
         clips: list[np.ndarray] = []
         performance: list[dict[str, object]] = []
@@ -334,12 +342,12 @@ class KokoroTTSProvider(TTSProvider):
 
     def synthesize(self, text: str, output_dir: Path) -> Path:
         try:
+            import kokoro  # noqa: F401
             import soundfile as sf
-            from kokoro import KPipeline
         except ImportError as exc:
             raise ProviderFailed("Install the local-tts extra to use Kokoro") from exc
         output_dir.mkdir(parents=True, exist_ok=True)
-        pipeline = KPipeline(lang_code=self.cfg.kokoro_language)
+        pipeline = self._get_pipeline()
         spoken_text = apply_pronunciations(text, self.cfg.pronunciations)
         paragraphs = [part.strip() for part in re.split(r"\n\s*\n", spoken_text) if part.strip()]
         clips: list[np.ndarray] = []

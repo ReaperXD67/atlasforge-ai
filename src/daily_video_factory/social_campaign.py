@@ -111,6 +111,17 @@ def _section(markdown: str, name: str) -> str:
     return match.group(1).strip() if match else ""
 
 
+def _hashtags(text: str) -> list[str]:
+    """Preserve the first spelling/order while comparing complete tags without case."""
+    result: list[str] = []
+    seen: set[str] = set()
+    for tag in re.findall(r"(?<!\w)#[A-Za-z0-9_]+", text):
+        if tag.casefold() not in seen:
+            seen.add(tag.casefold())
+            result.append(tag)
+    return result
+
+
 def _clock(value: datetime | None = None) -> datetime:
     value = value or datetime.now(UTC)
     if value.tzinfo is None or value.utcoffset() is None:
@@ -253,15 +264,14 @@ class SocialCampaignManager:
             str(path.relative_to(self.root)).replace("\\", "/"): _sha256(path) for path in files
         }
         markdown = episode.upload_package.read_text(encoding="utf-8-sig")
-        hashtags = list(dict.fromkeys(re.findall(r"(?<!\w)#[A-Za-z0-9_]+", markdown)))[:15]
-        description = "\n\n".join(
-            [
-                post.caption,
-                _section(markdown, "Description"),
-                " ".join(hashtags),
-                "Disclosure: AI-generated narration.",
-            ]
-        )
+        hashtags = _hashtags(markdown)[:15]
+        description_parts = [post.caption, _section(markdown, "Description")]
+        existing_tags = {tag.casefold() for tag in _hashtags("\n\n".join(description_parts))}
+        missing_tags = [tag for tag in hashtags if tag.casefold() not in existing_tags]
+        if missing_tags:
+            description_parts.append(" ".join(missing_tags))
+        description_parts.append("Disclosure: AI-generated narration.")
+        description = "\n\n".join(description_parts)
         if len(description) > 5000:
             raise ConfigurationError(
                 "Combined campaign caption, verified description, and disclosure exceed YouTube's description limit."

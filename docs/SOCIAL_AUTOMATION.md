@@ -8,11 +8,37 @@ Meta media are prerequisites, not outcomes of installing the code.
 ## Delivery status
 
 As of 6 November 2026, the adapters, queue, local analytics importer and directed narration
-are implemented and tested. Google registration was started in the side browser and reached
-password creation. It was not completed. No new Gmail, YouTube, Instagram or Facebook account
-was verified, and no new credentials or live publishing receipts exist. The local connection
-check reports missing YouTube OAuth configuration and Meta credentials. No audience metrics
-were available; the analytics report correctly returns `no_observations`.
+are implemented and tested. Gmail, the BizNex YouTube channel,
+[Instagram creator profile](https://www.instagram.com/biznex.stories/) and
+[Facebook Page](https://www.facebook.com/profile.php?id=61595985973734) have been created in
+the authorized browser session. YouTube OAuth completed,
+and a live authenticated channel check returned the expected channel
+[`UCEoGrcisSgAFiu0EkBuDq8w`](https://www.youtube.com/channel/UCEoGrcisSgAFiu0EkBuDq8w).
+The first pilot is now [public on YouTube](https://www.youtube.com/watch?v=bQlvLxzPRSc).
+It was uploaded once, verified privately, then promoted using the same video ID. API readback
+confirmed the exact channel and title, successful processing, and public visibility.
+
+The first pilot is also public on [Instagram](https://www.instagram.com/p/DfZZeJoKLBl/),
+with its AI label enabled, and on the Facebook Page (published item `122104950951532865`).
+These Meta releases were completed through the browser. Meta API setup is still waiting
+for the SMS code required by developer phone verification; Meta also refused the
+Instagram–Page link. Instagram/Facebook API publishing permissions and API publishing
+receipts have not been established. Account passwords and OAuth tokens remain
+outside repository documentation and campaign files.
+
+The [six-pilot production batch](../config/batches/biznex-first-six.production.json) has
+original compositions, measured narration, aligned captions and captured thumbnails.
+All six MP4s are rendered and passed the matching production batch's delivery verification:
+1080 x 1920 at 30fps, H.264 video and stereo 48kHz AAC audio. See the
+[delivery guide](PILOT_DELIVERY.md) for reproducible export and review commands.
+The verified 40,642,538-byte ZIP was exported, and 18 decoded frames from the six actual
+videos were reviewed. Five follow-up YouTube posts are enqueued for 7–11 November 2026
+at 09:00 Asia/Kolkata, one per day, with public visibility. The active operator heartbeat
+references `output/social/biznex-next-five.public.campaign.json` and the dedicated
+`output/social/biznex-first-six.queue.sqlite`. These are queued future jobs, not completed
+publications; Meta follow-ups are not included in this queue.
+No audience improvement is claimed. No audience measurements were
+available; the analytics report correctly returns `no_observations`.
 
 The system does not yet automatically fetch platform analytics, refresh Meta tokens, host
 media, buy ads, answer comments/DMs, or create account identities. The daily agent can prepare
@@ -20,17 +46,24 @@ and review production work; the queue worker publishes only configured, verified
 
 ## Account setup
 
-Keep **BizNex**, using the bios and handle candidates in [the growth plan](SOCIAL_GROWTH.md).
-The required assets are a Google-owned YouTube channel, a professional Instagram account,
+**BizNex** is the channel identity. [The growth plan](SOCIAL_GROWTH.md) contains the editorial
+positioning and original handle proposals; proposals are not a record of assigned handles.
+Publishing requires a Google-owned YouTube channel, a professional Instagram account,
 and a Facebook Page managed by a legitimate owner account. Keep recovery details under the
 owner's control. Passwords are not needed by the publishing worker and never go in campaign
 files, Git, logs, or public docs.
 
-For YouTube, install the `youtube` extra, create a Desktop OAuth client, save its JSON at
+The current YouTube connection is authenticated to the channel above. For a new installation,
+install the `youtube` extra, create a Desktop OAuth client, save its JSON at
 the configured `YOUTUBE_CLIENT_SECRETS_FILE`, and complete `youtube-auth` once. The worker
 checks the authenticated channel ID against the campaign before upload. A new/unverified API
 project can have platform restrictions; follow the current
 [YouTube upload documentation](https://developers.google.com/youtube/v3/docs/videos/insert).
+
+The current Google OAuth app remains in **Testing**. For an external app requesting YouTube
+scopes, Google documents a seven-day refresh-token lifetime in this state. Plan for
+reauthorization while Testing remains in use; the verified connection does not establish
+indefinitely unattended operation. [Google refresh-token expiration](https://developers.google.com/identity/protocols/oauth2/#expiration).
 
 For Meta, follow [Meta setup](META_PUBLISHING.md): Page linkage, professional account,
 publishing permissions, app access requirements, explicit Graph API version and Page token.
@@ -45,6 +78,16 @@ publishing input. Its bytes must equal the verified local MP4.
 ```
 
 The doctor is an offline configuration check. It does not verify live Meta permissions.
+
+Inspect the actual pilot follow-up queue with its explicit database path:
+
+```powershell
+.\.venv\Scripts\python.exe -m daily_video_factory.cli social status --database output/social/biznex-first-six.queue.sqlite
+.\.venv\Scripts\python.exe -m daily_video_factory.cli social run-due --database output/social/biznex-first-six.queue.sqlite
+```
+
+The second command is a dry run. The general examples below use the default queue unless
+an explicit database is supplied.
 
 ## From production to publication
 
@@ -132,8 +175,9 @@ a single large view count, or a new voice does not establish a repeatable improv
 Use [the experiment plan](../config/social/experiment-plan.json) to compare question-first
 and evidence-first openings on fresh topics. It is planning data, not a populated publish
 queue. Keep U.S. Atomy details labeled until another market's official sources are reviewed.
-The [first six briefs](BIZNEX_LAUNCH_BRIEFS.md) include exact scripts, source mappings, planned
-shots and validated voice directions. They still require production and media review.
+The [first six pilots](BIZNEX_LAUNCH_BRIEFS.md) include exact scripts, source mappings,
+original compositions and measured voice/caption timing. Final renders and complete-film
+review must pass before a dated publication campaign is enqueued.
 
 ## Reference reel and research
 

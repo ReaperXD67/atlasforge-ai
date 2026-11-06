@@ -1,0 +1,79 @@
+1
+00:00:00,000 --> 00:00:01,000
+Exact item.
+
+2
+00:00:01,500 --> 00:00:02,580
+Size. Total cost.
+
+3
+00:00:03,100 --> 00:00:04,120
+Three checks before a
+
+4
+00:00:04,120 --> 00:00:04,900
+price comparison.
+
+5
+00:00:05,200 --> 00:00:06,040
+A fictional scene.
+
+6
+00:00:06,755 --> 00:00:08,400
+Jon lays three empty
+
+7
+00:00:08,400 --> 00:00:09,680
+boxes beside a shopping
+
+8
+00:00:09,680 --> 00:00:11,340
+card. The bold price
+
+9
+00:00:11,340 --> 00:00:12,860
+leaves questions unanswered.
+
+10
+00:00:14,040 --> 00:00:15,960
+FTC shopping guidance says
+
+11
+00:00:15,960 --> 00:00:17,380
+to compare product details
+
+12
+00:00:17,380 --> 00:00:19,040
+and include delivery and
+
+13
+00:00:19,040 --> 00:00:19,680
+other fees.
+
+14
+00:00:21,000 --> 00:00:22,320
+Atomy or another shop,
+
+15
+00:00:22,640 --> 00:00:23,900
+he completes the comparison
+
+16
+00:00:23,900 --> 00:00:24,800
+before choosing.
+
+17
+00:00:25,460 --> 00:00:26,680
+The empty boxes were
+
+18
+00:00:26,680 --> 00:00:27,560
+the useful part.
+
+19
+00:00:28,345 --> 00:00:29,600
+The shopping guide is
+
+20
+00:00:29,600 --> 00:00:30,100
+in the caption.

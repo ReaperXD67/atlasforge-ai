@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "brief_set_id": "biznex-first-six-pilots",
-  "status": "authored_briefs_only",
+  "status": "rendered_delivery_verified",
   "checked_on": "2026-11-06",
   "market": "US",
   "language": "en",
@@ -9,7 +9,7 @@
   "not_a_production_manifest": true,
   "not_a_campaign_manifest": true,
   "creative_system": {
-    "format": "1080x1920 portrait, 30fps target; verify after rendering",
+    "format": "1080x1920 portrait compositions at 30fps; final encoded delivery verification pending",
     "look": "Tactile original desk cinema: warm side light, deep paper shadows, restrained macro focus, readable physical props.",
     "narrator": "One consistent licensed af_heart voice; adults are fictional and are not endorsing products.",
     "caption_rules": "Speech-aligned short phrases, strong contrast, platform-safe placement; never substitute captions for the spoken fiction disclosure.",
@@ -21,13 +21,82 @@
     "voice_direction_schema": "passed",
     "exact_transcript_matches": "passed",
     "prohibited_claim_regex": "passed for all narration, captions and titles",
-    "duration": "planning estimates only, all 20-35 seconds; no audio rendered",
-    "human_or_live_outcome": "No account, media, publication or audience result established by these briefs."
+    "duration": "All six final MP4 durations verified within 20-35 seconds; exact audio and encoded values are recorded per episode.",
+    "human_or_live_outcome": "All six MP4s delivery-verified. First pilot public on YouTube via API and on Instagram/Facebook via browser. YouTube identity, processing and public visibility verified; Instagram post and Facebook Published table verified. Meta API phone SMS verification and Instagram-Page linking remain blocked. No audience improvement established."
+  },
+  "production": {
+    "manifest": "config/batches/biznex-first-six.production.json",
+    "source_status": "original_compositions_audio_captions_and_thumbnails_complete",
+    "render_status": "all_six_rendered",
+    "delivery_verification": "all_six_verified",
+    "publication_status": "first_pilot_public_on_three_platforms_five_youtube_followups_enqueued",
+    "verified_at": "2026-11-06T10:33:07.404934+00:00",
+    "delivery_report": "config/batches/PRODUCTION_BATCH_REPORT.json",
+    "review_scope": "Composition/thumbnail review, final media/editorial checks, fresh source and delivery hash validation, loudness validation, and 18 actual decoded frames visually reviewed.",
+    "first_pilot_publications": {
+      "youtube": {
+        "episode_id": "biznex-two-paper-doors",
+        "video_id": "bQlvLxzPRSc",
+        "url": "https://www.youtube.com/watch?v=bQlvLxzPRSc",
+        "upload_attempts": 1,
+        "privacy": "public",
+        "processing": "succeeded",
+        "channel_and_title": "verified_by_api_readback",
+        "publication_method": "same_id_promoted_after_private_verification",
+        "method": "api"
+      },
+      "instagram": {
+        "method": "browser",
+        "url": "https://www.instagram.com/p/DfZZeJoKLBl/",
+        "ai_label_enabled": true,
+        "verification": "public_post_and_profile_visible"
+      },
+      "facebook": {
+        "method": "browser",
+        "page_url": "https://www.facebook.com/profile.php?id=61595985973734",
+        "published_item_id": "122104950951532865",
+        "verification": "Published_table"
+      }
+    },
+    "package": {
+      "status": "exported_and_verified",
+      "archive": "output/deliveries/biznex-first-six.zip",
+      "bytes": 40642538,
+      "sha256": "735b7cae1393ea6f02309207cf01e3580294faaf405d9151f7c31938b816569f"
+    },
+    "followup_schedule": {
+      "campaign_id": "biznex-first-six-public-followups",
+      "campaign": "output/social/biznex-next-five.public.campaign.json",
+      "queue": "output/social/biznex-first-six.queue.sqlite",
+      "platform": "youtube",
+      "timezone": "Asia/Kolkata",
+      "dates": "2026-11-07 through 2026-11-11",
+      "local_time": "09:00",
+      "visibility": "public",
+      "execution": "enqueued; active operator heartbeat references this campaign and queue",
+      "meta_followups": "not_enqueued"
+    }
+  },
+  "account_readiness": {
+    "checked_on": "2026-11-06",
+    "gmail": "created",
+    "youtube": {
+      "account_status": "created",
+      "oauth_status": "live_channel_identity_verified",
+      "channel_id": "UCEoGrcisSgAFiu0EkBuDq8w",
+      "upload_receipt": "first_pilot_publication_verified_by_api_readback",
+      "oauth_app_status": "Testing",
+      "refresh_token_limit": "Google documents seven-day expiration for an external app in Testing with YouTube scopes."
+    },
+    "instagram": "creator_account_and_first_browser_publication_verified_api_setup_incomplete",
+    "facebook": "page_and_first_browser_publication_verified_api_setup_incomplete",
+    "meta_blocker": "Developer phone verification is waiting for the required SMS code; Meta also refused the Instagram-Page link.",
+    "secrets": "Passwords and tokens are excluded from this document and Git."
   },
   "episodes": [
     {
       "id": "biznex-two-paper-doors",
-      "status": "authored_brief_not_rendered_or_scheduled",
+      "status": "rendered_delivery_verified",
       "sequence": 1,
       "title": "Two Signup Paths. One Real Question.",
       "thumbnail_copy": "WHICH PATH?",
@@ -105,7 +174,11 @@
         "word_count": 61,
         "planning_estimate_seconds": 25.3,
         "estimate_basis": "150 words per minute plus authored end-of-beat pauses; not measured audio.",
-        "measurement_required": "Retarget shots to actual aligned narration; reject rather than truncate or speed beyond configured limits."
+        "measurement_required": "Speech and shot alignment complete; final encoded delivery verified. Rebuild and reverify after source changes.",
+        "measured_narration_seconds": 27.47,
+        "measured_final_mix_seconds": 27.5,
+        "measured_timing_file": "videos/biznex-two-paper-doors/timing.json",
+        "verified_encoded_seconds": 27.5
       },
       "shot_beats": [
         {
@@ -173,11 +246,13 @@
         "Measure complete narration and exact captions; watch first frame, reveal and ending.",
         "Verify final media/thumbnail/editorial manifests and platform-specific metadata.",
         "Only then create production and campaign manifests; this brief is not accepted as either."
-      ]
+      ],
+      "production_project": "videos/biznex-two-paper-doors",
+      "publication_status": "public_on_youtube_instagram_facebook"
     },
     {
       "id": "biznex-card-under-the-cup",
-      "status": "authored_brief_not_rendered_or_scheduled",
+      "status": "rendered_delivery_verified",
       "sequence": 2,
       "title": "The Card Under the Cup",
       "thumbnail_copy": "READ THIS CARD",
@@ -255,7 +330,11 @@
         "word_count": 62,
         "planning_estimate_seconds": 25.7,
         "estimate_basis": "150 words per minute plus authored end-of-beat pauses; not measured audio.",
-        "measurement_required": "Retarget shots to actual aligned narration; reject rather than truncate or speed beyond configured limits."
+        "measurement_required": "Speech and shot alignment complete; final encoded delivery verified. Rebuild and reverify after source changes.",
+        "measured_narration_seconds": 26.47,
+        "measured_final_mix_seconds": 26.5,
+        "measured_timing_file": "videos/biznex-card-under-the-cup/timing.json",
+        "verified_encoded_seconds": 26.5
       },
       "shot_beats": [
         {
@@ -323,11 +402,14 @@
         "Measure complete narration and exact captions; watch first frame, reveal and ending.",
         "Verify final media/thumbnail/editorial manifests and platform-specific metadata.",
         "Only then create production and campaign manifests; this brief is not accepted as either."
-      ]
+      ],
+      "production_project": "videos/biznex-card-under-the-cup",
+      "publication_status": "youtube_public_post_enqueued_not_yet_published",
+      "scheduled_publish_at": "2026-11-07T09:00:00+05:30"
     },
     {
       "id": "biznex-missing-index-card",
-      "status": "authored_brief_not_rendered_or_scheduled",
+      "status": "rendered_delivery_verified",
       "sequence": 3,
       "title": "One Card Was Missing From Her Checklist",
       "thumbnail_copy": "ONE CARD MISSING",
@@ -405,7 +487,11 @@
         "word_count": 63,
         "planning_estimate_seconds": 26.1,
         "estimate_basis": "150 words per minute plus authored end-of-beat pauses; not measured audio.",
-        "measurement_required": "Retarget shots to actual aligned narration; reject rather than truncate or speed beyond configured limits."
+        "measurement_required": "Speech and shot alignment complete; final encoded delivery verified. Rebuild and reverify after source changes.",
+        "measured_narration_seconds": 26.89,
+        "measured_final_mix_seconds": 26.9,
+        "measured_timing_file": "videos/biznex-missing-index-card/timing.json",
+        "verified_encoded_seconds": 26.9
       },
       "shot_beats": [
         {
@@ -473,11 +559,14 @@
         "Measure complete narration and exact captions; watch first frame, reveal and ending.",
         "Verify final media/thumbnail/editorial manifests and platform-specific metadata.",
         "Only then create production and campaign manifests; this brief is not accepted as either."
-      ]
+      ],
+      "production_project": "videos/biznex-missing-index-card",
+      "publication_status": "youtube_public_post_enqueued_not_yet_published",
+      "scheduled_publish_at": "2026-11-08T09:00:00+05:30"
     },
     {
       "id": "biznex-two-ribbons",
-      "status": "authored_brief_not_rendered_or_scheduled",
+      "status": "rendered_delivery_verified",
       "sequence": 4,
       "title": "The Two Ribbons on His Source Card",
       "thumbnail_copy": "FOLLOW THE SOURCE",
@@ -555,7 +644,11 @@
         "word_count": 63,
         "planning_estimate_seconds": 26.1,
         "estimate_basis": "150 words per minute plus authored end-of-beat pauses; not measured audio.",
-        "measurement_required": "Retarget shots to actual aligned narration; reject rather than truncate or speed beyond configured limits."
+        "measurement_required": "Speech and shot alignment complete; final encoded delivery verified. Rebuild and reverify after source changes.",
+        "measured_narration_seconds": 26.495,
+        "measured_final_mix_seconds": 26.5,
+        "measured_timing_file": "videos/biznex-two-ribbons/timing.json",
+        "verified_encoded_seconds": 26.5
       },
       "shot_beats": [
         {
@@ -623,11 +716,14 @@
         "Measure complete narration and exact captions; watch first frame, reveal and ending.",
         "Verify final media/thumbnail/editorial manifests and platform-specific metadata.",
         "Only then create production and campaign manifests; this brief is not accepted as either."
-      ]
+      ],
+      "production_project": "videos/biznex-two-ribbons",
+      "publication_status": "youtube_public_post_enqueued_not_yet_published",
+      "scheduled_publish_at": "2026-11-09T09:00:00+05:30"
     },
     {
       "id": "biznex-receipt-fold",
-      "status": "authored_brief_not_rendered_or_scheduled",
+      "status": "rendered_delivery_verified",
       "sequence": 5,
       "title": "She Nearly Folded Away the Useful Number",
       "thumbnail_copy": "UNFOLD THIS FIRST",
@@ -705,7 +801,11 @@
         "word_count": 63,
         "planning_estimate_seconds": 26.1,
         "estimate_basis": "150 words per minute plus authored end-of-beat pauses; not measured audio.",
-        "measurement_required": "Retarget shots to actual aligned narration; reject rather than truncate or speed beyond configured limits."
+        "measurement_required": "Speech and shot alignment complete; final encoded delivery verified. Rebuild and reverify after source changes.",
+        "measured_narration_seconds": 26.045,
+        "measured_final_mix_seconds": 26.066666666666666,
+        "measured_timing_file": "videos/biznex-receipt-fold/timing.json",
+        "verified_encoded_seconds": 26.1
       },
       "shot_beats": [
         {
@@ -773,11 +873,14 @@
         "Measure complete narration and exact captions; watch first frame, reveal and ending.",
         "Verify final media/thumbnail/editorial manifests and platform-specific metadata.",
         "Only then create production and campaign manifests; this brief is not accepted as either."
-      ]
+      ],
+      "production_project": "videos/biznex-receipt-fold",
+      "publication_status": "youtube_public_post_enqueued_not_yet_published",
+      "scheduled_publish_at": "2026-11-10T09:00:00+05:30"
     },
     {
       "id": "biznex-three-empty-boxes",
-      "status": "authored_brief_not_rendered_or_scheduled",
+      "status": "rendered_delivery_verified",
       "sequence": 6,
       "title": "Three Boxes Before the Buy Button",
       "thumbnail_copy": "FILL THESE FIRST",
@@ -855,7 +958,11 @@
         "word_count": 67,
         "planning_estimate_seconds": 27.7,
         "estimate_basis": "150 words per minute plus authored end-of-beat pauses; not measured audio.",
-        "measurement_required": "Retarget shots to actual aligned narration; reject rather than truncate or speed beyond configured limits."
+        "measurement_required": "Speech and shot alignment complete; final encoded delivery verified. Rebuild and reverify after source changes.",
+        "measured_narration_seconds": 30.745,
+        "measured_final_mix_seconds": 30.766666666666666,
+        "measured_timing_file": "videos/biznex-three-empty-boxes/timing.json",
+        "verified_encoded_seconds": 30.8
       },
       "shot_beats": [
         {
@@ -923,7 +1030,10 @@
         "Measure complete narration and exact captions; watch first frame, reveal and ending.",
         "Verify final media/thumbnail/editorial manifests and platform-specific metadata.",
         "Only then create production and campaign manifests; this brief is not accepted as either."
-      ]
+      ],
+      "production_project": "videos/biznex-three-empty-boxes",
+      "publication_status": "youtube_public_post_enqueued_not_yet_published",
+      "scheduled_publish_at": "2026-11-11T09:00:00+05:30"
     }
   ]
 }

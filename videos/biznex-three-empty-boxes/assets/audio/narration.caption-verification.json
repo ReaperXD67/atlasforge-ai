@@ -1,0 +1,10 @@
+{
+  "exact_authored_text": true,
+  "monotonic_word_timings": true,
+  "script_sha256": "91964dc250eb43ac2191cbef365578adbd6e2038925787a5d8c4fbb90a90ec8a",
+  "word_count": 67,
+  "cue_count": 20,
+  "maximum_words_per_cue": 4,
+  "first_word_start": 0.0,
+  "last_word_end": 30.1
+}

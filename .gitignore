@@ -34,6 +34,12 @@ videos/**/.thumbnails/
 videos/**/thumbnail-capture/
 videos/**/thumbnail-clean/
 videos/**/thumbnail-snapshot/
+videos/biznex-two-paper-doors/assets/thumbnails/thumbnail.png
+videos/biznex-card-under-the-cup/assets/thumbnails/thumbnail.png
+videos/biznex-missing-index-card/assets/thumbnails/thumbnail.png
+videos/biznex-two-ribbons/assets/thumbnails/thumbnail.png
+videos/biznex-receipt-fold/assets/thumbnails/thumbnail.png
+videos/biznex-three-empty-boxes/assets/thumbnails/thumbnail.png
 videos/**/.hyperframes/frame-packets/
 videos/**/.hyperframes/artifacts/
 videos/**/.hyperframes/video-state.json

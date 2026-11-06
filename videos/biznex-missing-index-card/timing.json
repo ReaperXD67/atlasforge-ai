@@ -1,0 +1,581 @@
+{
+  "schema_version": 1,
+  "duration_seconds": 26.9,
+  "narration_duration_seconds": 26.89,
+  "fps": 30,
+  "beats": [
+    {
+      "index": 0,
+      "id": "beat-01",
+      "text": "What did her neat little checklist leave out? A fictional scene.",
+      "emotion": "curious",
+      "energy": 0.55,
+      "pace": 0.98,
+      "pause_after_ms": 200,
+      "start": 0.0,
+      "end": 4.15
+    },
+    {
+      "index": 1,
+      "id": "beat-02",
+      "text": "Mira lines up three cards. The empty space bothers her, so she opens the source.",
+      "emotion": "neutral",
+      "energy": 0.42,
+      "pace": 1.0,
+      "pause_after_ms": 160,
+      "start": 4.15,
+      "end": 9.935
+    },
+    {
+      "index": 2,
+      "id": "beat-03",
+      "text": "Atomy’s U.S. registration guide requires a sponsor and describes automatic or manual designation.",
+      "emotion": "serious",
+      "energy": 0.43,
+      "pace": 0.98,
+      "pause_after_ms": 280,
+      "start": 9.935,
+      "end": 17.715
+    },
+    {
+      "index": 3,
+      "id": "beat-04",
+      "text": "She adds a fourth card: understand the sponsor step. A tidy summary can still miss a decision.",
+      "emotion": "reassuring",
+      "energy": 0.43,
+      "pace": 0.98,
+      "pause_after_ms": 200,
+      "start": 17.715,
+      "end": 24.365
+    },
+    {
+      "index": 4,
+      "id": "beat-05",
+      "text": "The official guide is in the caption.",
+      "emotion": "neutral",
+      "energy": 0.35,
+      "pace": 1.0,
+      "pause_after_ms": 100,
+      "start": 24.365,
+      "end": 26.89
+    }
+  ],
+  "shots": [
+    {
+      "index": 0,
+      "planned_seconds": "0-4",
+      "visual": "A top-down camera tracks three index cards across felt, then stops on an unmistakable empty card-shaped space.",
+      "speech_anchor": "What did her neat little checklist leave out?",
+      "on_screen_text": "WHAT IS MISSING?",
+      "sound": "Three soft taps, then silence.",
+      "start": 0.0,
+      "end": 6.42
+    },
+    {
+      "index": 1,
+      "planned_seconds": "4-10",
+      "visual": "Adult hand opens a plain notebook labeled Source notes; show FICTION and SELF-MADE CHECKLIST, not a real adviser’s message.",
+      "speech_anchor": "The empty space bothers her",
+      "on_screen_text": "A FICTIONAL SCENE",
+      "sound": "Page turn replaces music for half a beat.",
+      "start": 6.42,
+      "end": 10.42
+    },
+    {
+      "index": 2,
+      "planned_seconds": "10-18",
+      "visual": "An original fact card rises into the gap: Sponsor, with two small labels Automatic and Manual; credit the U.S. guide.",
+      "speech_anchor": "Atomy’s U.S. registration guide requires",
+      "on_screen_text": "SPONSOR STEP",
+      "sound": "Low, clear factual delivery.",
+      "start": 10.42,
+      "end": 19.5
+    },
+    {
+      "index": 3,
+      "planned_seconds": "18-25",
+      "visual": "The fourth card is handwritten in one continuous stroke; the camera stops moving as the sentence resolves.",
+      "speech_anchor": "understand the sponsor step.",
+      "on_screen_text": "READ BEFORE DECIDING",
+      "sound": "Pencil texture; no alarm sound.",
+      "start": 19.5,
+      "end": 24.54
+    },
+    {
+      "index": 4,
+      "planned_seconds": "25-29",
+      "visual": "Overhead complete checklist with source credit; no link to enrollment.",
+      "speech_anchor": "The official guide is in the caption.",
+      "on_screen_text": "READ THE OFFICIAL GUIDE",
+      "sound": "Quiet cadence.",
+      "start": 24.54,
+      "end": 26.9
+    }
+  ],
+  "captions": [
+    {
+      "index": 1,
+      "start": 0.0,
+      "end": 0.9,
+      "duration": 0.9,
+      "text": "What did her neat"
+    },
+    {
+      "index": 2,
+      "start": 0.9,
+      "end": 2.08,
+      "duration": 1.18,
+      "text": "little checklist leave out?"
+    },
+    {
+      "index": 3,
+      "start": 2.52,
+      "end": 3.3,
+      "duration": 0.78,
+      "text": "A fictional scene."
+    },
+    {
+      "index": 4,
+      "start": 4.15,
+      "end": 5.52,
+      "duration": 1.37,
+      "text": "Mira lines up three"
+    },
+    {
+      "index": 5,
+      "start": 5.52,
+      "end": 7.16,
+      "duration": 1.64,
+      "text": "cards. The empty space"
+    },
+    {
+      "index": 6,
+      "start": 7.16,
+      "end": 8.32,
+      "duration": 1.16,
+      "text": "bothers her, so she"
+    },
+    {
+      "index": 7,
+      "start": 8.32,
+      "end": 9.14,
+      "duration": 0.82,
+      "text": "opens the source."
+    },
+    {
+      "index": 8,
+      "start": 10.42,
+      "end": 11.46,
+      "duration": 1.04,
+      "text": "Atomy’s U.S."
+    },
+    {
+      "index": 9,
+      "start": 11.46,
+      "end": 13.16,
+      "duration": 1.7,
+      "text": "registration guide requires a"
+    },
+    {
+      "index": 10,
+      "start": 13.16,
+      "end": 15.26,
+      "duration": 2.1,
+      "text": "sponsor and describes automatic"
+    },
+    {
+      "index": 11,
+      "start": 15.26,
+      "end": 16.62,
+      "duration": 1.36,
+      "text": "or manual designation."
+    },
+    {
+      "index": 12,
+      "start": 18.0,
+      "end": 18.68,
+      "duration": 0.68,
+      "text": "She adds a fourth"
+    },
+    {
+      "index": 13,
+      "start": 18.68,
+      "end": 20.5,
+      "duration": 1.82,
+      "text": "card: understand the sponsor"
+    },
+    {
+      "index": 14,
+      "start": 20.5,
+      "end": 22.28,
+      "duration": 1.78,
+      "text": "step. A tidy summary"
+    },
+    {
+      "index": 15,
+      "start": 22.28,
+      "end": 23.14,
+      "duration": 0.86,
+      "text": "can still miss a"
+    },
+    {
+      "index": 16,
+      "start": 23.14,
+      "end": 25.52,
+      "duration": 2.38,
+      "text": "decision. The official guide"
+    },
+    {
+      "index": 17,
+      "start": 25.52,
+      "end": 26.22,
+      "duration": 0.7,
+      "text": "is in the caption."
+    }
+  ],
+  "words": [
+    {
+      "text": "What",
+      "start": 0.0,
+      "end": 0.46
+    },
+    {
+      "text": "did",
+      "start": 0.46,
+      "end": 0.6
+    },
+    {
+      "text": "her",
+      "start": 0.6,
+      "end": 0.72
+    },
+    {
+      "text": "neat",
+      "start": 0.72,
+      "end": 0.9
+    },
+    {
+      "text": "little",
+      "start": 0.9,
+      "end": 1.12
+    },
+    {
+      "text": "checklist",
+      "start": 1.12,
+      "end": 1.46
+    },
+    {
+      "text": "leave",
+      "start": 1.46,
+      "end": 1.8
+    },
+    {
+      "text": "out?",
+      "start": 1.8,
+      "end": 2.08
+    },
+    {
+      "text": "A",
+      "start": 2.52,
+      "end": 2.58
+    },
+    {
+      "text": "fictional",
+      "start": 2.58,
+      "end": 2.86
+    },
+    {
+      "text": "scene.",
+      "start": 2.86,
+      "end": 3.3
+    },
+    {
+      "text": "Mira",
+      "start": 4.15,
+      "end": 4.82
+    },
+    {
+      "text": "lines",
+      "start": 4.82,
+      "end": 5.1
+    },
+    {
+      "text": "up",
+      "start": 5.1,
+      "end": 5.28
+    },
+    {
+      "text": "three",
+      "start": 5.28,
+      "end": 5.52
+    },
+    {
+      "text": "cards.",
+      "start": 5.52,
+      "end": 5.86
+    },
+    {
+      "text": "The",
+      "start": 6.42,
+      "end": 6.54
+    },
+    {
+      "text": "empty",
+      "start": 6.54,
+      "end": 6.84
+    },
+    {
+      "text": "space",
+      "start": 6.84,
+      "end": 7.16
+    },
+    {
+      "text": "bothers",
+      "start": 7.16,
+      "end": 7.46
+    },
+    {
+      "text": "her,",
+      "start": 7.46,
+      "end": 7.8
+    },
+    {
+      "text": "so",
+      "start": 7.96,
+      "end": 8.16
+    },
+    {
+      "text": "she",
+      "start": 8.16,
+      "end": 8.32
+    },
+    {
+      "text": "opens",
+      "start": 8.32,
+      "end": 8.64
+    },
+    {
+      "text": "the",
+      "start": 8.64,
+      "end": 8.86
+    },
+    {
+      "text": "source.",
+      "start": 8.86,
+      "end": 9.14
+    },
+    {
+      "text": "Atomy’s",
+      "start": 10.42,
+      "end": 10.8
+    },
+    {
+      "text": "U.S.",
+      "start": 10.8,
+      "end": 11.46
+    },
+    {
+      "text": "registration",
+      "start": 11.46,
+      "end": 11.64
+    },
+    {
+      "text": "guide",
+      "start": 11.64,
+      "end": 12.22
+    },
+    {
+      "text": "requires",
+      "start": 12.22,
+      "end": 12.84
+    },
+    {
+      "text": "a",
+      "start": 12.84,
+      "end": 13.16
+    },
+    {
+      "text": "sponsor",
+      "start": 13.16,
+      "end": 13.44
+    },
+    {
+      "text": "and",
+      "start": 13.44,
+      "end": 14.2
+    },
+    {
+      "text": "describes",
+      "start": 14.2,
+      "end": 14.66
+    },
+    {
+      "text": "automatic",
+      "start": 14.66,
+      "end": 15.26
+    },
+    {
+      "text": "or",
+      "start": 15.26,
+      "end": 15.68
+    },
+    {
+      "text": "manual",
+      "start": 15.68,
+      "end": 16.1
+    },
+    {
+      "text": "designation.",
+      "start": 16.1,
+      "end": 16.62
+    },
+    {
+      "text": "She",
+      "start": 18.0,
+      "end": 18.14
+    },
+    {
+      "text": "adds",
+      "start": 18.14,
+      "end": 18.36
+    },
+    {
+      "text": "a",
+      "start": 18.36,
+      "end": 18.5
+    },
+    {
+      "text": "fourth",
+      "start": 18.5,
+      "end": 18.68
+    },
+    {
+      "text": "card:",
+      "start": 18.68,
+      "end": 19.1
+    },
+    {
+      "text": "understand",
+      "start": 19.5,
+      "end": 19.9
+    },
+    {
+      "text": "the",
+      "start": 19.9,
+      "end": 20.18
+    },
+    {
+      "text": "sponsor",
+      "start": 20.18,
+      "end": 20.5
+    },
+    {
+      "text": "step.",
+      "start": 20.5,
+      "end": 20.88
+    },
+    {
+      "text": "A",
+      "start": 21.36,
+      "end": 21.54
+    },
+    {
+      "text": "tidy",
+      "start": 21.54,
+      "end": 21.84
+    },
+    {
+      "text": "summary",
+      "start": 21.84,
+      "end": 22.28
+    },
+    {
+      "text": "can",
+      "start": 22.28,
+      "end": 22.52
+    },
+    {
+      "text": "still",
+      "start": 22.52,
+      "end": 22.8
+    },
+    {
+      "text": "miss",
+      "start": 22.8,
+      "end": 22.98
+    },
+    {
+      "text": "a",
+      "start": 22.98,
+      "end": 23.14
+    },
+    {
+      "text": "decision.",
+      "start": 23.14,
+      "end": 23.54
+    },
+    {
+      "text": "The",
+      "start": 24.54,
+      "end": 24.8
+    },
+    {
+      "text": "official",
+      "start": 24.8,
+      "end": 25.12
+    },
+    {
+      "text": "guide",
+      "start": 25.12,
+      "end": 25.52
+    },
+    {
+      "text": "is",
+      "start": 25.52,
+      "end": 25.76
+    },
+    {
+      "text": "in",
+      "start": 25.76,
+      "end": 25.84
+    },
+    {
+      "text": "the",
+      "start": 25.84,
+      "end": 25.94
+    },
+    {
+      "text": "caption.",
+      "start": 25.94,
+      "end": 26.22
+    }
+  ],
+  "cues": [
+    {
+      "id": "setup",
+      "text": "What did her neat little checklist leave out?",
+      "start": 0.0,
+      "end": 6.42
+    },
+    {
+      "id": "turn",
+      "text": "The empty space bothers her,",
+      "start": 6.42,
+      "end": 10.42
+    },
+    {
+      "id": "brand",
+      "text": "Atomy’s U.S. registration guide requires a sponsor and describes automatic or manual designation.",
+      "start": 10.42,
+      "end": 18.0
+    },
+    {
+      "id": "payoff",
+      "text": "She adds a fourth card:",
+      "start": 18.0,
+      "end": 26.9
+    }
+  ],
+  "timing_basis": "Synthesis sample counts for beats; ASR word anchors constrained to exact speech-beat bounds, preserving canonical text.",
+  "anchors_constrained_to_speech_beats": 1
+}

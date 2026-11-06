@@ -267,6 +267,29 @@ def test_project_root_readme_delivery_updates_preserve_verified_resume(
     assert "README.md" not in {item["path"] for item in sources}
 
 
+def test_preview_thumbnail_cache_does_not_hide_authored_thumbnail_changes(
+    batch: tuple[Path, Path, list[list[str]]],
+) -> None:
+    root, manifest_path, _ = batch
+    manifest = load_shorts_batch_manifest(manifest_path, repository_root=root)
+    episode = manifest.episodes[0]
+    authored = episode.project / "assets/thumbnails/scene.jpg"
+    authored.parent.mkdir(parents=True, exist_ok=True)
+    authored.write_bytes(b"authored scene thumbnail")
+    before, _ = source_fingerprint(episode, manifest)
+    cache = episode.project / ".thumbnails/v5_preview.jpg"
+    cache.parent.mkdir()
+    cache.write_bytes(b"first generated preview")
+    assert source_fingerprint(episode, manifest)[0] == before
+    cache.write_bytes(b"regenerated during render")
+    after, sources = source_fingerprint(episode, manifest)
+    assert after == before
+    assert ".thumbnails/v5_preview.jpg" not in {item["path"] for item in sources}
+    assert "assets/thumbnails/scene.jpg" in {item["path"] for item in sources}
+    authored.write_bytes(b"changed authored scene thumbnail")
+    assert source_fingerprint(episode, manifest)[0] != before
+
+
 def test_nested_readme_is_still_a_render_source_input(
     batch: tuple[Path, Path, list[list[str]]],
 ) -> None:

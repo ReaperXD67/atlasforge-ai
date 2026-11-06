@@ -104,3 +104,52 @@ separation, oversized-sentence handling, Kokoro identity/speed/pause routing,
 Chatterbox routing, exact text validation and stale-caption cleanup on fallback.
 The two existing CLI tests also pass. Actual baseline and directed CLI executions
 establish that the added `--direction` option reaches the new runtime correctly.
+
+## First six pilot production audio
+
+The [first-six production manifest](../config/batches/biznex-first-six.production.json)
+now points to six prepared projects with actual directed `af_heart` narration,
+measured captions, and original scored stereo mixes. Audio preparation and the
+source/story/packaging validators completed successfully on 6 November 2026.
+This table records **audio readiness**; final video delivery is established by the
+render batch's `BATCH_REPORT.json`.
+
+| Project under `videos/` | Timeline / stereo mix duration |
+| --- | --- |
+| `biznex-two-paper-doors` | 27.500 s |
+| `biznex-card-under-the-cup` | 26.500 s |
+| `biznex-missing-index-card` | 26.900 s |
+| `biznex-two-ribbons` | 26.500 s |
+| `biznex-receipt-fold` | 26.066667 s |
+| `biznex-three-empty-boxes` | 30.766667 s |
+
+Each project contains `assets/audio/final_mix.wav` (48 kHz stereo), the separate
+narration, score and foley, captions, provenance, `timing.json`, `EDITORIAL.json`,
+`SCRIPT.md` and publishing copy. Word anchors use ASR evidence constrained to each
+beat's known synthesis sample window, preventing a missed character name from
+occupying the preceding silent pause. The mix is padded only with silence to the
+next 30 fps frame boundary; audio is never cut to meet the duration gate.
+
+Rebuild all audio/data using the cached local engines:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/prepare_pilot_batch.py
+```
+
+The preparer reuses a single Kokoro pipeline and resumes matching narration from
+its fingerprint. It does not change HTML/CSS/JavaScript compositions. Once visual
+checks and the six required thumbnails are ready, the existing delivery runner
+serializes rendering, mastering, and verification:
+
+```powershell
+.\.venv\Scripts\python.exe -m daily_video_factory.cli render-production-batch `
+  --manifest config/batches/biznex-first-six.production.json --dry-run
+
+.\.venv\Scripts\python.exe -m daily_video_factory.cli render-production-batch `
+  --manifest config/batches/biznex-first-six.production.json --resume
+```
+
+The runner checks each composition before encoding, creates a temporary render,
+masters stereo AAC audio, validates media/voice/thumbnail/editorial evidence, and
+promotes only a verified file to `renders/final.mp4`. Keep project sources frozen
+during each render; a changed source fingerprint fails the delivery gate.

@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "script": "narration.txt",
+  "thumbnail_copy": "THUMBNAIL_COPY.txt",
+  "audience_problem": "A fictional adult arranges three clear comparison boxes beside a shopping card and discovers why an attractive price alone is incomplete.",
+  "hook": {
+    "text": "Exact item. Size. Total cost.",
+    "at_seconds": 0
+  },
+  "payoff": {
+    "text": "The empty boxes were the useful part.",
+    "at_seconds": 25.46
+  },
+  "packaging": {
+    "title": "Three Boxes Before the Buy Button",
+    "thumbnail_text": "FILL THESE FIRST",
+    "promise": "Blank comparison boxes turn an incomplete shopping impression into an explicit checklist.",
+    "evidence_anchor": "The empty boxes were the useful part.",
+    "reviewed": true
+  },
+  "sources": [
+    {
+      "claim": "FTC online-shopping guidance advises comparing product details and the total cost, including shipping/delivery and other fees.",
+      "url": "https://consumer.ftc.gov/articles/online-shopping",
+      "checked_on": "2026-11-06"
+    }
+  ],
+  "retention_beats": [
+    {
+      "at_seconds": 0.0,
+      "purpose": "THREE CHECKS"
+    },
+    {
+      "at_seconds": 6.755,
+      "purpose": "A FICTIONAL SCENE"
+    },
+    {
+      "at_seconds": 13.685,
+      "purpose": "Narration turn: FTC shopping guidance says to compare product details and include delivery and other fees."
+    },
+    {
+      "at_seconds": 14.04,
+      "purpose": "COUNT THE FULL COST"
+    },
+    {
+      "at_seconds": 20.545,
+      "purpose": "Narration turn: Atomy or another shop, he completes the comparison before choosing. The empty boxes were the useful part."
+    },
+    {
+      "at_seconds": 22.64,
+      "purpose": "COMPARE BEFORE CHOOSING"
+    },
+    {
+      "at_seconds": 28.345,
+      "purpose": "READ THE SHOPPING GUIDE"
+    }
+  ],
+  "story": {
+    "fictional": true,
+    "protagonist": "Jon",
+    "disclosure": "A fictional scene.",
+    "setup_segment": "setup",
+    "turn_segment": "turn",
+    "brand_connection_segment": "brand",
+    "payoff_segment": "payoff",
+    "timing_manifest": "timing.json"
+  },
+  "experiment": {
+    "id": "opening-01",
+    "variant": "evidence-first",
+    "matched_pair": "comparison-01",
+    "primary_metric_by_platform": {
+      "youtube": "average_percentage_viewed",
+      "instagram": "share_rate",
+      "facebook": "share_rate"
+    },
+    "checkpoint_hours": 72,
+    "tolerance_hours": 12,
+    "controls": [
+      "English, U.S. audience",
+      "same narrator identity",
+      "20-35 second duration band",
+      "pair-matched CTA and source",
+      "posting-time band"
+    ],
+    "assignment_note": "Three videos per variant across three topic families. Observational matched batch, not a randomized causal test."
+  },
+  "review_scope": "Packaging-to-script alignment reviewed. No claim of audience performance or automatic fact checking."
+}

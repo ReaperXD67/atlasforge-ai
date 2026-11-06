@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "script": "narration.txt",
+  "thumbnail_copy": "THUMBNAIL_COPY.txt",
+  "audience_problem": "A fictional adult follows two ribbons back to one source card and replaces a vague instruction with a sourced question.",
+  "hook": {
+    "text": "Sponsor required.",
+    "at_seconds": 0
+  },
+  "payoff": {
+    "text": "He replaces the vague note.",
+    "at_seconds": 19.07
+  },
+  "packaging": {
+    "title": "The Two Ribbons on His Source Card",
+    "thumbnail_text": "FOLLOW THE SOURCE",
+    "promise": "Two ribbons make the relationship between a short note and its source tangible.",
+    "evidence_anchor": "He replaces the vague note.",
+    "reviewed": true
+  },
+  "sources": [
+    {
+      "claim": "Atomy USA’s registration guide says a sponsor is needed and supports automatic or manual designation.",
+      "url": "https://us.atomy.com/cst/userGuide/24100000001691",
+      "checked_on": "2026-11-06"
+    }
+  ],
+  "retention_beats": [
+    {
+      "at_seconds": 0.0,
+      "purpose": "U.S. SOURCE CHECK"
+    },
+    {
+      "at_seconds": 7.455,
+      "purpose": "A FICTIONAL SCENE"
+    },
+    {
+      "at_seconds": 13.59,
+      "purpose": "Narration turn: The Atomy source gives him a better question: how will this sponsor step work?"
+    },
+    {
+      "at_seconds": 13.87,
+      "purpose": "HOW DOES THIS STEP WORK?"
+    },
+    {
+      "at_seconds": 18.945,
+      "purpose": "Narration turn: He replaces the vague note. Understanding comes before the next click."
+    },
+    {
+      "at_seconds": 19.07,
+      "purpose": "UNDERSTAND, THEN DECIDE"
+    },
+    {
+      "at_seconds": 23.97,
+      "purpose": "Narration turn: The official guide is in the caption."
+    },
+    {
+      "at_seconds": 24.11,
+      "purpose": "READ THE OFFICIAL GUIDE"
+    }
+  ],
+  "story": {
+    "fictional": true,
+    "protagonist": "Jon",
+    "disclosure": "A fictional scene.",
+    "setup_segment": "setup",
+    "turn_segment": "turn",
+    "brand_connection_segment": "brand",
+    "payoff_segment": "payoff",
+    "timing_manifest": "timing.json"
+  },
+  "experiment": {
+    "id": "opening-01",
+    "variant": "evidence-first",
+    "matched_pair": "source-01",
+    "primary_metric_by_platform": {
+      "youtube": "average_percentage_viewed",
+      "instagram": "share_rate",
+      "facebook": "share_rate"
+    },
+    "checkpoint_hours": 72,
+    "tolerance_hours": 12,
+    "controls": [
+      "English, U.S. audience",
+      "same narrator identity",
+      "20-35 second duration band",
+      "pair-matched CTA and source",
+      "posting-time band"
+    ],
+    "assignment_note": "Three videos per variant across three topic families. Observational matched batch, not a randomized causal test."
+  },
+  "review_scope": "Packaging-to-script alignment reviewed. No claim of audience performance or automatic fact checking."
+}
