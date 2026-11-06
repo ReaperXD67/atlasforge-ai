@@ -2,7 +2,7 @@
 <!-- Deterministic, self-hosted README visual. No third-party assets or runtime scripts. -->
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="390" viewBox="0 0 1200 390" role="img" aria-labelledby="title desc">
   <title id="title">AtlasForge AI animated project overview</title>
-  <desc id="desc">Research-to-publish video production with explicit cost, editorial, and safety gates. The visual shows four real stages in the project workflow.</desc>
+  <desc id="desc">The voice sets the cut. The story sets the motion. A local pipeline for stories, performances, moving scenes and verified exports.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#020617"/>
@@ -43,7 +43,7 @@
   <circle cx="1028" cy="40" r="54" fill="#F59E0B" opacity=".06"/>
   <text x="48" y="45" class="eyebrow">LOCAL-FIRST PRODUCTION SYSTEM</text>
   <text x="48" y="94" class="title">AtlasForge AI</text>
-  <text x="48" y="118" class="tagline">Research-to-publish video production with explicit cost, editorial, and safety gates.</text>
+  <text x="48" y="118" class="tagline">The voice sets the cut. The story sets the motion. You own the pipeline.</text>
   <path d="M72 246 C190 160 288 330 405 246 S620 162 742 246 S952 330 1128 246" fill="none" stroke="url(#signal)" stroke-width="2" opacity=".36" class="flow"/>
   <circle r="7" fill="#FFFBEB" filter="url(#glow)" class="packet">
     <animateMotion dur="5.8s" repeatCount="indefinite" path="M72 246 C190 160 288 330 405 246 S620 162 742 246 S952 330 1128 246"/>
@@ -53,8 +53,8 @@
           <rect x="48" y="184" width="246" height="124" rx="16" fill="#0B1220" stroke="#334155"/>
           <rect x="48" y="184" width="5" height="124" rx="3" fill="#F59E0B"/>
           <text x="70" y="215" class="step">01</text>
-          <text x="70" y="249" class="label">RESEARCH</text>
-          <text x="70" y="280" class="detail">Evidence and sources</text>
+          <text x="70" y="249" class="label">STORY</text>
+          <text x="70" y="280" class="detail">A hook. A turn. A payoff.</text>
           <circle cx="268" cy="210" r="5" fill="#F59E0B" class="node">
             <animate attributeName="r" values="4;8;4" dur="2.4000000000000004s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="1;.35;1" dur="2.4000000000000004s" repeatCount="indefinite"/>
@@ -64,8 +64,8 @@
           <rect x="334" y="184" width="246" height="124" rx="16" fill="#0B1220" stroke="#334155"/>
           <rect x="334" y="184" width="5" height="124" rx="3" fill="#22C55E"/>
           <text x="356" y="215" class="step">02</text>
-          <text x="356" y="249" class="label">SCRIPT</text>
-          <text x="356" y="280" class="detail">Policy-gated draft</text>
+          <text x="356" y="249" class="label">PERFORM</text>
+          <text x="356" y="280" class="detail">Complete thoughts. Intention.</text>
           <circle cx="554" cy="210" r="5" fill="#22C55E" class="node">
             <animate attributeName="r" values="4;8;4" dur="2.6s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="1;.35;1" dur="2.6s" repeatCount="indefinite"/>
@@ -75,8 +75,8 @@
           <rect x="620" y="184" width="246" height="124" rx="16" fill="#0B1220" stroke="#334155"/>
           <rect x="620" y="184" width="5" height="124" rx="3" fill="#F59E0B"/>
           <text x="642" y="215" class="step">03</text>
-          <text x="642" y="249" class="label">PRODUCE</text>
-          <text x="642" y="280" class="detail">Voice and visuals</text>
+          <text x="642" y="249" class="label">MOVE</text>
+          <text x="642" y="280" class="detail">Causal scenes. Timed cuts.</text>
           <circle cx="840" cy="210" r="5" fill="#F59E0B" class="node">
             <animate attributeName="r" values="4;8;4" dur="2.8000000000000003s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="1;.35;1" dur="2.8000000000000003s" repeatCount="indefinite"/>
@@ -87,14 +87,14 @@
           <rect x="906" y="184" width="5" height="124" rx="3" fill="#22C55E"/>
           <text x="928" y="215" class="step">04</text>
           <text x="928" y="249" class="label">VERIFY</text>
-          <text x="928" y="280" class="detail">Editorial QA</text>
+          <text x="928" y="280" class="detail">Decode. Inspect. Deliver.</text>
           <circle cx="1126" cy="210" r="5" fill="#22C55E" class="node">
             <animate attributeName="r" values="4;8;4" dur="3.0s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="1;.35;1" dur="3.0s" repeatCount="indefinite"/>
           </circle>
         </g>
   <rect x="48" y="338" width="1104" height="1" fill="#334155"/>
-  <text x="48" y="366" class="footer">PYTHON 3.11+  /  DURABLE RUNS  /  PROVIDER FALLBACKS  /  POLICY GATES</text>
+  <text x="48" y="366" class="footer">LOCAL VOICE  /  PROCEDURAL 3D  /  SPEECH-TIMED EDITS  /  VERIFIED EXPORTS</text>
   <g transform="translate(1093 350)">
     <circle cx="0" cy="0" r="5" fill="#F59E0B"/>
     <circle cx="18" cy="0" r="5" fill="#22C55E"/>

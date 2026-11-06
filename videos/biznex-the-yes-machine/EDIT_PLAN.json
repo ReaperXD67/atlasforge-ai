@@ -1,0 +1,402 @@
+{
+  "schema_version": 1,
+  "project_id": "biznex-the-yes-machine",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "timing_file": "timing.json",
+  "shots": [
+    {
+      "id": "s01",
+      "start": {
+        "boundary": "start",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "object",
+      "subject": "yes-button",
+      "location": "continuous-mechanical-world",
+      "layout": "button_macro",
+      "framing": "extreme_close",
+      "camera": "push_in",
+      "subject_motion": "action",
+      "action": "Pressure gathers on a tactile coral YES button.",
+      "expression": "Pressure becomes self-aware pause, then relief.",
+      "cut_reason": "Pressure gathers on a tactile coral YES button.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s02",
+      "start": {
+        "phrase": "Saying yes",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "object",
+      "subject": "yes-button",
+      "location": "continuous-mechanical-world",
+      "layout": "button_press",
+      "framing": "close",
+      "camera": "tilt",
+      "subject_motion": "action",
+      "action": "The button depresses and drives the first mechanical linkage.",
+      "expression": "Pressure becomes self-aware pause, then relief.",
+      "cut_reason": "The button depresses and drives the first mechanical linkage.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s03",
+      "start": {
+        "phrase": "before I'd",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "environment",
+      "subject": "domino-chain",
+      "location": "continuous-mechanical-world",
+      "layout": "chain",
+      "framing": "wide",
+      "camera": "pull_out",
+      "subject_motion": "action",
+      "action": "A spreading chain reveals what the small button has started.",
+      "expression": "Pressure becomes self-aware pause, then relief.",
+      "cut_reason": "A spreading chain reveals what the small button has started.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s04",
+      "start": {
+        "phrase": "One little yes",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "object",
+      "subject": "trigger",
+      "location": "continuous-mechanical-world",
+      "layout": "chain_macro",
+      "framing": "insert",
+      "camera": "tracking",
+      "subject_motion": "action",
+      "action": "A tiny trigger transfers its motion into a much larger mechanism.",
+      "expression": "Pressure becomes self-aware pause, then relief.",
+      "cut_reason": "A tiny trigger transfers its motion into a much larger mechanism.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s05",
+      "start": {
+        "phrase": "Then the money",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "object",
+      "subject": "cost-mechanism",
+      "location": "continuous-mechanical-world",
+      "layout": "money",
+      "framing": "medium",
+      "camera": "orbit",
+      "subject_motion": "action",
+      "action": "Brass tokens feed the cost mechanism as consequences accumulate.",
+      "expression": "Pressure becomes self-aware pause, then relief.",
+      "cut_reason": "Brass tokens feed the cost mechanism as consequences accumulate.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s06",
+      "start": {
+        "phrase": "The time",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "object",
+      "subject": "clock",
+      "location": "continuous-mechanical-world",
+      "layout": "clock",
+      "framing": "close",
+      "camera": "orbit",
+      "subject_motion": "action",
+      "action": "The rotating mechanism matches into a clock advancing under tension.",
+      "expression": "Pressure becomes self-aware pause, then relief.",
+      "cut_reason": "The rotating mechanism matches into a clock advancing under tension.",
+      "transition": {
+        "kind": "match_cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s07",
+      "start": {
+        "phrase": "The stuff",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "environment",
+      "subject": "unused-boxes",
+      "location": "continuous-mechanical-world",
+      "layout": "unused",
+      "framing": "wide",
+      "camera": "pull_out",
+      "subject_motion": "action",
+      "action": "Boxes accumulate on a conveyor while the camera reveals their scale.",
+      "expression": "Pressure becomes self-aware pause, then relief.",
+      "cut_reason": "Boxes accumulate on a conveyor while the camera reveals their scale.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s08",
+      "start": {
+        "phrase": "So I tried",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "object",
+      "subject": "brake",
+      "location": "continuous-mechanical-world",
+      "layout": "brake",
+      "framing": "insert",
+      "camera": "pan",
+      "subject_motion": "action",
+      "action": "A brake enters the machine and begins to resist its movement.",
+      "expression": "Pressure becomes self-aware pause, then relief.",
+      "cut_reason": "A brake enters the machine and begins to resist its movement.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s09",
+      "start": {
+        "phrase": "I paused",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "environment",
+      "subject": "stopped-machine",
+      "location": "continuous-mechanical-world",
+      "layout": "still",
+      "framing": "wide",
+      "camera": "locked",
+      "subject_motion": "still",
+      "action": "The entire mechanism stops and leaves a deliberate moment of stillness.",
+      "expression": "Pressure becomes self-aware pause, then relief.",
+      "cut_reason": "The entire mechanism stops and leaves a deliberate moment of stillness.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s10",
+      "start": {
+        "phrase": "What does it cost",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "diagram",
+      "subject": "cost-gate",
+      "location": "continuous-mechanical-world",
+      "layout": "gate_cost",
+      "framing": "medium",
+      "camera": "tracking",
+      "subject_motion": "action",
+      "action": "A physical gate opens with the first practical question about cost.",
+      "expression": "Pressure becomes self-aware pause, then relief.",
+      "cut_reason": "A physical gate opens with the first practical question about cost.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s11",
+      "start": {
+        "phrase": "Will I use it",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "diagram",
+      "subject": "use-gate",
+      "location": "continuous-mechanical-world",
+      "layout": "gate_use",
+      "framing": "close",
+      "camera": "pan",
+      "subject_motion": "action",
+      "action": "The route bends through a second gate asking about actual use.",
+      "expression": "Pressure becomes self-aware pause, then relief.",
+      "cut_reason": "The route bends through a second gate asking about actual use.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s12",
+      "start": {
+        "phrase": "Does it fit my life",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "diagram",
+      "subject": "life-gate",
+      "location": "continuous-mechanical-world",
+      "layout": "gate_life",
+      "framing": "medium",
+      "camera": "pull_out",
+      "subject_motion": "action",
+      "action": "A third gate reconnects the choice to the viewer's life.",
+      "expression": "Pressure becomes self-aware pause, then relief.",
+      "cut_reason": "A third gate reconnects the choice to the viewer's life.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s13",
+      "start": {
+        "phrase": "Turns out",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "environment",
+      "subject": "choice-paths",
+      "location": "continuous-mechanical-world",
+      "layout": "choice",
+      "framing": "wide",
+      "camera": "pull_out",
+      "subject_motion": "action",
+      "action": "The machine resolves into two legitimate paths: YES and NOT NOW.",
+      "expression": "Pressure becomes self-aware pause, then relief.",
+      "cut_reason": "The machine resolves into two legitimate paths: YES and NOT NOW.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    }
+  ],
+  "audio": [
+    {
+      "id": "voice",
+      "role": "voice",
+      "asset": "assets/audio/narration.wav",
+      "start": {
+        "boundary": "start",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "end": {
+        "boundary": "end",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "source_start_frame": 0,
+      "gain_db": 0.0,
+      "gain_keyframes": [],
+      "fade_in_frames": 0,
+      "fade_out_frames": 0,
+      "duck_attack_frames": 3,
+      "duck_release_frames": 9
+    },
+    {
+      "id": "score",
+      "role": "music",
+      "asset": "assets/audio/score.wav",
+      "start": {
+        "boundary": "start",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "end": {
+        "boundary": "end",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "source_start_frame": 0,
+      "gain_db": 0.0,
+      "gain_keyframes": [],
+      "fade_in_frames": 0,
+      "fade_out_frames": 0,
+      "duck_db": -6.0,
+      "duck_attack_frames": 2,
+      "duck_release_frames": 6
+    },
+    {
+      "id": "mechanism",
+      "role": "foley",
+      "asset": "assets/audio/machine.wav",
+      "start": {
+        "boundary": "start",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "end": {
+        "boundary": "end",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "source_start_frame": 0,
+      "gain_db": -4.0,
+      "gain_keyframes": [],
+      "fade_in_frames": 0,
+      "fade_out_frames": 0,
+      "duck_db": -3.0,
+      "duck_attack_frames": 1,
+      "duck_release_frames": 3
+    }
+  ],
+  "captions": {
+    "max_words": 4,
+    "max_characters": 30,
+    "max_gap_seconds": 0.35,
+    "hold_frames": 3
+  },
+  "policy": {
+    "min_shots": 13,
+    "min_visual_kinds": 3,
+    "min_visual_assets": 1,
+    "min_layouts": 12,
+    "min_subjects": 10,
+    "min_framings": 4,
+    "min_camera_moves": 4,
+    "min_shot_seconds": 0.35,
+    "max_shot_seconds": 7.0,
+    "max_same_layout_seconds": 7.0,
+    "max_static_seconds": 5.0,
+    "max_dominant_layout_fraction": 0.3,
+    "max_typography_fraction": 0.0,
+    "max_cut_anchor_offset_frames": 15,
+    "require_layered_audio": true
+  }
+}

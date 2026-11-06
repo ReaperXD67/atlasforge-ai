@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "title": "The Yes Machine — BizNex Stories",
+  "audio_master": "assets/audio/master.wav",
+  "brand": "BizNex Stories",
+  "context": "Atomy · independent educational community",
+  "shots": {
+    "s01": {
+      "mode": "button_macro",
+      "heading": "My most|expensive habit?",
+      "hide_captions": true
+    },
+    "s02": {
+      "mode": "button_press",
+      "heading": "YES."
+    },
+    "s03": {
+      "mode": "chain"
+    },
+    "s04": {
+      "mode": "chain_macro"
+    },
+    "s05": {
+      "mode": "money"
+    },
+    "s06": {
+      "mode": "clock"
+    },
+    "s07": {
+      "mode": "unused"
+    },
+    "s08": {
+      "mode": "brake"
+    },
+    "s09": {
+      "mode": "still"
+    },
+    "s10": {
+      "mode": "gate_cost",
+      "heading": "What does|it cost?",
+      "hide_captions": true
+    },
+    "s11": {
+      "mode": "gate_use",
+      "heading": "Will I|use it?",
+      "hide_captions": true
+    },
+    "s12": {
+      "mode": "gate_life",
+      "heading": "Does it fit|my life?",
+      "hide_captions": true
+    },
+    "s13": {
+      "mode": "choice",
+      "heading": "A good choice|can wait for you.",
+      "hide_captions": true
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "reference_audio": "videos/biznex-second-question/assets/audio/voice-reference.wav",
+  "reference_sha256": "45b687b4567ca160de01382212e4bd0860c75b163175650b1ee5b65add438da6",
+  "reference_provenance": "Original authorized Kokoro af_heart synthetic reference; no human impersonation. Read-only reuse of existing reference.",
+  "seed": 1986,
+  "transcript": "I almost said yes. Not because I understood it. Because I didn't want to disappoint her. Then I asked one small question: what happens if I change my mind? The room went quiet. And somehow... I could finally hear myself.",
+  "variants": [
+    {
+      "id": "a-fragments",
+      "label": "Separate sentences, broad acting directions",
+      "beats": [
+        {
+          "text": "I almost said yes.",
+          "delivery": "Speak softly, as if admitting something difficult to a close friend.",
+          "pause_after_ms": 250
+        },
+        {
+          "text": "Not because I understood it.",
+          "delivery": "Speak softly, as if admitting something difficult to a close friend.",
+          "pause_after_ms": 250
+        },
+        {
+          "text": "Because I didn't want to disappoint her.",
+          "delivery": "Speak softly, as if admitting something difficult to a close friend.",
+          "pause_after_ms": 250
+        },
+        {
+          "text": "Then I asked one small question: what happens if I change my mind?",
+          "delivery": "Ask honestly, with a little uncertainty.",
+          "pause_after_ms": 250
+        },
+        {
+          "text": "The room went quiet.",
+          "delivery": "Speak with relief and a gentle smile.",
+          "pause_after_ms": 250
+        },
+        {
+          "text": "And somehow... I could finally hear myself.",
+          "delivery": "Speak with relief and a gentle smile.",
+          "pause_after_ms": 250
+        }
+      ]
+    },
+    {
+      "id": "b-thoughts",
+      "label": "Complete thoughts, same broad directions",
+      "beats": [
+        {
+          "text": "I almost said yes. Not because I understood it. Because I didn't want to disappoint her.",
+          "delivery": "Speak softly, as if admitting something difficult to a close friend.",
+          "pause_after_ms": 350
+        },
+        {
+          "text": "Then I asked one small question: what happens if I change my mind?",
+          "delivery": "Ask honestly, with a little uncertainty.",
+          "pause_after_ms": 350
+        },
+        {
+          "text": "The room went quiet. And somehow... I could finally hear myself.",
+          "delivery": "Speak with relief and a gentle smile.",
+          "pause_after_ms": 350
+        }
+      ]
+    },
+    {
+      "id": "c-presets",
+      "label": "Complete thoughts, documented soft/neutral/happy controls",
+      "beats": [
+        {
+          "text": "I almost said yes. Not because I understood it. Because I didn't want to disappoint her.",
+          "preset": "soft",
+          "pause_after_ms": 350
+        },
+        {
+          "text": "Then I asked one small question: what happens if I change my mind?",
+          "preset": "neutral",
+          "pause_after_ms": 350
+        },
+        {
+          "text": "The room went quiet. And somehow... I could finally hear myself.",
+          "preset": "happy",
+          "pause_after_ms": 350
+        }
+      ]
+    },
+    {
+      "id": "d-native-cue",
+      "label": "Same presets with one native breath at the vulnerable turn",
+      "beats": [
+        {
+          "text": "I almost said yes. Not because I understood it. Because I didn't want to disappoint her.",
+          "synthesis_text": "I almost said yes. Not because I understood it. Because I didn't want to disappoint her.",
+          "preset": "soft",
+          "pause_after_ms": 350
+        },
+        {
+          "text": "Then I asked one small question: what happens if I change my mind?",
+          "synthesis_text": "[breath] Then I asked one small question: what happens if I change my mind?",
+          "preset": "neutral",
+          "pause_after_ms": 350
+        },
+        {
+          "text": "The room went quiet. And somehow... I could finally hear myself.",
+          "synthesis_text": "The room went quiet. And somehow... I could finally hear myself.",
+          "preset": "happy",
+          "pause_after_ms": 350
+        }
+      ]
+    }
+  ]
+}

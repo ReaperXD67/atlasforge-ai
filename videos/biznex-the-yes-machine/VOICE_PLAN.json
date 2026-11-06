@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "reference_audio": "assets/audio/voice-reference.wav",
+  "reference_sha256": "45b687b4567ca160de01382212e4bd0860c75b163175650b1ee5b65add438da6",
+  "reference_provenance": "Original authorized Kokoro af_heart synthetic narrator, retained from previous local reference. No human voice impersonation.",
+  "seed": 1986,
+  "transcript": "My most expensive habit? Saying yes… before I'd even thought about it. One little yes. Then the money. The time. The stuff I didn't need. So I tried something awkward. I paused. What does it cost? Will I use it? Does it fit my life? Turns out… a good choice can wait for you.",
+  "beats": [
+    {
+      "text": "My most expensive habit? Saying yes… before I'd even thought about it.",
+      "delivery": "Speak candidly to a friend, amused at your own mistake, with a rueful smile.",
+      "pause_after_ms": 220
+    },
+    {
+      "text": "One little yes. Then the money. The time. The stuff I didn't need.",
+      "delivery": "Speak with rueful frustration. Let each short thought build on the last, quicker and a little more exasperated.",
+      "pause_after_ms": 300
+    },
+    {
+      "text": "So I tried something awkward. I paused.",
+      "preset": "soft",
+      "pause_after_ms": 800
+    },
+    {
+      "text": "What does it cost? Will I use it? Does it fit my life?",
+      "delivery": "Ask these questions with genuine curiosity, clear and conversational, as if working something out.",
+      "pause_after_ms": 350
+    },
+    {
+      "text": "Turns out… a good choice can wait for you.",
+      "delivery": "Speak with real relief and a warm small smile, quietly pleased by the realization.",
+      "pause_after_ms": 0
+    }
+  ]
+}

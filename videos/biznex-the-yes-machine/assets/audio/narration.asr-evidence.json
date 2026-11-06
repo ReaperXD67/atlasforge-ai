@@ -1,0 +1,365 @@
+{
+  "schema_version": 1,
+  "asr_model": "cached faster-whisper small.en, CPU int8",
+  "comparison_normalization": "Case/punctuation and signup/sign-up/sign up spelling only",
+  "takes": [
+    {
+      "id": "beat-00",
+      "mode": "directed",
+      "expected_text": "My most expensive habit? Saying yes… before I'd even thought about it.",
+      "synthesis_text": "My most expensive habit? Saying yes… before I'd even thought about it.",
+      "asr_transcript": "My most expensive habit saying yes before I'd even thought about it",
+      "normalized_asr_matches": true,
+      "duration_seconds": 6.84,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.989990234375,
+      "rms": 0.13667599856853485,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "My",
+          "start": 0.0,
+          "end": 0.56
+        },
+        {
+          "text": "most",
+          "start": 0.56,
+          "end": 0.98
+        },
+        {
+          "text": "expensive",
+          "start": 0.98,
+          "end": 1.72
+        },
+        {
+          "text": "habit",
+          "start": 1.72,
+          "end": 2.28
+        },
+        {
+          "text": "saying",
+          "start": 2.28,
+          "end": 3.28
+        },
+        {
+          "text": "yes",
+          "start": 3.28,
+          "end": 3.82
+        },
+        {
+          "text": "before",
+          "start": 3.82,
+          "end": 4.78
+        },
+        {
+          "text": "I'd",
+          "start": 4.78,
+          "end": 5.14
+        },
+        {
+          "text": "even",
+          "start": 5.14,
+          "end": 5.44
+        },
+        {
+          "text": "thought",
+          "start": 5.44,
+          "end": 5.86
+        },
+        {
+          "text": "about",
+          "start": 5.86,
+          "end": 6.18
+        },
+        {
+          "text": "it",
+          "start": 6.18,
+          "end": 6.48
+        }
+      ]
+    },
+    {
+      "id": "beat-01",
+      "mode": "directed",
+      "expected_text": "One little yes. Then the money. The time. The stuff I didn't need.",
+      "synthesis_text": "One little yes. Then the money. The time. The stuff I didn't need.",
+      "asr_transcript": "One little yes, then the money, the time, the stuff I didn't need.",
+      "normalized_asr_matches": true,
+      "duration_seconds": 4.96,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.990020751953125,
+      "rms": 0.18650120496749878,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "One",
+          "start": 0.0,
+          "end": 0.26
+        },
+        {
+          "text": "little",
+          "start": 0.26,
+          "end": 0.48
+        },
+        {
+          "text": "yes,",
+          "start": 0.48,
+          "end": 0.84
+        },
+        {
+          "text": "then",
+          "start": 1.3,
+          "end": 1.52
+        },
+        {
+          "text": "the",
+          "start": 1.52,
+          "end": 1.66
+        },
+        {
+          "text": "money,",
+          "start": 1.66,
+          "end": 1.9
+        },
+        {
+          "text": "the",
+          "start": 2.42,
+          "end": 2.54
+        },
+        {
+          "text": "time,",
+          "start": 2.54,
+          "end": 2.94
+        },
+        {
+          "text": "the",
+          "start": 3.44,
+          "end": 3.54
+        },
+        {
+          "text": "stuff",
+          "start": 3.54,
+          "end": 3.8
+        },
+        {
+          "text": "I",
+          "start": 3.8,
+          "end": 4.0
+        },
+        {
+          "text": "didn't",
+          "start": 4.0,
+          "end": 4.36
+        },
+        {
+          "text": "need.",
+          "start": 4.36,
+          "end": 4.62
+        }
+      ]
+    },
+    {
+      "id": "beat-02",
+      "mode": "directed",
+      "expected_text": "So I tried something awkward. I paused.",
+      "synthesis_text": "So I tried something awkward. I paused.",
+      "asr_transcript": "So I tried something awkward. I paused.",
+      "normalized_asr_matches": true,
+      "duration_seconds": 4.04,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.661773681640625,
+      "rms": 0.08212652057409286,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "So",
+          "start": 0.0,
+          "end": 0.38
+        },
+        {
+          "text": "I",
+          "start": 0.38,
+          "end": 0.54
+        },
+        {
+          "text": "tried",
+          "start": 0.54,
+          "end": 0.92
+        },
+        {
+          "text": "something",
+          "start": 0.92,
+          "end": 1.4
+        },
+        {
+          "text": "awkward.",
+          "start": 1.4,
+          "end": 1.98
+        },
+        {
+          "text": "I",
+          "start": 3.0,
+          "end": 3.2
+        },
+        {
+          "text": "paused.",
+          "start": 3.2,
+          "end": 3.56
+        }
+      ]
+    },
+    {
+      "id": "beat-03",
+      "mode": "directed",
+      "expected_text": "What does it cost? Will I use it? Does it fit my life?",
+      "synthesis_text": "What does it cost? Will I use it? Does it fit my life?",
+      "asr_transcript": "What does it cost? Will I use it? Does it fit my life?",
+      "normalized_asr_matches": true,
+      "duration_seconds": 4.12,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.989990234375,
+      "rms": 0.17441196739673615,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "What",
+          "start": 0.0,
+          "end": 0.34
+        },
+        {
+          "text": "does",
+          "start": 0.34,
+          "end": 0.58
+        },
+        {
+          "text": "it",
+          "start": 0.58,
+          "end": 0.74
+        },
+        {
+          "text": "cost?",
+          "start": 0.74,
+          "end": 1.04
+        },
+        {
+          "text": "Will",
+          "start": 1.72,
+          "end": 1.84
+        },
+        {
+          "text": "I",
+          "start": 1.84,
+          "end": 2.02
+        },
+        {
+          "text": "use",
+          "start": 2.02,
+          "end": 2.22
+        },
+        {
+          "text": "it?",
+          "start": 2.22,
+          "end": 2.5
+        },
+        {
+          "text": "Does",
+          "start": 2.96,
+          "end": 3.02
+        },
+        {
+          "text": "it",
+          "start": 3.02,
+          "end": 3.18
+        },
+        {
+          "text": "fit",
+          "start": 3.18,
+          "end": 3.32
+        },
+        {
+          "text": "my",
+          "start": 3.32,
+          "end": 3.56
+        },
+        {
+          "text": "life?",
+          "start": 3.56,
+          "end": 3.82
+        }
+      ]
+    },
+    {
+      "id": "beat-04",
+      "mode": "directed",
+      "expected_text": "Turns out… a good choice can wait for you.",
+      "synthesis_text": "Turns out… a good choice can wait for you.",
+      "asr_transcript": "Turns out a good choice can wait for you",
+      "normalized_asr_matches": true,
+      "duration_seconds": 4.64,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.92181396484375,
+      "rms": 0.11788996309041977,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "Turns",
+          "start": 0.0,
+          "end": 0.62
+        },
+        {
+          "text": "out",
+          "start": 0.62,
+          "end": 1.26
+        },
+        {
+          "text": "a",
+          "start": 1.26,
+          "end": 2.18
+        },
+        {
+          "text": "good",
+          "start": 2.18,
+          "end": 2.48
+        },
+        {
+          "text": "choice",
+          "start": 2.48,
+          "end": 3.0
+        },
+        {
+          "text": "can",
+          "start": 3.0,
+          "end": 3.34
+        },
+        {
+          "text": "wait",
+          "start": 3.34,
+          "end": 3.68
+        },
+        {
+          "text": "for",
+          "start": 3.68,
+          "end": 4.04
+        },
+        {
+          "text": "you",
+          "start": 4.04,
+          "end": 4.4
+        }
+      ]
+    }
+  ],
+  "emotion_fidelity_verified": false,
+  "speaker_similarity_verified": false,
+  "limitations": [
+    "ASR agreement is not a subjective listening review.",
+    "Different waveforms do not establish better emotion or audience retention."
+  ],
+  "source_report_sha256": "cc4bfb4feac9f5f6b31b8a64bff68a3e58e2f2e145997796747e43ec0976bb5d",
+  "all_selected_takes_normalized_asr_match": true
+}

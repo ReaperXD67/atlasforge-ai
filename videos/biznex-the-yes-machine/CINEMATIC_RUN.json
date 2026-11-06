@@ -1,0 +1,57 @@
+{
+  "authored_caption_word_count": 54,
+  "authored_shot_count": 13,
+  "delivery_verified": false,
+  "finished_at": "2026-11-06T17:10:33.649746+00:00",
+  "mode": "check-only",
+  "output": null,
+  "project_id": "biznex-the-yes-machine",
+  "published": false,
+  "render_requested": false,
+  "rendered": false,
+  "review_state": "unspecified",
+  "run_id": "e1e5c83e4277448f83665d095b177f85",
+  "schema_version": 1,
+  "source_files": {
+    "AUDIO_MIX.json": "839cc6586b7d9e02a947729dfbf8478883e8541ccf2000efa25fc74392f0a2fa",
+    "CINEMATIC_BUILD.json": "9fc9f33c30bb4fcd9549cadf95bc2b56d76e41e995ebd25bcf6cd3adcf4fe231",
+    "DIRECTION.json": "854a7efa717b7c7f3d0b0e9acee0b92f1b1cbf1cebb84593f5559a239b7f0f4e",
+    "EDIT_PLAN.audit.json": "53d1ad6dd050cd67191cdbb001e0f1f10160a0691bf89f8549531585bd798972",
+    "EDIT_PLAN.compiled.js": "56a6000fdb8b2ae7aebc1fd5d90f73f5bceda8f5493240d4c4eddab9582db8e0",
+    "EDIT_PLAN.compiled.json": "51b08357a658d93f446085cb48e297b3b1814362c0dcd56be0ce3f15f84ccfa2",
+    "EDIT_PLAN.json": "dc05fdbfdc0717322b7d3cef39dc1db9224ed3e08350ae735fce044c4df91b20",
+    "assets/audio/machine.wav": "80bb14871163a357cd7006ab205b89de7b863e36f5129c9457545c5208fd2df2",
+    "assets/audio/master.wav": "a6fad2b8777ea7260caa03933b48d9bc824a5986f5aac8b4790bb47b974a89bd",
+    "assets/audio/narration.wav": "450c5fd365282b9806c726b77d97622407034ad76eea0ed6c78609d6ec707ed0",
+    "assets/audio/score.wav": "9f9a93c538c1aab4ce962cd45b60f6fc8bfe6aae17d269c6c238f8765a137d68",
+    "assets/fonts/Montserrat-OFL.txt": "8b7141c03fa4f8d44e6345d5d4931709290f0f67875e452e95ac1fd3a027802e",
+    "assets/fonts/Montserrat.ttf": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7",
+    "assets/vendor/THREE-LICENSE.txt": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+    "assets/vendor/cinematic_primitives.js": "8fb8b27ba46d3cbfbf1ca4d45edf8a5eaf33556f1b3fcfe621e5245d81e1ef48",
+    "assets/vendor/gsap.min.js": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280",
+    "assets/vendor/procedural_story_state.mjs": "987875337a64078ddc42edd9f7376ddbdd6a0d46098cf3e764fdd2ce0de75d56",
+    "assets/vendor/three.core.js": "613e370f76638fdef83926642bf256dc9615684922de1ce1f63a8583e5d78578",
+    "assets/vendor/three.module.js": "104f56145899722094556490d787aae0617cc2fc3382f31df02d724ea1aee341",
+    "assets/world.json": "cfd7113926fab190762e9b315e3fcf53029d94485a5e149c2431b890d04de306",
+    "cinematic.css": "c96a363e9913180865662a3c58e07b18d46a51094fa1d82c1494b7f4ed54fc8d",
+    "cinematic.js": "69be11c8605dfd02cd9e90a7db5a07353f2da5586e048013960f5b8a35934906",
+    "hyperframes.json": "0a710eddc067db42da49c15f1bf7d67b1618b61ccbf9cc5ce54285520d101111",
+    "index.html": "c95d4fe1c2399cc8489cac46f4da5ce4475c57e53ea5f36b8c8767028c011a43",
+    "package.json": "64d59cb0b4efb3fcd1c0d55219f193ec1430476d7906f317be209c0f657bcffd",
+    "timing.json": "2afca0ead9d66005fbedb578e8bedf76cd852e1a124c8f796b1dd40f5541bf59"
+  },
+  "stages": [
+    {
+      "name": "source-verification",
+      "status": "passed"
+    },
+    {
+      "name": "final-source-verification",
+      "status": "passed"
+    }
+  ],
+  "started_at": "2026-11-06T17:10:33.449387+00:00",
+  "status": "sources_verified",
+  "visual_review_verified": false,
+  "voice_emotion_verified": false
+}

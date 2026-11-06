@@ -65,3 +65,7 @@ videos/biznex-second-question/assets/motion/
 videos/biznex-second-question/assets/audio/*
 !videos/biznex-second-question/assets/audio/*.json
 !videos/biznex-second-question/assets/audio/*LICENSE.txt
+videos/biznex-the-yes-machine/qa/frames/*.png
+videos/biznex-the-yes-machine/qa/frames/*.jpg
+videos/biznex-the-yes-machine/qa/audio/audition-report.json
+videos/biznex-the-yes-machine/qa/audio/*/*.json

@@ -80,3 +80,18 @@ external person's recording or proprietary speech service was copied. The
 [expressive voice guide](docs/EXPRESSIVE_VOICE.md) records the exact revision,
 dependencies, hash verification, controls and measured limitations. A reference
 conditioned output is not a promise of exact speaker identity or emotion fidelity.
+
+## Procedural 3D and BRAG planning
+
+The Yes Machine vendors [Three.js r187 / 0.187.0](https://github.com/mrdoob/three.js/tree/r187),
+commit `7e89746a687bb88271253698fa108b1dd59825d0`, under the MIT license. The local
+`three.module.js` and `three.core.js` files are selected from the npm archive after its SHA512
+integrity check; [project provenance](https://github.com/ReaperXD67/atlasforge-ai/blob/main/videos/biznex-the-yes-machine/THREE_PROVENANCE.json)
+records their exact SHA256 values. The full MIT notice remains adjacent to the runtime.
+This addition has no runtime package dependencies. The film's geometry and sound recipes are original.
+
+[BRAG](https://github.com/latent-spaces/brag/tree/669ab9286aa28b6c3ee30e75f181ee74319d012a)
+0.5.0 supplies MIT-licensed creative-planning guidance. It is installed as an optional local skill;
+its asset bundle is not redistributed here. [The lock](https://github.com/ReaperXD67/atlasforge-ai/blob/main/config/skills/brag.lock.json) records the
+reviewed instruction hashes and [the adaptation guide](https://github.com/ReaperXD67/atlasforge-ai/blob/main/docs/BRAG_ADAPTATION.md) explains the
+user-directed changes. No additional rights are inferred for bundled third-party music or fonts.

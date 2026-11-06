@@ -1,0 +1,31 @@
+{
+  "version": "0.187.0",
+  "commit": "7e89746a687bb88271253698fa108b1dd59825d0",
+  "license": "MIT",
+  "archive_url": "https://registry.npmjs.org/three/-/three-0.187.0.tgz",
+  "archive_integrity": "sha512-Qiu7R+Cmh8CstZsY1uJOSWnVlfo7ZtNLV7mF8Jltk3LB3AtDu9cRZlcnRKkAk8Y4z6KKw35z7Y7Urd7jWY8etA==",
+  "runtime_dependencies": {},
+  "files": [
+    {
+      "path": "assets/vendor/three.module.js",
+      "archive_member": "package/build/three.module.js",
+      "bytes": 658900,
+      "gzip_bytes": 129393,
+      "sha256": "104f56145899722094556490d787aae0617cc2fc3382f31df02d724ea1aee341"
+    },
+    {
+      "path": "assets/vendor/three.core.js",
+      "archive_member": "package/build/three.core.js",
+      "bytes": 1474799,
+      "gzip_bytes": 290019,
+      "sha256": "613e370f76638fdef83926642bf256dc9615684922de1ce1f63a8583e5d78578"
+    },
+    {
+      "path": "assets/vendor/THREE-LICENSE.txt",
+      "archive_member": "package/LICENSE",
+      "bytes": 1081,
+      "gzip_bytes": 662,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    }
+  ]
+}

@@ -1,0 +1,279 @@
+{
+  "schema_version": 1,
+  "project_id": "biznex-the-yes-machine",
+  "brief": "BRIEF.md",
+  "stages": [
+    {
+      "id": "voice",
+      "executor": "python",
+      "entrypoint": "scripts/prepare_story_voice.py",
+      "args": [
+        "--project",
+        "{project}",
+        "--plan",
+        "{project}/VOICE_PLAN.json",
+        "--output",
+        "output/expressive-voice/yes-machine-pipeline",
+        "--mode",
+        "run"
+      ],
+      "inputs": [
+        "script.txt",
+        "VOICE_PLAN.json",
+        "assets/audio/voice-reference.wav"
+      ],
+      "outputs": [
+        "VOICE_DELIVERY.json",
+        "timing.json",
+        "assets/audio/narration.wav",
+        "assets/audio/narration.srt",
+        "assets/audio/narration.words.json",
+        "assets/audio/narration.captions.json",
+        "assets/audio/narration.caption-verification.json",
+        "assets/audio/narration.performance.json",
+        "assets/audio/narration.asr-evidence.json",
+        "assets/audio/narration.direction-report.json",
+        "assets/audio/voice-reference.provenance.json",
+        "assets/audio/voice-takes/beat-00.wav",
+        "assets/audio/voice-takes/beat-01.wav",
+        "assets/audio/voice-takes/beat-02.wav",
+        "assets/audio/voice-takes/beat-03.wav",
+        "assets/audio/voice-takes/beat-04.wav"
+      ]
+    },
+    {
+      "id": "story",
+      "executor": "python",
+      "entrypoint": "scripts/prepare_yes_machine.py",
+      "args": [
+        "{project}"
+      ],
+      "inputs": [
+        "timing.json"
+      ],
+      "outputs": [
+        "EDIT_PLAN.json",
+        "DIRECTION.json"
+      ]
+    },
+    {
+      "id": "sound",
+      "executor": "python",
+      "entrypoint": "scripts/synthesize_yes_machine_sound.py",
+      "args": [
+        "{project}"
+      ],
+      "inputs": [
+        "timing.json"
+      ],
+      "outputs": [
+        "assets/audio/score.wav",
+        "assets/audio/machine.wav",
+        "SOUND_PROVENANCE.json"
+      ]
+    },
+    {
+      "id": "compile",
+      "executor": "python",
+      "entrypoint": "scripts/compile_edit_plan.py",
+      "args": [
+        "{project}/EDIT_PLAN.json"
+      ],
+      "inputs": [
+        "EDIT_PLAN.json",
+        "timing.json",
+        "assets/world.json",
+        "assets/audio/narration.wav",
+        "assets/audio/score.wav",
+        "assets/audio/machine.wav"
+      ],
+      "outputs": [
+        "EDIT_PLAN.compiled.json",
+        "EDIT_PLAN.compiled.js",
+        "EDIT_PLAN.audit.json"
+      ]
+    },
+    {
+      "id": "mix",
+      "executor": "python",
+      "entrypoint": "scripts/mix_cinematic_audio.py",
+      "args": [
+        "{project}"
+      ],
+      "inputs": [
+        "EDIT_PLAN.json",
+        "timing.json",
+        "EDIT_PLAN.compiled.json",
+        "EDIT_PLAN.compiled.js",
+        "EDIT_PLAN.audit.json",
+        "assets/world.json",
+        "assets/audio/narration.wav",
+        "assets/audio/score.wav",
+        "assets/audio/machine.wav"
+      ],
+      "outputs": [
+        "assets/audio/master.wav",
+        "AUDIO_MIX.json"
+      ]
+    },
+    {
+      "id": "build",
+      "executor": "node",
+      "entrypoint": "scripts/build_procedural_short.mjs",
+      "args": [
+        "{project}"
+      ],
+      "inputs": [
+        "DIRECTION.json",
+        "EDIT_PLAN.compiled.json",
+        "EDIT_PLAN.compiled.js",
+        "EDIT_PLAN.audit.json",
+        "AUDIO_MIX.json",
+        "assets/audio/master.wav",
+        "assets/world.json",
+        "assets/vendor/three.module.js",
+        "assets/vendor/three.core.js",
+        "assets/vendor/THREE-LICENSE.txt",
+        "assets/vendor/gsap.min.js",
+        "assets/fonts/Montserrat.ttf",
+        "assets/fonts/Montserrat-OFL.txt",
+        "hyperframes.json",
+        "package.json"
+      ],
+      "outputs": [
+        "index.html",
+        "cinematic.css",
+        "cinematic.js",
+        "assets/vendor/procedural_story_state.mjs",
+        "assets/vendor/cinematic_primitives.js",
+        "CINEMATIC_BUILD.json"
+      ]
+    },
+    {
+      "id": "render",
+      "executor": "python",
+      "entrypoint": "scripts/render_story_project.py",
+      "args": [
+        "{project}"
+      ],
+      "inputs": [
+        "index.html",
+        "cinematic.css",
+        "cinematic.js",
+        "assets/vendor/procedural_story_state.mjs",
+        "assets/vendor/cinematic_primitives.js",
+        "CINEMATIC_BUILD.json",
+        "EDIT_PLAN.compiled.json",
+        "EDIT_PLAN.compiled.js",
+        "EDIT_PLAN.audit.json",
+        "DIRECTION.json",
+        "EDIT_PLAN.json",
+        "timing.json",
+        "AUDIO_MIX.json",
+        "assets/audio/master.wav",
+        "assets/audio/narration.wav",
+        "assets/audio/score.wav",
+        "assets/audio/machine.wav",
+        "assets/world.json",
+        "assets/vendor/three.module.js",
+        "assets/vendor/three.core.js",
+        "assets/vendor/THREE-LICENSE.txt",
+        "assets/vendor/gsap.min.js",
+        "assets/fonts/Montserrat.ttf",
+        "assets/fonts/Montserrat-OFL.txt",
+        "hyperframes.json",
+        "package.json"
+      ],
+      "outputs": [
+        "renders/final.mp4",
+        "renders/final.report.json",
+        "STORY_RENDER.json"
+      ]
+    },
+    {
+      "id": "audio-qa",
+      "executor": "python",
+      "entrypoint": "scripts/verify_story_audio.py",
+      "args": [
+        "{project}"
+      ],
+      "inputs": [
+        "renders/final.mp4",
+        "renders/final.report.json",
+        "STORY_RENDER.json",
+        "script.txt",
+        "assets/audio/narration.wav",
+        "assets/audio/master.wav",
+        "assets/audio/narration.performance.json",
+        "AUDIO_MIX.json",
+        "EDIT_PLAN.compiled.json"
+      ],
+      "outputs": [
+        "qa/audio/encoded-audio-verification.json"
+      ],
+      "output_trees": [
+        "qa/audio"
+      ]
+    },
+    {
+      "id": "frame-qa",
+      "executor": "python",
+      "entrypoint": "scripts/review_story_frames.py",
+      "args": [
+        "{project}"
+      ],
+      "inputs": [
+        "renders/final.mp4",
+        "renders/final.report.json",
+        "STORY_RENDER.json",
+        "EDIT_PLAN.compiled.json",
+        "CINEMATIC_BUILD.json"
+      ],
+      "outputs": [
+        "qa/frames/frame-review.json"
+      ],
+      "output_trees": [
+        "qa/frames"
+      ]
+    },
+    {
+      "id": "package",
+      "executor": "python",
+      "entrypoint": "scripts/package_story_delivery.py",
+      "args": [
+        "{project}"
+      ],
+      "inputs": [
+        "renders/final.mp4",
+        "renders/final.report.json",
+        "STORY_RENDER.json",
+        "qa/audio/encoded-audio-verification.json",
+        "qa/frames/frame-review.json",
+        "CREDITS.md",
+        "UPLOAD_COPY.md",
+        "brag-plan.md",
+        "composition-brief.md",
+        "share-copy.txt",
+        "THREE_PROVENANCE.json",
+        "SOUND_PROVENANCE.json",
+        "VOICE_PLAN.json",
+        "VOICE_DELIVERY.json",
+        "assets/audio/narration.srt",
+        "DELIVERY_REVIEW.json",
+        "PRODUCTION_METRICS.json",
+        "poster.jpg",
+        "README.md"
+      ],
+      "outputs": [
+        "renders/delivery.zip",
+        "STORY_PACKAGE.json"
+      ],
+      "repo_inputs": [
+        "pyproject.toml",
+        "LICENSE",
+        "THIRD_PARTY_NOTICES.md",
+        "docs/NEXT_STORY_PIPELINE.md"
+      ]
+    }
+  ]
+}

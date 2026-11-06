@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "archive_sha256": "cd93e171ae8a48aee5b89dbb141be46da6a78ae69dd2f9782bfade787490e7d3",
+  "video_sha256": "ccd05da3eca962865eb92a197d92c5feb2f1a5df9ab0d79442ddb32b3060cc43",
+  "checksums_verified": 139,
+  "manifest_records_verified": 134,
+  "extracted_source_files": 106,
+  "extracted_module_origins_verified": true,
+  "source_check_exit": 0,
+  "voice_check_exit": 0,
+  "existing_dependency_environment_used": true,
+  "rendered": false,
+  "published": false,
+  "original_project_modified": false
+}

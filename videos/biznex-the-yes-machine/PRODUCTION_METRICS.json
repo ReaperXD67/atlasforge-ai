@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "project_id": "biznex-the-yes-machine",
+  "video_sha256": "ccd05da3eca962865eb92a197d92c5feb2f1a5df9ab0d79442ddb32b3060cc43",
+  "run_id": "c3f23ccf753648ac889a7fb981035a0a",
+  "production_elapsed_seconds": 365.424,
+  "stages": [
+    {
+      "id": "voice",
+      "status": "passed",
+      "elapsed_seconds": 0.656
+    },
+    {
+      "id": "story",
+      "status": "passed",
+      "elapsed_seconds": 0.42
+    },
+    {
+      "id": "sound",
+      "status": "passed",
+      "elapsed_seconds": 1.0
+    },
+    {
+      "id": "compile",
+      "status": "passed",
+      "elapsed_seconds": 0.541
+    },
+    {
+      "id": "mix",
+      "status": "passed",
+      "elapsed_seconds": 1.953
+    },
+    {
+      "id": "build",
+      "status": "passed",
+      "elapsed_seconds": 0.622
+    },
+    {
+      "id": "render",
+      "status": "passed",
+      "elapsed_seconds": 326.019
+    },
+    {
+      "id": "audio-qa",
+      "status": "passed",
+      "elapsed_seconds": 21.326
+    },
+    {
+      "id": "frame-qa",
+      "status": "passed",
+      "elapsed_seconds": 3.477
+    },
+    {
+      "id": "package",
+      "status": "passed",
+      "elapsed_seconds": 6.625
+    }
+  ],
+  "voice_stage": "Exact verified reuse of narration generated during this production session; no model inference repeated in this orchestrated run.",
+  "prior_voice_model_session_seconds": 78.759,
+  "voice_model_session_excludes": [
+    "process preflight",
+    "Python/model imports",
+    "CPU ASR"
+  ],
+  "render_mode": "One software-rendering Chrome worker at1080x1920,30fps; includes browser checks and full decode",
+  "toolchain": {
+    "chrome": {
+      "156.0.8078.81/chrome.dll": "198e90a25c93b6f3b76da9f5f8dabfaf89a60497d0f2f0336a437cdb324ff772",
+      "chrome.exe": "314aca34afa8a04ef596a75d8beb3ddc29c58772004cba7dc92daea65437e378"
+    },
+    "packages": {
+      "faster-whisper": "1.2.1",
+      "numpy": "2.4.6",
+      "pillow": "12.3.0",
+      "portalocker": "3.2.0",
+      "pydantic": "2.13.4",
+      "scipy": "1.17.1",
+      "soundfile": "0.14.0"
+    },
+    "python": [
+      3,
+      11,
+      9
+    ],
+    "tools": {
+      "ffmpeg": {
+        "binary_sha256": "05f4251bce9293c2ab492cb17ca7724a0ffd0d06c881ba2ee83b82a89c2fc740",
+        "version": "ffmpeg version 9.0-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers"
+      },
+      "ffprobe": {
+        "binary_sha256": "51e0780cd881f83749b029ed716cbb841c2eac6289f418050f2f2961b158896b",
+        "version": "ffprobe version 9.0-full_build-www.gyan.dev Copyright (c) 2007-2026 the FFmpeg developers"
+      },
+      "node": {
+        "binary_sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088",
+        "version": "v24.14.0"
+      }
+    }
+  }
+}

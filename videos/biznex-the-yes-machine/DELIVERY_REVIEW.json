@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "video_sha256": "ccd05da3eca962865eb92a197d92c5feb2f1a5df9ab0d79442ddb32b3060cc43",
+  "visual_stream_sha256": "87a6ec6f60a79c140bc5006d779abe393873ffa1639e7cd8c0e7ee96306f0aa3",
+  "sampled_visual_review_passed": true,
+  "unique_decoded_frames": 78,
+  "contact_sheets": 10,
+  "shot_midpoints": 13,
+  "cut_boundaries": 12,
+  "blocking_findings": [],
+  "minor_findings": [
+    "Rising gate bars briefly cross behind the left edge of question headings; text stays legible."
+  ],
+  "review_scope": "All 10 first-render decoded sheets inspected. Final sound revision has byte-identical H.264 video stream and all 78 identical decoded PNGs. Final sheets 1 and 10 inspected again, including both bookends.",
+  "frame_review_sha256": "046143617ee241d3e80852a07842b4af73f8558e1beb4bcfbe622d6cba4de730",
+  "full_speed_playback_reviewed": false,
+  "subjective_listening_verified": false,
+  "human_indistinguishability_verified": false,
+  "published_to_socials": false
+}

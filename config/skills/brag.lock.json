@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "name": "brag",
+  "repository": "https://github.com/latent-spaces/brag",
+  "commit": "669ab9286aa28b6c3ee30e75f181ee74319d012a",
+  "path": "skills/brag",
+  "upstream_version": "0.5.0",
+  "license": "MIT",
+  "license_url": "https://github.com/latent-spaces/brag/blob/669ab9286aa28b6c3ee30e75f181ee74319d012a/LICENSE",
+  "reviewed_on": "2026-11-06",
+  "role": "Creative planning and delivery guidance; optional authoring skill, not a runtime dependency",
+  "files": {
+    "SKILL.md": "db8e65608a61a28ac051eec42d4c23ef2a01bae92112d0735f1b08cd45569711",
+    "references/step-1-inspect.md": "08dabe706f2c3834a08a8cf475dd17094259cc73d40529b6886cd2085cc0d00d",
+    "references/step-2-plan.md": "2caec3b2f21626174683804961dc7f2b1c4bf439827cca9b1423f7ebd805e7db",
+    "references/step-3-compose.md": "4e3277cc3d1242d05f77e35170a0f7fb747ad9fcabd2b48f03a8ca582b772829",
+    "references/step-4-deliver.md": "2c14bc385433021ccab8dcc2a41bd89d5c6e3e4b283b5b4a832e066f82f05852",
+    "references/audio.md": "e30a7cedce8d85e3a773387a454dbba8e7927451452c85b4be5c4343a8846ee2"
+  },
+  "adaptations": [
+    "Use new project directory instead of overwriting prior brag output",
+    "User-requested vertical narrated fictional story replaces website launch subject",
+    "Existing original CosyVoice identity replaces the skill's default Kokoro workflow",
+    "Measured performance controls duration rather than forcing the default 15–25 seconds",
+    "Code-authored 3D visuals only; no image-model assets",
+    "Meaningful opening frame and separate poster avoid a one-frame unrelated cover flash",
+    "No bundled music or sound is adopted implicitly"
+  ]
+}

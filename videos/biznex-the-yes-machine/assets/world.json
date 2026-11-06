@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "world_id": "biznex-yes-machine-original-v1",
+  "seed": 1986,
+  "units": "authored scene units; metaphorical objects, no measured product dimensions",
+  "palette": {
+    "background": "#081923",
+    "platform": "#163646",
+    "coral": "#ef7059",
+    "cream": "#eee1c8",
+    "steel": "#6d8e9a",
+    "accent": "#dfb16b"
+  },
+  "geometry": {
+    "platform_width": 7.2,
+    "platform_depth": 4.2,
+    "button_radius": 0.61,
+    "button_depth": 0.25,
+    "domino_count": 13,
+    "domino_height": 0.82,
+    "domino_width": 0.26,
+    "coin_count": 14,
+    "package_count": 9,
+    "gate_count": 3
+  },
+  "lighting": {
+    "key_color": "#ffe5bc",
+    "key_intensity": 3.2,
+    "key_position": [-4, 7, 4],
+    "rim_color": "#9bbfdb",
+    "rim_intensity": 2.1,
+    "shadow_map_size": 1024,
+    "tone_mapping": "ACESFilmic",
+    "exposure": 1.05
+  },
+  "authorship": "Original procedural geometry, labels and choreography. No image model, generated photograph, downloaded 3D asset or third-party product rendering.",
+  "content_disclosure": "Fictional illustrative story. The machine and objects do not represent an actual Atomy interface, product, price, income, promise or testimonial.",
+  "runtime": {
+    "three_version": "0.187.0",
+    "three_commit": "7e89746a687bb88271253698fa108b1dd59825d0",
+    "three_license": "MIT",
+    "render_mode": "WebGL2 raster, frame-addressed; software-render compatible"
+  }
+}

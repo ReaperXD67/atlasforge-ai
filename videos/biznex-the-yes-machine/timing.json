@@ -1,0 +1,442 @@
+{
+  "schema_version": 1,
+  "voice_variant": "expressive",
+  "fps": 30,
+  "duration_seconds": 26.3,
+  "narration_duration_seconds": 26.27,
+  "beats": [
+    {
+      "index": 0,
+      "id": "beat-01",
+      "text": "My most expensive habit? Saying yes… before I'd even thought about it.",
+      "start": 0.0,
+      "end": 7.06,
+      "delivery": "Speak candidly to a friend, amused at your own mistake, with a rueful smile.",
+      "pause_after_ms": 220
+    },
+    {
+      "index": 1,
+      "id": "beat-02",
+      "text": "One little yes. Then the money. The time. The stuff I didn't need.",
+      "start": 7.06,
+      "end": 12.32,
+      "delivery": "Speak with rueful frustration. Let each short thought build on the last, quicker and a little more exasperated.",
+      "pause_after_ms": 300
+    },
+    {
+      "index": 2,
+      "id": "beat-03",
+      "text": "So I tried something awkward. I paused.",
+      "start": 12.32,
+      "end": 17.16,
+      "delivery": "soft",
+      "pause_after_ms": 800
+    },
+    {
+      "index": 3,
+      "id": "beat-04",
+      "text": "What does it cost? Will I use it? Does it fit my life?",
+      "start": 17.16,
+      "end": 21.63,
+      "delivery": "Ask these questions with genuine curiosity, clear and conversational, as if working something out.",
+      "pause_after_ms": 350
+    },
+    {
+      "index": 4,
+      "id": "beat-05",
+      "text": "Turns out… a good choice can wait for you.",
+      "start": 21.63,
+      "end": 26.27,
+      "delivery": "Speak with real relief and a warm small smile, quietly pleased by the realization.",
+      "pause_after_ms": 0
+    }
+  ],
+  "words": [
+    {
+      "text": "My",
+      "start": 0.0,
+      "end": 0.56
+    },
+    {
+      "text": "most",
+      "start": 0.56,
+      "end": 0.98
+    },
+    {
+      "text": "expensive",
+      "start": 0.98,
+      "end": 1.72
+    },
+    {
+      "text": "habit?",
+      "start": 1.72,
+      "end": 2.28
+    },
+    {
+      "text": "Saying",
+      "start": 2.28,
+      "end": 3.28
+    },
+    {
+      "text": "yes…",
+      "start": 3.28,
+      "end": 3.82
+    },
+    {
+      "text": "before",
+      "start": 3.82,
+      "end": 4.78
+    },
+    {
+      "text": "I'd",
+      "start": 4.78,
+      "end": 5.14
+    },
+    {
+      "text": "even",
+      "start": 5.14,
+      "end": 5.44
+    },
+    {
+      "text": "thought",
+      "start": 5.44,
+      "end": 5.86
+    },
+    {
+      "text": "about",
+      "start": 5.86,
+      "end": 6.18
+    },
+    {
+      "text": "it.",
+      "start": 6.18,
+      "end": 6.48
+    },
+    {
+      "text": "One",
+      "start": 7.06,
+      "end": 7.32
+    },
+    {
+      "text": "little",
+      "start": 7.32,
+      "end": 7.54
+    },
+    {
+      "text": "yes.",
+      "start": 7.54,
+      "end": 7.9
+    },
+    {
+      "text": "Then",
+      "start": 8.36,
+      "end": 8.58
+    },
+    {
+      "text": "the",
+      "start": 8.58,
+      "end": 8.72
+    },
+    {
+      "text": "money.",
+      "start": 8.72,
+      "end": 8.96
+    },
+    {
+      "text": "The",
+      "start": 9.48,
+      "end": 9.6
+    },
+    {
+      "text": "time.",
+      "start": 9.6,
+      "end": 10.0
+    },
+    {
+      "text": "The",
+      "start": 10.5,
+      "end": 10.6
+    },
+    {
+      "text": "stuff",
+      "start": 10.6,
+      "end": 10.86
+    },
+    {
+      "text": "I",
+      "start": 10.86,
+      "end": 11.06
+    },
+    {
+      "text": "didn't",
+      "start": 11.06,
+      "end": 11.42
+    },
+    {
+      "text": "need.",
+      "start": 11.42,
+      "end": 11.68
+    },
+    {
+      "text": "So",
+      "start": 12.32,
+      "end": 12.7
+    },
+    {
+      "text": "I",
+      "start": 12.7,
+      "end": 12.86
+    },
+    {
+      "text": "tried",
+      "start": 12.86,
+      "end": 13.24
+    },
+    {
+      "text": "something",
+      "start": 13.24,
+      "end": 13.72
+    },
+    {
+      "text": "awkward.",
+      "start": 13.72,
+      "end": 14.3
+    },
+    {
+      "text": "I",
+      "start": 15.32,
+      "end": 15.52
+    },
+    {
+      "text": "paused.",
+      "start": 15.52,
+      "end": 15.88
+    },
+    {
+      "text": "What",
+      "start": 17.16,
+      "end": 17.5
+    },
+    {
+      "text": "does",
+      "start": 17.5,
+      "end": 17.74
+    },
+    {
+      "text": "it",
+      "start": 17.74,
+      "end": 17.9
+    },
+    {
+      "text": "cost?",
+      "start": 17.9,
+      "end": 18.2
+    },
+    {
+      "text": "Will",
+      "start": 18.88,
+      "end": 19.0
+    },
+    {
+      "text": "I",
+      "start": 19.0,
+      "end": 19.18
+    },
+    {
+      "text": "use",
+      "start": 19.18,
+      "end": 19.38
+    },
+    {
+      "text": "it?",
+      "start": 19.38,
+      "end": 19.66
+    },
+    {
+      "text": "Does",
+      "start": 20.12,
+      "end": 20.18
+    },
+    {
+      "text": "it",
+      "start": 20.18,
+      "end": 20.34
+    },
+    {
+      "text": "fit",
+      "start": 20.34,
+      "end": 20.48
+    },
+    {
+      "text": "my",
+      "start": 20.48,
+      "end": 20.72
+    },
+    {
+      "text": "life?",
+      "start": 20.72,
+      "end": 20.98
+    },
+    {
+      "text": "Turns",
+      "start": 21.63,
+      "end": 22.25
+    },
+    {
+      "text": "out…",
+      "start": 22.25,
+      "end": 22.89
+    },
+    {
+      "text": "a",
+      "start": 22.89,
+      "end": 23.81
+    },
+    {
+      "text": "good",
+      "start": 23.81,
+      "end": 24.11
+    },
+    {
+      "text": "choice",
+      "start": 24.11,
+      "end": 24.63
+    },
+    {
+      "text": "can",
+      "start": 24.63,
+      "end": 24.97
+    },
+    {
+      "text": "wait",
+      "start": 24.97,
+      "end": 25.31
+    },
+    {
+      "text": "for",
+      "start": 25.31,
+      "end": 25.67
+    },
+    {
+      "text": "you.",
+      "start": 25.67,
+      "end": 26.03
+    }
+  ],
+  "captions": [
+    {
+      "index": 1,
+      "start": 0.0,
+      "end": 2.28,
+      "duration": 2.28,
+      "text": "My most expensive habit?"
+    },
+    {
+      "index": 2,
+      "start": 2.28,
+      "end": 5.14,
+      "duration": 2.86,
+      "text": "Saying yes… before I'd"
+    },
+    {
+      "index": 3,
+      "start": 5.14,
+      "end": 6.48,
+      "duration": 1.34,
+      "text": "even thought about it."
+    },
+    {
+      "index": 4,
+      "start": 7.06,
+      "end": 7.9,
+      "duration": 0.84,
+      "text": "One little yes."
+    },
+    {
+      "index": 5,
+      "start": 8.36,
+      "end": 8.96,
+      "duration": 0.6,
+      "text": "Then the money."
+    },
+    {
+      "index": 6,
+      "start": 9.48,
+      "end": 10.0,
+      "duration": 0.52,
+      "text": "The time."
+    },
+    {
+      "index": 7,
+      "start": 10.5,
+      "end": 11.42,
+      "duration": 0.92,
+      "text": "The stuff I didn't"
+    },
+    {
+      "index": 8,
+      "start": 11.42,
+      "end": 13.24,
+      "duration": 1.82,
+      "text": "need. So I tried"
+    },
+    {
+      "index": 9,
+      "start": 13.24,
+      "end": 14.3,
+      "duration": 1.06,
+      "text": "something awkward."
+    },
+    {
+      "index": 10,
+      "start": 15.32,
+      "end": 15.88,
+      "duration": 0.56,
+      "text": "I paused."
+    },
+    {
+      "index": 11,
+      "start": 17.16,
+      "end": 18.2,
+      "duration": 1.04,
+      "text": "What does it cost?"
+    },
+    {
+      "index": 12,
+      "start": 18.88,
+      "end": 19.66,
+      "duration": 0.78,
+      "text": "Will I use it?"
+    },
+    {
+      "index": 13,
+      "start": 20.12,
+      "end": 20.72,
+      "duration": 0.6,
+      "text": "Does it fit my"
+    },
+    {
+      "index": 14,
+      "start": 20.72,
+      "end": 23.81,
+      "duration": 3.09,
+      "text": "life? Turns out… a"
+    },
+    {
+      "index": 15,
+      "start": 23.81,
+      "end": 25.31,
+      "duration": 1.5,
+      "text": "good choice can wait"
+    },
+    {
+      "index": 16,
+      "start": 25.31,
+      "end": 26.03,
+      "duration": 0.72,
+      "text": "for you."
+    }
+  ],
+  "timing_basis": "Independent per-thought ASR bounded to measured speech samples",
+  "anchors_constrained_to_speech_beats": 0
+}

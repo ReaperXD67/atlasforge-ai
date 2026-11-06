@@ -1,0 +1,34 @@
+{
+  "all_samples_finite": true,
+  "asr_all_passed": true,
+  "asr_mismatches": [],
+  "asr_pass_count": 5,
+  "asr_total": 5,
+  "channels": 2,
+  "clipped_sample_fraction": 0.0,
+  "encoded_audio_duration": 26.3,
+  "encoded_vs_master": {
+    "correlation": 0.9999267930583934,
+    "lag_seconds": 0.0
+  },
+  "integrated_lufs": -16.01,
+  "master_sha_matches_receipt": true,
+  "master_vs_voice": {
+    "correlation": 0.9916391933077261,
+    "lag_seconds": 0.0
+  },
+  "sample_peak": 0.67388916015625,
+  "sample_rate": 48000,
+  "schema_version": 1,
+  "source_sha256": {
+    "assets/audio/master.wav": "a6fad2b8777ea7260caa03933b48d9bc824a5986f5aac8b4790bb47b974a89bd",
+    "assets/audio/narration.performance.json": "6ee778fba8a89147ece9b6cffcec573afe84e7091876937426aa6ea7d56fa9e1",
+    "assets/audio/narration.wav": "450c5fd365282b9806c726b77d97622407034ad76eea0ed6c78609d6ec707ed0"
+  },
+  "subjective_listening_verified": false,
+  "technical_passed": true,
+  "true_peak_dbtp": -3.42,
+  "video_sha256": "ccd05da3eca962865eb92a197d92c5feb2f1a5df9ab0d79442ddb32b3060cc43",
+  "voice_emotion_verified": false,
+  "voice_sha_matches_receipt": true
+}

@@ -1,0 +1,141 @@
+@font-face {
+  font-family: Montserrat;
+  src: url("assets/fonts/Montserrat.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: block;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  width: 1080px;
+  height: 1920px;
+  overflow: hidden;
+  background: #081923;
+  color: #f4e9d5;
+  font-family: Montserrat, Arial, sans-serif;
+}
+#root {
+  position: relative;
+  width: 1080px;
+  height: 1920px;
+  overflow: hidden;
+}
+#machine-canvas {
+  position: absolute;
+  inset: 0;
+  width: 1080px;
+  height: 1920px;
+  display: block;
+}
+.top-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #081923dd 0%,
+    #08192355 21%,
+    transparent 36%,
+    transparent 57%,
+    #081923aa 78%
+  );
+  pointer-events: none;
+}
+.disclosure {
+  position: absolute;
+  left: 86px;
+  top: 176px;
+  width: 800px;
+  font-size: 29px;
+  font-weight: 550;
+  letter-spacing: 0.1px;
+  color: #c0cbd0;
+}
+.heading {
+  position: absolute;
+  left: 82px;
+  top: 260px;
+  width: 800px;
+  font-size: 103px;
+  line-height: 1.02;
+  font-weight: 800;
+  letter-spacing: -5px;
+  color: #fff1da;
+  text-shadow: 0 3px 22px #06131b66;
+}
+.heading:empty {
+  display: none;
+}
+.heading.choice {
+  font-size: 89px;
+  line-height: 1.08;
+  top: 238px;
+}
+.heading strong {
+  font-weight: 850;
+  color: #ff967f;
+}
+.caption {
+  position: absolute;
+  left: 84px;
+  top: 1185px;
+  width: 810px;
+  text-align: center;
+  font-size: 62px;
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -1.9px;
+  text-shadow: 0 3px 9px #06131b;
+  visibility: hidden;
+}
+.caption-inner {
+  background: #07141dbb;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 7px 14px;
+  border-radius: 5px;
+}
+.caption .active {
+  color: #ffad91;
+}
+.end-context {
+  position: absolute;
+  left: 86px;
+  top: 1198px;
+  width: 800px;
+  font-size: 30px;
+  line-height: 1.36;
+  color: #c9d2d3;
+}
+.end-context b {
+  display: block;
+  font-size: 35px;
+  color: #fff0d7;
+  margin-bottom: 12px;
+}
+.end-context small {
+  display: block;
+  font-size: 28px;
+  margin-top: 12px;
+  color: #a6b9c1;
+}
+.brand {
+  position: absolute;
+  left: 86px;
+  top: 1340px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #8ca8b5;
+  letter-spacing: 0.4px;
+}
+.step-label {
+  position: absolute;
+  left: 86px;
+  top: 1050px;
+  font-size: 28px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #c8c9be;
+}

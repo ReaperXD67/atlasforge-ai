@@ -4,30 +4,59 @@
 
 </div>
 
-**A local-first video and social publishing system with measured experiments, editorial gates, and provider fallbacks.**
+**The voice sets the cut. The story sets the motion. You own the pipeline.**
 
 [![CI](https://github.com/ReaperXD67/atlasforge-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/ReaperXD67/atlasforge-ai/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)](pyproject.toml)
 [![Policy](https://img.shields.io/badge/editorial-policy_gated-16a085)](POLICY.md)
 [![Cost model](https://img.shields.io/badge/costs-explicit-4d8dff)](COSTS.md)
 
-AtlasForge AI combines expressive local narration, speech-timed cinematic editing, verified video
-exports and a durable social publishing queue. Use it for short fictional stories, custom music
-films or researched editorial videos. The daily editorial pipeline researches, scripts, narrates,
-storyboards, edits, captions and packages an original 6–8 minute YouTube video, with optional publishing.
+AtlasForge AI turns authored stories into expressive narration, speech-timed edits, moving scenes
+and verified video packages. Run production locally, keep the editable sources, and resume work
+without trusting a stale render. A separate durable queue handles supported social publishing.
 
-<p align="center">
-  <a href="https://github.com/ReaperXD67/atlasforge-ai/releases/tag/biznex-cinematic-2026-11-06">
-    <img src="docs/assets/readme/second-question-preview.gif" width="270" alt="Actual rendered opening: a paused signup, a night apartment and Mira's reaction">
-  </a>
-  <br><strong>The Second Question</strong> · 41 seconds · local expressive voice · 18 authored shots
-  <br><a href="https://github.com/ReaperXD67/atlasforge-ai/releases/download/biznex-cinematic-2026-11-06/final.mp4">Watch the complete film with sound</a> · <a href="https://github.com/ReaperXD67/atlasforge-ai/releases/download/biznex-cinematic-2026-11-06/biznex-second-question.zip">Download film + prepared sources</a>
-</p>
+**Make the moment. Rebuild every frame.** The new procedural workflow brings a continuous 3D
+world to vertical stories without image generation: physical mechanisms, camera choreography,
+word-anchored cuts and original sound design. The voice lab tests complete thoughts and native
+performance directions using the installed model. A declared pipeline runs preparation through
+rendering, encoded-audio checks, decoded-frame review materials and portable delivery.
+
+- **Motion with a reason:** props trigger consequences; cameras reveal the story.
+- **Performance before effects:** audition the phrasing, preserve the voice, mix around the words.
+- **A render you can trace:** source hashes, exact resume checks, media decoding and delivery receipts.
+- **A small additional visual stack:** pinned Three.js modules over the existing HyperFrames/GSAP clock; no new physics engine or editor framework.
+
+Explore the [next-story pipeline](docs/NEXT_STORY_PIPELINE.md), [voice experiments](docs/NEXT_VOICE_PASS.md),
+[visual-tool comparison](docs/NEXT_FILM_VISUAL_TOOLS.md) and [pinned BRAG adaptation](docs/BRAG_ADAPTATION.md).
+The wider studio also supports custom music films and researched 6–8 minute editorial videos.
+
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/ReaperXD67/atlasforge-ai/releases/tag/biznex-yes-machine-2026-11-06"><img src="docs/assets/readme/yes-machine-preview.gif" width="270" alt="Actual rendered Yes Machine: a physical button, falling dominoes, accumulating goods and a deliberate choice"></a></td>
+    <td align="center"><a href="https://github.com/ReaperXD67/atlasforge-ai/releases/tag/biznex-cinematic-2026-11-06"><img src="docs/assets/readme/second-question-preview.gif" width="270" alt="Actual rendered Second Question: a paused signup, a night apartment and Mira's reaction"></a></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>The Yes Machine</strong><br>26.3 seconds · 13 shots · original procedural 3D<br><a href="https://github.com/ReaperXD67/atlasforge-ai/releases/download/biznex-yes-machine-2026-11-06/final.mp4">Watch with sound</a> · <a href="https://github.com/ReaperXD67/atlasforge-ai/releases/download/biznex-yes-machine-2026-11-06/biznex-the-yes-machine.zip">Film + prepared sources</a></td>
+    <td align="center"><strong>The Second Question</strong><br>40.8 seconds · 18 shots · character-driven cinema<br><a href="https://github.com/ReaperXD67/atlasforge-ai/releases/download/biznex-cinematic-2026-11-06/final.mp4">Watch with sound</a> · <a href="https://github.com/ReaperXD67/atlasforge-ai/releases/download/biznex-cinematic-2026-11-06/biznex-second-question.zip">Film + prepared sources</a></td>
+  </tr>
+</table>
+
+These are actual rendered samples, with downloadable media and editable sources.
+The Yes Machine uses no image/video generation; The Second Question retains its earlier photographic workflow.
+
+**Measured, end to end:** the Yes Machine's ten-stage production run took **365.4 seconds**
+with its freshly prepared narration. Exact cached resume revalidated the delivery in
+**4.46 seconds**, with all ten stages reused. Its prepared source archive passed
+**139 checksum checks** plus extracted-source and voice-evidence verification.
+[See the run evidence](videos/biznex-the-yes-machine/PIPELINE_VALIDATION.json) and
+[rebuild check](videos/biznex-the-yes-machine/SOURCE_SMOKE.json). These measurements
+use this local Windows setup; the source check reused installed dependencies.
 
 ## Choose a workflow
 
 | Workflow | What it produces | Start here |
 | --- | --- | --- |
+| **Procedural Story Pipeline** | Complete-thought narration, code-authored 3D scenes, original Foley, measured stage execution and a verified delivery package | [The Yes Machine](videos/biznex-the-yes-machine/README.md) · [Run the pipeline](docs/NEXT_STORY_PIPELINE.md) |
 | **Cinematic Shorts** | A measured voice performance, frame-based shot plan, character motion, licensed sound mix and verified 1080p export | [The Second Question](videos/biznex-second-question/README.md) · [One-command rebuild](docs/CINEMATIC_PROJECT_WORKFLOW.md) |
 | **Social Operator** | A durable YouTube/Instagram/Facebook queue for verified videos, account-specific publishing receipts, and matched-age analytics reports | [Social automation](docs/SOCIAL_AUTOMATION.md) · [Growth experiments](docs/SOCIAL_GROWTH.md) |
 | **Editorial Studio** | Researched, narrated videos using matched real footage, owned cards, captions, and reviewable upload packages | [Windows setup](SETUP.md) |
