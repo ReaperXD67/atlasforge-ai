@@ -64,6 +64,8 @@ this schedule is not cloud hosting or a guarantee of successful daily publicatio
    For the 09:00 heartbeat, make today's reviewed episode due when it is ready;
    a future clock time needs an available worker or another scheduled run.
 7. Publish YouTube through the authorized API queue after live channel matching.
+   Read back processing, visibility and the uploaded subtitle track before reporting
+   the release as verified; an upload ID alone does not prove processing succeeded.
    Meta API setup remains incomplete; use the signed-in browser while that access
    remains available. Run `claim-browser` before a browser upload, verify the active
    account, select the exact verified MP4 once, retain prepared disclosure and the
