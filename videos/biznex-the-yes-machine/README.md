@@ -85,5 +85,15 @@ indistinguishability or audience reach.
 [Publishing copy](UPLOAD_COPY.md) · [Credits](CREDITS.md) · [Visual research](https://github.com/ReaperXD67/atlasforge-ai/blob/main/docs/NEXT_FILM_VISUAL_TOOLS.md)
 · [Voice lab](https://github.com/ReaperXD67/atlasforge-ai/blob/main/docs/NEXT_VOICE_PASS.md)
 
-This production recipe does not upload the film. The previously held social queue
-and paused operator are unchanged.
+## Published edition
+
+The exact verified film was published on **7 November 2026**:
+
+- [YouTube Short](https://www.youtube.com/shorts/Dc4aBDQfQ9w) — public and fully processed; all 16 uploaded caption cues match the source.
+- [Instagram reel](https://www.instagram.com/p/Dfch-tjKvp7/) — published to `@biznex.stories`, with its AI content label.
+- [Facebook reel](https://www.facebook.com/reel/1759901191770877) — public on BizNex, with its AI content label.
+
+Production and publishing remain separate stages. The daily local operator is active
+at 09:00 Asia/Calcutta and records each destination to prevent duplicate uploads.
+The five rejected earlier pilot follow-ups remain held. Private publication evidence
+stays outside Git; the public posts above are the delivery references.

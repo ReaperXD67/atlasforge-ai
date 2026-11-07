@@ -139,8 +139,16 @@ and foley, aligned captions and individual thumbnails. Their measured runtimes a
 No audience improvement or viral outcome has been established.
 
 [Download all six videos, covers and captions](https://github.com/ReaperXD67/atlasforge-ai/releases/download/biznex-first-six-2026-11-06/biznex-first-six.zip).
-The five unpublished follow-ups are **held** after the owner rejected their visual quality, and
-the daily operator is paused. The first published pilot remains intact. Held jobs retain their
+The five unpublished follow-ups remain **held** after the owner rejected their visual quality.
+On 7 November, the owner authorized the new film and resumed daily operation at 09:00 IST.
+**The Yes Machine** is now public on [YouTube](https://www.youtube.com/shorts/Dc4aBDQfQ9w),
+[Instagram](https://www.instagram.com/p/Dfch-tjKvp7/) and
+[Facebook](https://www.facebook.com/reel/1759901191770877). YouTube processing and exact subtitle
+readback were verified through its API; Meta publication was verified in the signed-in browser.
+The daily agent prepares and reviews one new original episode for all three platforms, using
+[the operating brief](docs/SOCIAL_OPERATOR.md). The local computer and account sessions must
+remain available; active scheduling does not guarantee successful daily publication.
+The first published pilot remains intact. Held jobs retain their
 original payloads, dates and receipts but cannot be selected by the publishing worker; resuming
 them is an explicit operation. The original delivery validation passed 495 Python tests,
 34 Node tests and Ruff.

@@ -7,7 +7,7 @@ Meta media are prerequisites, not outcomes of installing the code.
 
 ## Delivery status
 
-As of 6 November 2026, the adapters, queue, local analytics importer and directed narration
+As of 7 November 2026, the adapters, queue, local analytics importer and directed narration
 are implemented and tested. Gmail, the BizNex YouTube channel,
 [Instagram creator profile](https://www.instagram.com/biznex.stories/) and
 [Facebook Page](https://www.facebook.com/profile.php?id=61595985973734) have been created in
@@ -42,6 +42,23 @@ did not establish creative acceptance; [the cinematic acceptance brief](CINEMATI
 sets the replacement review criteria.
 No audience improvement is claimed. No audience measurements were
 available; the analytics report correctly returns `no_observations`.
+
+The owner subsequently authorized **The Yes Machine**, now public on
+[YouTube](https://www.youtube.com/shorts/Dc4aBDQfQ9w),
+[Instagram](https://www.instagram.com/p/Dfch-tjKvp7/) and
+[Facebook](https://www.facebook.com/reel/1759901191770877). Its verified final file is
+`videos/biznex-the-yes-machine/renders/final.mp4`, SHA256
+`ccd05da3eca962865eb92a197d92c5feb2f1a5df9ab0d79442ddb32b3060cc43`.
+YouTube API readback confirmed successful processing, public visibility and all 16 exact
+subtitle cues. Instagram and Facebook were confirmed through their signed-in browser flows,
+with public visibility and AI labels; this does not establish Meta API authorization.
+Ignored evidence is retained under `output/social/2026-11-07/`.
+
+The recurring Codex operator is **active at 09:00 IST**, authorized to prepare, review and
+publish one new original episode daily across the three accounts. The five rejected pilot
+follow-ups remain held. This is a local agent schedule, not a cloud worker or proof that every
+future run will succeed. See [the operating brief](SOCIAL_OPERATOR.md) and
+[verified story campaigns](SOCIAL_CAMPAIGNS.md).
 
 The system does not yet automatically fetch platform analytics, refresh Meta tokens, host
 media, buy ads, answer comments/DMs, or create account identities. The daily agent can prepare
