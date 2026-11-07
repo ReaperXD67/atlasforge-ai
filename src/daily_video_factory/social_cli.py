@@ -111,6 +111,33 @@ def status(
         console.print_json(data=manager.list_posts())
 
 
+@app.command("claim-browser")
+@_safe_io
+def claim_browser(
+    post_key: str = typer.Option(...),
+    config: Path = typer.Option(Path("config/default.yaml"), exists=True, dir_okay=False),
+    root: Path = typer.Option(Path("."), exists=True, file_okay=False),
+    database: Path | None = typer.Option(None, dir_okay=False),
+) -> None:
+    """Reserve one due browser job locally before uploading; never automatically replay it."""
+    with _managed(config, root, database) as manager:
+        console.print_json(data=manager.claim_browser(post_key))
+
+
+@app.command("record-observed")
+@_safe_io
+def record_observed(
+    post_key: str = typer.Option(...),
+    evidence: Path = typer.Option(..., exists=True, dir_okay=False),
+    config: Path = typer.Option(Path("config/default.yaml"), exists=True, dir_okay=False),
+    root: Path = typer.Option(Path("."), exists=True, file_okay=False),
+    database: Path | None = typer.Option(None, dir_okay=False),
+) -> None:
+    """Record an exact, independently confirmed publication without another remote upload."""
+    with _managed(config, root, database) as manager:
+        console.print_json(data=manager.record_observed(post_key, evidence))
+
+
 @app.command("run-due")
 @_safe_io
 def run_due(

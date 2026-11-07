@@ -1,50 +1,93 @@
 # Daily BizNex operator
 
-This is the operating brief for the recurring Codex agent, not an autonomous account signup
-service. Run from this repository and preserve its instructions, source policy and cost limits.
+The owner authorized **daily original production and public release across YouTube,
+Instagram and Facebook on 7 November 2026**. The recurring Codex operator is active
+at 09:00 IST. Continue this authorized work without asking for routine permission
+again. The computer, Codex environment and account sessions must be available;
+this schedule is not cloud hosting or a guarantee of successful daily publication.
 
-1. Read `SOCIAL_AUTOMATION.md`, the current experiment plan and the previous local report.
-   Inspect Git status; preserve unrelated work. Run `social doctor` and `social status` with
-   the dedicated `output/social/biznex-first-six.queue.sqlite` database. Doctor reports local
-   configuration; use a live channel/authentication check before publication.
-2. Import only real, explicitly normalized observations placed in `output/social/inbox/`.
-   Validate each import through `social import-metrics`; retain missing values. Run reports
-   for each predeclared primary metric. Never invent metrics or scrape private account data.
-3. The user rejected the first batch's creative quality. Its first pilot remains public on
-   all three platforms; the exact five unpublished YouTube follow-ups are now `held` in the
-   dedicated queue. They retain their November 7–11 dates, payloads and receipts but cannot
-   run, including through manual `--execute`. Do not resume or re-enqueue them to bypass the
-   hold. Build and inspect the cinematic replacement against [the acceptance brief](CINEMATIC_ACCEPTANCE.md)
-   before planning a new campaign. Use primary sources, record observation dates and market,
-   and apply POLICY.md. Preserve old renders and published receipts as the comparison baseline.
-4. For an episode due in the approved plan, produce original narration and visuals with the
-   existing HyperFrames/production workflow, exact captions and delivery checks. Use local
-   providers by default; do not enable paid providers or increase budgets. Respect asset
-   licenses and voice rights. Inspect the rendered result; passing technical checks alone
-   does not establish good storytelling or factual accuracy.
-5. Keep the rejected follow-ups held until the user approves their release. Queue only verified
-   replacement episodes under new episode/post IDs, real accounts and timezone-aware dates.
-   Run a preview. Execute due jobs only when platform access is connected, setup has been
-   verified, and the approved campaign explicitly declares the destination and privacy.
-   The initial private YouTube integration test is complete; video `bQlvLxzPRSc` was promoted
-   publicly without reuploading. Its original queue privacy records the upload intent; the
-   separate promotion receipt records public readback. Never enqueue it again. Before enqueueing
-   changed work, run production resume checks against current authoring fingerprints. Meta API
-   execution still requires SMS verification, account linking, authorization and hosted media;
-   the first Meta posts were made through the browser. Do not replay uncertain jobs or delete receipts.
-6. If registration, OAuth, platform review or hosted media is missing, record the concrete
-   blocker once in `output/social/operator-status.json`; continue useful local preparation.
-   Do not repeatedly ask for the same credentials. Never fabricate account creation or
-   metrics. Account owners retain recovery access; secrets never enter Git or chat reports.
-   Google OAuth is in External Testing: its refresh token normally expires seven days after
-   the November 6 authorization. Refreshing an access token does not extend that limit. Stop
-   execution on authorization failure and report the new recovery need once. The local 09:00
-   heartbeat requires the computer/Codex environment to be available; it is not cloud hosting.
-7. Save a concise dated operator report in `output/social/`. Distinguish shipped code, local
-   exports, live publication receipts, observed metrics and proposed experiments. Update
-   project README/docs for meaningful delivered capabilities; keep daily chronology local.
-   Run appropriate tests for source changes and publish only the reviewed project source/docs
-   through the existing authorized Git workflow, excluding credentials and private media.
+## Preserve the right state
 
-Success means useful original content, correct publication and evidence-informed iteration.
-No automation can promise virality, revenue, Atomy signups, or repository stars.
+- Use `output/social/biznex-stories.queue.sqlite` for new verified story campaigns.
+- Keep all five rejected pilot follow-ups **held** in
+  `output/social/biznex-first-six.queue.sqlite`. Do not resume, duplicate, re-date or
+  re-enqueue them to bypass the hold. The first public pilot remains intact.
+- The Yes Machine is already public on [YouTube](https://www.youtube.com/shorts/Dc4aBDQfQ9w),
+  [Instagram](https://www.instagram.com/p/Dfch-tjKvp7/) and
+  [Facebook](https://www.facebook.com/reel/1759901191770877). Its uploaded local SHA256
+  is `ccd05da3eca962865eb92a197d92c5feb2f1a5df9ab0d79442ddb32b3060cc43`.
+  All three publications were adopted into the stories queue with exact IDs and
+  verification methods. Repeated enqueue preserved their published states; an
+  execute run returned no eligible jobs. Never upload this film again.
+- Accounts: YouTube `UCEoGrcisSgAFiu0EkBuDq8w`; Instagram browser profile
+  `@biznex.stories`; Facebook browser Page `61595985973734` / BizNex. The separate
+  Meta business asset `1484822874707996` is not a substitute browser identity.
+- Target **one new episode per IST calendar date**, syndicated to all three accounts.
+  Inspect dates and actual receipts before planning another episode. The queue
+  dedupes video bytes per platform/account within one database; a daily episode
+  cap and cross-database deduplication remain operator responsibilities.
+
+## Each daily run
+
+1. Read [the automation guide](SOCIAL_AUTOMATION.md),
+   [the editorial plan](BIZNEX_EDITORIAL_PLAN.md), previous local operator reports
+   and repository instructions. Inspect Git status and preserve unrelated work.
+   Run `social doctor` and `social status` for both databases above. Confirm the old
+   five remain held. Existing claimed, uncertain or published records require
+   reconciliation, never a fresh upload.
+2. Import only real normalized observations from `output/social/inbox/` through
+   `social import-metrics`. Retain missing values and use predeclared metrics.
+   Improve a concrete hook, story or packaging choice from the observations;
+   never invent views, retention, signups or audience feedback.
+3. Author a new project for today's episode. Use current primary sources when
+   making Atomy product, price, availability or business-plan statements; record
+   market and observation date and apply `POLICY.md`. Prefer an original fictional
+   human problem, causal progression and a practical payoff. Keep visible
+   fiction/synthetic disclosure and independent-community context. Do not imply
+   health results, earnings, a real customer testimonial or official endorsement.
+4. Use [the story pipeline](NEXT_STORY_PIPELINE.md): authored brief and shot meanings,
+   complete expressive voice thoughts, measured words, original procedural/3D/SVG
+   scenes and deliberate sound design. The Yes Machine world is a reusable technique,
+   not a universal story generator; do not reskin its exact sequence every day.
+   Avoid new image/video models and paid services. Respect licenses and voice rights;
+   do not impersonate a real person. Render and inspect the actual film.
+5. Require fresh `renders/final.report.json`, encoded audio QA, decoded frame coverage,
+   and a matching `DELIVERY_REVIEW.json` with no blocking sampled visual findings.
+   Listen for intelligibility, expressive fit and sound balance when possible;
+   report any unperformed review honestly. Technical or transcript checks do not
+   establish natural acting or creative quality. Fix material defects before release.
+6. Create a new `story_project` campaign with explicit titles, complete captions,
+   real account IDs, public privacy, exact SRT and timezone-aware dates. Follow
+   [the verified campaign contract](SOCIAL_CAMPAIGNS.md). Reuse the stories database.
+   Enqueue and dry-run; current files and publishing settings must match their
+   immutable fingerprint at execution. Do not alter queued inputs to reuse a job ID.
+   For the 09:00 heartbeat, make today's reviewed episode due when it is ready;
+   a future clock time needs an available worker or another scheduled run.
+7. Publish YouTube through the authorized API queue after live channel matching.
+   Meta API setup remains incomplete; use the signed-in browser while that access
+   remains available. Run `claim-browser` before a browser upload, verify the active
+   account, select the exact verified MP4 once, retain prepared disclosure and the
+   appropriate AI label, then observe public success and its permalink. Record
+   exact file/account/title/URL and hashed evidence using `record-observed`.
+   A sharing spinner is not success: inspect that pending post instead of uploading
+   another copy. A claimed browser job is excluded from automatic workers.
+8. Preserve confirmed remote IDs and evidence. The queue can record an independently
+   confirmed earlier publication without uploading again. API readback and browser
+   observation remain distinct receipt methods. Do not report browser actions as
+   working Meta API automation. Never delete uncertainty markers or release held
+   jobs to force progress.
+9. If login, OAuth, review or platform availability blocks a destination, record the
+   concrete blocker once in `output/social/operator-status.json`, retain the completed
+   local delivery and continue useful authorized work. Do not repeatedly request
+   the same credentials. YouTube's OAuth app remains in External Testing; its refresh
+   token may expire seven days after authorization. Stop on authentication failure
+   and report the actual recovery need. Secrets never enter Git or reports.
+10. Save a concise dated report separating exports, verified live posts, observed
+    metrics and proposed changes. Update affected README/docs for significant
+    delivered capabilities, run relevant tests and use the authorized Git workflow
+    for reviewed source/docs. Keep private media, credentials and platform evidence
+    in ignored storage. Do not message users, answer DMs, buy ads or change account
+    ownership under this publishing authorization.
+
+Success means useful original content, correct publication and evidence-informed
+iteration. No automation promises virality, revenue, Atomy signups or repository stars.

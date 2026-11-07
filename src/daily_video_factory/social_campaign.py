@@ -19,7 +19,7 @@ from typing import Any, Literal
 from urllib.parse import urlsplit
 
 import portalocker
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 from .config import Settings
 from .exceptions import ConfigurationError, ProviderFailed
@@ -46,6 +46,16 @@ class CampaignPost(BaseModel):
     video_url: str | None = None
     privacy: Literal["private", "unlisted", "public"] = "private"
     subtitles: str | None = None
+    transport: Literal["api", "browser"] = "api"
+    title: str | None = Field(default=None, min_length=1, max_length=100)
+    tags: list[str] = Field(default_factory=list, max_length=30)
+
+    @field_validator("account_id")
+    @classmethod
+    def canonical_handle(cls, value: str) -> str:
+        # Browser Instagram handles identify the same account regardless of case.
+        # Numeric Meta IDs and case-sensitive UC channel IDs retain their bytes.
+        return value.casefold() if value.startswith("@") else value
 
     @field_validator("publish_at")
     @classmethod
@@ -69,8 +79,24 @@ class Campaign(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
     schema_version: Literal[1] = 1
     campaign_id: str = Field(pattern=r"^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$")
-    production_manifest: str
+    production_manifest: str | None = None
+    story_project: str | None = None
     posts: list[CampaignPost] = Field(min_length=1, max_length=500)
+
+    @model_validator(mode="after")
+    def one_source(self) -> Campaign:
+        if bool(self.production_manifest) == bool(self.story_project):
+            raise ValueError("Specify exactly one production_manifest or story_project")
+        return self
+
+
+def _post_payload(post: CampaignPost) -> dict[str, Any]:
+    """Keep legacy queue fingerprints stable when new fields use their defaults."""
+    result = post.model_dump(mode="json")
+    for key, default in (("transport", "api"), ("title", None), ("tags", [])):
+        if result[key] == default:
+            result.pop(key)
+    return result
 
 
 def load_campaign(path: Path) -> Campaign:
@@ -184,7 +210,7 @@ class SocialCampaignManager:
         )
         result = {key: row[key] for key in allowed}
         receipt = json.loads(row["receipt"])
-        for key in ("video_id", "media_id", "container_id", "privacy"):
+        for key in ("video_id", "media_id", "container_id", "privacy", "url", "verification"):
             if receipt.get(key):
                 result[key] = receipt[key]
         return result
@@ -197,8 +223,23 @@ class SocialCampaignManager:
             ]
 
     def _inspect(
-        self, production_manifest: str, post: CampaignPost, *, as_of: datetime | None = None
+        self, production_manifest: str | None, post: CampaignPost, *,
+        as_of: datetime | None = None, story_project: str | None = None,
     ) -> dict[str, Any]:
+        if story_project:
+            from .story_publication import inspect_story
+            try:
+                return inspect_story(self, story_project, post)
+            except ConfigurationError:
+                raise
+            except (ValueError, OSError, RuntimeError):
+                raise ConfigurationError(
+                    "Story delivery or QA verification failed; refresh the local package before publication."
+                ) from None
+        if not production_manifest:
+            raise ConfigurationError("A publication source is required.")
+        if post.transport != "api":
+            raise ConfigurationError("Browser transport requires a verified story_project campaign.")
         manifest_path = _relative(self.root, production_manifest)
         manifest = load_production_batch_manifest(manifest_path, repository_root=self.root)
         episode = next((item for item in manifest.episodes if item.id == post.episode_id), None)
@@ -303,7 +344,7 @@ class SocialCampaignManager:
             json.dumps(
                 {
                     "files": hashes,
-                    "post": post.model_dump(mode="json"),
+                    "post": _post_payload(post),
                     "production_manifest": production_manifest,
                     "settings": self.settings.model_dump(mode="json"),
                 },
@@ -322,7 +363,8 @@ class SocialCampaignManager:
     def enqueue(self, campaign_path: Path) -> list[dict[str, Any]]:
         campaign = load_campaign(campaign_path)
         prepared = [
-            (post, self._inspect(campaign.production_manifest, post)) for post in campaign.posts
+            (post, self._inspect(campaign.production_manifest, post, story_project=campaign.story_project))
+            for post in campaign.posts
         ]
         results = []
         now = _clock().isoformat()
@@ -350,7 +392,8 @@ class SocialCampaignManager:
                 payload = json.dumps(
                     {
                         "production_manifest": campaign.production_manifest,
-                        "post": post.model_dump(mode="json"),
+                        "story_project": campaign.story_project,
+                        "post": _post_payload(post),
                     }
                 )
                 conn.execute(
@@ -394,6 +437,16 @@ class SocialCampaignManager:
             )
             row = conn.execute("SELECT * FROM social_posts WHERE post_key=?", (key,)).fetchone()
             return self._public(row)
+
+    def claim_browser(self, post_key: str) -> dict[str, Any]:
+        """Durably reserve a browser job; an interrupted claim is never replayed."""
+        from .story_publication import claim_browser
+        return claim_browser(self, post_key)
+
+    def record_observed(self, post_key: str, evidence_path: Path) -> dict[str, Any]:
+        """Adopt an independently observed publication; performs no remote mutation."""
+        from .story_publication import record_observed
+        return record_observed(self, post_key, evidence_path)
 
     def retry_blocked(self, post_key: str) -> dict[str, Any]:
         with (
@@ -651,11 +704,19 @@ class SocialCampaignManager:
                 try:
                     payload = json.loads(row["payload"])
                     post = CampaignPost.model_validate(payload["post"])
-                    inspected = self._inspect(payload["production_manifest"], post, as_of=current)
+                    inspected = self._inspect(
+                        payload.get("production_manifest"), post, as_of=current,
+                        story_project=payload.get("story_project"),
+                    )
                     if inspected["fingerprint"] != row["fingerprint"]:
                         raise ConfigurationError(
                             "Queued artifacts or publishing settings changed after enqueue; publication is blocked."
                         )
+                    if post.transport == "browser":
+                        results.append({**self._public(row), "dry_run": not execute,
+                                        "readiness": "browser_action_required",
+                                        "live_checks_pending": True})
+                        continue
                     self._account_ready(post, live=execute)
                     if not execute:
                         results.append(

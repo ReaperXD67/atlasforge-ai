@@ -1,9 +1,10 @@
 # Social Operator
 
-AtlasForge can render an authored production batch, verify its deliveries, enqueue dated
-posts, publish through the YouTube and Meta APIs, and compare exported measurements. The
-queue and learning tools run locally. Account ownership, platform authorization and hosted
-Meta media are prerequisites, not outcomes of installing the code.
+AtlasForge can render authored production batches and story projects, verify deliveries,
+enqueue dated posts, publish through supported APIs, retain verified browser publication
+receipts, and compare exported measurements. The queue and learning tools run locally.
+Account ownership and platform authorization are prerequisites; Meta API publishing also
+needs hosted media. Installing this code does not create accounts or grant platform access.
 
 ## Delivery status
 
@@ -167,6 +168,7 @@ publication. Re-enqueueing an unchanged campaign is safe; it does not reset rece
 | --- | --- | --- |
 | `pending` | Due later, processing remotely, or awaiting a bounded read retry | Run the worker on its schedule; inspect `next_attempt_at` |
 | `held` | Scheduling deliberately suspended in the persistent database | Preserve the approved payload and receipts; explicitly resume selected keys only when release is authorized |
+| `browser_claimed` | A browser job was reserved before a possible remote mutation | Inspect the same account/post and record confirmed evidence; never automatically repeat the upload |
 | `blocked` | Setup, verification or retry limit requires attention | Correct the cause, then use `retry-blocked` |
 | `uploading` | A YouTube mutation began; a crash may leave its result unknown | Next executing worker changes an interrupted job to `uncertain` |
 | `uncertain` | A remote mutation may have succeeded | Reconcile with the actual platform; never delete the receipt or blindly upload again |

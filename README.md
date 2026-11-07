@@ -104,6 +104,14 @@ the verified local MP4 byte for byte.
 .\.venv\Scripts\python.exe -m daily_video_factory.cli social watch --execute
 ```
 
+Films verified by the procedural story delivery checks can use a `story_project` campaign in the same
+durable queue. The worker rechecks render/source hashes, encoded audio, decoded frames
+and sampled visual review before publication. Browser jobs use `social claim-browser`
+before upload and `social record-observed` after confirmed success; existing posts can
+be adopted without uploading again. See [story campaign and receipt commands](docs/SOCIAL_CAMPAIGNS.md)
+and [the daily operator](docs/SOCIAL_OPERATOR.md), with a [seven-day editorial plan](docs/BIZNEX_EDITORIAL_PLAN.md).
+The five rejected pilot jobs stay held.
+
 The example needs real account IDs, verified local renders, dates and public media URLs before use.
 The worker runs while this computer and process are running. Account registration, OAuth/app review,
 hosting and account recovery are separate setup steps; a password does not authorize an API upload.

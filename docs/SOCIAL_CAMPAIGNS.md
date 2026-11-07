@@ -1,6 +1,6 @@
 # Verified social campaigns
 
-The campaign queue connects completed production batches to YouTube, Instagram and
+The campaign queue connects completed production batches and verified story projects to YouTube, Instagram and
 Facebook. It adds persistent schedules, immutable delivery checks, account matching,
 cross-campaign duplicate protection and bounded retries. The queue does not predict
 reach, create accounts, or replace the creative production workflow.
@@ -8,6 +8,106 @@ reach, create accounts, or replace the creative production workflow.
 The implementation has automated tests with mocked platform responses. No live
 social account or post is implied by those tests. Connect the real accounts and
 complete their platform requirements before enabling execution.
+
+## Verified story projects and browser receipts
+
+Use `story_project` instead of `production_manifest` for a film with the procedural
+story delivery contract. Exactly one source is required. Posts must match the project directory's
+episode ID and supply an explicit title. The adapter checks current render/source
+hashes, encoded audio QA, decoded-frame coverage and the matching sampled
+`DELIVERY_REVIEW.json`. It also checks script/copy policy, synthetic disclosure
+and exact canonical SRT. These checks do not establish subjective listening, factual
+source freshness or audience success; factual lines require the operator's source review.
+
+```json
+{
+  "schema_version": 1,
+  "campaign_id": "new-story-2026-11-08",
+  "story_project": "videos/YOUR_VERIFIED_PROJECT",
+  "posts": [{
+    "id": "instagram",
+    "episode_id": "YOUR_VERIFIED_PROJECT",
+    "platform": "instagram",
+    "account_id": "@YOUR_PROFILE",
+    "publish_at": "2026-11-08T18:30:00+05:30",
+    "title": "An explicit reviewed title",
+    "caption": "Complete prepared copy, including fictional context and synthetic narration disclosure.",
+    "privacy": "public",
+    "transport": "browser"
+  }]
+}
+```
+
+`transport` defaults to `api`. YouTube API posts use the existing durable uploader
+and live channel check; supply `subtitles` as the repository-relative
+`assets/audio/narration.srt` inside that project when caption upload is enabled.
+Meta API posts still need numeric account IDs, authorization and a hosted URL whose
+bytes match the verified local video. Browser Instagram jobs may use their exact
+`@handle`; browser Facebook jobs use the numeric Page identity observed in its
+user-facing profile. Browser jobs need neither a hosted URL nor a Meta API token.
+
+`run-due`, including `--execute`, returns `browser_action_required` for browser jobs
+without contacting a publisher. Reserve the job **before** the browser mutation:
+
+```powershell
+.venv/Scripts/python.exe -m daily_video_factory.cli social enqueue --campaign output/social/story.json --database output/social/biznex-stories.queue.sqlite
+.venv/Scripts/python.exe -m daily_video_factory.cli social run-due --database output/social/biznex-stories.queue.sqlite
+.venv/Scripts/python.exe -m daily_video_factory.cli social claim-browser --post-key new-story-2026-11-08:instagram --database output/social/biznex-stories.queue.sqlite
+```
+
+A `browser_claimed` post cannot be claimed again and never automatically replays.
+After observing the actual public post, write a local observation JSON:
+
+```json
+{
+  "platform": "instagram",
+  "account_id": "@YOUR_PROFILE",
+  "video_sha256": "REPLACE_WITH_64_LOWERCASE_HEX_CHARACTERS",
+  "title": "An explicit reviewed title",
+  "remote_id": "REAL_POST_CODE",
+  "url": "https://www.instagram.com/p/REAL_POST_CODE/",
+  "privacy": "public",
+  "verified_at": "2026-11-08T18:32:00+05:30",
+  "method": "browser_observation",
+  "evidence_file": "output/social/proof/actual-post.jpg",
+  "evidence_sha256": "REPLACE_WITH_64_LOWERCASE_HEX_CHARACTERS",
+  "confirmed_published": true
+}
+```
+
+```powershell
+.venv/Scripts/python.exe -m daily_video_factory.cli social record-observed --post-key new-story-2026-11-08:instagram --evidence output/social/observation.json --database output/social/biznex-stories.queue.sqlite
+```
+
+The command verifies local evidence hashes, platform URL/ID consistency and exact
+queued identity/content/privacy, then records the operator's observation. It does
+**not** authenticate a screenshot or perform fresh API readback. Use
+`method: "api_readback"` only with retained real API evidence. It can reconcile a
+completed publication from pending, claimed or uncertain state without uploading
+again. Repeating the same ID is idempotent; a different saved remote ID, changed
+approved files, wrong account or held job is rejected.
+
+Keep one stories database for deduplication by video SHA, platform and account.
+A date-slot cap and cross-database deduplication are not implemented; the operator
+enforces one new episode per IST day. On 7 November, all three already published
+Yes Machine posts were adopted into `output/social/biznex-stories.queue.sqlite`.
+Repeated enqueue returned the same published records and `run-due --execute`
+returned no jobs. That adoption campaign uses browser dispatch for all three rows
+to prevent accidental replay of the completed YouTube upload; its actual YouTube
+receipt explicitly records API readback. Future YouTube jobs can use `api` normally.
+
+The legacy `run_social_cycle.ps1` remains production-batch-only. Story projects use
+`run_story_pipeline.py`, followed by the queue commands above. Publication never
+runs automatically inside the render pipeline.
+
+### Architecture decision
+
+Retain the existing standard-library SQLite store and Portalocker rather than add
+Redis/RQ. SQLite's [immediate transactions](https://www.sqlite.org/lang_transaction.html)
+support atomic queue insertion; the started/finished separation in
+[RQ's documented job lifecycle](https://python-rq.org/docs/jobs/) reinforces explicit
+claim and confirmation states. No upstream code or new dependency was copied.
+This extends existing scheduling, hold and receipt behavior rather than migrating it.
 
 ## Campaign format
 
@@ -78,13 +178,13 @@ also belong under ignored `output/`, not Git.
 
 ## What execution verifies
 
-Enqueue validates the entire campaign before inserting any new row. It hashes the
+Enqueue validates the entire campaign before inserting any new row. For production-batch sources, it hashes the
 final video, publication package, thumbnail, voice declaration, editorial evidence,
 referenced script/timing files, production manifest, post fields and realized
 configuration. Execution reruns delivery verification and compares that fingerprint.
 Changing approved inputs or settings blocks the post. An identical video cannot be
 queued twice for the same account/platform, even through another campaign.
-Editorial source dates must be real and no older than the configured
+For those production-batch sources, editorial source dates must be real and no older than the configured
 `research.max_official_source_age_days` at enqueue and execution; the existing
 unqualified earnings/medical-claim checks also run on scripts and publication copy.
 
