@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "title": "The Borrowed Countdown — BizNex Stories",
+  "audio_master": "assets/audio/master.wav",
+  "brand": "BizNex Stories",
+  "context": "Atomy · independent educational community",
+  "shots": {
+    "s01": {
+      "mode": "timer_macro"
+    },
+    "s02": {
+      "mode": "reason_empty"
+    },
+    "s03": {
+      "mode": "countdown"
+    },
+    "s04": {
+      "mode": "want"
+    },
+    "s05": {
+      "mode": "reach"
+    },
+    "s06": {
+      "mode": "halt"
+    },
+    "s07": {
+      "mode": "question"
+    },
+    "s08": {
+      "mode": "backstage"
+    },
+    "s09": {
+      "mode": "exit"
+    },
+    "s10": {
+      "mode": "numbers"
+    },
+    "s11": {
+      "mode": "clock_finish"
+    },
+    "s12": {
+      "mode": "empty_front"
+    },
+    "s13": {
+      "mode": "resolve",
+      "heading": "I still needed|a reason.",
+      "hide_captions": true
+    }
+  }
+}

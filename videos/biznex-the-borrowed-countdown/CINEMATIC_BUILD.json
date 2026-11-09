@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "project_id": "biznex-the-borrowed-countdown",
+  "duration_frames": 717,
+  "fps": 30,
+  "files": {
+    "index.html": "211779c2d90a0402a050302c77c01c1569055fbc4f03159963a9c03685761bae",
+    "cinematic.css": "0170df0e989d9af2ae4098cb8a8de864d4a7a61b50d53f114d1c73d0cdcbb167",
+    "cinematic.js": "0ea6592c70026da01ca0aeac9488a7cc52f43c517604c6b0ed9f1433816663c5",
+    "DIRECTION.json": "30d9de373cb1a34091f966c485b53367429a5b2d5b9d72d2529451cd69c2bdbe",
+    "EDIT_PLAN.compiled.json": "bac696e29637824f272639ef9ef6dfbbec469aaf279a5f4a88f24e3e87a0bd45",
+    "AUDIO_MIX.json": "dff5c245a2cfbfab1497e98d7d41c1aa76a23df608c0ffe54f6034494d8bd6ad",
+    "assets/audio/master.wav": "0d683c7274cb4a0d1dabf72a9c9ba8157cefec48be4b7867a31cdc2630ba094d",
+    "assets/vendor/countdown_story_state.mjs": "d4ea6a82e53816ef1a64f212800e5f6ed94bc8015d97a79ef485afd932d2b1e8",
+    "assets/vendor/cinematic_primitives.js": "8fb8b27ba46d3cbfbf1ca4d45edf8a5eaf33556f1b3fcfe621e5245d81e1ef48",
+    "assets/world.json": "68d50227f64079f6981b5ca651684b9d77d8c74fce1ed802b463a1e816117ba7",
+    "assets/vendor/three.module.js": "104f56145899722094556490d787aae0617cc2fc3382f31df02d724ea1aee341",
+    "assets/vendor/three.core.js": "613e370f76638fdef83926642bf256dc9615684922de1ce1f63a8583e5d78578",
+    "assets/vendor/THREE-LICENSE.txt": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+    "assets/vendor/gsap.min.js": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280",
+    "assets/fonts/Montserrat.ttf": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7",
+    "assets/fonts/Montserrat-OFL.txt": "8b7141c03fa4f8d44e6345d5d4931709290f0f67875e452e95ac1fd3a027802e"
+  },
+  "renderer": "original-countdown-three-r187",
+  "rendered": false,
+  "uses_image_model": false,
+  "uses_video_model": false
+}

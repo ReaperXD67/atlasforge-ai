@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "origin": "Original deterministic mathematical synthesis; no sampled recordings or image/video/music model",
+  "license": "MIT (AtlasForge-authored recipe and generated stems)",
+  "sample_rate": 48000,
+  "channels": 2,
+  "samples": 1147200,
+  "duration_seconds": 23.9,
+  "seed": 20261109,
+  "timing_sha256": "b2cdbac057136a99583ada73167c265e6be16595db2aac31ae114415a3da0627",
+  "anchors": {
+    "countdown": 3.4,
+    "reach": 8.466666666666667,
+    "stop": 10.333333333333334,
+    "question": 12.733333333333333,
+    "reveal": 13.966666666666667,
+    "exit": 16.766666666666666,
+    "clock": 19.266666666666666,
+    "resolve": 22.133333333333333
+  },
+  "hush_seconds": [
+    10.253333333333334,
+    11.053333333333335
+  ],
+  "tick_seconds": [
+    3.4,
+    21.666666666666668
+  ],
+  "events": [
+    {
+      "time_seconds": 0.12,
+      "kind": "flap",
+      "level": 0.45,
+      "pan": -0.25
+    },
+    {
+      "time_seconds": 5.226666666666667,
+      "kind": "flap",
+      "level": 0.7,
+      "pan": -0.3
+    },
+    {
+      "time_seconds": 7.053333333333334,
+      "kind": "flap",
+      "level": 0.7,
+      "pan": 0.3
+    },
+    {
+      "time_seconds": 8.88,
+      "kind": "flap",
+      "level": 0.7,
+      "pan": -0.3
+    },
+    {
+      "time_seconds": 10.706666666666667,
+      "kind": "flap",
+      "level": 0.36,
+      "pan": 0.3
+    },
+    {
+      "time_seconds": 12.533333333333335,
+      "kind": "flap",
+      "level": 0.36,
+      "pan": -0.3
+    },
+    {
+      "time_seconds": 14.360000000000003,
+      "kind": "flap",
+      "level": 0.36,
+      "pan": 0.3
+    },
+    {
+      "time_seconds": 16.186666666666667,
+      "kind": "flap",
+      "level": 0.36,
+      "pan": -0.3
+    },
+    {
+      "time_seconds": 18.013333333333335,
+      "kind": "flap",
+      "level": 0.36,
+      "pan": 0.3
+    },
+    {
+      "time_seconds": 19.840000000000003,
+      "kind": "flap",
+      "level": 0.36,
+      "pan": -0.3
+    },
+    {
+      "time_seconds": 21.666666666666668,
+      "kind": "flap",
+      "level": 0.36,
+      "pan": 0.3
+    },
+    {
+      "time_seconds": 8.466666666666667,
+      "kind": "token",
+      "level": 0.42,
+      "pan": 0
+    },
+    {
+      "time_seconds": 10.233333333333334,
+      "kind": "stop",
+      "level": 0.6,
+      "pan": 0
+    },
+    {
+      "time_seconds": 16.766666666666666,
+      "kind": "token",
+      "level": 0.3,
+      "pan": 0.3
+    },
+    {
+      "time_seconds": 19.266666666666666,
+      "kind": "token",
+      "level": 0.22,
+      "pan": 0.5
+    }
+  ],
+  "files": [
+    {
+      "asset": "assets/audio/score.wav",
+      "sha256": "9afa34693309943f8e76cc9ef0cb92078272a7a35a8fdced8b4e778512bb83b7",
+      "peak": 0.0634137712946617
+    },
+    {
+      "asset": "assets/audio/machine.wav",
+      "sha256": "cedd6d7b19c32d98aa37e4a1fd02d7b2fddff952e5129343afeea46c1acbf0a9",
+      "peak": 0.388233531950569
+    }
+  ],
+  "listening_verified": false
+}

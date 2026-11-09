@@ -1,0 +1,75 @@
+{
+  "authored_caption_word_count": 54,
+  "authored_shot_count": 13,
+  "delivery_verified": true,
+  "elapsed_seconds": 354.594,
+  "finished_at": "2026-11-09T07:37:07.134774+00:00",
+  "output": {
+    "audio_codec": "aac",
+    "bytes": 12604683,
+    "channels": 2,
+    "decoded_video_frames": 717,
+    "duration_seconds": 23.9,
+    "file": "renders/final.mp4",
+    "fps": "30",
+    "full_video_audio_decode_passed": true,
+    "height": 1920,
+    "pixel_format": "yuv420p",
+    "sample_rate": 48000,
+    "sha256": "02d020817b8a86c4a1e686c4e8b9e112eacdab7d1af7c3dc4afa6b45a46bf857",
+    "video_codec": "h264",
+    "width": 1080
+  },
+  "project_id": "biznex-the-borrowed-countdown",
+  "published": false,
+  "rendered": true,
+  "run_id": "2ff0fe1091c343d29b4ebdd7f9b21558",
+  "schema_version": 1,
+  "source_files": {
+    "AUDIO_MIX.json": "dff5c245a2cfbfab1497e98d7d41c1aa76a23df608c0ffe54f6034494d8bd6ad",
+    "CINEMATIC_BUILD.json": "ef25b06469a53791338ea85ff353219c68f9fdf6800b9fffda2c58f6f51e596f",
+    "DIRECTION.json": "30d9de373cb1a34091f966c485b53367429a5b2d5b9d72d2529451cd69c2bdbe",
+    "EDIT_PLAN.audit.json": "729fb778fc711086d396b3856968d5f3606ccda5ec2ee54125ba4a026556bc56",
+    "EDIT_PLAN.compiled.js": "6390b06fb00888d2d4220a54b5cd3f3786b6807f826e86c46502105404a658ab",
+    "EDIT_PLAN.compiled.json": "bac696e29637824f272639ef9ef6dfbbec469aaf279a5f4a88f24e3e87a0bd45",
+    "EDIT_PLAN.json": "7648d72b939bd1883939fcef8697f5e8f091f53510d559509953fb939e4daf3b",
+    "assets/audio/machine.wav": "cedd6d7b19c32d98aa37e4a1fd02d7b2fddff952e5129343afeea46c1acbf0a9",
+    "assets/audio/master.wav": "0d683c7274cb4a0d1dabf72a9c9ba8157cefec48be4b7867a31cdc2630ba094d",
+    "assets/audio/narration.wav": "1d2fbb1e04cec1a4467f54595192faaea432a02024dcc59db01eb456b0316e87",
+    "assets/audio/score.wav": "9afa34693309943f8e76cc9ef0cb92078272a7a35a8fdced8b4e778512bb83b7",
+    "assets/fonts/Montserrat-OFL.txt": "8b7141c03fa4f8d44e6345d5d4931709290f0f67875e452e95ac1fd3a027802e",
+    "assets/fonts/Montserrat.ttf": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7",
+    "assets/vendor/THREE-LICENSE.txt": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+    "assets/vendor/cinematic_primitives.js": "8fb8b27ba46d3cbfbf1ca4d45edf8a5eaf33556f1b3fcfe621e5245d81e1ef48",
+    "assets/vendor/countdown_story_state.mjs": "d4ea6a82e53816ef1a64f212800e5f6ed94bc8015d97a79ef485afd932d2b1e8",
+    "assets/vendor/gsap.min.js": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280",
+    "assets/vendor/three.core.js": "613e370f76638fdef83926642bf256dc9615684922de1ce1f63a8583e5d78578",
+    "assets/vendor/three.module.js": "104f56145899722094556490d787aae0617cc2fc3382f31df02d724ea1aee341",
+    "assets/world.json": "68d50227f64079f6981b5ca651684b9d77d8c74fce1ed802b463a1e816117ba7",
+    "cinematic.css": "0170df0e989d9af2ae4098cb8a8de864d4a7a61b50d53f114d1c73d0cdcbb167",
+    "cinematic.js": "0ea6592c70026da01ca0aeac9488a7cc52f43c517604c6b0ed9f1433816663c5",
+    "hyperframes.json": "0a710eddc067db42da49c15f1bf7d67b1618b61ccbf9cc5ce54285520d101111",
+    "index.html": "211779c2d90a0402a050302c77c01c1569055fbc4f03159963a9c03685761bae",
+    "package.json": "d691111b4ed00f2575ba7be17739c32c0ccd22d9ebfaa9adc49e4ea2bf2469c8",
+    "timing.json": "b2cdbac057136a99583ada73167c265e6be16595db2aac31ae114415a3da0627"
+  },
+  "stages": [
+    {
+      "elapsed_seconds": 350.935,
+      "name": "render-with-check",
+      "status": "passed"
+    },
+    {
+      "name": "media-verification",
+      "status": "passed"
+    },
+    {
+      "name": "final-source-verification",
+      "status": "passed"
+    }
+  ],
+  "started_at": "2026-11-09T07:31:12.540222+00:00",
+  "status": "verified_delivery",
+  "visual_review_verified": false,
+  "voice_emotion_verified": false
+}

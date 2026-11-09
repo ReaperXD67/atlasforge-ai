@@ -1,0 +1,12 @@
+{
+  "archive": "renders/delivery.zip",
+  "archive_bytes": 27905487,
+  "archive_sha256": "ac1b962988fb02958816b76d653e3449a36a55de2eee669508e969d952246f6f",
+  "project_id": "biznex-the-borrowed-countdown",
+  "published": false,
+  "schema_version": 1,
+  "source_included": true,
+  "status": "verified_technical_export",
+  "video_sha256": "02d020817b8a86c4a1e686c4e8b9e112eacdab7d1af7c3dc4afa6b45a46bf857",
+  "visual_review_verified": false
+}

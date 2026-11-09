@@ -1,0 +1,402 @@
+{
+  "schema_version": 1,
+  "project_id": "biznex-the-borrowed-countdown",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "timing_file": "timing.json",
+  "shots": [
+    {
+      "id": "s01",
+      "start": {
+        "boundary": "start",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "object",
+      "subject": "timer-digits",
+      "location": "kinetic-countdown-desk",
+      "layout": "timer_macro",
+      "framing": "extreme_close",
+      "camera": "push_in",
+      "subject_motion": "action",
+      "action": "A large mechanical numeral fills the view and physically flips a segment.",
+      "expression": "Urgency becomes self-questioning, then calm agency.",
+      "cut_reason": "A large mechanical numeral fills the view and physically flips a segment.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s02",
+      "start": {
+        "phrase": "My reason",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "object",
+      "subject": "undecided-token",
+      "location": "kinetic-countdown-desk",
+      "layout": "reason_empty",
+      "framing": "insert",
+      "camera": "tilt",
+      "subject_motion": "action",
+      "action": "A solitary ceramic token sits in an empty decision track under the digits' shadow.",
+      "expression": "Urgency becomes self-questioning, then calm agency.",
+      "cut_reason": "A solitary ceramic token sits in an empty decision track under the digits' shadow.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s03",
+      "start": {
+        "phrase": "Ten seconds",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "environment",
+      "subject": "timer-tower",
+      "location": "kinetic-countdown-desk",
+      "layout": "countdown",
+      "framing": "wide",
+      "camera": "pull_out",
+      "subject_motion": "action",
+      "action": "Reveal the imposing countdown tower and its much smaller undecided token.",
+      "expression": "Urgency becomes self-questioning, then calm agency.",
+      "cut_reason": "Reveal the imposing countdown tower and its much smaller undecided token.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s04",
+      "start": {
+        "phrase": "suddenly",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "object",
+      "subject": "token-shadow",
+      "location": "kinetic-countdown-desk",
+      "layout": "want",
+      "framing": "medium",
+      "camera": "tracking",
+      "subject_motion": "action",
+      "action": "The timer's shadow crosses the token as the central route starts to feel inevitable.",
+      "expression": "Urgency becomes self-questioning, then calm agency.",
+      "cut_reason": "The timer's shadow crosses the token as the central route starts to feel inevitable.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s05",
+      "start": {
+        "phrase": "My hand",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "object",
+      "subject": "moving-token",
+      "location": "kinetic-countdown-desk",
+      "layout": "reach",
+      "framing": "close",
+      "camera": "push_in",
+      "subject_motion": "action",
+      "action": "The token glides toward the countdown, closing its distance to the tower.",
+      "expression": "Urgency becomes self-questioning, then calm agency.",
+      "cut_reason": "The token glides toward the countdown, closing its distance to the tower.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s06",
+      "start": {
+        "phrase": "Then I stopped",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "environment",
+      "subject": "stopped-route",
+      "location": "kinetic-countdown-desk",
+      "layout": "halt",
+      "framing": "medium",
+      "camera": "locked",
+      "subject_motion": "still",
+      "action": "The token stops before the tower while the numeral mechanism continues independently.",
+      "expression": "Urgency becomes self-questioning, then calm agency.",
+      "cut_reason": "The token stops before the tower while the numeral mechanism continues independently.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s07",
+      "start": {
+        "phrase": "Was I choosing",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "diagram",
+      "subject": "choice-route",
+      "location": "kinetic-countdown-desk",
+      "layout": "question",
+      "framing": "wide",
+      "camera": "pan",
+      "subject_motion": "action",
+      "action": "The camera makes the gap between the token and its supposed destination visible.",
+      "expression": "Urgency becomes self-questioning, then calm agency.",
+      "cut_reason": "The camera makes the gap between the token and its supposed destination visible.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s08",
+      "start": {
+        "phrase": "or escaping",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "object",
+      "subject": "shallow-number-frame",
+      "location": "kinetic-countdown-desk",
+      "layout": "backstage",
+      "framing": "close",
+      "camera": "orbit",
+      "subject_motion": "action",
+      "action": "Travel behind the giant digits and expose their shallow plates and thin support rods.",
+      "expression": "Urgency becomes self-questioning, then calm agency.",
+      "cut_reason": "Travel behind the giant digits and expose their shallow plates and thin support rods.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s09",
+      "start": {
+        "phrase": "I let the numbers",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "environment",
+      "subject": "side-route",
+      "location": "kinetic-countdown-desk",
+      "layout": "exit",
+      "framing": "wide",
+      "camera": "tracking",
+      "subject_motion": "action",
+      "action": "The token takes an unhurried curved side route instead of entering the countdown.",
+      "expression": "Urgency becomes self-questioning, then calm agency.",
+      "cut_reason": "The token takes an unhurried curved side route instead of entering the countdown.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s10",
+      "start": {
+        "phrase": "keep falling",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "object",
+      "subject": "independent-digits",
+      "location": "kinetic-countdown-desk",
+      "layout": "numbers",
+      "framing": "insert",
+      "camera": "pan",
+      "subject_motion": "action",
+      "action": "The digits keep changing even though the token has left their route.",
+      "expression": "Urgency becomes self-questioning, then calm agency.",
+      "cut_reason": "The digits keep changing even though the token has left their route.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s11",
+      "start": {
+        "phrase": "The clock",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "environment",
+      "subject": "separated-clock-token",
+      "location": "kinetic-countdown-desk",
+      "layout": "clock_finish",
+      "framing": "wide",
+      "camera": "pull_out",
+      "subject_motion": "action",
+      "action": "Keep the moving clock and independent token in the same world, on separate paths.",
+      "expression": "Urgency becomes self-questioning, then calm agency.",
+      "cut_reason": "Keep the moving clock and independent token in the same world, on separate paths.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s12",
+      "start": {
+        "phrase": "finish its countdown",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "object",
+      "subject": "empty-timer",
+      "location": "kinetic-countdown-desk",
+      "layout": "empty_front",
+      "framing": "close",
+      "camera": "locked",
+      "subject_motion": "action",
+      "action": "The numeral mechanism reaches its end with no token beneath it.",
+      "expression": "Urgency becomes self-questioning, then calm agency.",
+      "cut_reason": "The numeral mechanism reaches its end with no token beneath it.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s13",
+      "start": {
+        "phrase": "I still needed",
+        "edge": "start",
+        "offset_frames": -10
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "diagram",
+      "subject": "reason-token",
+      "location": "kinetic-countdown-desk",
+      "layout": "resolve",
+      "framing": "medium",
+      "camera": "pull_out",
+      "subject_motion": "action",
+      "action": "Hold the token on its own quiet route beside the question that remains.",
+      "expression": "Urgency becomes self-questioning, then calm agency.",
+      "cut_reason": "Hold the token on its own quiet route beside the question that remains.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    }
+  ],
+  "audio": [
+    {
+      "id": "voice",
+      "role": "voice",
+      "asset": "assets/audio/narration.wav",
+      "start": {
+        "boundary": "start",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "end": {
+        "boundary": "end",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "source_start_frame": 0,
+      "gain_db": 0.0,
+      "gain_keyframes": [],
+      "fade_in_frames": 0,
+      "fade_out_frames": 0,
+      "duck_attack_frames": 3,
+      "duck_release_frames": 9
+    },
+    {
+      "id": "score",
+      "role": "music",
+      "asset": "assets/audio/score.wav",
+      "start": {
+        "boundary": "start",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "end": {
+        "boundary": "end",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "source_start_frame": 0,
+      "gain_db": 0.0,
+      "gain_keyframes": [],
+      "fade_in_frames": 0,
+      "fade_out_frames": 0,
+      "duck_db": -6.0,
+      "duck_attack_frames": 2,
+      "duck_release_frames": 6
+    },
+    {
+      "id": "mechanism",
+      "role": "foley",
+      "asset": "assets/audio/machine.wav",
+      "start": {
+        "boundary": "start",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "end": {
+        "boundary": "end",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "source_start_frame": 0,
+      "gain_db": -4.0,
+      "gain_keyframes": [],
+      "fade_in_frames": 0,
+      "fade_out_frames": 0,
+      "duck_db": -3.0,
+      "duck_attack_frames": 1,
+      "duck_release_frames": 3
+    }
+  ],
+  "captions": {
+    "max_words": 6,
+    "max_characters": 38,
+    "max_gap_seconds": 0.35,
+    "hold_frames": 9
+  },
+  "policy": {
+    "min_shots": 12,
+    "min_visual_kinds": 3,
+    "min_visual_assets": 1,
+    "min_layouts": 12,
+    "min_subjects": 10,
+    "min_framings": 4,
+    "min_camera_moves": 4,
+    "min_shot_seconds": 0.35,
+    "max_shot_seconds": 7.0,
+    "max_same_layout_seconds": 7.0,
+    "max_static_seconds": 5.0,
+    "max_dominant_layout_fraction": 0.3,
+    "max_typography_fraction": 0.0,
+    "max_cut_anchor_offset_frames": 15,
+    "require_layered_audio": true
+  }
+}

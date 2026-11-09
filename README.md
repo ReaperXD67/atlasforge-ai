@@ -148,14 +148,27 @@ No audience improvement or viral outcome has been established.
 
 [Download all six videos, covers and captions](https://github.com/ReaperXD67/atlasforge-ai/releases/download/biznex-first-six-2026-11-06/biznex-first-six.zip).
 The five unpublished follow-ups remain **held** after the owner rejected their visual quality.
-On 7 November, the owner authorized the new film and resumed daily operation at 09:00 IST.
-**The Yes Machine** is now public on [YouTube](https://www.youtube.com/shorts/Dc4aBDQfQ9w),
+**Operation is manual on request as of 9 November 2026.** The owner paused the
+recurring BizNex automation and requested no automatic production, posting or background
+runs. Existing publishing receipts and the five rejected-pilot holds remain intact.
+The queue can still execute an explicitly requested, reviewed release.
+
+**The Borrowed Countdown** adds a distinct kinetic desk scene: hinged digits,
+a token that stops under pressure, a camera reveal behind the clock and an independent
+side route. Its nine-stage run verified a **23.9-second**, **13-shot** portrait film in
+**393.5 seconds**, reusing already prepared narration. Encoded speech passed all five
+thought checks; 78 decoded frames across ten sheets were inspected. This measures
+production execution, not story authoring or subjective emotion quality.
+See [the episode and delivery evidence](videos/biznex-the-borrowed-countdown/README.md).
+Published once on 9 November 2026: [YouTube](https://www.youtube.com/shorts/mizAF51be5U),
+[Instagram](https://www.instagram.com/p/Dfg3FalKNsv/) and [Facebook](https://www.facebook.com/reel/1495079932486622).
+YouTube processing, public visibility and exact subtitles were verified through the API;
+Meta owner, public visibility, AI labels and full captions were observed in the browser.
+
+
+**The Yes Machine** remains public on [YouTube](https://www.youtube.com/shorts/Dc4aBDQfQ9w),
 [Instagram](https://www.instagram.com/p/Dfch-tjKvp7/) and
-[Facebook](https://www.facebook.com/reel/1759901191770877). YouTube processing and exact subtitle
-readback were verified through its API; Meta publication was verified in the signed-in browser.
-The daily agent prepares and reviews one new original episode for all three platforms, using
-[the operating brief](docs/SOCIAL_OPERATOR.md). The local computer and account sessions must
-remain available; active scheduling does not guarantee successful daily publication.
+[Facebook](https://www.facebook.com/reel/1759901191770877).
 The first published pilot remains intact. Held jobs retain their
 original payloads, dates and receipts but cannot be selected by the publishing worker; resuming
 them is an explicit operation. The original delivery validation passed 495 Python tests,

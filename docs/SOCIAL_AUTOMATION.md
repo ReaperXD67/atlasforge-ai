@@ -41,8 +41,9 @@ campaign is `output/social/biznex-next-five.public.campaign.json`. Re-enqueueing
 release the hold. Meta follow-ups are not included in this queue. Technical delivery passes
 did not establish creative acceptance; [the cinematic acceptance brief](CINEMATIC_ACCEPTANCE.md)
 sets the replacement review criteria.
-No audience improvement is claimed. No audience measurements were
-available; the analytics report correctly returns `no_observations`.
+The initial analytics report returned `no_observations`. Real YouTube and Instagram
+observations were retained locally on 9 November; unequal post ages and missing retention
+prevent a controlled performance comparison. No causal improvement is claimed.
 
 The owner subsequently authorized **The Yes Machine**, now public on
 [YouTube](https://www.youtube.com/shorts/Dc4aBDQfQ9w),
@@ -55,11 +56,11 @@ subtitle cues. Instagram and Facebook were confirmed through their signed-in bro
 with public visibility and AI labels; this does not establish Meta API authorization.
 Ignored evidence is retained under `output/social/2026-11-07/`.
 
-The recurring Codex operator is **active at 09:00 IST**, authorized to prepare, review and
-publish one new original episode daily across the three accounts. The five rejected pilot
-follow-ups remain held. This is a local agent schedule, not a cloud worker or proof that every
-future run will succeed. See [the operating brief](SOCIAL_OPERATOR.md) and
-[verified story campaigns](SOCIAL_CAMPAIGNS.md).
+The owner **paused recurring operation on 9 November 2026** and requested work
+only on explicit instruction. The Codex automation is PAUSED, with no new automatic
+production or publishing. The requested Borrowed Countdown release is a single manual
+operation. Existing receipts and the five rejected-pilot holds remain in place.
+See [the operating brief](SOCIAL_OPERATOR.md) and [campaign contracts](SOCIAL_CAMPAIGNS.md).
 
 The system does not yet automatically fetch platform analytics, refresh Meta tokens, host
 media, buy ads, answer comments/DMs, or create account identities. The daily agent can prepare

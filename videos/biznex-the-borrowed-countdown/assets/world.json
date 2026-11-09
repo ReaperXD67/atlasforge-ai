@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "world_id": "borrowed-countdown-original-01",
+  "runtime": {
+    "three_version": "0.187.0",
+    "license": "MIT",
+    "commit": "7e89746a687bb88271253698fa108b1dd59825d0"
+  },
+  "palette": {
+    "background": "#e5ddcd",
+    "floor": "#e9dfca",
+    "ink": "#153d37",
+    "coral": "#df533a",
+    "steel": "#77948b",
+    "brass": "#bd9150",
+    "token": "#4f8c83",
+    "cream": "#fff5dd"
+  },
+  "geometry": {
+    "digit_count": 2,
+    "segments_per_digit": 7,
+    "segment_depth": 0.095,
+    "tower_width": 3.25,
+    "tower_height": 3.1,
+    "token_radius": 0.29
+  },
+  "lighting": {
+    "exposure": 1.0,
+    "shadow_map_size": 1024
+  },
+  "authorship": "Original procedural objects and fictional urgency metaphor; no real product, offer or deadline."
+}

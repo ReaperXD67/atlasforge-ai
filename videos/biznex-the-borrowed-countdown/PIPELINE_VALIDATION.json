@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "project_id": "biznex-the-borrowed-countdown",
+  "run_id": "372af774752d4bc2891f0e64fe85a91d",
+  "status": "stages_verified",
+  "started_at": "2026-11-09T07:31:02.411051+00:00",
+  "finished_at": "2026-11-09T07:37:35.936245+00:00",
+  "elapsed_seconds": 393.526,
+  "stages_passed": [
+    "voice",
+    "story",
+    "sound",
+    "compile",
+    "mix",
+    "build",
+    "render",
+    "audio-qa",
+    "frame-qa"
+  ],
+  "prepared_voice_reverified": true,
+  "fresh_voice_generation_included_in_run_time": false,
+  "video_sha256": "02d020817b8a86c4a1e686c4e8b9e112eacdab7d1af7c3dc4afa6b45a46bf857",
+  "render_seconds": 356.027,
+  "audio_qa_seconds": 23.068,
+  "frame_qa_seconds": 4.055,
+  "audience_performance_predicted": false
+}

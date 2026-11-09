@@ -69,3 +69,8 @@ videos/biznex-the-yes-machine/qa/frames/*.png
 videos/biznex-the-yes-machine/qa/frames/*.jpg
 videos/biznex-the-yes-machine/qa/audio/audition-report.json
 videos/biznex-the-yes-machine/qa/audio/*/*.json
+videos/biznex-the-borrowed-countdown/qa/frames/*.png
+videos/biznex-the-borrowed-countdown/qa/frames/*.jpg
+videos/biznex-the-borrowed-countdown/qa/audio/audition-report.json
+videos/biznex-the-borrowed-countdown/qa/audio/*/*.json
+videos/biznex-the-borrowed-countdown/check-preview.json

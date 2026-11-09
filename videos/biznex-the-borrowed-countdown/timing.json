@@ -1,0 +1,442 @@
+{
+  "schema_version": 1,
+  "voice_variant": "expressive",
+  "fps": 30,
+  "duration_seconds": 23.9,
+  "narration_duration_seconds": 23.9,
+  "beats": [
+    {
+      "index": 0,
+      "id": "beat-01",
+      "text": "The timer was loud. My reason was missing.",
+      "start": 0.0,
+      "end": 3.41,
+      "delivery": "Speak intimately to a friend, troubled by the realization but not melodramatic. Let the contrast between loud and missing land clearly.",
+      "pause_after_ms": 250
+    },
+    {
+      "index": 1,
+      "id": "beat-02",
+      "text": "Ten seconds left, and suddenly I wanted something I hadn't wanted a minute ago.",
+      "start": 3.41,
+      "end": 8.47,
+      "delivery": "Speak with growing urgency and rueful surprise at yourself, as one connected thought. Keep every word clear as the pressure builds.",
+      "pause_after_ms": 180
+    },
+    {
+      "index": 2,
+      "id": "beat-03",
+      "text": "My hand moved. Then I stopped.",
+      "start": 8.47,
+      "end": 12.73,
+      "delivery": "Speak slowly and clearly, with quiet determination, as two complete thoughts. Give My hand a clear beginning, then let stopped settle. Do not whisper.",
+      "pause_after_ms": 700
+    },
+    {
+      "index": 3,
+      "id": "beat-04",
+      "text": "Was I choosing the thing... or escaping the countdown?",
+      "start": 12.73,
+      "end": 16.78,
+      "delivery": "Ask yourself with genuine uncertainty and curiosity, intimate and thoughtful. Gently stress the contrast between choosing and escaping.",
+      "pause_after_ms": 450
+    },
+    {
+      "index": 4,
+      "id": "beat-05",
+      "text": "I let the numbers keep falling. The clock could finish its countdown. I still needed a reason.",
+      "start": 16.78,
+      "end": 23.9,
+      "delivery": "Speak with grounded relief and quiet confidence, warm rather than triumphant. Leave room for the final realization: I still needed a reason.",
+      "pause_after_ms": 0
+    }
+  ],
+  "words": [
+    {
+      "text": "The",
+      "start": 0.0,
+      "end": 0.26
+    },
+    {
+      "text": "timer",
+      "start": 0.26,
+      "end": 0.58
+    },
+    {
+      "text": "was",
+      "start": 0.58,
+      "end": 0.84
+    },
+    {
+      "text": "loud.",
+      "start": 0.84,
+      "end": 1.3
+    },
+    {
+      "text": "My",
+      "start": 1.8,
+      "end": 1.96
+    },
+    {
+      "text": "reason",
+      "start": 1.96,
+      "end": 2.3
+    },
+    {
+      "text": "was",
+      "start": 2.3,
+      "end": 2.58
+    },
+    {
+      "text": "missing.",
+      "start": 2.58,
+      "end": 2.9
+    },
+    {
+      "text": "Ten",
+      "start": 3.41,
+      "end": 3.97
+    },
+    {
+      "text": "seconds",
+      "start": 3.97,
+      "end": 4.39
+    },
+    {
+      "text": "left,",
+      "start": 4.39,
+      "end": 4.73
+    },
+    {
+      "text": "and",
+      "start": 4.73,
+      "end": 5.23
+    },
+    {
+      "text": "suddenly",
+      "start": 5.23,
+      "end": 5.57
+    },
+    {
+      "text": "I",
+      "start": 5.57,
+      "end": 5.77
+    },
+    {
+      "text": "wanted",
+      "start": 5.77,
+      "end": 5.97
+    },
+    {
+      "text": "something",
+      "start": 5.97,
+      "end": 6.33
+    },
+    {
+      "text": "I",
+      "start": 6.33,
+      "end": 6.57
+    },
+    {
+      "text": "hadn't",
+      "start": 6.57,
+      "end": 6.89
+    },
+    {
+      "text": "wanted",
+      "start": 6.89,
+      "end": 7.13
+    },
+    {
+      "text": "a",
+      "start": 7.13,
+      "end": 7.31
+    },
+    {
+      "text": "minute",
+      "start": 7.31,
+      "end": 7.51
+    },
+    {
+      "text": "ago.",
+      "start": 7.51,
+      "end": 7.87
+    },
+    {
+      "text": "My",
+      "start": 8.47,
+      "end": 8.69
+    },
+    {
+      "text": "hand",
+      "start": 8.69,
+      "end": 9.07
+    },
+    {
+      "text": "moved.",
+      "start": 9.07,
+      "end": 9.69
+    },
+    {
+      "text": "Then",
+      "start": 10.35,
+      "end": 10.77
+    },
+    {
+      "text": "I",
+      "start": 10.77,
+      "end": 11.21
+    },
+    {
+      "text": "stopped.",
+      "start": 11.21,
+      "end": 11.67
+    },
+    {
+      "text": "Was",
+      "start": 12.73,
+      "end": 12.87
+    },
+    {
+      "text": "I",
+      "start": 12.87,
+      "end": 13.05
+    },
+    {
+      "text": "choosing",
+      "start": 13.05,
+      "end": 13.39
+    },
+    {
+      "text": "the",
+      "start": 13.39,
+      "end": 13.69
+    },
+    {
+      "text": "thing...",
+      "start": 13.69,
+      "end": 13.97
+    },
+    {
+      "text": "or",
+      "start": 13.97,
+      "end": 14.77
+    },
+    {
+      "text": "escaping",
+      "start": 14.77,
+      "end": 15.35
+    },
+    {
+      "text": "the",
+      "start": 15.35,
+      "end": 15.65
+    },
+    {
+      "text": "countdown?",
+      "start": 15.65,
+      "end": 15.97
+    },
+    {
+      "text": "I",
+      "start": 16.78,
+      "end": 16.94
+    },
+    {
+      "text": "let",
+      "start": 16.94,
+      "end": 17.14
+    },
+    {
+      "text": "the",
+      "start": 17.14,
+      "end": 17.36
+    },
+    {
+      "text": "numbers",
+      "start": 17.36,
+      "end": 17.72
+    },
+    {
+      "text": "keep",
+      "start": 17.72,
+      "end": 18.04
+    },
+    {
+      "text": "falling.",
+      "start": 18.04,
+      "end": 18.56
+    },
+    {
+      "text": "The",
+      "start": 19.28,
+      "end": 19.4
+    },
+    {
+      "text": "clock",
+      "start": 19.4,
+      "end": 19.76
+    },
+    {
+      "text": "could",
+      "start": 19.76,
+      "end": 20.12
+    },
+    {
+      "text": "finish",
+      "start": 20.12,
+      "end": 20.5
+    },
+    {
+      "text": "its",
+      "start": 20.5,
+      "end": 20.74
+    },
+    {
+      "text": "countdown.",
+      "start": 20.74,
+      "end": 21.18
+    },
+    {
+      "text": "I",
+      "start": 22.14,
+      "end": 22.38
+    },
+    {
+      "text": "still",
+      "start": 22.38,
+      "end": 22.8
+    },
+    {
+      "text": "needed",
+      "start": 22.8,
+      "end": 23.18
+    },
+    {
+      "text": "a",
+      "start": 23.18,
+      "end": 23.4
+    },
+    {
+      "text": "reason.",
+      "start": 23.4,
+      "end": 23.62
+    }
+  ],
+  "captions": [
+    {
+      "index": 1,
+      "start": 0.0,
+      "end": 1.3,
+      "duration": 1.3,
+      "text": "The timer was loud."
+    },
+    {
+      "index": 2,
+      "start": 1.8,
+      "end": 2.9,
+      "duration": 1.1,
+      "text": "My reason was missing."
+    },
+    {
+      "index": 3,
+      "start": 3.41,
+      "end": 5.23,
+      "duration": 1.82,
+      "text": "Ten seconds left, and"
+    },
+    {
+      "index": 4,
+      "start": 5.23,
+      "end": 6.33,
+      "duration": 1.1,
+      "text": "suddenly I wanted something"
+    },
+    {
+      "index": 5,
+      "start": 6.33,
+      "end": 7.31,
+      "duration": 0.98,
+      "text": "I hadn't wanted a"
+    },
+    {
+      "index": 6,
+      "start": 7.31,
+      "end": 7.87,
+      "duration": 0.56,
+      "text": "minute ago."
+    },
+    {
+      "index": 7,
+      "start": 8.47,
+      "end": 9.69,
+      "duration": 1.22,
+      "text": "My hand moved."
+    },
+    {
+      "index": 8,
+      "start": 10.35,
+      "end": 11.67,
+      "duration": 1.32,
+      "text": "Then I stopped."
+    },
+    {
+      "index": 9,
+      "start": 12.73,
+      "end": 13.69,
+      "duration": 0.96,
+      "text": "Was I choosing the"
+    },
+    {
+      "index": 10,
+      "start": 13.69,
+      "end": 15.65,
+      "duration": 1.96,
+      "text": "thing... or escaping the"
+    },
+    {
+      "index": 11,
+      "start": 15.65,
+      "end": 17.36,
+      "duration": 1.71,
+      "text": "countdown? I let the"
+    },
+    {
+      "index": 12,
+      "start": 17.36,
+      "end": 18.56,
+      "duration": 1.2,
+      "text": "numbers keep falling."
+    },
+    {
+      "index": 13,
+      "start": 19.28,
+      "end": 20.5,
+      "duration": 1.22,
+      "text": "The clock could finish"
+    },
+    {
+      "index": 14,
+      "start": 20.5,
+      "end": 21.18,
+      "duration": 0.68,
+      "text": "its countdown."
+    },
+    {
+      "index": 15,
+      "start": 22.14,
+      "end": 23.4,
+      "duration": 1.26,
+      "text": "I still needed a"
+    },
+    {
+      "index": 16,
+      "start": 23.4,
+      "end": 23.62,
+      "duration": 0.22,
+      "text": "reason."
+    }
+  ],
+  "timing_basis": "Independent per-thought ASR bounded to measured speech samples",
+  "anchors_constrained_to_speech_beats": 0
+}

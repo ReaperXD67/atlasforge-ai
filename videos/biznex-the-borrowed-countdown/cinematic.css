@@ -1,0 +1,123 @@
+@font-face {
+  font-family: Montserrat;
+  src: url("assets/fonts/Montserrat.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: block;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  width: 1080px;
+  height: 1920px;
+  overflow: hidden;
+  background: #e5ddcd;
+  color: #153d37;
+  font-family: Montserrat, Arial, sans-serif;
+}
+#root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+#machine-canvas {
+  position: absolute;
+  inset: 0;
+  width: 1080px;
+  height: 1920px;
+  display: block;
+}
+.top-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    #e5ddcd88,
+    transparent 25%,
+    transparent 55%,
+    #e5ddcd66 78%
+  );
+}
+.disclosure {
+  position: absolute;
+  left: 82px;
+  top: 178px;
+  width: 800px;
+  font-size: 29px;
+  font-weight: 600;
+  color: #36544b;
+  background: #e5ddcdf2;
+  padding: 7px 10px;
+}
+#root[data-mode="resolve"] .top-scrim {
+  background: linear-gradient(
+    180deg,
+    #e5ddcd 0%,
+    #e5ddcd 27%,
+    #e5ddcd00 42%,
+    transparent 57%,
+    #e5ddcd88 78%
+  );
+}
+.heading {
+  position: absolute;
+  left: 82px;
+  top: 265px;
+  width: 790px;
+  font-size: 104px;
+  line-height: 1.04;
+  font-weight: 800;
+  letter-spacing: -4px;
+  color: #153d37;
+}
+.heading:empty {
+  display: none;
+}
+.caption {
+  position: absolute;
+  left: 80px;
+  top: 1180px;
+  width: 810px;
+  text-align: center;
+  font-size: 57px;
+  line-height: 1.18;
+  letter-spacing: -1.6px;
+  font-weight: 800;
+  visibility: hidden;
+}
+.caption-inner {
+  background: #fff7e5e8;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  border-radius: 4px;
+  padding: 7px 14px;
+}
+.caption .active {
+  color: #ad3928;
+}
+.end-context {
+  position: absolute;
+  left: 82px;
+  top: 1040px;
+  width: 790px;
+  font-size: 29px;
+  line-height: 1.28;
+  color: #36544b;
+  background: #e5ddcdf2;
+  padding: 8px 10px;
+}
+.end-context b {
+  display: block;
+  font-size: 34px;
+  color: #153d37;
+  margin-bottom: 9px;
+}
+.end-context small {
+  display: block;
+  font-size: 28px;
+  margin-top: 9px;
+}

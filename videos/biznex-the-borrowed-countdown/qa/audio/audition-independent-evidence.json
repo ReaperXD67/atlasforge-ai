@@ -1,0 +1,364 @@
+{
+  "asr_model": "cached faster-whisper small.en, CPU int8",
+  "comparison_normalization": "Case/punctuation, signup/sign-up/sign up spelling, and standalone unsigned integer numerals 0\u201320 versus their exact cardinal words only; no homophones",
+  "emotion_fidelity_verified": false,
+  "limitations": [
+    "ASR agreement is not a subjective listening review.",
+    "Different waveforms do not establish better emotion or audience retention."
+  ],
+  "schema_version": 1,
+  "source_report": "videos/biznex-the-borrowed-countdown/qa/audio/audition-report.json",
+  "speaker_similarity_verified": false,
+  "takes": [
+    {
+      "all_samples_finite": true,
+      "asr_transcript": "The timer was loud. My reason was missing.",
+      "asr_words": [
+        {
+          "end": 0.26,
+          "start": 0.0,
+          "text": "The"
+        },
+        {
+          "end": 0.58,
+          "start": 0.26,
+          "text": "timer"
+        },
+        {
+          "end": 0.84,
+          "start": 0.58,
+          "text": "was"
+        },
+        {
+          "end": 1.3,
+          "start": 0.84,
+          "text": "loud."
+        },
+        {
+          "end": 1.96,
+          "start": 1.84,
+          "text": "My"
+        },
+        {
+          "end": 2.32,
+          "start": 1.96,
+          "text": "reason"
+        },
+        {
+          "end": 2.58,
+          "start": 2.32,
+          "text": "was"
+        },
+        {
+          "end": 2.94,
+          "start": 2.58,
+          "text": "missing."
+        }
+      ],
+      "clipped_sample_fraction": 0.0,
+      "duration_seconds": 3.16,
+      "expected_text": "The timer was loud. My reason was missing.",
+      "id": "beat-00",
+      "mode": "final_mix",
+      "normalized_asr_matches": true,
+      "peak_abs": 0.656341552734375,
+      "rms": 0.11779987066984177,
+      "sample_rate": 48000,
+      "synthesis_text": "The timer was loud. My reason was missing."
+    },
+    {
+      "all_samples_finite": true,
+      "asr_transcript": "Ten seconds left and suddenly I wanted something I hadn't wanted a minute ago",
+      "asr_words": [
+        {
+          "end": 0.56,
+          "start": 0.0,
+          "text": "Ten"
+        },
+        {
+          "end": 0.96,
+          "start": 0.56,
+          "text": "seconds"
+        },
+        {
+          "end": 1.32,
+          "start": 0.96,
+          "text": "left"
+        },
+        {
+          "end": 1.82,
+          "start": 1.32,
+          "text": "and"
+        },
+        {
+          "end": 2.16,
+          "start": 1.82,
+          "text": "suddenly"
+        },
+        {
+          "end": 2.36,
+          "start": 2.16,
+          "text": "I"
+        },
+        {
+          "end": 2.56,
+          "start": 2.36,
+          "text": "wanted"
+        },
+        {
+          "end": 2.92,
+          "start": 2.56,
+          "text": "something"
+        },
+        {
+          "end": 3.16,
+          "start": 2.92,
+          "text": "I"
+        },
+        {
+          "end": 3.48,
+          "start": 3.16,
+          "text": "hadn't"
+        },
+        {
+          "end": 3.7,
+          "start": 3.48,
+          "text": "wanted"
+        },
+        {
+          "end": 3.9,
+          "start": 3.7,
+          "text": "a"
+        },
+        {
+          "end": 4.1,
+          "start": 3.9,
+          "text": "minute"
+        },
+        {
+          "end": 4.44,
+          "start": 4.1,
+          "text": "ago"
+        }
+      ],
+      "clipped_sample_fraction": 0.0,
+      "duration_seconds": 4.88,
+      "expected_text": "Ten seconds left, and suddenly I wanted something I hadn't wanted a minute ago.",
+      "id": "beat-01",
+      "mode": "final_mix",
+      "normalized_asr_matches": true,
+      "peak_abs": 0.670623779296875,
+      "rms": 0.11542181670665741,
+      "sample_rate": 48000,
+      "synthesis_text": "Ten seconds left, and suddenly I wanted something I hadn't wanted a minute ago."
+    },
+    {
+      "all_samples_finite": true,
+      "asr_transcript": "My hand moved, then I stopped.",
+      "asr_words": [
+        {
+          "end": 0.22,
+          "start": 0.0,
+          "text": "My"
+        },
+        {
+          "end": 0.6,
+          "start": 0.22,
+          "text": "hand"
+        },
+        {
+          "end": 1.16,
+          "start": 0.6,
+          "text": "moved,"
+        },
+        {
+          "end": 2.3,
+          "start": 1.9,
+          "text": "then"
+        },
+        {
+          "end": 2.76,
+          "start": 2.3,
+          "text": "I"
+        },
+        {
+          "end": 3.22,
+          "start": 2.76,
+          "text": "stopped."
+        }
+      ],
+      "clipped_sample_fraction": 0.0,
+      "duration_seconds": 3.56,
+      "expected_text": "My hand moved. Then I stopped.",
+      "id": "beat-02",
+      "mode": "final_mix",
+      "normalized_asr_matches": true,
+      "peak_abs": 0.679962158203125,
+      "rms": 0.09239208698272705,
+      "sample_rate": 48000,
+      "synthesis_text": "My hand moved. Then I stopped."
+    },
+    {
+      "all_samples_finite": true,
+      "asr_transcript": "Was I choosing the thing or escaping the countdown?",
+      "asr_words": [
+        {
+          "end": 0.14,
+          "start": 0.0,
+          "text": "Was"
+        },
+        {
+          "end": 0.32,
+          "start": 0.14,
+          "text": "I"
+        },
+        {
+          "end": 0.66,
+          "start": 0.32,
+          "text": "choosing"
+        },
+        {
+          "end": 0.94,
+          "start": 0.66,
+          "text": "the"
+        },
+        {
+          "end": 1.22,
+          "start": 0.94,
+          "text": "thing"
+        },
+        {
+          "end": 2.04,
+          "start": 1.22,
+          "text": "or"
+        },
+        {
+          "end": 2.62,
+          "start": 2.04,
+          "text": "escaping"
+        },
+        {
+          "end": 2.9,
+          "start": 2.62,
+          "text": "the"
+        },
+        {
+          "end": 3.24,
+          "start": 2.9,
+          "text": "countdown?"
+        }
+      ],
+      "clipped_sample_fraction": 0.0,
+      "duration_seconds": 3.6,
+      "expected_text": "Was I choosing the thing... or escaping the countdown?",
+      "id": "beat-03",
+      "mode": "final_mix",
+      "normalized_asr_matches": true,
+      "peak_abs": 0.6563720703125,
+      "rms": 0.10935968160629272,
+      "sample_rate": 48000,
+      "synthesis_text": "Was I choosing the thing... or escaping the countdown?"
+    },
+    {
+      "all_samples_finite": true,
+      "asr_transcript": "I let the numbers keep falling. The clock could finish its countdown. I still needed a reason.",
+      "asr_words": [
+        {
+          "end": 0.18,
+          "start": 0.0,
+          "text": "I"
+        },
+        {
+          "end": 0.36,
+          "start": 0.18,
+          "text": "let"
+        },
+        {
+          "end": 0.58,
+          "start": 0.36,
+          "text": "the"
+        },
+        {
+          "end": 0.94,
+          "start": 0.58,
+          "text": "numbers"
+        },
+        {
+          "end": 1.26,
+          "start": 0.94,
+          "text": "keep"
+        },
+        {
+          "end": 1.78,
+          "start": 1.26,
+          "text": "falling."
+        },
+        {
+          "end": 2.62,
+          "start": 2.5,
+          "text": "The"
+        },
+        {
+          "end": 3.0,
+          "start": 2.62,
+          "text": "clock"
+        },
+        {
+          "end": 3.34,
+          "start": 3.0,
+          "text": "could"
+        },
+        {
+          "end": 3.72,
+          "start": 3.34,
+          "text": "finish"
+        },
+        {
+          "end": 3.96,
+          "start": 3.72,
+          "text": "its"
+        },
+        {
+          "end": 4.42,
+          "start": 3.96,
+          "text": "countdown."
+        },
+        {
+          "end": 5.6,
+          "start": 5.4,
+          "text": "I"
+        },
+        {
+          "end": 6.0,
+          "start": 5.6,
+          "text": "still"
+        },
+        {
+          "end": 6.4,
+          "start": 6.0,
+          "text": "needed"
+        },
+        {
+          "end": 6.62,
+          "start": 6.4,
+          "text": "a"
+        },
+        {
+          "end": 6.84,
+          "start": 6.62,
+          "text": "reason."
+        }
+      ],
+      "clipped_sample_fraction": 0.0,
+      "duration_seconds": 7.12,
+      "expected_text": "I let the numbers keep falling. The clock could finish its countdown. I still needed a reason.",
+      "id": "beat-04",
+      "mode": "final_mix",
+      "normalized_asr_matches": true,
+      "peak_abs": 0.689483642578125,
+      "rms": 0.09824661165475845,
+      "sample_rate": 48000,
+      "synthesis_text": "I let the numbers keep falling. The clock could finish its countdown. I still needed a reason."
+    }
+  ]
+}

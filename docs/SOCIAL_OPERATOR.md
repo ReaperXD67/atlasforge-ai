@@ -1,10 +1,10 @@
 # Daily BizNex operator
 
-The owner authorized **daily original production and public release across YouTube,
-Instagram and Facebook on 7 November 2026**. The recurring Codex operator is active
-at 09:00 IST. Continue this authorized work without asking for routine permission
-again. The computer, Codex environment and account sessions must be available;
-this schedule is not cloud hosting or a guarantee of successful daily publication.
+**Paused by the owner on 9 November 2026.** Work only when explicitly requested.
+Do not start daily production, posting, analytics checks or background workers.
+The recurring Codex automation is PAUSED. The current request authorizes finishing
+and publishing The Borrowed Countdown once on all three platforms; it does not
+resume future scheduled runs. The operating procedure below is for requested runs.
 
 ## Preserve the right state
 

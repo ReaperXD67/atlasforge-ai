@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "video_sha256": "02d020817b8a86c4a1e686c4e8b9e112eacdab7d1af7c3dc4afa6b45a46bf857",
+  "sampled_visual_review_passed": true,
+  "unique_decoded_frames": 78,
+  "contact_sheets": 10,
+  "shot_midpoints": 13,
+  "cut_boundaries": 12,
+  "blocking_findings": [],
+  "minor_findings": [],
+  "review_scope": "All ten actual MP4 decoded contact sheets inspected, covering all thirteen shots, twelve cut boundaries, action samples and both bookends. Captions and disclosure are legible; the token halts, leaves the track and resolves independently while digits continue. No blocking sampled finding.",
+  "frame_review_sha256": "ab4725529da9a4424d4375a69414f4015d35504cf4230024e915977b66ffaa18",
+  "full_speed_playback_reviewed": false,
+  "subjective_listening_verified": false,
+  "human_indistinguishability_verified": false,
+  "published_to_socials": false
+}

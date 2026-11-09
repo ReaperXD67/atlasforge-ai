@@ -1,6 +1,11 @@
 # BizNex daily editorial plan
 
-Prepared **7 November 2026** for the authorized daily operator. Target: **one new
+**Recurring production paused by the owner on 9 November 2026.** These dates are
+archived planning slots, not an active schedule. Work only when explicitly requested.
+The 8 November slot was missed; no catch-up was posted. The Borrowed Countdown was
+prepared for the explicitly requested 9 November release.
+
+Originally prepared **7 November 2026** for the daily operator. Target: **one new
 original episode per Asia/Kolkata calendar day**, distributed once to YouTube
 Shorts, Instagram Reels and the Facebook Page. Three destinations are one
 episode, not three separate daily productions. Target release window is **09:00

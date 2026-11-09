@@ -19,6 +19,20 @@ The verified 26.3-second, 789-frame production run took **365.424 seconds** on t
 
 ## Recipe and stage contract
 
+The [Borrowed Countdown recipe](../videos/biznex-the-borrowed-countdown/PIPELINE.json)
+adds a separate kinetic-desk scene family and speech-anchored original sound. On
+9 November it completed nine stages through encoded-audio and decoded-frame QA in
+393.526 seconds, using prepared narration: 23.9 seconds, 717 frames, thirteen shots.
+All five encoded thoughts passed ASR; 78 unique decoded frames were sampled and
+inspected. Packaging follows editorial review as a separate command:
+
+```powershell
+.venv/Scripts/python.exe scripts/package_story_delivery.py videos/biznex-the-borrowed-countdown
+```
+
+This is an authored recipe, not a general daily scene generator. Automatic BizNex
+operation was paused by the owner on 9 November; run production only on request.
+
 `PIPELINE.json` lives inside `videos/<project-id>/`. Its `project_id` must match that directory. `brief` defaults to `BRIEF.md` and remains immutable throughout the run. The following is a structural example, not a complete delivery recipe:
 
 ```json

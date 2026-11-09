@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "reference_audio": "assets/audio/voice-reference.wav",
+  "reference_sha256": "45b687b4567ca160de01382212e4bd0860c75b163175650b1ee5b65add438da6",
+  "reference_provenance": "Original authorized Kokoro af_heart synthetic narrator, retained from the verified previous local reference. No human voice impersonation.",
+  "seed": 1986,
+  "transcript": "The timer was loud. My reason was missing. Ten seconds left, and suddenly I wanted something I hadn't wanted a minute ago. My hand moved. Then I stopped. Was I choosing the thing... or escaping the countdown? I let the numbers keep falling. The clock could finish its countdown. I still needed a reason.",
+  "beats": [
+    {
+      "text": "The timer was loud. My reason was missing.",
+      "delivery": "Speak intimately to a friend, troubled by the realization but not melodramatic. Let the contrast between loud and missing land clearly.",
+      "pause_after_ms": 250
+    },
+    {
+      "text": "Ten seconds left, and suddenly I wanted something I hadn't wanted a minute ago.",
+      "delivery": "Speak with growing urgency and rueful surprise at yourself, as one connected thought. Keep every word clear as the pressure builds.",
+      "pause_after_ms": 180
+    },
+    {
+      "text": "My hand moved. Then I stopped.",
+      "pause_after_ms": 700,
+      "delivery": "Speak slowly and clearly, with quiet determination, as two complete thoughts. Give My hand a clear beginning, then let stopped settle. Do not whisper."
+    },
+    {
+      "text": "Was I choosing the thing... or escaping the countdown?",
+      "delivery": "Ask yourself with genuine uncertainty and curiosity, intimate and thoughtful. Gently stress the contrast between choosing and escaping.",
+      "pause_after_ms": 450
+    },
+    {
+      "text": "I let the numbers keep falling. The clock could finish its countdown. I still needed a reason.",
+      "delivery": "Speak with grounded relief and quiet confidence, warm rather than triumphant. Leave room for the final realization: I still needed a reason.",
+      "pause_after_ms": 0
+    }
+  ]
+}
