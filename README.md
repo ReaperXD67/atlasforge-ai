@@ -212,6 +212,9 @@ fictional character, photographic environments, authored phone interfaces and tw
 performance clips. The optional [CosyVoice3 voice path](docs/EXPRESSIVE_VOICE.md) uses the original
 synthetic `af_heart` reference with per-beat acting instructions; all 14 selected takes passed
 independent transcript checks. A neutral/directed voice audition is included in the delivery.
+The Windows voice setup pins tested binary dependencies, and transcript checks accept
+equivalent small-number spellings such as `ten`/`10` while rejecting changed values.
+Raw recognizer output and the authored caption text are both retained.
 The motion inserts originate at 384 × 672, and emotional fidelity remains a listening judgment.
 This proves a working production path, not audience reach or ElevenLabs quality parity.
 

@@ -40,7 +40,7 @@ lazy-loader==0.6
 librosa==0.10.2
 lightning==2.2.4
 lightning-utilities==0.15.3
-llvmlite==0.50.0
+llvmlite==0.44.0
 loguru==0.7.3
 markdown-it-py==4.2.0
 markupsafe==3.0.4
@@ -53,7 +53,7 @@ msgpack==1.2.4
 multidict==7.2.1
 narwhals==2.28.0
 networkx==3.1
-numba==0.68.1
+numba==0.61.2
 numpy==1.26.4
 omegaconf==2.3.0
 onnxruntime==1.18.0
@@ -80,7 +80,7 @@ rich==13.7.1
 ruamel-yaml==0.18.17
 ruamel-yaml-clib==0.2.15
 safetensors==0.8.0
-scikit-learn==1.9.1
+scikit-learn==1.7.2
 scipy==1.17.1
 setuptools==80.9.0
 soundfile==0.12.1

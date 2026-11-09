@@ -33,6 +33,7 @@
 /src/daily_video_factory/voice_lab.py -text
 /scripts/prepare_yes_machine.py -text
 /scripts/prepare_story_voice.py -text
+/scripts/inspect_voice_audition.py -text
 /scripts/voice_performance_lab.py -text
 /scripts/run_story_pipeline.py -text
 /scripts/render_story_project.py -text
@@ -48,3 +49,14 @@
 /videos/biznex-the-yes-machine/index.html linguist-generated=true
 /videos/biznex-the-yes-machine/cinematic.css linguist-generated=true
 /videos/biznex-the-yes-machine/cinematic.js linguist-generated=true
+/videos/biznex-the-borrowed-countdown/** -text
+/scripts/prepare_countdown_story.py -text
+/scripts/synthesize_countdown_sound.py -text
+/scripts/build_countdown_short.mjs -text
+/scripts/lib/countdown_story_state.mjs -text
+/scripts/templates/countdown/** -text
+/videos/biznex-the-borrowed-countdown/assets/vendor/** linguist-vendored=true
+/videos/biznex-the-borrowed-countdown/EDIT_PLAN.compiled.* linguist-generated=true
+/videos/biznex-the-borrowed-countdown/index.html linguist-generated=true
+/videos/biznex-the-borrowed-countdown/cinematic.css linguist-generated=true
+/videos/biznex-the-borrowed-countdown/cinematic.js linguist-generated=true

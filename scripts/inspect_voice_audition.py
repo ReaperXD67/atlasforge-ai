@@ -5,18 +5,19 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import re
+import sys
 from pathlib import Path
 
 import numpy as np
 import soundfile as sf
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+
+from daily_video_factory.voice_lab import ASR_NORMALIZATION, asr_words  # noqa: E402
+
 
 def normalized_words(text: str) -> list[str]:
-    text = text.lower().replace("’", "'")
-    # Same spoken compound; retain other substitutions as visible mismatches.
-    text = re.sub(r"\bsign(?:-| )up\b", "signup", text)
-    return re.findall(r"[a-z0-9]+(?:'[a-z]+)?", text)
+    return asr_words(text)
 
 
 def main() -> None:
@@ -32,7 +33,7 @@ def main() -> None:
     evidence = {
         "schema_version": 1, "source_report": str(args.report.resolve()),
         "asr_model": "cached faster-whisper small.en, CPU int8",
-        "comparison_normalization": "Case/punctuation and signup/sign-up/sign up spelling only",
+        "comparison_normalization": ASR_NORMALIZATION,
         "emotion_fidelity_verified": False, "speaker_similarity_verified": False,
         "limitations": ["ASR agreement is not a subjective listening review.",
                         "Different waveforms do not establish better emotion or audience retention."],

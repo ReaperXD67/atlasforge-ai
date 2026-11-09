@@ -73,6 +73,25 @@ parts and installs a file only after its publisher hash matches. It verifies all
 16 pinned assets. It does not use a paid inference endpoint. The tested local
 environment contains 106 compatible packages according to `uv pip check`.
 
+On 9 November 2026, normal imports in this isolated Windows environment failed
+because Application Control blocked extensions in scikit-learn 1.9.1 and Numba
+0.68.1. The runtime now pins official PyPI wheels for
+[scikit-learn 1.7.2](https://pypi.org/project/scikit-learn/1.7.2/) and
+[Numba 0.61.2 with llvmlite 0.44.0](https://numba.readthedocs.io/en/0.61.2/user/installing.html#version-support-information).
+The documented Numba combination supports this Python 3.11 / NumPy 1.26 runtime.
+These are ordinary dependency replacements in the isolated environment; Windows
+security settings, model weights, the provider implementation and completed
+film evidence were not changed. The current requirements and freeze record the
+replacement versions; earlier film receipts retain their historical runtime.
+
+The audition inspector and voice-delivery verifier share one comparison rule:
+case/punctuation, the existing signup spelling aliases, and standalone unsigned
+numerals 0–20 versus the exact cardinal words (for example, `10` / `ten`). Raw
+recognized text and authored captions remain separate evidence. Different values,
+homophones, signed/decimal/percentage forms and missing words are not accepted by
+this number alias. A real `My hand` → `I hand` recognition mismatch still blocks
+export and requires a repaired take; changing expected captions is not a repair.
+
 ## Audition and integration
 
 The [three-line audition request](https://github.com/ReaperXD67/atlasforge-ai/blob/main/config/expressive-voice/af-heart-audition.json)

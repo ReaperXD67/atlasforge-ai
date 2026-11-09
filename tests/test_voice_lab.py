@@ -5,7 +5,32 @@ import copy
 import pytest
 
 from daily_video_factory.expressive_voice import sha256_file
-from daily_video_factory.voice_lab import build_summary, compile_experiment
+from daily_video_factory.voice_lab import asr_words, build_summary, compile_experiment
+
+
+@pytest.mark.parametrize(("written", "recognized"), [
+    ("Ten seconds left.", "10 seconds left."),
+    ("I counted zero, one, and twenty.", "I counted 0, 1, and 20."),
+    ("Ten.", "10."),
+])
+def test_asr_accepts_exact_cardinal_notation(written, recognized):
+    assert asr_words(written) == asr_words(recognized)
+
+
+@pytest.mark.parametrize("recognized", [
+    "11 seconds", "-10 seconds", "−10 seconds", "+10 seconds", "10.0 seconds", "10% seconds",
+    "010 seconds", "tenth seconds", "ten second",
+])
+def test_asr_rejects_changed_value_or_unapproved_number_form(recognized):
+    assert asr_words("ten seconds") != asr_words(recognized)
+
+
+@pytest.mark.parametrize(("written", "recognized"), [
+    ("four", "for"), ("two", "to"), ("one", "won"),
+    ("My hand moved.", "I hand moved."), ("I asked.", "I ask."),
+])
+def test_asr_does_not_accept_homophones_or_missing_words(written, recognized):
+    assert asr_words(written) != asr_words(recognized)
 
 
 @pytest.fixture
@@ -89,6 +114,23 @@ def test_records_asr_failure_and_measured_speed_without_quality_recommendation(p
     assert result["recommended_variant"] is None
     assert result["emotion_fidelity_verified"] is False
     assert result["speaker_similarity_verified"] is False
+
+
+def test_summary_rederives_cardinal_match_without_changing_recorded_text(plan, tmp_path):
+    plan["transcript"] = "I waited ten seconds."
+    for variant in plan["variants"]:
+        variant["beats"] = [{"text": plan["transcript"], "preset": "neutral"}]
+    report, evidence = fixture_evidence(plan, tmp_path)
+    for take in evidence["takes"]:
+        take["asr_transcript"] = "I waited 10 seconds."
+        take["normalized_asr_matches"] = True
+    result = build_summary(plan, report, evidence)
+    assert all(item["asr_matches"] == 1 for item in result["variants"])
+    assert evidence["takes"][0]["expected_text"] == "I waited ten seconds."
+    assert evidence["takes"][0]["asr_transcript"] == "I waited 10 seconds."
+    evidence["takes"][0]["asr_transcript"] = "I waited 11 seconds."
+    with pytest.raises(ValueError, match="contradicts"):
+        build_summary(plan, report, evidence)
 
 
 @pytest.mark.parametrize("fault", ["missing", "seed", "wording", "tamper", "false-match"])

@@ -21,6 +21,15 @@ PRESETS = {
 }
 # Supported by the pinned CosyVoice3 tokenizer. Existence is not proof of fidelity.
 NATIVE_CUES = ("[breath]", "[quick_breath]", "[sigh]", "<strong>", "</strong>")
+CARDINAL_WORDS = (
+    "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+    "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",
+    "seventeen", "eighteen", "nineteen", "twenty",
+)
+ASR_NORMALIZATION = (
+    "Case/punctuation, signup/sign-up/sign up spelling, and standalone unsigned "
+    "integer numerals 0–20 versus their exact cardinal words only; no homophones"
+)
 
 
 def words(text: str) -> list[str]:
@@ -28,7 +37,12 @@ def words(text: str) -> list[str]:
 
 
 def asr_words(text: str) -> list[str]:
-    # Same normalization as independent audition ASR; other substitutions remain failures.
+    # Normalize transcription notation, never a different value or a homophone.
+    # Exclude signed numbers, decimals, percentages, ordinals and zero padding.
+    text = re.sub(
+        r"(?<![\w.+\-−])(?:20|1[0-9]|[0-9])(?![\w%]|\.\d)",
+        lambda match: CARDINAL_WORDS[int(match[0])], text,
+    )
     text = re.sub(r"\bsign(?:-| )up\b", "signup", text.lower())
     return words(text)
 
