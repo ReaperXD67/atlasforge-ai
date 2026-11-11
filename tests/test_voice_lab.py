@@ -5,7 +5,12 @@ import copy
 import pytest
 
 from daily_video_factory.expressive_voice import sha256_file
-from daily_video_factory.voice_lab import asr_words, build_summary, compile_experiment
+from daily_video_factory.voice_lab import (
+    asr_words,
+    build_summary,
+    compile_experiment,
+    compile_performance,
+)
 
 
 @pytest.mark.parametrize(("written", "recognized"), [
@@ -61,6 +66,21 @@ def test_grouping_and_native_cues_preserve_exact_caption_words(plan):
     assert request["beats"][-1]["caption_text"] == plan["transcript"]
     assert {beat["seed"] for beat in request["beats"]} == {1986}
     assert request["beats"][0]["instruction"] == request["beats"][-1]["instruction"]
+
+
+def test_targeted_production_seed_keeps_other_thoughts_and_controlled_comparison(plan):
+    production = {**plan, "beats": copy.deepcopy(plan["variants"][0]["beats"])}
+    production["beats"][0]["seed"] = 1987
+    request = compile_performance(production)
+    assert [beat["seed"] for beat in request["beats"]] == [1987, 1986]
+    assert [beat["caption_text"] for beat in request["beats"]] == ["I asked.", "Then I listened."]
+    plan["variants"][0]["beats"][0]["seed"] = 1987
+    with pytest.raises(ValueError, match="same seed"):
+        compile_experiment(plan)
+    for invalid in [True, -1, 2**32, "1987"]:
+        production["beats"][0]["seed"] = invalid
+        with pytest.raises(ValueError, match="per-thought seed"):
+            compile_performance(production)
 
 
 @pytest.mark.parametrize("synthesis", [

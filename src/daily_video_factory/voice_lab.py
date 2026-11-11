@@ -68,10 +68,13 @@ def performance_as_experiment(plan: dict[str, Any]) -> dict[str, Any]:
 
 def compile_performance(plan: dict[str, Any]) -> dict[str, Any]:
     """Compile a new film's thought groups without changing production providers."""
-    return _compile_variants(performance_as_experiment(plan), minimum_variants=1)
+    return _compile_variants(performance_as_experiment(plan), minimum_variants=1,
+                             allow_beat_seed=True)
 
 
-def _compile_variants(plan: dict[str, Any], *, minimum_variants: int) -> dict[str, Any]:
+def _compile_variants(
+    plan: dict[str, Any], *, minimum_variants: int, allow_beat_seed: bool = False,
+) -> dict[str, Any]:
     if plan.get("schema_version") != 1:
         raise ValueError("Unsupported voice experiment version")
     reference = Path(plan.get("reference_audio", ""))
@@ -97,6 +100,12 @@ def _compile_variants(plan: dict[str, Any], *, minimum_variants: int) -> dict[st
         if not items or words(" ".join(item["text"] for item in items)) != words(transcript):
             raise ValueError("Every variant must preserve the complete comparison transcript")
         for index, item in enumerate(items):
+            beat_seed = item.get("seed", seed)
+            if (isinstance(beat_seed, bool) or not isinstance(beat_seed, int)
+                    or not 0 <= beat_seed < 2**32):
+                raise ValueError("Invalid per-thought seed")
+            if not allow_beat_seed and beat_seed != seed:
+                raise ValueError("Controlled variants must use the same seed")
             text = item["text"]
             synthesis = item.get("synthesis_text", text)
             if words(clean_synthesis_text(synthesis)) != words(text):
@@ -119,7 +128,7 @@ def _compile_variants(plan: dict[str, Any], *, minimum_variants: int) -> dict[st
                 instruction += " " + delivery
             beats.append({
                 "id": f"{identifier}-{index:02}", "text": synthesis, "caption_text": text,
-                "instruction": instruction + "<|endofprompt|>", "seed": seed,
+                "instruction": instruction + "<|endofprompt|>", "seed": beat_seed,
                 "pause_after_ms": item.get("pause_after_ms", 0),
             })
     request = {
@@ -135,7 +144,8 @@ def build_summary(
     *, single_performance: bool = False,
 ) -> dict[str, Any]:
     """Record actual runtime/transcript evidence without inventing a quality score."""
-    request = _compile_variants(plan, minimum_variants=1 if single_performance else 2)
+    request = _compile_variants(plan, minimum_variants=1 if single_performance else 2,
+                                allow_beat_seed=single_performance)
     planned = {item["id"]: item for item in request["beats"]}
     generated = {item["id"]: item for item in report["takes"]}
     checked = {item["id"]: item for item in evidence["takes"]}

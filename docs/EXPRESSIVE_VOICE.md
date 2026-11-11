@@ -92,6 +92,13 @@ homophones, signed/decimal/percentage forms and missing words are not accepted b
 this number alias. A real `My hand` → `I hand` recognition mismatch still blocks
 export and requires a repaired take; changing expected captions is not a repair.
 
+A single production `VOICE_PLAN.json` may override `seed` on an individual thought
+when repairing a failed take. The default seed still applies to unchanged thoughts;
+the selected take's actual seed is checked against its plan and bound in the delivery
+evidence. Overrides must be unsigned 32-bit integers, never booleans. Controlled
+multi-variant auditions still require their shared seed, so this repair mechanism
+does not silently alter A/B comparison conditions.
+
 ## Audition and integration
 
 The [three-line audition request](https://github.com/ReaperXD67/atlasforge-ai/blob/main/config/expressive-voice/af-heart-audition.json)

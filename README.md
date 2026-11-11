@@ -228,6 +228,8 @@ independent transcript checks. A neutral/directed voice audition is included in 
 The Windows voice setup pins tested binary dependencies, and transcript checks accept
 equivalent small-number spellings such as `ten`/`10` while rejecting changed values.
 Raw recognizer output and the authored caption text are both retained.
+Targeted production repairs can vary one thought's seed while preserving the other
+takes and their actual seeds. Controlled voice comparisons retain a shared seed.
 The motion inserts originate at 384 × 672, and emotional fidelity remains a listening judgment.
 This proves a working production path, not audience reach or ElevenLabs quality parity.
 
