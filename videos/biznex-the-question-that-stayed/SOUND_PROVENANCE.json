@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "author": "BizNex original deterministic synthesis",
+  "license": "MIT",
+  "uses_external_recording": false,
+  "timing_sha256": "92277f477a4b7782ca66e967e5c54d02c39571e79d924f6cbfa3b2d434134fc6",
+  "duration_seconds": 25.333333333333332,
+  "cues": {
+    "compliment": 4.166666666666667,
+    "apology": 6.9,
+    "send": 9.2,
+    "reset": 13.333333333333334,
+    "fewer": 15.166666666666666,
+    "plain": 16.366666666666667,
+    "question": 18.733333333333334,
+    "clarity": 20.533333333333335,
+    "answer": 23.633333333333333
+  },
+  "events": [
+    {
+      "anchor": "opening",
+      "time_seconds": 0.12,
+      "duration_seconds": 0.32
+    },
+    {
+      "anchor": "compliment",
+      "time_seconds": 4.166666666666667,
+      "duration_seconds": 0.65
+    },
+    {
+      "anchor": "apology",
+      "time_seconds": 6.9,
+      "duration_seconds": 0.65
+    },
+    {
+      "anchor": "send",
+      "time_seconds": 9.2,
+      "duration_seconds": 0.32
+    },
+    {
+      "anchor": "fewer",
+      "time_seconds": 15.166666666666666,
+      "duration_seconds": 0.65
+    },
+    {
+      "anchor": "plain",
+      "time_seconds": 16.366666666666667,
+      "duration_seconds": 0.65
+    },
+    {
+      "anchor": "question",
+      "time_seconds": 18.733333333333334,
+      "duration_seconds": 0.32
+    },
+    {
+      "anchor": "answer",
+      "time_seconds": 23.633333333333333,
+      "duration_seconds": 0.32
+    }
+  ],
+  "hush_seconds": [
+    13.213333333333335,
+    13.733333333333334
+  ],
+  "files": [
+    {
+      "asset": "assets/audio/score.wav",
+      "sha256": "d0a9d0d49a812137cb7d03397750e8daa827b17c89c7556e9c9124fc5401bf52",
+      "peak": 0.06467298847794739
+    },
+    {
+      "asset": "assets/audio/machine.wav",
+      "sha256": "b6a5b374a68e7d94612e8f850425bdc38f4ca31dcbbe356887b004ffe93e8bc4",
+      "peak": 0.2432776161321056
+    }
+  ],
+  "listening_reviewed": false
+}

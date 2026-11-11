@@ -19,6 +19,15 @@ The verified 26.3-second, 789-frame production run took **365.424 seconds** on t
 
 ## Recipe and stage contract
 
+The [Question That Stayed recipe](../videos/biznex-the-question-that-stayed/PIPELINE.json)
+adds a fixed-topology ribbon world: a knot unfolds into connected bridge geometry,
+and the question crosses only after the path is ready. Its 11 November run completed
+nine stages in 462.375 seconds with prepared narration: 760 frames, twelve shots,
+five passing encoded-speech checks and 79 inspected decoded frames. The story,
+anchors and physical actions remain authored inputs. See its [measured delivery](../videos/biznex-the-question-that-stayed/README.md)
+and [focused upstream geometry decision](../videos/biznex-the-question-that-stayed/SPEC.md).
+
+
 The [Borrowed Countdown recipe](../videos/biznex-the-borrowed-countdown/PIPELINE.json)
 adds a separate kinetic-desk scene family and speech-anchored original sound. On
 9 November it completed nine stages through encoded-audio and decoded-frame QA in

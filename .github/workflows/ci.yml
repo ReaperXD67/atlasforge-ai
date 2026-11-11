@@ -32,4 +32,4 @@ jobs:
       - run: pip install -e ".[dev]"
       - run: ruff check src tests
       - run: python -m pytest --cov=daily_video_factory --cov-report=term-missing
-      - run: node --test tests/test_production_compositions.mjs tests/test_story_compositions.mjs tests/cinematic_primitives.test.cjs tests/cinematic_build.test.mjs tests/procedural_story_state.test.mjs tests/countdown_story_state.test.mjs
+      - run: node --test tests/test_production_compositions.mjs tests/test_story_compositions.mjs tests/cinematic_primitives.test.cjs tests/cinematic_build.test.mjs tests/procedural_story_state.test.mjs tests/countdown_story_state.test.mjs tests/question_story_state.test.mjs

@@ -1,0 +1,444 @@
+{
+  "cut_boundaries": 11,
+  "files": {
+    "frame-001.png": "27e6b8de037f2e3e5e0a2adbe9a2858489b59a7f0d974d65c76ceb6e75ccde93",
+    "frame-002.png": "d04940ef8274230f0fa941547a62b08c336913a2b86613f83cd708633938a21f",
+    "frame-003.png": "4b3049c444bcc815096624ee55bac9acf6da075e3baffd114275dc9924cb80ff",
+    "frame-004.png": "75aa9fb1aad166faaff5726fb5355394c2dfe68be214b78ecbc84e148c1da635",
+    "frame-005.png": "87c1c5e50b98a543b9c1f4d76a1c3ba35e1d042b91b5689dbc158a60b6aaf0d9",
+    "frame-006.png": "777f0dbee8698c814469507c21204f6542a3abfcda3020def520cd7274086f15",
+    "frame-007.png": "95e32c45ed5b1341190965d2735bea387c0ca1e64beaae672b5417789a844586",
+    "frame-008.png": "99431c673d6fba1dfdf87f3fa28aada08461e9a82e1edc9146537aa957d47dfb",
+    "frame-009.png": "b68bf49e745f2d4da225712f708c0f6b6e0ec2ae8ba451162e9dce3bdefeb99d",
+    "frame-010.png": "2bc9512ccb60c8b3358b2da0e295ace982c721f7943cadfe470c2a3ba47e105e",
+    "frame-011.png": "2089ae2d6a5756a0aea0ce896ffe55727724ef30fde7eef5507035ad0928f999",
+    "frame-012.png": "87669105aa975a32e0649e5631538ed48f92bc19590574509619b8b47c9ec441",
+    "frame-013.png": "7572166ce5e5d1ffcaf91213da447043fb4256481aef35835a71e79d645a21ad",
+    "frame-014.png": "72cbf9f1d1c89510dd58742709ce9508d027b30529dd12453c49f6b3bb8ca422",
+    "frame-015.png": "814ae515e2af6c44ebc53cc79eda21e7640fcf1b5815490c955adc8d5f196b5e",
+    "frame-016.png": "77fcea19a9cf458a7dab07243d4be0017db735f38147acfc585debd4dbe9b70a",
+    "frame-017.png": "b094a2003722e5c4afc5be1df27511d13225a54b52f4d0392c8680a5e084ead8",
+    "frame-018.png": "20b607fbce85046f005e4f2b0f71120918deec243c0abeb88c238010feea821b",
+    "frame-019.png": "4e1c2b814630bc18ecee4c81f7dc312c2d083b8cbdbd4898ff171d0a97016640",
+    "frame-020.png": "950ad1fb6bf79b9b57954ef6ad4d3262538a8c5fc9d574af3201b04fe545c9d7",
+    "frame-021.png": "2983af879c5ad0e739827c6eac067118268e60b3f887b92dfa2135549e97951c",
+    "frame-022.png": "25ce0fde6bc199485fe4c9978de7940f6f21908783515a120f3ceeb017175377",
+    "frame-023.png": "01cb8e668c63b3eed79556c80bf7095a1ea31b2b18a05ab164e7632169c9108e",
+    "frame-024.png": "1435bedeb8e1f1722f28578bfa6815535a1fb0406d71099f40eb0700311813a9",
+    "frame-025.png": "83f6d2f5c7aa728cf4f52009509dd22b9d1af519480f541c50645e50e327689c",
+    "frame-026.png": "25724ddd369c4397de30bc674ebc5bf591f703d7bbae21e613a9e2f0638381fc",
+    "frame-027.png": "32867b6302c34530dd9351a0ea766966c08d842852687fa990d4cf9e45a7f3d7",
+    "frame-028.png": "5c4df68af37480b482f4b9d23195650d935c9d1a493fd14278aca6b65ab62ea6",
+    "frame-029.png": "beea230e556ecc12f0df911dd2ac68dfc7b5e9718e18bfebcc7d26811c0f05ea",
+    "frame-030.png": "c1e4de20f82847ab6ceb7870209e93f32d75a3aaa8877b26cb68a7828d38b26e",
+    "frame-031.png": "c650ded9969e39cbbd7f519284d41be18fc4ea45137ad6faea7581e26be38bab",
+    "frame-032.png": "91c2c49ee26b8b6236c0118e6b3730494465b7f1a8a18d4171a6dcf36c08b918",
+    "frame-033.png": "921e32337684e305c8955d9d072d4448a29f19d68bdf552b20e94b566f81a22e",
+    "frame-034.png": "dbf8ee26f119214f6c7a81beae0eee8086f06cd5fec6553d6a85191dfebb2cca",
+    "frame-035.png": "1d24458e24a2ea413978181411aa8be25a25e2e985a967a7ac5134d2c8061c01",
+    "frame-036.png": "471c45716bdaab9d58955e53a52f2796a0e2ddf8f803c0600a52481d66aacf73",
+    "frame-037.png": "60e99923b95ec3429cc344bd0ea5b1cd44f489a31b3cf8f9e33a3e135e1fc870",
+    "frame-038.png": "ffa9064028300f604822c124b794c577219aadf397d3c276284041f4c5f13a23",
+    "frame-039.png": "695a51dea5cc8daf9ed5328bb3aa3eb4b86b26070817aa9df1a15aeda6a520f6",
+    "frame-040.png": "30d2dfb9de7a35116a70527cea7ffff9548085386cd4801e9886bfdacd975eb1",
+    "frame-041.png": "547080c278641d488de2d15eb8013d9bcc237006d865c53832b79a7435cebd55",
+    "frame-042.png": "313949303d534887bb88794132a2546b9819e0dbfb64dae6ef5d2040ce688228",
+    "frame-043.png": "2ce40a8493316408e19543fdde45a30ed32798c4f4eda3b6f0f6ceb3a0d3d02e",
+    "frame-044.png": "1bc5f871f95fdc092dc3b81319d07ea2b06359f62be689b005c4b6e8fcc6fe9c",
+    "frame-045.png": "9bfeb58b77d1f924f012db9db6085f58a8c543627846fa2724bc4fcab9877017",
+    "frame-046.png": "9f7dc06e8cbfb3bf84b3c1ef9cd3bec7e9171ff5ed345512676459e7a13cf437",
+    "frame-047.png": "2bcad2c090b958b466ea5f125ed3c15ae4abcea17b092673d8e1147c1481085d",
+    "frame-048.png": "7b6ce48328cbb9bd6b0771e14de28f0d6c0795ff5a6b4992c17f62dcf1e079f4",
+    "frame-049.png": "a62b598a44c6ace121289d0baab31948dedf73eff6a40d103c64dd1303160c65",
+    "frame-050.png": "03c90d6f4f65925f7f24478b71a6bfcf0e6db1b9dcf8beda5efe3a57052f6d54",
+    "frame-051.png": "dfb3dae36aab5f28b04afab53a77f3725f5cacc69042638c7f07b8389b12e62b",
+    "frame-052.png": "7b80ba67e4739b7969c2584cb1f978731bf4ee38bc9bbcfc29341324bc67c2f7",
+    "frame-053.png": "59bae4ed0b29059b50e118197a5b1d667653bad453b3c9036b8e309b708a1fab",
+    "frame-054.png": "08f66160e255640fb35c758e73d8703442082692d0b2bde5517db2277fa0959f",
+    "frame-055.png": "1315cca3a50f941610531301a8c0dfc1f1a3b1c9232ee5a81211603ab8a489f7",
+    "frame-056.png": "9cc5d0c7d963e943a1391f9141feb21d781ff45e207017a6c1a17170f321a4b5",
+    "frame-057.png": "ebf454bcb23f0483b67cfc375034243b2e54c966035ce5c5080dc684a2176528",
+    "frame-058.png": "8f633948e363db50d35d527a01587f720ccc7c891b4fadc214bc0fa3d5faf828",
+    "frame-059.png": "73d2b11619dc3e4c05ae40280e50da569d75d0e77fda7f94f2c01abd0ae7a877",
+    "frame-060.png": "5baa23f8e215001cff25efaa1c130a017e3010ce2a99ccc33523dd524a8bf14b",
+    "frame-061.png": "40de5528e0db26c69e99b46f5c447535430d8396557eb3c16a61a9756e4307e1",
+    "frame-062.png": "f5e673f5f7b5125db3432b99bb052b34965a95d1cf7e9943dc9112add702b04a",
+    "frame-063.png": "18a4acdc80cfba8bf908ddb85ea05370653ecef8c39fcf250deac813dec4b76f",
+    "frame-064.png": "b31788770435903ae8a8cb9e52b5fe629c175e208fd9fe45567c13f9e9927009",
+    "frame-065.png": "b7947a1505311f7f5fc61fffb6c5f29e8d38d3f867044bc5e39dcd77d5504f47",
+    "frame-066.png": "1dad12bb3373bcec9771daead7d48fe4dd7688799d61f12853607c05ed4c8abf",
+    "frame-067.png": "ed2b6acc19136fb3c0b831becdb8bbe1be947e73b9399eab59b2dafb98dd56a6",
+    "frame-068.png": "7642d504e2fe3398745da0154d22422d9ba9c52dbd0372e1c569f7ebac8ac629",
+    "frame-069.png": "4996daf0065985372c041d4094ba75cf67c684c9b4e180479fd2ddd77e8b8224",
+    "frame-070.png": "3849ff6d08f43ff7653c4f6a2a17826576e01889ad8e615e786b9a75d8e0802e",
+    "frame-071.png": "0bd8c3138ec6dfb2ac8feb439c06c9443c4c51aea307aa78cefbcbd00485c4b6",
+    "frame-072.png": "78fa9895362fc2e5aad5720f2e795100b4f2b5f71ca116a062ac04273b41597c",
+    "frame-073.png": "6917cb6335bf4a15c518b8a3dbca7e7d001d925c31db4ac71bc65618e2253baa",
+    "frame-074.png": "78bf3f82aad848e9ed68280d551305f35fc217f798cd72e3c7ffa31d69571367",
+    "frame-075.png": "39f27e5d782362c11eabe703013f80d5ddd3b2665cacaf3017924af3bf2e574d",
+    "frame-076.png": "f36dcbe655d3b8565fd58ca4afa0ff5af36fe274e888b24309df0d69abaa7146",
+    "frame-077.png": "304ce7f96d236339a2807a779835b7867def0f460fb11ede785153a54d671d78",
+    "frame-078.png": "4dc27237104330fccb11d5734cede265636615f8c7f71bb177f9f379261549a1",
+    "frame-079.png": "faa179e4f414d559b4d9d4770202daf226567a72fddf3d42381d992f3635a7d6",
+    "sheet-01.jpg": "38a13fd3b33cba11deda429a4840b69a936b6136b3e993505cf6b0f3ef4d8f83",
+    "sheet-02.jpg": "6a8ee0dae1df23225e07e13585a2262ffc4bd3409334cabb0e467da326bb9f7d",
+    "sheet-03.jpg": "f21de109720e1941158608da0eec9b694233b19952b887ba12ab5d921195e1fa",
+    "sheet-04.jpg": "1506f3228a0793b8de6e86f78784f93094de9e438445c5c2a7198cced34e05e1",
+    "sheet-05.jpg": "ef75396d5f617710f6f2740e311d619b5fb992f7e2a0ff328b926fcf512fe28f",
+    "sheet-06.jpg": "19e7ab1056b57f022c95614623e7ffbc5319b7dfeb10f98c96c92374ba809f7c",
+    "sheet-07.jpg": "6003e8738f95d23170f261b3a33d985431975541cbfcedbd4fa7bb46fd38c23f",
+    "sheet-08.jpg": "628705dedc81b65f8ec120b877ad7b3cee1ce096006e61cbe9461e46e4e9372b",
+    "sheet-09.jpg": "090016ad86541f2baff0e52ead82c6d2f9aa09ff90be5cc6eeb43dcfb8f19354",
+    "sheet-10.jpg": "219a2299cfaed86d9c8ed6789647a63c97b61f349e7e9bcbeba14914cd61148a"
+  },
+  "frame_samples_verified": true,
+  "full_speed_playback_reviewed": false,
+  "limitation": "These are decoded review materials, not an automatic story, motion or aesthetic approval.",
+  "samples": [
+    {
+      "frame": 62,
+      "label": "s01 midpoint"
+    },
+    {
+      "frame": 165,
+      "label": "s02 midpoint"
+    },
+    {
+      "frame": 231,
+      "label": "s03 midpoint"
+    },
+    {
+      "frame": 265,
+      "label": "s04 midpoint"
+    },
+    {
+      "frame": 299,
+      "label": "s05 midpoint"
+    },
+    {
+      "frame": 361,
+      "label": "s06 midpoint"
+    },
+    {
+      "frame": 427,
+      "label": "s07 midpoint"
+    },
+    {
+      "frame": 472,
+      "label": "s08 midpoint"
+    },
+    {
+      "frame": 521,
+      "label": "s09 midpoint"
+    },
+    {
+      "frame": 584,
+      "label": "s10 midpoint"
+    },
+    {
+      "frame": 657,
+      "label": "s11 midpoint"
+    },
+    {
+      "frame": 729,
+      "label": "s12 midpoint"
+    },
+    {
+      "frame": 124,
+      "label": "cut01 before"
+    },
+    {
+      "frame": 125,
+      "label": "cut01 boundary"
+    },
+    {
+      "frame": 126,
+      "label": "cut01 after"
+    },
+    {
+      "frame": 206,
+      "label": "cut02 before"
+    },
+    {
+      "frame": 207,
+      "label": "cut02 boundary"
+    },
+    {
+      "frame": 208,
+      "label": "cut02 after"
+    },
+    {
+      "frame": 255,
+      "label": "cut03 before"
+    },
+    {
+      "frame": 256,
+      "label": "cut03 boundary"
+    },
+    {
+      "frame": 257,
+      "label": "cut03 after"
+    },
+    {
+      "frame": 275,
+      "label": "cut04 before"
+    },
+    {
+      "frame": 276,
+      "label": "cut04 boundary"
+    },
+    {
+      "frame": 277,
+      "label": "cut04 after"
+    },
+    {
+      "frame": 323,
+      "label": "cut05 before"
+    },
+    {
+      "frame": 324,
+      "label": "cut05 boundary"
+    },
+    {
+      "frame": 325,
+      "label": "cut05 after"
+    },
+    {
+      "frame": 399,
+      "label": "cut06 before"
+    },
+    {
+      "frame": 400,
+      "label": "cut06 boundary"
+    },
+    {
+      "frame": 401,
+      "label": "cut06 after"
+    },
+    {
+      "frame": 454,
+      "label": "cut07 before"
+    },
+    {
+      "frame": 455,
+      "label": "cut07 boundary"
+    },
+    {
+      "frame": 456,
+      "label": "cut07 after"
+    },
+    {
+      "frame": 490,
+      "label": "cut08 before"
+    },
+    {
+      "frame": 491,
+      "label": "cut08 boundary"
+    },
+    {
+      "frame": 492,
+      "label": "cut08 after"
+    },
+    {
+      "frame": 552,
+      "label": "cut09 before"
+    },
+    {
+      "frame": 553,
+      "label": "cut09 boundary"
+    },
+    {
+      "frame": 554,
+      "label": "cut09 after"
+    },
+    {
+      "frame": 616,
+      "label": "cut10 before"
+    },
+    {
+      "frame": 617,
+      "label": "cut10 boundary"
+    },
+    {
+      "frame": 618,
+      "label": "cut10 after"
+    },
+    {
+      "frame": 698,
+      "label": "cut11 before"
+    },
+    {
+      "frame": 699,
+      "label": "cut11 boundary"
+    },
+    {
+      "frame": 700,
+      "label": "cut11 after"
+    },
+    {
+      "frame": 12,
+      "label": "s01 motion 10%"
+    },
+    {
+      "frame": 62,
+      "label": "s01 motion 50%"
+    },
+    {
+      "frame": 112,
+      "label": "s01 motion 90%"
+    },
+    {
+      "frame": 133,
+      "label": "s02 motion 10%"
+    },
+    {
+      "frame": 166,
+      "label": "s02 motion 50%"
+    },
+    {
+      "frame": 198,
+      "label": "s02 motion 90%"
+    },
+    {
+      "frame": 212,
+      "label": "s03 motion 10%"
+    },
+    {
+      "frame": 231,
+      "label": "s03 motion 50%"
+    },
+    {
+      "frame": 250,
+      "label": "s03 motion 90%"
+    },
+    {
+      "frame": 258,
+      "label": "s04 motion 10%"
+    },
+    {
+      "frame": 266,
+      "label": "s04 motion 50%"
+    },
+    {
+      "frame": 273,
+      "label": "s04 motion 90%"
+    },
+    {
+      "frame": 281,
+      "label": "s05 motion 10%"
+    },
+    {
+      "frame": 300,
+      "label": "s05 motion 50%"
+    },
+    {
+      "frame": 318,
+      "label": "s05 motion 90%"
+    },
+    {
+      "frame": 332,
+      "label": "s06 motion 10%"
+    },
+    {
+      "frame": 362,
+      "label": "s06 motion 50%"
+    },
+    {
+      "frame": 392,
+      "label": "s06 motion 90%"
+    },
+    {
+      "frame": 405,
+      "label": "s07 motion 10%"
+    },
+    {
+      "frame": 427,
+      "label": "s07 motion 50%"
+    },
+    {
+      "frame": 449,
+      "label": "s07 motion 90%"
+    },
+    {
+      "frame": 458,
+      "label": "s08 motion 10%"
+    },
+    {
+      "frame": 472,
+      "label": "s08 motion 50%"
+    },
+    {
+      "frame": 486,
+      "label": "s08 motion 90%"
+    },
+    {
+      "frame": 497,
+      "label": "s09 motion 10%"
+    },
+    {
+      "frame": 522,
+      "label": "s09 motion 50%"
+    },
+    {
+      "frame": 546,
+      "label": "s09 motion 90%"
+    },
+    {
+      "frame": 559,
+      "label": "s10 motion 10%"
+    },
+    {
+      "frame": 584,
+      "label": "s10 motion 50%"
+    },
+    {
+      "frame": 610,
+      "label": "s10 motion 90%"
+    },
+    {
+      "frame": 625,
+      "label": "s11 motion 10%"
+    },
+    {
+      "frame": 658,
+      "label": "s11 motion 50%"
+    },
+    {
+      "frame": 690,
+      "label": "s11 motion 90%"
+    },
+    {
+      "frame": 705,
+      "label": "s12 motion 10%"
+    },
+    {
+      "frame": 729,
+      "label": "s12 motion 50%"
+    },
+    {
+      "frame": 753,
+      "label": "s12 motion 90%"
+    },
+    {
+      "frame": 0,
+      "label": "bookend"
+    },
+    {
+      "frame": 1,
+      "label": "bookend"
+    },
+    {
+      "frame": 758,
+      "label": "bookend"
+    },
+    {
+      "frame": 759,
+      "label": "bookend"
+    }
+  ],
+  "schema_version": 1,
+  "shot_midpoints": 12,
+  "unique_frames": 79,
+  "video_sha256": "a155978a800ed783fbe641c5cea682689c12112fedc88e53ecc2b91b806adb9f",
+  "visual_review_verified": false
+}

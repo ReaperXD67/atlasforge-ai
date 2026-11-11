@@ -1,0 +1,374 @@
+{
+  "asr_model": "cached faster-whisper small.en, CPU int8",
+  "comparison_normalization": "Case/punctuation, signup/sign-up/sign up spelling, and standalone unsigned integer numerals 0\u201320 versus their exact cardinal words only; no homophones",
+  "emotion_fidelity_verified": false,
+  "limitations": [
+    "ASR agreement is not a subjective listening review.",
+    "Different waveforms do not establish better emotion or audience retention."
+  ],
+  "schema_version": 1,
+  "source_report": "videos/biznex-the-question-that-stayed/qa/audio/audition-report.json",
+  "speaker_similarity_verified": false,
+  "takes": [
+    {
+      "all_samples_finite": true,
+      "asr_transcript": "I kept making my question sound nicer.",
+      "asr_words": [
+        {
+          "end": 0.14,
+          "start": 0.0,
+          "text": "I"
+        },
+        {
+          "end": 0.3,
+          "start": 0.14,
+          "text": "kept"
+        },
+        {
+          "end": 0.78,
+          "start": 0.3,
+          "text": "making"
+        },
+        {
+          "end": 1.12,
+          "start": 0.78,
+          "text": "my"
+        },
+        {
+          "end": 1.7,
+          "start": 1.12,
+          "text": "question"
+        },
+        {
+          "end": 3.04,
+          "start": 1.7,
+          "text": "sound"
+        },
+        {
+          "end": 3.52,
+          "start": 3.04,
+          "text": "nicer."
+        }
+      ],
+      "clipped_sample_fraction": 0.0,
+      "duration_seconds": 3.92,
+      "expected_text": "I kept making my question sound nicer.",
+      "id": "beat-00",
+      "mode": "final_mix",
+      "normalized_asr_matches": true,
+      "peak_abs": 0.628204345703125,
+      "rms": 0.10642603784799576,
+      "sample_rate": 48000,
+      "synthesis_text": "I kept making my question sound nicer."
+    },
+    {
+      "all_samples_finite": true,
+      "asr_transcript": "First, I wrapped it in compliments. Then, an apology.",
+      "asr_words": [
+        {
+          "end": 0.4,
+          "start": 0.0,
+          "text": "First,"
+        },
+        {
+          "end": 0.92,
+          "start": 0.88,
+          "text": "I"
+        },
+        {
+          "end": 1.2,
+          "start": 0.92,
+          "text": "wrapped"
+        },
+        {
+          "end": 1.38,
+          "start": 1.2,
+          "text": "it"
+        },
+        {
+          "end": 1.52,
+          "start": 1.38,
+          "text": "in"
+        },
+        {
+          "end": 2.1,
+          "start": 1.52,
+          "text": "compliments."
+        },
+        {
+          "end": 2.92,
+          "start": 2.76,
+          "text": "Then,"
+        },
+        {
+          "end": 3.28,
+          "start": 3.18,
+          "text": "an"
+        },
+        {
+          "end": 3.78,
+          "start": 3.28,
+          "text": "apology."
+        }
+      ],
+      "clipped_sample_fraction": 0.0,
+      "duration_seconds": 4.16,
+      "expected_text": "First, I wrapped it in compliments. Then, an apology.",
+      "id": "beat-01",
+      "mode": "final_mix",
+      "normalized_asr_matches": true,
+      "peak_abs": 0.634063720703125,
+      "rms": 0.11090970784425735,
+      "sample_rate": 48000,
+      "synthesis_text": "First, I wrapped it in compliments. Then, an apology."
+    },
+    {
+      "all_samples_finite": true,
+      "asr_transcript": "By the time I pressed send, the actual question had disappeared.",
+      "asr_words": [
+        {
+          "end": 0.14,
+          "start": 0.0,
+          "text": "By"
+        },
+        {
+          "end": 0.28,
+          "start": 0.14,
+          "text": "the"
+        },
+        {
+          "end": 0.5,
+          "start": 0.28,
+          "text": "time"
+        },
+        {
+          "end": 0.68,
+          "start": 0.5,
+          "text": "I"
+        },
+        {
+          "end": 1.08,
+          "start": 0.68,
+          "text": "pressed"
+        },
+        {
+          "end": 1.56,
+          "start": 1.08,
+          "text": "send,"
+        },
+        {
+          "end": 2.28,
+          "start": 2.14,
+          "text": "the"
+        },
+        {
+          "end": 2.72,
+          "start": 2.28,
+          "text": "actual"
+        },
+        {
+          "end": 3.12,
+          "start": 2.72,
+          "text": "question"
+        },
+        {
+          "end": 3.34,
+          "start": 3.12,
+          "text": "had"
+        },
+        {
+          "end": 3.82,
+          "start": 3.34,
+          "text": "disappeared."
+        }
+      ],
+      "clipped_sample_fraction": 0.0,
+      "duration_seconds": 4.2,
+      "expected_text": "By the time I pressed send, the actual question had disappeared.",
+      "id": "beat-02",
+      "mode": "final_mix",
+      "normalized_asr_matches": true,
+      "peak_abs": 0.623260498046875,
+      "rms": 0.09821264445781708,
+      "sample_rate": 48000,
+      "synthesis_text": "By the time I pressed send, the actual question had disappeared."
+    },
+    {
+      "all_samples_finite": true,
+      "asr_transcript": "So I tried again, fewer words, no performance, just what am I agreeing to?",
+      "asr_words": [
+        {
+          "end": 0.18,
+          "start": 0.0,
+          "text": "So"
+        },
+        {
+          "end": 0.3,
+          "start": 0.18,
+          "text": "I"
+        },
+        {
+          "end": 0.52,
+          "start": 0.3,
+          "text": "tried"
+        },
+        {
+          "end": 0.96,
+          "start": 0.52,
+          "text": "again,"
+        },
+        {
+          "end": 2.0,
+          "start": 1.6,
+          "text": "fewer"
+        },
+        {
+          "end": 2.56,
+          "start": 2.0,
+          "text": "words,"
+        },
+        {
+          "end": 3.2,
+          "start": 3.06,
+          "text": "no"
+        },
+        {
+          "end": 3.74,
+          "start": 3.2,
+          "text": "performance,"
+        },
+        {
+          "end": 4.64,
+          "start": 4.4,
+          "text": "just"
+        },
+        {
+          "end": 5.52,
+          "start": 4.64,
+          "text": "what"
+        },
+        {
+          "end": 5.64,
+          "start": 5.52,
+          "text": "am"
+        },
+        {
+          "end": 5.82,
+          "start": 5.64,
+          "text": "I"
+        },
+        {
+          "end": 6.16,
+          "start": 5.82,
+          "text": "agreeing"
+        },
+        {
+          "end": 6.54,
+          "start": 6.16,
+          "text": "to?"
+        }
+      ],
+      "clipped_sample_fraction": 0.0,
+      "duration_seconds": 6.72,
+      "expected_text": "So I tried again. Fewer words. No performance. Just: what am I agreeing to?",
+      "id": "beat-03",
+      "mode": "final_mix",
+      "normalized_asr_matches": true,
+      "peak_abs": 0.64398193359375,
+      "rms": 0.10263235867023468,
+      "sample_rate": 48000,
+      "synthesis_text": "So I tried again. Fewer words. No performance. Just: what am I agreeing to?"
+    },
+    {
+      "all_samples_finite": true,
+      "asr_transcript": "The question didn't become rude when I made it clear. It became possible to answer.",
+      "asr_words": [
+        {
+          "end": 0.16,
+          "start": 0.0,
+          "text": "The"
+        },
+        {
+          "end": 0.44,
+          "start": 0.16,
+          "text": "question"
+        },
+        {
+          "end": 0.82,
+          "start": 0.44,
+          "text": "didn't"
+        },
+        {
+          "end": 1.08,
+          "start": 0.82,
+          "text": "become"
+        },
+        {
+          "end": 1.36,
+          "start": 1.08,
+          "text": "rude"
+        },
+        {
+          "end": 1.62,
+          "start": 1.36,
+          "text": "when"
+        },
+        {
+          "end": 1.76,
+          "start": 1.62,
+          "text": "I"
+        },
+        {
+          "end": 1.94,
+          "start": 1.76,
+          "text": "made"
+        },
+        {
+          "end": 2.08,
+          "start": 1.94,
+          "text": "it"
+        },
+        {
+          "end": 2.38,
+          "start": 2.08,
+          "text": "clear."
+        },
+        {
+          "end": 3.16,
+          "start": 3.06,
+          "text": "It"
+        },
+        {
+          "end": 3.46,
+          "start": 3.16,
+          "text": "became"
+        },
+        {
+          "end": 3.94,
+          "start": 3.46,
+          "text": "possible"
+        },
+        {
+          "end": 4.18,
+          "start": 3.94,
+          "text": "to"
+        },
+        {
+          "end": 4.54,
+          "start": 4.18,
+          "text": "answer."
+        }
+      ],
+      "clipped_sample_fraction": 0.0,
+      "duration_seconds": 4.76,
+      "expected_text": "The question didn't become rude when I made it clear. It became possible to answer.",
+      "id": "beat-04",
+      "mode": "final_mix",
+      "normalized_asr_matches": true,
+      "peak_abs": 0.614654541015625,
+      "rms": 0.11779097467660904,
+      "sample_rate": 48000,
+      "synthesis_text": "The question didn't become rude when I made it clear. It became possible to answer."
+    }
+  ]
+}

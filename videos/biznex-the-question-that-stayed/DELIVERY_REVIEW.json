@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "video_sha256": "a155978a800ed783fbe641c5cea682689c12112fedc88e53ecc2b91b806adb9f",
+  "sampled_visual_review_passed": true,
+  "unique_decoded_frames": 79,
+  "contact_sheets": 10,
+  "shot_midpoints": 12,
+  "cut_boundaries": 11,
+  "blocking_findings": [],
+  "minor_findings": [
+    "Some exact-speech caption groups are brief; text remains legible in the inspected decoded frames."
+  ],
+  "review_scope": "All ten actual MP4 decoded contact sheets inspected, including every shot midpoint, cut boundary, motion samples and both bookends. Visible opening question, growing wraps, hidden question, unrolling bridge, message crossing and settled ending confirmed. No blocking sampled visual finding.",
+  "frame_review_sha256": "725d7d81a53825925e404b11e3564d550fcf5b99f95fee95eac5e74df18e6de7",
+  "full_speed_playback_reviewed": false,
+  "subjective_listening_verified": false,
+  "human_indistinguishability_verified": false
+}

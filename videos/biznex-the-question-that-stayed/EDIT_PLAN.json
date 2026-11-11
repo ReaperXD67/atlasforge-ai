@@ -1,0 +1,379 @@
+{
+  "schema_version": 1,
+  "project_id": "biznex-the-question-that-stayed",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "timing_file": "timing.json",
+  "shots": [
+    {
+      "id": "s01",
+      "start": {
+        "boundary": "start",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "object",
+      "subject": "question-core",
+      "location": "ribbon-message-world",
+      "layout": "seed",
+      "framing": "extreme_close",
+      "camera": "push_in",
+      "subject_motion": "action",
+      "action": "A small question sits inside the first open ribbon loop.",
+      "expression": "Self-conscious decoration becomes direct, warm clarity.",
+      "cut_reason": "A small question sits inside the first open ribbon loop.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s02",
+      "start": {
+        "phrase": "First",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "object",
+      "subject": "compliment-ribbon",
+      "location": "ribbon-message-world",
+      "layout": "compliment",
+      "framing": "close",
+      "camera": "orbit",
+      "subject_motion": "action",
+      "action": "A gold compliment ribbon winds around the question.",
+      "expression": "Self-conscious decoration becomes direct, warm clarity.",
+      "cut_reason": "A gold compliment ribbon winds around the question.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s03",
+      "start": {
+        "phrase": "Then",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "object",
+      "subject": "apology-ribbon",
+      "location": "ribbon-message-world",
+      "layout": "apology",
+      "framing": "insert",
+      "camera": "pan",
+      "subject_motion": "action",
+      "action": "A second blush ribbon joins and conceals more of the core.",
+      "expression": "Self-conscious decoration becomes direct, warm clarity.",
+      "cut_reason": "A second blush ribbon joins and conceals more of the core.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s04",
+      "start": {
+        "phrase": "By the time",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "environment",
+      "subject": "overwrapped-message",
+      "location": "ribbon-message-world",
+      "layout": "approach",
+      "framing": "wide",
+      "camera": "pull_out",
+      "subject_motion": "action",
+      "action": "Reveal the oversized tangle between two separated endpoints.",
+      "expression": "Self-conscious decoration becomes direct, warm clarity.",
+      "cut_reason": "Reveal the oversized tangle between two separated endpoints.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s05",
+      "start": {
+        "phrase": "pressed send",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "object",
+      "subject": "failed-message-transfer",
+      "location": "ribbon-message-world",
+      "layout": "send",
+      "framing": "medium",
+      "camera": "tracking",
+      "subject_motion": "action",
+      "action": "The wrapped message nudges forward but remains trapped in its loops.",
+      "expression": "Self-conscious decoration becomes direct, warm clarity.",
+      "cut_reason": "The wrapped message nudges forward but remains trapped in its loops.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s06",
+      "start": {
+        "phrase": "actual question",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "object",
+      "subject": "concealed-core",
+      "location": "ribbon-message-world",
+      "layout": "missing",
+      "framing": "extreme_close",
+      "camera": "push_in",
+      "subject_motion": "action",
+      "action": "Inspect the center now crowded by decorative layers.",
+      "expression": "Self-conscious decoration becomes direct, warm clarity.",
+      "cut_reason": "Inspect the center now crowded by decorative layers.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s07",
+      "start": {
+        "phrase": "So I tried",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "environment",
+      "subject": "unfolding-ribbon-world",
+      "location": "ribbon-message-world",
+      "layout": "reset",
+      "framing": "wide",
+      "camera": "locked",
+      "subject_motion": "action",
+      "action": "The coils begin a deliberate continuous unrolling motion.",
+      "expression": "Self-conscious decoration becomes direct, warm clarity.",
+      "cut_reason": "The coils begin a deliberate continuous unrolling motion.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s08",
+      "start": {
+        "phrase": "Fewer words",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "object",
+      "subject": "loosening-gold-strip",
+      "location": "ribbon-message-world",
+      "layout": "fewer",
+      "framing": "close",
+      "camera": "orbit",
+      "subject_motion": "action",
+      "action": "The gold wrapper straightens and becomes a narrow bridge edge.",
+      "expression": "Self-conscious decoration becomes direct, warm clarity.",
+      "cut_reason": "The gold wrapper straightens and becomes a narrow bridge edge.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s09",
+      "start": {
+        "phrase": "No performance",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "object",
+      "subject": "flattening-blush-strip",
+      "location": "ribbon-message-world",
+      "layout": "plain",
+      "framing": "medium",
+      "camera": "tilt",
+      "subject_motion": "action",
+      "action": "The second strip relaxes, exposing an unobstructed path.",
+      "expression": "Self-conscious decoration becomes direct, warm clarity.",
+      "cut_reason": "The second strip relaxes, exposing an unobstructed path.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s10",
+      "start": {
+        "phrase": "what am I agreeing to",
+        "edge": "start",
+        "offset_frames": -10
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "diagram",
+      "subject": "clear-question-bridge",
+      "location": "ribbon-message-world",
+      "layout": "question",
+      "framing": "wide",
+      "camera": "pull_out",
+      "subject_motion": "action",
+      "action": "The exact question becomes visible above a continuous physical bridge.",
+      "expression": "Self-conscious decoration becomes direct, warm clarity.",
+      "cut_reason": "The exact question becomes visible above a continuous physical bridge.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s11",
+      "start": {
+        "phrase": "The question didn't",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "environment",
+      "subject": "crossing-message",
+      "location": "ribbon-message-world",
+      "layout": "clarity",
+      "framing": "wide",
+      "camera": "tracking",
+      "subject_motion": "action",
+      "action": "The camera traverses the bridge as the clear message reaches the other side.",
+      "expression": "Self-conscious decoration becomes direct, warm clarity.",
+      "cut_reason": "The camera traverses the bridge as the clear message reaches the other side.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    },
+    {
+      "id": "s12",
+      "start": {
+        "phrase": "It became possible",
+        "edge": "start",
+        "offset_frames": -10
+      },
+      "asset": "assets/world.json",
+      "visual_kind": "diagram",
+      "subject": "received-question",
+      "location": "ribbon-message-world",
+      "layout": "answer",
+      "framing": "medium",
+      "camera": "locked",
+      "subject_motion": "action",
+      "action": "Hold the received message on the far endpoint of the now-continuous bridge.",
+      "expression": "Self-conscious decoration becomes direct, warm clarity.",
+      "cut_reason": "Hold the received message on the far endpoint of the now-continuous bridge.",
+      "transition": {
+        "kind": "cut",
+        "frames": 0
+      }
+    }
+  ],
+  "audio": [
+    {
+      "id": "voice",
+      "role": "voice",
+      "asset": "assets/audio/narration.wav",
+      "start": {
+        "boundary": "start",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "end": {
+        "boundary": "end",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "source_start_frame": 0,
+      "gain_db": 0.0,
+      "gain_keyframes": [],
+      "fade_in_frames": 0,
+      "fade_out_frames": 0,
+      "duck_attack_frames": 3,
+      "duck_release_frames": 9
+    },
+    {
+      "id": "score",
+      "role": "music",
+      "asset": "assets/audio/score.wav",
+      "start": {
+        "boundary": "start",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "end": {
+        "boundary": "end",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "source_start_frame": 0,
+      "gain_db": 0.0,
+      "gain_keyframes": [],
+      "fade_in_frames": 0,
+      "fade_out_frames": 0,
+      "duck_db": -6.0,
+      "duck_attack_frames": 2,
+      "duck_release_frames": 6
+    },
+    {
+      "id": "mechanism",
+      "role": "foley",
+      "asset": "assets/audio/machine.wav",
+      "start": {
+        "boundary": "start",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "end": {
+        "boundary": "end",
+        "edge": "start",
+        "offset_frames": 0
+      },
+      "source_start_frame": 0,
+      "gain_db": -4.0,
+      "gain_keyframes": [],
+      "fade_in_frames": 0,
+      "fade_out_frames": 0,
+      "duck_db": -3.0,
+      "duck_attack_frames": 1,
+      "duck_release_frames": 3
+    }
+  ],
+  "captions": {
+    "max_words": 6,
+    "max_characters": 38,
+    "max_gap_seconds": 0.35,
+    "hold_frames": 9
+  },
+  "policy": {
+    "min_shots": 12,
+    "min_visual_kinds": 3,
+    "min_visual_assets": 1,
+    "min_layouts": 12,
+    "min_subjects": 10,
+    "min_framings": 4,
+    "min_camera_moves": 4,
+    "min_shot_seconds": 0.35,
+    "max_shot_seconds": 8.0,
+    "max_same_layout_seconds": 8.0,
+    "max_static_seconds": 5.0,
+    "max_dominant_layout_fraction": 0.3,
+    "max_typography_fraction": 0.0,
+    "max_cut_anchor_offset_frames": 15,
+    "require_layered_audio": true
+  }
+}

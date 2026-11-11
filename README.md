@@ -32,10 +32,12 @@ The wider studio also supports custom music films and researched 6–8 minute ed
 
 <table>
   <tr>
+    <td align="center"><a href="https://github.com/ReaperXD67/atlasforge-ai/releases/tag/biznex-question-that-stayed-2026-11-11"><img src="docs/assets/readme/question-stayed-preview.gif" width="270" alt="Actual rendered ribbons unfold from a knot into a bridge carrying a question"></a></td>
     <td align="center"><a href="https://github.com/ReaperXD67/atlasforge-ai/releases/tag/biznex-yes-machine-2026-11-06"><img src="docs/assets/readme/yes-machine-preview.gif" width="270" alt="Actual rendered Yes Machine: a physical button, falling dominoes, accumulating goods and a deliberate choice"></a></td>
     <td align="center"><a href="https://github.com/ReaperXD67/atlasforge-ai/releases/tag/biznex-cinematic-2026-11-06"><img src="docs/assets/readme/second-question-preview.gif" width="270" alt="Actual rendered Second Question: a paused signup, a night apartment and Mira's reaction"></a></td>
   </tr>
   <tr>
+    <td align="center"><strong>The Question That Stayed</strong><br>25.3 seconds · 12 shots · original ribbon geometry<br><a href="https://github.com/ReaperXD67/atlasforge-ai/releases/download/biznex-question-that-stayed-2026-11-11/final.mp4">Watch with sound</a> · <a href="https://github.com/ReaperXD67/atlasforge-ai/releases/download/biznex-question-that-stayed-2026-11-11/delivery.zip">Film + prepared sources</a></td>
     <td align="center"><strong>The Yes Machine</strong><br>26.3 seconds · 13 shots · original procedural 3D<br><a href="https://github.com/ReaperXD67/atlasforge-ai/releases/download/biznex-yes-machine-2026-11-06/final.mp4">Watch with sound</a> · <a href="https://github.com/ReaperXD67/atlasforge-ai/releases/download/biznex-yes-machine-2026-11-06/biznex-the-yes-machine.zip">Film + prepared sources</a></td>
     <td align="center"><strong>The Second Question</strong><br>40.8 seconds · 18 shots · character-driven cinema<br><a href="https://github.com/ReaperXD67/atlasforge-ai/releases/download/biznex-cinematic-2026-11-06/final.mp4">Watch with sound</a> · <a href="https://github.com/ReaperXD67/atlasforge-ai/releases/download/biznex-cinematic-2026-11-06/biznex-second-question.zip">Film + prepared sources</a></td>
   </tr>
@@ -153,18 +155,17 @@ recurring BizNex automation and requested no automatic production, posting or ba
 runs. Existing publishing receipts and the five rejected-pilot holds remain intact.
 The queue can still execute an explicitly requested, reviewed release.
 
-**The Borrowed Countdown** adds a distinct kinetic desk scene: hinged digits,
-a token that stops under pressure, a camera reveal behind the clock and an independent
-side route. Its nine-stage run verified a **23.9-second**, **13-shot** portrait film in
-**393.5 seconds**, reusing already prepared narration. Encoded speech passed all five
-thought checks; 78 decoded frames across ten sheets were inspected. This measures
-production execution, not story authoring or subjective emotion quality.
-See [the episode and delivery evidence](videos/biznex-the-borrowed-countdown/README.md).
-Published once on 9 November 2026: [YouTube](https://www.youtube.com/shorts/mizAF51be5U),
-[Instagram](https://www.instagram.com/p/Dfg3FalKNsv/) and [Facebook](https://www.facebook.com/reel/1495079932486622).
-YouTube processing, public visibility and exact subtitles were verified through the API;
-Meta owner, public visibility, AI labels and full captions were observed in the browser.
-
+**The Question That Stayed** adds an original ribbon scene: decorative wraps conceal
+a question, then unfold into a bridge that carries it to the other side. Its nine-stage
+run verified a **25.333-second**, **12-shot** portrait film in **462.375 seconds** using
+prepared narration. All five encoded thoughts passed ASR; 79 decoded frames across
+ten sheets were inspected. [See the film and delivery evidence](videos/biznex-the-question-that-stayed/README.md).
+The [Borrowed Countdown](videos/biznex-the-borrowed-countdown/README.md) and
+[Yes Machine](videos/biznex-the-yes-machine/README.md) retain their distinct earlier
+worlds and publication receipts. These execution measurements exclude authoring and
+voice repairs; technical checks do not establish subjective emotion quality or reach.
+The 11 November release is public on [YouTube](https://www.youtube.com/shorts/bpNJ4H1SxrM), [Instagram](https://www.instagram.com/p/DflyV_Rqajn/) and [Facebook](https://www.facebook.com/reel/1150616077338480).
+YouTube was confirmed through the API; Meta through signed-in browser observation.
 
 **The Yes Machine** remains public on [YouTube](https://www.youtube.com/shorts/Dc4aBDQfQ9w),
 [Instagram](https://www.instagram.com/p/Dfch-tjKvp7/) and

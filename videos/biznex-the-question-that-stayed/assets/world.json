@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "world_id": "question-ribbon-original-01",
+  "three_version": "0.187.0",
+  "palette": {
+    "background": "#e8e2d6",
+    "floor": "#eee8dd",
+    "ink": "#342f4e",
+    "ribbon": "#765096",
+    "gold": "#d7ad61",
+    "blush": "#cf806b",
+    "porcelain": "#fff7e5",
+    "endpoint": "#476f6c"
+  },
+  "geometry": {
+    "segments": 160,
+    "ribbon_width": 0.62,
+    "ribbon_thickness": 0.055
+  },
+  "lighting": {
+    "exposure": 1.05,
+    "shadow_size": 1024
+  },
+  "authorship": "Original fictional ribbon geometry. No image/video generation or real product."
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "title": "The Question That Stayed — BizNex Stories",
+  "audio_master": "assets/audio/master.wav",
+  "brand": "BizNex Stories",
+  "context": "Atomy · independent educational community",
+  "shots": {
+    "s01": {
+      "mode": "seed"
+    },
+    "s02": {
+      "mode": "compliment"
+    },
+    "s03": {
+      "mode": "apology"
+    },
+    "s04": {
+      "mode": "approach"
+    },
+    "s05": {
+      "mode": "send"
+    },
+    "s06": {
+      "mode": "missing"
+    },
+    "s07": {
+      "mode": "reset"
+    },
+    "s08": {
+      "mode": "fewer"
+    },
+    "s09": {
+      "mode": "plain"
+    },
+    "s10": {
+      "mode": "question",
+      "heading": "What am I|agreeing to?",
+      "hide_captions": true
+    },
+    "s11": {
+      "mode": "clarity"
+    },
+    "s12": {
+      "mode": "answer",
+      "heading": "It became|possible|to answer.",
+      "hide_captions": true
+    }
+  }
+}

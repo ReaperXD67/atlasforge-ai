@@ -3,7 +3,9 @@
 **Recurring production paused by the owner on 9 November 2026.** These dates are
 archived planning slots, not an active schedule. Work only when explicitly requested.
 The 8 November slot was missed; no catch-up was posted. The Borrowed Countdown was
-prepared for the explicitly requested 9 November release.
+published for the explicitly requested 9 November release. The Question That Stayed
+was produced on explicit request on 11 November; the 10 November planning slot was
+not run while scheduling was paused. No catch-up episode was posted.
 
 Originally prepared **7 November 2026** for the daily operator. Target: **one new
 original episode per Asia/Kolkata calendar day**, distributed once to YouTube

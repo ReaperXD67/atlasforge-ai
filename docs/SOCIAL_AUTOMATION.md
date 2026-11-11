@@ -58,8 +58,10 @@ Ignored evidence is retained under `output/social/2026-11-07/`.
 
 The owner **paused recurring operation on 9 November 2026** and requested work
 only on explicit instruction. The Codex automation is PAUSED, with no new automatic
-production or publishing. The requested Borrowed Countdown release is a single manual
-operation. Existing receipts and the five rejected-pilot holds remain in place.
+production or publishing. Each requested release is a single manual operation.
+The Question That Stayed was published on 11 November via the YouTube API and
+signed-in Meta browser flows; see its [verified project](../videos/biznex-the-question-that-stayed/README.md).
+Existing receipts and the five rejected-pilot holds remain in place.
 See [the operating brief](SOCIAL_OPERATOR.md) and [campaign contracts](SOCIAL_CAMPAIGNS.md).
 
 The system does not yet automatically fetch platform analytics, refresh Meta tokens, host

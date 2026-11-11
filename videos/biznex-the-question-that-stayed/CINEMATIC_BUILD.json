@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "project_id": "biznex-the-question-that-stayed",
+  "duration_frames": 760,
+  "fps": 30,
+  "files": {
+    "index.html": "d784403f04fc322edcd770484060d4e5a75a02d1342250c9f95324439da72fe5",
+    "cinematic.css": "4d76c54891d0d34e3c639aa21dce643710805d51367c0aae1d83f5a173685869",
+    "cinematic.js": "88b61cd8f40ee9a72e09a7075f491be86b0e41d216422b55ba73f7ae0f5aaef0",
+    "DIRECTION.json": "f2b7a3b947bf88a133dd80f75376908299a7476edff331588b5f1b69efe239ce",
+    "EDIT_PLAN.compiled.json": "1159484fb1ca9b9366e530b1ee82ceabc20fb5dcb0a650b930a4a277234e00b2",
+    "AUDIO_MIX.json": "f1c8d453240d43b7a6cbe2e9c2ed5bfc0aa292d54bf883ddc571b9f2fd25fad9",
+    "assets/audio/master.wav": "d7fa871dea8de0511a5fe5dabf9681dc5ecb4eb8f4a3cef6ee274b2ef61fe343",
+    "assets/vendor/question_story_state.mjs": "9c6187c3692962e81b31af1f8bda62f5235e6ea4d3a39abdf9482cfcaff80bec",
+    "assets/vendor/cinematic_primitives.js": "8fb8b27ba46d3cbfbf1ca4d45edf8a5eaf33556f1b3fcfe621e5245d81e1ef48",
+    "assets/world.json": "ba1a9af7706df9087ac128e1025a498f67e542ae3eca86c6fc8dd34476b7da58",
+    "assets/vendor/three.module.js": "104f56145899722094556490d787aae0617cc2fc3382f31df02d724ea1aee341",
+    "assets/vendor/three.core.js": "613e370f76638fdef83926642bf256dc9615684922de1ce1f63a8583e5d78578",
+    "assets/vendor/THREE-LICENSE.txt": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+    "assets/vendor/gsap.min.js": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280",
+    "assets/fonts/Montserrat.ttf": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7",
+    "assets/fonts/Montserrat-OFL.txt": "8b7141c03fa4f8d44e6345d5d4931709290f0f67875e452e95ac1fd3a027802e"
+  },
+  "renderer": "original-question-ribbon-three-r187",
+  "rendered": false,
+  "uses_image_model": false,
+  "uses_video_model": false
+}

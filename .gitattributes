@@ -60,3 +60,14 @@
 /videos/biznex-the-borrowed-countdown/index.html linguist-generated=true
 /videos/biznex-the-borrowed-countdown/cinematic.css linguist-generated=true
 /videos/biznex-the-borrowed-countdown/cinematic.js linguist-generated=true
+/videos/biznex-the-question-that-stayed/** -text
+/scripts/prepare_question_story.py -text
+/scripts/synthesize_question_sound.py -text
+/scripts/build_question_short.mjs -text
+/scripts/lib/question_story_state.mjs -text
+/scripts/templates/question/** -text
+/videos/biznex-the-question-that-stayed/assets/vendor/** linguist-vendored=true
+/videos/biznex-the-question-that-stayed/EDIT_PLAN.compiled.* linguist-generated=true
+/videos/biznex-the-question-that-stayed/index.html linguist-generated=true
+/videos/biznex-the-question-that-stayed/cinematic.css linguist-generated=true
+/videos/biznex-the-question-that-stayed/cinematic.js linguist-generated=true

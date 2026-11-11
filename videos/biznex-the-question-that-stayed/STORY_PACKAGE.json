@@ -1,0 +1,12 @@
+{
+  "archive": "renders/delivery.zip",
+  "archive_bytes": 50852840,
+  "archive_sha256": "0ca087c4c3d3c81894c545af4e0dc283c3b92e60938a2c62e4576c78c478deeb",
+  "project_id": "biznex-the-question-that-stayed",
+  "published": false,
+  "schema_version": 1,
+  "source_included": true,
+  "status": "verified_technical_export",
+  "video_sha256": "a155978a800ed783fbe641c5cea682689c12112fedc88e53ecc2b91b806adb9f",
+  "visual_review_verified": false
+}

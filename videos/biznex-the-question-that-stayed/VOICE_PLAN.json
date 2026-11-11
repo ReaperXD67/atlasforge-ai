@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "reference_audio": "assets/audio/voice-reference.wav",
+  "reference_sha256": "45b687b4567ca160de01382212e4bd0860c75b163175650b1ee5b65add438da6",
+  "reference_provenance": "Original authorized Kokoro af_heart synthetic narrator, retained from the verified previous local reference. No human voice impersonation.",
+  "seed": 1986,
+  "transcript": "I kept making my question sound nicer. First, I wrapped it in compliments. Then, an apology. By the time I pressed send, the actual question had disappeared. So I tried again. Fewer words. No performance. Just: what am I agreeing to? The question didn't become rude when I made it clear. It became possible to answer.",
+  "beats": [
+    {
+      "text": "I kept making my question sound nicer.",
+      "pause_after_ms": 250,
+      "preset": "neutral",
+      "synthesis_text": "I kept making my question... sound nicer.",
+      "seed": 1987
+    },
+    {
+      "text": "First, I wrapped it in compliments. Then, an apology.",
+      "delivery": "Speak with gentle embarrassment as you remember trying too hard to be polite. Let both sentences belong to one connected thought, without laughing.",
+      "pause_after_ms": 200
+    },
+    {
+      "text": "By the time I pressed send, the actual question had disappeared.",
+      "pause_after_ms": 600,
+      "preset": "neutral",
+      "synthesis_text": "By the time I pressed send... the actual question had disappeared.",
+      "seed": 1987
+    },
+    {
+      "text": "So I tried again. Fewer words. No performance. Just: what am I agreeing to?",
+      "delivery": "Speak calmly and clearly as you find a simpler way to ask. Let the short sentences settle naturally, then ask the final question with genuine curiosity.",
+      "pause_after_ms": 500
+    },
+    {
+      "text": "The question didn't become rude when I made it clear. It became possible to answer.",
+      "delivery": "Speak with warm relief and quiet confidence, realizing that clarity made the conversation possible. Keep the ending grounded and kind.",
+      "pause_after_ms": 0
+    }
+  ]
+}

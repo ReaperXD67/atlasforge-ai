@@ -1,0 +1,15 @@
+# The Question That Stayed — visual specification
+
+One original continuous ribbon world, 1080 × 1920 at 30 fps. Exact measured narration sets its length. A question core is overwrapped by compliment and apology ribbons; a send attempt cannot escape the knot. The same ribbons unroll into a bridge between two abstract endpoints, and the question crosses it. No timer, button, domino, product, card slideshow, copied reel, or image/video generation.
+
+The palette is warm limestone `#e8e2d6`, violet `#765096`, gold `#d7ad61`, blush `#cf806b`, and deep ink `#342f4e`. Three physical strips have 160 fixed sections, a 0.055-unit thickness, and warm directional shadows. Three-dimensional viewpoints change scale, inspect the concealed core, reveal the unfolding, and traverse the resulting bridge. Every vertex, normal, camera and object pose is derived from a frame; no accumulating simulation or wall-clock state.
+
+Twelve measured anchors: I kept / First / Then / By the time / pressed send / actual question / So I tried / Fewer words / No performance / what am I agreeing to / The question didn't / It became possible. The exact question is held in large type; the ending resolves with “It became possible to answer.” These headings replace duplicate captions only while they carry the spoken thought. The full exact English SRT is retained.
+
+Typography uses bundled Montserrat: captions 57 px, key question 96 px, disclosure and educational context at least 29 px. Main text remains x=80–890, y=178–1330. Disclosure and context have an opaque cream backing. Music and ribbon rustles are original sample-free synthesis, speech anchored and ducked; the restart has a deliberate hush.
+
+## Focused reuse decision — 11 November 2026
+
+Retain the already-reviewed Three.js r187 / 0.187.0 MIT vendor and GSAP/HyperFrames contract. Compare [BufferGeometry](https://threejs.org/docs/pages/BufferGeometry.html) with [ExtrudeGeometry](https://threejs.org/docs/pages/ExtrudeGeometry.html): adopt one indexed, reusable position buffer whose vertices change analytically, rather than repeatedly constructing path extrusions. The extrusion documentation states that changing its construction parameters does not update its geometry. This is an original implementation of that architectural choice, not copied example code. The [r187 MIT notice](https://github.com/mrdoob/three.js/blob/r187/LICENSE) and exact local vendor hashes are preserved. No new dependency or renderer framework is added. Registry search for “ribbon unroll bridge coil” is retained under ignored `output/question-ribbon-catalog.json`; the story-specific deforming geometry is authored locally.
+
+Required evidence: all-frame finite poses, reversible seek equality, exact ribbon endpoint continuity, true knot-to-bridge change, a complete readable question, unobstructed captions, a settled final state, actual browser snapshots, then final full decode and encoded-audio checks. Source declarations and still images do not by themselves establish film quality.

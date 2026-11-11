@@ -2,9 +2,9 @@
 
 **Paused by the owner on 9 November 2026.** Work only when explicitly requested.
 Do not start daily production, posting, analytics checks or background workers.
-The recurring Codex automation is PAUSED. The current request authorizes finishing
-and publishing The Borrowed Countdown once on all three platforms; it does not
-resume future scheduled runs. The operating procedure below is for requested runs.
+The recurring Codex automation is PAUSED. Each explicit request authorizes one
+reviewed episode across the requested destinations; it does not resume future
+scheduled runs. The operating procedure below is for requested runs.
 
 ## Preserve the right state
 

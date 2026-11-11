@@ -74,3 +74,9 @@ videos/biznex-the-borrowed-countdown/qa/frames/*.jpg
 videos/biznex-the-borrowed-countdown/qa/audio/audition-report.json
 videos/biznex-the-borrowed-countdown/qa/audio/*/*.json
 videos/biznex-the-borrowed-countdown/check-preview.json
+videos/biznex-the-question-that-stayed/qa/frames/*.png
+videos/biznex-the-question-that-stayed/qa/frames/*.jpg
+videos/biznex-the-question-that-stayed/qa/audio/audition-report.json
+videos/biznex-the-question-that-stayed/qa/audio/*/*.json
+videos/biznex-the-question-that-stayed/check-preview.json
+videos/biznex-the-question-that-stayed/check-final.json

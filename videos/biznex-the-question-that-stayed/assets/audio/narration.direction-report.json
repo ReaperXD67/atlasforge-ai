@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "selected_provider": "cosyvoice3",
+  "fallback_used": false,
+  "direction_requested": true,
+  "direction_applied": true,
+  "direction_mode": "reference_conditioned_semantic_instructions",
+  "semantic_emotion_supported": true,
+  "emotion_fidelity_verified": false,
+  "duration_seconds": 25.31,
+  "ignored_numeric_controls": [],
+  "generation_method": "Verified authored thought groups"
+}

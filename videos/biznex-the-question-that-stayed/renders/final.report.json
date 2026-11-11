@@ -1,0 +1,75 @@
+{
+  "authored_caption_word_count": 56,
+  "authored_shot_count": 12,
+  "delivery_verified": true,
+  "elapsed_seconds": 428.417,
+  "finished_at": "2026-11-11T05:55:25.411573+00:00",
+  "output": {
+    "audio_codec": "aac",
+    "bytes": 34975577,
+    "channels": 2,
+    "decoded_video_frames": 760,
+    "duration_seconds": 25.333333,
+    "file": "renders/final.mp4",
+    "fps": "30",
+    "full_video_audio_decode_passed": true,
+    "height": 1920,
+    "pixel_format": "yuv420p",
+    "sample_rate": 48000,
+    "sha256": "a155978a800ed783fbe641c5cea682689c12112fedc88e53ecc2b91b806adb9f",
+    "video_codec": "h264",
+    "width": 1080
+  },
+  "project_id": "biznex-the-question-that-stayed",
+  "published": false,
+  "rendered": true,
+  "run_id": "f77b34c8f10a48b7a9f0bc94b2eb39b9",
+  "schema_version": 1,
+  "source_files": {
+    "AUDIO_MIX.json": "f1c8d453240d43b7a6cbe2e9c2ed5bfc0aa292d54bf883ddc571b9f2fd25fad9",
+    "CINEMATIC_BUILD.json": "ff18ac55b0a3695ba514dc62497583ee70cd2ecdb234de9960e1946ed01ee7c6",
+    "DIRECTION.json": "f2b7a3b947bf88a133dd80f75376908299a7476edff331588b5f1b69efe239ce",
+    "EDIT_PLAN.audit.json": "c948abd4891c90252c6d0df3bc98f797f3b150f6f470fbfc45b216ca9096450d",
+    "EDIT_PLAN.compiled.js": "d9149f09ed86051fd5e71061270107490062e839763b4898a37276bcb5d828c7",
+    "EDIT_PLAN.compiled.json": "1159484fb1ca9b9366e530b1ee82ceabc20fb5dcb0a650b930a4a277234e00b2",
+    "EDIT_PLAN.json": "cc67033f94d1e9ca0bc8ed33e8c38c725e7cc07f6692cd78520d5a09ddeb6e1e",
+    "assets/audio/machine.wav": "b6a5b374a68e7d94612e8f850425bdc38f4ca31dcbbe356887b004ffe93e8bc4",
+    "assets/audio/master.wav": "d7fa871dea8de0511a5fe5dabf9681dc5ecb4eb8f4a3cef6ee274b2ef61fe343",
+    "assets/audio/narration.wav": "9e4150eefdbcbbd7f2b6380f9fe2eaf2e6861c7f9956100f821df3bb5d0a8a48",
+    "assets/audio/score.wav": "d0a9d0d49a812137cb7d03397750e8daa827b17c89c7556e9c9124fc5401bf52",
+    "assets/fonts/Montserrat-OFL.txt": "8b7141c03fa4f8d44e6345d5d4931709290f0f67875e452e95ac1fd3a027802e",
+    "assets/fonts/Montserrat.ttf": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7",
+    "assets/vendor/THREE-LICENSE.txt": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+    "assets/vendor/cinematic_primitives.js": "8fb8b27ba46d3cbfbf1ca4d45edf8a5eaf33556f1b3fcfe621e5245d81e1ef48",
+    "assets/vendor/gsap.min.js": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280",
+    "assets/vendor/question_story_state.mjs": "9c6187c3692962e81b31af1f8bda62f5235e6ea4d3a39abdf9482cfcaff80bec",
+    "assets/vendor/three.core.js": "613e370f76638fdef83926642bf256dc9615684922de1ce1f63a8583e5d78578",
+    "assets/vendor/three.module.js": "104f56145899722094556490d787aae0617cc2fc3382f31df02d724ea1aee341",
+    "assets/world.json": "ba1a9af7706df9087ac128e1025a498f67e542ae3eca86c6fc8dd34476b7da58",
+    "cinematic.css": "4d76c54891d0d34e3c639aa21dce643710805d51367c0aae1d83f5a173685869",
+    "cinematic.js": "88b61cd8f40ee9a72e09a7075f491be86b0e41d216422b55ba73f7ae0f5aaef0",
+    "hyperframes.json": "0a710eddc067db42da49c15f1bf7d67b1618b61ccbf9cc5ce54285520d101111",
+    "index.html": "d784403f04fc322edcd770484060d4e5a75a02d1342250c9f95324439da72fe5",
+    "package.json": "599586801e31c6b1b8952a8c2c6923a39c279aff8db7ce13e93b96ca2cdc8457",
+    "timing.json": "92277f477a4b7782ca66e967e5c54d02c39571e79d924f6cbfa3b2d434134fc6"
+  },
+  "stages": [
+    {
+      "elapsed_seconds": 423.421,
+      "name": "render-with-check",
+      "status": "passed"
+    },
+    {
+      "name": "media-verification",
+      "status": "passed"
+    },
+    {
+      "name": "final-source-verification",
+      "status": "passed"
+    }
+  ],
+  "started_at": "2026-11-11T05:48:16.994693+00:00",
+  "status": "verified_delivery",
+  "visual_review_verified": false,
+  "voice_emotion_verified": false
+}

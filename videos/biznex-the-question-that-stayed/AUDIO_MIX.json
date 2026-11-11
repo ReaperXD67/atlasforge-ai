@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "sample_rate": 48000,
+  "channels": 2,
+  "compiled_plan_sha256": "1159484fb1ca9b9366e530b1ee82ceabc20fb5dcb0a650b930a4a277234e00b2",
+  "samples": 1216000,
+  "duration_seconds": 25.333333333333332,
+  "sources": [
+    {
+      "id": "voice",
+      "role": "voice",
+      "asset": "assets/audio/narration.wav",
+      "sha256": "9e4150eefdbcbbd7f2b6380f9fe2eaf2e6861c7f9956100f821df3bb5d0a8a48",
+      "start_frame": 0,
+      "end_frame": 760
+    },
+    {
+      "id": "score",
+      "role": "music",
+      "asset": "assets/audio/score.wav",
+      "sha256": "d0a9d0d49a812137cb7d03397750e8daa827b17c89c7556e9c9124fc5401bf52",
+      "start_frame": 0,
+      "end_frame": 760
+    },
+    {
+      "id": "mechanism",
+      "role": "foley",
+      "asset": "assets/audio/machine.wav",
+      "sha256": "b6a5b374a68e7d94612e8f850425bdc38f4ca31dcbbe356887b004ffe93e8bc4",
+      "start_frame": 0,
+      "end_frame": 760
+    }
+  ],
+  "before_normalization": {
+    "input_i": "-16.16",
+    "input_tp": "-3.90",
+    "input_lra": "1.60",
+    "input_thresh": "-26.70",
+    "output_i": "-16.01",
+    "output_tp": "-3.60",
+    "output_lra": "1.90",
+    "output_thresh": "-26.56",
+    "normalization_type": "dynamic",
+    "target_offset": "0.01"
+  },
+  "normalization": {
+    "input_i": "-16.06",
+    "input_tp": "-3.90",
+    "input_lra": "1.60",
+    "input_thresh": "-26.61",
+    "output_i": "-15.90",
+    "output_tp": "-3.74",
+    "output_lra": "1.60",
+    "output_thresh": "-26.45",
+    "normalization_type": "linear",
+    "target_offset": "-0.10"
+  },
+  "master_sha256": "d7fa871dea8de0511a5fe5dabf9681dc5ecb4eb8f4a3cef6ee274b2ef61fe343",
+  "subjective_listening_verified": false,
+  "voice_emotion_verified": false
+}

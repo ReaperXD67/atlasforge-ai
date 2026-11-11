@@ -1,0 +1,375 @@
+{
+  "schema_version": 1,
+  "asr_model": "cached faster-whisper small.en, CPU int8",
+  "comparison_normalization": "Case/punctuation, signup/sign-up/sign up spelling, and standalone unsigned integer numerals 0–20 versus their exact cardinal words only; no homophones",
+  "takes": [
+    {
+      "id": "beat-00",
+      "mode": "directed",
+      "expected_text": "I kept making my question sound nicer.",
+      "synthesis_text": "I kept making my question... sound nicer.",
+      "asr_transcript": "I kept making my question sound nicer.",
+      "normalized_asr_matches": true,
+      "duration_seconds": 3.92,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.934417724609375,
+      "rms": 0.11751323193311691,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "I",
+          "start": 0.0,
+          "end": 0.16
+        },
+        {
+          "text": "kept",
+          "start": 0.16,
+          "end": 0.32
+        },
+        {
+          "text": "making",
+          "start": 0.32,
+          "end": 0.8
+        },
+        {
+          "text": "my",
+          "start": 0.8,
+          "end": 1.1
+        },
+        {
+          "text": "question",
+          "start": 1.1,
+          "end": 1.72
+        },
+        {
+          "text": "sound",
+          "start": 1.72,
+          "end": 3.04
+        },
+        {
+          "text": "nicer.",
+          "start": 3.04,
+          "end": 3.54
+        }
+      ]
+    },
+    {
+      "id": "beat-01",
+      "mode": "directed",
+      "expected_text": "First, I wrapped it in compliments. Then, an apology.",
+      "synthesis_text": "First, I wrapped it in compliments. Then, an apology.",
+      "asr_transcript": "First, I wrapped it in compliments. Then, an apology.",
+      "normalized_asr_matches": true,
+      "duration_seconds": 4.16,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.990020751953125,
+      "rms": 0.15404102206230164,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "First,",
+          "start": 0.0,
+          "end": 0.38
+        },
+        {
+          "text": "I",
+          "start": 0.86,
+          "end": 0.92
+        },
+        {
+          "text": "wrapped",
+          "start": 0.92,
+          "end": 1.2
+        },
+        {
+          "text": "it",
+          "start": 1.2,
+          "end": 1.38
+        },
+        {
+          "text": "in",
+          "start": 1.38,
+          "end": 1.52
+        },
+        {
+          "text": "compliments.",
+          "start": 1.52,
+          "end": 2.1
+        },
+        {
+          "text": "Then,",
+          "start": 2.74,
+          "end": 2.94
+        },
+        {
+          "text": "an",
+          "start": 3.2,
+          "end": 3.28
+        },
+        {
+          "text": "apology.",
+          "start": 3.28,
+          "end": 3.76
+        }
+      ]
+    },
+    {
+      "id": "beat-02",
+      "mode": "directed",
+      "expected_text": "By the time I pressed send, the actual question had disappeared.",
+      "synthesis_text": "By the time I pressed send... the actual question had disappeared.",
+      "asr_transcript": "By the time I pressed send, the actual question had disappeared.",
+      "normalized_asr_matches": true,
+      "duration_seconds": 4.2,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.989990234375,
+      "rms": 0.1249556615948677,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "By",
+          "start": 0.0,
+          "end": 0.14
+        },
+        {
+          "text": "the",
+          "start": 0.14,
+          "end": 0.28
+        },
+        {
+          "text": "time",
+          "start": 0.28,
+          "end": 0.5
+        },
+        {
+          "text": "I",
+          "start": 0.5,
+          "end": 0.68
+        },
+        {
+          "text": "pressed",
+          "start": 0.68,
+          "end": 1.08
+        },
+        {
+          "text": "send,",
+          "start": 1.08,
+          "end": 1.56
+        },
+        {
+          "text": "the",
+          "start": 2.1,
+          "end": 2.28
+        },
+        {
+          "text": "actual",
+          "start": 2.28,
+          "end": 2.72
+        },
+        {
+          "text": "question",
+          "start": 2.72,
+          "end": 3.12
+        },
+        {
+          "text": "had",
+          "start": 3.12,
+          "end": 3.34
+        },
+        {
+          "text": "disappeared.",
+          "start": 3.34,
+          "end": 3.82
+        }
+      ]
+    },
+    {
+      "id": "beat-03",
+      "mode": "directed",
+      "expected_text": "So I tried again. Fewer words. No performance. Just: what am I agreeing to?",
+      "synthesis_text": "So I tried again. Fewer words. No performance. Just: what am I agreeing to?",
+      "asr_transcript": "so I tried again. Fewer words, no performance, just, what am I agreeing to?",
+      "normalized_asr_matches": true,
+      "duration_seconds": 6.72,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.95074462890625,
+      "rms": 0.1330188512802124,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "so",
+          "start": 0.0,
+          "end": 0.18
+        },
+        {
+          "text": "I",
+          "start": 0.18,
+          "end": 0.32
+        },
+        {
+          "text": "tried",
+          "start": 0.32,
+          "end": 0.52
+        },
+        {
+          "text": "again.",
+          "start": 0.52,
+          "end": 0.9
+        },
+        {
+          "text": "Fewer",
+          "start": 1.84,
+          "end": 2.16
+        },
+        {
+          "text": "words,",
+          "start": 2.16,
+          "end": 2.52
+        },
+        {
+          "text": "no",
+          "start": 3.02,
+          "end": 3.2
+        },
+        {
+          "text": "performance,",
+          "start": 3.2,
+          "end": 3.7
+        },
+        {
+          "text": "just,",
+          "start": 4.4,
+          "end": 4.64
+        },
+        {
+          "text": "what",
+          "start": 5.42,
+          "end": 5.54
+        },
+        {
+          "text": "am",
+          "start": 5.54,
+          "end": 5.64
+        },
+        {
+          "text": "I",
+          "start": 5.64,
+          "end": 5.82
+        },
+        {
+          "text": "agreeing",
+          "start": 5.82,
+          "end": 6.16
+        },
+        {
+          "text": "to?",
+          "start": 6.16,
+          "end": 6.52
+        }
+      ]
+    },
+    {
+      "id": "beat-04",
+      "mode": "directed",
+      "expected_text": "The question didn't become rude when I made it clear. It became possible to answer.",
+      "synthesis_text": "The question didn't become rude when I made it clear. It became possible to answer.",
+      "asr_transcript": "The question didn't become rude when I made it clear. It became possible to answer.",
+      "normalized_asr_matches": true,
+      "duration_seconds": 4.76,
+      "sample_rate": 24000,
+      "all_samples_finite": true,
+      "peak_abs": 0.8785400390625,
+      "rms": 0.15504483878612518,
+      "clipped_sample_fraction": 0.0,
+      "asr_words": [
+        {
+          "text": "The",
+          "start": 0.0,
+          "end": 0.16
+        },
+        {
+          "text": "question",
+          "start": 0.16,
+          "end": 0.42
+        },
+        {
+          "text": "didn't",
+          "start": 0.42,
+          "end": 0.82
+        },
+        {
+          "text": "become",
+          "start": 0.82,
+          "end": 1.08
+        },
+        {
+          "text": "rude",
+          "start": 1.08,
+          "end": 1.38
+        },
+        {
+          "text": "when",
+          "start": 1.38,
+          "end": 1.62
+        },
+        {
+          "text": "I",
+          "start": 1.62,
+          "end": 1.76
+        },
+        {
+          "text": "made",
+          "start": 1.76,
+          "end": 1.94
+        },
+        {
+          "text": "it",
+          "start": 1.94,
+          "end": 2.08
+        },
+        {
+          "text": "clear.",
+          "start": 2.08,
+          "end": 2.38
+        },
+        {
+          "text": "It",
+          "start": 3.08,
+          "end": 3.16
+        },
+        {
+          "text": "became",
+          "start": 3.16,
+          "end": 3.46
+        },
+        {
+          "text": "possible",
+          "start": 3.46,
+          "end": 3.94
+        },
+        {
+          "text": "to",
+          "start": 3.94,
+          "end": 4.18
+        },
+        {
+          "text": "answer.",
+          "start": 4.18,
+          "end": 4.54
+        }
+      ]
+    }
+  ],
+  "emotion_fidelity_verified": false,
+  "speaker_similarity_verified": false,
+  "limitations": [
+    "ASR agreement is not a subjective listening review.",
+    "Different waveforms do not establish better emotion or audience retention."
+  ],
+  "source_report_sha256": "41bd9fd446e59bc399cd4ecf2bc7f2869c279523a747c87a4ec4f126f71db345",
+  "all_selected_takes_normalized_asr_match": true
+}

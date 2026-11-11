@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "project_id": "biznex-the-question-that-stayed",
+  "run_id": "706312d296604206acd0fb5e24e756d7",
+  "started_at": "2026-11-11T05:48:09.574926+00:00",
+  "finished_at": "2026-11-11T05:55:51.948892+00:00",
+  "status": "stages_verified",
+  "elapsed_seconds": 462.375,
+  "stages": [
+    {
+      "id": "voice",
+      "status": "passed",
+      "elapsed_seconds": 0.774
+    },
+    {
+      "id": "story",
+      "status": "passed",
+      "elapsed_seconds": 0.446
+    },
+    {
+      "id": "sound",
+      "status": "passed",
+      "elapsed_seconds": 1.176
+    },
+    {
+      "id": "compile",
+      "status": "passed",
+      "elapsed_seconds": 0.551
+    },
+    {
+      "id": "mix",
+      "status": "passed",
+      "elapsed_seconds": 2.015
+    },
+    {
+      "id": "build",
+      "status": "passed",
+      "elapsed_seconds": 0.533
+    },
+    {
+      "id": "render",
+      "status": "passed",
+      "elapsed_seconds": 429.117
+    },
+    {
+      "id": "audio-qa",
+      "status": "passed",
+      "elapsed_seconds": 20.159
+    },
+    {
+      "id": "frame-qa",
+      "status": "passed",
+      "elapsed_seconds": 4.419
+    }
+  ],
+  "prepared_voice_reverified": true,
+  "fresh_voice_generation_included_in_run_time": false,
+  "video_sha256": "a155978a800ed783fbe641c5cea682689c12112fedc88e53ecc2b91b806adb9f"
+}
