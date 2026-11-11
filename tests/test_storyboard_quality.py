@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import date, timedelta
 from pathlib import Path
 
 import pytest
@@ -8,6 +9,21 @@ from daily_video_factory.exceptions import QualityGateFailed
 from daily_video_factory.models import ScriptDocument
 from daily_video_factory.quality import validate_script
 from daily_video_factory.storyboard import StoryboardBuilder, _visual_plan
+
+
+@pytest.fixture
+def fresh_source_dates(settings, monkeypatch) -> date:
+    """Control test-only freshness; never refresh the repository's source pack."""
+    class TestDate(date):
+        @classmethod
+        def today(cls):
+            return cls(2026, 11, 11)
+
+    monkeypatch.setattr("daily_video_factory.quality.date", TestDate)
+    today = TestDate.today()
+    for source in settings.research.official_sources:
+        source.checked_on = today
+    return today
 
 
 def make_script(text: str, disclosures: list[str] | None = None) -> ScriptDocument:
@@ -135,6 +151,7 @@ def test_quality_gate_accepts_education_first_script(settings) -> None:
     assert validate_script(make_script(f"{prefix} {suffix}"), settings) == []
 
 
+@pytest.mark.usefixtures("fresh_source_dates")
 def test_quality_gate_allows_direct_brand_topic_when_grounded(settings) -> None:
     text = " ".join(
         ["Atomy registration should be evaluated carefully against official requirements."] * 24
@@ -145,6 +162,26 @@ def test_quality_gate_allows_direct_brand_topic_when_grounded(settings) -> None:
     assert validate_script(script, settings) == []
 
 
+@pytest.mark.parametrize("days_over_limit", [0, 1])
+def test_quality_gate_enforces_source_age_boundary(settings, fresh_source_dates, days_over_limit):
+    text = " ".join(
+        ["Atomy registration should be evaluated carefully against official requirements."] * 24
+    )
+    script = make_script(text)
+    script.brand_focused = True
+    source = settings.research.official_sources[0]
+    script.source_urls = [source.url]
+    source.checked_on = fresh_source_dates - timedelta(
+        days=settings.research.max_official_source_age_days + days_over_limit
+    )
+    if days_over_limit:
+        with pytest.raises(QualityGateFailed, match="Official source summaries are stale"):
+            validate_script(script, settings)
+    else:
+        assert validate_script(script, settings) == []
+
+
+@pytest.mark.usefixtures("fresh_source_dates")
 def test_quality_gate_rejects_invented_atomy_pv_expansion(settings) -> None:
     text = " ".join(
         ["Atomy registration should be evaluated carefully against official requirements."] * 20
@@ -158,6 +195,7 @@ def test_quality_gate_rejects_invented_atomy_pv_expansion(settings) -> None:
         validate_script(script, settings)
 
 
+@pytest.mark.usefixtures("fresh_source_dates")
 def test_quality_gate_rejects_unpinned_atomy_compensation_details(settings) -> None:
     text = " ".join(
         ["Atomy registration should be evaluated carefully against official requirements."] * 20
