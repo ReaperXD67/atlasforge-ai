@@ -5,6 +5,7 @@ import sqlite3
 from pathlib import Path
 
 import pytest
+from typer import BadParameter
 from typer.testing import CliRunner
 
 from daily_video_factory import social_cli
@@ -138,8 +139,11 @@ def test_invalid_queue_limit_never_creates_manager(monkeypatch) -> None:
 
     monkeypatch.setattr(social_cli, "_manager", unexpected_manager)
     result = runner.invoke(social_cli.app, ["run-due", "--limit", "0", "--execute"])
-    assert result.exit_code != 0
-    assert "range" in result.output.lower()
+    assert result.exit_code == 2
+    assert isinstance(result.exception, SystemExit)
+    error = result.exception.__context__
+    assert isinstance(error, BadParameter)
+    assert error.param.name == "limit"
 
 
 def test_enqueue_failure_does_not_echo_external_exception(tmp_path: Path, monkeypatch) -> None:
