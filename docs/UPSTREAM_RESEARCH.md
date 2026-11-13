@@ -1,4 +1,4 @@
-# Social production and expressive voice research
+# Production pipeline research
 
 Inspected **6 November 2026**. This record distinguishes upstream capabilities,
 our implementation decisions, and results that still need audience or listening tests.
@@ -113,3 +113,21 @@ independent ASR comparison; rejected pronunciation takes were retained and repai
 This opt-in provider leaves the default Kokoro narrator and published pilots intact.
 Measured speech generation is established; subjective emotion fidelity, exact speaker
 identity, ElevenLabs parity and retention improvements are not claimed.
+
+## Full-song stock footage editing
+
+Reviewed on 13 November 2026 for a linear music film made from real footage with the supplied
+song as the audio master. The pipeline keeps its existing Python dependencies and calls FFmpeg
+for picture processing and export. Each local shot cache entry binds the exact source bytes,
+edit and encoding settings, and FFmpeg version. That permits reuse of unchanged shots after an
+edit while requiring the final film to pass a full decode and audio comparison.
+
+| Source and maintenance evidence | License | Decision and implementation |
+| --- | --- | --- |
+| FFmpeg 9.0 on the production machine. The upstream 9.0 release line was receiving maintenance updates at review. [FFmpeg downloads](https://ffmpeg.org/download.html) | LGPL-2.1-or-later by default, GPL when built with GPL components. The local Windows build enables GPL and version 3. The workflow invokes an installed binary and ships no FFmpeg binary. [FFmpeg licensing](https://ffmpeg.org/legal.html) | **Adopt** the existing command-line tool for trimming, retiming, cropping, grading, stream mapping, and verification. Encode normalized picture segments once and join them using explicit frame-derived durations before muxing the original song. [Filters](https://ffmpeg.org/ffmpeg-filters.html), [concat demuxer](https://ffmpeg.org/ffmpeg-formats.html#concat) |
+| OpenTimelineIO. Inspected revision `bad7ab5` from 10 November 2026. [OpenTimelineIO revision](https://github.com/AcademySoftwareFoundation/OpenTimelineIO/tree/bad7ab5a40ac1a95d9d78a87c95a688d8b57cf28) | [Apache-2.0](https://github.com/AcademySoftwareFoundation/OpenTimelineIO/blob/bad7ab5a40ac1a95d9d78a87c95a688d8b57cf28/LICENSE.txt) | **Adapt** the separation of a media reference from its source range and timeline position. A small JSON cut list covers the current one-picture-track workflow. Defer the package and format adapters until there is a need to exchange edits with another editor. [Timeline structure](https://opentimelineio.readthedocs.io/en/latest/tutorials/otio-timeline-structure.html) |
+| HyperFrames `v0.9.41`, released 13 November 2026. [HyperFrames release](https://github.com/heygen-com/hyperframes/releases/tag/v0.9.41) | [Apache-2.0](https://github.com/heygen-com/hyperframes/blob/v0.9.41/LICENSE) | **Retain** the existing browser composition route for designed motion and layered graphics. Defer it for this linear footage edit, where FFmpeg can process the frames and mux the master without a Node and browser rendering step. This choice concerns runtime and cache structure. No comparative speed benchmark was run. |
+
+The [music film guide](MUSIC_VIDEO.md#authored-stock-music-films) describes the workflow. The
+[stock music film skill](../.agents/skills/stock-music-film/SKILL.md) records the authoring and
+review steps specific to AtlasForge. No upstream source code was vendored.

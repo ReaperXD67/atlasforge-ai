@@ -62,6 +62,7 @@ use this local Windows setup; the source check reused installed dependencies.
 | **Cinematic Shorts** | A measured voice performance, frame-based shot plan, character motion, licensed sound mix and verified 1080p export | [The Second Question](videos/biznex-second-question/README.md) · [One-command rebuild](docs/CINEMATIC_PROJECT_WORKFLOW.md) |
 | **Social Operator** | A durable YouTube/Instagram/Facebook queue for verified videos, account-specific publishing receipts, and matched-age analytics reports | [Social automation](docs/SOCIAL_AUTOMATION.md) · [Growth experiments](docs/SOCIAL_GROWTH.md) |
 | **Editorial Studio** | Researched, narrated videos using matched real footage, owned cards, captions, and reviewable upload packages | [Windows setup](SETUP.md) |
+| **Stock Music Films** | Full songs cut to hand-picked real footage, with frame-accurate trims, shot-by-shot grades, cached revisions, and soundtrack verification | [The Colour of You](videos/the-colour-of-you/README.md) · [Stock film workflow](docs/MUSIC_VIDEO.md#authored-stock-music-films) |
 | **Custom cinematic films · HyperFrames** | Authored full-song films with supplied photographs, generated artwork, reviewed motion inserts, deterministic camera/atmosphere movement, and measured lyric subtitles | [Cinematic workflow below](#custom-cinematic-music-films) · [reference project](videos/for-my-sweetheart/README.md) |
 | **Remotion Music Film · Studio** | Song-driven racing/event edits: Remotion graphics preview, local music analysis, CLIP-ranked footage, and FFmpeg/NVENC final rendering. The Pragon profile requires licensed footage for its human and event scenes | [Racing/event workflow](docs/MUSIC_VIDEO.md) |
 | **AI Viral Lab** | Individual 3–10 second vertical AI shots, with reference-led motion and optional native dialogue/audio; local Wan 2.2 on an 8 GB RTX 4070 or opt-in Gemini Omni/Veo | [AI Viral Lab](docs/VIRAL_SHORTS.md) |
@@ -242,6 +243,8 @@ media production; they do not predict audience retention or virality.
 
 ## Custom cinematic music films
 
+**[The Colour of You](videos/the-colour-of-you/README.md)** follows a complete song from a rain-streaked city to the shore at dawn. Its real-footage workflow can rebuild from an editable shot list and source checksums. Revise a cut or grade without encoding every shot again, then verify the complete film and compare both soundtrack channels to the original at zero offset. The [stock film guide](docs/MUSIC_VIDEO.md#authored-stock-music-films) includes the render command and links to the reusable authoring skill.
+
 The [For my Sweetheart project](videos/for-my-sweetheart/README.md) demonstrates the authored
 HyperFrames route: a complete **6:12.76 song**, **42 lyric-directed shots**, and **122 measured subtitle
 cues**, delivered as a **1080p30 master** and a **720p sharing copy**. Six generated plates, the supplied
@@ -265,10 +268,10 @@ To build or adapt this kind of film:
 3. Run the [delivery verifier](videos/for-my-sweetheart/verify_delivery.py) against the rendered
    master, then create a portable copy with [share.ps1](videos/for-my-sweetheart/share.ps1).
 
-These projects live under `videos/` and are authored directly in HyperFrames. Studio's
+Both film projects live under `videos/`. Studio's
 **Remotion Music Film** workspace remains the separate racing/event workflow described above.
-Private source media, generated assets, lyrics, and rendered deliveries stay local and are excluded
-from Git; the repository contains the reusable composition and production tools.
+The repository contains editable plans and production tools. Private sources, lyrics, and raw stock
+footage stay local; public finished films can be attached to GitHub Releases.
 
 ## Target architecture
 

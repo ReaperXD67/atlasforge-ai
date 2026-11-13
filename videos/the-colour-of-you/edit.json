@@ -1,0 +1,766 @@
+{
+  "title": "The Colour of You",
+  "frames": 6584,
+  "audio_sha256": "cb73127a8af3b75ee38abd965cb2b07838d79b8bda2a96338fa56d0d8c23c386",
+  "assets": {
+    "15161525": {
+      "file": "pexels-15161525.mp4",
+      "url": "https://videos.pexels.com/video-files/15161525/15161525-hd_1920_1080_24fps.mp4",
+      "sha256": "a99de13213bc2941658f3e5da1fb9d0e43aadcf1d5e1cda362d47be47342cd73",
+      "page": "https://www.pexels.com/video/raindrops-flowing-on-glass-15161525/",
+      "creator": "Phil Desforges",
+      "license": "https://www.pexels.com/license/"
+    },
+    "33857171": {
+      "file": "pexels-33857171.mp4",
+      "url": "https://videos.pexels.com/video-files/33857171/14370568_1920_1080_24fps.mp4",
+      "sha256": "7695ed4febbdb0fdeca5eb86a5afec3c30f8a7d35d59071e2b69ad48cf073de5",
+      "page": "https://www.pexels.com/video/breathtaking-aerial-view-of-panama-city-skyline-at-dusk-33857171/",
+      "creator": "K",
+      "license": "https://www.pexels.com/license/"
+    },
+    "36244322": {
+      "file": "pexels-36244322.mp4",
+      "url": "https://videos.pexels.com/video-files/36244322/15370675_1920_1080_30fps.mp4",
+      "sha256": "4ed9ed5a70bc4a026e7c237135992a2ceb7c0d23bff7d228039f735b81ef6e96",
+      "page": "https://www.pexels.com/video/serene-evening-in-cozy-bedroom-36244322/",
+      "creator": "Yura Forrat",
+      "license": "https://www.pexels.com/license/"
+    },
+    "5909595": {
+      "file": "pexels-5909595.mp4",
+      "url": "https://videos.pexels.com/video-files/5909595/5909595-hd_1920_1080_24fps.mp4",
+      "sha256": "18103ee0d12503a35e6f3fcb9f5a30e892f1522649be45f2c9aabefc90609971",
+      "page": "https://www.pexels.com/video/silhouette-of-a-man-pouring-coffee-5909595/",
+      "creator": "Yaroslav Shuraev",
+      "license": "https://www.pexels.com/license/"
+    },
+    "38136563": {
+      "file": "pexels-38136563.mp4",
+      "url": "https://videos.pexels.com/video-files/38136563/16191797_1920_1080_30fps.mp4",
+      "sha256": "e8e31b48b5622edeaae435d64df1db3c1274d12538ece8a6e587b3d9ae3fa0cf",
+      "page": "https://www.pexels.com/video/lonely-reflection-in-urban-night-scene-38136563/",
+      "creator": "Yura Forrat",
+      "license": "https://www.pexels.com/license/"
+    },
+    "39310418": {
+      "file": "pexels-39310418.mp4",
+      "url": "https://videos.pexels.com/video-files/39310418/16726979_1920_1080_25fps.mp4",
+      "sha256": "3998c1bc467918676e3a0e7bd72984e2c23df3dde52423d88ef4bb47f5136db6",
+      "page": "https://www.pexels.com/video/moody-indoor-scene-at-sunset-39310418/",
+      "creator": "Özgür Sürmeli",
+      "license": "https://www.pexels.com/license/"
+    },
+    "10570118": {
+      "file": "pexels-10570118.mp4",
+      "url": "https://videos.pexels.com/video-files/10570118/10570118-hd_2048_1080_25fps.mp4",
+      "sha256": "6f4150ce1cee7b7c3e1a1c947ded215402b9b874419069af737b67d74e3798d6",
+      "page": "https://www.pexels.com/video/rear-view-on-woman-dancing-and-walking-among-stones-10570118/",
+      "creator": "cottonbro studio",
+      "license": "https://www.pexels.com/license/"
+    },
+    "4733692": {
+      "file": "pexels-4733692.mp4",
+      "url": "https://videos.pexels.com/video-files/4733692/4733692-hd_1920_1080_25fps.mp4",
+      "sha256": "f2e61bdd25dade9c6c292d8d16d51df5ed45db21a765a7f2167d3471bf16499b",
+      "page": "https://www.pexels.com/video/a-person-s-hands-are-reaching-out-to-the-window-4733692/",
+      "creator": "cottonbro studio",
+      "license": "https://www.pexels.com/license/"
+    },
+    "5199826": {
+      "file": "pexels-5199826.mp4",
+      "url": "https://videos.pexels.com/video-files/5199826/5199826-hd_1920_1080_25fps.mp4",
+      "sha256": "1acde057c0f5c910547d969b77e8b804939854970fcd32d2ef4d1d4e93472fc5",
+      "page": "https://www.pexels.com/video/having-coffee-by-the-window-5199826/",
+      "creator": "Tima Miroshnichenko",
+      "license": "https://www.pexels.com/license/"
+    },
+    "4625467": {
+      "file": "pexels-4625467.mp4",
+      "url": "https://videos.pexels.com/video-files/4625467/4625467-hd_1920_1080_24fps.mp4",
+      "sha256": "3b872f6b2fd87d009f9ba405b5a479e8218730cea6f164d79734bc35b49f47fd",
+      "page": "https://www.pexels.com/video/video-of-woman-touching-her-hair-4625467/",
+      "creator": "Honye Sanges",
+      "license": "https://www.pexels.com/license/"
+    },
+    "33938712": {
+      "file": "pexels-33938712.mp4",
+      "url": "https://videos.pexels.com/video-files/33938712/14401946_1920_1080_30fps.mp4",
+      "sha256": "d0a1fdefb893cb39886caa07b0675ffd3d5bedc1bca3a5f98f61cfdca467f45b",
+      "page": "https://www.pexels.com/video/raindrops-on-window-with-blurred-lights-33938712/",
+      "creator": "정규송 Nui MALAMA",
+      "license": "https://www.pexels.com/license/"
+    },
+    "13375966": {
+      "file": "pexels-13375966.mp4",
+      "url": "https://videos.pexels.com/video-files/13375966/13375966-hd_1920_1080_60fps.mp4",
+      "sha256": "a87c6ce7f719fabbb9f1ace8b7a36195134ba8d8e450b69a1955aba33ce4aecd",
+      "page": "https://www.pexels.com/video/silhouette-of-woman-in-dark-13375966/",
+      "creator": "FÁBIO REIS DE ABREU (PORTUGA)",
+      "license": "https://www.pexels.com/license/"
+    },
+    "10570124": {
+      "file": "pexels-10570124.mp4",
+      "url": "https://videos.pexels.com/video-files/10570124/10570124-hd_2048_1080_25fps.mp4",
+      "sha256": "b8ecf914e2013fe65093f5aec2a7d3151d281d5c3d708524ae351a8af37776e0",
+      "page": "https://www.pexels.com/video/woman-with-black-hair-standing-10570124/",
+      "creator": "cottonbro studio",
+      "license": "https://www.pexels.com/license/"
+    },
+    "6218572": {
+      "file": "pexels-6218572.mp4",
+      "url": "https://videos.pexels.com/video-files/6218572/6218572-hd_1920_1080_30fps.mp4",
+      "sha256": "f80e1168bf65e4765af2c418ed3afa9d1a94310005d0b8ff2f0da5ecc261713b",
+      "page": "https://www.pexels.com/video/video-of-a-beach-and-rocks-6218572/",
+      "creator": "Claudio AFC",
+      "license": "https://www.pexels.com/license/"
+    },
+    "36872872": {
+      "file": "pexels-36872872.mp4",
+      "url": "https://videos.pexels.com/video-files/36872872/15620945_1920_1080_30fps.mp4",
+      "sha256": "966c9e9f7af4a01098f91270163bfbdaadb43b860fbcd2a37b10b5213417dd03",
+      "page": "https://www.pexels.com/video/stunning-twilight-cityscape-aerial-view-36872872/",
+      "creator": "Efrem  Efre",
+      "license": "https://www.pexels.com/license/"
+    },
+    "10570122": {
+      "file": "pexels-10570122.mp4",
+      "url": "https://videos.pexels.com/video-files/10570122/10570122-hd_2048_1080_25fps.mp4",
+      "sha256": "44e926b1a3291a25af0ae384bb37968fd8405a515fcc98e3c002e018909a227c",
+      "page": "https://www.pexels.com/video/woman-turning-head-and-looking-10570122/",
+      "creator": "cottonbro studio",
+      "license": "https://www.pexels.com/license/"
+    },
+    "4458918": {
+      "file": "pexels-4458918.mp4",
+      "url": "https://videos.pexels.com/video-files/4458918/4458918-hd_1920_1080_30fps.mp4",
+      "sha256": "c994e021a57c60492508eaa88797b00bd4f3c4f8d5dcf47d09a9fda9ba64c9f2",
+      "page": "https://www.pexels.com/video/rainy-nights-4458918/",
+      "creator": "Imeel Bagdisar",
+      "license": "https://www.pexels.com/license/"
+    },
+    "33272165": {
+      "file": "pexels-33272165.mp4",
+      "url": "https://videos.pexels.com/video-files/33272165/14174002_1920_1080_24fps.mp4",
+      "sha256": "542b42a5931d2e808adb35d455f229c454a440d920fb7ed0a7780a11a1c459b9",
+      "page": "https://www.pexels.com/video/tranquil-coastal-waves-at-rocky-shoreline-33272165/",
+      "creator": "Mario Krimer",
+      "license": "https://www.pexels.com/license/"
+    },
+    "10570123": {
+      "file": "pexels-10570123.mp4",
+      "url": "https://videos.pexels.com/video-files/10570123/10570123-hd_2048_1080_25fps.mp4",
+      "sha256": "9b976d38d76b0bdfa554264244081cc95adc4fee409c16f7acd592b36bc6b12c",
+      "page": "https://www.pexels.com/video/woman-standing-under-clouds-and-turning-head-10570123/",
+      "creator": "cottonbro studio",
+      "license": "https://www.pexels.com/license/"
+    },
+    "19058578": {
+      "file": "pexels-19058578.mp4",
+      "url": "https://videos.pexels.com/video-files/19058578/19058578-hd_1920_1080_24fps.mp4",
+      "sha256": "0fe45aa4cf6da8715445f8dd8135d03efaa4c90ec749928614fba661c70e90b6",
+      "page": "https://www.pexels.com/video/night-drive-and-neon-lights-in-the-rain-19058578/",
+      "creator": "Nathan J Hilton",
+      "license": "https://www.pexels.com/license/"
+    },
+    "9253241": {
+      "file": "pexels-9253241.mp4",
+      "url": "https://videos.pexels.com/video-files/9253241/9253241-hd_1920_1080_30fps.mp4",
+      "sha256": "09c9b508d39f8d15753804b62bc01291efa24e39b63704de0e8163e275ee0a3a",
+      "page": "https://www.pexels.com/video/raindrops-on-the-road-9253241/",
+      "creator": "Shamnad Abdulsalam",
+      "license": "https://www.pexels.com/license/"
+    },
+    "38781079": {
+      "file": "pexels-38781079.mp4",
+      "url": "https://videos.pexels.com/video-files/38781079/16478399_1920_1080_25fps.mp4",
+      "sha256": "32bbf524f07fb31e2d07b4c11809727bca72f19e54a510fec14b422a121e29dd",
+      "page": "https://www.pexels.com/video/sunlit-curtains-gently-sway-in-the-breeze-38781079/",
+      "creator": "Melike",
+      "license": "https://www.pexels.com/license/"
+    },
+    "4360568": {
+      "file": "pexels-4360568.mp4",
+      "url": "https://videos.pexels.com/video-files/4360568/4360568-hd_1920_1080_24fps.mp4",
+      "sha256": "b85c9c4b5e4316bcfc1b48e98a87449b7a7547d3eb98f8ad58ad8ac7a83cbfe4",
+      "page": "https://www.pexels.com/video/woman-painting-4360568/",
+      "creator": "Yaroslav Shuraev",
+      "license": "https://www.pexels.com/license/"
+    },
+    "4360563": {
+      "file": "pexels-4360563.mp4",
+      "url": "https://videos.pexels.com/video-files/4360563/4360563-hd_1920_1080_24fps.mp4",
+      "sha256": "a27ef3d51f7dc5adfbed63b99aa2c01f60fde91db3abdc0536f1c3f0f99f0ae3",
+      "page": "https://www.pexels.com/video/woman-drinking-while-looking-outside-the-window-4360563/",
+      "creator": "Yaroslav Shuraev",
+      "license": "https://www.pexels.com/license/"
+    },
+    "7277926": {
+      "file": "pexels-7277926.mp4",
+      "url": "https://videos.pexels.com/video-files/7277926/7277926-hd_1920_1080_25fps.mp4",
+      "sha256": "a915006daa6627bbb1f8bcabc8f2182956fc006201ec58cd1158829ea2fc1e32",
+      "page": "https://www.pexels.com/video/woman-looking-outside-while-standing-on-the-windowsill-7277926/",
+      "creator": "MART  PRODUCTION",
+      "license": "https://www.pexels.com/license/"
+    },
+    "3638386": {
+      "file": "pexels-3638386.mp4",
+      "url": "https://videos.pexels.com/video-files/3638386/3638386-hd_1920_1080_24fps.mp4",
+      "sha256": "5810010d73729d843f02228c6f8a18ef197a7724c703882502564375c43eb451",
+      "page": "https://www.pexels.com/video/raindrops-falling-on-the-ground-3638386/",
+      "creator": "Saral Shrivastava",
+      "license": "https://www.pexels.com/license/"
+    },
+    "40863417": {
+      "file": "pexels-40863417.mp4",
+      "url": "https://videos.pexels.com/video-files/40863417/17464701_1920_1080_60fps.mp4",
+      "sha256": "e97424238fc4b9ed51ee1761811f111b8dc9bf1967f9c076608a62579092f838",
+      "page": "https://www.pexels.com/video/rainy-city-night-with-blurred-lights-40863417/",
+      "creator": "Evgenij Mikhailov",
+      "license": "https://www.pexels.com/license/"
+    },
+    "7247786": {
+      "file": "pexels-7247786.mp4",
+      "url": "https://videos.pexels.com/video-files/7247786/7247786-hd_1920_1080_24fps.mp4",
+      "sha256": "8bb0449f5df575f0f2342f8386b2abf4d38e1f2b8cb5110a6754513b42f6bebb",
+      "page": "https://www.pexels.com/video/close-up-view-of-coffee-dropping-on-a-mug-7247786/",
+      "creator": "Grzegorz Piotrowski",
+      "license": "https://www.pexels.com/license/"
+    },
+    "8975765": {
+      "file": "pexels-8975765.mp4",
+      "url": "https://videos.pexels.com/video-files/8975765/8975765-hd_1920_1080_24fps.mp4",
+      "sha256": "d6fb795344711c2b19101449a55725e17be5dbc60d93752588153e7de36cad94",
+      "page": "https://www.pexels.com/video/reflection-of-a-man-wearing-his-hat-8975765/",
+      "creator": "KoolShooters",
+      "license": "https://www.pexels.com/license/"
+    },
+    "31060087": {
+      "file": "pexels-31060087.mp4",
+      "url": "https://videos.pexels.com/video-files/31060087/13273784_1920_1080_25fps.mp4",
+      "sha256": "976f79dfa6ae151019b4153e3162aab821819d0b717524a62eb1cbca499ec16b",
+      "page": "https://www.pexels.com/video/rainy-window-with-bokeh-effect-31060087/",
+      "creator": "emirkhan bal",
+      "license": "https://www.pexels.com/license/"
+    },
+    "40103205": {
+      "file": "pexels-40103205.mp4",
+      "url": "https://videos.pexels.com/video-files/40103205/17121172_1920_1080_25fps.mp4",
+      "sha256": "54903ee63938b8479cc7d298b6c878422ebc9a6aa5adce70b20ae9c33e0d1855",
+      "page": "https://www.pexels.com/video/curtains-opening-to-bright-morning-light-40103205/",
+      "creator": "Basit Manzoor",
+      "license": "https://www.pexels.com/license/"
+    },
+    "10570126": {
+      "file": "pexels-10570126.mp4",
+      "url": "https://videos.pexels.com/video-files/10570126/10570126-hd_2048_1080_25fps.mp4",
+      "sha256": "b316c1afe356c000c6099857ca1ad700e8f02be2979dee4dd326de2874f3984a",
+      "page": "https://www.pexels.com/video/woman-dancing-and-moving-arms-under-clouds-10570126/",
+      "creator": "cottonbro studio",
+      "license": "https://www.pexels.com/license/"
+    },
+    "10570120": {
+      "file": "pexels-10570120.mp4",
+      "url": "https://videos.pexels.com/video-files/10570120/10570120-hd_2048_1080_25fps.mp4",
+      "sha256": "6475de822df27dd28010be92d116beb8f2bc153168ef10b6721f2467d0b1eb47",
+      "page": "https://www.pexels.com/video/woman-dancing-and-moving-arms-10570120/",
+      "creator": "cottonbro studio",
+      "license": "https://www.pexels.com/license/"
+    },
+    "5482661": {
+      "file": "pexels-5482661.mp4",
+      "url": "https://videos.pexels.com/video-files/5482661/5482661-hd_1920_1080_30fps.mp4",
+      "sha256": "037d0147bb9e9b31a8eac45c715221c95daeb5e3bb65c1cde292245fdff8e180",
+      "page": "https://www.pexels.com/video/light-pattern-inside-window-5482661/",
+      "creator": "Soham Pargaonkar",
+      "license": "https://www.pexels.com/license/"
+    },
+    "39811617": {
+      "file": "pexels-39811617.mp4",
+      "url": "https://videos.pexels.com/video-files/39811617/16981131_1920_1080_60fps.mp4",
+      "sha256": "9e25b827a924406c82fb3455146eaa4d26b7a02d0b0500c1c40445d3c202b06d",
+      "page": "https://www.pexels.com/video/serene-sunrise-over-misty-waterfront-39811617/",
+      "creator": "Joshua Woroniecki",
+      "license": "https://www.pexels.com/license/"
+    },
+    "8303204": {
+      "file": "pexels-8303204.mp4",
+      "url": "https://videos.pexels.com/video-files/8303204/8303204-hd_2048_1080_24fps.mp4",
+      "sha256": "9ccdb54504f3d1abc0e42ba98bf6659e257f71467721e031b16b5eebdadc4bf9",
+      "page": "https://www.pexels.com/video/drone-footage-of-an-island-8303204/",
+      "creator": "Mikhail Nilov",
+      "license": "https://www.pexels.com/license/"
+    },
+    "36858256": {
+      "file": "pexels-36858256.mp4",
+      "url": "https://videos.pexels.com/video-files/36858256/15615793_1920_1080_24fps.mp4",
+      "sha256": "d9eb70f64f7365b6e27ed435faf2f3861f375c16707583661af9c740cd26e7ef",
+      "page": "https://www.pexels.com/video/tranquil-beach-sunrise-with-gentle-waves-36858256/",
+      "creator": "Mario Krimer",
+      "license": "https://www.pexels.com/license/"
+    },
+    "4360566": {
+      "file": "pexels-4360566.mp4",
+      "url": "https://videos.pexels.com/video-files/4360566/4360566-hd_1920_1080_24fps.mp4",
+      "sha256": "651afd8250a2939217f9e73f159f9004bd5cefd0f7c22315407f1f19fcc57918",
+      "page": "https://www.pexels.com/video/woman-looking-at-the-window-4360566/",
+      "creator": "Yaroslav Shuraev",
+      "license": "https://www.pexels.com/license/"
+    }
+  },
+  "shots": [
+    {
+      "asset": "15161525",
+      "start": 0,
+      "end": 200,
+      "source_in": 1.1,
+      "grade": "midnight",
+      "note": "Blue rain and city lights. Title emerges in the instrumental.",
+      "title": "opening",
+      "fade_in": 28
+    },
+    {
+      "asset": "33857171",
+      "start": 200,
+      "end": 348,
+      "source_in": 3.3,
+      "grade": "midnight",
+      "note": "The skyline answers the first distant vocal."
+    },
+    {
+      "asset": "36244322",
+      "start": 348,
+      "end": 516,
+      "source_in": 2.8,
+      "grade": "amber",
+      "note": "One warm window before we know who the memory is about."
+    },
+    {
+      "asset": "5909595",
+      "start": 516,
+      "end": 632,
+      "source_in": 5.1,
+      "grade": "amber",
+      "note": "Coffee pours at the start of the verse."
+    },
+    {
+      "asset": "38136563",
+      "start": 632,
+      "end": 734,
+      "source_in": 1.5,
+      "grade": "silver",
+      "note": "An isolated figure across the gap between buildings."
+    },
+    {
+      "asset": "39310418",
+      "start": 734,
+      "end": 957,
+      "source_in": 7.7,
+      "grade": "amber",
+      "note": "Hold on the room as the curtain catches the light."
+    },
+    {
+      "asset": "10570118",
+      "start": 957,
+      "end": 1055,
+      "source_in": 1.2,
+      "grade": "silver",
+      "note": "First glimpse of the coast, in the movement of her hair.",
+      "speed": 0.88
+    },
+    {
+      "asset": "4733692",
+      "start": 1055,
+      "end": 1166,
+      "source_in": 2.8,
+      "grade": "silver",
+      "note": "A gesture caught against window panes.",
+      "focal_y": 0.42
+    },
+    {
+      "asset": "5199826",
+      "start": 1166,
+      "end": 1271,
+      "source_in": 8.8,
+      "grade": "silver",
+      "note": "Hands around a cup, texture of familiar clothes."
+    },
+    {
+      "asset": "4625467",
+      "start": 1271,
+      "end": 1374,
+      "source_in": 2.5,
+      "grade": "silver",
+      "note": "Turn back to a figure in the light, still withheld.",
+      "focal_y": 0.39
+    },
+    {
+      "asset": "33938712",
+      "start": 1374,
+      "end": 1543,
+      "source_in": 2.5,
+      "grade": "silver",
+      "note": "First female pre-chorus: the world loses focus behind glass.",
+      "speed": 0.9
+    },
+    {
+      "asset": "13375966",
+      "start": 1543,
+      "end": 1668,
+      "source_in": 1.9,
+      "grade": "midnight",
+      "note": "Gold traces a silhouette; let the whispered answer breathe.",
+      "focal_y": 0.44
+    },
+    {
+      "asset": "10570124",
+      "start": 1668,
+      "end": 1791,
+      "source_in": 3.2,
+      "grade": "blue",
+      "note": "First chorus: wide release into the blue coast.",
+      "focal_y": 0.47
+    },
+    {
+      "asset": "6218572",
+      "start": 1791,
+      "end": 1881,
+      "source_in": 3.6,
+      "grade": "blue",
+      "note": "The horizon gives way to moving water."
+    },
+    {
+      "asset": "10570118",
+      "start": 1881,
+      "end": 1997,
+      "source_in": 9.6,
+      "grade": "blue",
+      "note": "Return closer: wind moves through her hair.",
+      "speed": 0.9,
+      "focal_y": 0.43
+    },
+    {
+      "asset": "36872872",
+      "start": 1997,
+      "end": 2109,
+      "source_in": 2.6,
+      "grade": "blue",
+      "note": "The lights of the bridge carry us back through the city."
+    },
+    {
+      "asset": "10570122",
+      "start": 2109,
+      "end": 2222,
+      "source_in": 4.5,
+      "grade": "blue",
+      "note": "The same performer, from behind at the shore.",
+      "focal_y": 0.46
+    },
+    {
+      "asset": "4458918",
+      "start": 2222,
+      "end": 2314,
+      "source_in": 1.1,
+      "grade": "amber",
+      "note": "One streetlight floats in the October rain.",
+      "speed": 0.82
+    },
+    {
+      "asset": "33272165",
+      "start": 2314,
+      "end": 2428,
+      "source_in": 2.6,
+      "grade": "blue",
+      "note": "Water fills the frame as the song sings about blue."
+    },
+    {
+      "asset": "10570123",
+      "start": 2428,
+      "end": 2574,
+      "source_in": 5.2,
+      "grade": "blue",
+      "note": "Wide coastal refrain on the first title lyric."
+    },
+    {
+      "asset": "19058578",
+      "start": 2574,
+      "end": 2700,
+      "source_in": 2.5,
+      "grade": "midnight",
+      "note": "Mirror catches red and blue in the post-chorus."
+    },
+    {
+      "asset": "9253241",
+      "start": 2700,
+      "end": 2788,
+      "source_in": 2.2,
+      "grade": "blue",
+      "note": "Glass reflections match into colour on wet pavement.",
+      "speed": 0.8
+    },
+    {
+      "asset": "4733692",
+      "start": 2788,
+      "end": 2898,
+      "source_in": 8.7,
+      "grade": "silver",
+      "note": "Second verse opens on the language of hands."
+    },
+    {
+      "asset": "38781079",
+      "start": 2898,
+      "end": 3003,
+      "source_in": 3.4,
+      "grade": "silver",
+      "note": "A curtain moves when the words fall quiet."
+    },
+    {
+      "asset": "4360568",
+      "start": 3003,
+      "end": 3153,
+      "source_in": 2.1,
+      "grade": "silver",
+      "note": "She draws at the window: a glimpse of her inner world.",
+      "speed": 0.9,
+      "focal_y": 0.4
+    },
+    {
+      "asset": "36872872",
+      "start": 3153,
+      "end": 3254,
+      "source_in": 12.4,
+      "grade": "silver",
+      "note": "A distant bridge as her small world opens up."
+    },
+    {
+      "asset": "4360563",
+      "start": 3254,
+      "end": 3418,
+      "source_in": 2.0,
+      "grade": "amber",
+      "note": "The same woman and window: time for a cup in daylight."
+    },
+    {
+      "asset": "7277926",
+      "start": 3418,
+      "end": 3618,
+      "source_in": 11.6,
+      "grade": "silver",
+      "note": "Female pre-chorus: hold a small silhouette in a large window."
+    },
+    {
+      "asset": "10570123",
+      "start": 3618,
+      "end": 3705,
+      "source_in": 12.4,
+      "grade": "blue",
+      "note": "Second chorus: return to the whole figure and landscape."
+    },
+    {
+      "asset": "3638386",
+      "start": 3705,
+      "end": 3821,
+      "source_in": 0.7,
+      "grade": "blue",
+      "note": "Rain moves across the street under city lights.",
+      "speed": 0.84
+    },
+    {
+      "asset": "10570118",
+      "start": 3821,
+      "end": 3978,
+      "source_in": 19.5,
+      "grade": "blue",
+      "note": "Another rear detail from the same coastal scene.",
+      "focal_y": 0.4
+    },
+    {
+      "asset": "10570124",
+      "start": 3978,
+      "end": 4145,
+      "source_in": 14.5,
+      "grade": "blue",
+      "note": "A side-on distance leaves room for the voices."
+    },
+    {
+      "asset": "40863417",
+      "start": 4145,
+      "end": 4237,
+      "source_in": 4.9,
+      "grade": "silver",
+      "note": "October rain returns in the colour of distant lights.",
+      "speed": 0.86
+    },
+    {
+      "asset": "6218572",
+      "start": 4237,
+      "end": 4357,
+      "source_in": 9.5,
+      "grade": "blue",
+      "note": "On the lyric about fading into blue, the sea takes over.",
+      "speed": 0.86
+    },
+    {
+      "asset": "10570122",
+      "start": 4357,
+      "end": 4497,
+      "source_in": 10.0,
+      "grade": "blue",
+      "note": "Second title lyric, held in the same blue landscape."
+    },
+    {
+      "asset": "7247786",
+      "start": 4497,
+      "end": 4679,
+      "source_in": 10.9,
+      "grade": "silver",
+      "note": "Stripped guitar: a single cup in the dark."
+    },
+    {
+      "asset": "8975765",
+      "start": 4679,
+      "end": 4792,
+      "source_in": 3.7,
+      "grade": "midnight",
+      "note": "The mirror lyric catches a woman only as a rain-softened reflection.",
+      "speed": 0.8
+    },
+    {
+      "asset": "39310418",
+      "start": 4792,
+      "end": 4922,
+      "source_in": 27.0,
+      "grade": "silver",
+      "note": "An empty room lets the question hang in the air."
+    },
+    {
+      "asset": "31060087",
+      "start": 4922,
+      "end": 5037,
+      "source_in": 5.1,
+      "grade": "silver",
+      "note": "Female bridge: a window turns silver and green."
+    },
+    {
+      "asset": "40103205",
+      "start": 5037,
+      "end": 5135,
+      "source_in": 4.1,
+      "grade": "silver",
+      "note": "The dark curtain gives way to a thin seam of daylight."
+    },
+    {
+      "asset": "10570126",
+      "start": 5135,
+      "end": 5221,
+      "source_in": 0.1,
+      "grade": "silver",
+      "note": "A quiet side angle for the promise before the last chorus.",
+      "speed": 0.65,
+      "focal_y": 0.4
+    },
+    {
+      "asset": "10570123",
+      "start": 5221,
+      "end": 5308,
+      "source_in": 20.0,
+      "grade": "blue",
+      "note": "Final chorus opens on the farthest view of the coast."
+    },
+    {
+      "asset": "10570120",
+      "start": 5308,
+      "end": 5423,
+      "source_in": 15.0,
+      "grade": "blue",
+      "note": "The figure finally moves freely; the white fabric echoes the curtains.",
+      "speed": 0.84,
+      "focal_y": 0.42
+    },
+    {
+      "asset": "10570118",
+      "start": 5423,
+      "end": 5585,
+      "source_in": 13.7,
+      "grade": "blue",
+      "note": "A final turn in the wind, just before the colour changes.",
+      "speed": 0.78,
+      "focal_y": 0.4
+    },
+    {
+      "asset": "5482661",
+      "start": 5585,
+      "end": 5734,
+      "source_in": 3.3,
+      "grade": "dawn",
+      "note": "The refrain recedes into light through curtains.",
+      "speed": 0.85
+    },
+    {
+      "asset": "39811617",
+      "start": 5734,
+      "end": 5840,
+      "source_in": 4.1,
+      "grade": "dawn",
+      "note": "Sunday morning arrives as the first full golden horizon."
+    },
+    {
+      "asset": "8303204",
+      "start": 5840,
+      "end": 5936,
+      "source_in": 2.0,
+      "grade": "blue",
+      "note": "Painted skies: match the horizon to the sky held in moving water.",
+      "speed": 0.8
+    },
+    {
+      "asset": "10570126",
+      "start": 5936,
+      "end": 6048,
+      "source_in": 45.0,
+      "grade": "dawn",
+      "note": "On the choice, return to the shore as she reaches into the last light.",
+      "speed": 0.86,
+      "focal_y": 0.4
+    },
+    {
+      "asset": "36858256",
+      "start": 6048,
+      "end": 6211,
+      "source_in": 4.2,
+      "grade": "dawn",
+      "note": "Outro: water rolls in at ground level in the same warm light.",
+      "speed": 0.89
+    },
+    {
+      "asset": "4360566",
+      "start": 6211,
+      "end": 6371,
+      "source_in": 2.7,
+      "grade": "dawn",
+      "note": "Back in a room, the window finally opens.",
+      "speed": 0.86,
+      "focal_y": 0.43
+    },
+    {
+      "asset": "15161525",
+      "start": 6371,
+      "end": 6446,
+      "source_in": 9.4,
+      "grade": "midnight",
+      "note": "The opening rain returns briefly, now remembered.",
+      "speed": 0.74
+    },
+    {
+      "asset": "39811617",
+      "start": 6446,
+      "end": 6584,
+      "source_in": 9.4,
+      "grade": "dawn",
+      "note": "Final words over the horizon; title fades into black.",
+      "title": "closing",
+      "fade_out": 36,
+      "speed": 0.86
+    }
+  ]
+}

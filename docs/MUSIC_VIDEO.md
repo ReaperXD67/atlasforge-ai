@@ -1,4 +1,32 @@
-# Remotion Music Film workflow
+# Music film workflows
+
+## Authored stock music films
+
+Use the stock film renderer when you have a song master and want to direct the cuts, crops,
+and color across real footage. A single JSON edit holds each shot's record range at 24 fps,
+source offset, speed, crop focal point, grade, and fades. The source ledger locks the exact
+download variant and SHA-256 per clip, alongside its creator, original page, and license.
+The renderer accepts direct HTTPS video CDN URLs from Pexels, Pixabay, and Mixkit. It reuses
+verified local downloads, checks that each shot has enough source footage, and caches encoded
+segments by content. There is no generated-video step or stock search in this renderer.
+
+From the repository root with AtlasForge installed and `ffmpeg` and `ffprobe` on `PATH`, run
+the reference edit with the exact original WAV. [The Colour of You project](../videos/the-colour-of-you/README.md)
+
+```powershell
+python -m daily_video_factory.stock_film videos/the-colour-of-you/edit.json `
+  --audio 'C:\path\to\The Colour of You.wav' `
+  --work output/colour-of-you `
+  --output output/colour-of-you/The-Colour-of-You.mp4
+```
+
+The default encoder is `libx264`. Select `--encoder h264_nvenc` on a system with working
+NVIDIA encoding support. The work directory stores approved source clips and reusable shot
+segments. The finished MP4 is 1920 × 1080 at 24 fps, with a 1920 × 804 active image and 48 kHz
+stereo AAC from the supplied master. The renderer checks every picture timestamp and decodes
+the entire output before promoting it, then writes an adjacent `.verification.json` file with
+the output checksum and soundtrack comparison. The [project skill](../.agents/skills/stock-music-film/SKILL.md)
+covers shot selection, edit timing, and visual review.
 
 ## Custom cinematic music films
 

@@ -1,0 +1,24 @@
+{
+  "title": "The Colour of You",
+  "duration_seconds": 274.333333,
+  "width": 1920,
+  "height": 1080,
+  "active_picture_height": 804,
+  "fps": 24,
+  "frames": 6584,
+  "shots": 52,
+  "stock_sources": 38,
+  "full_decode": "passed",
+  "frame_clock": "passed",
+  "video_codec": "h264",
+  "audio_codec": "aac",
+  "audio_sample_rate": 48000,
+  "audio_channels": 2,
+  "audio_correlation_left_right": [
+    0.999918,
+    0.999863
+  ],
+  "master_sha256": "cb73127a8af3b75ee38abd965cb2b07838d79b8bda2a96338fa56d0d8c23c386",
+  "film_sha256": "69b5271d155fa229f43b6bf97dfbd684e9d42437108fd48c07e64cd0d65a4473",
+  "size_bytes": 220785726
+}
