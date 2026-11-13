@@ -2,8 +2,6 @@
 
 A 4:34 music film in 52 shots. It starts inside a rain-dark city, returns to the same woman on a blue coast, and lets the last chorus open into morning light. The supplied song is the only soundtrack. The lyrics guide the cuts; the picture stays free of captions, with titles only at the bookends.
 
-[Download the film](https://github.com/ReaperXD67/atlasforge-ai/releases/download/the-colour-of-you-2026-11-13/The-Colour-of-You.mp4) · [View the release and contact sheet](https://github.com/ReaperXD67/atlasforge-ai/releases/tag/the-colour-of-you-2026-11-13)
-
 Follow the [creative brief](BRIEF.md) and [storyboard](STORYBOARD.md), or edit the frame numbers, source windows, crop points and grades in [edit.json](edit.json). Footage was provided by [Pexels](https://www.pexels.com/) under the [Pexels License](https://www.pexels.com/license/). The edit lists every clip's original page, creator, direct file and checksum. No video generation was used.
 
 ## Rebuild
