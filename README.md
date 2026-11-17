@@ -64,7 +64,7 @@ use this local Windows setup; the source check reused installed dependencies.
 | **Editorial Studio** | Researched, narrated videos using matched real footage, owned cards, captions, and reviewable upload packages | [Windows setup](SETUP.md) |
 | **Stock Music Films** | Full songs cut to hand-picked real footage, with frame-accurate trims, shot-by-shot grades, cached revisions, and soundtrack verification | [The Colour of You](videos/the-colour-of-you/README.md) · [Stock film workflow](docs/MUSIC_VIDEO.md#authored-stock-music-films) |
 | **Custom cinematic films · HyperFrames** | Authored full-song films with supplied photographs, generated artwork, reviewed motion inserts, deterministic camera/atmosphere movement, and measured lyric subtitles | [Cinematic workflow below](#custom-cinematic-music-films) · [reference project](videos/for-my-sweetheart/README.md) |
-| **Lyric films** | Local audio-to-cue alignment, a browser timing editor, and full-song MP4 export over still artwork | [Lyric film workflow](docs/MUSIC_VIDEO.md#lyric-films) · [Rain to Morning theme](videos/rain-to-morning/README.md) |
+| **Lyric films** | Local vocal alignment, a browser timing editor, and full-song MP4 export with animated lyrics and window snowfall | [Lyric film workflow](docs/MUSIC_VIDEO.md#lyric-films) · [Rain to Morning theme](videos/rain-to-morning/README.md) |
 | **Remotion Music Film · Studio** | Song-driven racing/event edits: Remotion graphics preview, local music analysis, CLIP-ranked footage, and FFmpeg/NVENC final rendering. The Pragon profile requires licensed footage for its human and event scenes | [Racing/event workflow](docs/MUSIC_VIDEO.md) |
 | **AI Viral Lab** | Individual 3–10 second vertical AI shots, with reference-led motion and optional native dialogue/audio; local Wan 2.2 on an 8 GB RTX 4070 or opt-in Gemini Omni/Veo | [AI Viral Lab](docs/VIRAL_SHORTS.md) |
 | **AI Generation** | Isolated cinematic-insert candidates: a real photographic plate when possible, 1–3 seeds, and technical/vision admission checks before editorial use | [Cinematic inserts and admission](docs/VIRAL_SHORTS.md#strict-admission-policy) |
@@ -247,8 +247,9 @@ media production; they do not predict audience retention or virality.
 The [lyric film workflow](docs/MUSIC_VIDEO.md#lyric-films) turns a recording, supplied lyrics,
 and a folder of images into a 1080p lyric video. Align Mandarin or Latin-script lyrics locally,
 preview and adjust the cues in the browser, then compose with an automatic first cut or an
-authored shot list. The [Rain to Morning theme](videos/rain-to-morning/README.md) includes eight
-cinematic images and a sample edit.
+authored shot list. Authored edits can animate chorus typography and keep falling snow behind
+moving window panes. The [Rain to Morning theme](videos/rain-to-morning/README.md) includes
+eight cinematic images and a sample edit.
 
 **[The Colour of You](videos/the-colour-of-you/README.md)** follows a complete song from a rain-streaked city to the shore at dawn. Its real-footage workflow can rebuild from an editable shot list and source checksums. Revise a cut or grade without encoding every shot again, then verify the complete film and compare both soundtrack channels to the original at zero offset. The [stock film guide](docs/MUSIC_VIDEO.md#authored-stock-music-films) includes the render command and links to the reusable authoring skill.
 

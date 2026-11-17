@@ -5,16 +5,20 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import re
 import shutil
 import subprocess
 import tempfile
 from concurrent.futures import ThreadPoolExecutor
 from itertools import pairwise
 from pathlib import Path
+from typing import Annotated, Literal
 
 import numpy as np
+from PIL import ImageFont
 from pydantic import BaseModel, Field, model_validator
 
+from .lyric_atmosphere import SnowLayer, SnowPolygon, build_snow_clip, snow_mask
 from .lyric_cues import Cue, load_cues
 from .stock_film import (
     FPS,
@@ -29,6 +33,7 @@ from .stock_film import (
 )
 
 PLATE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp"}
+HexColor = Annotated[str, Field(pattern=r"^#[0-9a-fA-F]{6}$")]
 
 
 class Crop(BaseModel, extra="forbid", allow_inf_nan=False):
@@ -43,6 +48,18 @@ class Shot(BaseModel, extra="forbid", allow_inf_nan=False):
     enter: Crop = Field(default_factory=Crop)
     leave: Crop = Field(default_factory=lambda: Crop(zoom=1.14))
     dissolve: float = Field(default=0.65, ge=0, le=3)
+    snow_windows: list[SnowPolygon] = Field(default_factory=list)
+    snow_intensity: float = Field(default=0.8, ge=0, le=1)
+
+    def snowfall(self) -> SnowLayer | None:
+        if not self.snow_windows or not self.snow_intensity:
+            return None
+        return SnowLayer(
+            snow_mask(self.snow_windows),
+            self.snow_intensity,
+            (self.enter.zoom, self.enter.x, self.enter.y),
+            (self.leave.zoom, self.leave.x, self.leave.y),
+        )
 
 
 class Title(BaseModel, extra="forbid", allow_inf_nan=False):
@@ -56,6 +73,11 @@ class Edit(BaseModel, extra="forbid", allow_inf_nan=False):
     titles: list[Title] = Field(default_factory=list)
     accent_sections: list[str] = Field(default_factory=list)
     font_family: str = Field(default="Noto Serif CJK SC", pattern=r"^[^,\r\n{}\\]+$")
+    lyric_style: Literal["cinematic", "kinetic"] = "cinematic"
+    lyric_color: HexColor = "#EAF8FF"
+    accent_color: HexColor = "#FFE0A4"
+    highlight_color: HexColor = "#95EBFF"
+    highlight_phrases: list[str] = Field(default_factory=list)
     fade_in: float = Field(default=1.2, ge=0, le=6)
     fade_out: float = Field(default=2.4, ge=0, le=6)
 
@@ -77,10 +99,66 @@ def ass_time(seconds: float) -> str:
 
 def ass_text(value: str) -> str:
     # Escape the override delimiters and neutralize literal ASS line-break commands.
-    return value.replace("\\", "＼").replace("{", "｛").replace("}", "｝").replace("\n", r"\N")
+    return (
+        value.replace("\\", "＼")
+        .replace("{", "｛")
+        .replace("}", "｝")
+        .replace("\r\n", "\n")
+        .replace("\r", "\n")
+        .replace("\n", r"\N")
+    )
 
 
-def subtitle_script(edit: Edit, cues: list[Cue]) -> str:
+def ass_color(rgb: str) -> str:
+    return f"&H{rgb[5:7]}{rgb[3:5]}{rgb[1:3]}&".upper()
+
+
+def highlighted_text(value: str, phrases: re.Pattern[str] | None, base: str, highlight: str) -> str:
+    if phrases is None:
+        return ass_text(value)
+    cursor = 0
+    parts = []
+    for match in phrases.finditer(value):
+        parts.extend(
+            (
+                ass_text(value[cursor : match.start()]),
+                rf"{{\1c{highlight}}}",
+                ass_text(match[0]),
+                rf"{{\1c{base}}}",
+            )
+        )
+        cursor = match.end()
+    parts.append(ass_text(value[cursor:]))
+    return "".join(parts)
+
+
+def kinetic_motion(cue: Cue, refrain: bool, font: ImageFont.FreeTypeFont | None) -> str:
+    duration_ms = round((cue.end - cue.start) * 1000)
+    rise = min(125, max(1, duration_ms // 5))
+    fade = min(90, duration_ms // 5)
+    margin = 158
+    # Measure the font when the caller supplies it. Leave a reserve for outline and overshoot.
+    if font is None:
+        font_size = 82 if refrain else 68
+    else:
+        longest_line = max((font.getlength(line) for line in cue.text.splitlines()), default=0)
+        max_width = (WIDTH - 2 * margin) / 1.1
+        font_size = max(
+            45, min(108 if refrain else 72, int(100 * max_width / max(longest_line, 1)))
+        )
+    x = WIDTH // 2
+    y = round(HEIGHT * (0.81 if refrain else 0.83))
+    motion = rf"\an2\q0\fs{font_size}\move({x},{y + 17},{x},{y},0,{rise})\fad({fade},{fade})"
+    if refrain:
+        settle = min(rise + 110, max(rise + 1, duration_ms - fade))
+        motion += (
+            rf"\fscx88\fscy88\t(0,{rise},0.55,\fscx107\fscy107)"
+            rf"\t({rise},{settle},0.8,\fscx100\fscy100)"
+        )
+    return "{" + motion + "}"
+
+
+def subtitle_script(edit: Edit, cues: list[Cue], font_path: Path | None = None) -> str:
     header = f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: {WIDTH}
@@ -94,19 +172,46 @@ Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour,
 Style: Lyric,{edit.font_family},63,&H00ECF2FC,&H00ECF2FC,&H500E1618,&H760D1417,0,0,0,0,100,100,3.0,0,1,1.6,3.0,2,170,170,184,1
 Style: Refrain,{edit.font_family},68,&H00C5E2FF,&H00C5E2FF,&H4A101719,&H72121A1C,0,0,0,0,100,100,4.0,0,1,1.8,3.4,2,170,170,184,1
 Style: Title,{edit.font_family},105,&H00D8E7F4,&H00D8E7F4,&H64090E11,&H76090E11,0,0,0,0,100,100,15,0,1,1.5,4,2,170,170,183,1
-
-[Events]
-Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
+    kinetic = edit.lyric_style == "kinetic"
+    lyric = ass_color(edit.lyric_color)
+    accent = ass_color(edit.accent_color)
+    highlight = ass_color(edit.highlight_color)
+    font = ImageFont.truetype(str(font_path), 100) if kinetic and font_path else None
+    phrase_parts = sorted(
+        {p.strip() for p in edit.highlight_phrases if p.strip()}, key=lambda p: (-len(p), p)
+    )
+    phrase_pattern = (
+        re.compile(r"(?<!\w)(?:" + "|".join(map(re.escape, phrase_parts)) + r")(?!\w)", re.I)
+        if kinetic and phrase_parts
+        else None
+    )
+    if kinetic:
+        header += (
+            f"Style: KineticLyric,{edit.font_family},68,&H00{lyric[2:-1]},&H00{lyric[2:-1]},"
+            "&H08180F09,&H45160902,-1,0,0,0,100,100,1.2,0,1,3.1,4,2,158,158,180,1\n"
+            f"Style: KineticRefrain,{edit.font_family},82,&H00{accent[2:-1]},&H00{accent[2:-1]},"
+            "&H08291609,&H4F47250B,-1,0,0,0,100,100,1.6,0,1,4.5,5,2,158,158,180,1\n"
+        )
+    header += "\n[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n"
     events = []
     accents = set(edit.accent_sections)
     for cue in cues:
-        style = "Refrain" if cue.section in accents else "Lyric"
-        fade = min(210, round((cue.end - cue.start) * 240))
-        motion = rf"{{\move(960,902,960,892,0,{fade})\fad({fade},{fade})\blur0.65}}"
+        refrain = cue.section in accents
+        style = "Refrain" if refrain else "Lyric"
+        if kinetic:
+            style = f"Kinetic{style}"
+            motion = kinetic_motion(cue, refrain, font)
+            content = highlighted_text(
+                cue.text, phrase_pattern, accent if refrain else lyric, highlight
+            )
+        else:
+            fade = min(210, round((cue.end - cue.start) * 240))
+            motion = rf"{{\move(960,902,960,892,0,{fade})\fad({fade},{fade})\blur0.65}}"
+            content = ass_text(cue.text)
         events.append(
             f"Dialogue: 0,{ass_time(cue.start)},{ass_time(cue.end)},{style},,0,0,0,,"
-            f"{motion}{ass_text(cue.text)}"
+            f"{motion}{content}"
         )
     for title in edit.titles:
         fade = min(1450, round((title.end - title.start) * 300))
@@ -203,7 +308,30 @@ def encode_shot(
             )
         )
         view = "[dissolved]"
-    finishing = ["format=yuv420p"]
+    snow = shot.snowfall()
+    previous_snow = edit.shots[index - 1].snowfall() if incoming else None
+    if snow is not None or previous_snow is not None:
+        overlay_path = work / f"shot-{index:03d}-snow.mov"
+        build_snow_clip(
+            overlay_path,
+            current=snow,
+            previous=previous_snow,
+            start=start,
+            frames=count,
+            fps=FPS,
+            dissolve=incoming,
+        )
+        overlay_source = len(args) // 2
+        args.extend(("-i", str(overlay_path)))
+        filters.extend(
+            (
+                f"[{overlay_source}:v]scale={WIDTH}:{HEIGHT}:flags=bilinear[snow]",
+                f"{view}[snow]overlay=format=yuv444:eof_action=pass:repeatlast=0[snowed]",
+            )
+        )
+        view = "[snowed]"
+    # Normalize frames from full-range JPEG and limited-range inputs before concat.
+    finishing = ["scale=iw:ih:out_range=tv", "format=yuv420p"]
     if index == 0 and edit.fade_in:
         finishing.append(f"fade=t=in:s=0:n={round(edit.fade_in * FPS)}")
     if index == len(plates) - 1 and edit.fade_out:
@@ -237,6 +365,8 @@ def encode_shot(
         *encoder_args(encoder),
         "-pix_fmt",
         "yuv420p",
+        "-color_range",
+        "tv",
         "-colorspace",
         "bt709",
         "-color_primaries",
@@ -357,7 +487,7 @@ def render(args: argparse.Namespace) -> dict[str, object]:
         (work / "fonts").mkdir()
         if args.font:
             shutil.copyfile(args.font, work / "fonts" / args.font.name)
-        (work / "lyrics.ass").write_text(subtitle_script(edit, cues), encoding="utf-8")
+        (work / "lyrics.ass").write_text(subtitle_script(edit, cues, args.font), encoding="utf-8")
         with ThreadPoolExecutor(max_workers=args.workers) as executor:
             tasks = [
                 executor.submit(encode_shot, i, edit, edges, plates, work, args.encoder)

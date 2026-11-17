@@ -41,10 +41,43 @@ checks frame timestamps and compares decoded audio to the source at zero offset.
 `.verification.json` receipt. Keep personal recordings, lyrics, cues, and exports under
 `output/` or another local directory. The editor uses the files in your browser session.
 
+### Kinetic lyrics and snowfall
+
+For a faster song, choose `"lyric_style": "kinetic"` in the edit. Use `accent_sections`
+for chorus or chant treatments and `highlight_phrases` for recurring words or phrases.
+Lettering follows the reviewed line timings. Set `lyric_color`, `accent_color`, and
+`highlight_color` with six-digit RGB values. Pass a local font with `--font` so the renderer
+can measure wide lines before setting the type. The bundled Latin display face uses the
+family name `"Barlow Condensed Black"` and the file `assets/fonts/BarlowCondensed-Black.ttf`.
+
+To add falling snow, list each visible glass pane as a polygon in `snow_windows` on the shot.
+Points use normalized coordinates in the original 16:9 picture before camera zoom. Use
+separate polygons for panes divided by window frames and trim polygons around foreground
+objects. `snow_intensity` ranges from 0 to 1 and defaults to 0.8. This example defines one pane.
+
+```json
+{
+  "at": 0,
+  "image": "plates/winter-room.jpg",
+  "snow_windows": [
+    [[0.62, 0.10], [0.90, 0.10], [0.90, 0.47], [0.62, 0.47]]
+  ],
+  "snow_intensity": 0.9
+}
+```
+
+Two layers of flakes follow the song clock. The masks follow camera crops and blend during
+dissolves. Inspect the rendered frames around moving crops and window trim. The shot input
+may be PNG, JPEG, or WebP. The renderer normalizes the output color range across images.
+
 The workflow reuses AtlasForge's Faster Whisper alignment and FFmpeg delivery tools. The
 one-key stamping interaction draws on [LRC Editor](https://github.com/yaiol/lrc-editor/releases/tag/v1.0.10),
 and the emphasis on selected lyric phrases follows the approach described in
-[Visual Lyrics](https://dlin.org/papers/visuallyrics.pdf). The implementation is original.
+[Visual Lyrics](https://dlin.org/papers/visuallyrics.pdf). The kinetic treatment adapts cue-level
+emphasis and motion patterns from the HyperFrames v0.9.59 caption guide, using the existing
+FFmpeg and libass renderer. The implementation is original.
+[HyperFrames caption authoring](https://github.com/heygen-com/hyperframes/blob/v0.9.59/skills/media-use/audio/references/captions/authoring.md) ·
+[FFmpeg ASS filter](https://ffmpeg.org/ffmpeg-filters.html#ass)
 
 ## Authored stock music films
 
