@@ -1,5 +1,51 @@
 # Music film workflows
 
+## Lyric films
+
+Start with a song, the sung lyrics in UTF-8, and still artwork. The aligner works with Latin
+words and Chinese, Japanese or Korean characters. Use one sung phrase per line. Section
+headers can use square brackets or full-width brackets such as `【主歌一】`. The vocal recognizer
+measures timestamps locally. Singing, repeated choruses, and differences between Simplified
+and Traditional characters can reduce anchor coverage.
+
+With [AtlasForge installed](../SETUP.md), `ffmpeg` built with libass, and `ffprobe` on `PATH`:
+
+```powershell
+python -m pip install -e '.[transcription]'
+python -m daily_video_factory.lyric_cues --audio song.wav --lyrics lyrics.txt --language zh `
+  --output output/lyric-film/cues.json --review-output output/lyric-film/draft.json
+python -m http.server 8211 --bind 127.0.0.1 --directory tools/lyric-editor
+```
+
+Open the editor at [localhost:8211](http://127.0.0.1:8211), load the audio and cue JSON, and
+listen through the entrances. Select a line and press **S** to capture a start and advance.
+The editor can also start from pasted lyrics or import LRC. Export the reviewed cues as JSON.
+Automatic export requires at least 62% observed token anchors and valid cue bounds.
+When the aligner supplies an editor-only draft, review it against the actual vocal and export
+its corrected cues. The adjacent `.alignment.json` records coverage and interpolation.
+
+Use the [Rain to Morning plates](../videos/rain-to-morning/README.md) or a local image folder.
+The first cut uses lyric entrances, section changes, and space between phrases, cycling through
+the images by filename. For custom camera moves, titles, and dissolves, pass
+`--edit` and an [authored shot list](../videos/rain-to-morning/edit.example.json).
+
+```powershell
+python -m daily_video_factory.lyric_film --artwork videos/rain-to-morning/plates `
+  --audio song.wav --cues output/lyric-film/cues.json `
+  --font 'C:/path/to/NotoSerifCJKsc-Regular.otf' --output output/lyric-film/film.mp4
+```
+
+The MP4 uses H.264 at 1920 × 1080 and 24 fps. Its original song clock continues through the
+instrumental gaps, with AAC encoding for playback. The renderer decodes the whole export,
+checks frame timestamps and compares decoded audio to the source at zero offset. It saves a
+`.verification.json` receipt. Keep personal recordings, lyrics, cues, and exports under
+`output/` or another local directory. The editor uses the files in your browser session.
+
+The workflow reuses AtlasForge's Faster Whisper alignment and FFmpeg delivery tools. The
+one-key stamping interaction draws on [LRC Editor](https://github.com/yaiol/lrc-editor/releases/tag/v1.0.10),
+and the emphasis on selected lyric phrases follows the approach described in
+[Visual Lyrics](https://dlin.org/papers/visuallyrics.pdf). The implementation is original.
+
 ## Authored stock music films
 
 Use the stock film renderer when you have a song master and want to direct the cuts, crops,

@@ -1,10 +1,11 @@
 from __future__ import annotations
 
 import re
+import unicodedata
 import warnings
 from difflib import SequenceMatcher
 from pathlib import Path
-from typing import Literal
+from typing import Literal, NamedTuple
 
 import numpy as np
 from pydantic import BaseModel, Field
@@ -28,6 +29,7 @@ class LyricWordCue(BaseModel):
     end_seconds: float = Field(ge=0)
     confidence: float = Field(ge=0, le=1)
     matched: bool = False
+    estimated_timing: bool = False
 
 
 class LyricLineCue(BaseModel):
@@ -64,13 +66,47 @@ _SECTION_SINGERS: dict[str, LyricSinger] = {
     "outro": "ensemble",
 }
 
+_CJK_CHARACTER = (
+    r"[\u1100-\u11ff\u3041-\u3096\u30a1-\u30fa\u31f0-\u31ff"
+    r"\u3400-\u4dbf\u4e00-\u9fff\uac00-\ud7a3\uf900-\ufaff"
+    r"\U00020000-\U0002fa1f\U00030000-\U000323af]"
+)
+_CJK = re.compile(_CJK_CHARACTER)
+_TOKEN = re.compile(
+    rf"{_CJK_CHARACTER}|[A-Za-zÀ-ÖØ-öø-ÿ0-9]+(?:[-'’][A-Za-zÀ-ÖØ-öø-ÿ0-9]+)*"
+)
+_SECTION = re.compile(r"^(?:\[(.*)\]|【(.*)】)$")
+_SINGER_PREFIX = re.compile(r"^(男(?:声)?|女(?:声)?|合(?:唱)?|全体)\s*[：:]\s*")
+_PREFIX_SINGERS: dict[str, LyricSinger] = {
+    "男": "male",
+    "男声": "male",
+    "女": "female",
+    "女声": "female",
+    "合": "ensemble",
+    "合唱": "ensemble",
+    "全体": "ensemble",
+}
+
+
+class _AsrToken(NamedTuple):
+    text: str
+    start: float
+    end: float
+    confidence: float
+    estimated_timing: bool
+
 
 def _tokens(value: str) -> list[str]:
-    return re.findall(r"[A-Za-zÀ-ÖØ-öø-ÿ0-9]+(?:[-'][A-Za-zÀ-ÖØ-öø-ÿ0-9]+)*", value)
+    return _TOKEN.findall(value)
 
 
 def _normalized_word(value: str) -> str:
-    return re.sub(r"[^a-z0-9]+", "", value.casefold())
+    normalized = unicodedata.normalize("NFKD", value.casefold())
+    return "".join(
+        character
+        for character in normalized
+        if (character.isascii() and character.isalnum()) or _CJK.fullmatch(character)
+    )
 
 
 def parse_lyrics(value: str) -> list[LyricLineSpec]:
@@ -78,12 +114,13 @@ def parse_lyrics(value: str) -> list[LyricLineSpec]:
     section = "song"
     singer: LyricSinger = "ensemble"
     result: list[LyricLineSpec] = []
-    for raw_line in value.replace("\r\n", "\n").replace("\r", "\n").split("\n"):
-        line = raw_line.strip()
+    for raw_line in value.lstrip("\ufeff").splitlines():
+        line = raw_line.strip().rstrip("\\").rstrip()
         if not line:
             continue
-        if line.startswith("[") and line.endswith("]"):
-            annotation = line[1:-1].strip()
+        heading = _SECTION.fullmatch(line)
+        if heading:
+            annotation = (heading[1] if heading[1] is not None else heading[2]).strip()
             lowered = annotation.casefold()
             if lowered in _SECTION_SINGERS:
                 section = annotation
@@ -92,11 +129,22 @@ def parse_lyrics(value: str) -> list[LyricLineSpec]:
                 singer = "female"
             elif "male vocal" in lowered:
                 singer = "male"
+            elif annotation in _PREFIX_SINGERS:
+                singer = _PREFIX_SINGERS[annotation]
+            elif _CJK.search(annotation):
+                title, _divider, direction = annotation.partition("·")
+                section = title.strip()
+                direction = direction.strip()
+                singer = _PREFIX_SINGERS.get(direction, "ensemble")
             continue
+        prefix = _SINGER_PREFIX.match(line)
+        line_singer = singer
+        if prefix:
+            line_singer = _PREFIX_SINGERS[prefix[1]]
+            line = line[prefix.end():]
         words = _tokens(line)
         if not words:
             continue
-        line_singer = singer
         if line_singer == "instrumental":
             # Ad-libs inside a solo are ensemble vocal responses, not an instrumental action cue.
             line_singer = "ensemble"
@@ -109,6 +157,28 @@ def parse_lyrics(value: str) -> list[LyricLineSpec]:
                 words=words,
             )
         )
+    return result
+
+
+def _asr_tokens(observed: list[tuple[str, float, float, float]]) -> list[_AsrToken]:
+    result: list[_AsrToken] = []
+    for raw, start, end, confidence in observed:
+        tokens = _tokens(raw) if _CJK.search(raw) else [raw]
+        if not tokens:
+            continue
+        step = (end - start) / len(tokens)
+        for index, token in enumerate(tokens):
+            normalized = _normalized_word(token)
+            if normalized:
+                result.append(
+                    _AsrToken(
+                        normalized,
+                        start + index * step,
+                        start + (index + 1) * step,
+                        confidence,
+                        estimated_timing=len(tokens) > 1,
+                    )
+                )
     return result
 
 
@@ -178,6 +248,8 @@ def _transcribe_words(
 def _similarity(left: str, right: str) -> float:
     if left == right:
         return 1.0
+    if len(left) == len(right) == 1:
+        return 0.0
     return SequenceMatcher(None, left, right).ratio()
 
 
@@ -189,6 +261,8 @@ def _monotonic_matches(
     rows = len(supplied) + 1
     columns = len(observed) + 1
     gap = -0.72
+    supplied_cjk = [bool(_CJK.search(word)) for word in supplied]
+    observed_cjk = [bool(_CJK.search(word)) for word in observed]
     scores = np.empty((rows, columns), dtype=np.float32)
     moves = np.zeros((rows, columns), dtype=np.int8)
     scores[:, 0] = np.arange(rows, dtype=np.float32) * gap
@@ -197,6 +271,8 @@ def _monotonic_matches(
         for column in range(1, columns):
             similarity = _similarity(supplied[row - 1], observed[column - 1])
             match_score = 2.1 * similarity - 0.95
+            if similarity == 0 and (supplied_cjk[row - 1] or observed_cjk[column - 1]):
+                match_score = 2 * gap - 0.1
             diagonal = scores[row - 1, column - 1] + match_score
             delete = scores[row - 1, column] + gap
             insert = scores[row, column - 1] + gap
@@ -218,7 +294,14 @@ def _monotonic_matches(
             row -= 1
         else:
             column -= 1
-    return matches
+    # In character-based scripts, isolated hits also occur in unrelated lyrics.
+    return {
+        index: (position, similarity)
+        for index, (position, similarity) in matches.items()
+        if not supplied_cjk[index]
+        or matches.get(index - 1, (-2, 0))[0] == position - 1
+        or matches.get(index + 1, (-2, 0))[0] == position + 1
+    }
 
 
 def _estimated_report(
@@ -228,20 +311,22 @@ def _estimated_report(
 ) -> LyricTimingReport:
     total_words = sum(len(line.words) for line in specs)
     usable_start = min(2.0, duration_seconds * 0.05)
-    usable_end = max(usable_start + 0.5, duration_seconds - min(1.2, duration_seconds * 0.03))
+    usable_end = duration_seconds - min(1.2, duration_seconds * 0.03)
+    usable_duration = usable_end - usable_start
     cursor = usable_start
     lines: list[LyricLineCue] = []
     for spec in specs:
         share = len(spec.words) / max(1, total_words)
-        line_duration = max(0.5, (usable_end - usable_start) * share)
+        line_duration = usable_duration * share
         end = min(usable_end, cursor + line_duration)
-        step = max(0.08, (end - cursor) / max(1, len(spec.words)))
+        step = (end - cursor) / len(spec.words)
         words = [
             LyricWordCue(
                 text=word,
                 start_seconds=round(cursor + index * step, 3),
                 end_seconds=round(min(end, cursor + (index + 1) * step), 3),
                 confidence=0,
+                estimated_timing=True,
             )
             for index, word in enumerate(spec.words)
         ]
@@ -284,17 +369,17 @@ def align_supplied_lyrics(
             warnings=["No sung lyric lines were supplied."],
         )
     try:
-        observed, detected_language = _transcribe_words(track, settings, language)
+        observed_words, detected_language = _transcribe_words(track, settings, language)
     except (ImportError, OSError, RuntimeError, ValueError) as exc:
         return _estimated_report(
             specs,
             duration_seconds,
             f"Exact lyric alignment was unavailable ({type(exc).__name__}: {exc}).",
         )
+    observed = _asr_tokens(observed_words)
     supplied_flat = [word for line in specs for word in line.words]
     supplied_normalized = [_normalized_word(word) for word in supplied_flat]
-    observed_normalized = [_normalized_word(word[0]) for word in observed]
-    matches = _monotonic_matches(supplied_normalized, observed_normalized)
+    matches = _monotonic_matches(supplied_normalized, [word.text for word in observed])
     if not observed or not matches:
         return _estimated_report(
             specs,
@@ -305,18 +390,13 @@ def align_supplied_lyrics(
     flat_to_line: list[tuple[int, int]] = []
     for line_index, spec in enumerate(specs):
         flat_to_line.extend((line_index, word_index) for word_index in range(len(spec.words)))
-    matched_by_line: dict[int, dict[int, tuple[float, float, float, float]]] = {}
+    matched_by_line: dict[int, dict[int, _AsrToken]] = {}
     anchor_confidences: list[float] = []
     for supplied_index, (observed_index, similarity) in matches.items():
         line_index, word_index = flat_to_line[supplied_index]
-        _raw, start, end, probability = observed[observed_index]
-        confidence = float(np.clip(similarity * probability, 0, 1))
-        matched_by_line.setdefault(line_index, {})[word_index] = (
-            start,
-            end,
-            confidence,
-            similarity,
-        )
+        word = observed[observed_index]
+        confidence = float(np.clip(similarity * word.confidence, 0, 1))
+        matched_by_line.setdefault(line_index, {})[word_index] = word._replace(confidence=confidence)
         anchor_confidences.append(confidence)
 
     line_bounds: list[tuple[float | None, float | None]] = []
@@ -325,8 +405,8 @@ def align_supplied_lyrics(
         if line_matches:
             first_index = min(line_matches)
             last_index = max(line_matches)
-            first = line_matches[first_index][0] - first_index * 0.26
-            last = line_matches[last_index][1] + (len(spec.words) - last_index - 1) * 0.26
+            first = line_matches[first_index].start - first_index * 0.26
+            last = line_matches[last_index].end + (len(spec.words) - last_index - 1) * 0.26
             line_bounds.append((max(0.0, first), min(duration_seconds, last)))
         else:
             line_bounds.append((None, None))
@@ -373,8 +453,8 @@ def align_supplied_lyrics(
     previous_end = 0.0
     for line_index, spec in enumerate(specs):
         raw_start, raw_end = line_bounds[line_index]
-        start = max(previous_end, float(raw_start or previous_end))
-        end = max(start + 0.35, min(duration_seconds, float(raw_end or start + 1.0)))
+        start = min(duration_seconds, max(previous_end, float(raw_start or previous_end)))
+        end = min(duration_seconds, max(start + 0.35, float(raw_end or start + 1.0)))
         next_bound = line_bounds[line_index + 1][0] if line_index + 1 < len(line_bounds) else None
         following_start = float(next_bound) if next_bound is not None else duration_seconds
         if following_start > start:
@@ -385,17 +465,26 @@ def align_supplied_lyrics(
         for word_index, word in enumerate(spec.words):
             match = line_matches.get(word_index)
             if match:
-                word_start = max(cursor, match[0])
-                word_end = max(word_start + 0.06, match[1])
-                confidence = match[2]
+                word_start = min(end, max(cursor, match.start))
+                word_end = min(end, max(word_start + 0.06, match.end))
+                confidence = match.confidence
                 matched = True
+                estimated_timing = (
+                    match.estimated_timing or word_start != match.start or word_end != match.end
+                )
             else:
-                remaining = max(1, len(spec.words) - word_index)
-                step = max(0.08, (end - cursor) / remaining)
+                next_index = min(
+                    (index for index in line_matches if index > word_index),
+                    default=len(spec.words),
+                )
+                remaining = next_index - word_index
+                next_start = line_matches[next_index].start if next_index in line_matches else end
+                step = max(0.0, min(end, next_start) - cursor) / remaining
                 word_start = cursor
-                word_end = min(end, cursor + step)
+                word_end = cursor + step
                 confidence = 0.0
                 matched = False
+                estimated_timing = True
             word_cues.append(
                 LyricWordCue(
                     text=word,
@@ -403,6 +492,7 @@ def align_supplied_lyrics(
                     end_seconds=round(word_end, 3),
                     confidence=round(confidence, 4),
                     matched=matched,
+                    estimated_timing=estimated_timing,
                 )
             )
             cursor = word_end
@@ -423,6 +513,10 @@ def align_supplied_lyrics(
 
     coverage = len(matches) / max(1, len(supplied_flat))
     warnings: list[str] = []
+    if any(word.estimated_timing for word in observed):
+        warnings.append(
+            "Characters within multi-character ASR timestamp groups use interpolated timing."
+        )
     if coverage < 0.62:
         warnings.append(
             "Lyric anchor coverage is below 62%; review the generated LRC before paid lip-sync generation."
@@ -441,19 +535,30 @@ def align_supplied_lyrics(
 
 def remotion_captions(report: LyricTimingReport) -> list[dict[str, object]]:
     result: list[dict[str, object]] = []
-    first = True
+    cjk_song = any(_CJK.search(line.text) for line in report.lines)
     for line in report.lines:
-        for word in line.words:
+        spans = list(_TOKEN.finditer(line.text)) if cjk_song else []
+        restore_spacing = bool(spans) and [span[0] for span in spans] == [
+            word.text for word in line.words
+        ]
+        for index, word in enumerate(line.words):
+            if restore_spacing:
+                start = spans[index].start() if index else 0
+                end = spans[index + 1].start() if index + 1 < len(spans) else len(line.text)
+                text = line.text[start:end]
+                if index == 0 and result:
+                    text = f" {text}"
+            else:
+                text = f" {word.text}" if result else word.text
             result.append(
                 {
-                    "text": word.text if first else f" {word.text}",
+                    "text": text,
                     "startMs": round(word.start_seconds * 1000),
                     "endMs": round(word.end_seconds * 1000),
                     "timestampMs": round(word.start_seconds * 1000),
                     "confidence": word.confidence,
                 }
             )
-            first = False
     return result
 
 

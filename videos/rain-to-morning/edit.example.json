@@ -1,0 +1,32 @@
+{
+  "font_family": "Noto Serif CJK SC",
+  "accent_sections": ["Chorus", "副歌"],
+  "titles": [
+    {"start": 1.5, "end": 5.5, "text": "雨后的早晨"}
+  ],
+  "fade_in": 1.2,
+  "fade_out": 1.6,
+  "shots": [
+    {
+      "at": 0,
+      "image": "plates/rain-window.jpg",
+      "enter": {"zoom": 1.03, "x": 0.5, "y": 0.4},
+      "leave": {"zoom": 1.12, "x": 0.42, "y": 0.5},
+      "dissolve": 0
+    },
+    {
+      "at": 7.5,
+      "image": "plates/city-walk.jpg",
+      "enter": {"zoom": 1.06, "x": 0.4, "y": 0.48},
+      "leave": {"zoom": 1.18, "x": 0.15, "y": 0.4},
+      "dissolve": 0.84
+    },
+    {
+      "at": 14.5,
+      "image": "plates/golden-ginkgo.jpg",
+      "enter": {"zoom": 1.13, "x": 0.7, "y": 0.4},
+      "leave": {"zoom": 1.03, "x": 0.45, "y": 0.48},
+      "dissolve": 0.75
+    }
+  ]
+}
