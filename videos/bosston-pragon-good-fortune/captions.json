@@ -1,0 +1,4208 @@
+[
+  {
+    "start": 2.14,
+    "end": 3.88,
+    "text": "锣鼓敲起来",
+    "section": "前奏",
+    "confidence": 0.7814,
+    "timing_source": "whisper_medium_acoustic_alignment",
+    "words": [
+      {
+        "text": "锣",
+        "start_seconds": 2.14,
+        "end_seconds": 2.72,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "鼓",
+        "start_seconds": 2.72,
+        "end_seconds": 2.96,
+        "confidence": 0.9452,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "敲",
+        "start_seconds": 2.96,
+        "end_seconds": 3.18,
+        "confidence": 0.9799,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "起",
+        "start_seconds": 3.18,
+        "end_seconds": 3.56,
+        "confidence": 0.9854,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "来",
+        "start_seconds": 3.56,
+        "end_seconds": 3.88,
+        "confidence": 0.9963,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 3.96,
+    "end": 5.5200000000000005,
+    "text": "鞭炮响起来",
+    "section": "前奏",
+    "confidence": 0.8661,
+    "timing_source": "whisper_medium_acoustic_alignment",
+    "words": [
+      {
+        "text": "鞭",
+        "start_seconds": 3.96,
+        "end_seconds": 4.6,
+        "confidence": 0.3438,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "炮",
+        "start_seconds": 4.6,
+        "end_seconds": 4.86,
+        "confidence": 0.9964,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "响",
+        "start_seconds": 4.86,
+        "end_seconds": 5.12,
+        "confidence": 0.9935,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "起",
+        "start_seconds": 5.12,
+        "end_seconds": 5.42,
+        "confidence": 0.999,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "来",
+        "start_seconds": 5.42,
+        "end_seconds": 5.52,
+        "confidence": 0.9977,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 5.8,
+    "end": 7.960000000000001,
+    "text": "新年的钟声已经到来",
+    "section": "前奏",
+    "confidence": 0.7665,
+    "timing_source": "whisper_medium_acoustic_alignment",
+    "words": [
+      {
+        "text": "新",
+        "start_seconds": 5.8,
+        "end_seconds": 5.84,
+        "confidence": 0.0571,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "年",
+        "start_seconds": 5.84,
+        "end_seconds": 6.03,
+        "confidence": 0.9517,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "的",
+        "start_seconds": 6.03,
+        "end_seconds": 6.22,
+        "confidence": 0.9517,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "钟",
+        "start_seconds": 6.22,
+        "end_seconds": 6.54,
+        "confidence": 0.0827,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "声",
+        "start_seconds": 6.54,
+        "end_seconds": 6.7,
+        "confidence": 0.9962,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "已",
+        "start_seconds": 6.7,
+        "end_seconds": 6.86,
+        "confidence": 0.9381,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "经",
+        "start_seconds": 6.86,
+        "end_seconds": 7.02,
+        "confidence": 0.9381,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "到",
+        "start_seconds": 7.02,
+        "end_seconds": 7.3,
+        "confidence": 0.9857,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "来",
+        "start_seconds": 7.3,
+        "end_seconds": 7.96,
+        "confidence": 0.9976,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 8.3,
+    "end": 9.700000000000001,
+    "text": "Bosston！Pragon！",
+    "section": "前奏",
+    "confidence": 0.1103,
+    "timing_source": "whisper_medium_acoustic_alignment",
+    "words": [
+      {
+        "text": "Bosston",
+        "start_seconds": 8.34,
+        "end_seconds": 8.7,
+        "confidence": 0.2116,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "Pragon",
+        "start_seconds": 9.04,
+        "end_seconds": 9.66,
+        "confidence": 0.0089,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 10.1,
+    "end": 13.16,
+    "text": "欢欢喜喜迎新年！",
+    "section": "前奏",
+    "confidence": 0.7269,
+    "timing_source": "whisper_medium_acoustic_alignment",
+    "words": [
+      {
+        "text": "欢",
+        "start_seconds": 10.24,
+        "end_seconds": 10.34,
+        "confidence": 0.9707,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "欢",
+        "start_seconds": 10.34,
+        "end_seconds": 10.52,
+        "confidence": 0.9919,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "喜",
+        "start_seconds": 10.52,
+        "end_seconds": 10.8,
+        "confidence": 0.8665,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "喜",
+        "start_seconds": 10.8,
+        "end_seconds": 10.98,
+        "confidence": 0.9993,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "迎",
+        "start_seconds": 10.98,
+        "end_seconds": 11.44,
+        "confidence": 0.2456,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "新",
+        "start_seconds": 11.44,
+        "end_seconds": 11.84,
+        "confidence": 0.9704,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "年",
+        "start_seconds": 11.84,
+        "end_seconds": 12.42,
+        "confidence": 0.0438,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 22.9,
+    "end": 25.0,
+    "text": "红红灯笼高高挂",
+    "section": "主歌一",
+    "confidence": 0.6684,
+    "timing_source": "whisper_medium_acoustic_alignment",
+    "words": [
+      {
+        "text": "红",
+        "start_seconds": 22.9,
+        "end_seconds": 23.5,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "红",
+        "start_seconds": 23.5,
+        "end_seconds": 23.72,
+        "confidence": 0.9964,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "灯",
+        "start_seconds": 23.72,
+        "end_seconds": 23.88,
+        "confidence": 0.9818,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "笼",
+        "start_seconds": 23.88,
+        "end_seconds": 24.14,
+        "confidence": 0.963,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "高",
+        "start_seconds": 24.14,
+        "end_seconds": 24.36,
+        "confidence": 0.0107,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "高",
+        "start_seconds": 24.36,
+        "end_seconds": 24.66,
+        "confidence": 0.9935,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "挂",
+        "start_seconds": 24.66,
+        "end_seconds": 25.0,
+        "confidence": 0.7331,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 25.04,
+    "end": 26.82,
+    "text": "家家户户笑开花",
+    "section": "主歌一",
+    "confidence": 0.8433,
+    "timing_source": "whisper_medium_acoustic_alignment",
+    "words": [
+      {
+        "text": "家",
+        "start_seconds": 25.04,
+        "end_seconds": 25.34,
+        "confidence": 0.2984,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "家",
+        "start_seconds": 25.34,
+        "end_seconds": 25.54,
+        "confidence": 0.9991,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "户",
+        "start_seconds": 25.54,
+        "end_seconds": 25.78,
+        "confidence": 0.981,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "户",
+        "start_seconds": 25.78,
+        "end_seconds": 25.96,
+        "confidence": 0.9999,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "笑",
+        "start_seconds": 25.96,
+        "end_seconds": 26.2,
+        "confidence": 0.6565,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "开",
+        "start_seconds": 26.2,
+        "end_seconds": 26.52,
+        "confidence": 0.9979,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "花",
+        "start_seconds": 26.52,
+        "end_seconds": 26.82,
+        "confidence": 0.9704,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 27.0,
+    "end": 28.66,
+    "text": "一路同行一路闯",
+    "section": "主歌一",
+    "confidence": 0.8848,
+    "timing_source": "whisper_medium_acoustic_alignment",
+    "words": [
+      {
+        "text": "一",
+        "start_seconds": 27.16,
+        "end_seconds": 27.26,
+        "confidence": 0.9895,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "路",
+        "start_seconds": 27.26,
+        "end_seconds": 27.38,
+        "confidence": 0.9928,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "同",
+        "start_seconds": 27.38,
+        "end_seconds": 27.6,
+        "confidence": 0.6065,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "行",
+        "start_seconds": 27.6,
+        "end_seconds": 27.84,
+        "confidence": 0.9381,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "一",
+        "start_seconds": 27.84,
+        "end_seconds": 28.18,
+        "confidence": 0.8089,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "路",
+        "start_seconds": 28.18,
+        "end_seconds": 28.32,
+        "confidence": 0.9992,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "闯",
+        "start_seconds": 28.32,
+        "end_seconds": 28.66,
+        "confidence": 0.8585,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 28.9,
+    "end": 30.46,
+    "text": "新的梦想在发芽",
+    "section": "主歌一",
+    "confidence": 0.984,
+    "timing_source": "whisper_medium_acoustic_alignment",
+    "words": [
+      {
+        "text": "新",
+        "start_seconds": 29.02,
+        "end_seconds": 29.1,
+        "confidence": 0.9639,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "的",
+        "start_seconds": 29.1,
+        "end_seconds": 29.3,
+        "confidence": 0.9983,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "梦",
+        "start_seconds": 29.3,
+        "end_seconds": 29.52,
+        "confidence": 0.9992,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "想",
+        "start_seconds": 29.52,
+        "end_seconds": 29.74,
+        "confidence": 0.9984,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "在",
+        "start_seconds": 29.74,
+        "end_seconds": 30.0,
+        "confidence": 0.9453,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "发",
+        "start_seconds": 30.0,
+        "end_seconds": 30.32,
+        "confidence": 0.993,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "芽",
+        "start_seconds": 30.32,
+        "end_seconds": 30.46,
+        "confidence": 0.9901,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 30.48,
+    "end": 32.22,
+    "text": "挥别昨天的风和雨",
+    "section": "主歌一",
+    "confidence": 0.8236,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "挥",
+        "start_seconds": 30.48,
+        "end_seconds": 30.8,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "别",
+        "start_seconds": 30.8,
+        "end_seconds": 31.08,
+        "confidence": 0.8888,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "昨",
+        "start_seconds": 31.08,
+        "end_seconds": 31.26,
+        "confidence": 0.9496,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "天",
+        "start_seconds": 31.26,
+        "end_seconds": 31.48,
+        "confidence": 0.9981,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "的",
+        "start_seconds": 31.48,
+        "end_seconds": 31.58,
+        "confidence": 0.9857,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "风",
+        "start_seconds": 31.58,
+        "end_seconds": 31.72,
+        "confidence": 0.9625,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "和",
+        "start_seconds": 31.72,
+        "end_seconds": 32.02,
+        "confidence": 0.8582,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "雨",
+        "start_seconds": 32.02,
+        "end_seconds": 32.22,
+        "confidence": 0.9455,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 32.24,
+    "end": 33.62,
+    "text": "迎接明天的好光景",
+    "section": "主歌一",
+    "confidence": 0.7671,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "迎",
+        "start_seconds": 32.24,
+        "end_seconds": 32.42,
+        "confidence": 0.2196,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "接",
+        "start_seconds": 32.42,
+        "end_seconds": 32.52,
+        "confidence": 0.6964,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "明",
+        "start_seconds": 32.52,
+        "end_seconds": 32.68,
+        "confidence": 0.714,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "天",
+        "start_seconds": 32.68,
+        "end_seconds": 32.84,
+        "confidence": 0.8673,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "的",
+        "start_seconds": 32.84,
+        "end_seconds": 32.98,
+        "confidence": 0.994,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "好",
+        "start_seconds": 32.98,
+        "end_seconds": 33.16,
+        "confidence": 0.8357,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "光",
+        "start_seconds": 33.16,
+        "end_seconds": 33.38,
+        "confidence": 0.8958,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "景",
+        "start_seconds": 33.38,
+        "end_seconds": 33.62,
+        "confidence": 0.9138,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 33.64,
+    "end": 36.04,
+    "text": "肩并着肩心连着心",
+    "section": "主歌一",
+    "confidence": 0.1754,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "肩",
+        "start_seconds": 33.64,
+        "end_seconds": 34.02,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "并",
+        "start_seconds": 34.02,
+        "end_seconds": 34.4,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "着",
+        "start_seconds": 34.4,
+        "end_seconds": 34.78,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "肩",
+        "start_seconds": 34.78,
+        "end_seconds": 35.0,
+        "confidence": 0.617,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "心",
+        "start_seconds": 35.14,
+        "end_seconds": 35.24,
+        "confidence": 0.7861,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "连",
+        "start_seconds": 35.24,
+        "end_seconds": 35.507,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "着",
+        "start_seconds": 35.507,
+        "end_seconds": 35.773,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "心",
+        "start_seconds": 35.773,
+        "end_seconds": 36.04,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      }
+    ]
+  },
+  {
+    "start": 36.06,
+    "end": 37.9,
+    "text": "携手创造新奇迹",
+    "section": "主歌一",
+    "confidence": 0.7591,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "携",
+        "start_seconds": 36.06,
+        "end_seconds": 36.42,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "手",
+        "start_seconds": 36.42,
+        "end_seconds": 36.68,
+        "confidence": 0.694,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "创",
+        "start_seconds": 36.68,
+        "end_seconds": 36.88,
+        "confidence": 0.9974,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "造",
+        "start_seconds": 36.88,
+        "end_seconds": 37.1,
+        "confidence": 0.9987,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "新",
+        "start_seconds": 37.1,
+        "end_seconds": 37.34,
+        "confidence": 0.8404,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "奇",
+        "start_seconds": 37.34,
+        "end_seconds": 37.6,
+        "confidence": 0.9136,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "迹",
+        "start_seconds": 37.6,
+        "end_seconds": 37.9,
+        "confidence": 0.8694,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 37.92,
+    "end": 39.8,
+    "text": "春风吹呀好运来",
+    "section": "预副歌",
+    "confidence": 0.5324,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "春",
+        "start_seconds": 37.92,
+        "end_seconds": 38.24,
+        "confidence": 0.5848,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "风",
+        "start_seconds": 38.24,
+        "end_seconds": 38.52,
+        "confidence": 0.9944,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "吹",
+        "start_seconds": 38.52,
+        "end_seconds": 38.76,
+        "confidence": 0.9919,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "呀",
+        "start_seconds": 38.76,
+        "end_seconds": 39.04,
+        "confidence": 0.3728,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "好",
+        "start_seconds": 39.04,
+        "end_seconds": 39.3,
+        "confidence": 0.783,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "运",
+        "start_seconds": 39.3,
+        "end_seconds": 39.55,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "来",
+        "start_seconds": 39.55,
+        "end_seconds": 39.8,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      }
+    ]
+  },
+  {
+    "start": 39.82,
+    "end": 41.63999999999999,
+    "text": "幸福生活乐开怀",
+    "section": "预副歌",
+    "confidence": 0.7812,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "幸",
+        "start_seconds": 39.82,
+        "end_seconds": 40.2,
+        "confidence": 0.6277,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "福",
+        "start_seconds": 40.2,
+        "end_seconds": 40.38,
+        "confidence": 0.9966,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "生",
+        "start_seconds": 40.38,
+        "end_seconds": 40.57,
+        "confidence": 0.978,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "活",
+        "start_seconds": 40.57,
+        "end_seconds": 40.76,
+        "confidence": 0.978,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "乐",
+        "start_seconds": 40.76,
+        "end_seconds": 41.12,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "开",
+        "start_seconds": 41.12,
+        "end_seconds": 41.34,
+        "confidence": 0.9332,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "怀",
+        "start_seconds": 41.34,
+        "end_seconds": 41.64,
+        "confidence": 0.9551,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 41.66,
+    "end": 43.66,
+    "text": "新的希望新的期待",
+    "section": "预副歌",
+    "confidence": 0.9816,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "新",
+        "start_seconds": 41.66,
+        "end_seconds": 42.04,
+        "confidence": 0.8893,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "的",
+        "start_seconds": 42.04,
+        "end_seconds": 42.26,
+        "confidence": 0.9874,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "希",
+        "start_seconds": 42.26,
+        "end_seconds": 42.44,
+        "confidence": 0.994,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "望",
+        "start_seconds": 42.44,
+        "end_seconds": 42.62,
+        "confidence": 0.994,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "新",
+        "start_seconds": 42.94,
+        "end_seconds": 42.98,
+        "confidence": 0.9954,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "的",
+        "start_seconds": 42.98,
+        "end_seconds": 43.2,
+        "confidence": 0.9978,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "期",
+        "start_seconds": 43.2,
+        "end_seconds": 43.46,
+        "confidence": 0.9951,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "待",
+        "start_seconds": 43.46,
+        "end_seconds": 43.66,
+        "confidence": 0.9996,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 43.68,
+    "end": 46.58,
+    "text": "美好未来正走来",
+    "section": "预副歌",
+    "confidence": 0.792,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "美",
+        "start_seconds": 43.68,
+        "end_seconds": 43.92,
+        "confidence": 0.9258,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "好",
+        "start_seconds": 43.92,
+        "end_seconds": 44.16,
+        "confidence": 0.9943,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "未",
+        "start_seconds": 44.16,
+        "end_seconds": 44.4,
+        "confidence": 0.9942,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "来",
+        "start_seconds": 44.4,
+        "end_seconds": 44.62,
+        "confidence": 0.9986,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "正",
+        "start_seconds": 44.62,
+        "end_seconds": 45.02,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "走",
+        "start_seconds": 45.02,
+        "end_seconds": 45.44,
+        "confidence": 0.8466,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "来",
+        "start_seconds": 45.44,
+        "end_seconds": 46.58,
+        "confidence": 0.7846,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 49.0,
+    "end": 51.019999999999996,
+    "text": "Bosston 好运来",
+    "section": "副歌",
+    "confidence": 0.2394,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "Bosston",
+        "start_seconds": 49.0,
+        "end_seconds": 49.96,
+        "confidence": 0.0341,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "好",
+        "start_seconds": 49.96,
+        "end_seconds": 50.48,
+        "confidence": 0.9237,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "运",
+        "start_seconds": 50.48,
+        "end_seconds": 50.75,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "来",
+        "start_seconds": 50.75,
+        "end_seconds": 51.02,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      }
+    ]
+  },
+  {
+    "start": 51.04,
+    "end": 52.879999999999995,
+    "text": "Pragon 福满怀",
+    "section": "副歌",
+    "confidence": 0.48,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "Pragon",
+        "start_seconds": 51.04,
+        "end_seconds": 51.8,
+        "confidence": 0.0688,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "福",
+        "start_seconds": 51.8,
+        "end_seconds": 52.3,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "满",
+        "start_seconds": 52.3,
+        "end_seconds": 52.56,
+        "confidence": 0.8724,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "怀",
+        "start_seconds": 52.56,
+        "end_seconds": 52.88,
+        "confidence": 0.979,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 52.9,
+    "end": 54.76,
+    "text": "携手同行向未来",
+    "section": "副歌",
+    "confidence": 0.7323,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "携",
+        "start_seconds": 52.9,
+        "end_seconds": 53.2,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "手",
+        "start_seconds": 53.2,
+        "end_seconds": 53.52,
+        "confidence": 0.9794,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "同",
+        "start_seconds": 53.52,
+        "end_seconds": 53.74,
+        "confidence": 0.9195,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "行",
+        "start_seconds": 53.74,
+        "end_seconds": 53.92,
+        "confidence": 0.6479,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "向",
+        "start_seconds": 53.92,
+        "end_seconds": 54.18,
+        "confidence": 0.5851,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "未",
+        "start_seconds": 54.18,
+        "end_seconds": 54.44,
+        "confidence": 0.9973,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "来",
+        "start_seconds": 54.44,
+        "end_seconds": 54.76,
+        "confidence": 0.9968,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 54.78,
+    "end": 56.459999999999994,
+    "text": "事业兴旺步步高起来",
+    "section": "副歌",
+    "confidence": 0.4359,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "事",
+        "start_seconds": 54.78,
+        "end_seconds": 55.015,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "业",
+        "start_seconds": 55.015,
+        "end_seconds": 55.25,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "兴",
+        "start_seconds": 55.25,
+        "end_seconds": 55.485,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "旺",
+        "start_seconds": 55.485,
+        "end_seconds": 55.72,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "步",
+        "start_seconds": 55.72,
+        "end_seconds": 56.02,
+        "confidence": 0.5898,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "步",
+        "start_seconds": 56.02,
+        "end_seconds": 56.14,
+        "confidence": 0.9918,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "高",
+        "start_seconds": 56.14,
+        "end_seconds": 56.24,
+        "confidence": 0.7896,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "起",
+        "start_seconds": 56.24,
+        "end_seconds": 56.36,
+        "confidence": 0.7759,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "来",
+        "start_seconds": 56.36,
+        "end_seconds": 56.46,
+        "confidence": 0.7759,
+        "matched": true,
+        "estimated_timing": true
+      }
+    ]
+  },
+  {
+    "start": 56.48,
+    "end": 58.48,
+    "text": "Bosston 笑开怀",
+    "section": "副歌",
+    "confidence": 0.7268,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "Bosston",
+        "start_seconds": 56.48,
+        "end_seconds": 57.5,
+        "confidence": 0.9598,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "笑",
+        "start_seconds": 57.5,
+        "end_seconds": 57.92,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "开",
+        "start_seconds": 57.92,
+        "end_seconds": 58.16,
+        "confidence": 0.9487,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "怀",
+        "start_seconds": 58.16,
+        "end_seconds": 58.48,
+        "confidence": 0.9987,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 58.5,
+    "end": 60.339999999999996,
+    "text": "Pragon 发大财",
+    "section": "副歌",
+    "confidence": 0.6444,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "Pragon",
+        "start_seconds": 58.5,
+        "end_seconds": 59.48,
+        "confidence": 0.0476,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "发",
+        "start_seconds": 59.48,
+        "end_seconds": 59.8,
+        "confidence": 0.8303,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "大",
+        "start_seconds": 59.8,
+        "end_seconds": 60.04,
+        "confidence": 0.7016,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "财",
+        "start_seconds": 60.04,
+        "end_seconds": 60.34,
+        "confidence": 0.9982,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 60.36,
+    "end": 62.22,
+    "text": "欢欢喜喜迎新年",
+    "section": "副歌",
+    "confidence": 0.6208,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "欢",
+        "start_seconds": 60.36,
+        "end_seconds": 60.68,
+        "confidence": 0.2132,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "欢",
+        "start_seconds": 60.68,
+        "end_seconds": 60.96,
+        "confidence": 0.9526,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "喜",
+        "start_seconds": 60.96,
+        "end_seconds": 61.16,
+        "confidence": 0.7382,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "喜",
+        "start_seconds": 61.16,
+        "end_seconds": 61.44,
+        "confidence": 0.8734,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "迎",
+        "start_seconds": 61.44,
+        "end_seconds": 61.64,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "新",
+        "start_seconds": 61.64,
+        "end_seconds": 61.88,
+        "confidence": 0.5847,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "年",
+        "start_seconds": 61.88,
+        "end_seconds": 62.22,
+        "confidence": 0.9833,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 62.24,
+    "end": 64.94,
+    "text": "幸福好运永远在身边",
+    "section": "副歌",
+    "confidence": 0.9729,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "幸",
+        "start_seconds": 62.24,
+        "end_seconds": 62.56,
+        "confidence": 0.9363,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "福",
+        "start_seconds": 62.56,
+        "end_seconds": 62.84,
+        "confidence": 0.9963,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "好",
+        "start_seconds": 62.84,
+        "end_seconds": 63.1,
+        "confidence": 0.8826,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "运",
+        "start_seconds": 63.1,
+        "end_seconds": 63.3,
+        "confidence": 0.9906,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "永",
+        "start_seconds": 63.3,
+        "end_seconds": 63.54,
+        "confidence": 0.9724,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "远",
+        "start_seconds": 63.54,
+        "end_seconds": 63.74,
+        "confidence": 0.996,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "在",
+        "start_seconds": 63.74,
+        "end_seconds": 63.94,
+        "confidence": 0.997,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "身",
+        "start_seconds": 63.94,
+        "end_seconds": 64.18,
+        "confidence": 0.9871,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "边",
+        "start_seconds": 64.18,
+        "end_seconds": 64.94,
+        "confidence": 0.9977,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 66.0,
+    "end": 67.82000000000001,
+    "text": "金色阳光照四方",
+    "section": "主歌二",
+    "confidence": 0.8764,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "金",
+        "start_seconds": 66.16,
+        "end_seconds": 66.3,
+        "confidence": 0.5817,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "色",
+        "start_seconds": 66.3,
+        "end_seconds": 66.56,
+        "confidence": 0.9971,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "阳",
+        "start_seconds": 66.56,
+        "end_seconds": 66.78,
+        "confidence": 0.9186,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "光",
+        "start_seconds": 66.78,
+        "end_seconds": 66.98,
+        "confidence": 0.9927,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "照",
+        "start_seconds": 66.98,
+        "end_seconds": 67.2,
+        "confidence": 0.9594,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "四",
+        "start_seconds": 67.2,
+        "end_seconds": 67.46,
+        "confidence": 0.719,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "方",
+        "start_seconds": 67.46,
+        "end_seconds": 67.82,
+        "confidence": 0.9662,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 67.84,
+    "end": 69.64,
+    "text": "每个梦想都闪亮",
+    "section": "主歌二",
+    "confidence": 0.9735,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "每",
+        "start_seconds": 67.84,
+        "end_seconds": 68.16,
+        "confidence": 0.983,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "个",
+        "start_seconds": 68.16,
+        "end_seconds": 68.42,
+        "confidence": 0.9914,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "梦",
+        "start_seconds": 68.42,
+        "end_seconds": 68.6,
+        "confidence": 0.9933,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "想",
+        "start_seconds": 68.6,
+        "end_seconds": 68.86,
+        "confidence": 0.9775,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "都",
+        "start_seconds": 68.86,
+        "end_seconds": 69.08,
+        "confidence": 0.9728,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "闪",
+        "start_seconds": 69.08,
+        "end_seconds": 69.34,
+        "confidence": 0.8997,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "亮",
+        "start_seconds": 69.34,
+        "end_seconds": 69.64,
+        "confidence": 0.997,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 69.66,
+    "end": 71.54,
+    "text": "团结一心向前方",
+    "section": "主歌二",
+    "confidence": 0.7755,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "团",
+        "start_seconds": 69.66,
+        "end_seconds": 70.0,
+        "confidence": 0.9695,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "结",
+        "start_seconds": 70.0,
+        "end_seconds": 70.26,
+        "confidence": 0.9979,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "一",
+        "start_seconds": 70.26,
+        "end_seconds": 70.54,
+        "confidence": 0.8782,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "心",
+        "start_seconds": 70.54,
+        "end_seconds": 70.7,
+        "confidence": 0.7265,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "向",
+        "start_seconds": 70.7,
+        "end_seconds": 70.96,
+        "confidence": 0.8641,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "前",
+        "start_seconds": 70.96,
+        "end_seconds": 71.18,
+        "confidence": 0.9921,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "方",
+        "start_seconds": 71.18,
+        "end_seconds": 71.54,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      }
+    ]
+  },
+  {
+    "start": 71.56,
+    "end": 73.32000000000001,
+    "text": "共同创造新辉煌",
+    "section": "主歌二",
+    "confidence": 0.9406,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "共",
+        "start_seconds": 71.56,
+        "end_seconds": 71.88,
+        "confidence": 0.9896,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "同",
+        "start_seconds": 71.88,
+        "end_seconds": 72.16,
+        "confidence": 0.9913,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "创",
+        "start_seconds": 72.16,
+        "end_seconds": 72.36,
+        "confidence": 0.9987,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "造",
+        "start_seconds": 72.36,
+        "end_seconds": 72.54,
+        "confidence": 0.9998,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "新",
+        "start_seconds": 72.54,
+        "end_seconds": 72.82,
+        "confidence": 0.8622,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "辉",
+        "start_seconds": 72.82,
+        "end_seconds": 73.06,
+        "confidence": 0.8929,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "煌",
+        "start_seconds": 73.06,
+        "end_seconds": 73.32,
+        "confidence": 0.8498,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 73.34,
+    "end": 75.24000000000001,
+    "text": "工作顺利财运旺",
+    "section": "主歌二",
+    "confidence": 0.5559,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "工",
+        "start_seconds": 73.34,
+        "end_seconds": 73.62,
+        "confidence": 0.9486,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "作",
+        "start_seconds": 73.62,
+        "end_seconds": 73.9,
+        "confidence": 0.9486,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "顺",
+        "start_seconds": 73.9,
+        "end_seconds": 74.2,
+        "confidence": 0.9965,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "利",
+        "start_seconds": 74.2,
+        "end_seconds": 74.44,
+        "confidence": 0.9974,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "财",
+        "start_seconds": 74.44,
+        "end_seconds": 74.707,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "运",
+        "start_seconds": 74.707,
+        "end_seconds": 74.973,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "旺",
+        "start_seconds": 74.973,
+        "end_seconds": 75.24,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      }
+    ]
+  },
+  {
+    "start": 75.26,
+    "end": 77.10000000000001,
+    "text": "平安健康福满堂",
+    "section": "主歌二",
+    "confidence": 0.8428,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "平",
+        "start_seconds": 75.26,
+        "end_seconds": 75.6,
+        "confidence": 0.9979,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "安",
+        "start_seconds": 75.6,
+        "end_seconds": 75.84,
+        "confidence": 0.9979,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "健",
+        "start_seconds": 75.84,
+        "end_seconds": 76.06,
+        "confidence": 0.9734,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "康",
+        "start_seconds": 76.06,
+        "end_seconds": 76.3,
+        "confidence": 0.9985,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "福",
+        "start_seconds": 76.3,
+        "end_seconds": 76.54,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "满",
+        "start_seconds": 76.54,
+        "end_seconds": 76.76,
+        "confidence": 0.9608,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "堂",
+        "start_seconds": 76.76,
+        "end_seconds": 77.1,
+        "confidence": 0.9709,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 77.12,
+    "end": 78.9,
+    "text": "欢声笑语迎新春",
+    "section": "主歌二",
+    "confidence": 0.6148,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "欢",
+        "start_seconds": 77.12,
+        "end_seconds": 77.44,
+        "confidence": 0.8283,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "声",
+        "start_seconds": 77.44,
+        "end_seconds": 77.66,
+        "confidence": 0.5982,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "笑",
+        "start_seconds": 77.66,
+        "end_seconds": 77.96,
+        "confidence": 0.8606,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "语",
+        "start_seconds": 77.96,
+        "end_seconds": 78.18,
+        "confidence": 0.7454,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "迎",
+        "start_seconds": 78.18,
+        "end_seconds": 78.38,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "新",
+        "start_seconds": 78.38,
+        "end_seconds": 78.6,
+        "confidence": 0.2841,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "春",
+        "start_seconds": 78.6,
+        "end_seconds": 78.9,
+        "confidence": 0.9871,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 78.92,
+    "end": 80.7,
+    "text": "好运陪伴每个人",
+    "section": "主歌二",
+    "confidence": 0.984,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "好",
+        "start_seconds": 78.92,
+        "end_seconds": 79.34,
+        "confidence": 0.961,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "运",
+        "start_seconds": 79.34,
+        "end_seconds": 79.56,
+        "confidence": 0.9994,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "陪",
+        "start_seconds": 79.56,
+        "end_seconds": 79.8,
+        "confidence": 0.9745,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "伴",
+        "start_seconds": 79.8,
+        "end_seconds": 80.02,
+        "confidence": 0.9946,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "每",
+        "start_seconds": 80.02,
+        "end_seconds": 80.26,
+        "confidence": 0.97,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "个",
+        "start_seconds": 80.26,
+        "end_seconds": 80.49,
+        "confidence": 0.9942,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "人",
+        "start_seconds": 80.49,
+        "end_seconds": 80.7,
+        "confidence": 0.9942,
+        "matched": true,
+        "estimated_timing": true
+      }
+    ]
+  },
+  {
+    "start": 80.72,
+    "end": 82.64,
+    "text": "春风吹呀好运来",
+    "section": "预副歌",
+    "confidence": 0.9278,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "春",
+        "start_seconds": 80.72,
+        "end_seconds": 81.2,
+        "confidence": 0.9903,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "风",
+        "start_seconds": 81.2,
+        "end_seconds": 81.42,
+        "confidence": 0.9927,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "吹",
+        "start_seconds": 81.42,
+        "end_seconds": 81.64,
+        "confidence": 0.9938,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "呀",
+        "start_seconds": 81.64,
+        "end_seconds": 81.88,
+        "confidence": 0.6333,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "好",
+        "start_seconds": 81.88,
+        "end_seconds": 82.16,
+        "confidence": 0.9469,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "运",
+        "start_seconds": 82.16,
+        "end_seconds": 82.36,
+        "confidence": 0.96,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "来",
+        "start_seconds": 82.36,
+        "end_seconds": 82.64,
+        "confidence": 0.9775,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 82.66,
+    "end": 84.5,
+    "text": "幸福生活乐开怀",
+    "section": "预副歌",
+    "confidence": 0.8348,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "幸",
+        "start_seconds": 82.66,
+        "end_seconds": 83.06,
+        "confidence": 0.9864,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "福",
+        "start_seconds": 83.06,
+        "end_seconds": 83.24,
+        "confidence": 0.9994,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "生",
+        "start_seconds": 83.24,
+        "end_seconds": 83.42,
+        "confidence": 0.9943,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "活",
+        "start_seconds": 83.42,
+        "end_seconds": 83.6,
+        "confidence": 0.9943,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "乐",
+        "start_seconds": 83.6,
+        "end_seconds": 83.96,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "开",
+        "start_seconds": 83.96,
+        "end_seconds": 84.2,
+        "confidence": 0.9536,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "怀",
+        "start_seconds": 84.2,
+        "end_seconds": 84.5,
+        "confidence": 0.9154,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 84.52,
+    "end": 86.5,
+    "text": "新的希望新的期待",
+    "section": "预副歌",
+    "confidence": 0.9116,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "新",
+        "start_seconds": 84.52,
+        "end_seconds": 84.9,
+        "confidence": 0.8955,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "的",
+        "start_seconds": 84.9,
+        "end_seconds": 85.1,
+        "confidence": 0.9688,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "希",
+        "start_seconds": 85.1,
+        "end_seconds": 85.28,
+        "confidence": 0.9941,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "望",
+        "start_seconds": 85.28,
+        "end_seconds": 85.46,
+        "confidence": 0.9941,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "新",
+        "start_seconds": 85.46,
+        "end_seconds": 85.82,
+        "confidence": 0.4504,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "的",
+        "start_seconds": 85.82,
+        "end_seconds": 86.04,
+        "confidence": 0.9973,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "期",
+        "start_seconds": 86.04,
+        "end_seconds": 86.3,
+        "confidence": 0.9931,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "待",
+        "start_seconds": 86.3,
+        "end_seconds": 86.5,
+        "confidence": 0.9998,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 86.52,
+    "end": 89.62,
+    "text": "美好未来正走来",
+    "section": "预副歌",
+    "confidence": 0.6721,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "美",
+        "start_seconds": 86.52,
+        "end_seconds": 86.78,
+        "confidence": 0.9049,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "好",
+        "start_seconds": 86.78,
+        "end_seconds": 87.0,
+        "confidence": 0.9959,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "未",
+        "start_seconds": 87.0,
+        "end_seconds": 87.22,
+        "confidence": 0.9919,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "来",
+        "start_seconds": 87.22,
+        "end_seconds": 87.46,
+        "confidence": 0.9384,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "正",
+        "start_seconds": 87.46,
+        "end_seconds": 87.82,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "走",
+        "start_seconds": 87.82,
+        "end_seconds": 88.26,
+        "confidence": 0.5404,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "来",
+        "start_seconds": 88.26,
+        "end_seconds": 89.62,
+        "confidence": 0.3333,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 92.0,
+    "end": 93.78,
+    "text": "Bosston 好运来",
+    "section": "副歌",
+    "confidence": 0.2752,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "Bosston",
+        "start_seconds": 92.0,
+        "end_seconds": 92.68,
+        "confidence": 0.2496,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "好",
+        "start_seconds": 92.68,
+        "end_seconds": 93.26,
+        "confidence": 0.8511,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "运",
+        "start_seconds": 93.26,
+        "end_seconds": 93.52,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "来",
+        "start_seconds": 93.52,
+        "end_seconds": 93.78,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      }
+    ]
+  },
+  {
+    "start": 93.8,
+    "end": 95.64,
+    "text": "Pragon 福满怀",
+    "section": "副歌",
+    "confidence": 0.0288,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "Pragon",
+        "start_seconds": 93.8,
+        "end_seconds": 94.58,
+        "confidence": 0.1151,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "福",
+        "start_seconds": 94.58,
+        "end_seconds": 94.933,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "满",
+        "start_seconds": 94.933,
+        "end_seconds": 95.287,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "怀",
+        "start_seconds": 95.287,
+        "end_seconds": 95.64,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      }
+    ]
+  },
+  {
+    "start": 95.66,
+    "end": 97.46000000000001,
+    "text": "携手同行向未来",
+    "section": "副歌",
+    "confidence": 0.7467,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "携",
+        "start_seconds": 95.66,
+        "end_seconds": 95.96,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "手",
+        "start_seconds": 95.96,
+        "end_seconds": 96.24,
+        "confidence": 0.7364,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "同",
+        "start_seconds": 96.24,
+        "end_seconds": 96.46,
+        "confidence": 0.8525,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "行",
+        "start_seconds": 96.46,
+        "end_seconds": 96.62,
+        "confidence": 0.8362,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "向",
+        "start_seconds": 96.62,
+        "end_seconds": 96.9,
+        "confidence": 0.8185,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "未",
+        "start_seconds": 96.9,
+        "end_seconds": 97.16,
+        "confidence": 0.9986,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "来",
+        "start_seconds": 97.16,
+        "end_seconds": 97.46,
+        "confidence": 0.9848,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 97.48,
+    "end": 99.16000000000001,
+    "text": "事业兴旺步步高起来",
+    "section": "副歌",
+    "confidence": 0.4487,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "事",
+        "start_seconds": 97.48,
+        "end_seconds": 97.74,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "业",
+        "start_seconds": 97.74,
+        "end_seconds": 98.0,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "兴",
+        "start_seconds": 98.0,
+        "end_seconds": 98.26,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "旺",
+        "start_seconds": 98.26,
+        "end_seconds": 98.52,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "步",
+        "start_seconds": 98.52,
+        "end_seconds": 98.72,
+        "confidence": 0.9205,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "步",
+        "start_seconds": 98.72,
+        "end_seconds": 98.82,
+        "confidence": 0.9975,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "高",
+        "start_seconds": 98.82,
+        "end_seconds": 98.92,
+        "confidence": 0.6979,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "起",
+        "start_seconds": 98.92,
+        "end_seconds": 99.05,
+        "confidence": 0.7112,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "来",
+        "start_seconds": 99.05,
+        "end_seconds": 99.16,
+        "confidence": 0.7112,
+        "matched": true,
+        "estimated_timing": true
+      }
+    ]
+  },
+  {
+    "start": 99.18,
+    "end": 101.08,
+    "text": "Bosston 笑开怀",
+    "section": "副歌",
+    "confidence": 0.7126,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "Bosston",
+        "start_seconds": 99.18,
+        "end_seconds": 100.18,
+        "confidence": 0.9675,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "笑",
+        "start_seconds": 100.18,
+        "end_seconds": 100.6,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "开",
+        "start_seconds": 100.6,
+        "end_seconds": 100.84,
+        "confidence": 0.913,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "怀",
+        "start_seconds": 100.84,
+        "end_seconds": 101.08,
+        "confidence": 0.97,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 101.1,
+    "end": 103.04,
+    "text": "Pragon 发大财",
+    "section": "副歌",
+    "confidence": 0.8878,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "Pragon",
+        "start_seconds": 101.1,
+        "end_seconds": 101.9,
+        "confidence": 0.7609,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "发",
+        "start_seconds": 101.9,
+        "end_seconds": 102.46,
+        "confidence": 0.9143,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "大",
+        "start_seconds": 102.46,
+        "end_seconds": 102.7,
+        "confidence": 0.8819,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "财",
+        "start_seconds": 102.7,
+        "end_seconds": 103.04,
+        "confidence": 0.994,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 103.06,
+    "end": 104.84,
+    "text": "欢欢喜喜迎新年",
+    "section": "副歌",
+    "confidence": 0.0,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "欢",
+        "start_seconds": 103.06,
+        "end_seconds": 103.314,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "欢",
+        "start_seconds": 103.314,
+        "end_seconds": 103.569,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "喜",
+        "start_seconds": 103.569,
+        "end_seconds": 103.823,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "喜",
+        "start_seconds": 103.823,
+        "end_seconds": 104.077,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "迎",
+        "start_seconds": 104.077,
+        "end_seconds": 104.331,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "新",
+        "start_seconds": 104.331,
+        "end_seconds": 104.586,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "年",
+        "start_seconds": 104.586,
+        "end_seconds": 104.84,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      }
+    ]
+  },
+  {
+    "start": 104.86,
+    "end": 107.3,
+    "text": "幸福好运永远在身边",
+    "section": "副歌",
+    "confidence": 0.9662,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "幸",
+        "start_seconds": 104.86,
+        "end_seconds": 105.18,
+        "confidence": 0.9872,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "福",
+        "start_seconds": 105.18,
+        "end_seconds": 105.42,
+        "confidence": 0.9937,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "好",
+        "start_seconds": 105.42,
+        "end_seconds": 105.7,
+        "confidence": 0.9696,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "运",
+        "start_seconds": 105.7,
+        "end_seconds": 105.9,
+        "confidence": 0.7652,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "永",
+        "start_seconds": 105.9,
+        "end_seconds": 106.14,
+        "confidence": 0.9951,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "远",
+        "start_seconds": 106.14,
+        "end_seconds": 106.34,
+        "confidence": 0.9981,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "在",
+        "start_seconds": 106.34,
+        "end_seconds": 106.56,
+        "confidence": 0.9974,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "身",
+        "start_seconds": 106.56,
+        "end_seconds": 106.78,
+        "confidence": 0.9914,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "边",
+        "start_seconds": 106.78,
+        "end_seconds": 107.3,
+        "confidence": 0.9977,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 119.58,
+    "end": 121.28,
+    "text": "一声祝福送过来",
+    "section": "说唱",
+    "confidence": 0.6778,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "一",
+        "start_seconds": 119.58,
+        "end_seconds": 119.87,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "声",
+        "start_seconds": 119.87,
+        "end_seconds": 120.16,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "祝",
+        "start_seconds": 120.16,
+        "end_seconds": 120.38,
+        "confidence": 0.996,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "福",
+        "start_seconds": 120.38,
+        "end_seconds": 120.58,
+        "confidence": 0.9951,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "送",
+        "start_seconds": 120.58,
+        "end_seconds": 120.86,
+        "confidence": 0.837,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "过",
+        "start_seconds": 120.86,
+        "end_seconds": 121.08,
+        "confidence": 0.9581,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "来",
+        "start_seconds": 121.08,
+        "end_seconds": 121.28,
+        "confidence": 0.9581,
+        "matched": true,
+        "estimated_timing": true
+      }
+    ]
+  },
+  {
+    "start": 121.3,
+    "end": 123.26,
+    "text": "二声好运自然来",
+    "section": "说唱",
+    "confidence": 0.6775,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "二",
+        "start_seconds": 121.3,
+        "end_seconds": 121.64,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "声",
+        "start_seconds": 121.64,
+        "end_seconds": 121.98,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "好",
+        "start_seconds": 121.98,
+        "end_seconds": 122.28,
+        "confidence": 0.8683,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "运",
+        "start_seconds": 122.28,
+        "end_seconds": 122.44,
+        "confidence": 0.9618,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "自",
+        "start_seconds": 122.44,
+        "end_seconds": 122.68,
+        "confidence": 0.9611,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "然",
+        "start_seconds": 122.68,
+        "end_seconds": 122.92,
+        "confidence": 0.9989,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "来",
+        "start_seconds": 122.92,
+        "end_seconds": 123.26,
+        "confidence": 0.9527,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 123.28,
+    "end": 125.08,
+    "text": "三声事业节节高",
+    "section": "说唱",
+    "confidence": 0.5547,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "三",
+        "start_seconds": 123.28,
+        "end_seconds": 123.54,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "声",
+        "start_seconds": 123.54,
+        "end_seconds": 123.8,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "事",
+        "start_seconds": 123.8,
+        "end_seconds": 124.08,
+        "confidence": 0.7187,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "业",
+        "start_seconds": 124.08,
+        "end_seconds": 124.32,
+        "confidence": 0.9961,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "节",
+        "start_seconds": 124.32,
+        "end_seconds": 124.52,
+        "confidence": 0.4201,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "节",
+        "start_seconds": 124.52,
+        "end_seconds": 124.78,
+        "confidence": 0.8362,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "高",
+        "start_seconds": 124.78,
+        "end_seconds": 125.08,
+        "confidence": 0.9118,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 125.1,
+    "end": 126.92,
+    "text": "四季平安乐逍遥",
+    "section": "说唱",
+    "confidence": 0.8885,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "四",
+        "start_seconds": 125.1,
+        "end_seconds": 125.44,
+        "confidence": 0.9683,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "季",
+        "start_seconds": 125.44,
+        "end_seconds": 125.66,
+        "confidence": 0.936,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "平",
+        "start_seconds": 125.66,
+        "end_seconds": 125.9,
+        "confidence": 0.9961,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "安",
+        "start_seconds": 125.9,
+        "end_seconds": 126.14,
+        "confidence": 0.9983,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "乐",
+        "start_seconds": 126.14,
+        "end_seconds": 126.34,
+        "confidence": 0.5713,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "逍",
+        "start_seconds": 126.34,
+        "end_seconds": 126.56,
+        "confidence": 0.7536,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "遥",
+        "start_seconds": 126.56,
+        "end_seconds": 126.92,
+        "confidence": 0.9962,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 126.94,
+    "end": 128.7,
+    "text": "五福临门笑颜开",
+    "section": "说唱",
+    "confidence": 0.1052,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "五",
+        "start_seconds": 126.94,
+        "end_seconds": 127.26,
+        "confidence": 0.3489,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "福",
+        "start_seconds": 127.26,
+        "end_seconds": 127.5,
+        "confidence": 0.3876,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "临",
+        "start_seconds": 127.5,
+        "end_seconds": 127.74,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "门",
+        "start_seconds": 127.74,
+        "end_seconds": 127.98,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "笑",
+        "start_seconds": 127.98,
+        "end_seconds": 128.22,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "颜",
+        "start_seconds": 128.22,
+        "end_seconds": 128.46,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "开",
+        "start_seconds": 128.46,
+        "end_seconds": 128.7,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      }
+    ]
+  },
+  {
+    "start": 128.72,
+    "end": 130.61999999999998,
+    "text": "六六大顺财源来",
+    "section": "说唱",
+    "confidence": 0.2519,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "六",
+        "start_seconds": 128.72,
+        "end_seconds": 129.03,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "六",
+        "start_seconds": 129.03,
+        "end_seconds": 129.34,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "大",
+        "start_seconds": 129.34,
+        "end_seconds": 129.6,
+        "confidence": 0.99,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "顺",
+        "start_seconds": 129.6,
+        "end_seconds": 129.74,
+        "confidence": 0.7731,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "财",
+        "start_seconds": 129.74,
+        "end_seconds": 130.033,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "源",
+        "start_seconds": 130.033,
+        "end_seconds": 130.327,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "来",
+        "start_seconds": 130.327,
+        "end_seconds": 130.62,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      }
+    ]
+  },
+  {
+    "start": 130.64,
+    "end": 132.42,
+    "text": "Bosston Pragon 一起加油",
+    "section": "说唱",
+    "confidence": 0.7283,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "Bosston",
+        "start_seconds": 130.64,
+        "end_seconds": 131.1,
+        "confidence": 0.5673,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "Pragon",
+        "start_seconds": 131.1,
+        "end_seconds": 131.56,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "一",
+        "start_seconds": 131.56,
+        "end_seconds": 131.76,
+        "confidence": 0.9036,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "起",
+        "start_seconds": 131.76,
+        "end_seconds": 131.96,
+        "confidence": 0.9036,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "加",
+        "start_seconds": 131.96,
+        "end_seconds": 132.2,
+        "confidence": 0.9975,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "油",
+        "start_seconds": 132.2,
+        "end_seconds": 132.42,
+        "confidence": 0.9975,
+        "matched": true,
+        "estimated_timing": true
+      }
+    ]
+  },
+  {
+    "start": 132.44,
+    "end": 136.61999999999998,
+    "text": "新的一年再创辉煌！",
+    "section": "说唱",
+    "confidence": 0.4802,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "新",
+        "start_seconds": 132.44,
+        "end_seconds": 132.8,
+        "confidence": 0.9487,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "的",
+        "start_seconds": 132.8,
+        "end_seconds": 133.04,
+        "confidence": 0.9974,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "一",
+        "start_seconds": 133.04,
+        "end_seconds": 133.3,
+        "confidence": 0.9316,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "年",
+        "start_seconds": 133.3,
+        "end_seconds": 133.62,
+        "confidence": 0.9642,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "再",
+        "start_seconds": 133.62,
+        "end_seconds": 134.37,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "创",
+        "start_seconds": 134.37,
+        "end_seconds": 135.12,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "辉",
+        "start_seconds": 135.12,
+        "end_seconds": 135.87,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "煌",
+        "start_seconds": 135.87,
+        "end_seconds": 136.62,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      }
+    ]
+  },
+  {
+    "start": 139.88,
+    "end": 141.64,
+    "text": "Bosston 好运来！",
+    "section": "最终副歌",
+    "confidence": 0.7657,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "Bosston",
+        "start_seconds": 139.88,
+        "end_seconds": 140.52,
+        "confidence": 0.5217,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "好",
+        "start_seconds": 140.52,
+        "end_seconds": 141.06,
+        "confidence": 0.5735,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "运",
+        "start_seconds": 141.06,
+        "end_seconds": 141.26,
+        "confidence": 0.9972,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "来",
+        "start_seconds": 141.26,
+        "end_seconds": 141.64,
+        "confidence": 0.9704,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 141.66,
+    "end": 143.48,
+    "text": "Pragon 发大财！",
+    "section": "最终副歌",
+    "confidence": 0.6464,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "Pragon",
+        "start_seconds": 141.66,
+        "end_seconds": 142.34,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "发",
+        "start_seconds": 142.34,
+        "end_seconds": 142.86,
+        "confidence": 0.7458,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "大",
+        "start_seconds": 142.86,
+        "end_seconds": 143.1,
+        "confidence": 0.8452,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "财",
+        "start_seconds": 143.1,
+        "end_seconds": 143.48,
+        "confidence": 0.9946,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 143.5,
+    "end": 145.23999999999998,
+    "text": "团结一心创精彩",
+    "section": "最终副歌",
+    "confidence": 0.3994,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "团",
+        "start_seconds": 143.5,
+        "end_seconds": 143.73,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "结",
+        "start_seconds": 143.73,
+        "end_seconds": 143.96,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "一",
+        "start_seconds": 143.96,
+        "end_seconds": 144.19,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "心",
+        "start_seconds": 144.19,
+        "end_seconds": 144.42,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "创",
+        "start_seconds": 144.42,
+        "end_seconds": 144.66,
+        "confidence": 0.9619,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "精",
+        "start_seconds": 144.66,
+        "end_seconds": 144.88,
+        "confidence": 0.9156,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "彩",
+        "start_seconds": 144.88,
+        "end_seconds": 145.24,
+        "confidence": 0.9182,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 145.26,
+    "end": 147.06,
+    "text": "新年新气象迎接新时代！",
+    "section": "最终副歌",
+    "confidence": 0.7232,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "新",
+        "start_seconds": 145.26,
+        "end_seconds": 145.62,
+        "confidence": 0.8261,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "年",
+        "start_seconds": 145.62,
+        "end_seconds": 145.8,
+        "confidence": 0.9751,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "新",
+        "start_seconds": 145.8,
+        "end_seconds": 146.02,
+        "confidence": 0.7662,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "气",
+        "start_seconds": 146.02,
+        "end_seconds": 146.19,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "象",
+        "start_seconds": 146.19,
+        "end_seconds": 146.36,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "迎",
+        "start_seconds": 146.36,
+        "end_seconds": 146.48,
+        "confidence": 0.9557,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "接",
+        "start_seconds": 146.48,
+        "end_seconds": 146.58,
+        "confidence": 0.9778,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "新",
+        "start_seconds": 146.58,
+        "end_seconds": 146.7,
+        "confidence": 0.9715,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "时",
+        "start_seconds": 146.7,
+        "end_seconds": 146.8,
+        "confidence": 0.7595,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "代",
+        "start_seconds": 146.8,
+        "end_seconds": 147.06,
+        "confidence": 0.9997,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 147.08,
+    "end": 148.94,
+    "text": "Bosston 好运来！",
+    "section": "最终副歌",
+    "confidence": 0.3526,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "Bosston",
+        "start_seconds": 147.08,
+        "end_seconds": 147.82,
+        "confidence": 0.7579,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "好",
+        "start_seconds": 147.82,
+        "end_seconds": 148.38,
+        "confidence": 0.6523,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "运",
+        "start_seconds": 148.38,
+        "end_seconds": 148.66,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "来",
+        "start_seconds": 148.66,
+        "end_seconds": 148.94,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      }
+    ]
+  },
+  {
+    "start": 148.96,
+    "end": 150.72,
+    "text": "Pragon 福满怀！",
+    "section": "最终副歌",
+    "confidence": 0.4773,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "Pragon",
+        "start_seconds": 148.96,
+        "end_seconds": 149.68,
+        "confidence": 0.1353,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "福",
+        "start_seconds": 149.68,
+        "end_seconds": 150.18,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "满",
+        "start_seconds": 150.18,
+        "end_seconds": 150.42,
+        "confidence": 0.9057,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "怀",
+        "start_seconds": 150.42,
+        "end_seconds": 150.72,
+        "confidence": 0.8684,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 150.74,
+    "end": 152.48,
+    "text": "事业腾飞步步高",
+    "section": "最终副歌",
+    "confidence": 0.1963,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "事",
+        "start_seconds": 150.74,
+        "end_seconds": 151.08,
+        "confidence": 0.3868,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "业",
+        "start_seconds": 151.08,
+        "end_seconds": 151.34,
+        "confidence": 0.987,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "腾",
+        "start_seconds": 151.34,
+        "end_seconds": 151.568,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "飞",
+        "start_seconds": 151.568,
+        "end_seconds": 151.796,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "步",
+        "start_seconds": 151.796,
+        "end_seconds": 152.024,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "步",
+        "start_seconds": 152.024,
+        "end_seconds": 152.252,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "高",
+        "start_seconds": 152.252,
+        "end_seconds": 152.48,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      }
+    ]
+  },
+  {
+    "start": 152.5,
+    "end": 155.11999999999998,
+    "text": "幸福快乐永不败！",
+    "section": "最终副歌",
+    "confidence": 0.8727,
+    "timing_source": "curated_small_asr_phrase_window",
+    "words": [
+      {
+        "text": "幸",
+        "start_seconds": 152.5,
+        "end_seconds": 152.9,
+        "confidence": 0.7369,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "福",
+        "start_seconds": 152.9,
+        "end_seconds": 153.1,
+        "confidence": 0.9968,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "快",
+        "start_seconds": 153.1,
+        "end_seconds": 153.4,
+        "confidence": 0.8518,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "乐",
+        "start_seconds": 153.4,
+        "end_seconds": 153.6,
+        "confidence": 0.9976,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "永",
+        "start_seconds": 153.6,
+        "end_seconds": 153.92,
+        "confidence": 0.7912,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "不",
+        "start_seconds": 153.92,
+        "end_seconds": 154.44,
+        "confidence": 0.9958,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "败",
+        "start_seconds": 154.44,
+        "end_seconds": 155.12,
+        "confidence": 0.739,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 156.26,
+    "end": 158.29999999999998,
+    "text": "恭喜发财！",
+    "section": "结尾",
+    "confidence": 0.2487,
+    "timing_source": "whisper_medium_acoustic_alignment",
+    "words": [
+      {
+        "text": "恭",
+        "start_seconds": 156.26,
+        "end_seconds": 156.71,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "喜",
+        "start_seconds": 156.71,
+        "end_seconds": 157.16,
+        "confidence": 0,
+        "matched": false,
+        "estimated_timing": true
+      },
+      {
+        "text": "发",
+        "start_seconds": 157.16,
+        "end_seconds": 157.78,
+        "confidence": 0.0028,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "财",
+        "start_seconds": 157.78,
+        "end_seconds": 158.3,
+        "confidence": 0.9918,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 159.6,
+    "end": 161.82,
+    "text": "万事如意！",
+    "section": "结尾",
+    "confidence": 0.8054,
+    "timing_source": "whisper_medium_acoustic_alignment",
+    "words": [
+      {
+        "text": "万",
+        "start_seconds": 159.72,
+        "end_seconds": 160.4,
+        "confidence": 0.2389,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "事",
+        "start_seconds": 160.4,
+        "end_seconds": 160.98,
+        "confidence": 0.9883,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "如",
+        "start_seconds": 160.98,
+        "end_seconds": 161.54,
+        "confidence": 0.9991,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "意",
+        "start_seconds": 161.54,
+        "end_seconds": 161.82,
+        "confidence": 0.9955,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 163.34,
+    "end": 165.57999999999998,
+    "text": "财源广进！",
+    "section": "结尾",
+    "confidence": 0.6681,
+    "timing_source": "whisper_medium_acoustic_alignment",
+    "words": [
+      {
+        "text": "财",
+        "start_seconds": 163.82,
+        "end_seconds": 164.2,
+        "confidence": 0.5343,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "源",
+        "start_seconds": 164.2,
+        "end_seconds": 164.64,
+        "confidence": 0.8757,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "广",
+        "start_seconds": 164.64,
+        "end_seconds": 165.08,
+        "confidence": 0.5797,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "进",
+        "start_seconds": 165.08,
+        "end_seconds": 165.58,
+        "confidence": 0.6825,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 166.18,
+    "end": 167.29999999999998,
+    "text": "心想事成！",
+    "section": "结尾",
+    "confidence": 0.3509,
+    "timing_source": "whisper_medium_acoustic_alignment",
+    "words": [
+      {
+        "text": "心",
+        "start_seconds": 166.18,
+        "end_seconds": 166.42,
+        "confidence": 0.0001,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "想",
+        "start_seconds": 166.42,
+        "end_seconds": 166.42,
+        "confidence": 0.0816,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "事",
+        "start_seconds": 166.42,
+        "end_seconds": 166.96,
+        "confidence": 0.3735,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "成",
+        "start_seconds": 166.96,
+        "end_seconds": 167.3,
+        "confidence": 0.9483,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 167.44,
+    "end": 167.92,
+    "text": "Bosston！",
+    "section": "结尾",
+    "confidence": 0.1795,
+    "timing_source": "whisper_medium_acoustic_alignment",
+    "words": [
+      {
+        "text": "Bosston",
+        "start_seconds": 167.44,
+        "end_seconds": 167.92,
+        "confidence": 0.1795,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 168.3,
+    "end": 168.92,
+    "text": "Pragon！",
+    "section": "结尾",
+    "confidence": 0.0509,
+    "timing_source": "whisper_medium_acoustic_alignment",
+    "words": [
+      {
+        "text": "Pragon",
+        "start_seconds": 168.44,
+        "end_seconds": 168.8,
+        "confidence": 0.0509,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 169.02,
+    "end": 171.0,
+    "text": "祝大家新年快乐！",
+    "section": "结尾",
+    "confidence": 0.976,
+    "timing_source": "whisper_medium_acoustic_alignment",
+    "words": [
+      {
+        "text": "祝",
+        "start_seconds": 169.68,
+        "end_seconds": 169.68,
+        "confidence": 0.9712,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "大",
+        "start_seconds": 169.68,
+        "end_seconds": 169.88,
+        "confidence": 0.9937,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "家",
+        "start_seconds": 169.88,
+        "end_seconds": 170.08,
+        "confidence": 0.9937,
+        "matched": true,
+        "estimated_timing": true
+      },
+      {
+        "text": "新",
+        "start_seconds": 170.08,
+        "end_seconds": 170.32,
+        "confidence": 0.9127,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "年",
+        "start_seconds": 170.32,
+        "end_seconds": 170.54,
+        "confidence": 0.9967,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "快",
+        "start_seconds": 170.54,
+        "end_seconds": 170.82,
+        "confidence": 0.9922,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "乐",
+        "start_seconds": 170.82,
+        "end_seconds": 170.98,
+        "confidence": 0.9719,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 171.02,
+    "end": 172.84,
+    "text": "阖家幸福！",
+    "section": "结尾",
+    "confidence": 0.6999,
+    "timing_source": "whisper_medium_acoustic_alignment",
+    "words": [
+      {
+        "text": "阖",
+        "start_seconds": 171.26,
+        "end_seconds": 171.52,
+        "confidence": 0.0016,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "家",
+        "start_seconds": 171.52,
+        "end_seconds": 171.96,
+        "confidence": 0.908,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "幸",
+        "start_seconds": 171.96,
+        "end_seconds": 172.4,
+        "confidence": 0.8943,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "福",
+        "start_seconds": 172.4,
+        "end_seconds": 172.82,
+        "confidence": 0.9958,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 172.86,
+    "end": 174.6,
+    "text": "龙马精神！",
+    "section": "结尾",
+    "confidence": 0.7753,
+    "timing_source": "whisper_medium_acoustic_alignment",
+    "words": [
+      {
+        "text": "龙",
+        "start_seconds": 173.14,
+        "end_seconds": 173.28,
+        "confidence": 0.9393,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "马",
+        "start_seconds": 173.28,
+        "end_seconds": 173.72,
+        "confidence": 0.9762,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "精",
+        "start_seconds": 173.72,
+        "end_seconds": 174.26,
+        "confidence": 0.1965,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "神",
+        "start_seconds": 174.26,
+        "end_seconds": 174.56,
+        "confidence": 0.9894,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  },
+  {
+    "start": 174.98,
+    "end": 176.39999999999998,
+    "text": "万事胜意！",
+    "section": "结尾",
+    "confidence": 0.7786,
+    "timing_source": "whisper_medium_acoustic_alignment",
+    "words": [
+      {
+        "text": "万",
+        "start_seconds": 174.98,
+        "end_seconds": 175.14,
+        "confidence": 0.9662,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "事",
+        "start_seconds": 175.14,
+        "end_seconds": 175.64,
+        "confidence": 0.9816,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "胜",
+        "start_seconds": 175.64,
+        "end_seconds": 175.98,
+        "confidence": 0.5253,
+        "matched": true,
+        "estimated_timing": false
+      },
+      {
+        "text": "意",
+        "start_seconds": 175.98,
+        "end_seconds": 176.38,
+        "confidence": 0.6411,
+        "matched": true,
+        "estimated_timing": false
+      }
+    ]
+  }
+]

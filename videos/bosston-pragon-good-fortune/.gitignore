@@ -1,0 +1,17 @@
+/assets/generated/
+/assets/footage/
+/assets/bgm.wav
+/assets/fonts/*.otf
+/assets/fonts/*.ttf
+/timing-evidence/
+/check-*.json
+/film-data.js
+/asset-hashes.json
+/download_medium*.py
+/focus_timing.py
+/align_opening.py
+/asr_medium.py
+/lyrics-original-request.txt
+/lyrics-revised.txt
+/actual-lyrics.txt
+/timeline-before-correction.json

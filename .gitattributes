@@ -71,3 +71,10 @@
 /videos/biznex-the-question-that-stayed/index.html linguist-generated=true
 /videos/biznex-the-question-that-stayed/cinematic.css linguist-generated=true
 /videos/biznex-the-question-that-stayed/cinematic.js linguist-generated=true
+# Preserve prepared Bosston film inputs and vendored notices across Windows checkouts.
+videos/bosston-pragon-good-fortune/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+videos/bosston-pragon-good-fortune/assets/vendor/** linguist-vendored=true
+videos/bosston-pragon-good-fortune/assets/gsap.min.js linguist-vendored=true
+videos/bosston-pragon-good-fortune/audiomap.json linguist-generated=true
+videos/bosston-pragon-good-fortune/index.html linguist-generated=true
+videos/bosston-pragon-good-fortune/scene-plan.json linguist-generated=true

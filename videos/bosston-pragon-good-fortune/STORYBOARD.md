@@ -1,0 +1,74 @@
+# BOSSTON | Pragon — vocal-led edit
+
+Revision 2 uses moving footage and physical 3D shots. The original WAV runs for 185 seconds, with the preserved vocal cue clock. Measured transients refine nearby cuts; no invented BPM.
+
+| Shot | Seconds | Section | Moving subject / camera | Entry |
+| --- | --- | --- | --- | --- |
+| shot-01 | 0.000–3.400 | intro | live-drums / video / track | cut |
+| shot-02 | 3.400–6.433 | intro | dragon-head / video / orbit | cut |
+| shot-03 | 6.433–9.767 | intro | lantern-field / video / rush | cut |
+| shot-04 | 9.767–13.200 | intro | live-drums / video / crane | cut |
+| shot-05 | 13.200–16.133 | intro | white-lion / video / track | cut |
+| shot-06 | 16.133–19.467 | intro | cloud-dawn / video / orbit | cut |
+| shot-07 | 19.467–22.900 | intro | lantern-field / video / rush | cut |
+| shot-08 | 22.900–26.200 | verse-1 | lantern-field / video / track | cut |
+| shot-09 | 26.200–28.800 | verse-1 | lion-street / video / orbit | cut |
+| shot-10 | 28.800–31.867 | verse-1 | koi / video / rush | cut |
+| shot-11 | 31.867–35.133 | verse-1 | cloud-sunrise / video / crane | cut |
+| shot-12 | 35.133–37.920 | verse-1 | cloud-dawn / video / track | cut |
+| shot-13 | 37.920–40.867 | pre-chorus | koi / video / track | cut |
+| shot-14 | 40.867–43.333 | pre-chorus | lantern-field / video / orbit | cut |
+| shot-15 | 43.333–46.100 | pre-chorus | cloud-dawn / video / rush | cut |
+| shot-16 | 46.100–49.000 | pre-chorus | dragon-head / video / crane | cut |
+| shot-17 | 49.000–51.000 | chorus | dragon-head / video / track | cut |
+| shot-18 | 51.000–52.733 | chorus | white-lion / video / orbit | cut |
+| shot-19 | 52.733–54.733 | chorus | lion-street / video / rush | cut |
+| shot-20 | 54.733–56.767 | chorus | live-drums / video / crane | cut |
+| shot-21 | 56.767–58.500 | chorus | lion-street / video / track | cut |
+| shot-22 | 58.500–60.267 | chorus | koi / video / orbit | cut |
+| shot-23 | 60.267–62.400 | chorus | live-drums / video / rush | cut |
+| shot-24 | 62.400–64.067 | chorus | gold-fireworks / video / crane | cut |
+| shot-25 | 64.067–66.000 | chorus | white-lion / video / track | cut |
+| shot-26 | 66.000–69.200 | verse-2 | cloud-sunrise / video / track | cut |
+| shot-27 | 69.200–71.767 | verse-2 | koi / video / orbit | cut |
+| shot-28 | 71.767–74.800 | verse-2 | lantern-field / video / rush | cut |
+| shot-29 | 74.800–78.033 | verse-2 | white-lion / video / crane | cut |
+| shot-30 | 78.033–80.720 | verse-2 | koi / video / track | cut |
+| shot-31 | 80.720–83.600 | pre-chorus | lantern-field / video / track | cut |
+| shot-32 | 83.600–86.167 | pre-chorus | koi / video / orbit | cut |
+| shot-33 | 86.167–88.933 | pre-chorus | cloud-dawn / video / rush | cut |
+| shot-34 | 88.933–92.000 | pre-chorus | lion-street / video / crane | cut |
+| shot-35 | 92.000–93.967 | chorus | lion-street / video / track | cut |
+| shot-36 | 93.967–95.567 | chorus | live-drums / video / orbit | cut |
+| shot-37 | 95.567–97.233 | chorus | dragon-head / video / rush | cut |
+| shot-38 | 97.233–99.300 | chorus | white-lion / video / crane | cut |
+| shot-39 | 99.300–100.933 | chorus | dragon-head / video / track | cut |
+| shot-40 | 100.933–102.667 | chorus | live-drums / video / orbit | cut |
+| shot-41 | 102.667–104.500 | chorus | koi / video / rush | cut |
+| shot-42 | 104.500–106.133 | chorus | gold-fireworks / video / crane | cut |
+| shot-43 | 106.133–108.000 | chorus | lion-street / video / track | cut |
+| shot-44 | 108.000–112.167 | instrumental | cloud-sunrise / video / track | cut |
+| shot-45 | 112.167–115.667 | instrumental | gold-fireworks / video / orbit | cut |
+| shot-46 | 115.667–119.580 | instrumental | lantern-field / video / rush | cut |
+| shot-47 | 119.580–122.733 | bridge | live-drums / video / track | cut |
+| shot-48 | 122.733–125.300 | bridge | white-lion / video / orbit | cut |
+| shot-49 | 125.300–128.167 | bridge | live-drums / video / rush | cut |
+| shot-50 | 128.167–131.267 | bridge | koi / video / crane | cut |
+| shot-51 | 131.267–133.800 | bridge | lantern-field / video / track | cut |
+| shot-52 | 133.800–136.800 | bridge | dragon-head / video / orbit | cut |
+| shot-53 | 136.800–139.880 | bridge | gold-fireworks / video / rush | cut |
+| shot-54 | 139.880–142.100 | final-chorus | lion-street / video / track | cut |
+| shot-55 | 142.100–144.000 | final-chorus | dragon-head / video / orbit | cut |
+| shot-56 | 144.000–146.033 | final-chorus | white-lion / video / rush | cut |
+| shot-57 | 146.033–148.200 | final-chorus | gold-fireworks / video / crane | cut |
+| shot-58 | 148.200–150.033 | final-chorus | live-drums / video / track | cut |
+| shot-59 | 150.033–152.200 | final-chorus | cloud-sunrise / video / orbit | cut |
+| shot-60 | 152.200–154.400 | final-chorus | dragon-head / video / rush | cut |
+| shot-61 | 154.400–156.260 | final-chorus | gold-fireworks / video / crane | cut |
+| shot-62 | 156.260–159.900 | outro | gold-fireworks / video / track | cut |
+| shot-63 | 159.900–162.833 | outro | lantern-field / video / orbit | cut |
+| shot-64 | 162.833–166.233 | outro | koi / video / rush | cut |
+| shot-65 | 166.233–169.967 | outro | dragon-head / video / crane | cut |
+| shot-66 | 169.967–173.000 | outro | cloud-sunrise / video / track | cut |
+| shot-67 | 173.000–176.400 | outro | gold-fireworks / video / orbit | cut |
+| shot-68 | 176.400–185.000 | ending | cloud-sunrise / video / track | cut |

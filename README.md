@@ -29,6 +29,11 @@ rendering, encoded-audio checks, decoded-frame review materials and portable del
 Explore the [next-story pipeline](docs/NEXT_STORY_PIPELINE.md), [voice experiments](docs/NEXT_VOICE_PASS.md),
 [visual-tool comparison](docs/NEXT_FILM_VISUAL_TOOLS.md) and [pinned BRAG adaptation](docs/BRAG_ADAPTATION.md).
 The wider studio also supports custom music films and researched 6–8 minute editorial videos.
+The [BOSSTON / Pragon project](videos/bosston-pragon-good-fortune/README.md) authors a full-song
+Chinese New Year music film from reviewed moving footage, cropped and graded source windows,
+and phrase-synced lyrics. Its current revision uses **68 shots**, preserves all **71 lyric cues**,
+and enforces **Bosston** spelling. The verified 185-second 1080p30 export includes a 71.7 MiB sharing copy. Its pipeline recognizes additional song sections and recovers
+split Latin names from their first syllable. See the [upstream decisions](docs/research/bosston-pragon-2026-11-18.md).
 
 <table>
   <tr>
@@ -63,7 +68,7 @@ use this local Windows setup; the source check reused installed dependencies.
 | **Social Operator** | A durable YouTube/Instagram/Facebook queue for verified videos, account-specific publishing receipts, and matched-age analytics reports | [Social automation](docs/SOCIAL_AUTOMATION.md) · [Growth experiments](docs/SOCIAL_GROWTH.md) |
 | **Editorial Studio** | Researched, narrated videos using matched real footage, owned cards, captions, and reviewable upload packages | [Windows setup](SETUP.md) |
 | **Stock Music Films** | Full songs cut to hand-picked real footage, with frame-accurate trims, shot-by-shot grades, cached revisions, and soundtrack verification | [The Colour of You](videos/the-colour-of-you/README.md) · [Stock film workflow](docs/MUSIC_VIDEO.md#authored-stock-music-films) |
-| **Custom cinematic films · HyperFrames** | Authored full-song films with supplied photographs, generated artwork, reviewed motion inserts, deterministic camera/atmosphere movement, and measured lyric subtitles | [Cinematic workflow below](#custom-cinematic-music-films) · [reference project](videos/for-my-sweetheart/README.md) |
+| **Custom cinematic films · HyperFrames** | Authored full-song films with supplied photographs, generated artwork, reviewed motion inserts, deterministic camera/atmosphere movement, and measured lyric subtitles | [Cinematic workflow below](#custom-cinematic-music-films) · [BOSSTON / Pragon lyric film](videos/bosston-pragon-good-fortune/README.md) · [anniversary reference](videos/for-my-sweetheart/README.md) |
 | **Lyric films** | Local vocal alignment, a browser timing editor, and full-song MP4 export with animated lyrics and window snowfall | [Lyric film workflow](docs/MUSIC_VIDEO.md#lyric-films) · [Rain to Morning theme](videos/rain-to-morning/README.md) |
 | **Remotion Music Film · Studio** | Song-driven racing/event edits: Remotion graphics preview, local music analysis, CLIP-ranked footage, and FFmpeg/NVENC final rendering. The Pragon profile requires licensed footage for its human and event scenes | [Racing/event workflow](docs/MUSIC_VIDEO.md) |
 | **AI Viral Lab** | Individual 3–10 second vertical AI shots, with reference-led motion and optional native dialogue/audio; local Wan 2.2 on an 8 GB RTX 4070 or opt-in Gemini Omni/Veo | [AI Viral Lab](docs/VIRAL_SHORTS.md) |

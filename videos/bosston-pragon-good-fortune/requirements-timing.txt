@@ -1,0 +1,3 @@
+# Optional recognition-token normalization for prepare_captions.py.
+# Rendering prepared captions does not require this package or a model download.
+opencc-python-reimplemented==0.1.7

@@ -8,6 +8,16 @@ headers can use square brackets or full-width brackets such as `【主歌一】`
 measures timestamps locally. Singing, repeated choruses, and differences between Simplified
 and Traditional characters can reduce anchor coverage.
 
+English `[Post-Chorus]` (or `[Post Chorus]`), `[Bridge]`, and `[Final Chorus]` headers
+retain their own section names for edit treatments. Vocal annotations such as `[Female Vocal]`
+change the singer within the current section; other unrecognized bracketed directions are omitted.
+
+Split Latin ASR names such as `B` + `oston` can retain the first syllable's onset:
+the aligner joins adjacent fragments only when they exactly form a supplied lyric word,
+with at most 150 ms between nonoverlapping fragments. It preserves their measured outer
+boundaries and lowest confidence, and records the join in the alignment warnings.
+Complete supplied words, unrelated names and fragments across a longer pause stay separate.
+
 With [AtlasForge installed](../SETUP.md), `ffmpeg` built with libass, and `ffprobe` on `PATH`:
 
 ```powershell
@@ -108,6 +118,14 @@ the output checksum and soundtrack comparison. The [project skill](../.agents/sk
 covers shot selection, edit timing, and visual review.
 
 ## Custom cinematic music films
+
+The [Bosston / Pragon cinematic revision](../videos/bosston-pragon-good-fortune/README.md)
+uses reviewed moving footage throughout its 185-second song, with 68 authored cuts and
+71 preserved lyric cues. Its preparation stage pins 20 source windows, crops, grades,
+silent 1080p30 outputs and permitted playback ranges; original soundtrack timing is
+preserved. The explicit Bosston spelling guard prevents a shared lyric/caption typo from
+passing completeness verification. Credits and per-source licensing remain attached to
+the footage manifest. Image/3D studies are not treated as admitted footage.
 
 The dedicated [anniversary composition](../videos/for-my-sweetheart/README.md) shows a full-song
 HyperFrames path for personal films outside the racing profile: lyric-directed camera scenes,

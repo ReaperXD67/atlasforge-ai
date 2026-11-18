@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1920,height=1080">
+  <title>BOSSTON | Pragon — 好运来</title>
+  <script src="assets/gsap.min.js"></script>
+  <script src="film-data.js"></script>
+  <style>
+    @font-face{font-family:'NotoFilm';src:url('assets/fonts/NotoSerifCJKsc-Regular.otf') format('opentype');font-weight:400;font-display:block}
+    *{box-sizing:border-box;margin:0;padding:0}html,body{width:1920px;height:1080px;overflow:hidden;background:#020305}
+    #film{position:relative;width:100%;height:100%;overflow:hidden;color:#fff2dc;background:#020305}
+    #world{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+    #environment-veil{position:absolute;left:0;right:0;top:76px;bottom:76px;background:#03080b;z-index:1;pointer-events:none}
+    #world3d{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+    .footage-window{position:absolute;left:0;right:0;top:76px;height:928px;z-index:2;overflow:hidden;opacity:0}
+    .footage-window video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    #picture-veil{position:absolute;left:0;right:0;top:650px;height:354px;z-index:4;background:linear-gradient(180deg,#02040500,#02040524 35%,#020405cf);pointer-events:none}
+    #render-fade{position:absolute;inset:0;background:#020305;z-index:10;pointer-events:none}
+    #brand{position:absolute;left:84px;top:60px;width:570px;height:190px;object-fit:contain;z-index:5}
+    .lyric{position:absolute;left:190px;right:190px;top:852px;height:94px;display:flex;align-items:center;justify-content:center;text-align:center;z-index:6}
+    .lyric-inner{font:400 49px/1.45 'NotoFilm',serif;letter-spacing:.045em;color:#fff5e4;text-shadow:0 3px 4px #000,0 2px 22px #000,0 0 38px #000;white-space:nowrap;padding:0 18px}
+    .lyric.chorus .lyric-inner{color:#ffdb92;font-size:53px}
+    #opening-title,#closing-title{position:absolute;left:220px;right:220px;top:370px;text-align:center;z-index:5;pointer-events:none}
+    .title-inner{font:400 140px/1.3 'NotoFilm',serif;letter-spacing:.18em;text-shadow:0 4px 50px #000;color:#ffe2a9}
+    #closing-title{top:402px}.closing-brand{width:1020px;height:340px;object-fit:contain}
+    #closing-message{font:400 62px/1.4 'NotoFilm',serif;letter-spacing:.2em;color:#ffe8bc;margin-top:-8px;text-shadow:0 3px 30px #000}
+    .matte{position:absolute;left:0;right:0;background:#020305;z-index:8;height:76px}.matte.top{top:0}.matte.bottom{bottom:0}
+  </style>
+</head>
+<body>
+  <div id="film" data-composition-id="bosston" data-start="0" data-duration="185" data-width="1920" data-height="1080" data-fps="30">
+    <!-- MOTION_FOOTAGE -->
+    <div id="picture-veil" data-layout-ignore></div>
+    <img id="brand" src="assets/generated/bosston-pragon.png" alt="BOSSTON | Pragon" data-layout-ignore>
+    <div id="opening-title" class="clip" data-start="0" data-duration="5" data-track-index="4"><div class="title-inner">好运来</div></div>
+    <div id="closing-title" class="clip" data-start="174" data-duration="11" data-track-index="4"><div class="closing-inner"><img class="closing-brand" src="assets/generated/bosston-pragon.png" alt="BOSSTON | Pragon"><p id="closing-message">新年快乐</p></div></div>
+    <!-- LYRIC_CUES -->
+    <div class="matte top" data-layout-ignore></div><div class="matte bottom" data-layout-ignore></div>
+    <div id="render-fade" data-layout-ignore></div>
+    <audio id="song-master" class="clip" src="assets/bgm.wav" data-start="0" data-duration="185" data-track-index="11" data-volume="1"></audio>
+  </div>
+  <script src="captions.js"></script>
+  <script src="master.js"></script>
+  <script>
+    window.__hf.buildReady.bosston.then(() => {
+      const clock={time:0};
+      const tl=gsap.timeline({paused:true});
+      tl.to(clock,{time:185,duration:185,ease:'none',onUpdate:()=>window.renderBosstonMasterAt(clock.time)},0);
+      window.__timelines['bosston']=tl;
+      window.renderBosstonMasterAt(0);
+    });
+  </script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import math
 import re
 import unicodedata
 import warnings
@@ -62,6 +63,10 @@ _SECTION_SINGERS: dict[str, LyricSinger] = {
     "verse 3": "male",
     "pre-chorus": "female",
     "pre chorus": "female",
+    "post-chorus": "ensemble",
+    "post chorus": "ensemble",
+    "bridge": "ensemble",
+    "final chorus": "ensemble",
     "guitar solo": "instrumental",
     "outro": "ensemble",
 }
@@ -179,6 +184,77 @@ def _asr_tokens(observed: list[tuple[str, float, float, float]]) -> list[_AsrTok
                         estimated_timing=len(tokens) > 1,
                     )
                 )
+    return result
+
+
+def _coalesce_latin_fragments(
+    observed: list[tuple[str, float, float, float]],
+    supplied_tokens: list[str],
+    *,
+    max_gap_seconds: float = 0.15,
+) -> list[tuple[str, float, float, float]]:
+    """Recover split names only by exact supplied lexemes and adjacent measured spans.
+
+    A complete supplied word is never consumed as a fragment. This keeps ordinary
+    sequences such as ``a way`` separate even when ``away`` also appears in the song.
+    """
+
+    def latin_lexeme(raw: str) -> str | None:
+        tokens = _tokens(raw)
+        if len(tokens) != 1 or not raw.strip().startswith(tokens[0]):
+            return None
+        normalized = _normalized_word(tokens[0])
+        return normalized if normalized.isascii() and normalized.isalpha() else None
+
+    targets = {word for raw in supplied_tokens if (word := latin_lexeme(raw)) is not None}
+    prefixes = {word[:length] for word in targets for length in range(1, len(word))}
+    result: list[tuple[str, float, float, float]] = []
+    index = 0
+    while index < len(observed):
+        first = observed[index]
+        candidate = latin_lexeme(first[0])
+        if (
+            candidate is None
+            or candidate in targets
+            or candidate not in prefixes
+            or not _TOKEN.fullmatch(first[0].strip())
+        ):
+            result.append(first)
+            index += 1
+            continue
+        pieces = [first]
+        merged = False
+        for following_index in range(index + 1, len(observed)):
+            following = observed[following_index]
+            fragment = latin_lexeme(following[0])
+            previous = pieces[-1]
+            if (
+                fragment is None
+                or fragment in targets
+                or not all(math.isfinite(t) for t in (*previous[1:], *following[1:]))
+                or not previous[1] < previous[2] <= following[1] < following[2]
+                or following[1] - previous[2] > max_gap_seconds + 1e-9
+            ):
+                break
+            candidate += fragment
+            pieces.append(following)
+            if candidate in targets:
+                result.append(
+                    (
+                        "".join(piece[0].strip() for piece in pieces),
+                        first[1],
+                        following[2],
+                        min(piece[3] for piece in pieces),
+                    )
+                )
+                index = following_index + 1
+                merged = True
+                break
+            if candidate not in prefixes or not _TOKEN.fullmatch(following[0].strip()):
+                break
+        if not merged:
+            result.append(first)
+            index += 1
     return result
 
 
@@ -376,8 +452,9 @@ def align_supplied_lyrics(
             duration_seconds,
             f"Exact lyric alignment was unavailable ({type(exc).__name__}: {exc}).",
         )
-    observed = _asr_tokens(observed_words)
     supplied_flat = [word for line in specs for word in line.words]
+    coalesced_words = _coalesce_latin_fragments(observed_words, supplied_flat)
+    observed = _asr_tokens(coalesced_words)
     supplied_normalized = [_normalized_word(word) for word in supplied_flat]
     matches = _monotonic_matches(supplied_normalized, [word.text for word in observed])
     if not observed or not matches:
@@ -513,6 +590,11 @@ def align_supplied_lyrics(
 
     coverage = len(matches) / max(1, len(supplied_flat))
     warnings: list[str] = []
+    if len(coalesced_words) < len(observed_words):
+        warnings.append(
+            "Adjacent Latin ASR fragments were joined only to exact supplied lyric words; "
+            "their measured outer boundaries and lowest fragment confidence were retained."
+        )
     if any(word.estimated_timing for word in observed):
         warnings.append(
             "Characters within multi-character ASR timestamp groups use interpolated timing."
