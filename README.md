@@ -31,10 +31,9 @@ Explore the [next-story pipeline](docs/NEXT_STORY_PIPELINE.md), [voice experimen
 The wider studio also supports custom music films and researched 6–8 minute editorial videos.
 The [BOSSTON / Pragon project](videos/bosston-pragon-good-fortune/README.md) authors a full-song
 Chinese New Year film from **17 generated AI artworks across 52 shots**, with CPU-estimated
-relative depth, continuous camera travel and selective environmental motion. Its compiled V3
+relative depth, continuous camera travel and selective environmental motion. Its verified V3
 source preserves all **71 lyric cues**, the original **185-second song** and all nine correctly
-spelled **Bosston** mentions. The AI Cinema 1080p30 master and 720p sharing-copy delivery checks
-are pending. See the [current implementation and upstream decisions](docs/research/bosston-ai-motion-v3-2026-11-18.md).
+spelled **Bosston** mentions. The complete 1080p30 master and 59.3 MiB sharing copy pass decoding and zero-offset audio checks. See the [current implementation and upstream decisions](docs/research/bosston-ai-motion-v3-2026-11-18.md).
 
 <table>
   <tr>

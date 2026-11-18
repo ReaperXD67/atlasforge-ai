@@ -14,6 +14,6 @@ The active implementation uses the existing HyperFrames/GSAP clock and an origin
 
 ## Completion and publication
 
-Default delivery names are `BOSSTON-Pragon-Good-Fortune-AI-Cinema.mp4` and `BOSSTON-Pragon-Good-Fortune-AI-Cinema-720p.mp4`. Validate the complete **5,550-frame** export, original soundtrack at zero offset, lyric completeness/spelling, all 17 image/depth pairs and encoded visual samples. Final rendering, encoded verification and visual review are pending; do not reuse metrics from earlier exports.
+Default delivery names are `BOSSTON-Pragon-Good-Fortune-AI-Cinema.mp4` and `BOSSTON-Pragon-Good-Fortune-AI-Cinema-720p.mp4`. Validate the complete **5,550-frame** export, original soundtrack at zero offset, lyric completeness/spelling, all 17 image/depth pairs and encoded visual samples. The AI Cinema master and sharing copy pass full decoding and zero-offset soundtrack comparison. All 52 shot midpoints and nine encoded Bosston lyric appearances were reviewed; record the final results in DELIVERY.json and REVIEW.md.
 
 The user authorized relevant reviewed tool/skill installation and committing/pushing this project's changes through the existing GitHub workflow. Research primary sources, record exact licenses and provenance, validate adopted improvements and keep the root/project READMEs current. Exclude credentials, private audio, model weights and caches. Publishing to social platforms or changing external accounts is outside this request.

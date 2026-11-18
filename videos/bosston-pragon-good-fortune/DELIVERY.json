@@ -1,0 +1,110 @@
+{
+  "project": "BOSSTON | Pragon — 好运来",
+  "revision": 3,
+  "media_mode": "ai-depth-cinema",
+  "renderer_source_commit": "08f0a0027c996a05ea325cf5b2eec4d066065788",
+  "verified_at_utc": "2026-11-18T07:58:52.361510+00:00",
+  "master": {
+    "sha256": "8b12f8f5ccaa17e3372215bdf723be2a71e49d32dd13816fa1a1ff46a8858100",
+    "size_bytes": 788619064,
+    "duration_seconds": 185.0,
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "decoded_frames": 5550,
+    "video_codec": "h264",
+    "pixel_format": "yuv420p",
+    "audio_codec": "aac",
+    "audio_channels": 2,
+    "audio_sample_rate": 48000,
+    "full_decode": "passed"
+  },
+  "sharing_copy": {
+    "passed": true,
+    "duration_seconds": 185,
+    "frames": 5550,
+    "width": 1280,
+    "height": 720,
+    "full_decode": true,
+    "audio_payload_identical": true,
+    "audio_adts_sha256": "4ac8d6af54c6030fcbc7779fd1eb1cade703ee2e0b35202332c4be789f08a783",
+    "size_bytes": 62201607,
+    "sha256": "a206f61ee6f81ce1a0eb146b9929600ea55683a48ebc9426a23f2c35b5ef994d"
+  },
+  "audio_comparison": {
+    "offset_samples": 0,
+    "compared_samples_per_channel": 8880000,
+    "decoded_export_samples_per_channel": 8880000,
+    "per_channel_correlation": [
+      0.99683083,
+      0.99686263
+    ],
+    "minimum_required": 0.98
+  },
+  "lyrics": {
+    "supplied_lines": 71,
+    "subtitle_cues": 71,
+    "normalized_characters": 536,
+    "text_completeness": "passed",
+    "brand_spelling": "Bosston",
+    "brand_spelling_check": "passed",
+    "bosston_mentions": 9,
+    "normalization": "NFKC; punctuation and whitespace removed; case preserved",
+    "cue_bounds_and_order": "passed"
+  },
+  "visual_sources": {
+    "artworks": 17,
+    "retained_original_worlds": 7,
+    "new_worlds": 10,
+    "depth_maps": 17,
+    "shots": 52,
+    "native_ai_video": false,
+    "depth_model": "Depth Anything V2 Small",
+    "depth_model_license": "Apache-2.0",
+    "source_map_hashes_and_dimensions": "passed"
+  },
+  "motion_preflight": {
+    "passed": true,
+    "sampled_seeks": 35,
+    "depth_fallbacks": 0,
+    "repeated_time_hash_checks": 3,
+    "proof_duration_seconds": 14,
+    "proof_frames": 420,
+    "proof_full_decode": true
+  },
+  "encoded_visual_review": {
+    "shot_midpoints_reviewed": 52,
+    "spelling_crops_reviewed": 9,
+    "spelling": "Bosston",
+    "major_issue_found": false,
+    "method": "Decoded MP4 stills, four shot contact sheets and nine native lyric crops; sampled review, not a complete real-time watch or independent audition."
+  },
+  "picture_diagnostic": {
+    "exact_clock_samples": 11,
+    "frame_offset_search": false,
+    "rgb_ssim_threshold": 0.97,
+    "strict_raw_rgb_gate_passed": false,
+    "rgb_ssim_range": [
+      0.928824,
+      0.968632
+    ],
+    "rgb_mae_range_0_255": [
+      2.669,
+      3.335
+    ],
+    "bt709_luma_ssim_range": [
+      0.98811,
+      0.990652
+    ],
+    "lossless_yuv420p_reference_rgb_ssim": 0.951285,
+    "lossless_yuv420p_reference_luma_ssim": 0.997407,
+    "negative_control_samples_rejected": 3,
+    "note": "Strict raw-RGB SSIM is incompatible with fine saturated 4:2:0 chroma; its failed result is preserved. Luma correspondence and RGB error are separate measurements; thresholds were not lowered."
+  },
+  "render_seconds": 398.5,
+  "capture_seconds": 391.2,
+  "local_master": "renders/BOSSTON-Pragon-Good-Fortune-AI-Cinema.mp4",
+  "local_sharing_copy": "renders/BOSSTON-Pragon-Good-Fortune-AI-Cinema-720p.mp4",
+  "full_receipt": "renders/BOSSTON-Pragon-Good-Fortune-AI-Cinema.verification.json",
+  "limits": "Animated AI artwork with relative depth, not native generated-video footage. Cue alignment is model-derived; sampled verification does not establish audience response."
+}
