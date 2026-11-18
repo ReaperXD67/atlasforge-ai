@@ -21,8 +21,8 @@ def audio_hash(path):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--source', type=Path, default=ROOT / 'renders/BOSSTON-Pragon-Good-Fortune-Cinematic.mp4')
-    parser.add_argument('--output', type=Path, default=ROOT / 'renders/BOSSTON-Pragon-Good-Fortune-Cinematic-720p.mp4')
+    parser.add_argument('--source', type=Path, default=ROOT / 'renders/BOSSTON-Pragon-Good-Fortune-AI-Cinema.mp4')
+    parser.add_argument('--output', type=Path, default=ROOT / 'renders/BOSSTON-Pragon-Good-Fortune-AI-Cinema-720p.mp4')
     args = parser.parse_args()
     if args.source.resolve() == args.output.resolve():
         raise ValueError('Sharing copy must have a distinct path.')

@@ -1,0 +1,466 @@
+{
+  "renderer": "custom WebGL shader",
+  "gate": "verify_ai_motion.mjs",
+  "note": "The upstream POSIX DOM seam gate does not validate this shader.",
+  "seams": [
+    {
+      "at": 2.14,
+      "from": "ai-shot-01",
+      "to": "ai-shot-02",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 5.8,
+      "from": "ai-shot-02",
+      "to": "ai-shot-03",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 9.72,
+      "from": "ai-shot-03",
+      "to": "ai-shot-04",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 13.18,
+      "from": "ai-shot-04",
+      "to": "ai-shot-05",
+      "transition": "silk-wipe",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 17.8,
+      "from": "ai-shot-05",
+      "to": "ai-shot-06",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 22.9,
+      "from": "ai-shot-06",
+      "to": "ai-shot-07",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 25.04,
+      "from": "ai-shot-07",
+      "to": "ai-shot-08",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 28.9,
+      "from": "ai-shot-08",
+      "to": "ai-shot-09",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 32.24,
+      "from": "ai-shot-09",
+      "to": "ai-shot-10",
+      "transition": "silk-wipe",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 34.02,
+      "from": "ai-shot-10",
+      "to": "ai-shot-11",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 37.92,
+      "from": "ai-shot-11",
+      "to": "ai-shot-12",
+      "transition": "silk-wipe",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 41.66,
+      "from": "ai-shot-12",
+      "to": "ai-shot-13",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 46.6,
+      "from": "ai-shot-13",
+      "to": "ai-shot-14",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 49,
+      "from": "ai-shot-14",
+      "to": "ai-shot-15",
+      "transition": "light-leak",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 52.9,
+      "from": "ai-shot-15",
+      "to": "ai-shot-16",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 56.48,
+      "from": "ai-shot-16",
+      "to": "ai-shot-17",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 60.36,
+      "from": "ai-shot-17",
+      "to": "ai-shot-18",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 64.96,
+      "from": "ai-shot-18",
+      "to": "ai-shot-19",
+      "transition": "silk-wipe",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 66,
+      "from": "ai-shot-19",
+      "to": "ai-shot-20",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 69.66,
+      "from": "ai-shot-20",
+      "to": "ai-shot-21",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 73.34,
+      "from": "ai-shot-21",
+      "to": "ai-shot-22",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 77.12,
+      "from": "ai-shot-22",
+      "to": "ai-shot-23",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 80.72,
+      "from": "ai-shot-23",
+      "to": "ai-shot-24",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 84.52,
+      "from": "ai-shot-24",
+      "to": "ai-shot-25",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 89.64,
+      "from": "ai-shot-25",
+      "to": "ai-shot-26",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 92,
+      "from": "ai-shot-26",
+      "to": "ai-shot-27",
+      "transition": "light-leak",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 95.66,
+      "from": "ai-shot-27",
+      "to": "ai-shot-28",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 99.18,
+      "from": "ai-shot-28",
+      "to": "ai-shot-29",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 103.06,
+      "from": "ai-shot-29",
+      "to": "ai-shot-30",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 107.32,
+      "from": "ai-shot-30",
+      "to": "ai-shot-31",
+      "transition": "silk-wipe",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 111.5,
+      "from": "ai-shot-31",
+      "to": "ai-shot-32",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 115.6,
+      "from": "ai-shot-32",
+      "to": "ai-shot-33",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 119.58,
+      "from": "ai-shot-33",
+      "to": "ai-shot-34",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 123.28,
+      "from": "ai-shot-34",
+      "to": "ai-shot-35",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 126.94,
+      "from": "ai-shot-35",
+      "to": "ai-shot-36",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 130.64,
+      "from": "ai-shot-36",
+      "to": "ai-shot-37",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 132.44,
+      "from": "ai-shot-37",
+      "to": "ai-shot-38",
+      "transition": "silk-wipe",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 136.64,
+      "from": "ai-shot-38",
+      "to": "ai-shot-39",
+      "transition": "silk-wipe",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 139.88,
+      "from": "ai-shot-39",
+      "to": "ai-shot-40",
+      "transition": "light-leak",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 141.66,
+      "from": "ai-shot-40",
+      "to": "ai-shot-41",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 145.26,
+      "from": "ai-shot-41",
+      "to": "ai-shot-42",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 147.08,
+      "from": "ai-shot-42",
+      "to": "ai-shot-43",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 150.74,
+      "from": "ai-shot-43",
+      "to": "ai-shot-44",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 155.14,
+      "from": "ai-shot-44",
+      "to": "ai-shot-45",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 156.26,
+      "from": "ai-shot-45",
+      "to": "ai-shot-46",
+      "transition": "light-leak",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 159.6,
+      "from": "ai-shot-46",
+      "to": "ai-shot-47",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 163.34,
+      "from": "ai-shot-47",
+      "to": "ai-shot-48",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 166.18,
+      "from": "ai-shot-48",
+      "to": "ai-shot-49",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 169.02,
+      "from": "ai-shot-49",
+      "to": "ai-shot-50",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 172.86,
+      "from": "ai-shot-50",
+      "to": "ai-shot-51",
+      "transition": "cut",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    },
+    {
+      "at": 176.4,
+      "from": "ai-shot-51",
+      "to": "ai-shot-52",
+      "transition": "light-leak",
+      "x_velocity": 0.008,
+      "zoom_velocity": 0.016,
+      "same_direction": true
+    }
+  ]
+}

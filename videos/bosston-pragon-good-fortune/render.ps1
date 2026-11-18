@@ -1,5 +1,5 @@
 [CmdletBinding()]
-param([ValidateRange(1,4)][int]$Workers=1,[string]$Output='renders/BOSSTON-Pragon-Good-Fortune-Cinematic.mp4')
+param([ValidateRange(1,4)][int]$Workers=1,[string]$Output='renders/BOSSTON-Pragon-Good-Fortune-AI-Cinema.mp4')
 $ErrorActionPreference='Stop'
 $chromePath='C:\Program Files\Google\Chrome\Application\chrome.exe'
 if(Test-Path -LiteralPath $chromePath){$env:PRODUCER_HEADLESS_SHELL_PATH=$chromePath;$env:HYPERFRAMES_BROWSER_PATH=$chromePath}

@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "npx --yes hyperframes@0.8.152 preview",
-    "check": "npx --yes hyperframes@0.8.152 check",
+    "check": "npx --yes hyperframes@0.8.152 check --timeout 30000",
     "render": "npx --yes hyperframes@0.8.152 render"
   }
 }

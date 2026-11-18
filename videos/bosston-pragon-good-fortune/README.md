@@ -1,52 +1,60 @@
 # BOSSTON | Pragon — 好运来
 
-**Current revision:** the user requested a return to the AI-generated cinematic worlds with additional AI scenes and stronger motion. That revision is in development. The verified stock-footage export documented below is retained as an earlier experiment; it is not the current creative target.
+A complete Chinese New Year lyric film built around **17 generated AI artworks**: seven original worlds and ten new scenes, arranged into **52 authored shots**. The active V3 renderer combines inferred depth, continuous camera travel, restrained water/silk/lantern motion, atmosphere and optical transitions. Lacquer red, luminous gold and an expansive dawn connect the festival worlds.
 
-A 3:05 Chinese New Year lyric music film. The cinematic revision uses **moving footage throughout**: dragon and lion performances, live percussion, swimming koi, fireworks, lanterns and cloud aerials. **68 shots** use 20 reviewed source windows from nine licensed clips. The original song remains the only soundtrack.
+The **185-second original song** is the only soundtrack. All **71 lyric cues** retain their measured vocal timing, including **nine Bosston mentions** with the approved double-s spelling. The supplied brand lockup correctly uses uppercase BOSSTON.
 
-All **71 lyric cues** preserve their measured vocal timing. The user-approved spelling is **Bosston**, including all nine brand lyric lines; the supplied logo correctly uses uppercase BOSSTON. Preparation and delivery verification reject the earlier Boston spelling. Raw recognition evidence and the original WAV filename remain unchanged.
+**Delivery status:** the V3 source and motion proof pass their preflight checks; all 17 image/depth pairs pass checksum and dimension checks. The full AI Cinema render is running; encoded delivery checks and final visual review are pending. Earlier export sizes, render times and audio correlations do not describe this revision.
 
-## Run and edit
+## Build and preview
 
-Use the repository's [Windows environment](../../SETUP.md), Node.js, Chrome and FFmpeg. Supply the local song, brand PNG, [fonts](assets/fonts/README.md) and the staged footage listed in `motion-assets.json`. The [footage credits](STOCK_CREDITS.md) record the sources, creators and Pexels License. Standalone stock files and the song stay outside Git.
+Use the repository's [Windows environment](../../SETUP.md), Node.js, Chrome and FFmpeg. The local `assets/bgm.wav`, extracted brand PNG and [fonts](assets/fonts/README.md) must be present. The generated artwork is listed in [ai-assets.json](ai-assets.json); [ai-depths.json](ai-depths.json) binds every depth map to its exact source image.
 
 From the repository root:
 
 ```powershell
-# Optional: recreate graded clips from the pinned local source ledger.
-.venv/Scripts/python.exe videos/bosston-pragon-good-fortune/prepare_motion_assets.py
-.venv/Scripts/python.exe videos/bosston-pragon-good-fortune/prepare.py
+.venv/Scripts/python.exe videos/bosston-pragon-good-fortune/prepare_ai.py
 Push-Location videos/bosston-pragon-good-fortune
 npm run check
 npm run dev
 Pop-Location
+```
+
+Edit lyric text and cue bounds in `captions.json`, or shot choices and camera paths in `prepare_ai.py`, then compile again. The compiler writes `scene-plan.json`, `film-data.js`, `index.html`, `motion-ledger.json` and the [storyboard](STORYBOARD.md). `index_ai.html.in` is the active template. `ai-cinema.js` renders the artwork and depth; `ai-master.js` drives that renderer, captions and fades from one absolute song clock. HyperFrames controls the original song.
+
+## Depth and motion
+
+The [depth helper](generate_ai_depth.py) uses **Depth Anything V2 Small**, pinned to revision `5426e4f0f36572d16453bbda7a8389317b1bef99` under Apache-2.0. It runs on the existing CPU PyTorch/Transformers environment and verifies the checkpoint and license hashes. To regenerate all maps:
+
+```powershell
+.venv/Scripts/python.exe videos/bosston-pragon-good-fortune/generate_ai_depth.py --manifest videos/bosston-pragon-good-fortune/ai-assets.json
+.venv/Scripts/python.exe videos/bosston-pragon-good-fortune/prepare_ai.py
+```
+
+The model cache and raw depth fields remain under ignored `output/bosston-ai-v3/depth/`; source-size grayscale runtime maps live in `assets/depth/`. See the [depth notes](assets/depth/README.md) for normalization, licensing and regeneration details. Both the manifest and compiled data require depth maps; missing or stale pairs must fail validation.
+
+These are **animated AI artworks**, not native AI-generated video. Relative monocular depth supports parallax, but does not recover hidden surfaces or physical geometry. Camera overscan, subtle material deformation and selected atmospheric effects preserve the generated imagery. The original WebGL renderer adds no separate 3D engine.
+
+The project-local [motion skills](../../.agents/skills/README.md) inform camera direction, velocity continuity and opaque scene handoffs. [Reviewed upstream decisions](../../docs/research/bosston-ai-motion-v3-2026-11-18.md) record exact revisions, licenses and installation provenance. The project-specific [browser motion gate](verify_ai_motion.mjs) samples actual WebGL frames, checks repeated-time determinism and records seam/edge review candidates. It passed 35 selected seeks, 17 loaded depth maps with no fallback and three exact repeated-time canvas hashes. A 14-second, 420-frame 1080p30 motion proof fully decodes. Run the gate with:
+
+```powershell
+node videos/bosston-pragon-good-fortune/verify_ai_motion.mjs --project videos/bosston-pragon-good-fortune --output output/bosston-ai-v3/qa
+```
+
+## Render and verify
+
+```powershell
 videos/bosston-pragon-good-fortune/render.ps1
-.venv/Scripts/python.exe videos/bosston-pragon-good-fortune/verify_delivery.py videos/bosston-pragon-good-fortune/renders/BOSSTON-Pragon-Good-Fortune-Cinematic.mp4 --report auto --contact-sheet
+.venv/Scripts/python.exe videos/bosston-pragon-good-fortune/verify_delivery.py videos/bosston-pragon-good-fortune/renders/BOSSTON-Pragon-Good-Fortune-AI-Cinema.mp4 --report auto --contact-sheet
 .venv/Scripts/python.exe videos/bosston-pragon-good-fortune/share.py
 ```
 
-Edit lyric text and cue bounds in `captions.json`, then run `prepare.py`. The authored chapter/shot choices live in `prepare.py`; it compiles `scene-plan.json`, `film-data.js`, `index.html` and the [shot plan](STORYBOARD.md). `index.html.in` is the template. `master.js` selects the active footage window and typography from absolute song time; HyperFrames owns media seeking and playback. The local preview also opens the editable project in the HyperFrames desktop app.
+`render.ps1` uses the tested HyperFrames 0.8.152 renderer, one hardware-browser worker and screenshot capture. Its default master is `renders/BOSSTON-Pragon-Good-Fortune-AI-Cinema.mp4`; `share.py` creates `renders/BOSSTON-Pragon-Good-Fortune-AI-Cinema-720p.mp4` with the same encoded AAC soundtrack.
 
-## Motion and production checks
+The delivery target is **1920 × 1080, 30 fps, H.264/yuv420p with 48 kHz stereo AAC**. `verify_delivery.py` fully decodes the export and requires **185 seconds / 5,550 frames**, zero-offset correlation with both original soundtrack channels, complete ordered lyric text, all nine correctly spelled brand mentions, current source bindings and the 17 hashed image/depth pairs. It writes a JSON receipt and can sample every encoded shot into contact sheets. The sharing-copy helper checks its full decode, duration/frame count and byte-identical AAC payload. Final V3 results will be recorded after those checks and visual review finish.
 
-The 20 staged variants total **139.2 seconds of distinct selected source footage**. Every variant is silent 1920 × 1080, 30 fps, H.264/yuv420p with BT.709 metadata. Each has a source checksum, source window, reviewed crop, exact grading filter, output checksum and permitted playback range. The edit cycles these ranges rather than reversing motion. Source rates are converted by frame duplication/drop; no optical-flow accuracy is claimed.
+Timing evidence remains in `timing-evidence/`; word alignment is model-derived and individual entrances may vary by several tenths of a second. [Media provenance](MEDIA.md) and [review notes](REVIEW.md) contain deeper production records. GitHub publication of this project is authorized; credentials, model weights, private audio and caches remain outside Git.
 
-The native footage stage uses the installed FFmpeg 7.1 NVENC binary because this machine's driver does not support FFmpeg 9's newer NVENC API. The final renderer pins HyperFrames 0.8.152, one hardware-browser worker and screenshot capture; the newer native capture API was benchmarked separately without a speed benefit. No driver or security-policy changes were made.
+## Archived experiment
 
-A Three.js motion study and an official Blender installation were evaluated during the revision. The procedural hero studies were not admitted into this cut. Windows Application Control prevents Blender and the cached local Wan runtime from starting, so neither produced footage for this delivery. `cinema.js`, `world3d.js` and the original image plates remain exploratory sources and are not loaded by the current film.
-
-## Lyrics and provenance
-
-Recognition observations, focused native Whisper/CTranslate2 alignment and explicit estimated-token flags remain in `timing-evidence/`. The spelling correction preserves every cue/word time, confidence and section. `prepare_captions.py` accepts the original ASR brand pronunciation as a matching alias while keeping Bosston as display text. Timing is model-derived; individual entrances may vary by several tenths of a second.
-
-[Media provenance](MEDIA.md), [review findings](REVIEW.md) and [upstream decisions](../../docs/research/bosston-pragon-2026-11-18.md) explain the production and its limits. There is no external publishing step.
-
-## Verified delivery
-
-- [1080p cinematic film](renders/BOSSTON-Pragon-Good-Fortune-Cinematic.mp4): **185.000 seconds**, 1920 × 1080, 30 fps, H.264/yuv420p with 48 kHz stereo AAC; **462.2 MiB**. All **5,550 frames** decode successfully.
-- [720p sharing copy](renders/BOSSTON-Pragon-Good-Fortune-Cinematic-720p.mp4): the same complete film, **71.7 MiB**. Full decoding passes; its encoded AAC payload is byte-identical to the master export.
-- [Delivery receipt](renders/BOSSTON-Pragon-Good-Fortune-Cinematic.verification.json): all 71 lyric lines, Bosston spelling, cue ordering/bounds and source bindings pass. Both soundtrack channels correlate with the source at zero offset: **0.99683083 / 0.99686263**.
-- All **68 encoded shot midpoints** were inspected across five [review sheets](renders/review-cinematic/contact-sheet-01.jpg), and all nine Bosston lyric appearances were separately cropped from the actual MP4 and visually checked. No missing scenes, spelling errors or clipped lyrics were found.
-- A [sampled footage-binding audit](renders/Cinematic-motion-binding.json) compared one encoded shot from each of the nine sources against its selected source window and camera crop. All nine pass (SSIM 0.8891–0.9916), with an explicitly allowed two-frame search tolerance.
-
-The full render took **492.8 seconds** on this Windows setup (including 24.0 seconds of media extraction and 461.0 seconds of frame capture). This excludes footage research, admission, preparation and authoring. These are technical and sampled visual checks, not a claim of human-auditioned syllable accuracy or audience response. The earlier image-led export is superseded; use the files containing `Cinematic` for this revision.
+The earlier stock-footage route remains in `prepare.py`, `index.html.in`, `master.js`, `motion-assets.json` and its footage helpers, with [source credits](STOCK_CREDITS.md). It is not loaded by V3. Its `Cinematic.mp4` exports and receipts describe that earlier cut only. Running the archived compiler replaces the generated active files; run `prepare_ai.py` again to restore the AI Cinema composition.

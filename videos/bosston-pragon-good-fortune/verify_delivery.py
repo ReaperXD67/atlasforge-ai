@@ -33,11 +33,21 @@ FPS = 30
 FRAMES = 5550
 SAMPLE_RATE = 48000
 REQUIRED_SOURCES = (
-    "index.html", "index.html.in", "master.js", "captions.js", "film-data.js", "motion-assets.json",
-    "prepare.py", "captions.json", "lyrics.txt", "scene-plan.json", "audiomap.json",
+    "index.html", "captions.js", "film-data.js", "captions.json", "lyrics.txt",
+    "scene-plan.json", "audiomap.json",
     "hyperframes.json", "assets/bgm.wav", "assets/gsap.min.js",
     "assets/generated/bosston-pragon.png", "assets/fonts/NotoSerifCJKsc-Regular.otf",
 )
+MODE_SOURCES = {
+    "stock-footage": ("index.html.in", "master.js", "motion-assets.json", "prepare.py"),
+    "ai-depth-cinema": ("index_ai.html.in", "prepare_ai.py", "ai-cinema.js", "ai-master.js",
+                        "ai-assets.json", "ai-depths.json"),
+}
+AI_ASSET_IDS = frozenset({
+    "avenue", "dragon", "ribbon", "sunrise", "drums", "koi", "bridge", "dragon-close",
+    "lantern-river", "fortune-forge", "palace-garden", "phoenix-sky", "unity-gate",
+    "koi-cosmos", "star-gong", "silk-tunnel", "lotus-gate",
+})
 
 
 def require(condition: bool, message: str) -> None:
@@ -107,6 +117,7 @@ def captions(path: Path) -> list[dict[str, Any]]:
 
 def verify_lyrics(cues: list[dict[str, Any]], lyric_path: Path) -> dict[str, Any]:
     lines = supplied_lines(lyric_path)
+    require(len(cues) == 71, f"Expected 71 lyric cues, received {len(cues)}")
     # Both the canonical text and the captions could otherwise share the same
     # typo and pass the completeness comparison below.
     wrong_brand = re.compile(r"(?<![A-Za-z])boston(?![A-Za-z])", re.IGNORECASE)
@@ -119,6 +130,9 @@ def verify_lyrics(cues: list[dict[str, Any]], lyric_path: Path) -> dict[str, Any
                 f"Incorrect brand spelling in {source}: use Bosston (double s).")
     expected = normalize_lyric("".join(lines))
     observed = normalize_lyric("".join(cue["text"] for cue in cues))
+    brand = re.compile(r"(?<![A-Za-z])bosston(?![A-Za-z])", re.IGNORECASE)
+    brand_count = sum(len(brand.findall(cue["text"])) for cue in cues)
+    require(brand_count == 9, f"Expected nine Bosston mentions, received {brand_count}")
     if expected != observed:
         mismatch = next((n for n, (a, b) in enumerate(zip(expected, observed, strict=False)) if a != b),
                         min(len(expected), len(observed)))
@@ -130,6 +144,7 @@ def verify_lyrics(cues: list[dict[str, Any]], lyric_path: Path) -> dict[str, Any
     return {"supplied_lines": len(lines), "subtitle_cues": len(cues),
             "normalized_characters": len(expected), "text_completeness": "passed",
             "brand_spelling": "Bosston", "brand_spelling_check": "passed",
+            "bosston_mentions": brand_count,
             "normalization": "NFKC; punctuation and whitespace removed; case preserved",
             "cue_bounds_and_order": "passed"}
 
@@ -143,11 +158,94 @@ def decoded_stereo(path: Path) -> np.ndarray:
     return values.reshape((-1, 2))
 
 
-def source_hashes() -> dict[str, str]:
-    for name in REQUIRED_SOURCES:
+def source_mode(film_data: dict[str, Any]) -> str:
+    # The archived V2 compiler predates mediaMode and remains verifiable.
+    mode = film_data.get("mediaMode", "stock-footage")
+    require(mode in MODE_SOURCES, f"Unsupported film mediaMode: {mode!r}")
+    return mode
+
+
+def project_asset(name: Any) -> Path:
+    require(isinstance(name, str) and bool(name), "Asset path must be a nonempty string")
+    path = Path(name)
+    require(not path.is_absolute(), f"Asset must use a project-relative path: {name}")
+    resolved = (ROOT / path).resolve()
+    require(resolved.is_relative_to(ROOT.resolve()), f"Asset path leaves the project: {name}")
+    require(resolved.is_file(), f"Missing asset: {name}")
+    return resolved
+
+
+def verify_ai_sources(film_data: dict[str, Any]) -> dict[str, Any]:
+    artwork = json_file(ROOT / "ai-assets.json")
+    depth_manifest = json_file(ROOT / "ai-depths.json")
+    assets, provenance = artwork.get("assets"), artwork.get("provenance")
+    depths = depth_manifest.get("depths")
+    require(artwork.get("mediaMode") == "ai-depth-cinema", "ai-assets.json has the wrong mediaMode")
+    require(artwork.get("requireDepth") is True and film_data.get("requireDepth") is True,
+            "AI cinema must require depth maps in both the manifest and FILM_DATA")
+    require(isinstance(assets, dict) and set(assets) == AI_ASSET_IDS,
+            "AI cinema needs the complete set of 17 artwork IDs")
+    require(isinstance(depths, dict) and set(depths) == AI_ASSET_IDS,
+            "AI cinema needs one depth map for each of the 17 artworks")
+    require(isinstance(provenance, dict) and set(provenance) == AI_ASSET_IDS,
+            "AI artwork provenance does not match the 17 artwork IDs")
+    require(film_data.get("assets") == assets, "FILM_DATA assets differ from ai-assets.json")
+    require(film_data.get("depths") == depths, "FILM_DATA depths differ from ai-depths.json")
+    require(depth_manifest.get("model") == "depth-anything/Depth-Anything-V2-Small-hf"
+            and depth_manifest.get("license") == "Apache-2.0",
+            "Expected the reviewed Apache-2.0 Depth Anything V2 Small model")
+    revision = depth_manifest.get("revision")
+    require(revision == "5426e4f0f36572d16453bbda7a8389317b1bef99",
+            "Depth model revision differs from the reviewed model")
+    image_paths, depth_paths, pairs = set(), set(), {}
+    for ident in sorted(AI_ASSET_IDS):
+        record, depth = provenance[ident], depths[ident]
+        require(isinstance(record, dict) and isinstance(depth, dict),
+                f"Invalid image/depth metadata: {ident}")
+        image_path, depth_path = project_asset(assets[ident]), project_asset(depth.get("path"))
+        require(image_path not in image_paths and depth_path not in depth_paths,
+                f"Artwork/depth paths must be unique: {ident}")
+        image_paths.add(image_path)
+        depth_paths.add(depth_path)
+        require(project_asset(record.get("path")) == image_path
+                and project_asset(depth.get("source_path")) == image_path,
+                f"Depth/provenance source path differs from artwork: {ident}")
+        image_hash, depth_hash = sha256(image_path), sha256(depth_path)
+        require(record.get("sha256") == image_hash == depth.get("source_sha256"),
+                f"AI source SHA-256 mismatch: {ident}")
+        require(depth.get("depth_sha256") == depth_hash, f"Depth SHA-256 mismatch: {ident}")
+        require(depth.get("model_revision") == revision and depth.get("near_is_white") is True,
+                f"Invalid depth model revision or near/far orientation: {ident}")
+        with Image.open(image_path) as image:
+            image_size = image.size
+            image.verify()
+        with Image.open(depth_path) as image:
+            depth_size = image.size
+            require(image.mode == "L", f"Expected a grayscale depth texture: {ident}")
+            image.verify()
+        require(image_size == depth_size == (record.get("width"), record.get("height"))
+                == (depth.get("width"), depth.get("height")),
+                f"Image/depth dimensions differ from metadata: {ident}")
+        pairs[ident] = {"image": assets[ident], "image_sha256": image_hash,
+                        "depth": depth["path"], "depth_sha256": depth_hash,
+                        "width": image_size[0], "height": image_size[1]}
+    scenes = film_data.get("scenes", [])
+    require(bool(scenes) and all(scene.get("media") == "ai-depth" for scene in scenes),
+            "AI cinema scenes must all use the AI-depth renderer")
+    require({scene.get("asset") for scene in scenes} == AI_ASSET_IDS,
+            "AI scene plan must use every one of the 17 reviewed worlds")
+    return {"artwork_count": len(assets), "depth_count": len(depths), "require_depth": True,
+            "hashes_and_dimensions": "passed", "model": depth_manifest["model"],
+            "model_revision": revision, "model_license": depth_manifest["license"], "pairs": pairs}
+
+
+def source_hashes(mode: str) -> dict[str, str]:
+    required = REQUIRED_SOURCES + MODE_SOURCES[mode]
+    for name in required:
         require((ROOT / name).is_file(), f"Missing critical source file: {name}")
     sources = set(ROOT.glob("*.py")) | set(ROOT.glob("*.js")) | set(ROOT.glob("*.html"))
     sources |= set(ROOT.glob("*.json")) | {ROOT / "lyrics.txt"}
+    sources |= {ROOT / name for name in required}
     for directory in ("assets", "compositions"):
         sources |= {p for p in (ROOT / directory).rglob("*") if p.is_file()
                     and p.suffix.lower() not in {".log", ".tmp", ".pyc"}}
@@ -197,14 +295,23 @@ def verify(video_path: Path, master_path: Path) -> dict[str, Any]:
     lyric_checks = verify_lyrics(cues, ROOT / "lyrics.txt")
     film_data = json.loads((ROOT / "film-data.js").read_text(encoding="utf-8-sig")
                            .partition("=")[2].strip().removesuffix(";"))
+    mode = source_mode(film_data)
+    require(film_data.get("duration") == DURATION and film_data.get("fps") == FPS,
+            "FILM_DATA duration/fps differ from the 185-second / 30 fps delivery")
     require(film_data.get("captions") == cues, "film-data.js does not match current captions.json")
     require(film_data.get("scenes") == json_file(ROOT / "scene-plan.json"),
             "film-data.js does not match current scene-plan.json")
     markup = (ROOT / "index.html").read_text(encoding="utf-8-sig")
     lyric_elements = re.findall(r'''\bid\s*=\s*["']lyric-\d+["']''', markup)
     require(len(lyric_elements) == len(cues), "index.html lyric elements do not match current cues")
+    ai_checks = None
+    if mode == "ai-depth-cinema":
+        scripts = re.findall(r'''\bsrc\s*=\s*["']([^"']+)["']''', markup)
+        require("ai-cinema.js" in scripts and "ai-master.js" in scripts,
+                "index.html is not wired to the AI cinema renderer and master")
+        ai_checks = verify_ai_sources(film_data)
     shots = shot_records(ROOT / "scene-plan.json")
-    hashes = source_hashes()
+    hashes = source_hashes(mode)
     return {
         "passed": True, "verified_at_utc": datetime.now(UTC).isoformat(),
         "video": str(video_path.resolve()), "size_bytes": video_path.stat().st_size,
@@ -218,6 +325,7 @@ def verify(video_path: Path, master_path: Path) -> dict[str, Any]:
                              "decoded_export_samples_per_channel": len(encoded),
                              "per_channel_correlation": correlations, "minimum_required": 0.98},
         "lyrics": lyric_checks, "source_bindings": "current cues, scenes and lyric elements match",
+        "media_mode": mode, "ai_sources": ai_checks,
         "shot_count": len(shots), "source_sha256": hashes,
     }
 

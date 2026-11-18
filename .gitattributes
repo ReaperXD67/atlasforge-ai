@@ -78,3 +78,6 @@ videos/bosston-pragon-good-fortune/assets/gsap.min.js linguist-vendored=true
 videos/bosston-pragon-good-fortune/audiomap.json linguist-generated=true
 videos/bosston-pragon-good-fortune/index.html linguist-generated=true
 videos/bosston-pragon-good-fortune/scene-plan.json linguist-generated=true
+.agents/skills/cut-the-curve/** -text
+.agents/skills/seam-craft/** -text
+.agents/skills/motion-doctrine/** -text
