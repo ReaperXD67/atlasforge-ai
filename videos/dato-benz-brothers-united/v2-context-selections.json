@@ -1,0 +1,189 @@
+{
+  "detail-hands": {
+    "clip": "hands-help",
+    "usable_range": {
+      "start": 0.2,
+      "end": 9.7
+    },
+    "crop": {
+      "x": 550,
+      "y": 360,
+      "width": 640,
+      "height": 360
+    }
+  },
+  "detail-packing": {
+    "clip": "packing-table",
+    "usable_range": {
+      "start": 0.2,
+      "end": 9.8
+    },
+    "crop": {
+      "x": 160,
+      "y": 360,
+      "width": 960,
+      "height": 360
+    }
+  },
+  "detail-box": {
+    "clip": "community-boxes",
+    "usable_range": {
+      "start": 0.2,
+      "end": 9.7
+    },
+    "crop": {
+      "x": 160,
+      "y": 380,
+      "width": 960,
+      "height": 340
+    }
+  },
+  "detail-rain": [
+    {
+      "clip": "rain-arrival",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.7
+      },
+      "crop": {
+        "x": 320,
+        "y": 400,
+        "width": 640,
+        "height": 320
+      }
+    },
+    {
+      "clip": "wet-footsteps",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.75
+      },
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    }
+  ],
+  "detail-beam": {
+    "clip": "burden-shared",
+    "usable_range": {
+      "start": 0.2,
+      "end": 9.7
+    },
+    "crop": {
+      "x": 160,
+      "y": 400,
+      "width": 960,
+      "height": 320
+    }
+  },
+  "detail-work": {
+    "clip": "workshop-team",
+    "usable_range": {
+      "start": 0.2,
+      "end": 9.8
+    },
+    "crop": {
+      "x": 160,
+      "y": 350,
+      "width": 960,
+      "height": 370
+    }
+  },
+  "detail-cup": {
+    "clip": "tea-pour",
+    "usable_range": {
+      "start": 0.2,
+      "end": 9.8
+    },
+    "crop": {
+      "x": 280,
+      "y": 360,
+      "width": 960,
+      "height": 360
+    }
+  },
+  "wet-footsteps": {
+    "clip": "wet-footsteps",
+    "usable_range": {
+      "start": 0.2,
+      "end": 9.75
+    },
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "sea-dawn": [
+    {
+      "clip": "sea-dawn",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "clip": "sea-journey",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.7
+      },
+      "crop": {
+        "x": 160,
+        "y": 360,
+        "width": 960,
+        "height": 360
+      }
+    }
+  ],
+  "detail-water": {
+    "clip": "sea-journey",
+    "usable_range": {
+      "start": 0.2,
+      "end": 9.7
+    },
+    "crop": {
+      "x": 160,
+      "y": 360,
+      "width": 960,
+      "height": 360
+    }
+  },
+  "detail-kindness": {
+    "clip": "passing-kindness",
+    "usable_range": {
+      "start": 0.2,
+      "end": 9.7
+    },
+    "crop": {
+      "x": 160,
+      "y": 400,
+      "width": 960,
+      "height": 320
+    }
+  },
+  "photo-brothers": {
+    "clip": "photo-brothers",
+    "usable_range": {
+      "start": 0.2,
+      "end": 4.5
+    },
+    "crop": {
+      "x": 520,
+      "y": 40,
+      "width": 250,
+      "height": 650
+    },
+    "layout": "portrait"
+  }
+}

@@ -1,5 +1,7 @@
 # 有你，兄弟同心 — a living tribute to Hock Siew
 
+This is the archived V1 ensemble route. The current single-protagonist edit is documented in [V2-DIRECTION.md](V2-DIRECTION.md).
+
 The film celebrates 拿督斯里谢惠福 / Hock Siew through friendship, everyday care and gratitude returned. The corrected forty sung lines in `lyrics.txt` are canonical. They move from a meaningful meeting, through practical support, to a circle of brothers offering wishes for health, peace and lifelong companionship. The supplied seaside photograph provides the personal closing; the user confirmed that its subject is Hock Siew.
 
 The visual world belongs to a contemporary Malaysian Chinese neighbourhood. Rain-dark shophouse walkways, timber doors, a modest communal room and a dawn waterfront create a coherent geography. Plain navy, beige and muted olive clothing makes the people relatable. Amber practical light contrasts with cool rainy cyan shadows. Composed wides, grounded shoulder-height movement and intimate views of hands, water and worn materials give the camera purpose. Let the daylight become warmer as support becomes mutual.

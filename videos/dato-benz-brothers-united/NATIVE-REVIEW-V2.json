@@ -1,0 +1,253 @@
+{
+  "status": "all_six_solo_sources_and_existing_memory_crop_admitted",
+  "method": "Complete stream decoding and chronological sampled likeness/movement review against user-confirmed reference photographs.",
+  "limits": "Sampled review, not identity inference, every-frame perfection or complete real-time playback.",
+  "solo_sources": [
+    {
+      "duration": 10.083333,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "frames": "242",
+      "times": [
+        0.15,
+        1.526,
+        2.902,
+        4.279,
+        5.655,
+        7.031,
+        8.407,
+        9.783
+      ],
+      "full_decode": true,
+      "reviewed_at_utc": "2026-11-19T10:00:25.188754+00:00",
+      "reviewer": "hock_v2_direction",
+      "id": "hock-seaside",
+      "source": "assets/v2/native/hock-seaside.mp4",
+      "sha256": "e4f1e8a778339f64b8093fe00e98b7885f9f48db59d3d38783088daba9de337a",
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "verdict": "accepted",
+      "single_primary_person": true,
+      "temporal_likeness_consistent_with_supplied_reference": true,
+      "independent_subject_motion_observed": true,
+      "observed_action": "Mouth closes into a gentle smile, head and shoulders shift subtly with breathing; hand remains coherent; waves and reflections change continuously.",
+      "blocking_face_or_hand_morph_seen": false,
+      "contact_sheet": "output/benz-v2-direction/hock-seaside-contact.jpg",
+      "plate_review": "Remaining doorway/walk/tea/window/dawn plates viewed in contact sheet; consistent burgundy short-sleeved top, short greying hair, rounded facial and stocky body proportions; no second person or obvious blocking hand issue.",
+      "limits": "Eight chronological sampled video frames plus complete decode; not every-frame perfection or full-speed playback."
+    },
+    {
+      "id": "hock-doorway",
+      "duration": 10.083333,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "frames": "242",
+      "times": [
+        0.15,
+        1.526,
+        2.902,
+        4.279,
+        5.655,
+        7.031,
+        8.407,
+        9.783
+      ],
+      "full_decode": true,
+      "source": "assets/v2/native/hock-doorway.mp4",
+      "sha256": "bb2d31fc5e227451d49cd424122ddd5e7ca3640d1be19b2cff203e4848395b05",
+      "plate_sha256": "26f79e07a02d7c19efbb7e47bbbda1c086c597c4ebfc662436c0459b4d0fa839",
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "verdict": "accepted",
+      "single_primary_person": true,
+      "temporal_likeness_consistent_with_supplied_reference": true,
+      "blocking_face_or_hand_morph_seen": false,
+      "independent_subject_motion_observed": true,
+      "observed_action": "Head turns gently toward camera, blink and soft smile with breathing; right palm remains coherent against wooden door.",
+      "contact_sheet": "output/benz-v2-direction/hock-doorway-contact.jpg"
+    },
+    {
+      "id": "hock-walk",
+      "duration": 10.083333,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "frames": "242",
+      "times": [
+        0.15,
+        1.526,
+        2.902,
+        4.279,
+        5.655,
+        7.031,
+        8.407,
+        9.783
+      ],
+      "full_decode": true,
+      "source": "assets/v2/native/hock-walk.mp4",
+      "sha256": "c2b67a4a3b445cde3d438181f9bb9c67ea1f9f43b96f5129db3c44368f037abe",
+      "plate_sha256": "f0680d36491a5cf13954855a21a2404928f3fcf4e20c44c30af149510ccbcf2d",
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "verdict": "accepted",
+      "single_primary_person": true,
+      "temporal_likeness_consistent_with_supplied_reference": true,
+      "blocking_face_or_hand_morph_seen": false,
+      "independent_subject_motion_observed": true,
+      "observed_action": "Several natural forward steps with independent arm swing, moving cloth and rain; stable face, stocky body and hand shapes.",
+      "contact_sheet": "output/benz-v2-direction/hock-walk-contact.jpg"
+    },
+    {
+      "id": "hock-tea",
+      "duration": 10.083333,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "frames": "242",
+      "times": [
+        0.15,
+        1.526,
+        2.902,
+        4.279,
+        5.655,
+        7.031,
+        8.407,
+        9.783
+      ],
+      "full_decode": true,
+      "source": "assets/v2/native/hock-tea.mp4",
+      "sha256": "835ee529046d695219125e0906c2e735eca214d2e7091d1aa7879b50f5cd333c",
+      "plate_sha256": "b75cb2ca8f802c614e810e41e1ef48c2a700269bd9ce8e24828efd7d161c374a",
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "verdict": "accepted",
+      "single_primary_person": true,
+      "temporal_likeness_consistent_with_supplied_reference": true,
+      "blocking_face_or_hand_morph_seen": false,
+      "independent_subject_motion_observed": true,
+      "observed_action": "Small cup/hand movement, head lowers and mouth changes into a gentle smile; coherent fingers on cup and resting hand; steam. The cup is not completely set down.",
+      "contact_sheet": "output/benz-v2-direction/hock-tea-contact.jpg"
+    },
+    {
+      "id": "hock-window",
+      "duration": 10.083333,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "frames": "242",
+      "times": [
+        0.15,
+        1.526,
+        2.902,
+        4.279,
+        5.655,
+        7.031,
+        8.407,
+        9.783
+      ],
+      "full_decode": true,
+      "source": "assets/v2/native/hock-window.mp4",
+      "sha256": "baf9de25bd7dbbf0451faf770beb0dc6c7418cc3e2a189c263817f72374d24c3",
+      "plate_sha256": "6c5159d7538008e3b0df166b64c49d5b3e8be8d03659c032d7ba9b5c361cf9d8",
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "verdict": "accepted",
+      "single_primary_person": true,
+      "temporal_likeness_consistent_with_supplied_reference": true,
+      "blocking_face_or_hand_morph_seen": false,
+      "independent_subject_motion_observed": true,
+      "observed_action": "Small profile turn, smile, blink and breathing; resting hand, shirt and window stay coherent while foliage moves.",
+      "contact_sheet": "output/benz-v2-direction/hock-window-contact.jpg"
+    },
+    {
+      "id": "hock-dawn",
+      "duration": 10.083333,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "frames": "242",
+      "times": [
+        0.15,
+        1.526,
+        2.902,
+        4.279,
+        5.655,
+        7.031,
+        8.407,
+        9.783
+      ],
+      "full_decode": true,
+      "source": "assets/v2/native/hock-dawn.mp4",
+      "sha256": "e53ecce81c28025a025b8466f2c0a60b2b2492024b61c6078271a568007c4810",
+      "plate_sha256": "31c1169705cd00ecfd6e0cddf2c91aac615dd75812a6d98939139178c491fe86",
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "verdict": "accepted",
+      "single_primary_person": true,
+      "temporal_likeness_consistent_with_supplied_reference": true,
+      "blocking_face_or_hand_morph_seen": false,
+      "independent_subject_motion_observed": true,
+      "observed_action": "Head and eyes turn with a warmer smile, subtle body-weight shift and coherent hands on railing; water/reflections evolve independently.",
+      "contact_sheet": "output/benz-v2-direction/hock-dawn-contact.jpg"
+    }
+  ],
+  "existing_memory_reuse": {
+    "reviewed_at_utc": "2026-11-19T10:19:51.688645+00:00",
+    "reviewer": "hock_v2_direction",
+    "source": "assets/native/photo-brothers.mp4",
+    "source_sha256": "81eb7a3d70a214501acc612f6f15f1181c7a09d3e254cb25bdf3337ddfb4e20f",
+    "source_resolution": [
+      1280,
+      720
+    ],
+    "fps": 24,
+    "admitted_source_window": {
+      "start": 0.2,
+      "end": 4.5
+    },
+    "crop": {
+      "x": 520,
+      "y": 40,
+      "width": 250,
+      "height": 650
+    },
+    "reviewed_source_times": [
+      0.2,
+      0.8,
+      1.4,
+      2.0,
+      2.6,
+      3.2,
+      3.8,
+      4.5
+    ],
+    "verdict": "accepted_for_centered_portrait_layout",
+    "identity_basis": "User confirmed the central light-blue-shirt man is Hock Siew.",
+    "observations": "Eight exactsourceframes preserve Hock full head/ears/face, torso and flower pin with improved righthead margin; every other face stays outside crop. No change to sourcewindow or outputscale.",
+    "background_recommendation": "Blur same centered crop or very heavily blur the original so a countable ensemble is not reintroduced.",
+    "quality_limit": "Only250 sourcepixelswide; portraitfit around350-400displaypixels wide is preferable to fullframe enlargement.",
+    "contact_sheet": "output/benz-v2-direction/group-hock-crop520-contact.jpg",
+    "full_original_proofs": [
+      "output/benz-v2-direction/group-source-0.png",
+      "output/benz-v2-direction/group-source-3.png",
+      "output/benz-v2-direction/group-source-7.png"
+    ],
+    "limits": "Sampled crop review; full original native stream was decoded and reviewed in V1. This approval applies only to exactcrop/window, not uncropped ensemble.",
+    "supersedes_crop_x": 500
+  },
+  "context_review": "context-review-v2.json"
+}

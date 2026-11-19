@@ -1,0 +1,184 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-19T10:22:04.528609+00:00",
+  "video": "renders/v2/Hock-Siew-Personal-Tribute-V2.mp4",
+  "video_sha256": "e934619f72f3c6f511c705b845044901ec6cc0801787ac6ace01af3648a8a733",
+  "size_bytes": 346638866,
+  "fps": 24,
+  "frames": 4723,
+  "duration_seconds": 196.791667,
+  "audio_master_seconds": 196.76,
+  "full_decode": true,
+  "lyrics": {
+    "caption_cues": 40,
+    "canonical_text": "passed",
+    "rendered_ass": "passed"
+  },
+  "identity_coverage": {
+    "recognisable_recipient_seconds": 125.417,
+    "recognisable_recipient_fraction": 0.6374,
+    "native_motion_seconds": 179.125,
+    "original_photo_seconds": 17.667,
+    "intentional_reprises": 12
+  },
+  "used_native_source_count": 18,
+  "used_native_sources": [
+    "burden-shared",
+    "community-boxes",
+    "hands-help",
+    "hock-dawn",
+    "hock-doorway",
+    "hock-seaside",
+    "hock-tea",
+    "hock-walk",
+    "hock-window",
+    "packing-table",
+    "passing-kindness",
+    "photo-brothers",
+    "rain-arrival",
+    "sea-dawn",
+    "sea-journey",
+    "tea-pour",
+    "wet-footsteps",
+    "workshop-team"
+  ],
+  "picture_binding": {
+    "passed": true,
+    "samples": [
+      {
+        "shot": "v2-shot-02",
+        "frame": 192,
+        "rgb_mae": 1.06985,
+        "luma_ssim": 0.999657
+      },
+      {
+        "shot": "v2-shot-07",
+        "frame": 750,
+        "rgb_mae": 1.299302,
+        "luma_ssim": 0.999698
+      },
+      {
+        "shot": "v2-shot-12",
+        "frame": 1318,
+        "rgb_mae": 0.649104,
+        "luma_ssim": 0.999844
+      },
+      {
+        "shot": "v2-shot-17",
+        "frame": 1806,
+        "rgb_mae": 0.897142,
+        "luma_ssim": 0.999825
+      },
+      {
+        "shot": "v2-shot-22",
+        "frame": 2297,
+        "rgb_mae": 0.94822,
+        "luma_ssim": 0.999812
+      },
+      {
+        "shot": "v2-shot-27",
+        "frame": 2816,
+        "rgb_mae": 0.510688,
+        "luma_ssim": 0.999553
+      },
+      {
+        "shot": "v2-shot-32",
+        "frame": 3404,
+        "rgb_mae": 1.016262,
+        "luma_ssim": 0.999753
+      },
+      {
+        "shot": "v2-shot-37",
+        "frame": 3780,
+        "rgb_mae": 1.132032,
+        "luma_ssim": 0.999773
+      },
+      {
+        "shot": "v2-shot-42",
+        "frame": 4174,
+        "rgb_mae": 1.071521,
+        "luma_ssim": 0.99974
+      }
+    ],
+    "source_stage": "lossless FFV1",
+    "limits": "Sampled correspondence, not proof of every-frame likeness or quality."
+  },
+  "audio": {
+    "offset_samples": 0,
+    "per_channel_correlation": [
+      0.9996083238504844,
+      0.9995996725407412
+    ],
+    "gain_db": [
+      -0.03307302662011599,
+      -0.03270324693794029
+    ],
+    "encoded_aac_sha256": "3d942035a4e5e8d23b80a74c0e8b40d3c0261df3d58df823d5f4bb8c78e295d9"
+  },
+  "source_hashes": {
+    "align_lyrics.py": "c52e4e32b34e750b79b63b181e471ad5034ddd15c86db42648cee63a6a33bcbb",
+    "align_lyrics_context.py": "d9a37ade2d99375e07c965c097dfda01cf408050b96f6af50f07e122f6529872",
+    "author_edit.py": "c715d68dc5a9307c00dad4f28f3c3b486f93543c9cfa5df9c9a86c1aeed87609",
+    "author_edit_v2.py": "8c51987530fd238c9f375bf81f33fc188d50cc268a0400b635b9e50fd5e1b4ad",
+    "captions.json": "6d3a6b8f711526f7944b5d391cb16340fd1e17db761d1dd41b4d76598a75bd10",
+    "compile_captions.py": "61028dee76398523e51695eff667aa11bfba9425b44140130513b9beaef09827",
+    "context-review-v2.json": "0a7445088696d93b369fede6aa90b40492b182c9d44df846d2468cb5678a09fe",
+    "DELIVERY.json": "5c73176d1d03f9a554214f8db68baf4c31def411c47da3146f28cefe1163c40f",
+    "edit-plan-v2.json": "1d28647726f17e190ace23ab8efcfe3d6b7b5f6cc8bdc2537956e3468ed89cef",
+    "edit-plan.json": "e47c0434380cd6d002cbd81c10ff82d75fa8bdd3cdde0e95e81eab671892f1c2",
+    "film-v2.ass": "277f5c7449121bc29d21611e7c82ae0659f520865cdcec4ad1c7c27e98e82b73",
+    "film.ass": "841385b3b26a7432c73fa6a2b08d3a952c83a4f2a6f6fbac6a90fcd479f70676",
+    "FINAL-REVIEW.json": "0f0a1c6ab32ab4988b3baddac90cd19f1ad1d01aa45bf9c3062ffc61e7b7d8bd",
+    "generation-jobs-v2.json": "4bcb8d6d77b26417ea912259087ca0a787dadc7edc77cfc9c4b08db7056f5213",
+    "generation-jobs.json": "e6d87e4277f5f27f17a7de95f6b4f32cbfd88ef2a79e51d7180a76d4dc8b4ee1",
+    "line-alignment.json": "f2f2a77a45844fb5c33693bbf5c43109a2c51dfdb2bd680c4720994c7eaeca71",
+    "lyrics.txt": "0360ef17171c888730ec0e453c004c98332c8bd231e7679bb56eb2ada5716f9f",
+    "native-clips-v2.json": "0992e1d702bea16a3026bbf6ddbc2c843a9fc9bf015e04d7d98ba15e739ced32",
+    "native-clips.json": "eb1f3958072d6cb8211b620248c21c6954498095b7acc802405f10b6deb1213e",
+    "NATIVE-REVIEW-V2.json": "a3805e765cc9bb3f86a808dea81355fe2ea7ef8552684ce7442679f9019cab30",
+    "NATIVE-REVIEW.json": "8a2b327ab0b0f6f3221d70f7f97a8018956d0167d9abe00b72c5eff63f2278e3",
+    "native-turbo-review.json": "05bf430991cfc046c454d4447dd330fd07887b6d5767740b74a462f61c34278a",
+    "planned-shots.json": "a5ed14ca66a143be887a26495b6d2ad20b0c05aa39aabcb262ffb2a66a1aaf74",
+    "prepare_film.py": "d162eb66aec46b0e175a0df5c3954c8e66521de2b5fcc8ee9b9d4d445f73a689",
+    "prepare_film_v2.py": "6a83aec6a10a7492722440ca5095bb8004337279b5d6d78390894f5334e4b700",
+    "quality-benchmark-v2.json": "5328f1525b63d13ac1d425d0c05c2188b914eca0e25f1c1b83d75086a1cafba1",
+    "requirements-render.txt": "88c97500f870eca2354079824d3dd4cd9591dc62269aceda54bc3c392f60acb6",
+    "source-bindings-v2.json": "8dee33d6ef436e354d5448cafd73f6e3551e6b3787f0f63857dd6c5603ec934e",
+    "source-bindings.json": "22a306547e2d4198bce380dc18b5dfe550885bd2ffd0783ac292e07915f2544e",
+    "v2-context-selections.json": "b8221d4227a682e237c4e4f685a18c0c59b8bb7dc39742105423ec9fa3e92e53",
+    "verify_film.py": "5e2fa4cb60257ecea3b2ffc713d3d501cf02ed59943bbdbf8385d605c9e7e141",
+    "verify_film_v2.py": "a5df3be346b993c6f7813b22d74ddda7bf9f43b73756fc4756be95c9509e0871"
+  },
+  "sharing_copy": {
+    "path": "renders/v2/Hock-Siew-Personal-Tribute-V2-720p.mp4",
+    "size_bytes": 102996261,
+    "sha256": "665f62765689458597bb585f4d8d44bfa44d2c550209f9875096914e1eba2b36",
+    "full_decode": true,
+    "aac_identical": true
+  },
+  "visual_review": {
+    "shot_midpoint_sheets": [
+      "renders/v2/review/contact-sheet-01.jpg",
+      "renders/v2/review/contact-sheet-02.jpg",
+      "renders/v2/review/contact-sheet-03.jpg"
+    ],
+    "sampled_shots": 44,
+    "full_name_anchors": 6,
+    "cropped_context_shots_with_first_middle_last_frames": 19,
+    "review_status": "final encoded samples reviewed by root, renderer and independent direction/quality reviewers; see FINAL-REVIEW-V2.json"
+  },
+  "presentation_status": "completed_recipient_confirmed",
+  "credit_budget": {
+    "authorized_existing": 2250,
+    "v1_used": 1924,
+    "v2_used": 300,
+    "total_used": 2224,
+    "verified_remaining": 26,
+    "additional_purchases": 0
+  },
+  "native_source_usage": {
+    "distinct_source_seconds": 126.658,
+    "intentional_protagonist_reprise_seconds": 52.467,
+    "context_source_replay": false
+  }
+}

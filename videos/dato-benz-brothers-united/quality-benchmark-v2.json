@@ -1,0 +1,41 @@
+[
+  {
+    "name": "v1-30fps",
+    "filters": "scale=1920:1080:flags=lanczos,setsar=1,eq=contrast=1.025:saturation=.96:brightness=-.004,colorbalance=rs=.008:bs=-.006,fps=30",
+    "wall_seconds": 2.841346200031694,
+    "duration": 3.0,
+    "fps": "30/1",
+    "frames": 90,
+    "bytes": 5579141,
+    "adjacent_frame_gray_MAE_min": 0.001953125,
+    "near_duplicate_pairs_MAE_lt_0_15": 18,
+    "adjacent_pairs": 89,
+    "sha256": "45cfc6e532bb6ca7f1402ac92fee34bf8dd4504f5c19c5304573c8ffc5b67916"
+  },
+  {
+    "name": "v2-24fps-gentle",
+    "filters": "scale=1920:1080:flags=lanczos,setsar=1,unsharp=3:3:0.18:3:3:0,eq=contrast=1.012:saturation=.98,fps=24",
+    "wall_seconds": 1.2362517999717966,
+    "duration": 3.0,
+    "fps": "24/1",
+    "frames": 72,
+    "bytes": 5091329,
+    "adjacent_frame_gray_MAE_min": 7.264539930555555,
+    "near_duplicate_pairs_MAE_lt_0_15": 0,
+    "adjacent_pairs": 71,
+    "sha256": "99fb664b66bab8d900e1bdce1500a8235dd6c320cec9763781935af5a4ce49d7"
+  },
+  {
+    "name": "v2-minterpolate30",
+    "filters": "minterpolate=fps=30:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1,scale=1920:1080:flags=lanczos,setsar=1,unsharp=3:3:0.18:3:3:0",
+    "wall_seconds": 20.374745100038126,
+    "duration": 3.0,
+    "fps": "30/1",
+    "frames": 90,
+    "bytes": 5803331,
+    "adjacent_frame_gray_MAE_min": 5.902669270833333,
+    "near_duplicate_pairs_MAE_lt_0_15": 0,
+    "adjacent_pairs": 89,
+    "sha256": "76aa9781725f36a91910f5b1c4cdb50a414813fd9cf8d9ba4df1773b858a32c2"
+  }
+]

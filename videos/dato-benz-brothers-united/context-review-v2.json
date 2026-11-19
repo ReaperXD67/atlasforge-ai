@@ -1,0 +1,372 @@
+{
+  "intent": "Face-free symbolic detail context for single-protagonist Hock Siew V2",
+  "sources": [
+    {
+      "id": "detail-hands",
+      "source_id": "hands-help",
+      "source_path": "assets/native/hands-help.mp4",
+      "source_sha256": "75111ca8b7c928cb75096c8fad9bee6bfbf712d840180d1990de8c01033d2abb",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.7
+      },
+      "crop": {
+        "x": 550,
+        "y": 360,
+        "width": 640,
+        "height": 360
+      },
+      "reviewed_times": [
+        0.2,
+        1.557,
+        2.914,
+        4.271,
+        5.629,
+        6.986,
+        8.343,
+        9.7
+      ],
+      "contact_sheet": "output\\hock-v2-quality\\context-cover\\detail-hands-contact.jpg",
+      "review_status": "accepted_sampled_native_crop_and_16_9_cover",
+      "identifiable_faces_visible_in_reviewed_frames": false,
+      "reviewed_frames": 8,
+      "display_transform": "crop stated source rectangle, scale with force_original_aspect_ratio=increase, then center crop16:9; no stretch",
+      "visual_notes": "Forearms, grip and torso only. The grip approaches the left edge during the rise; use brief inserts rather than a full9-second hold.",
+      "proof_sha256": "6f8d58ca20bcf648f50d2c4ce67733e18c346d326848e789c9e79528e758cc2d"
+    },
+    {
+      "id": "detail-packing",
+      "source_id": "packing-table",
+      "source_path": "assets/native/packing-table.mp4",
+      "source_sha256": "e9de822443bfd3b415321247d3abb9f0c963ce96593b6839ab50c7ce8c91c307",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "crop": {
+        "x": 160,
+        "y": 360,
+        "width": 960,
+        "height": 360
+      },
+      "reviewed_times": [
+        0.2,
+        1.571,
+        2.943,
+        4.314,
+        5.686,
+        7.057,
+        8.429,
+        9.8
+      ],
+      "contact_sheet": "output\\hock-v2-quality\\context-cover\\detail-packing-contact.jpg",
+      "review_status": "accepted_sampled_native_crop_and_16_9_cover",
+      "identifiable_faces_visible_in_reviewed_frames": false,
+      "reviewed_frames": 8,
+      "display_transform": "crop stated source rectangle, scale with force_original_aspect_ratio=increase, then center crop16:9; no stretch",
+      "visual_notes": "Hands and rice parcels remain clear; packet lifting and replacement preserve independent movement.",
+      "proof_sha256": "8110d73348b803cbb0394a6450283e895d96e8a29c05a8a2e1625947e9194da2"
+    },
+    {
+      "id": "detail-box",
+      "source_id": "community-boxes",
+      "source_path": "assets/native/community-boxes.mp4",
+      "source_sha256": "7f59bd5d9422cf9610c2ed74b6949c91e6c6bb4d2444f6dbebf5502598fad2e8",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.7
+      },
+      "crop": {
+        "x": 160,
+        "y": 380,
+        "width": 960,
+        "height": 340
+      },
+      "reviewed_times": [
+        0.2,
+        1.557,
+        2.914,
+        4.271,
+        5.629,
+        6.986,
+        8.343,
+        9.7
+      ],
+      "contact_sheet": "output\\hock-v2-quality\\context-cover\\detail-box-contact.jpg",
+      "review_status": "accepted_sampled_native_crop_and_16_9_cover",
+      "identifiable_faces_visible_in_reviewed_frames": false,
+      "reviewed_frames": 8,
+      "display_transform": "crop stated source rectangle, scale with force_original_aspect_ratio=increase, then center crop16:9; no stretch",
+      "visual_notes": "The parcel passes through the crop, with rigid box, food and hand contact. Opening0.2\u20131.5s is body/table setup; strongest action from1.5s.",
+      "proof_sha256": "f70eca009c92f892d47e9ebbedbc743dc2ee019215ab731d9413e76c27eb22d0"
+    },
+    {
+      "id": "detail-rain",
+      "source_id": "rain-arrival",
+      "source_path": "assets/native/rain-arrival.mp4",
+      "source_sha256": "ec17dcb0b1c64dac16dd84b4d5691316af64c09ff0de50b0e4a2d968eae93266",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.7
+      },
+      "crop": {
+        "x": 320,
+        "y": 400,
+        "width": 640,
+        "height": 320
+      },
+      "reviewed_times": [
+        0.2,
+        1.557,
+        2.914,
+        4.271,
+        5.629,
+        6.986,
+        8.343,
+        9.7
+      ],
+      "contact_sheet": "output\\hock-v2-quality\\context-cover\\detail-rain-contact.jpg",
+      "review_status": "accepted_sampled_native_crop_and_16_9_cover",
+      "identifiable_faces_visible_in_reviewed_frames": false,
+      "reviewed_frames": 8,
+      "display_transform": "crop stated source rectangle, scale with force_original_aspect_ratio=increase, then center crop16:9; no stretch",
+      "visual_notes": "Rain, moving legs and crate remain visible without heads, including the early lean. Approved wider0.2\u20139.7s range after lowering crop to400px.",
+      "proof_sha256": "73679d385cc0c4961037aae0f1ef655aa0cbc230b3bc665d2033500388e51708"
+    },
+    {
+      "id": "detail-beam",
+      "source_id": "burden-shared",
+      "source_path": "assets/native/burden-shared.mp4",
+      "source_sha256": "8f3ee8dfaae02f6ba2db842ef6d3365eb38150679f41678f7ebddfd4b84c21d5",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.7
+      },
+      "crop": {
+        "x": 160,
+        "y": 400,
+        "width": 960,
+        "height": 320
+      },
+      "reviewed_times": [
+        0.2,
+        1.557,
+        2.914,
+        4.271,
+        5.629,
+        6.986,
+        8.343,
+        9.7
+      ],
+      "contact_sheet": "output\\hock-v2-quality\\context-cover\\detail-beam-contact.jpg",
+      "review_status": "accepted_sampled_native_crop_and_16_9_cover",
+      "identifiable_faces_visible_in_reviewed_frames": false,
+      "reviewed_frames": 8,
+      "display_transform": "crop stated source rectangle, scale with force_original_aspect_ratio=increase, then center crop16:9; no stretch",
+      "visual_notes": "Hands, timber and the shared carry remain visible; faces are excluded throughout sampled range.",
+      "proof_sha256": "160816746fa1624d20e3324f59fe572d2084621d4b64d484bb39303837796276"
+    },
+    {
+      "id": "detail-work",
+      "source_id": "workshop-team",
+      "source_path": "assets/native/workshop-team.mp4",
+      "source_sha256": "8bb977769caf3d717ce8d05c247f6f9dc02d6eef994775aa1c7092655c6ff9ac",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "crop": {
+        "x": 160,
+        "y": 350,
+        "width": 960,
+        "height": 370
+      },
+      "reviewed_times": [
+        0.2,
+        1.571,
+        2.943,
+        4.314,
+        5.686,
+        7.057,
+        8.429,
+        9.8
+      ],
+      "contact_sheet": "output\\hock-v2-quality\\context-cover\\detail-work-contact.jpg",
+      "review_status": "accepted_sampled_native_crop_and_16_9_cover",
+      "identifiable_faces_visible_in_reviewed_frames": false,
+      "reviewed_frames": 8,
+      "display_transform": "crop stated source rectangle, scale with force_original_aspect_ratio=increase, then center crop16:9; no stretch",
+      "visual_notes": "Close handgrips and lifting beam have useful independent movement; crop preserves clear timber texture.",
+      "proof_sha256": "ffb3cbb4536984e28d063bd9eba875379bc596866b34e0a20c95059b6b0c65f8"
+    },
+    {
+      "id": "detail-cup",
+      "source_id": "tea-pour",
+      "source_path": "assets/native/tea-pour.mp4",
+      "source_sha256": "c1fa943523921945a1705f1b0e60eea9e9b07c4a0679df0b0c04255d21269b87",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "crop": {
+        "x": 280,
+        "y": 360,
+        "width": 960,
+        "height": 360
+      },
+      "reviewed_times": [
+        0.2,
+        1.571,
+        2.943,
+        4.314,
+        5.686,
+        7.057,
+        8.429,
+        9.8
+      ],
+      "contact_sheet": "output\\hock-v2-quality\\context-cover\\detail-cup-contact.jpg",
+      "review_status": "accepted_sampled_native_crop_and_16_9_cover",
+      "identifiable_faces_visible_in_reviewed_frames": false,
+      "reviewed_frames": 8,
+      "display_transform": "crop stated source rectangle, scale with force_original_aspect_ratio=increase, then center crop16:9; no stretch",
+      "visual_notes": "Pouring stream, cups, steam and hands remain prominent. Cropping removes every background face.",
+      "proof_sha256": "d9c59a18976d8d849e50ada5bde17c2a1475e4cd86856b797ab3b729fbceaf37"
+    },
+    {
+      "id": "wet-footsteps",
+      "source_id": "wet-footsteps",
+      "source_path": "assets/native/wet-footsteps.mp4",
+      "source_sha256": "0553169381fe2ba220077f1c01980540f9dc47e50646a2a98f072abc65898bed",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.75
+      },
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      },
+      "reviewed_times": [
+        0.2,
+        1.564,
+        2.929,
+        4.293,
+        5.657,
+        7.021,
+        8.386,
+        9.75
+      ],
+      "contact_sheet": "output\\hock-v2-quality\\context-cover\\wet-footsteps-contact.jpg",
+      "review_status": "accepted_sampled_native_crop_and_16_9_cover",
+      "identifiable_faces_visible_in_reviewed_frames": false,
+      "reviewed_frames": 8,
+      "display_transform": "crop stated source rectangle, scale with force_original_aspect_ratio=increase, then center crop16:9; no stretch",
+      "visual_notes": "Whole source is an intentional foot-level shot; no heads or identifiable faces.",
+      "proof_sha256": "687ed05f1ed1cb93fd4fe54488ab6f3ccde56f717dda0e16a54eef7a743588c1"
+    },
+    {
+      "id": "sea-dawn",
+      "source_id": "sea-dawn",
+      "source_path": "assets/native/sea-dawn.mp4",
+      "source_sha256": "71183de07a7c8b6a86eb8beb0c361ddd4ca4b1685a9b76397360a711cca2c826",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      },
+      "reviewed_times": [
+        0.2,
+        1.571,
+        2.943,
+        4.314,
+        5.686,
+        7.057,
+        8.429,
+        9.8
+      ],
+      "contact_sheet": "output\\hock-v2-quality\\context-cover\\sea-dawn-contact.jpg",
+      "review_status": "accepted_sampled_native_crop_and_16_9_cover",
+      "identifiable_faces_visible_in_reviewed_frames": false,
+      "reviewed_frames": 8,
+      "display_transform": "crop stated source rectangle, scale with force_original_aspect_ratio=increase, then center crop16:9; no stretch",
+      "visual_notes": "Full coastal source has moving waves and a distant boat; no people visible.",
+      "proof_sha256": "f991d8fd75e7fd4a15418afd7ebae4fd5677aabb030eba3fea865cfc09704930"
+    },
+    {
+      "id": "detail-water",
+      "source_id": "sea-journey",
+      "source_path": "assets/native/sea-journey.mp4",
+      "source_sha256": "19e01cb9f8b506210a1f56f0ece790d8b089527067747c7d1d7025194580ac35",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.7
+      },
+      "crop": {
+        "x": 160,
+        "y": 360,
+        "width": 960,
+        "height": 360
+      },
+      "reviewed_times": [
+        0.2,
+        1.557,
+        2.914,
+        4.271,
+        5.629,
+        6.986,
+        8.343,
+        9.7
+      ],
+      "contact_sheet": "output\\hock-v2-quality\\context-cover\\detail-water-contact.jpg",
+      "review_status": "accepted_sampled_native_crop_and_16_9_cover",
+      "identifiable_faces_visible_in_reviewed_frames": false,
+      "reviewed_frames": 8,
+      "display_transform": "crop stated source rectangle, scale with force_original_aspect_ratio=increase, then center crop16:9; no stretch",
+      "visual_notes": "Moving boat hull, lower torsos and evolving water/wake only; no heads or faces, including the late third-person reveal.",
+      "proof_sha256": "ceea9180a5fb51d65776d87221ac1b496ed59122bc959764fd24f8880ece7c65"
+    },
+    {
+      "id": "detail-kindness",
+      "source_id": "passing-kindness",
+      "source_path": "assets/native/passing-kindness.mp4",
+      "source_sha256": "64182b2414d53c415ef76c662d54b214065a7ef1536a6a2c52c79fa92de90024",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.7
+      },
+      "crop": {
+        "x": 160,
+        "y": 400,
+        "width": 960,
+        "height": 320
+      },
+      "reviewed_times": [
+        0.2,
+        1.557,
+        2.914,
+        4.271,
+        5.629,
+        6.986,
+        8.343,
+        9.7
+      ],
+      "contact_sheet": "output\\hock-v2-quality\\context-cover\\detail-kindness-contact.jpg",
+      "review_status": "accepted_sampled_native_crop_and_16_9_cover",
+      "identifiable_faces_visible_in_reviewed_frames": false,
+      "reviewed_frames": 8,
+      "display_transform": "crop stated source rectangle, scale with force_original_aspect_ratio=increase, then center crop16:9; no stretch",
+      "visual_notes": "Cloth bag and hand transfers remain visible; crop excludes all three foreground heads and background faces.",
+      "proof_sha256": "d3740333c5dc4902d1c0e1d81e5a00f0a3dd87447be46aa5589362b5b793a897"
+    }
+  ],
+  "method": "Eight chronological output-aspect1280x720 cover-centered frames per candidate, plus original native contacts; no identifiable unrelated faces observed in88reviewed output-aspect frames.",
+  "limits": "Sampled visual review. Crops prioritise face exclusion over field-of-view. Some cover-effective source widths are568\u2013604px; do not describe them as recovered1080pdetail.",
+  "total_unique_pool_seconds": 104.95000000000002,
+  "editorial_note": "Current four sea spans cannot be packed unbroken into only two9.5s clips. Split an intro/outro water span, substitute a short approved detail, or explicitly document a water reprise. Do not silently replay context time."
+}

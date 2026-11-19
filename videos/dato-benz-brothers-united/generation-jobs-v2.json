@@ -1,0 +1,124 @@
+{
+  "revision": 2,
+  "objective": "One recognizable Hock Siew protagonist; native motion; exact original soundtrack and lyrics",
+  "opening_remaining_runway_credits": 326,
+  "prior_revision_credits_used": 1924,
+  "maximum_total_authorized_credits": 2250,
+  "plate_method": "Built-in image generation with user-provided seaside/group photographs and accepted solo frame as identity references",
+  "references": [
+    "assets/photos/seaside.jpg",
+    "assets/photos/brothers.jpg"
+  ],
+  "jobs": [
+    {
+      "id": "hock-seaside",
+      "plate_path": "assets/v2/plates/hock-seaside.png",
+      "plate_prompt": "Create a cinematic 16:9 landscape photographic frame for a personal tribute film. Identity references: the man in the burgundy polo in the seaside photo is the ONE hero, Hock Siew. The bald/balding central man in light blue in the second group photo is an additional face reference for the same user-confirmed honoree; ignore all other people. Preserve his exact real middle-aged broad face, small eyes, nose, mouth, natural facial texture, balding short salt-and-pepper hair, stocky build and age; do not beautify, slim or make younger. Show ONLY HIM from waist upward on the same modest boat at sunset, in his original burgundy polo, seated with one forearm resting naturally on the cream boat seat. His face in a gentle three-quarter angle looking to the right, calm warm small smile. Remove the woman and all other people; reveal the natural sea and distant hills behind him without invented text. Keep him large in frame, face well lit and sharp, natural soft golden side light with neutral skin and cyan water, cinematic 50mm lens, realistic subtle texture, uncluttered landscape composition. No typography or logos. It must unmistakably preserve the supplied man's likeness rather than an invented actor.",
+      "model": "gen-4-turbo",
+      "requested_seconds": 10,
+      "estimated_credits": 50,
+      "task_id": "80e08772-5d6a-4362-8181-a7a545ebd250",
+      "motion_prompt": "The single man rests on the boat, breathing naturally, gives one small warm smile and gently turns his gaze a little toward the horizon. His hand stays relaxed on the cream seat. Preserve the same real face, age, stocky build, short balding hair and burgundy polo throughout. Water ripples and reflected sunlight shimmer continuously behind him, breeze moves his sleeve slightly. Very slow intimate lateral camera drift, calm cinematic live action, one continuous take.",
+      "status": "completed",
+      "path": "assets/v2/native/hock-seaside.mp4",
+      "sha256": "e4f1e8a778339f64b8093fe00e98b7885f9f48db59d3d38783088daba9de337a",
+      "native_duration": 10.083333,
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.8
+      }
+    },
+    {
+      "id": "hock-doorway",
+      "plate_path": "assets/v2/plates/hock-doorway.png",
+      "plate_prompt": "Create one photorealistic cinematic 16:9 landscape starting frame for a personal tribute film. IDENTITY LOCK: Hock Siew is the man in the burgundy polo in reference1; reference2's central man in pale blue supplies another view of his face. Reference3 is the already accepted solo portrait: match it exactly. Preserve his real broad middle-aged face, natural small eyes, nose and mouth, stocky body, balding salt-and-pepper short hair, age and skin texture. No slimming, beautification, youth or invented actor. Consistent original burgundy polo and plain dark trousers. Exactly ONE visible person, Hock Siew; no other people or background faces. His face must be large enough to recognize. Neutral natural skin, refined soft gold and muted cyan, photographic 50mm lens, rich but restrained contrast. No typography, labels or logos. Medium waist-up three-quarter portrait of him standing alone in the open wooden doorway of a modest Malaysian shophouse, calm welcoming small smile, one hand resting naturally at the door edge. Warm practical light inside and cooler damp courtyard outside. Frame his face unobstructed; natural understated dignity, not posed luxury.",
+      "model": "gen-4-turbo",
+      "requested_seconds": 10,
+      "estimated_credits": 50,
+      "task_id": "76feb1ce-ec94-44d4-a838-3f91a747c597",
+      "motion_prompt": "The single man in the doorway takes one small relaxed breath, gives a gentle welcoming nod and a soft smile, and lowers his resting hand slightly along the wooden door edge. His face, short thinning hair, stocky build and burgundy shirt stay consistent. Leaves in the courtyard stir gently. A slow smooth lateral camera drift, natural warm light, quiet live-action portrait, one continuous shot.",
+      "status": "completed",
+      "path": "assets/v2/native/hock-doorway.mp4",
+      "sha256": "bb2d31fc5e227451d49cd424122ddd5e7ca3640d1be19b2cff203e4848395b05",
+      "native_duration": 10.083333,
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.8
+      }
+    },
+    {
+      "id": "hock-walk",
+      "plate_path": "assets/v2/plates/hock-walk.png",
+      "plate_prompt": "Create one photorealistic cinematic 16:9 landscape starting frame for a personal tribute film. IDENTITY LOCK: Hock Siew is the man in the burgundy polo in reference1; reference2's central man in pale blue supplies another view of his face. Reference3 is the already accepted solo portrait: match it exactly. Preserve his real broad middle-aged face, natural small eyes, nose and mouth, stocky body, balding salt-and-pepper short hair, age and skin texture. No slimming, beautification, youth or invented actor. Consistent original burgundy polo and plain dark trousers. Exactly ONE visible person, Hock Siew; no other people or background faces. His face must be large enough to recognize. Neutral natural skin, refined soft gold and muted cyan, photographic 50mm lens, rich but restrained contrast. No typography, labels or logos. Medium-full view of him walking alone along a covered Malaysian shophouse walkway after rain, at a natural unhurried pace toward camera and slightly to the right. Hands relaxed by his sides, plain black trousers and ordinary shoes. Wet tiles reflect warm lamps, soft grey-cyan rainy distance. His burgundy polo and stocky proportions match accepted portrait, believable candid movement-ready pose, no umbrella or other people.",
+      "model": "gen-4-turbo",
+      "requested_seconds": 10,
+      "estimated_credits": 50,
+      "task_id": "588fe777-8870-429e-9988-2e546866fc05",
+      "motion_prompt": "The single man continues walking at an unhurried natural pace toward the camera along the covered walkway. His legs take several real steps and his arms swing slightly, burgundy shirt moving naturally with his stocky body. He keeps the same recognizable face and age, glances toward the courtyard and gives a small smile. The camera tracks backward smoothly. Rain and wet reflections evolve continuously. One coherent live-action take.",
+      "status": "completed",
+      "path": "assets/v2/native/hock-walk.mp4",
+      "sha256": "c2b67a4a3b445cde3d438181f9bb9c67ea1f9f43b96f5129db3c44368f037abe",
+      "native_duration": 10.083333,
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.8
+      }
+    },
+    {
+      "id": "hock-tea",
+      "plate_path": "assets/v2/plates/hock-tea.png",
+      "plate_prompt": "Create one photorealistic cinematic 16:9 landscape starting frame for a personal tribute film. IDENTITY LOCK: Hock Siew is the man in the burgundy polo in reference1; reference2's central man in pale blue supplies another view of his face. Reference3 is the already accepted solo portrait: match it exactly. Preserve his real broad middle-aged face, natural small eyes, nose and mouth, stocky body, balding salt-and-pepper short hair, age and skin texture. No slimming, beautification, youth or invented actor. Consistent original burgundy polo and plain dark trousers. Exactly ONE visible person, Hock Siew; no other people or background faces. His face must be large enough to recognize. Neutral natural skin, refined soft gold and muted cyan, photographic 50mm lens, rich but restrained contrast. No typography, labels or logos. Medium waist-up seated portrait of him alone at a simple wooden table in a warm Malaysian tea room. He holds one small cream ceramic cup naturally in his right hand near chest height, his left hand rests on table. His three-quarter face looks toward someone just off camera with a soft friendly smile; no other people visible. A ceramic teapot at lower left and gentle steam, soft window light, intimate clean composition, coherent five-finger hands.",
+      "model": "gen-4-turbo",
+      "requested_seconds": 10,
+      "estimated_credits": 50,
+      "task_id": "bcf21b53-cc04-46dc-a75b-a4680df9fe23",
+      "motion_prompt": "The single man gently lifts the ceramic cup a few centimetres in a warm quiet toast, pauses with a small appreciative smile, then lowers the cup onto the table. His fingers keep a natural stable grip and his left hand stays relaxed. Preserve the same facial features, short thinning hair, stocky build and burgundy shirt. Steam drifts from the tea, leaves shift outside. Very gentle sideways camera drift, one realistic continuous shot.",
+      "status": "completed",
+      "path": "assets/v2/native/hock-tea.mp4",
+      "sha256": "835ee529046d695219125e0906c2e735eca214d2e7091d1aa7879b50f5cd333c",
+      "native_duration": 10.083333,
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.8
+      }
+    },
+    {
+      "id": "hock-window",
+      "plate_path": "assets/v2/plates/hock-window.png",
+      "plate_prompt": "Create one photorealistic cinematic 16:9 landscape starting frame for a personal tribute film. IDENTITY LOCK: Hock Siew is the man in the burgundy polo in reference1; reference2's central man in pale blue supplies another view of his face. Reference3 is the already accepted solo portrait: match it exactly. Preserve his real broad middle-aged face, natural small eyes, nose and mouth, stocky body, balding salt-and-pepper short hair, age and skin texture. No slimming, beautification, youth or invented actor. Consistent original burgundy polo and plain dark trousers. Exactly ONE visible person, Hock Siew; no other people or background faces. His face must be large enough to recognize. Neutral natural skin, refined soft gold and muted cyan, photographic 50mm lens, rich but restrained contrast. No typography, labels or logos. Intimate chest-up three-quarter side portrait of him standing alone beside an open weathered wooden window. Look toward the softly lit courtyard, with clear recognizable original facial profile and a reflective but content expression. One forearm rests on the sill, warm natural side light, cool rain softly outside, subtle curtain, calm hopeful atmosphere rather than sadness.",
+      "model": "gen-4-turbo",
+      "requested_seconds": 10,
+      "estimated_credits": 50,
+      "task_id": "f1be017b-a5a5-4157-8a2d-fdc1c4732269",
+      "motion_prompt": "The single man rests his forearm on the window sill, breathes naturally and turns his gaze slightly toward the open courtyard. A gentle contented smile forms while his face, hair, body and burgundy shirt remain the same. The curtain stirs softly and rain falls steadily beyond the window, visible droplets and leaves move independently. Slow cinematic lateral camera drift, one continuous calm live-action portrait.",
+      "status": "completed",
+      "path": "assets/v2/native/hock-window.mp4",
+      "sha256": "baf9de25bd7dbbf0451faf770beb0dc6c7418cc3e2a189c263817f72374d24c3",
+      "native_duration": 10.083333,
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.8
+      }
+    },
+    {
+      "id": "hock-dawn",
+      "plate_path": "assets/v2/plates/hock-dawn.png",
+      "plate_prompt": "Create one photorealistic cinematic 16:9 landscape starting frame for a personal tribute film. IDENTITY LOCK: Hock Siew is the man in the burgundy polo in reference1; reference2's central man in pale blue supplies another view of his face. Reference3 is the already accepted solo portrait: match it exactly. Preserve his real broad middle-aged face, natural small eyes, nose and mouth, stocky body, balding salt-and-pepper short hair, age and skin texture. No slimming, beautification, youth or invented actor. Consistent original burgundy polo and plain dark trousers. Exactly ONE visible person, Hock Siew; no other people or background faces. His face must be large enough to recognize. Neutral natural skin, refined soft gold and muted cyan, photographic 50mm lens, rich but restrained contrast. No typography, labels or logos. Medium waist-up three-quarter portrait of him alone on a modest seaside wooden pier at sunrise, face turned slightly toward the right but clearly visible in the same recognizable angle as accepted portrait. Both hands rest comfortably on the timber rail at waist level. Open cyan sea and gold dawn behind, distant hills, natural relaxed smile, healthy living tribute, cinematic wide breathing room and stable believable hands.",
+      "model": "gen-4-turbo",
+      "requested_seconds": 10,
+      "estimated_credits": 50,
+      "task_id": "db29c322-e3e6-452b-97f0-dea598836d53",
+      "motion_prompt": "The single man rests both hands on the pier rail, shifts his weight gently and turns his head a little toward the horizon with a soft hopeful smile. Keep his recognizable face, age, stocky build, burgundy shirt and natural hands stable. Waves continuously roll behind him and sunlight flickers across their surface; breeze lightly moves his sleeve. Slow intimate lateral camera drift, one continuous live-action shot.",
+      "status": "completed",
+      "path": "assets/v2/native/hock-dawn.mp4",
+      "sha256": "e53ecce81c28025a025b8466f2c0a60b2b2492024b61c6078271a568007c4810",
+      "native_duration": 10.083333,
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.8
+      }
+    }
+  ],
+  "revision_credits_submitted": 300,
+  "expected_remaining_credits": 26
+}

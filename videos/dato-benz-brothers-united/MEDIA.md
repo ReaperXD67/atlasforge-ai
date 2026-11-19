@@ -1,6 +1,14 @@
 # Media provenance
 
-**Recipient confirmed by the user:** this song is for Hock Siew / 拿督斯里谢惠福, identified by the user in the seaside photograph. The later Benz song will be a separate project. The chat labels the dark-coat portrait “benz”; that portrait is not used here. This mapping comes from the user's confirmation, not face-based identification.
+**Recipient confirmed by the user:** this song is for Hock Siew / 拿督斯里谢惠福, identified by the user in both the seaside photograph and the central light-blue-shirt figure in the group photograph. The later Benz song will be a separate project. The chat labels the dark-coat portrait “benz”; that portrait is not used here. This mapping comes from the user's confirmation, not face-based identification.
+
+## Current V2 additions
+
+Six new solo native clips preserve Hock Siew's referenced appearance across a seaside seat, doorway, covered walk, tea room, window and dawn pier. Their starting frames were generated from the two supplied photographs and the accepted solo frame. All six underwent full decoding and chronological likeness/motion review; [generation-jobs-v2.json](generation-jobs-v2.json) retains exact prompts and hashes. They are artistic scenes, not documentary event footage.
+
+The existing `photo-brothers` animation is reused at 18 seconds with the approved x520/y40/250×650 crop, source 0.2–4.5 seconds. Its foreground and blurred background both derive from that crop, excluding the other men. The original seaside image remains unretouched. [NATIVE-REVIEW-V2.json](NATIVE-REVIEW-V2.json) records solo/memory admission; [context-review-v2.json](context-review-v2.json) records face-free supporting crops. Repeated hero excerpts are explicit musical motifs in the V2 edit; context source time is not repeated.
+
+V2 costs 300 additional existing credits. Across V1 and V2, **2,224 credits were used and 26 remain**, verified after all new tasks completed. No credit purchase or paid upscaling was made. V2 uses native24fps, lossless staging, one final picture encode and restrained local finishing; output1080p remains an upscale from720p, with softer tight detail crops.
 
 The user's latest `有你，兄弟同心 (1).wav` is the sole soundtrack. Its earlier unnumbered copy is byte-identical. The staged `assets/bgm.wav` is 196.760 seconds, 48kHz stereo PCM16; SHA-256 `60ee65f074f36b2d31660bee652e111cd84538e51b74a0685cbd895291cd6547`. The edit preserves its speed, start and gain. Generated sources contain no selected audio, and no extra music or sound effects are mixed over this personal recording.
 
@@ -14,7 +22,7 @@ The user's latest `有你，兄弟同心 (1).wav` is the sole soundtrack. Its ea
 
 Photographs were supplied for this tribute. The generated group movement is an AI interpretation, with faces, clothing and venue checked against the original. Fictional performers in the main scenes symbolise the lyrics; the film does not establish that those generated acts are documentary footage of Hock Siew.
 
-## Native moving footage
+## V1 native moving footage
 
 [generation-jobs.json](generation-jobs.json) retains exact submitted prompts, task IDs, costs and output hashes. [native-clips.json](native-clips.json) binds the local files and admitted source ranges. Twelve Gen-4.5 text-to-video takes cost 1,440 credits; eight Turbo image-to-video takes cost 400; the 7-second real-photo Gen-4.5 animation cost 84. The workspace moved from 2,250 to **326 existing credits**. The final balance was read after all jobs completed. No top-up was made.
 

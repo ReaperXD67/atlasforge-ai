@@ -1,0 +1,244 @@
+{
+  "status": "final_sampled_visual_and_quality_review_passed",
+  "reviewed_at_utc": "2026-11-19T10:25:37.160605+00:00",
+  "video_sha256": "e934619f72f3c6f511c705b845044901ec6cc0801787ac6ace01af3648a8a733",
+  "direction_review": {
+    "reviewer": "hock_v2_direction",
+    "reviewed_at_utc": "2026-11-19T10:24:20.521690+00:00",
+    "status": "final_sampled_encoded_review_passed",
+    "reviewed_scope": {
+      "shot_midpoints": 44,
+      "context_and_memory_edge_rows": 19,
+      "context_and_memory_edge_samples": 57,
+      "name_anchors_fullresolution": 6,
+      "opening_and_closing_fullresolution": true,
+      "walking_framing_samples": 15,
+      "walking_framing_contact": "renders/v2/review/walk-framing-first-middle-last.jpg",
+      "name_anchor_final_review": "All six in refreshed final combined sheet; full-resolution originals were also inspected before the framing-only polish."
+    },
+    "blocking_issues": [],
+    "findings": [
+      "Opening shows one recognisable Hock Siew immediately; title/dedication/name are readable and do not cover his face.",
+      "All six name anchors show recognisable Hock Siew with correct Hock Siew or 拿督斯里谢惠福 spelling; no anonymous man is substituted.",
+      "Anonymous actor faces are excluded from all reviewed context first/mid/last samples. Hands, materials, shoes, rain and water support rather than compete with the honoree.",
+      "The body uses only short still-photo anchors, with native portrait/action footage driving the main film. The final original seaside dedication is warm, readable and preserves the full source image.",
+      "No missing glyph, wrong name, obvious anatomical failure, overlay collision or blackgap was found in the reviewed samples.",
+      "Final blue-shirt portrait uses x520 crop and preserves the full head/face with improved rightmargin; no other face appears in encoded first/mid/last samples.",
+      "All15 final first/mid/last walking-frame samples preserve forehead/hair under the76pixelmatte, with natural proportions and no visible padding seam."
+    ],
+    "follow_up": "None. Approved group crop and walking framing refinements were verified in the refreshed encoded proof images.",
+    "proofs": [
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/closing-dedication.png",
+        "sha256": "7c7c1751c2e47cb1cbf5c0e2e90b9bebbce4813c815dbd0f743b6b13fed66d54"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/contact-sheet-01.jpg",
+        "sha256": "1fbe2ed170db0e85797e27b3ee146fa535f2502f7f05e1d3742bb6744a8262d0"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/contact-sheet-02.jpg",
+        "sha256": "31479a9486e58e61d26cb4602e02f11a806e51070660da80e2dcd74d03bba3c0"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/contact-sheet-03.jpg",
+        "sha256": "fb61963c0d8f36e74eed6df8a95cc1c1a7aa82f54a74688171d8541402221794"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/context-edges-01.jpg",
+        "sha256": "399d0ce7a1da364a051af9af492c6eae004dc697e0ae97917da289e77a04ff4f"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/context-edges-02.jpg",
+        "sha256": "4b92add9902d56092c9cd120a4ae365b84a1051f687ac9039c18d1e97fcdee2c"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/context-edges-03.jpg",
+        "sha256": "29e34f2299b8a7d797c23dbd675275ecea5fc7658090f3d524ae30b5f53bf718"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/group-memory-final.png",
+        "sha256": "2be3c64cc1972581b1f23c4cd21d050a0fcb46bbd2c8fc3f6e9a40cf2b620641"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/name-anchor-01.png",
+        "sha256": "dfa5abde6e662af457ec0a5dc7816e05a4c1ce36cdff217492f4081356cb778f"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/name-anchor-02.png",
+        "sha256": "f5032478af321029725b343404fa8eb46734cf08884a6c7e4377d381158e64d4"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/name-anchor-03.png",
+        "sha256": "9bd84c056c8b5fb9ed9e27a03091b9c004bb16ad7f4477b672bb6935de755e59"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/name-anchor-04.png",
+        "sha256": "a6db4f52f31e3d702c1745338bd231f498a7d4eebc08946881262b0fac98af94"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/name-anchor-05.png",
+        "sha256": "0961d71897a01481b2d4fc553d71331010b22d448995e95c9010c9be9a77f3d1"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/name-anchor-06.png",
+        "sha256": "961f2f00217f7fbfbfce410e638abd7b333026bcc681307921ed8ac9932b570c"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/name-identity-anchors.jpg",
+        "sha256": "138467f4ab778fc41ea6befc706c56f643bc2c629ddefb2b39b05e75f99261d5"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/opening-identity.png",
+        "sha256": "7380f3ced797a01d855b00025bd4bcfdd246522ed0d91e214339f457861cc188"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/walk-framing-first-middle-last.jpg",
+        "sha256": "28bdbeb2b716badfa4f0966f263c4647de4810559fc7c2bb05a0cc97a070a6a9"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/walk-framing-v2-shot-03-0.png",
+        "sha256": "26cd2a6e6a22c2ac10328738d65b103b128312b13198431eed0c61456eb1e86e"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/walk-framing-v2-shot-03-1.png",
+        "sha256": "7527690ab27ba314b2e1f8960da1f504afa7c2e84b969811f0b0b334530dcda7"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/walk-framing-v2-shot-03-2.png",
+        "sha256": "682385b032bc90d50ab68ad51ba3de83fb2508c144e42ed7bb1cb1292e060a0a"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/walk-framing-v2-shot-14-0.png",
+        "sha256": "c86f5194771fec55969f29058aff2cf7e95d1c83d5d129ea6bfd8bfbe706fcb2"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/walk-framing-v2-shot-14-1.png",
+        "sha256": "b37ab241116dc53110e452729f5494b2fe7a336a9604777c6f0b47c3ddb07b9b"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/walk-framing-v2-shot-14-2.png",
+        "sha256": "811d4c364b4c9ca5f3539e23cdba25663caa38b16b8ead2da452eb66d3d8f107"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/walk-framing-v2-shot-23-0.png",
+        "sha256": "92bccba01d252e4f49e3e0841d630c82d7fce85b8248b554171db6a10093dfba"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/walk-framing-v2-shot-23-1.png",
+        "sha256": "a1b34e159ab8b43e6f7b1bd4ee7b5d4b66c1c6cec33cff59866aae56059eb6d8"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/walk-framing-v2-shot-23-2.png",
+        "sha256": "e658a25146cbaf97ee8cb8dc14cf55d871ffa2cd42dab7f2b34bc8484ee37a3b"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/walk-framing-v2-shot-37-0.png",
+        "sha256": "debfc91b7d6f4671f2414ba04e22db1eb8090ea568a5077b112ac8f7ba2c26f4"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/walk-framing-v2-shot-37-1.png",
+        "sha256": "0f57e8f478f8b0d38e2ea9d23de029c406019171ec0369f47ce43f4711595b42"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/walk-framing-v2-shot-37-2.png",
+        "sha256": "5a9338a8771b8317164d3b734e7e19b8a705ca5e1831bfcd1444f75aab8ebe48"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/walk-framing-v2-shot-42-0.png",
+        "sha256": "9abefb3c7bdbaef89f09dd186138e4cf13a57ab356575ed9ae95fb4a79c99877"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/walk-framing-v2-shot-42-1.png",
+        "sha256": "c4d36415d33f99db1ca5764bf49b8e9505e89974ffdcbc6d4401852984b7eafa"
+      },
+      {
+        "path": "videos/dato-benz-brothers-united/renders/v2/review/walk-framing-v2-shot-42-2.png",
+        "sha256": "cdd8a344b246eaf2decce2db30b080cfd689f4367aaa613baf40ef72a9156816"
+      }
+    ],
+    "limits": "Sampled encoded-frame review, not independent complete realtime playback, human audio audition or proof of every-frame perfection.",
+    "passed": true,
+    "video": "renders/v2/Hock-Siew-Personal-Tribute-V2.mp4",
+    "video_sha256": "e934619f72f3c6f511c705b845044901ec6cc0801787ac6ace01af3648a8a733"
+  },
+  "quality_review": {
+    "status": "passed_sampled_encoded_picture_review",
+    "reviewed_at_utc": "2026-11-19T10:24:29.924438+00:00",
+    "reviewer": "hock_v2_quality independent reviewer",
+    "video": "videos\\dato-benz-brothers-united\\renders\\v2\\Hock-Siew-Personal-Tribute-V2.mp4",
+    "video_sha256": "e934619f72f3c6f511c705b845044901ec6cc0801787ac6ace01af3648a8a733",
+    "method": "Refreshed review against final encoded master: scanned all 44 shot midpoints in three fresh contact sheets, fresh context first/middle/last sheets and six name anchors, plus 15 walking first/middle/last samples across all five walking shots. Opening and closing full-resolution artifacts retain their previously inspected exact hashes.",
+    "viewed_proofs": [
+      {
+        "path": "videos\\dato-benz-brothers-united\\renders\\v2\\review\\contact-sheet-01.jpg",
+        "sha256": "1fbe2ed170db0e85797e27b3ee146fa535f2502f7f05e1d3742bb6744a8262d0"
+      },
+      {
+        "path": "videos\\dato-benz-brothers-united\\renders\\v2\\review\\contact-sheet-02.jpg",
+        "sha256": "31479a9486e58e61d26cb4602e02f11a806e51070660da80e2dcd74d03bba3c0"
+      },
+      {
+        "path": "videos\\dato-benz-brothers-united\\renders\\v2\\review\\contact-sheet-03.jpg",
+        "sha256": "fb61963c0d8f36e74eed6df8a95cc1c1a7aa82f54a74688171d8541402221794"
+      },
+      {
+        "path": "videos\\dato-benz-brothers-united\\renders\\v2\\review\\context-edges-01.jpg",
+        "sha256": "399d0ce7a1da364a051af9af492c6eae004dc697e0ae97917da289e77a04ff4f"
+      },
+      {
+        "path": "videos\\dato-benz-brothers-united\\renders\\v2\\review\\context-edges-02.jpg",
+        "sha256": "4b92add9902d56092c9cd120a4ae365b84a1051f687ac9039c18d1e97fcdee2c"
+      },
+      {
+        "path": "videos\\dato-benz-brothers-united\\renders\\v2\\review\\context-edges-03.jpg",
+        "sha256": "29e34f2299b8a7d797c23dbd675275ecea5fc7658090f3d524ae30b5f53bf718"
+      },
+      {
+        "path": "videos\\dato-benz-brothers-united\\renders\\v2\\review\\opening-identity.png",
+        "sha256": "7380f3ced797a01d855b00025bd4bcfdd246522ed0d91e214339f457861cc188"
+      },
+      {
+        "path": "videos\\dato-benz-brothers-united\\renders\\v2\\review\\closing-dedication.png",
+        "sha256": "7c7c1751c2e47cb1cbf5c0e2e90b9bebbce4813c815dbd0f743b6b13fed66d54"
+      },
+      {
+        "path": "videos\\dato-benz-brothers-united\\renders\\v2\\review\\name-identity-anchors.jpg",
+        "sha256": "138467f4ab778fc41ea6befc706c56f643bc2c629ddefb2b39b05e75f99261d5"
+      },
+      {
+        "path": "videos\\dato-benz-brothers-united\\renders\\v2\\review\\walk-framing-first-middle-last.jpg",
+        "sha256": "28bdbeb2b716badfa4f0966f263c4647de4810559fc7c2bb05a0cc97a070a6a9"
+      },
+      {
+        "path": "videos\\dato-benz-brothers-united\\renders\\v2\\review\\group-memory-final.png",
+        "sha256": "2be3c64cc1972581b1f23c4cd21d050a0fcb46bbd2c8fc3f6e9a40cf2b620641"
+      }
+    ],
+    "findings": {
+      "single_recipient_focus": "Pass: same source-referenced burgundy-shirt protagonist anchors opening and named vocal phrases; unrelated identifiable male leads no longer appear in sampled context.",
+      "opening_face_skin": "Clear face and natural skin texture in the inspected full-resolution opening; no obvious oversharpening halo or waxy denoising added by finishing filters.",
+      "group_memory_18_to_22_3": "Fresh first/middle/last proofs with x520 crop show only Hock Siew in the fitted portrait. The head has clear side margin, and there is no aspect stretching or unrelated face visible.",
+      "context_faces": "No unrelated identifiable faces visible in reviewed native detail/footstep/water context samples; arms and lower torsos remain symbolic context.",
+      "aspect_geometry": "No stretching observed in rendered wide-to-16:9 cover crops; hands, cups, beam and original closing photo retain normal proportions.",
+      "sharpness_limits": "Tighter context crops are visibly softer than new full-frame solo hero shots, as expected from source pixel limits. Adequate for short inserts; no recovered native 1080p or 4K detail is claimed.",
+      "ghosting": "No obvious double-edge or interpolation ghosting found in sampled encoded stills. No complete real-time playback assessment performed.",
+      "closing": "Original seaside photograph fully fits the left panel; warm Mandarin dedication remains legible and is addressed to Hock Siew.",
+      "v1_comparison": "Earlier same-instant native-source finishing comparison showed restrained luma sharpening and more neutral skin/lighting than the V1 extra amber colour-balance pass. Global pixel comparison is not meaningful after story/shot changes; the primary V2 improvement is clear recipient focus and native cadence.",
+      "walking_headroom": "Pass in all 15 first/middle/last walking samples: complete hair and forehead stay within the visible picture. No added gap at the top matte and no stretched body proportions observed."
+    },
+    "blocking_issues_found": [],
+    "limits": "Sampled still/chronological review, not every-frame anatomical proof, an identity-recognition service, full-speed playback or human audio audition.",
+    "framing_revision": "Final: group-memory crop x520 and five walking shots translated down 70px inside the 76px cinematic matte, with no stretch.",
+    "cadence_verification": {
+      "fps": 24,
+      "frames": 4723,
+      "method": "Fresh final full-decode receipt reports native 24fps. The final changes are spatial framing only and do not retime the picture. The earlier short cadence sample and benchmark were not repeated.",
+      "earlier_short_encoded_sample_near_duplicate_pairs": 0,
+      "earlier_sample_adjacent_pairs": 47,
+      "scope": "Earlier sample statistic, not a new whole-film uniqueness claim."
+    }
+  },
+  "root_review": "Viewed all44midpoints,6nameanchors,opening,closing,contextedgepagesand15walkingedges; singleclearHockSiew, fullforeheadmargin, no unrelated identifiableactorfaces inreviewedcontext.",
+  "limits": "Sampled encoded review; not every-frame perfection or independent complete realtime playback/human audio audition."
+}

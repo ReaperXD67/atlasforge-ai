@@ -29,10 +29,10 @@ rendering, encoded-audio checks, decoded-frame review materials and portable del
 Explore the [next-story pipeline](docs/NEXT_STORY_PIPELINE.md), [voice experiments](docs/NEXT_VOICE_PASS.md),
 [visual-tool comparison](docs/NEXT_FILM_VISUAL_TOOLS.md) and [pinned BRAG adaptation](docs/BRAG_ADAPTATION.md).
 The wider studio also supports custom music films and researched 6–8 minute editorial videos.
-The [Hock Siew tribute](videos/dato-benz-brothers-united/README.md) combines **21 native moving clips**
-in a **40-shot, 196.76-second personal film**, with 40 Mandarin lyric cues and the supplied
-photograph ending. Both exports passed full-song audio, decoding and sampled visual checks.
-Editable source intervals, generation costs and local rebuild commands are retained with the project.
+The [Hock Siew tribute V2](videos/dato-benz-brothers-united/README.md) keeps **one recognizable recipient**
+at the centre of a **44-shot, 196.76-second film**: six reference-led solo takes, the reused personal
+photo animation, 40 Mandarin lyric cues and reviewed face-free context. Native 24fps, lossless staging,
+editable source intervals, generation costs and full-song delivery checks are retained with the project.
 The [BOSSTON / Pragon project](videos/bosston-pragon-good-fortune/README.md) authors a full-song
 Chinese New Year film from **17 generated AI artworks across 52 shots**, with CPU-estimated
 relative depth, continuous camera travel and selective environmental motion. Its verified V3
