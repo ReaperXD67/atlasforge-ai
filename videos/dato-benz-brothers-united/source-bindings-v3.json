@@ -1,0 +1,480 @@
+{
+  "audio_sha256": "60ee65f074f36b2d31660bee652e111cd84538e51b74a0685cbd895291cd6547",
+  "captions_sha256": "6d3a6b8f711526f7944b5d391cb16340fd1e17db761d1dd41b4d76598a75bd10",
+  "clips": {
+    "hock-room-close": {
+      "path": "assets/native-v3/hock-room-close.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "identity": "hock_siew",
+      "source_generation_id": "hock-room-close",
+      "sha256": "a14b267ae9748f48d209be6b173567354da34706bc2aab21d679cd203ac4088a",
+      "duration": 10.041667,
+      "provenance": {
+        "provider": "Runway",
+        "model": "seedance-2.5",
+        "task_id": "6045f49d-de70-4e6c-9a82-ae4e4d28ab11",
+        "requested_seconds": 10,
+        "credits": 680,
+        "original_photo_references": [
+          "4f2d0bc6-f61a-44e1-99c4-e4828b161cec",
+          "e2fabb16-8662-4049-8cde-61f858c0b054"
+        ]
+      },
+      "source_review": "SOURCE-REVIEW-V3.json",
+      "admission_basis": "Sampled editorial admission only, with declared constraints; not user acceptance.",
+      "width": 1920,
+      "height": 1080,
+      "source_fps": "24/1"
+    },
+    "hock-room-medium": {
+      "path": "assets/native-v3/hock-room-medium-repair.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 4.8
+      },
+      "identity": "hock_siew",
+      "source_generation_id": "hock-room-medium-repair",
+      "sha256": "9b1d0c2c10288cb89b4850f058b79392829f1ea17065bb5c65c493ebce12cffb",
+      "duration": 5.041667,
+      "provenance": {
+        "provider": "Runway",
+        "model": "seedance-2.5",
+        "task_id": "dde52647-e3c9-4f7e-b838-99c0726240e6",
+        "requested_seconds": 5,
+        "credits": 340,
+        "original_photo_references": [
+          "4f2d0bc6-f61a-44e1-99c4-e4828b161cec",
+          "e2fabb16-8662-4049-8cde-61f858c0b054"
+        ]
+      },
+      "source_review": "SOURCE-REVIEW-V3.json",
+      "admission_basis": "Sampled editorial admission only, with declared constraints; not user acceptance.",
+      "width": 1920,
+      "height": 1080,
+      "source_fps": "24/1"
+    },
+    "hock-window": {
+      "path": "assets/native-v3/hock-window.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "identity": "hock_siew",
+      "source_generation_id": "hock-window",
+      "sha256": "6b4f949f7654ef29063675a67dbbd5b860c3268454423983d1d760486f7b9596",
+      "duration": 10.041667,
+      "provenance": {
+        "provider": "Runway",
+        "model": "seedance-2.5",
+        "task_id": "e44b6a21-d941-4694-a308-a32a2c882deb",
+        "requested_seconds": 10,
+        "credits": 680,
+        "original_photo_references": [
+          "4f2d0bc6-f61a-44e1-99c4-e4828b161cec",
+          "e2fabb16-8662-4049-8cde-61f858c0b054"
+        ]
+      },
+      "source_review": "SOURCE-REVIEW-V3.json",
+      "admission_basis": "Sampled editorial admission only, with declared constraints; not user acceptance.",
+      "required_crop": {
+        "x": 80,
+        "y": 0,
+        "width": 1600,
+        "height": 900
+      },
+      "width": 1920,
+      "height": 1080,
+      "source_fps": "24/1"
+    },
+    "hock-tea": {
+      "path": "assets/native-v3/hock-tea.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "identity": "hock_siew",
+      "source_generation_id": "hock-tea",
+      "sha256": "9eda7489cf0e5c390b776648d25c031c5702e3ecf96b5c7e831140e536c09d27",
+      "duration": 10.041667,
+      "provenance": {
+        "provider": "Runway",
+        "model": "seedance-2.5",
+        "task_id": "ae75047a-c616-4c36-aea5-7e6df7ebba13",
+        "requested_seconds": 10,
+        "credits": 680,
+        "original_photo_references": [
+          "4f2d0bc6-f61a-44e1-99c4-e4828b161cec",
+          "e2fabb16-8662-4049-8cde-61f858c0b054"
+        ]
+      },
+      "source_review": "SOURCE-REVIEW-V3.json",
+      "admission_basis": "Sampled editorial admission only, with declared constraints; not user acceptance.",
+      "width": 1920,
+      "height": 1080,
+      "source_fps": "24/1"
+    },
+    "hock-doorway": {
+      "path": "assets/native-v3/hock-doorway.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "identity": "hock_siew",
+      "source_generation_id": "hock-doorway",
+      "sha256": "be1d89882ee0646cf6a5c141ea4632e153bb08261b64790f9af3f496e95ddde1",
+      "duration": 10.041667,
+      "provenance": {
+        "provider": "Runway",
+        "model": "seedance-2.5",
+        "task_id": "07d131ac-7feb-4f41-8cad-c211bfd1f8af",
+        "requested_seconds": 10,
+        "credits": 680,
+        "original_photo_references": [
+          "4f2d0bc6-f61a-44e1-99c4-e4828b161cec",
+          "e2fabb16-8662-4049-8cde-61f858c0b054"
+        ]
+      },
+      "source_review": "SOURCE-REVIEW-V3.json",
+      "admission_basis": "Sampled editorial admission only, with declared constraints; not user acceptance.",
+      "required_crop": {
+        "x": 600,
+        "y": 0,
+        "width": 704,
+        "height": 396
+      },
+      "width": 1920,
+      "height": 1080,
+      "source_fps": "24/1"
+    },
+    "hock-boat-wide": {
+      "path": "assets/native-v3/hock-boat-wide.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "identity": "hock_siew",
+      "source_generation_id": "hock-boat-wide",
+      "sha256": "2ec617de7501dd94a85c26c1c1102f1cf4de6e5c24278b457197c40a518dcaa0",
+      "duration": 10.041667,
+      "provenance": {
+        "provider": "Runway",
+        "model": "seedance-2.5",
+        "task_id": "edcbd840-d76a-4afb-aff9-039c4fe0fa3f",
+        "requested_seconds": 10,
+        "credits": 680,
+        "original_photo_references": [
+          "4f2d0bc6-f61a-44e1-99c4-e4828b161cec",
+          "e2fabb16-8662-4049-8cde-61f858c0b054"
+        ]
+      },
+      "source_review": "SOURCE-REVIEW-V3.json",
+      "admission_basis": "Sampled editorial admission only, with declared constraints; not user acceptance.",
+      "required_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      },
+      "width": 1920,
+      "height": 1080,
+      "source_fps": "24/1"
+    },
+    "hock-boat-close": {
+      "path": "assets/native-v3/hock-boat-close.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "identity": "hock_siew",
+      "source_generation_id": "hock-boat-close",
+      "sha256": "bb98d2c7705ba569c6763b4915d085ee577adacdf7a4a32351b3042b901da7ca",
+      "duration": 10.041667,
+      "provenance": {
+        "provider": "Runway",
+        "model": "seedance-2.5",
+        "task_id": "0e2b6ec1-065f-4b3d-947b-375ef2575bcb",
+        "requested_seconds": 10,
+        "credits": 680,
+        "original_photo_references": [
+          "4f2d0bc6-f61a-44e1-99c4-e4828b161cec",
+          "e2fabb16-8662-4049-8cde-61f858c0b054"
+        ]
+      },
+      "source_review": "SOURCE-REVIEW-V3.json",
+      "admission_basis": "Sampled editorial admission only, with declared constraints; not user acceptance.",
+      "width": 1920,
+      "height": 1080,
+      "source_fps": "24/1"
+    },
+    "hock-waterfront": {
+      "path": "assets/native-v3/hock-waterfront.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "identity": "hock_siew",
+      "source_generation_id": "hock-waterfront",
+      "sha256": "5f25ad116ada02b67b9ba4242b406a6d3fc3916448cdebe87dc3f69efe1d4e3a",
+      "duration": 10.041667,
+      "provenance": {
+        "provider": "Runway",
+        "model": "seedance-2.5",
+        "task_id": "83aa41da-aff6-4289-9eb3-6d2cc0f66304",
+        "requested_seconds": 10,
+        "credits": 680,
+        "original_photo_references": [
+          "4f2d0bc6-f61a-44e1-99c4-e4828b161cec",
+          "e2fabb16-8662-4049-8cde-61f858c0b054"
+        ]
+      },
+      "source_review": "SOURCE-REVIEW-V3.json",
+      "admission_basis": "Sampled editorial admission only, with declared constraints; not user acceptance.",
+      "required_crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      },
+      "width": 1920,
+      "height": 1080,
+      "source_fps": "24/1"
+    },
+    "context-water": {
+      "path": "assets/native-v3/context-water.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "identity": "context",
+      "source_generation_id": "context-water",
+      "sha256": "86b2f92cef4d6c85a7c0c21c07de7bc30ec907b3c7f5a1739abb668706bf4bbd",
+      "duration": 10.041667,
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4.5",
+        "task_id": "fbd7c29c-58a2-42b3-914c-2c60fef470f5",
+        "requested_seconds": 10,
+        "credits": 120,
+        "original_photo_references": []
+      },
+      "source_review": "SOURCE-REVIEW-V3.json",
+      "admission_basis": "Sampled editorial admission only, with declared constraints; not user acceptance.",
+      "face_free": true,
+      "width": 1280,
+      "height": 720,
+      "source_fps": "24/1"
+    },
+    "context-rain": {
+      "path": "assets/native-v3/context-rain.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "identity": "context",
+      "source_generation_id": "context-rain",
+      "sha256": "81a0feed899d590a109dee0aea4bcfdea157574b66bae628c079571b0b745a8d",
+      "duration": 10.041667,
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4.5",
+        "task_id": "13df65cb-fb03-40c3-8eb0-70fa48669532",
+        "requested_seconds": 10,
+        "credits": 120,
+        "original_photo_references": []
+      },
+      "source_review": "SOURCE-REVIEW-V3.json",
+      "admission_basis": "Sampled editorial admission only, with declared constraints; not user acceptance.",
+      "face_free": true,
+      "width": 1280,
+      "height": 720,
+      "source_fps": "24/1"
+    },
+    "context-tea": {
+      "path": "assets/native-v3/context-tea-repair.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "identity": "context",
+      "source_generation_id": "context-tea-repair",
+      "sha256": "40233ace0a6f34d9746f2cbce22aa5e9e0bb342660bdeae0c02ebffaafdfa42b",
+      "duration": 10.041667,
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4.5",
+        "task_id": "5ded856b-1989-430b-900d-49f33321bc5c",
+        "requested_seconds": 10,
+        "credits": 120,
+        "original_photo_references": []
+      },
+      "source_review": "SOURCE-REVIEW-V3.json",
+      "admission_basis": "Sampled editorial admission only, with declared constraints; not user acceptance.",
+      "face_free": true,
+      "required_crop": {
+        "x": 540,
+        "y": 270,
+        "width": 720,
+        "height": 405
+      },
+      "width": 1280,
+      "height": 720,
+      "source_fps": "24/1"
+    },
+    "context-waterfront": {
+      "path": "assets/native-v3/context-waterfront.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "identity": "context",
+      "source_generation_id": "context-waterfront",
+      "sha256": "079916dd1ae89c0be7a51a23243ff310d70e07e7cb03ed6f114e50863b61b7ea",
+      "duration": 10.041667,
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4.5",
+        "task_id": "190f5a52-1f6e-43ae-b56c-8a3f3048397f",
+        "requested_seconds": 10,
+        "credits": 120,
+        "original_photo_references": []
+      },
+      "source_review": "SOURCE-REVIEW-V3.json",
+      "admission_basis": "Sampled editorial admission only, with declared constraints; not user acceptance.",
+      "face_free": true,
+      "width": 1280,
+      "height": 720,
+      "source_fps": "24/1"
+    },
+    "context-trees": {
+      "path": "assets/native-v3/context-trees.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "identity": "context",
+      "source_generation_id": "context-trees",
+      "sha256": "b34c613918a0b32d3d1e45a52c3cfd3b932b2113365b262468058b9ea6bd48c4",
+      "duration": 10.041667,
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4.5",
+        "task_id": "349d6602-b0ee-46ff-83e2-92958782864c",
+        "requested_seconds": 10,
+        "credits": 120,
+        "original_photo_references": []
+      },
+      "source_review": "SOURCE-REVIEW-V3.json",
+      "admission_basis": "Sampled editorial admission only, with declared constraints; not user acceptance.",
+      "face_free": true,
+      "width": 1280,
+      "height": 720,
+      "source_fps": "24/1"
+    },
+    "context-table": {
+      "path": "assets/native-v3/context-table-repair.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "identity": "context",
+      "source_generation_id": "context-table-repair",
+      "sha256": "380f59eadc31945e3162176b23df705779337eb78d62c9a242d8717219172a29",
+      "duration": 10.041667,
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4.5",
+        "task_id": "835b972e-9192-405b-8e15-5c1ecd2e294f",
+        "requested_seconds": 10,
+        "credits": 120,
+        "original_photo_references": []
+      },
+      "source_review": "SOURCE-REVIEW-V3.json",
+      "admission_basis": "Sampled editorial admission only, with declared constraints; not user acceptance.",
+      "face_free": true,
+      "width": 1280,
+      "height": 720,
+      "source_fps": "24/1"
+    },
+    "sea-dawn": {
+      "path": "assets/native/sea-dawn.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4-turbo",
+        "task_id": "4eac4fcf-3c4b-419a-ac5b-96159c8ad926",
+        "requested_seconds": 10,
+        "credits": 50,
+        "reference": "assets/plates/sea-dawn.png"
+      },
+      "description": "Real seawater flows and gently undulates continuously, successive small waves wash around the wooden pier posts and reflected sunlight shimmers and breaks across the moving surface",
+      "sha256": "71183de07a7c8b6a86eb8beb0c361ddd4ca4b1685a9b76397360a711cca2c826",
+      "duration": 10.083333,
+      "identity": "context",
+      "v2_crop_review": "context-review-v2.json",
+      "face_free": true,
+      "source_review": "V3-CONTEXT-AUDIT.md",
+      "width": 1280,
+      "height": 720,
+      "source_fps": "24/1"
+    },
+    "wet-footsteps": {
+      "path": "assets/native/wet-footsteps.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.75
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4-turbo",
+        "task_id": "0c5e0698-7176-40e1-b894-9476b7f519c3",
+        "requested_seconds": 10,
+        "credits": 50,
+        "reference": "assets/plates/rain-footsteps.png"
+      },
+      "description": "Three men walk forward naturally and steadily through the rain puddles toward the amber-lit doorway",
+      "sha256": "0553169381fe2ba220077f1c01980540f9dc47e50646a2a98f072abc65898bed",
+      "duration": 10.083333,
+      "identity": "context",
+      "v2_crop_review": "context-review-v2.json",
+      "face_free": true,
+      "source_review": "V3-CONTEXT-AUDIT.md",
+      "width": 1280,
+      "height": 720,
+      "source_fps": "24/1"
+    }
+  },
+  "identity_coverage": {
+    "recognisable_recipient_seconds": 121.958,
+    "recognisable_recipient_fraction": 0.6198,
+    "native_motion_seconds": 184.75,
+    "original_photo_seconds": 12.042,
+    "intentional_reprises": 14,
+    "limits": "Coverage of labelled sources is not a likeness or naturalness score."
+  },
+  "photo_sha256": "f82de273f4ca26487851dd402ecc7557c190c5f4af1c6dbeaca69f0fefa55b71",
+  "original_photos": {
+    "assets/photos/seaside.jpg": "f82de273f4ca26487851dd402ecc7557c190c5f4af1c6dbeaca69f0fefa55b71"
+  }
+}

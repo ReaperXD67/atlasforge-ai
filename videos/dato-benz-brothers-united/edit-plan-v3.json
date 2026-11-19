@@ -1,0 +1,641 @@
+{
+  "revision": 3,
+  "duration_seconds": 196.76,
+  "fps": 24,
+  "frames": 4723,
+  "closing_start": 184.75,
+  "shots": [
+    {
+      "id": "v3-shot-01",
+      "start_frame": 0,
+      "end_frame": 90,
+      "description": "A moving seaside portrait introduces Hock Siew beneath the title",
+      "kind": "native",
+      "clip": "hock-boat-close",
+      "source_at": 2.0,
+      "rate": 1.0,
+      "context_only": false
+    },
+    {
+      "id": "v3-shot-02",
+      "start_frame": 90,
+      "end_frame": 192,
+      "description": "Meet Hock Siew in a quiet close portrait",
+      "kind": "native",
+      "clip": "hock-room-close",
+      "source_at": 0.2,
+      "rate": 1.0,
+      "context_only": false
+    },
+    {
+      "id": "v3-shot-03",
+      "start_frame": 192,
+      "end_frame": 312,
+      "description": "Moving water opens the story into an ordinary horizon",
+      "kind": "native",
+      "clip": "context-water",
+      "source_at": 0.2,
+      "rate": 1.0,
+      "context_only": true
+    },
+    {
+      "id": "v3-shot-04",
+      "start_frame": 312,
+      "end_frame": 442,
+      "description": "Soft rain outside the same modest room gives a lived-in atmosphere",
+      "kind": "native",
+      "clip": "context-rain",
+      "source_at": 0.2,
+      "rate": 1.0,
+      "context_only": true
+    },
+    {
+      "id": "v3-shot-05",
+      "start_frame": 442,
+      "end_frame": 535,
+      "description": "His real build and white shirt establish the single recipient",
+      "kind": "native",
+      "clip": "hock-room-medium",
+      "source_at": 0.2,
+      "rate": 1.0,
+      "context_only": false
+    },
+    {
+      "id": "v3-shot-06",
+      "start_frame": 535,
+      "end_frame": 708,
+      "description": "The first meeting begins with the man being honoured",
+      "kind": "native",
+      "clip": "hock-doorway",
+      "source_at": 0.2,
+      "rate": 1.0,
+      "context_only": false,
+      "crop": {
+        "x": 600,
+        "y": 0,
+        "width": 704,
+        "height": 396
+      }
+    },
+    {
+      "id": "v3-shot-07",
+      "start_frame": 708,
+      "end_frame": 792,
+      "description": "The full name is sung over Hock Siew himself",
+      "kind": "native",
+      "clip": "hock-room-close",
+      "source_at": 4.45,
+      "rate": 1.0,
+      "context_only": false
+    },
+    {
+      "id": "v3-shot-08",
+      "start_frame": 792,
+      "end_frame": 886,
+      "description": "Ordinary daylight and leaves provide a gentle breath",
+      "kind": "native",
+      "clip": "context-trees",
+      "source_at": 0.2,
+      "rate": 1.0,
+      "context_only": true
+    },
+    {
+      "id": "v3-shot-09",
+      "start_frame": 886,
+      "end_frame": 1044,
+      "description": "A calm listening moment carries the lyric about a generous heart",
+      "kind": "native",
+      "clip": "hock-window",
+      "source_at": 0.2,
+      "rate": 1.0,
+      "context_only": false,
+      "crop": {
+        "x": 80,
+        "y": 0,
+        "width": 1600,
+        "height": 900
+      }
+    },
+    {
+      "id": "v3-shot-10",
+      "start_frame": 1044,
+      "end_frame": 1141,
+      "description": "Two cups at a shared table suggest care without a substitute face",
+      "kind": "native",
+      "clip": "context-table",
+      "source_at": 0.2,
+      "rate": 1.0,
+      "context_only": true
+    },
+    {
+      "id": "v3-shot-11",
+      "start_frame": 1141,
+      "end_frame": 1240,
+      "description": "The rain detail gives the journey a physical, ordinary texture",
+      "kind": "native",
+      "clip": "wet-footsteps",
+      "source_at": 0.2,
+      "rate": 1.0,
+      "context_only": true
+    },
+    {
+      "id": "v3-shot-12",
+      "start_frame": 1240,
+      "end_frame": 1390,
+      "description": "An unadorned waterfront links people and distance",
+      "kind": "native",
+      "clip": "context-waterfront",
+      "source_at": 0.2,
+      "rate": 1.0,
+      "context_only": true
+    },
+    {
+      "id": "v3-shot-13",
+      "start_frame": 1390,
+      "end_frame": 1496,
+      "description": "A brief physical rain detail anticipates the line about obstacles",
+      "kind": "native",
+      "clip": "wet-footsteps",
+      "source_at": 4.325,
+      "rate": 1.0,
+      "context_only": true
+    },
+    {
+      "id": "v3-shot-14",
+      "start_frame": 1496,
+      "end_frame": 1584,
+      "description": "Return to the recipient as the lyric speaks of sharing burdens",
+      "reprise_of": "v3-shot-05",
+      "reprise_reason": "Declared non-adjacent recipient motif across musical sections; no new identity or motion is claimed.",
+      "kind": "native",
+      "clip": "hock-room-medium",
+      "source_at": 1.1333333333333333,
+      "rate": 1.0,
+      "context_only": false
+    },
+    {
+      "id": "v3-shot-15",
+      "start_frame": 1584,
+      "end_frame": 1667,
+      "description": "A practical cup and steady pouring stream represent quiet generosity",
+      "kind": "native",
+      "clip": "context-tea",
+      "source_at": 0.2,
+      "rate": 1.0,
+      "context_only": true,
+      "crop": {
+        "x": 540,
+        "y": 270,
+        "width": 720,
+        "height": 405
+      }
+    },
+    {
+      "id": "v3-shot-16",
+      "start_frame": 1667,
+      "end_frame": 1762,
+      "description": "His presence carries the promise kept in the heart",
+      "reprise_of": "v3-shot-06",
+      "reprise_reason": "Declared non-adjacent recipient motif across musical sections; no new identity or motion is claimed.",
+      "kind": "native",
+      "clip": "hock-doorway",
+      "source_at": 5.841666666666667,
+      "rate": 1.0,
+      "context_only": false,
+      "crop": {
+        "x": 600,
+        "y": 0,
+        "width": 704,
+        "height": 396
+      }
+    },
+    {
+      "id": "v3-shot-17",
+      "start_frame": 1762,
+      "end_frame": 1850,
+      "description": "The cup detail completes as concern becomes a shared everyday ritual",
+      "kind": "native",
+      "clip": "context-tea",
+      "source_at": 3.6583333333333337,
+      "rate": 1.0,
+      "context_only": true,
+      "crop": {
+        "x": 540,
+        "y": 270,
+        "width": 720,
+        "height": 405
+      }
+    },
+    {
+      "id": "v3-shot-18",
+      "start_frame": 1850,
+      "end_frame": 1944,
+      "description": "The passage of years returns to a steady personal portrait",
+      "reprise_of": "v3-shot-09",
+      "reprise_reason": "Declared non-adjacent recipient motif across musical sections; no new identity or motion is claimed.",
+      "kind": "native",
+      "clip": "hock-window",
+      "source_at": 5.883333333333335,
+      "rate": 1.0,
+      "context_only": false,
+      "crop": {
+        "x": 80,
+        "y": 0,
+        "width": 1600,
+        "height": 900
+      }
+    },
+    {
+      "id": "v3-shot-19",
+      "start_frame": 1944,
+      "end_frame": 2038,
+      "description": "The first Hock Siew chorus call belongs to his face",
+      "kind": "native",
+      "clip": "hock-boat-close",
+      "source_at": 5.75,
+      "rate": 1.0,
+      "context_only": false
+    },
+    {
+      "id": "v3-shot-20",
+      "start_frame": 2038,
+      "end_frame": 2127,
+      "description": "The real seaside setting opens around the person",
+      "kind": "native",
+      "clip": "hock-boat-wide",
+      "source_at": 0.2,
+      "rate": 1.0,
+      "context_only": false,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "id": "v3-shot-21",
+      "start_frame": 2127,
+      "end_frame": 2170,
+      "description": "The indoor portrait connects the promise of walking together",
+      "reprise_of": "v3-shot-05",
+      "reprise_reason": "Declared non-adjacent recipient motif across musical sections; no new identity or motion is claimed.",
+      "kind": "native",
+      "clip": "hock-room-medium",
+      "source_at": 1.6041666666666663,
+      "rate": 1.0,
+      "context_only": false
+    },
+    {
+      "id": "v3-shot-22",
+      "start_frame": 2170,
+      "end_frame": 2264,
+      "description": "The second name call returns to the same recipient",
+      "reprise_of": "v3-shot-01",
+      "reprise_reason": "Declared non-adjacent recipient motif across musical sections; no new identity or motion is claimed.",
+      "kind": "native",
+      "clip": "hock-boat-close",
+      "source_at": 0.2,
+      "rate": 1.0,
+      "context_only": false
+    },
+    {
+      "id": "v3-shot-23",
+      "start_frame": 2264,
+      "end_frame": 2331,
+      "description": "Water continues physically under the flowing-friendship lyric",
+      "kind": "native",
+      "clip": "context-water",
+      "source_at": 5.2,
+      "rate": 1.0,
+      "context_only": true
+    },
+    {
+      "id": "v3-shot-24",
+      "start_frame": 2331,
+      "end_frame": 2472,
+      "description": "His presence carries the wish outward without changing into a new lead",
+      "kind": "native",
+      "clip": "hock-waterfront",
+      "source_at": 0.2,
+      "rate": 1.0,
+      "context_only": false,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "id": "v3-shot-25",
+      "start_frame": 2472,
+      "end_frame": 2531,
+      "description": "The instrumental completes the ordinary cup ritual through fresh source time",
+      "kind": "native",
+      "clip": "context-tea",
+      "source_at": 7.325,
+      "rate": 1.0,
+      "context_only": true,
+      "crop": {
+        "x": 540,
+        "y": 270,
+        "width": 720,
+        "height": 405
+      }
+    },
+    {
+      "id": "v3-shot-26",
+      "start_frame": 2531,
+      "end_frame": 2569,
+      "description": "Leaves and daylight provide a short musical breath",
+      "kind": "native",
+      "clip": "context-trees",
+      "source_at": 4.116666666666666,
+      "rate": 1.0,
+      "context_only": true
+    },
+    {
+      "id": "v3-shot-27",
+      "start_frame": 2569,
+      "end_frame": 2669,
+      "description": "A natural water texture gives the instrumental space",
+      "kind": "native",
+      "clip": "sea-dawn",
+      "source_at": 0.2,
+      "rate": 1.0,
+      "context_only": true
+    },
+    {
+      "id": "v3-shot-28",
+      "start_frame": 2669,
+      "end_frame": 2767,
+      "description": "Leaves and ordinary sunlight answer the instrumental rise",
+      "kind": "native",
+      "clip": "context-trees",
+      "source_at": 5.699999999999999,
+      "rate": 1.0,
+      "context_only": true
+    },
+    {
+      "id": "v3-shot-29",
+      "start_frame": 2767,
+      "end_frame": 2866,
+      "description": "The room-side rain detail resolves through a fresh source interval",
+      "kind": "native",
+      "clip": "context-rain",
+      "source_at": 5.616666666666667,
+      "rate": 1.0,
+      "context_only": true
+    },
+    {
+      "id": "v3-shot-30",
+      "start_frame": 2866,
+      "end_frame": 2957,
+      "description": "The bridge begins beside the person receiving the thanks",
+      "reprise_of": "v3-shot-05",
+      "reprise_reason": "Declared non-adjacent recipient motif across musical sections; no new identity or motion is claimed.",
+      "kind": "native",
+      "clip": "hock-room-medium",
+      "source_at": 0.6041666666666665,
+      "rate": 1.0,
+      "context_only": false
+    },
+    {
+      "id": "v3-shot-31",
+      "start_frame": 2957,
+      "end_frame": 3089,
+      "description": "Quiet company turns gratitude into a blessing",
+      "kind": "native",
+      "clip": "hock-tea",
+      "source_at": 0.2,
+      "rate": 1.0,
+      "context_only": false
+    },
+    {
+      "id": "v3-shot-32",
+      "start_frame": 3089,
+      "end_frame": 3215,
+      "description": "Soft natural light and a restrained smile carry the wish for health",
+      "reprise_of": "v3-shot-09",
+      "reprise_reason": "Declared non-adjacent recipient motif across musical sections; no new identity or motion is claimed.",
+      "kind": "native",
+      "clip": "hock-window",
+      "source_at": 2.375000000000001,
+      "rate": 1.0,
+      "context_only": false,
+      "crop": {
+        "x": 80,
+        "y": 0,
+        "width": 1600,
+        "height": 900
+      }
+    },
+    {
+      "id": "v3-shot-33",
+      "start_frame": 3215,
+      "end_frame": 3334,
+      "description": "A remembered small deed is shown through hands rather than another male face",
+      "kind": "native",
+      "clip": "context-table",
+      "source_at": 4.241666666666667,
+      "rate": 1.0,
+      "context_only": true
+    },
+    {
+      "id": "v3-shot-34",
+      "start_frame": 3334,
+      "end_frame": 3474,
+      "description": "Hock Siew and the cup are present before the sung toast",
+      "reprise_of": "v3-shot-31",
+      "reprise_reason": "Declared non-adjacent recipient motif across musical sections; no new identity or motion is claimed.",
+      "kind": "native",
+      "clip": "hock-tea",
+      "source_at": 3.9666666666666677,
+      "rate": 1.0,
+      "context_only": false
+    },
+    {
+      "id": "v3-shot-35",
+      "start_frame": 3474,
+      "end_frame": 3583,
+      "description": "The unchanged bond returns to a familiar, ordinary place",
+      "reprise_of": "v3-shot-06",
+      "reprise_reason": "Declared non-adjacent recipient motif across musical sections; no new identity or motion is claimed.",
+      "kind": "native",
+      "clip": "hock-doorway",
+      "source_at": 2.7291666666666674,
+      "rate": 1.0,
+      "context_only": false,
+      "crop": {
+        "x": 600,
+        "y": 0,
+        "width": 704,
+        "height": 396
+      }
+    },
+    {
+      "id": "v3-shot-36",
+      "start_frame": 3583,
+      "end_frame": 3715,
+      "description": "The final name chorus opens on the single recipient",
+      "kind": "native",
+      "clip": "hock-boat-wide",
+      "source_at": 3.9083333333333337,
+      "rate": 1.0,
+      "context_only": false,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "id": "v3-shot-37",
+      "start_frame": 3715,
+      "end_frame": 3801,
+      "description": "His full name and the respect lyric stay with his face",
+      "reprise_of": "v3-shot-07",
+      "reprise_reason": "Declared non-adjacent recipient motif across musical sections; no new identity or motion is claimed.",
+      "kind": "native",
+      "clip": "hock-room-close",
+      "source_at": 6.216666666666667,
+      "rate": 1.0,
+      "context_only": false
+    },
+    {
+      "id": "v3-shot-38",
+      "start_frame": 3801,
+      "end_frame": 3851,
+      "description": "The final Hock Siew call returns to his face in the original seaside setting",
+      "reprise_of": "v3-shot-19",
+      "reprise_reason": "Declared non-adjacent recipient motif across musical sections; no new identity or motion is claimed.",
+      "kind": "native",
+      "clip": "hock-boat-close",
+      "source_at": 7.716666666666667,
+      "rate": 1.0,
+      "context_only": false
+    },
+    {
+      "id": "v3-shot-39",
+      "start_frame": 3851,
+      "end_frame": 3890,
+      "description": "A compact water accent supports the promise of a lasting bond",
+      "kind": "native",
+      "clip": "context-water",
+      "source_at": 7.991666666666667,
+      "rate": 1.0,
+      "context_only": true
+    },
+    {
+      "id": "v3-shot-40",
+      "start_frame": 3890,
+      "end_frame": 3938,
+      "description": "The final wish for peace stays with the honouree",
+      "reprise_of": "v3-shot-09",
+      "reprise_reason": "Declared non-adjacent recipient motif across musical sections; no new identity or motion is claimed.",
+      "kind": "native",
+      "clip": "hock-window",
+      "source_at": 4.000000000000001,
+      "rate": 1.0,
+      "context_only": false,
+      "crop": {
+        "x": 80,
+        "y": 0,
+        "width": 1600,
+        "height": 900
+      }
+    },
+    {
+      "id": "v3-shot-41",
+      "start_frame": 3938,
+      "end_frame": 4082,
+      "description": "The sustained final vocal holds a calm personal moment",
+      "reprise_of": "v3-shot-24",
+      "reprise_reason": "Declared non-adjacent recipient motif across musical sections; no new identity or motion is claimed.",
+      "kind": "native",
+      "clip": "hock-waterfront",
+      "source_at": 3.8000000000000007,
+      "rate": 1.0,
+      "context_only": false,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "id": "v3-shot-42",
+      "start_frame": 4082,
+      "end_frame": 4224,
+      "description": "A quiet moving release follows the final sung phrase",
+      "reprise_of": "v3-shot-20",
+      "reprise_reason": "Declared non-adjacent recipient motif across musical sections; no new identity or motion is claimed.",
+      "kind": "native",
+      "clip": "hock-boat-wide",
+      "source_at": 3.8833333333333337,
+      "rate": 1.0,
+      "context_only": false,
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "id": "v3-shot-43",
+      "start_frame": 4224,
+      "end_frame": 4354,
+      "description": "The water horizon continues using a different source interval",
+      "kind": "native",
+      "clip": "sea-dawn",
+      "source_at": 4.366666666666667,
+      "rate": 1.0,
+      "context_only": true
+    },
+    {
+      "id": "v3-shot-44",
+      "start_frame": 4354,
+      "end_frame": 4434,
+      "description": "The ordinary waterfront settles before the original photograph",
+      "kind": "native",
+      "clip": "context-waterfront",
+      "source_at": 6.45,
+      "rate": 1.0,
+      "context_only": true
+    },
+    {
+      "id": "v3-closing-memory",
+      "kind": "photo",
+      "path": "assets/photos/seaside.jpg",
+      "identity": "hock_siew",
+      "layout": "left",
+      "closing": true,
+      "start_frame": 4434,
+      "end_frame": 4723,
+      "description": "The supplied original seaside photograph closes with the Mandarin dedication"
+    }
+  ],
+  "audio_sha256": "60ee65f074f36b2d31660bee652e111cd84538e51b74a0685cbd895291cd6547",
+  "captions_sha256": "6d3a6b8f711526f7944b5d391cb16340fd1e17db761d1dd41b4d76598a75bd10",
+  "editorial_method": "Natural-setting full-song tribute: original photos, Seedance recipient shots, fresh face-free context, normal-speed native motion and declared non-adjacent recipient reprises.",
+  "media_admission": "Declared usable source ranges and mandatory reviewed crops; final renderer requires actual reviewed sources and hashes.",
+  "intro_text": {
+    "start": 0.3,
+    "end": 3.6
+  },
+  "memory_labels": [],
+  "identity_coverage": {
+    "recognisable_recipient_seconds": 121.958,
+    "recognisable_recipient_fraction": 0.6198,
+    "native_motion_seconds": 184.75,
+    "original_photo_seconds": 12.042,
+    "distinct_native_source_seconds": 146.633,
+    "reused_native_source_seconds": 38.117,
+    "intentional_reprises": 14,
+    "named_lyric_coverage": "All complete name-containing cues show the recipient, subject to source admission."
+  }
+}

@@ -1,0 +1,65 @@
+﻿[Script Info]
+ScriptType: v4.00+
+PlayResX: 1920
+PlayResY: 1080
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Lyrics,Noto Serif CJK SC,52,&H00E8F3FA,&H00E8F3FA,&H00101822,&H90000000,0,0,0,0,100,100,1.7,0,1,2.0,1.0,2,130,130,130,1
+Style: Chorus,Noto Serif CJK SC,54,&H0096D5F1,&H0096D5F1,&H00101822,&H90000000,0,0,0,0,100,100,1.7,0,1,2.0,1.0,2,130,130,130,1
+Style: Title,Noto Serif CJK SC,91,&H00DFF2FF,&H00DFF2FF,&H00101822,&H90000000,0,0,0,0,100,100,7,0,1,1.0,1.0,5,100,100,100,1
+Style: Small,Noto Serif CJK SC,36,&H00DFF2FF,&H00DFF2FF,&H00101822,&H90000000,0,0,0,0,100,100,2,0,1,1.0,1.0,5,100,100,100,1
+Style: Dedication,Noto Serif CJK SC,58,&H00DFF2FF,&H00DFF2FF,&H00101822,&H90000000,0,0,0,0,100,100,3,0,1,1.0,1.0,5,100,100,100,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 1,0:00:00.30,0:00:03.60,Title,,0,0,0,,{\fad(550,550)\pos(1320,405)}有你，兄弟同心
+Dialogue: 1,0:00:00.60,0:00:03.60,Small,,0,0,0,,{\fad(550,550)\pos(1320,515)}献给拿督斯里谢惠福
+Dialogue: 1,0:00:00.90,0:00:03.60,Dedication,,0,0,0,,{\fad(550,550)\fs61\pos(1320,600)\c&H0096D5F1&}Hock Siew
+Dialogue: 2,0:00:22.30,0:00:25.36,Lyrics,,0,0,0,,{\fad(70,100)}一月六号那一天
+Dialogue: 2,0:00:25.64,0:00:29.54,Lyrics,,0,0,0,,{\fad(70,100)}浅顶迎来一份缘
+Dialogue: 2,0:00:29.54,0:00:32.76,Lyrics,,0,0,0,,{\fad(70,100)}拿督斯里谢惠福
+Dialogue: 2,0:00:33.02,0:00:36.72,Lyrics,,0,0,0,,{\fad(70,100)}从此写下你的篇章
+Dialogue: 2,0:00:36.90,0:00:39.82,Lyrics,,0,0,0,,{\fad(70,100)}一颗宽容厚道的心
+Dialogue: 2,0:00:40.40,0:00:43.18,Lyrics,,0,0,0,,{\fad(70,100)}装着兄弟的冷暖
+Dialogue: 2,0:00:43.48,0:00:47.54,Lyrics,,0,0,0,,{\fad(70,100)}尤其弟弟们的敬爱
+Dialogue: 2,0:00:47.56,0:00:51.52,Lyrics,,0,0,0,,{\fad(70,100)}来自你一路的关怀
+Dialogue: 2,0:00:51.66,0:00:54.30,Lyrics,,0,0,0,,{\fad(70,100)}相聚从来不是偶然
+Dialogue: 2,0:00:54.50,0:00:57.72,Lyrics,,0,0,0,,{\fad(70,100)}是你把真心连起来
+Dialogue: 2,0:00:58.18,0:01:02.34,Lyrics,,0,0,0,,{\fad(70,100)}有人遇到风雨阻碍
+Dialogue: 2,0:01:02.34,0:01:05.94,Lyrics,,0,0,0,,{\fad(70,100)}你总愿意伸手分担
+Dialogue: 2,0:01:06.00,0:01:09.36,Lyrics,,0,0,0,,{\fad(70,100)}无私奉献，不求喝彩
+Dialogue: 2,0:01:09.46,0:01:12.70,Lyrics,,0,0,0,,{\fad(70,100)}把情义放在心里面
+Dialogue: 2,0:01:13.40,0:01:17.06,Lyrics,,0,0,0,,{\fad(70,100)}一句兄弟，一份牵挂
+Dialogue: 2,0:01:17.10,0:01:21.00,Lyrics,,0,0,0,,{\fad(70,100)}岁月走过依然不变
+Dialogue: 2,0:01:21.04,0:01:24.86,Chorus,,0,0,0,,{\fad(70,100)}Hock Siew，Hock Siew
+Dialogue: 2,0:01:24.92,0:01:26.78,Chorus,,0,0,0,,{\fad(70,100)}兄弟把你记在心头
+Dialogue: 2,0:01:26.78,0:01:28.62,Chorus,,0,0,0,,{\fad(70,100)}你的宽容，你的守候
+Dialogue: 2,0:01:28.64,0:01:30.40,Chorus,,0,0,0,,{\fad(70,100)}让大家并肩一起走
+Dialogue: 2,0:01:30.42,0:01:32.28,Chorus,,0,0,0,,{\fad(70,100)}Hock Siew，Hock Siew
+Dialogue: 2,0:01:32.30,0:01:34.20,Chorus,,0,0,0,,{\fad(70,100)}情义细水永远长流
+Dialogue: 2,0:01:34.34,0:01:37.12,Chorus,,0,0,0,,{\fad(70,100)}从浅顶唱到马来西亚
+Dialogue: 2,0:01:37.14,0:01:42.92,Chorus,,0,0,0,,{\fad(70,100)}愿这份真心传到更远的地方
+Dialogue: 2,0:01:59.42,0:02:02.88,Lyrics,,0,0,0,,{\fad(70,100)}今天我们聚在你身旁
+Dialogue: 2,0:02:02.90,0:02:06.34,Lyrics,,0,0,0,,{\fad(70,100)}把感谢都唱成祝愿
+Dialogue: 2,0:02:06.64,0:02:10.50,Lyrics,,0,0,0,,{\fad(70,100)}愿你健康，愿你平安
+Dialogue: 2,0:02:10.50,0:02:13.74,Lyrics,,0,0,0,,{\fad(70,100)}每个明天都有笑颜
+Dialogue: 2,0:02:13.96,0:02:17.68,Lyrics,,0,0,0,,{\fad(70,100)}你为大家付出的点滴
+Dialogue: 2,0:02:17.80,0:02:21.06,Lyrics,,0,0,0,,{\fad(70,100)}我们一件一件记心间
+Dialogue: 2,0:02:21.26,0:02:24.74,Lyrics,,0,0,0,,{\fad(70,100)}这一杯敬相识的缘
+Dialogue: 2,0:02:24.74,0:02:28.00,Lyrics,,0,0,0,,{\fad(70,100)}这一首唱不变的情
+Dialogue: 2,0:02:29.32,0:02:32.80,Chorus,,0,0,0,,{\fad(70,100)}Hock Siew，Hock Siew
+Dialogue: 2,0:02:32.92,0:02:34.78,Chorus,,0,0,0,,{\fad(70,100)}兄弟同心，携手向前走
+Dialogue: 2,0:02:34.80,0:02:36.58,Chorus,,0,0,0,,{\fad(70,100)}拿督斯里谢惠福
+Dialogue: 2,0:02:36.64,0:02:38.34,Chorus,,0,0,0,,{\fad(70,100)}这份敬爱藏在心头
+Dialogue: 2,0:02:38.40,0:02:40.22,Chorus,,0,0,0,,{\fad(70,100)}Hock Siew，Hock Siew
+Dialogue: 2,0:02:40.44,0:02:42.06,Chorus,,0,0,0,,{\fad(70,100)}风雨同路，情义长留
+Dialogue: 2,0:02:42.10,0:02:43.92,Chorus,,0,0,0,,{\fad(70,100)}愿你平安，幸福永久
+Dialogue: 2,0:02:44.08,0:02:50.10,Chorus,,0,0,0,,{\fad(70,100)}兄弟相伴，一起到白头！
+Dialogue: 3,0:03:05.45,0:03:16.76,Small,,0,0,0,,{\fad(800,1000)\pos(1300,280)}献给拿督斯里谢惠福
+Dialogue: 3,0:03:05.45,0:03:16.76,Dedication,,0,0,0,,{\fad(800,1000)\fs69\pos(1300,360)\c&H0096D5F1&}Hock Siew
+Dialogue: 3,0:03:05.85,0:03:16.76,Dedication,,0,0,0,,{\fad(800,1000)\fs63\pos(1300,505)}有你，兄弟同心。
+Dialogue: 3,0:03:06.35,0:03:16.76,Dedication,,0,0,0,,{\fad(800,1000)\fs51\pos(1300,600)}愿你平安，幸福永久。
+Dialogue: 3,0:03:06.85,0:03:16.76,Small,,0,0,0,,{\fad(800,1000)\pos(1300,745)\c&H0096D5F1&}兄弟情义 · 一路同行

@@ -1,0 +1,588 @@
+{
+  "version": "V3",
+  "client_date": "2026-11-19",
+  "subject": "Hock Siew / 拿督斯里谢惠福",
+  "authorization": "User selected Seedance 2.5 pilot and requested a new full cinematic MV with natural face/body/backgrounds.",
+  "credit_plan": {
+    "starting_balance": 6851,
+    "planned_protagonist": 5440,
+    "planned_context": 720,
+    "planned_total": 6160,
+    "repair_reserve": 691,
+    "additional_purchase_authorized": false,
+    "observed_after_base_submissions": 691,
+    "base_submissions_realized_total": 6160,
+    "context_repairs_submitted_credits": 240,
+    "observed_after_context_repairs": 451,
+    "remaining_repair_reserve": 451,
+    "protagonist_repair_submitted_credits": 340,
+    "total_submitted_credits": 6740,
+    "observed_after_all_submissions": 111,
+    "final_verified_balance": 111,
+    "repairs_total": 580
+  },
+  "jobs": [
+    {
+      "id": "hock-room-close",
+      "model": "seedance-2.5",
+      "duration": 10,
+      "resolution": "1080p",
+      "ratio": "16:9",
+      "generateAudio": false,
+      "promptText": "The sole man is Hock Siew: the man on the LEFT in reference image 1, not his companion. Reference image 2 shows the same man on the boat. Preserve his actual age, broad rounded facial structure, hairline, ears, neck, wide shoulders and substantial rounded torso from the originals. Keep his real body build throughout; do not borrow the slimmer companion's body or shirt details. Use only the LEFT man's actual plain off-white shirt, rolled sleeves and cream trousers from image 1. His shirt has no chest badge, flag, embroidery or logo; ignore the companion's shirt. A medium close portrait from upper chest to head in the same wood-panelled room as image 1. Frame him slightly left of centre, preserving headroom and natural shoulder width. He takes a quiet breath, makes a small relaxed head turn and a modest genuine smile, then settles. The camera makes a very slow short lateral move, with believable room parallax. One continuous live-action-style shot at normal speed, ordinary believable lighting, real skin texture, stable facial structure and fabric, realistic depth and contact shadows. Quiet personal documentary cinematography with restrained camera movement. The man appears alone. No dialogue, singing, text, graphics, glamour retouching or theatrical effects. ",
+      "kind": "protagonist",
+      "planned_credits": 680,
+      "path": "assets/native-v3/hock-room-close.mp4",
+      "status": "succeeded",
+      "task_id": "6045f49d-de70-4e6c-9a82-ae4e4d28ab11",
+      "credits_remaining": 6171,
+      "reference_assets": [
+        "4f2d0bc6-f61a-44e1-99c4-e4828b161cec",
+        "e2fabb16-8662-4049-8cde-61f858c0b054"
+      ],
+      "reference_order": [
+        "original_frontal_left_hock",
+        "original_seaside_hock"
+      ],
+      "provider_meta": {
+        "modelId": "seedance-2.5",
+        "modelLabel": "Seedance 2.5",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 10,
+        "hasAudio": false,
+        "aspectRatio": "16:9",
+        "resolution": "1080p"
+      },
+      "sha256": "a14b267ae9748f48d209be6b173567354da34706bc2aab21d679cd203ac4088a",
+      "native_metadata": {
+        "width": 1920,
+        "height": 1080,
+        "fps": "24",
+        "duration_seconds": 10.041667,
+        "decoded_frames": 241,
+        "audio_streams": 0
+      },
+      "editorial_admission": "admit_sampled"
+    },
+    {
+      "id": "hock-room-medium",
+      "model": "seedance-2.5",
+      "duration": 10,
+      "resolution": "1080p",
+      "ratio": "16:9",
+      "generateAudio": false,
+      "promptText": "The sole man is Hock Siew: the man on the LEFT in reference image 1, not his companion. Reference image 2 shows the same man on the boat. Preserve his actual age, broad rounded facial structure, hairline, ears, neck, wide shoulders and substantial rounded torso from the originals. Keep his real body build throughout; do not borrow the slimmer companion's body or shirt details. Use only the LEFT man's actual plain off-white shirt, rolled sleeves and cream trousers from image 1. His shirt has no chest badge, flag, embroidery or logo; ignore the companion's shirt. A straight-on medium shot in the original wood-panelled room showing his broad shoulders and full rounded torso down to the waist without slimming. He stands comfortably, transfers his weight gently once and relaxes his shoulders, keeping his arms comfortably at his sides. Static eye-level camera, ordinary room light, subtle cloth movement. One continuous live-action-style shot at normal speed, ordinary believable lighting, real skin texture, stable facial structure and fabric, realistic depth and contact shadows. Quiet personal documentary cinematography with restrained camera movement. The man appears alone. No dialogue, singing, text, graphics, glamour retouching or theatrical effects. ",
+      "kind": "protagonist",
+      "planned_credits": 680,
+      "path": "assets/native-v3/hock-room-medium.mp4",
+      "status": "succeeded",
+      "reference_assets": [
+        "4f2d0bc6-f61a-44e1-99c4-e4828b161cec",
+        "e2fabb16-8662-4049-8cde-61f858c0b054"
+      ],
+      "reference_order": [
+        "original_frontal_left_hock",
+        "original_seaside_hock"
+      ],
+      "task_id": "3146341a-ac9f-41fa-94fc-624e3cd730ad",
+      "credits_remaining": 4091,
+      "sha256": "f1839d54cb61d9eade2e47135ddc8534ec0545c9e6d73618a5297d124b723734",
+      "native_metadata": {
+        "width": 1920,
+        "height": 1080,
+        "fps": "24",
+        "duration_seconds": 10.041667,
+        "decoded_frames": 241,
+        "audio_streams": 0
+      },
+      "editorial_admission": "reject_for_v3_use"
+    },
+    {
+      "id": "hock-window",
+      "model": "seedance-2.5",
+      "duration": 10,
+      "resolution": "1080p",
+      "ratio": "16:9",
+      "generateAudio": false,
+      "promptText": "The sole man is Hock Siew: the man on the LEFT in reference image 1, not his companion. Reference image 2 shows the same man on the boat. Preserve his actual age, broad rounded facial structure, hairline, ears, neck, wide shoulders and substantial rounded torso from the originals. Keep his real body build throughout; do not borrow the slimmer companion's body or shirt details. Use only the LEFT man's actual plain off-white shirt, rolled sleeves and cream trousers from image 1. His shirt has no chest badge, flag, embroidery or logo; ignore the companion's shirt. A medium portrait seated beside an ordinary window in the same modest wood-panelled interior. Soft natural window light crosses his face and broad torso. A light curtain stirs gently. He looks toward the window briefly, then turns back slightly toward camera with a quiet warm expression. Keep the window, room geometry and illumination stable. One continuous live-action-style shot at normal speed, ordinary believable lighting, real skin texture, stable facial structure and fabric, realistic depth and contact shadows. Quiet personal documentary cinematography with restrained camera movement. The man appears alone. No dialogue, singing, text, graphics, glamour retouching or theatrical effects. ",
+      "kind": "protagonist",
+      "planned_credits": 680,
+      "path": "assets/native-v3/hock-window.mp4",
+      "status": "succeeded",
+      "reference_assets": [
+        "4f2d0bc6-f61a-44e1-99c4-e4828b161cec",
+        "e2fabb16-8662-4049-8cde-61f858c0b054"
+      ],
+      "reference_order": [
+        "original_frontal_left_hock",
+        "original_seaside_hock"
+      ],
+      "task_id": "e44b6a21-d941-4694-a308-a32a2c882deb",
+      "credits_remaining": 3411,
+      "sha256": "6b4f949f7654ef29063675a67dbbd5b860c3268454423983d1d760486f7b9596",
+      "native_metadata": {
+        "width": 1920,
+        "height": 1080,
+        "fps": "24",
+        "duration_seconds": 10.041667,
+        "decoded_frames": 241,
+        "audio_streams": 0
+      },
+      "editorial_admission": "admit_sampled_crop_only"
+    },
+    {
+      "id": "hock-tea",
+      "model": "seedance-2.5",
+      "duration": 10,
+      "resolution": "1080p",
+      "ratio": "16:9",
+      "generateAudio": false,
+      "promptText": "The sole man is Hock Siew: the man on the LEFT in reference image 1, not his companion. Reference image 2 shows the same man on the boat. Preserve his actual age, broad rounded facial structure, hairline, ears, neck, wide shoulders and substantial rounded torso from the originals. Keep his real body build throughout; do not borrow the slimmer companion's body or shirt details. Use only the LEFT man's actual plain off-white shirt, rolled sleeves and cream trousers from image 1. His shirt has no chest badge, flag, embroidery or logo; ignore the companion's shirt. A medium shot of him seated naturally at a simple wooden tea table in the wood-panelled room. His body retains its actual broad build. He gently lifts a small plain porcelain tea cup a few centimetres in a quiet toast, holds it briefly with a small warm smile, then rests it back on the table. The cup and fingers maintain correct physical contact. Soft ordinary window light, camera steady, no drinking or mouth obscuring. One continuous live-action-style shot at normal speed, ordinary believable lighting, real skin texture, stable facial structure and fabric, realistic depth and contact shadows. Quiet personal documentary cinematography with restrained camera movement. The man appears alone. No dialogue, singing, text, graphics, glamour retouching or theatrical effects. ",
+      "kind": "protagonist",
+      "planned_credits": 680,
+      "path": "assets/native-v3/hock-tea.mp4",
+      "status": "succeeded",
+      "reference_assets": [
+        "4f2d0bc6-f61a-44e1-99c4-e4828b161cec",
+        "e2fabb16-8662-4049-8cde-61f858c0b054"
+      ],
+      "reference_order": [
+        "original_frontal_left_hock",
+        "original_seaside_hock"
+      ],
+      "task_id": "ae75047a-c616-4c36-aea5-7e6df7ebba13",
+      "credits_remaining": 2731,
+      "sha256": "9eda7489cf0e5c390b776648d25c031c5702e3ecf96b5c7e831140e536c09d27",
+      "native_metadata": {
+        "width": 1920,
+        "height": 1080,
+        "fps": "24",
+        "duration_seconds": 10.041667,
+        "decoded_frames": 241,
+        "audio_streams": 0
+      },
+      "editorial_admission": "admit_sampled"
+    },
+    {
+      "id": "hock-doorway",
+      "model": "seedance-2.5",
+      "duration": 10,
+      "resolution": "1080p",
+      "ratio": "16:9",
+      "generateAudio": false,
+      "promptText": "The sole man is Hock Siew: the man on the LEFT in reference image 1, not his companion. Reference image 2 shows the same man on the boat. Preserve his actual age, broad rounded facial structure, hairline, ears, neck, wide shoulders and substantial rounded torso from the originals. Keep his real body build throughout; do not borrow the slimmer companion's body or shirt details. Use only the LEFT man's actual plain off-white shirt, rolled sleeves and cream trousers from image 1. His shirt has no chest badge, flag, embroidery or logo; ignore the companion's shirt. A waist-up view beside the ordinary wooden doorway in image 1. He makes one small natural step into a comfortable standing position, gently rests his hand on the door frame and glances toward someone outside frame, then settles. Only one man is visible. Keep his broad torso and shoulders, normal weight transfer, coherent door geometry and ordinary indoor shadows. Eye-level static camera. One continuous live-action-style shot at normal speed, ordinary believable lighting, real skin texture, stable facial structure and fabric, realistic depth and contact shadows. Quiet personal documentary cinematography with restrained camera movement. The man appears alone. No dialogue, singing, text, graphics, glamour retouching or theatrical effects. ",
+      "kind": "protagonist",
+      "planned_credits": 680,
+      "path": "assets/native-v3/hock-doorway.mp4",
+      "status": "succeeded",
+      "reference_assets": [
+        "4f2d0bc6-f61a-44e1-99c4-e4828b161cec",
+        "e2fabb16-8662-4049-8cde-61f858c0b054"
+      ],
+      "reference_order": [
+        "original_frontal_left_hock",
+        "original_seaside_hock"
+      ],
+      "task_id": "07d131ac-7feb-4f41-8cad-c211bfd1f8af",
+      "credits_remaining": 2051,
+      "sha256": "be1d89882ee0646cf6a5c141ea4632e153bb08261b64790f9af3f496e95ddde1",
+      "native_metadata": {
+        "width": 1920,
+        "height": 1080,
+        "fps": "24",
+        "duration_seconds": 10.041667,
+        "decoded_frames": 241,
+        "audio_streams": 0
+      },
+      "editorial_admission": "admit_sampled_crop_only"
+    },
+    {
+      "id": "hock-boat-wide",
+      "model": "seedance-2.5",
+      "duration": 10,
+      "resolution": "1080p",
+      "ratio": "16:9",
+      "generateAudio": false,
+      "promptText": "The sole man is Hock Siew: the man on the LEFT in reference image 1, not his companion. Reference image 2 shows the same man on the boat. Preserve his actual age, broad rounded facial structure, hairline, ears, neck, wide shoulders and substantial rounded torso from the originals. Keep his real body build throughout; do not borrow the slimmer companion's body or shirt details. Use the man's original burgundy short-sleeved knit top and seated body pose from reference image 2. Image 1 supplies additional facial and build evidence only. The location is the ordinary boat seat, metal rail, real sea and distant low coast seen in image 2, with coherent late-afternoon light. An eye-level medium shot of him resting comfortably on the boat seat, his forearm supported naturally by the seat back. He looks across the water, then makes a small relaxed head turn with a quiet smile. The boat gently rocks, seawater flows and the distant coast remains stable. A light breeze moves his short hair and knit fabric subtly. Restrained camera, no grand yacht or invented skyline. One continuous live-action-style shot at normal speed, ordinary believable lighting, real skin texture, stable facial structure and fabric, realistic depth and contact shadows. Quiet personal documentary cinematography with restrained camera movement. The man appears alone. No dialogue, singing, text, graphics, glamour retouching or theatrical effects. ",
+      "kind": "protagonist",
+      "planned_credits": 680,
+      "path": "assets/native-v3/hock-boat-wide.mp4",
+      "status": "succeeded",
+      "task_id": "edcbd840-d76a-4afb-aff9-039c4fe0fa3f",
+      "credits_remaining": 5491,
+      "reference_assets": [
+        "4f2d0bc6-f61a-44e1-99c4-e4828b161cec",
+        "e2fabb16-8662-4049-8cde-61f858c0b054"
+      ],
+      "reference_order": [
+        "original_frontal_left_hock",
+        "original_seaside_hock"
+      ],
+      "provider_meta": {
+        "modelId": "seedance-2.5",
+        "modelLabel": "Seedance 2.5",
+        "width": 1920,
+        "height": 1080,
+        "durationSeconds": 10,
+        "hasAudio": false,
+        "aspectRatio": "16:9",
+        "resolution": "1080p"
+      },
+      "sha256": "2ec617de7501dd94a85c26c1c1102f1cf4de6e5c24278b457197c40a518dcaa0",
+      "native_metadata": {
+        "width": 1920,
+        "height": 1080,
+        "fps": "24",
+        "duration_seconds": 10.041667,
+        "decoded_frames": 241,
+        "audio_streams": 0
+      },
+      "editorial_admission": "admit_sampled_crop_only"
+    },
+    {
+      "id": "hock-boat-close",
+      "model": "seedance-2.5",
+      "duration": 10,
+      "resolution": "1080p",
+      "ratio": "16:9",
+      "generateAudio": false,
+      "promptText": "The sole man is Hock Siew: the man on the LEFT in reference image 1, not his companion. Reference image 2 shows the same man on the boat. Preserve his actual age, broad rounded facial structure, hairline, ears, neck, wide shoulders and substantial rounded torso from the originals. Keep his real body build throughout; do not borrow the slimmer companion's body or shirt details. Use the man's original burgundy short-sleeved knit top and seated body pose from reference image 2. Image 1 supplies additional facial and build evidence only. The location is the ordinary boat seat, metal rail, real sea and distant low coast seen in image 2, with coherent late-afternoon light. A closer portrait of his real face and shoulders, looking gently toward camera. A small genuine smile grows and relaxes, with a natural blink and breathing. In the softly focused background the actual seawater keeps moving and the rail rocks slightly with the boat. Keep pores, expression and hairline ordinary and realistic; no beauty smoothing. Slow, very small camera drift only. One continuous live-action-style shot at normal speed, ordinary believable lighting, real skin texture, stable facial structure and fabric, realistic depth and contact shadows. Quiet personal documentary cinematography with restrained camera movement. The man appears alone. No dialogue, singing, text, graphics, glamour retouching or theatrical effects.  The burgundy knit top is plain, with no chest patch, words, logo or added embroidery. Keep wrists outside the frame; do not invent a watch, rings or other accessories.",
+      "kind": "protagonist",
+      "planned_credits": 680,
+      "path": "assets/native-v3/hock-boat-close.mp4",
+      "status": "succeeded",
+      "reference_assets": [
+        "4f2d0bc6-f61a-44e1-99c4-e4828b161cec",
+        "e2fabb16-8662-4049-8cde-61f858c0b054"
+      ],
+      "reference_order": [
+        "original_frontal_left_hock",
+        "original_seaside_hock"
+      ],
+      "task_id": "0e2b6ec1-065f-4b3d-947b-375ef2575bcb",
+      "credits_remaining": 1371,
+      "sha256": "bb98d2c7705ba569c6763b4915d085ee577adacdf7a4a32351b3042b901da7ca",
+      "native_metadata": {
+        "width": 1920,
+        "height": 1080,
+        "fps": "24",
+        "duration_seconds": 10.041667,
+        "decoded_frames": 241,
+        "audio_streams": 0
+      },
+      "editorial_admission": "admit_sampled"
+    },
+    {
+      "id": "hock-waterfront",
+      "model": "seedance-2.5",
+      "duration": 10,
+      "resolution": "1080p",
+      "ratio": "16:9",
+      "generateAudio": false,
+      "promptText": "The sole man is Hock Siew: the man on the LEFT in reference image 1, not his companion. Reference image 2 shows the same man on the boat. Preserve his actual age, broad rounded facial structure, hairline, ears, neck, wide shoulders and substantial rounded torso from the originals. Keep his real body build throughout; do not borrow the slimmer companion's body or shirt details. Use only the LEFT man's actual plain off-white shirt, rolled sleeves and cream trousers from image 1. His shirt has no chest badge, flag, embroidery or logo; ignore the companion's shirt. An eye-level medium shot on an ordinary shaded waterfront path beside a simple low concrete railing, calm real sea and low tropical trees. The setting is modest, with believable humid daylight and coherent geography. He rests one forearm comfortably on the rail, looks out to sea and then turns slightly toward the camera. Preserve his broad torso without slimming, feet remain out of frame. Water and leaves move gently, camera stays steady. One continuous live-action-style shot at normal speed, ordinary believable lighting, real skin texture, stable facial structure and fabric, realistic depth and contact shadows. Quiet personal documentary cinematography with restrained camera movement. The man appears alone. No dialogue, singing, text, graphics, glamour retouching or theatrical effects. ",
+      "kind": "protagonist",
+      "planned_credits": 680,
+      "path": "assets/native-v3/hock-waterfront.mp4",
+      "status": "succeeded",
+      "reference_assets": [
+        "4f2d0bc6-f61a-44e1-99c4-e4828b161cec",
+        "e2fabb16-8662-4049-8cde-61f858c0b054"
+      ],
+      "reference_order": [
+        "original_frontal_left_hock",
+        "original_seaside_hock"
+      ],
+      "task_id": "83aa41da-aff6-4289-9eb3-6d2cc0f66304",
+      "credits_remaining": 691,
+      "sha256": "5f25ad116ada02b67b9ba4242b406a6d3fc3916448cdebe87dc3f69efe1d4e3a",
+      "native_metadata": {
+        "width": 1920,
+        "height": 1080,
+        "fps": "24",
+        "duration_seconds": 10.041667,
+        "decoded_frames": 241,
+        "audio_streams": 0
+      },
+      "editorial_admission": "admit_sampled_crop_only"
+    },
+    {
+      "id": "context-water",
+      "model": "gen-4.5",
+      "duration": 10,
+      "resolution": "720p",
+      "ratio": "16:9",
+      "generateAudio": false,
+      "promptText": "One continuous photorealistic live-action detail shot in an ordinary coastal Malaysian setting, with natural restrained colour, coherent illumination and realistic physical motion. No people or identifiable faces, text, logos or stylized effects. No dreamlike landscape or conspicuous digital glow. Normal speed. Low eye-level view across real coastal seawater at soft morning light. Small uneven waves travel across the frame, break naturally against a simple weathered pier edge and recede. Wind-driven ripples vary naturally. The camera is nearly still, with only a very slow lateral drift. The low distant coast remains fixed.",
+      "kind": "context",
+      "planned_credits": 120,
+      "path": "assets/native-v3/context-water.mp4",
+      "status": "succeeded",
+      "task_id": "fbd7c29c-58a2-42b3-914c-2c60fef470f5",
+      "credits_remaining": 5371,
+      "provider_meta": {
+        "modelId": "gen-4.5",
+        "modelLabel": "Gen-4.5",
+        "width": 1280,
+        "height": 720,
+        "durationSeconds": 10.041667
+      },
+      "sha256": "86b2f92cef4d6c85a7c0c21c07de7bc30ec907b3c7f5a1739abb668706bf4bbd",
+      "native_metadata": {
+        "width": 1280,
+        "height": 720,
+        "fps": "24",
+        "duration_seconds": 10.041667,
+        "decoded_frames": 241,
+        "audio_streams": 0
+      },
+      "editorial_admission": "admit_sampled"
+    },
+    {
+      "id": "context-rain",
+      "model": "gen-4.5",
+      "duration": 10,
+      "resolution": "720p",
+      "ratio": "16:9",
+      "generateAudio": false,
+      "promptText": "One continuous photorealistic live-action detail shot in an ordinary coastal Malaysian setting, with natural restrained colour, coherent illumination and realistic physical motion. No people or identifiable faces, text, logos or stylized effects. No dreamlike landscape or conspicuous digital glow. Normal speed. Close view from inside a modest wood-panelled room through a normal glass window. Real rain droplets merge into trails and run downward under gravity. Beyond the window, ordinary trees move gently in the rain. The interior is dry. Static camera, soft overcast daylight, no lightning or excessive mist.",
+      "kind": "context",
+      "planned_credits": 120,
+      "path": "assets/native-v3/context-rain.mp4",
+      "status": "succeeded",
+      "task_id": "13df65cb-fb03-40c3-8eb0-70fa48669532",
+      "credits_remaining": 5251,
+      "provider_meta": {
+        "modelId": "gen-4.5",
+        "modelLabel": "Gen-4.5",
+        "width": 1280,
+        "height": 720,
+        "durationSeconds": 10.041667
+      },
+      "sha256": "81a0feed899d590a109dee0aea4bcfdea157574b66bae628c079571b0b745a8d",
+      "native_metadata": {
+        "width": 1280,
+        "height": 720,
+        "fps": "24",
+        "duration_seconds": 10.041667,
+        "decoded_frames": 241,
+        "audio_streams": 0
+      },
+      "editorial_admission": "admit_sampled"
+    },
+    {
+      "id": "context-tea",
+      "model": "gen-4.5",
+      "duration": 10,
+      "resolution": "720p",
+      "ratio": "16:9",
+      "generateAudio": false,
+      "promptText": "One continuous photorealistic live-action detail shot in an ordinary coastal Malaysian setting, with natural restrained colour, coherent illumination and realistic physical motion. No people or identifiable faces, text, logos or stylized effects. No dreamlike landscape or conspicuous digital glow. Normal speed. Close shot of a plain ceramic teapot spout pouring a continuous thin stream of tea into a small porcelain cup on a simple wooden table. Only the spout and cups are framed; the operator remains outside frame. The liquid level rises plausibly, tiny surface ripples settle, the stream tapers to a few drops and stops. Fine natural steam, warm ordinary window light. No overflowing or floating objects.",
+      "kind": "context",
+      "planned_credits": 120,
+      "path": "assets/native-v3/context-tea.mp4",
+      "status": "succeeded",
+      "task_id": "7201e254-dc6e-4dbd-a3d3-3a2b5fccbe96",
+      "credits_remaining": 5131,
+      "provider_meta": {
+        "modelId": "gen-4.5",
+        "modelLabel": "Gen-4.5",
+        "width": 1280,
+        "height": 720,
+        "durationSeconds": 10.041667
+      },
+      "sha256": "e86d32949db876bed8d526a31323c985efc215bce57eac969f23699be63f0d1e",
+      "native_metadata": {
+        "width": 1280,
+        "height": 720,
+        "fps": "24",
+        "duration_seconds": 10.041667,
+        "decoded_frames": 241,
+        "audio_streams": 0
+      },
+      "editorial_admission": "reject_for_v3_use"
+    },
+    {
+      "id": "context-waterfront",
+      "model": "gen-4.5",
+      "duration": 10,
+      "resolution": "720p",
+      "ratio": "16:9",
+      "generateAudio": false,
+      "promptText": "One continuous photorealistic live-action detail shot in an ordinary coastal Malaysian setting, with natural restrained colour, coherent illumination and realistic physical motion. No people or identifiable faces, text, logos or stylized effects. No dreamlike landscape or conspicuous digital glow. Normal speed. Wide eye-level view along a modest empty coastal walkway with a simple concrete rail and low tropical trees. Water flows beside the path, leaves move in a light breeze and cloud shadows travel slowly. Humid late-afternoon daylight, ordinary worn materials and stable horizon, slow gentle forward camera travel. No dramatic architecture.",
+      "kind": "context",
+      "planned_credits": 120,
+      "path": "assets/native-v3/context-waterfront.mp4",
+      "status": "succeeded",
+      "task_id": "190f5a52-1f6e-43ae-b56c-8a3f3048397f",
+      "credits_remaining": 5011,
+      "provider_meta": {
+        "modelId": "gen-4.5",
+        "modelLabel": "Gen-4.5",
+        "width": 1280,
+        "height": 720,
+        "durationSeconds": 10.041667
+      },
+      "sha256": "079916dd1ae89c0be7a51a23243ff310d70e07e7cb03ed6f114e50863b61b7ea",
+      "native_metadata": {
+        "width": 1280,
+        "height": 720,
+        "fps": "24",
+        "duration_seconds": 10.041667,
+        "decoded_frames": 241,
+        "audio_streams": 0
+      },
+      "editorial_admission": "admit_sampled"
+    },
+    {
+      "id": "context-trees",
+      "model": "gen-4.5",
+      "duration": 10,
+      "resolution": "720p",
+      "ratio": "16:9",
+      "generateAudio": false,
+      "promptText": "One continuous photorealistic live-action detail shot in an ordinary coastal Malaysian setting, with natural restrained colour, coherent illumination and realistic physical motion. No people or identifiable faces, text, logos or stylized effects. No dreamlike landscape or conspicuous digital glow. Normal speed. Close photographic detail of ordinary tropical leaves outside a modest home. A natural breeze moves the branches unevenly; soft daylight creates changing patches of shadow on the nearby wall. Realistic leaf surfaces and coherent depth. Restrained slow camera drift, no particles or glowing leaves.",
+      "kind": "context",
+      "planned_credits": 120,
+      "path": "assets/native-v3/context-trees.mp4",
+      "status": "succeeded",
+      "task_id": "349d6602-b0ee-46ff-83e2-92958782864c",
+      "credits_remaining": 4891,
+      "provider_meta": {
+        "modelId": "gen-4.5",
+        "modelLabel": "Gen-4.5",
+        "width": 1280,
+        "height": 720,
+        "durationSeconds": 10.041667
+      },
+      "sha256": "b34c613918a0b32d3d1e45a52c3cfd3b932b2113365b262468058b9ea6bd48c4",
+      "native_metadata": {
+        "width": 1280,
+        "height": 720,
+        "fps": "24",
+        "duration_seconds": 10.041667,
+        "decoded_frames": 241,
+        "audio_streams": 0
+      },
+      "editorial_admission": "admit_sampled"
+    },
+    {
+      "id": "context-table",
+      "model": "gen-4.5",
+      "duration": 10,
+      "resolution": "720p",
+      "ratio": "16:9",
+      "generateAudio": false,
+      "promptText": "One continuous photorealistic live-action detail shot in an ordinary coastal Malaysian setting, with natural restrained colour, coherent illumination and realistic physical motion. No people or identifiable faces, text, logos or stylized effects. No dreamlike landscape or conspicuous digital glow. Normal speed. Close tabletop view of two ordinary porcelain cups of hot tea beside one another on a worn wooden dining table in a modest wood-panelled room. Fine steam rises unevenly, light from a nearby window falls across the ceramic and the moving shadow of a real curtain crosses the table. A calm slow camera reveal of the pair of cups, with believable reflections and stable table geometry. No hands or people in frame.",
+      "kind": "context",
+      "planned_credits": 120,
+      "path": "assets/native-v3/context-table.mp4",
+      "status": "succeeded",
+      "task_id": "c87cfdcd-ec54-43ac-ae70-248c54bd49e9",
+      "credits_remaining": 4771,
+      "provider_meta": {
+        "modelId": "gen-4.5",
+        "modelLabel": "Gen-4.5",
+        "width": 1280,
+        "height": 720,
+        "durationSeconds": 10.041667
+      },
+      "sha256": "77aa3778c128b9fb65d2ea0d4f9869380f4fbbb6dae19d6ca3602c690d4b5dae",
+      "native_metadata": {
+        "width": 1280,
+        "height": 720,
+        "fps": "24",
+        "duration_seconds": 10.041667,
+        "decoded_frames": 241,
+        "audio_streams": 0
+      },
+      "editorial_admission": "reject_for_v3_use"
+    },
+    {
+      "id": "context-table-repair",
+      "replaces": "context-table",
+      "promptText": "A single continuous photorealistic live-action shot of two plain porcelain cups of cooled tea on an ordinary worn wooden table in a modest wood-panelled room. The room is warm and the tea is cool: the air is entirely clear, without steam, smoke, vapour, mist or haze at any time. The cups and tea surfaces remain still and physically stable. An ordinary curtain outside the shot moves gently, causing a subtle changing patch of natural daylight on the table; the camera makes a very small slow lateral move with believable parallax. Normal speed, restrained natural colour, no people or hands, no text, no logos, no glowing effects.",
+      "model": "gen-4.5",
+      "duration": 10,
+      "resolution": "720p",
+      "ratio": "16:9",
+      "generateAudio": false,
+      "kind": "context_repair",
+      "planned_credits": 120,
+      "path": "assets/native-v3/context-table-repair.mp4",
+      "task_id": "835b972e-9192-405b-8e15-5c1ecd2e294f",
+      "status": "succeeded",
+      "credits_remaining": 571,
+      "sha256": "380f59eadc31945e3162176b23df705779337eb78d62c9a242d8717219172a29",
+      "native_metadata": {
+        "width": 1280,
+        "height": 720,
+        "fps": "24",
+        "duration_seconds": 10.041667,
+        "decoded_frames": 241,
+        "audio_streams": 0
+      },
+      "editorial_admission": "admit_sampled"
+    },
+    {
+      "id": "context-tea-repair",
+      "replaces": "context-tea",
+      "promptText": "One continuous photorealistic live-action close shot of a small porcelain tea cup on a simple wooden table, beside a ceramic teapot. At the start the cup is almost empty. A small thin stream pours from the spout for only the first two seconds, then the teapot tilts back and pouring stops entirely with the cup only half full, far below its rim. For the remaining eight seconds the cup rests, surface ripples settle naturally and the tea level stays exactly constant, without further pouring, drops or overflow. Frame the operator outside the shot; show only spout, cup and table. The air is clear, tea has no visible steam. Static camera, ordinary soft window light, natural colour and realistic liquid behaviour, no people, faces, text or graphics.",
+      "model": "gen-4.5",
+      "duration": 10,
+      "resolution": "720p",
+      "ratio": "16:9",
+      "generateAudio": false,
+      "kind": "context_repair",
+      "planned_credits": 120,
+      "path": "assets/native-v3/context-tea-repair.mp4",
+      "task_id": "5ded856b-1989-430b-900d-49f33321bc5c",
+      "status": "succeeded",
+      "credits_remaining": 451,
+      "sha256": "40233ace0a6f34d9746f2cbce22aa5e9e0bb342660bdeae0c02ebffaafdfa42b",
+      "native_metadata": {
+        "width": 1280,
+        "height": 720,
+        "fps": "24",
+        "duration_seconds": 10.041667,
+        "decoded_frames": 241,
+        "audio_streams": 0
+      },
+      "editorial_admission": "admit_sampled_crop_only"
+    },
+    {
+      "id": "hock-room-medium-repair",
+      "replaces": "hock-room-medium",
+      "model": "seedance-2.5",
+      "duration": 5,
+      "resolution": "1080p",
+      "ratio": "16:9",
+      "generateAudio": false,
+      "kind": "protagonist_repair",
+      "planned_credits": 340,
+      "path": "assets/native-v3/hock-room-medium-repair.mp4",
+      "promptText": "A single natural live-action-style five-second shot of Hock Siew, the man on the LEFT in reference image 1. He is the only person visible. Preserve his actual broad rounded face, photographed age, hairline, wide neck and shoulders and substantial rounded torso; image 2 supplies his alternate facial angle only. He wears only the LEFT man's plain off-white rolled-sleeve shirt from image 1, without the companion's chest logo or any added badge or jewellery. Frame his COMPLETE HEAD, shoulders and torso with generous clear headroom: the top of his head stays comfortably below the upper edge for the whole shot, with roughly fifteen percent of the image height of empty room above it. Lower frame is at the waist; hands and wrists remain outside the frame. Eye-level locked camera, no low angle, no tilt, no zoom. He stands comfortably in the original wood-panelled room, breathes subtly, blinks once and makes a small warm smile. Stable facial structure and natural body build throughout; ordinary ambient light, real unretouched skin and cloth. No other people, text, graphics, dialogue or theatrical lighting.",
+      "task_id": "dde52647-e3c9-4f7e-b838-99c0726240e6",
+      "status": "succeeded",
+      "credits_remaining": 111,
+      "sha256": "9b1d0c2c10288cb89b4850f058b79392829f1ea17065bb5c65c493ebce12cffb",
+      "native_metadata": {
+        "width": 1920,
+        "height": 1080,
+        "fps": "24",
+        "duration_seconds": 5.041667,
+        "decoded_frames": 121,
+        "audio_streams": 0
+      },
+      "editorial_admission": "admit_sampled",
+      "reference_assets": [
+        "4f2d0bc6-f61a-44e1-99c4-e4828b161cec",
+        "e2fabb16-8662-4049-8cde-61f858c0b054"
+      ],
+      "reference_order": [
+        "original_frontal_left_hock",
+        "original_seaside_hock"
+      ]
+    }
+  ]
+}

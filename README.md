@@ -29,11 +29,10 @@ rendering, encoded-audio checks, decoded-frame review materials and portable del
 Explore the [next-story pipeline](docs/NEXT_STORY_PIPELINE.md), [voice experiments](docs/NEXT_VOICE_PASS.md),
 [visual-tool comparison](docs/NEXT_FILM_VISUAL_TOOLS.md) and [pinned BRAG adaptation](docs/BRAG_ADAPTATION.md).
 The wider studio also supports custom music films and researched 6–8 minute editorial videos.
-The [Hock Siew tribute project](videos/dato-benz-brothers-united/README.md) retains a full-song edit,
-source provenance and 40 Mandarin lyric cues. After V2 failed the client's naturalness review,
-two original-photo-driven 1080p tests with Kling O3 Pro and Seedance 2.5 are ready for user review.
-The [raw pilot report](videos/dato-benz-brothers-united/PILOT-REVIEW.md) separates technical checks
-from unresolved likeness/body concerns; further generation and the full MV are held for review.
+The [Hock Siew tribute project](videos/dato-benz-brothers-united/README.md) retains the original song
+and 40 Mandarin lyric cues. The user selected Seedance 2.5 after a short comparison and authorized
+a new full-song cut. [V3 is in production](videos/dato-benz-brothers-united/V3-DIRECTION.md), using
+original-photo references, natural settings and newly generated motion; it is not delivered or accepted yet.
 The [BOSSTON / Pragon project](videos/bosston-pragon-good-fortune/README.md) authors a full-song
 Chinese New Year film from **17 generated AI artworks across 52 shots**, with CPU-estimated
 relative depth, continuous camera travel and selective environmental motion. Its verified V3
