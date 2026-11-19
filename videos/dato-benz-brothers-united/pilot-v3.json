@@ -2,7 +2,7 @@
   "version": "pilot-v3",
   "client_date": "2026-11-19",
   "subject": "Hock Siew / 拿督斯里谢惠福",
-  "stage": "raw_pair_ready_pending_user_review",
+  "stage": "comparison_complete_user_selected_seedance_2_5_for_full_V3",
   "authorization": "User authorized one short Kling and one Seedance 2.5 test after user-completed Max upgrade; full MV held until review.",
   "plan": "Max",
   "credits": {
@@ -45,7 +45,7 @@
       "task_id": "491d93e2-2310-48e0-90ed-fcbca5e4b942",
       "status": "succeeded",
       "path": "assets/pilot-v3/kling-o3-pro-portrait-01.mp4",
-      "user_acceptance": "pending",
+      "user_acceptance": "not_selected",
       "native_output": {
         "model": "kling-o3-pro",
         "task_id": "491d93e2-2310-48e0-90ed-fcbca5e4b942",
@@ -71,7 +71,7 @@
       "task_id": "566fd028-cd6b-4763-83d9-99f7f80b935e",
       "status": "succeeded",
       "path": "assets/pilot-v3/seedance-2.5-portrait-01.mp4",
-      "user_acceptance": "pending",
+      "user_acceptance": "preferred_for_full_V3",
       "native_output": {
         "model": "seedance-2.5",
         "task_id": "566fd028-cd6b-4763-83d9-99f7f80b935e",
@@ -98,11 +98,14 @@
     "New frontal photos are near-duplicates; unobserved angles/movement remain synthesized.",
     "No human user/boss likeness approval or model winner yet."
   ],
-  "full_mv_started": false,
+  "full_mv_started": true,
   "technical_checks": "passed",
   "technical_report": "PILOT-TECHNICAL.json",
   "review_report": "PILOT-REVIEW.md",
   "candidate_comparison": "Not blind or controlled random-seed experiment; same exposed request and originals, two different model implementations.",
-  "further_generation_held": true,
-  "model_winner": null
+  "further_generation_held": false,
+  "model_winner": null,
+  "preferred_model": "seedance-2.5",
+  "full_mv_delivery": "DELIVERY-V3.json",
+  "preference_scope": "User preferred the Seedance result and authorized the full MV; this is a creative selection, not proof of exact identity or full-body naturalness."
 }

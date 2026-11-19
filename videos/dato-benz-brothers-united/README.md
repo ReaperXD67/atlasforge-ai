@@ -1,6 +1,6 @@
 # 有你，兄弟同心
 
-**Current status: V3 source generation and edit preflight are complete; the local full-song render is in progress.** The user preferred Seedance 2.5 and authorized the new cinematic MV with natural backgrounds. Seventeen generation attempts produced fourteen admitted new takes plus two reused environmental sources. Final encoding, original-audio verification and review of the encoded frames are still pending. No V3 delivery or user/boss creative acceptance is claimed. V2 remains a rejected technical archive.
+**Current status: V3 is ready for client review.** The complete 45-shot personal tribute opens on a moving boat close-up, keeps the original 196.760-second song and forty Mandarin lyric cues, and closes with the supplied seaside photograph and a warm dedication. The 1080p master and 720p viewing copy passed full decoding, audio/subtitle verification and sampled encoded-picture review. No blocking defect was found in the inspected encoded stills. Personal likeness and creative acceptance remain for the user and boss to judge. V2 remains a rejected archive.
 
 [V3-DIRECTION.md](V3-DIRECTION.md) describes the authored direction and actual allocation. The [generation ledger](generation-jobs-v3.json), [admitted sources](native-clips-v3.json), [source review](SOURCE-REVIEW-V3.json) and [45-shot edit plan](edit-plan-v3.json) record what was generated, excluded, cropped and selected. The original 196.760-second song and all forty frozen lyric cues are unchanged. No generated portrait became an identity anchor.
 
@@ -8,7 +8,34 @@
 
 Three new frontal full-body photographs are catalogued in [reference-intake-v3.json](reference-intake-v3.json). They strengthen body/outfit evidence but are near-duplicates, not multiple angles or motion evidence. Selected original references were uploaded to Runway for the pilot and may be reused for the authorized V3 production; private media and signed URLs are excluded from Git. [pilot-v3.json](pilot-v3.json) records the short-test jobs, inputs and realized charges; [CLIENT-STATUS.json](CLIENT-STATUS.json) records current production and acceptance. Benz's later song is separate.
 
-## Review the short pair
+## Watch and rebuild V3
+
+- Local 1080p master: `renders/v3/Hock-Siew-Personal-Tribute-V3.mp4` — 1920×1080, 24fps, H.264/AAC, 275.38MB.
+- Smaller viewing copy: `renders/v3/Hock-Siew-Personal-Tribute-V3-720p.mp4` — 91.60MB, with the same encoded AAC soundtrack.
+- [DELIVERY-V3.json](DELIVERY-V3.json): delivery summary and current review status.
+- `renders/v3/Hock-Siew-Personal-Tribute-V3.verification.json`: full local technical receipt.
+- [VISUAL-REVIEW-V3.md](VISUAL-REVIEW-V3.md): sampled review of all 45 encoded shots, name anchors, opening and dedication.
+
+Both exports decoded completely. All forty canonical cues matched the rendered ASS text, and name-containing cues stayed on recipient-labelled sources. Original-audio correspondence measured zero offset, correlations 0.999608/0.999600 and approximately −0.033dB gain; the viewing copy's AAC payload is identical. Nine sampled encoded-picture bindings passed. These checks establish technical delivery, not exact-person likeness or every-frame naturalness.
+
+Run from the repository root in PowerShell:
+
+```powershell
+.venv\Scripts\python.exe videos/dato-benz-brothers-united/prepare_film_v3.py --render --share
+.venv\Scripts\python.exe videos/dato-benz-brothers-united/verify_film_v3.py videos/dato-benz-brothers-united/renders/v3/Hock-Siew-Personal-Tribute-V3.mp4 --contact-sheets
+```
+
+These commands were run successfully. The renderer retains 24fps, lossless FFV1 segment staging and one final H.264 encode, without default sharpening, grain, beauty restoration or motion interpolation. Letterbox is zero to protect headroom. Source admission, exact crop requirements and the full-song preflight are enforced before rendering.
+
+## V3 sources and edit
+
+Fourteen new sources are admitted: eight Seedance 2.5 protagonist files with 75 seconds of requested generation (seven ten-second takes and a five-second room repair), and six ten-second Gen-4.5 face-free contexts. Only the legacy full-frame `sea-dawn` and `wet-footsteps` clips are reused. Seventeen attempts were fully decoded and sampled; the initial room-medium, tea-pour and table takes were excluded and replaced. [SOURCE-REVIEW-V3.json](SOURCE-REVIEW-V3.json) records the constraints and limits.
+
+The finished 45-shot edit contains 184.75 seconds of native movement and only the final 12.042 seconds of original photograph. Native time comprises 146.633 distinct seconds plus 38.117 seconds of declared non-adjacent protagonist reprises across fourteen motifs. Contextual intervals are not replayed. The opening uses `hock-boat-close` at source 2 seconds; the closing uses the authentic seaside photo.
+
+Mandatory source-pixel crops are boat-wide 1280×720, window 1600×900, waterfront 1280×720, doorway 704×396 and tea-context 720×405. They exclude unwanted accessories or malformed objects without repainting his face. New context files are native 720p; Seedance files are 1080p before cropping. A 1080p delivery does not restore the detail of smaller crops, and some shots are softer. See [V3-DIRECTION.md](V3-DIRECTION.md) and the [source manifest](native-clips-v3.json) for the exact selections. Semantic review used chronological stills, not complete normal-speed playback; personal likeness and full-body/gait naturalness remain for the user and boss to judge.
+
+## Pilot comparison archive
 
 - Untouched Kling output: `assets/pilot-v3/kling-o3-pro-portrait-01.mp4`.
 - Untouched Seedance 2.5 output: `assets/pilot-v3/seedance-2.5-portrait-01.mp4`.
@@ -22,25 +49,6 @@ Recheck the existing local files from the repository root in PowerShell:
 ```powershell
 .venv\Scripts\python.exe videos/dato-benz-brothers-united/inspect_pilot.py
 ```
-
-## V3 production
-
-Fourteen new takes are admitted for the edit: eight Seedance 2.5 protagonist sources with 75 seconds of requested generation (seven ten-second takes and a five-second room repair), and six ten-second Gen-4.5 face-free contexts. Only the legacy full-frame `sea-dawn` and `wet-footsteps` clips are reused. The initial room-medium, tea-pour and table takes were excluded for clipped headroom, near-overflowing tea and excessive steam respectively. Their replacements and costs remain in the ledger. Old generated protagonist scenes are excluded.
-
-All seventeen attempts passed full decoding and were examined through ten chronological samples each, with additional crop/transition proofs. This is sampled editorial source admission, not full-speed naturalness review, exact-person recognition or user approval. The five-second medium-room repair supplies only its admitted 0.2–4.8 second interval.
-
-Mandatory crops remove unwanted or malformed details from boat-wide (1280×720), window (1600×900), waterfront (1280×720), doorway (704×396) and tea-context (720×405) shots. The source pixel areas and crop positions are enforced in the manifest/EDL; a 1920×1080 output does not make all those crops native 1080p detail. The doorway crop excludes an added badge/watch; the tea crop excludes a malformed teapot/stray object. New Gen-4.5 contexts are native 1280×720, whereas the Seedance files are 1920×1080 before cropping.
-
-The preflighted 45-shot plan contains 184.75 seconds of native movement and 12.042 seconds of original photographs. Of the native footage, 146.633 seconds are distinct source intervals and 38.117 seconds are declared non-adjacent protagonist reprises across fourteen motifs. Contextual intervals are not replayed. The film opens on the moving seaside portrait; only the final dedication uses the authentic photograph. Matched identity slots are not a claim of genuine captured motion.
-
-The V3 renderer is [prepare_film_v3.py](prepare_film_v3.py), with [verify_film_v3.py](verify_film_v3.py) for full-song format/audio/caption and sampled encoded-picture checks. It retains 24fps, lossless FFV1 segment staging and one final H.264 encode. Natural colour/texture are preserved without default sharpening, grain, beauty restoration or interpolated motion. Letterbox defaults to zero to protect headroom. The admitted manifest and complete edit passed preflight, including negative checks for missing mandatory crops and protagonist retiming. Rebuild from the repository root:
-
-```powershell
-.venv\Scripts\python.exe videos/dato-benz-brothers-united/prepare_film_v3.py --render --share
-.venv\Scripts\python.exe videos/dato-benz-brothers-united/verify_film_v3.py videos/dato-benz-brothers-united/renders/v3/Hock-Siew-Personal-Tribute-V3.mp4 --contact-sheets
-```
-
-The local full-song render has started; final export, audio verification and encoded-frame review remain pending. The expected master path is `renders/v3/Hock-Siew-Personal-Tribute-V3.mp4`, with a smaller `-720p.mp4` copy. Technical checks remain separate from user/boss creative acceptance.
 
 ## Archived V2
 

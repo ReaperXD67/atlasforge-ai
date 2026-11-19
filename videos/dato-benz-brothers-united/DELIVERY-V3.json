@@ -1,0 +1,167 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-19T13:07:35.343480+00:00",
+  "video": "renders/v3/Hock-Siew-Personal-Tribute-V3.mp4",
+  "video_sha256": "b365cdc9c1f3542e0a8d1f5c172516eb9aaf4bbcbcfc25b58f7582d32297d1bd",
+  "size_bytes": 275380943,
+  "fps": 24,
+  "frames": 4723,
+  "duration_seconds": 196.791667,
+  "audio_master_seconds": 196.76,
+  "full_decode": true,
+  "lyrics": {
+    "caption_cues": 40,
+    "canonical_text": "passed",
+    "rendered_ass": "passed"
+  },
+  "identity_coverage": {
+    "recognisable_recipient_seconds": 121.958,
+    "recognisable_recipient_fraction": 0.6198,
+    "native_motion_seconds": 184.75,
+    "original_photo_seconds": 12.042,
+    "intentional_reprises": 14,
+    "limits": "Coverage of labelled sources is not a likeness or naturalness score."
+  },
+  "used_native_source_count": 16,
+  "used_native_sources": [
+    "context-rain",
+    "context-table",
+    "context-tea",
+    "context-trees",
+    "context-water",
+    "context-waterfront",
+    "hock-boat-close",
+    "hock-boat-wide",
+    "hock-doorway",
+    "hock-room-close",
+    "hock-room-medium",
+    "hock-tea",
+    "hock-waterfront",
+    "hock-window",
+    "sea-dawn",
+    "wet-footsteps"
+  ],
+  "picture_binding": {
+    "passed": true,
+    "samples": [
+      {
+        "shot": "v3-shot-03",
+        "frame": 252,
+        "rgb_mae": 0.800567,
+        "luma_ssim": 0.999933
+      },
+      {
+        "shot": "v3-shot-08",
+        "frame": 839,
+        "rgb_mae": 1.101717,
+        "luma_ssim": 0.999863
+      },
+      {
+        "shot": "v3-shot-13",
+        "frame": 1443,
+        "rgb_mae": 1.291492,
+        "luma_ssim": 0.999635
+      },
+      {
+        "shot": "v3-shot-18",
+        "frame": 1897,
+        "rgb_mae": 0.79641,
+        "luma_ssim": 0.999896
+      },
+      {
+        "shot": "v3-shot-23",
+        "frame": 2297,
+        "rgb_mae": 0.970958,
+        "luma_ssim": 0.999826
+      },
+      {
+        "shot": "v3-shot-28",
+        "frame": 2718,
+        "rgb_mae": 1.295291,
+        "luma_ssim": 0.999649
+      },
+      {
+        "shot": "v3-shot-33",
+        "frame": 3274,
+        "rgb_mae": 0.983242,
+        "luma_ssim": 0.999859
+      },
+      {
+        "shot": "v3-shot-38",
+        "frame": 3826,
+        "rgb_mae": 0.716486,
+        "luma_ssim": 0.999912
+      },
+      {
+        "shot": "v3-shot-43",
+        "frame": 4289,
+        "rgb_mae": 1.304179,
+        "luma_ssim": 0.99954
+      }
+    ],
+    "source_stage": "lossless FFV1",
+    "limits": "Sampled correspondence, not proof of every-frame likeness or quality."
+  },
+  "audio": {
+    "offset_samples": 0,
+    "per_channel_correlation": [
+      0.9996083238504844,
+      0.9995996725407412
+    ],
+    "gain_db": [
+      -0.03307302662011599,
+      -0.03270324693794029
+    ],
+    "encoded_aac_sha256": "3d942035a4e5e8d23b80a74c0e8b40d3c0261df3d58df823d5f4bb8c78e295d9"
+  },
+  "sharing_copy": {
+    "path": "renders/v3/Hock-Siew-Personal-Tribute-V3-720p.mp4",
+    "size_bytes": 91604950,
+    "sha256": "514f22625052dfbca30e3861f41156bfcab1b56d3ec480d3dc83f7c616bf1872",
+    "full_decode": true,
+    "aac_identical": true
+  },
+  "visual_review": {
+    "shot_midpoint_sheets": [
+      "renders/v3/review/contact-sheet-01.jpg",
+      "renders/v3/review/contact-sheet-02.jpg",
+      "renders/v3/review/contact-sheet-03.jpg"
+    ],
+    "sampled_shots": 45,
+    "full_name_anchors": 6,
+    "cropped_context_shots_with_first_middle_last_frames": 15,
+    "review_status": "encoded_still_review_passed_no_blocking_issue",
+    "report": "VISUAL-REVIEW-V3.md",
+    "full_speed_human_review": false
+  },
+  "render_input_hashes": {
+    "prepare_film.py": "d162eb66aec46b0e175a0df5c3954c8e66521de2b5fcc8ee9b9d4d445f73a689",
+    "prepare_film_v3.py": "c881917f72e3709e43e22b7a8f7b246b5433bf96f00e9730e46bfad58306b90a",
+    "verify_film.py": "5e2fa4cb60257ecea3b2ffc713d3d501cf02ed59943bbdbf8385d605c9e7e141",
+    "verify_film_v3.py": "2450537679591b1e0050ffdcaf965e9d2639718e93c7e1cc83dab28b556d201f",
+    "captions.json": "6d3a6b8f711526f7944b5d391cb16340fd1e17db761d1dd41b4d76598a75bd10",
+    "lyrics.txt": "0360ef17171c888730ec0e453c004c98332c8bd231e7679bb56eb2ada5716f9f",
+    "film-v3.ass": "514c6a8c45f1e150bb17959ad13da38a6ad846ee90928cf0ed5f392b809ad61d",
+    "edit-plan-v3.json": "b0d8876bf6c5fd8abc27b41ed4a8e5ef100d5187f0a175959fb5df5d8e476975",
+    "native-clips-v3.json": "d2204a2908010cc34d2722a3cc59b25c30823afc9637422cfb5511ad449ff10d",
+    "source-bindings-v3.json": "a203eb86e01d034ec998a02d92b9e0a773159a2677969d8b3f209e0daf53dd40"
+  },
+  "raw_verification_receipt": "renders/v3/Hock-Siew-Personal-Tribute-V3.verification.json",
+  "receipt_scope": "Public technical delivery summary. Render-input hashes are retained; mutable production/status/history records are not binding video inputs.",
+  "editorial_source_reuse": {
+    "recognisable_recipient_seconds": 121.958,
+    "recognisable_recipient_fraction": 0.6198,
+    "native_motion_seconds": 184.75,
+    "original_photo_seconds": 12.042,
+    "distinct_native_source_seconds": 146.633,
+    "reused_native_source_seconds": 38.117,
+    "intentional_reprises": 14,
+    "named_lyric_coverage": "All complete name-containing cues show the recipient, subject to source admission."
+  },
+  "identity_coverage_note": "Recipient-designated screen time, not a likeness-accuracy score or proof of genuine filmed events.",
+  "creative_acceptance": "pending_user_and_boss_review",
+  "generation_credits": {
+    "V3_spent": 6740,
+    "verified_remaining": 111
+  }
+}

@@ -1,6 +1,6 @@
 # Natural-person pilot before a new music video
 
-**Current stage: both raw portrait tests are ready for user review, not accepted.** The user completed the Max upgrade, then requested Kling and Seedance 2.5 short tests before a full MV. Both jobs completed and returned 1920×1080 at 24fps, 5.041667 seconds (121 frames), without audio. Research itself spent zero credits; the current pair charged 425 credits and the final verified balance is 6,851. No further generation or full-song batch starts before user review.
+**Pilot complete: user selected Seedance 2.5 and authorized full V3.** The original two-clip comparison and its cost remain documented below. The new film is rendered and technically verified in [DELIVERY-V3.json](DELIVERY-V3.json); final personal-likeness and creative review remain with the user/boss.
 
 ## Reference set
 

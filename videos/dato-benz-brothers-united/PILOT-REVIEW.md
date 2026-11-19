@@ -18,4 +18,4 @@ These are scoped still-sample observations, not a complete normal-speed viewing 
 
 ## Decision
 
-User acceptance is pending. Further tests, retakes and the full-song MV are held until review. The master soundtrack and all forty lyric cues remain unchanged in the archived edit; this portrait test has no music and makes no new synchronization claim.
+The user subsequently preferred Seedance 2.5 and authorized the full-song V3. This selects the model route; it does not certify every later scene or final creative acceptance. See [DELIVERY-V3.json](DELIVERY-V3.json) for the completed new film. The master soundtrack and all forty lyric cues remain unchanged in the archived edit; this portrait test has no music and makes no new synchronization claim.

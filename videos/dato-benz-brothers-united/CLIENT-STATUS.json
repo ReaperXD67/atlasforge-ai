@@ -1,10 +1,10 @@
 {
   "updated_client_date": "2026-11-19",
   "subject": "Hock Siew / 拿督斯里谢惠福",
-  "latest_rendered_version": "V2",
-  "technical_delivery_checks": "passed_for_archived_V2",
-  "creative_acceptance": "rejected_as_unnatural_face_and_body_per_user_report",
-  "current_stage": "V3_sources_admitted_local_render_in_progress",
+  "latest_rendered_version": "V3",
+  "technical_delivery_checks": "passed_for_V3_master_and_share",
+  "creative_acceptance": "V3_pending_user_and_boss_review_V2_remains_rejected",
+  "current_stage": "V3_exported_verified_ready_for_user_review",
   "research_complete": true,
   "new_generation_held": true,
   "generation_calls_this_research_stage": 0,
@@ -35,10 +35,14 @@
   "V3_repair_reserve": 691,
   "V3_generation_manifest": "generation-jobs-v3.json",
   "V3_edit_plan": "edit-plan-v3.json",
-  "V3_creative_acceptance": "pending_render_verification_and_user_review",
+  "V3_creative_acceptance": "pending_user_and_boss_review",
   "V3_generation_calls": 17,
   "V3_credits_spent": 6740,
   "V3_credit_balance_after": 111,
   "V3_source_admission": "sampled_editorial_review_with_mandatory_crops",
-  "V3_rendering": true
+  "V3_rendering": false,
+  "V3_delivery": "DELIVERY-V3.json",
+  "V3_visual_review": "VISUAL-REVIEW-V3.md",
+  "V3_master": "renders/v3/Hock-Siew-Personal-Tribute-V3.mp4",
+  "V3_share": "renders/v3/Hock-Siew-Personal-Tribute-V3-720p.mp4"
 }
