@@ -1,0 +1,409 @@
+{
+  "audio": {
+    "path": "assets/bgm.wav",
+    "sha256": "60ee65f074f36b2d31660bee652e111cd84538e51b74a0685cbd895291cd6547"
+  },
+  "captions_sha256": "6d3a6b8f711526f7944b5d391cb16340fd1e17db761d1dd41b4d76598a75bd10",
+  "clips": {
+    "rain-arrival": {
+      "path": "assets/native/rain-arrival.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.75
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4.5",
+        "task_id": "6e9c3bfa-d9ed-4e90-ba58-00e137295aab",
+        "requested_seconds": 10,
+        "credits": 120,
+        "reference": null
+      },
+      "description": "A cinematic live-action tribute music video shot in a Malaysian Chinese old-town street at blue hour during heavy rain",
+      "sha256": "ec17dcb0b1c64dac16dd84b4d5691316af64c09ff0de50b0e4a2d968eae93266",
+      "duration": 10.041667
+    },
+    "hands-help": {
+      "path": "assets/native/hands-help.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 7.8
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4.5",
+        "task_id": "c23622e4-2639-4290-9733-84eb00ffa835",
+        "requested_seconds": 10,
+        "credits": 120,
+        "reference": null
+      },
+      "description": "Intimate cinematic live-action close-up in a rain-damp Malaysian shophouse doorway",
+      "sha256": "75111ca8b7c928cb75096c8fad9bee6bfbf712d840180d1990de8c01033d2abb",
+      "duration": 10.041667
+    },
+    "community-boxes": {
+      "path": "assets/native/community-boxes.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.75
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4.5",
+        "task_id": "0d3a98d6-673d-4ba7-9689-53c57d15a6d6",
+        "requested_seconds": 10,
+        "credits": 120,
+        "reference": null
+      },
+      "description": "Cinematic live-action in a modest Malaysian Chinese community kitchen at golden morning",
+      "sha256": "7f59bd5d9422cf9610c2ed74b6949c91e6c6bb4d2444f6dbebf5502598fad2e8",
+      "duration": 10.041667
+    },
+    "burden-shared": {
+      "path": "assets/native/burden-shared.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.75
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4.5",
+        "task_id": "d2b1262c-39da-4b72-a98c-ce50aa647fe2",
+        "requested_seconds": 10,
+        "credits": 120,
+        "reference": null
+      },
+      "description": "Heartfelt cinematic live-action in a weathered Malaysian woodworking workshop",
+      "sha256": "8f3ee8dfaae02f6ba2db842ef6d3365eb38150679f41678f7ebddfd4b84c21d5",
+      "duration": 10.041667
+    },
+    "through-storm": {
+      "path": "assets/native/through-storm.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.7
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4.5",
+        "task_id": "5603d749-02cd-4641-979a-f1aa5367e27e",
+        "requested_seconds": 10,
+        "credits": 120,
+        "reference": null
+      },
+      "description": "A moving cinematic live-action tribute scene in a Malaysian neighbourhood after rain",
+      "sha256": "4cc9486d075ae12247534daa20725807708c6c7526ea2fd1cfeba3e4da7e660a",
+      "duration": 10.041667
+    },
+    "dawn-brothers": {
+      "path": "assets/native/dawn-brothers.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 7.8
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4.5",
+        "task_id": "5aa5ec6c-b519-42d6-80fd-6b1ec5abf962",
+        "requested_seconds": 10,
+        "credits": 120,
+        "reference": null
+      },
+      "description": "Expansive but intimate cinematic live-action",
+      "sha256": "09c986ed5117fa6cd629341ded395fbfe8269cc192f87a704875cfa2f7508da5",
+      "duration": 10.041667
+    },
+    "shared-table": {
+      "path": "assets/native/shared-table.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.7
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4.5",
+        "task_id": "dddd9adc-45fa-41e3-bfa0-472e55d2fa42",
+        "requested_seconds": 10,
+        "credits": 120,
+        "reference": null
+      },
+      "description": "Warm cinematic live-action inside a modest Malaysian Chinese family-style community dining room at night after rain",
+      "sha256": "fa9255d7baa61d0c5ada948e64cb6966096254fb3e633decb90a2fac980cb8d2",
+      "duration": 10.041667
+    },
+    "shoulder-support": {
+      "path": "assets/native/shoulder-support.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.7
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4.5",
+        "task_id": "7ea2fbb5-26d4-4c06-84dd-2de7882de335",
+        "requested_seconds": 10,
+        "credits": 120,
+        "reference": null
+      },
+      "description": "A heartfelt cinematic live-action medium close shot of two fictional adult East Asian male friends in plain navy and grey cotton shirts under a Malaysian shophouse awning after rain",
+      "sha256": "4ac6f32dd6acd657ff924820505911a2120d279bf7c33d434b79350504e72de1",
+      "duration": 10.041667
+    },
+    "passing-kindness": {
+      "path": "assets/native/passing-kindness.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.7
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4.5",
+        "task_id": "fa99c3ae-ee86-4d9d-b370-94c6b884ab39",
+        "requested_seconds": 10,
+        "credits": 120,
+        "reference": null
+      },
+      "description": "Cinematic live-action daytime scene at a modest Malaysian neighbourhood doorway",
+      "sha256": "64182b2414d53c415ef76c662d54b214065a7ef1536a6a2c52c79fa92de90024",
+      "duration": 10.041667
+    },
+    "sea-journey": {
+      "path": "assets/native/sea-journey.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.7
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4.5",
+        "task_id": "248e9a85-481b-438d-909f-4ee6f2ef361c",
+        "requested_seconds": 10,
+        "credits": 120,
+        "reference": null
+      },
+      "description": "Wide cinematic live-action view of a small simple wooden fishing boat moving steadily across the calm sea near a Malaysian coastal town at sunrise",
+      "sha256": "19e01cb9f8b506210a1f56f0ece790d8b089527067747c7d1d7025194580ac35",
+      "duration": 10.041667
+    },
+    "warm-conversation": {
+      "path": "assets/native/warm-conversation.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.7
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4.5",
+        "task_id": "0bc60e9e-1179-417a-8dde-8589867d3e38",
+        "requested_seconds": 10,
+        "credits": 120,
+        "reference": null
+      },
+      "description": "Cinematic live-action medium shot in a humble Malaysian Chinese shophouse courtyard at warm late-afternoon light",
+      "sha256": "056d32df16896eb70d6c4849071f4fbf702e7247cb8c5d109533faf29b04bb5a",
+      "duration": 10.041667
+    },
+    "open-door": {
+      "path": "assets/native/open-door.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 1.6,
+        "end": 9.7
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4.5",
+        "task_id": "a8a70304-2d74-4644-b341-f4881ddca19c",
+        "requested_seconds": 10,
+        "credits": 120,
+        "reference": null
+      },
+      "description": "An uplifting continuous cinematic live-action shot from inside a modest Malaysian neighbourhood community hall",
+      "sha256": "2b93eba251ac4748fce8b642d043fe539e5963dad0cfcd560c3d6659b808ba1e",
+      "duration": 10.041667
+    },
+    "photo-brothers": {
+      "path": "assets/native/photo-brothers.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.1,
+        "end": 6.75
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4.5",
+        "task_id": "51f79d54-d8c1-44b4-b4f3-ba5d4efd34d6",
+        "requested_seconds": 7,
+        "credits": 84,
+        "reference": "assets/photos/brothers.jpg"
+      },
+      "description": "Bring this supplied real group photograph gently to life as an affectionate living tribute",
+      "sha256": "81eb7a3d70a214501acc612f6f15f1181c7a09d3e254cb25bdf3337ddfb4e20f",
+      "duration": 7.041667
+    },
+    "wet-footsteps": {
+      "path": "assets/native/wet-footsteps.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.75
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4-turbo",
+        "task_id": "0c5e0698-7176-40e1-b894-9476b7f519c3",
+        "requested_seconds": 10,
+        "credits": 50,
+        "reference": "assets/plates/rain-footsteps.png"
+      },
+      "description": "Three men walk forward naturally and steadily through the rain puddles toward the amber-lit doorway",
+      "sha256": "0553169381fe2ba220077f1c01980540f9dc47e50646a2a98f072abc65898bed",
+      "duration": 10.083333
+    },
+    "covered-path": {
+      "path": "assets/native/covered-path.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4-turbo",
+        "task_id": "b9c4843f-acac-458b-903f-c243eb2e687b",
+        "requested_seconds": 10,
+        "credits": 50,
+        "reference": "assets/plates/umbrella.png"
+      },
+      "description": "Three adult friends continue walking through the rainfall toward the warmly lit doorway",
+      "sha256": "d908f7ff464a0b68b38c30533dd402cbac3699ff67cbe0434feb70a306172613",
+      "duration": 10.083333
+    },
+    "packing-table": {
+      "path": "assets/native/packing-table.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4-turbo",
+        "task_id": "0e4c8628-a224-4123-bdac-ddbc71f726e7",
+        "requested_seconds": 10,
+        "credits": 50,
+        "reference": "assets/plates/pack-box.png"
+      },
+      "description": "The adult woman finishes placing the sealed rice packet securely into the grocery box, releases it, and adds a small bundle of vegetables",
+      "sha256": "e9de822443bfd3b415321247d3abb9f0c963ce96593b6839ab50c7ce8c91c307",
+      "duration": 10.083333
+    },
+    "workshop-team": {
+      "path": "assets/native/workshop-team.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4-turbo",
+        "task_id": "cf00a8c9-32aa-4fe2-988f-cfa26601c672",
+        "requested_seconds": 10,
+        "credits": 50,
+        "reference": "assets/plates/workshop.png"
+      },
+      "description": "The two adult men together lift the long wooden beam to waist height, bending and straightening their knees with believable shared weight",
+      "sha256": "8bb977769caf3d717ce8d05c247f6f9dc02d6eef994775aa1c7092655c6ff9ac",
+      "duration": 10.083333
+    },
+    "tea-pour": {
+      "path": "assets/native/tea-pour.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4-turbo",
+        "task_id": "b085d34a-c3b1-463d-b78b-bb546e24bd0e",
+        "requested_seconds": 10,
+        "credits": 50,
+        "reference": "assets/plates/tea-pour.png"
+      },
+      "description": "A continuous narrow stream of tea pours from the ceramic teapot into the middle cup, with the liquid surface visibly rising and tiny ripples forming",
+      "sha256": "c1fa943523921945a1705f1b0e60eea9e9b07c4a0679df0b0c04255d21269b87",
+      "duration": 10.083333
+    },
+    "joined-hands": {
+      "path": "assets/native/joined-hands.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4-turbo",
+        "task_id": "2060e333-80f3-449f-ae47-e49d636c5fe0",
+        "requested_seconds": 10,
+        "credits": 50,
+        "reference": "assets/plates/joined-hands.png"
+      },
+      "description": "The three adult friends gently press their stacked hands together once in a quiet pledge of support",
+      "sha256": "d9ef4c24861516ec775cc8febe8d6ce368a57f5b384cf7105cb18e9352b364b4",
+      "duration": 10.083333
+    },
+    "open-shutters": {
+      "path": "assets/native/open-shutters.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4-turbo",
+        "task_id": "6126f43c-0244-40ff-9838-e9a5f8359a39",
+        "requested_seconds": 10,
+        "credits": 50,
+        "reference": "assets/plates/open-shutters.png"
+      },
+      "description": "The adult man pushes the two wooden shutters fully outward using his existing natural hand grips, then lowers his arms and looks into the bright courtyard",
+      "sha256": "b85fed471ae18e55bd661bc556ef62b66a7505601e43a05509a69a3596e48bf9",
+      "duration": 10.083333
+    },
+    "sea-dawn": {
+      "path": "assets/native/sea-dawn.mp4",
+      "status": "accepted",
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "provenance": {
+        "provider": "Runway",
+        "model": "gen-4-turbo",
+        "task_id": "4eac4fcf-3c4b-419a-ac5b-96159c8ad926",
+        "requested_seconds": 10,
+        "credits": 50,
+        "reference": "assets/plates/sea-dawn.png"
+      },
+      "description": "Real seawater flows and gently undulates continuously, successive small waves wash around the wooden pier posts and reflected sunlight shimmers and breaks across the moving surface",
+      "sha256": "71183de07a7c8b6a86eb8beb0c361ddd4ca4b1685a9b76397360a711cca2c826",
+      "duration": 10.083333
+    }
+  },
+  "photo_sha256": "f82de273f4ca26487851dd402ecc7557c190c5f4af1c6dbeaca69f0fefa55b71"
+}

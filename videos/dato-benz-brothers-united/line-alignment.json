@@ -1,0 +1,3468 @@
+{
+  "status": "corrected_user_lyrics_aligned",
+  "title": "有你，兄弟同心",
+  "dedication": "献给拿督斯里谢惠福",
+  "canonical_sung_lines": 40,
+  "master_audio_sha256": "60ee65f074f36b2d31660bee652e111cd84538e51b74a0685cbd895291cd6547",
+  "lyrics_sha256": "0360ef17171c888730ec0e453c004c98332c8bd231e7679bb56eb2ada5716f9f",
+  "captions_sha256": "6d3a6b8f711526f7944b5d391cb16340fd1e17db761d1dd41b4d76598a75bd10",
+  "duration_seconds": 196.76,
+  "vocal_start_seconds": 22.3,
+  "vocal_end_seconds": 170.1,
+  "independent_whole_track_asr_anchor_coverage": 0.7379,
+  "independent_whole_track_mean_anchor_confidence": 0.8995,
+  "model_reviewed_weak_phrases": [
+    1,
+    2,
+    16,
+    20,
+    22,
+    23,
+    29,
+    30,
+    32,
+    33,
+    34,
+    36,
+    39
+  ],
+  "review_notes": [
+    "Line indices are zero-based.",
+    "Corrected user text supersedes unrelated initial 32-line request.",
+    "Hock Siew, 浅顶 and 拿督斯里谢惠福 are exact user spellings; recognition aliases never display.",
+    "Medium whole-track 10.86s first onset rejected; cropped independent ASR resolves 22.30s.",
+    "Name chants have repeated phonetic syllables; phrase captions preserve supplied line text. Per-word name karaoke is approximate.",
+    "Final sung 头 sustain is 170.10s cropped ASR versus 170.90s whole-track ASR; retain cropped boundary.",
+    "Character subdivisions of compound native words and repaired zero spans are estimated.",
+    "Confidence values are decoder/token agreement, not calibrated guarantees of timing accuracy.",
+    "No human listening review was performed."
+  ],
+  "possible_instrumental_windows": [
+    {
+      "start": 0,
+      "end": 22.3,
+      "basis": "cropped independent first vocal onset"
+    },
+    {
+      "start": 103,
+      "end": 119.42,
+      "basis": "both whole-track ASR models omit lyrics; bridge onset refined"
+    },
+    {
+      "start": 171.2,
+      "end": 196.76,
+      "basis": "all observed final vocal/sustain boundaries are before this safe margin"
+    }
+  ],
+  "recommended_closing_portrait_start": 171.2,
+  "final_captions_written": true,
+  "timing_adjustments": [
+    {
+      "line_index": 30,
+      "old_end": 144.78,
+      "new_end": 144.74,
+      "reason": "next independently measured phrase onset"
+    },
+    {
+      "line_index": 30,
+      "word": 7,
+      "old_span": [
+        143.94,
+        144.78
+      ],
+      "new_span": [
+        143.94,
+        144.74
+      ],
+      "reason": "containment/zero-duration repair; phrase display is authoritative"
+    }
+  ],
+  "method": "Native CTranslate2 cross-attention DTW plus independently decoded onset/sustain windows",
+  "lines": [
+    {
+      "start": 22.3,
+      "end": 25.36,
+      "text": "一月六号那一天",
+      "section": "主歌一",
+      "confidence": 0.9097,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "一",
+          "start_seconds": 22.3,
+          "end_seconds": 23.0,
+          "confidence": 0.799,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "月",
+          "start_seconds": 23.0,
+          "end_seconds": 23.14,
+          "confidence": 0.9766,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "六",
+          "start_seconds": 23.14,
+          "end_seconds": 23.38,
+          "confidence": 0.9778,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "号",
+          "start_seconds": 23.38,
+          "end_seconds": 23.64,
+          "confidence": 0.6588,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "那",
+          "start_seconds": 23.64,
+          "end_seconds": 24.0,
+          "confidence": 0.9785,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "一",
+          "start_seconds": 24.0,
+          "end_seconds": 24.24,
+          "confidence": 0.9839,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "天",
+          "start_seconds": 24.24,
+          "end_seconds": 25.36,
+          "confidence": 0.9934,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 18–29.6",
+        "onset_reason": "Independent cropped recognition; reject whole-track 10.86s hallucination.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 25.64,
+      "end": 29.54,
+      "text": "浅顶迎来一份缘",
+      "section": "主歌一",
+      "confidence": 0.5669,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "浅",
+          "start_seconds": 25.64,
+          "end_seconds": 25.74,
+          "confidence": 0.4999,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "顶",
+          "start_seconds": 25.74,
+          "end_seconds": 25.94,
+          "confidence": 0.5183,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "迎",
+          "start_seconds": 25.94,
+          "end_seconds": 26.42,
+          "confidence": 0.1915,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "来",
+          "start_seconds": 26.42,
+          "end_seconds": 27.06,
+          "confidence": 0.9354,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "一",
+          "start_seconds": 27.06,
+          "end_seconds": 27.4,
+          "confidence": 0.817,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "份",
+          "start_seconds": 27.4,
+          "end_seconds": 27.88,
+          "confidence": 0.4443,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "缘",
+          "start_seconds": 27.88,
+          "end_seconds": 29.54,
+          "confidence": 0.5619,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 18–29.6",
+        "onset_reason": "First two place-name syllables are phonetic observations; display user-approved 浅顶.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 29.54,
+      "end": 32.76,
+      "text": "拿督斯里谢惠福",
+      "section": "主歌一",
+      "confidence": 0.3452,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "拿",
+          "start_seconds": 29.54,
+          "end_seconds": 30.34,
+          "confidence": 0.6644,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "督",
+          "start_seconds": 30.34,
+          "end_seconds": 30.64,
+          "confidence": 0.4285,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "斯",
+          "start_seconds": 30.64,
+          "end_seconds": 31.0,
+          "confidence": 0.0204,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "里",
+          "start_seconds": 31.0,
+          "end_seconds": 31.42,
+          "confidence": 0.2163,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "谢",
+          "start_seconds": 31.42,
+          "end_seconds": 31.68,
+          "confidence": 0.0013,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "惠",
+          "start_seconds": 31.68,
+          "end_seconds": 32.34,
+          "confidence": 0.4672,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "福",
+          "start_seconds": 32.34,
+          "end_seconds": 32.76,
+          "confidence": 0.6182,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "forced-alignment-context-medium.json window 0",
+        "onset_reason": "Contextual DTW punctuation boundary before 拿; exact name is user-approved.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 33.02,
+      "end": 36.72,
+      "text": "从此写下你的篇章",
+      "section": "主歌一",
+      "confidence": 0.9851,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "从",
+          "start_seconds": 33.02,
+          "end_seconds": 33.08,
+          "confidence": 0.9829,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "此",
+          "start_seconds": 33.08,
+          "end_seconds": 33.26,
+          "confidence": 0.9988,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "写",
+          "start_seconds": 33.26,
+          "end_seconds": 33.54,
+          "confidence": 0.9686,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "下",
+          "start_seconds": 33.54,
+          "end_seconds": 33.8,
+          "confidence": 0.9981,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "你",
+          "start_seconds": 33.8,
+          "end_seconds": 34.01,
+          "confidence": 0.9826,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "的",
+          "start_seconds": 34.01,
+          "end_seconds": 34.22,
+          "confidence": 0.9826,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "篇",
+          "start_seconds": 34.22,
+          "end_seconds": 35.2,
+          "confidence": 0.9686,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "章",
+          "start_seconds": 35.2,
+          "end_seconds": 36.72,
+          "confidence": 0.9989,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 29.3–43.5",
+        "onset_reason": "Independent first-word onset.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 36.9,
+      "end": 39.82,
+      "text": "一颗宽容厚道的心",
+      "section": "主歌一",
+      "confidence": 0.9873,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "一",
+          "start_seconds": 36.9,
+          "end_seconds": 37.34,
+          "confidence": 0.9701,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "颗",
+          "start_seconds": 37.34,
+          "end_seconds": 37.48,
+          "confidence": 0.9961,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "宽",
+          "start_seconds": 37.48,
+          "end_seconds": 37.72,
+          "confidence": 0.9897,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "容",
+          "start_seconds": 37.72,
+          "end_seconds": 37.96,
+          "confidence": 0.9894,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "厚",
+          "start_seconds": 37.96,
+          "end_seconds": 38.26,
+          "confidence": 0.992,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "道",
+          "start_seconds": 38.26,
+          "end_seconds": 38.56,
+          "confidence": 0.9965,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "的",
+          "start_seconds": 38.56,
+          "end_seconds": 38.82,
+          "confidence": 0.9978,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "心",
+          "start_seconds": 38.82,
+          "end_seconds": 39.82,
+          "confidence": 0.9666,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 29.3–43.5",
+        "onset_reason": "Independent first-word onset; DTW punctuation absorbed first syllable.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 40.4,
+      "end": 43.18,
+      "text": "装着兄弟的冷暖",
+      "section": "主歌一",
+      "confidence": 0.9785,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "装",
+          "start_seconds": 40.4,
+          "end_seconds": 40.48,
+          "confidence": 0.9002,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "着",
+          "start_seconds": 40.48,
+          "end_seconds": 40.7,
+          "confidence": 0.9823,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "兄",
+          "start_seconds": 40.7,
+          "end_seconds": 41.24,
+          "confidence": 0.9901,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "弟",
+          "start_seconds": 41.24,
+          "end_seconds": 41.7,
+          "confidence": 0.9998,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "的",
+          "start_seconds": 41.7,
+          "end_seconds": 42.02,
+          "confidence": 0.9958,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "冷",
+          "start_seconds": 42.02,
+          "end_seconds": 42.16,
+          "confidence": 0.9817,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "暖",
+          "start_seconds": 42.16,
+          "end_seconds": 43.18,
+          "confidence": 0.9994,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 29.3–43.5",
+        "onset_reason": "Independent first-word onset.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 43.48,
+      "end": 47.54,
+      "text": "尤其弟弟们的敬爱",
+      "section": "主歌一",
+      "confidence": 0.9402,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "尤",
+          "start_seconds": 43.48,
+          "end_seconds": 44.18,
+          "confidence": 0.8169,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "其",
+          "start_seconds": 44.18,
+          "end_seconds": 44.42,
+          "confidence": 0.9999,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "弟",
+          "start_seconds": 44.42,
+          "end_seconds": 44.92,
+          "confidence": 0.9932,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "弟",
+          "start_seconds": 44.92,
+          "end_seconds": 45.14,
+          "confidence": 0.9997,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "们",
+          "start_seconds": 45.14,
+          "end_seconds": 45.86,
+          "confidence": 0.9973,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "的",
+          "start_seconds": 45.86,
+          "end_seconds": 46.4,
+          "confidence": 0.9868,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "敬",
+          "start_seconds": 46.4,
+          "end_seconds": 47.16,
+          "confidence": 0.7408,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "爱",
+          "start_seconds": 47.16,
+          "end_seconds": 47.54,
+          "confidence": 0.9872,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-medium.json",
+        "onset_reason": "Whole-track onset corroborated by contextual DTW.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 47.56,
+      "end": 51.52,
+      "text": "来自你一路的关怀",
+      "section": "主歌一",
+      "confidence": 0.9762,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "来",
+          "start_seconds": 47.56,
+          "end_seconds": 47.86,
+          "confidence": 0.9899,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "自",
+          "start_seconds": 47.86,
+          "end_seconds": 48.12,
+          "confidence": 0.9994,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "你",
+          "start_seconds": 48.12,
+          "end_seconds": 48.6,
+          "confidence": 0.9956,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "一",
+          "start_seconds": 48.6,
+          "end_seconds": 48.84,
+          "confidence": 0.8544,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "路",
+          "start_seconds": 48.84,
+          "end_seconds": 49.1,
+          "confidence": 0.9995,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "的",
+          "start_seconds": 49.1,
+          "end_seconds": 49.64,
+          "confidence": 0.9921,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "关",
+          "start_seconds": 49.64,
+          "end_seconds": 50.02,
+          "confidence": 0.9888,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "怀",
+          "start_seconds": 50.02,
+          "end_seconds": 51.52,
+          "confidence": 0.9898,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 43.2–58.2",
+        "onset_reason": "Independent first-word onset; repair zero-duration DTW 来.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 51.66,
+      "end": 54.3,
+      "text": "相聚从来不是偶然",
+      "section": "主歌二",
+      "confidence": 0.9847,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "相",
+          "start_seconds": 51.66,
+          "end_seconds": 52.04,
+          "confidence": 0.9752,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "聚",
+          "start_seconds": 52.04,
+          "end_seconds": 52.24,
+          "confidence": 0.9823,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "从",
+          "start_seconds": 52.24,
+          "end_seconds": 52.48,
+          "confidence": 0.9954,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "来",
+          "start_seconds": 52.48,
+          "end_seconds": 52.78,
+          "confidence": 0.9978,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "不",
+          "start_seconds": 52.78,
+          "end_seconds": 52.94,
+          "confidence": 0.9651,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "是",
+          "start_seconds": 52.94,
+          "end_seconds": 53.1,
+          "confidence": 0.9651,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "偶",
+          "start_seconds": 53.1,
+          "end_seconds": 53.7,
+          "confidence": 0.9975,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "然",
+          "start_seconds": 53.7,
+          "end_seconds": 54.3,
+          "confidence": 0.999,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 43.2–58.2",
+        "onset_reason": "Independent first-word onset.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 54.5,
+      "end": 57.72,
+      "text": "是你把真心连起来",
+      "section": "主歌二",
+      "confidence": 0.9511,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "是",
+          "start_seconds": 54.5,
+          "end_seconds": 55.02,
+          "confidence": 0.9781,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "你",
+          "start_seconds": 55.02,
+          "end_seconds": 55.24,
+          "confidence": 0.9983,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "把",
+          "start_seconds": 55.24,
+          "end_seconds": 55.5,
+          "confidence": 0.9957,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "真",
+          "start_seconds": 55.5,
+          "end_seconds": 55.96,
+          "confidence": 0.9907,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "心",
+          "start_seconds": 55.96,
+          "end_seconds": 56.36,
+          "confidence": 0.9936,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "连",
+          "start_seconds": 56.36,
+          "end_seconds": 56.8,
+          "confidence": 0.6594,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "起",
+          "start_seconds": 56.8,
+          "end_seconds": 57.22,
+          "confidence": 0.9947,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "来",
+          "start_seconds": 57.22,
+          "end_seconds": 57.72,
+          "confidence": 0.9982,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 43.2–58.2",
+        "onset_reason": "Independent first-word onset.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 58.18,
+      "end": 62.34,
+      "text": "有人遇到风雨阻碍",
+      "section": "主歌二",
+      "confidence": 0.9681,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "有",
+          "start_seconds": 58.18,
+          "end_seconds": 58.63,
+          "confidence": 0.9189,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "人",
+          "start_seconds": 58.63,
+          "end_seconds": 59.08,
+          "confidence": 0.9189,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "遇",
+          "start_seconds": 59.08,
+          "end_seconds": 59.76,
+          "confidence": 0.9962,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "到",
+          "start_seconds": 59.76,
+          "end_seconds": 60.04,
+          "confidence": 0.9992,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "风",
+          "start_seconds": 60.04,
+          "end_seconds": 60.54,
+          "confidence": 0.9962,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "雨",
+          "start_seconds": 60.54,
+          "end_seconds": 61.0,
+          "confidence": 0.9278,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "阻",
+          "start_seconds": 61.0,
+          "end_seconds": 61.86,
+          "confidence": 0.9948,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "碍",
+          "start_seconds": 61.86,
+          "end_seconds": 62.34,
+          "confidence": 0.9927,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-medium.json",
+        "onset_reason": "Whole-track onset independently corroborated by small model 58.16s.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 62.34,
+      "end": 65.94,
+      "text": "你总愿意伸手分担",
+      "section": "主歌二",
+      "confidence": 0.8511,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "你",
+          "start_seconds": 62.34,
+          "end_seconds": 62.64,
+          "confidence": 0.9917,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "总",
+          "start_seconds": 62.64,
+          "end_seconds": 62.86,
+          "confidence": 0.9921,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "愿",
+          "start_seconds": 62.86,
+          "end_seconds": 63.18,
+          "confidence": 0.9975,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "意",
+          "start_seconds": 63.18,
+          "end_seconds": 63.8,
+          "confidence": 0.9908,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "伸",
+          "start_seconds": 63.8,
+          "end_seconds": 63.96,
+          "confidence": 0.8659,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "手",
+          "start_seconds": 63.96,
+          "end_seconds": 64.2,
+          "confidence": 0.9985,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "分",
+          "start_seconds": 64.2,
+          "end_seconds": 64.82,
+          "confidence": 0.0341,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "担",
+          "start_seconds": 64.82,
+          "end_seconds": 65.94,
+          "confidence": 0.938,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 58–73",
+        "onset_reason": "Independent first-word onset.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 66.0,
+      "end": 69.36,
+      "text": "无私奉献，不求喝彩",
+      "section": "主歌二",
+      "confidence": 0.7396,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "无",
+          "start_seconds": 66.0,
+          "end_seconds": 66.38,
+          "confidence": 0.8912,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "私",
+          "start_seconds": 66.38,
+          "end_seconds": 66.52,
+          "confidence": 0.2774,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "奉",
+          "start_seconds": 66.52,
+          "end_seconds": 67.04,
+          "confidence": 0.9772,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "献",
+          "start_seconds": 67.04,
+          "end_seconds": 67.52,
+          "confidence": 0.9969,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "不",
+          "start_seconds": 67.84,
+          "end_seconds": 68.14,
+          "confidence": 0.5711,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "求",
+          "start_seconds": 68.14,
+          "end_seconds": 68.38,
+          "confidence": 0.9989,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "喝",
+          "start_seconds": 68.38,
+          "end_seconds": 68.88,
+          "confidence": 0.5691,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "彩",
+          "start_seconds": 68.88,
+          "end_seconds": 69.36,
+          "confidence": 0.6348,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 58–73",
+        "onset_reason": "Independent first-word onset.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 69.46,
+      "end": 72.7,
+      "text": "把情义放在心里面",
+      "section": "主歌二",
+      "confidence": 0.9285,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "把",
+          "start_seconds": 69.46,
+          "end_seconds": 69.74,
+          "confidence": 0.99,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "情",
+          "start_seconds": 69.74,
+          "end_seconds": 69.98,
+          "confidence": 0.9739,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "义",
+          "start_seconds": 69.98,
+          "end_seconds": 70.18,
+          "confidence": 0.5378,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "放",
+          "start_seconds": 70.18,
+          "end_seconds": 70.62,
+          "confidence": 0.9899,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "在",
+          "start_seconds": 70.62,
+          "end_seconds": 71.08,
+          "confidence": 0.9985,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "心",
+          "start_seconds": 71.08,
+          "end_seconds": 71.58,
+          "confidence": 0.992,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "里",
+          "start_seconds": 71.58,
+          "end_seconds": 72.18,
+          "confidence": 0.9525,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "面",
+          "start_seconds": 72.18,
+          "end_seconds": 72.7,
+          "confidence": 0.9933,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 58–73",
+        "onset_reason": "Independent first-word onset.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 73.4,
+      "end": 77.06,
+      "text": "一句兄弟，一份牵挂",
+      "section": "主歌二",
+      "confidence": 0.9375,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "一",
+          "start_seconds": 73.4,
+          "end_seconds": 73.74,
+          "confidence": 0.9825,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "句",
+          "start_seconds": 73.74,
+          "end_seconds": 73.88,
+          "confidence": 0.9409,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "兄",
+          "start_seconds": 73.88,
+          "end_seconds": 74.5,
+          "confidence": 0.9925,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "弟",
+          "start_seconds": 74.5,
+          "end_seconds": 74.98,
+          "confidence": 0.9999,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "一",
+          "start_seconds": 75.22,
+          "end_seconds": 75.5,
+          "confidence": 0.8295,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "份",
+          "start_seconds": 75.5,
+          "end_seconds": 75.7,
+          "confidence": 0.9527,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "牵",
+          "start_seconds": 75.7,
+          "end_seconds": 76.7,
+          "confidence": 0.9914,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "挂",
+          "start_seconds": 76.7,
+          "end_seconds": 77.06,
+          "confidence": 0.8106,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-medium.json",
+        "onset_reason": "Whole-track first-word onset; crop starts inside preceding sustain.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 77.1,
+      "end": 81.0,
+      "text": "岁月走过依然不变",
+      "section": "主歌二",
+      "confidence": 0.9262,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "岁",
+          "start_seconds": 77.1,
+          "end_seconds": 77.32,
+          "confidence": 0.9822,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "月",
+          "start_seconds": 77.32,
+          "end_seconds": 77.56,
+          "confidence": 0.9995,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "走",
+          "start_seconds": 77.56,
+          "end_seconds": 77.88,
+          "confidence": 0.8675,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "过",
+          "start_seconds": 77.88,
+          "end_seconds": 78.5,
+          "confidence": 0.9866,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "依",
+          "start_seconds": 78.5,
+          "end_seconds": 78.84,
+          "confidence": 0.5862,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "然",
+          "start_seconds": 78.84,
+          "end_seconds": 78.98,
+          "confidence": 0.9944,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "不",
+          "start_seconds": 78.98,
+          "end_seconds": 79.54,
+          "confidence": 0.9946,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "变",
+          "start_seconds": 79.54,
+          "end_seconds": 81.0,
+          "confidence": 0.9988,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 72.6–81.1",
+        "onset_reason": "Independent first-word onset.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 81.04,
+      "end": 84.86,
+      "text": "Hock Siew，Hock Siew",
+      "section": "副歌",
+      "confidence": 0.4003,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "Hock",
+          "start_seconds": 81.04,
+          "end_seconds": 81.84,
+          "confidence": 0.0733,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 2
+        },
+        {
+          "text": "Siew",
+          "start_seconds": 81.84,
+          "end_seconds": 82.04,
+          "confidence": 0.0294,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 2
+        },
+        {
+          "text": "Hock",
+          "start_seconds": 82.14,
+          "end_seconds": 82.56,
+          "confidence": 0.5986,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 2
+        },
+        {
+          "text": "Siew",
+          "start_seconds": 82.56,
+          "end_seconds": 84.86,
+          "confidence": 0.8999,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 2
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 80.5–94.6",
+        "onset_reason": "Name chant starts here; repeated syllables prevent reliable per-word karaoke.",
+        "review_status": "model_reviewed; listening review not performed",
+        "word_timing_limit": "Repeated phonetic name chant; use phrase-level captions rather than per-word karaoke."
+      }
+    },
+    {
+      "start": 84.92,
+      "end": 86.78,
+      "text": "兄弟把你记在心头",
+      "section": "副歌",
+      "confidence": 0.7373,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "兄",
+          "start_seconds": 84.92,
+          "end_seconds": 85.14,
+          "confidence": 0.0565,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "弟",
+          "start_seconds": 85.14,
+          "end_seconds": 85.44,
+          "confidence": 0.9992,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "把",
+          "start_seconds": 85.44,
+          "end_seconds": 85.66,
+          "confidence": 0.8107,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "你",
+          "start_seconds": 85.66,
+          "end_seconds": 85.88,
+          "confidence": 0.9805,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "记",
+          "start_seconds": 85.88,
+          "end_seconds": 86.1,
+          "confidence": 0.0701,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "在",
+          "start_seconds": 86.1,
+          "end_seconds": 86.3,
+          "confidence": 0.9923,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "心",
+          "start_seconds": 86.3,
+          "end_seconds": 86.6,
+          "confidence": 0.9941,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "头",
+          "start_seconds": 86.6,
+          "end_seconds": 86.78,
+          "confidence": 0.995,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 80.5–94.6",
+        "onset_reason": "Independent first-word onset.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 86.78,
+      "end": 88.62,
+      "text": "你的宽容，你的守候",
+      "section": "副歌",
+      "confidence": 0.994,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "你",
+          "start_seconds": 86.78,
+          "end_seconds": 87.15,
+          "confidence": 0.9938,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "的",
+          "start_seconds": 87.15,
+          "end_seconds": 87.2,
+          "confidence": 0.9938,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "宽",
+          "start_seconds": 87.2,
+          "end_seconds": 87.46,
+          "confidence": 0.9961,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "容",
+          "start_seconds": 87.46,
+          "end_seconds": 87.66,
+          "confidence": 0.9994,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "你",
+          "start_seconds": 87.7,
+          "end_seconds": 87.92,
+          "confidence": 0.9892,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "的",
+          "start_seconds": 87.92,
+          "end_seconds": 88.14,
+          "confidence": 0.9892,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "守",
+          "start_seconds": 88.14,
+          "end_seconds": 88.42,
+          "confidence": 0.9914,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "候",
+          "start_seconds": 88.42,
+          "end_seconds": 88.62,
+          "confidence": 0.9987,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 80.5–94.6",
+        "onset_reason": "Independent first-word onset.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 88.64,
+      "end": 90.4,
+      "text": "让大家并肩一起走",
+      "section": "副歌",
+      "confidence": 0.7625,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "让",
+          "start_seconds": 88.64,
+          "end_seconds": 88.8,
+          "confidence": 0.9674,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "大",
+          "start_seconds": 88.8,
+          "end_seconds": 88.93,
+          "confidence": 0.2729,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "家",
+          "start_seconds": 88.93,
+          "end_seconds": 89.06,
+          "confidence": 0.2729,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "并",
+          "start_seconds": 89.06,
+          "end_seconds": 89.32,
+          "confidence": 0.7014,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "肩",
+          "start_seconds": 89.32,
+          "end_seconds": 89.56,
+          "confidence": 0.9979,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "一",
+          "start_seconds": 89.56,
+          "end_seconds": 89.76,
+          "confidence": 0.946,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "起",
+          "start_seconds": 89.76,
+          "end_seconds": 89.96,
+          "confidence": 0.946,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "走",
+          "start_seconds": 89.96,
+          "end_seconds": 90.4,
+          "confidence": 0.9955,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 80.5–94.6",
+        "onset_reason": "Independent first-word onset.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 90.42,
+      "end": 92.28,
+      "text": "Hock Siew，Hock Siew",
+      "section": "副歌",
+      "confidence": 0.985,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "Hock",
+          "start_seconds": 90.42,
+          "end_seconds": 91.0,
+          "confidence": 0.9743,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 2
+        },
+        {
+          "text": "Siew",
+          "start_seconds": 91.0,
+          "end_seconds": 91.4,
+          "confidence": 0.997,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 2
+        },
+        {
+          "text": "Hock",
+          "start_seconds": 91.4,
+          "end_seconds": 91.88,
+          "confidence": 0.9691,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 2
+        },
+        {
+          "text": "Siew",
+          "start_seconds": 91.88,
+          "end_seconds": 92.28,
+          "confidence": 0.9995,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 2
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 80.5–94.6",
+        "onset_reason": "Independent name-chant onset.",
+        "review_status": "model_reviewed; listening review not performed",
+        "word_timing_limit": "Repeated phonetic name chant; use phrase-level captions rather than per-word karaoke."
+      }
+    },
+    {
+      "start": 92.3,
+      "end": 94.2,
+      "text": "情义细水永远长流",
+      "section": "副歌",
+      "confidence": 0.7135,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "情",
+          "start_seconds": 92.3,
+          "end_seconds": 92.6,
+          "confidence": 0.0244,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "义",
+          "start_seconds": 92.6,
+          "end_seconds": 92.86,
+          "confidence": 0.5429,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "细",
+          "start_seconds": 92.86,
+          "end_seconds": 93.0,
+          "confidence": 0.5511,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "水",
+          "start_seconds": 93.0,
+          "end_seconds": 93.22,
+          "confidence": 0.7491,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "永",
+          "start_seconds": 93.22,
+          "end_seconds": 93.46,
+          "confidence": 0.9235,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "远",
+          "start_seconds": 93.46,
+          "end_seconds": 93.74,
+          "confidence": 0.9932,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "长",
+          "start_seconds": 93.74,
+          "end_seconds": 94.0,
+          "confidence": 0.9536,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "流",
+          "start_seconds": 94.0,
+          "end_seconds": 94.2,
+          "confidence": 0.9699,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 80.5–94.6",
+        "onset_reason": "Phonetic first-word observation; canonical 情义 retained.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 94.34,
+      "end": 97.12,
+      "text": "从浅顶唱到马来西亚",
+      "section": "副歌",
+      "confidence": 0.7886,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "从",
+          "start_seconds": 94.34,
+          "end_seconds": 94.64,
+          "confidence": 0.985,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "浅",
+          "start_seconds": 94.64,
+          "end_seconds": 94.9,
+          "confidence": 0.5058,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "顶",
+          "start_seconds": 94.9,
+          "end_seconds": 95.12,
+          "confidence": 0.6052,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "唱",
+          "start_seconds": 95.12,
+          "end_seconds": 95.28,
+          "confidence": 0.0188,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "到",
+          "start_seconds": 95.28,
+          "end_seconds": 95.56,
+          "confidence": 0.9949,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "马",
+          "start_seconds": 95.56,
+          "end_seconds": 95.86,
+          "confidence": 0.994,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "来",
+          "start_seconds": 95.86,
+          "end_seconds": 96.08,
+          "confidence": 0.995,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "西",
+          "start_seconds": 96.08,
+          "end_seconds": 96.66,
+          "confidence": 0.9997,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "亚",
+          "start_seconds": 96.66,
+          "end_seconds": 97.12,
+          "confidence": 0.9992,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "forced-alignment-context-medium.json window 4",
+        "onset_reason": "Contextual punctuation boundary; whole-track ASR 94.32s.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 97.14,
+      "end": 102.92,
+      "text": "愿这份真心传到更远的地方",
+      "section": "副歌",
+      "confidence": 0.9582,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "愿",
+          "start_seconds": 97.14,
+          "end_seconds": 97.4,
+          "confidence": 0.6321,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "这",
+          "start_seconds": 97.4,
+          "end_seconds": 97.7,
+          "confidence": 0.9856,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "份",
+          "start_seconds": 97.7,
+          "end_seconds": 97.84,
+          "confidence": 0.9945,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "真",
+          "start_seconds": 97.84,
+          "end_seconds": 98.38,
+          "confidence": 0.9916,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "心",
+          "start_seconds": 98.38,
+          "end_seconds": 98.7,
+          "confidence": 0.9905,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "传",
+          "start_seconds": 98.7,
+          "end_seconds": 99.02,
+          "confidence": 0.9508,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "到",
+          "start_seconds": 99.02,
+          "end_seconds": 99.24,
+          "confidence": 0.9885,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "更",
+          "start_seconds": 99.24,
+          "end_seconds": 99.7,
+          "confidence": 0.9965,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "远",
+          "start_seconds": 99.7,
+          "end_seconds": 100.54,
+          "confidence": 0.9996,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "的",
+          "start_seconds": 100.54,
+          "end_seconds": 101.04,
+          "confidence": 0.982,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "地",
+          "start_seconds": 101.04,
+          "end_seconds": 101.39,
+          "confidence": 0.9932,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "方",
+          "start_seconds": 101.39,
+          "end_seconds": 102.92,
+          "confidence": 0.9932,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "forced-alignment-corrected-medium.json window 6",
+        "onset_reason": "Acoustic DTW onset corroborated by whole-track ASR 97.08s.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 119.42,
+      "end": 122.88,
+      "text": "今天我们聚在你身旁",
+      "section": "桥段",
+      "confidence": 0.8191,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "今",
+          "start_seconds": 119.42,
+          "end_seconds": 119.87,
+          "confidence": 0.8591,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "天",
+          "start_seconds": 119.87,
+          "end_seconds": 120.32,
+          "confidence": 0.8591,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "我",
+          "start_seconds": 120.32,
+          "end_seconds": 120.57,
+          "confidence": 0.335,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "们",
+          "start_seconds": 120.57,
+          "end_seconds": 120.82,
+          "confidence": 0.335,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "聚",
+          "start_seconds": 120.82,
+          "end_seconds": 121.08,
+          "confidence": 0.9941,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "在",
+          "start_seconds": 121.08,
+          "end_seconds": 121.32,
+          "confidence": 0.9993,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "你",
+          "start_seconds": 121.32,
+          "end_seconds": 121.64,
+          "confidence": 0.9919,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "身",
+          "start_seconds": 121.64,
+          "end_seconds": 121.88,
+          "confidence": 0.9985,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "旁",
+          "start_seconds": 121.88,
+          "end_seconds": 122.88,
+          "confidence": 0.9998,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-medium.json",
+        "onset_reason": "Whole-track onset after instrumental break; cropped DTW absorbs leading silence.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 122.9,
+      "end": 126.34,
+      "text": "把感谢都唱成祝愿",
+      "section": "桥段",
+      "confidence": 0.9455,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "把",
+          "start_seconds": 122.9,
+          "end_seconds": 123.18,
+          "confidence": 0.8467,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "感",
+          "start_seconds": 123.18,
+          "end_seconds": 123.46,
+          "confidence": 0.9753,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "谢",
+          "start_seconds": 123.46,
+          "end_seconds": 123.62,
+          "confidence": 0.9984,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "都",
+          "start_seconds": 123.62,
+          "end_seconds": 124.08,
+          "confidence": 0.9789,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "唱",
+          "start_seconds": 124.08,
+          "end_seconds": 124.36,
+          "confidence": 0.7727,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "成",
+          "start_seconds": 124.36,
+          "end_seconds": 124.64,
+          "confidence": 0.9982,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "祝",
+          "start_seconds": 124.64,
+          "end_seconds": 125.5,
+          "confidence": 0.9969,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "愿",
+          "start_seconds": 125.5,
+          "end_seconds": 126.34,
+          "confidence": 0.9966,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 118.8–134",
+        "onset_reason": "Independent first-word onset.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 126.64,
+      "end": 130.5,
+      "text": "愿你健康，愿你平安",
+      "section": "桥段",
+      "confidence": 0.9605,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "愿",
+          "start_seconds": 126.64,
+          "end_seconds": 127.06,
+          "confidence": 0.9729,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "你",
+          "start_seconds": 127.06,
+          "end_seconds": 127.3,
+          "confidence": 0.9957,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "健",
+          "start_seconds": 127.3,
+          "end_seconds": 127.82,
+          "confidence": 0.991,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "康",
+          "start_seconds": 127.82,
+          "end_seconds": 128.26,
+          "confidence": 0.9998,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "愿",
+          "start_seconds": 128.58,
+          "end_seconds": 128.9,
+          "confidence": 0.7302,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "你",
+          "start_seconds": 128.9,
+          "end_seconds": 129.52,
+          "confidence": 0.9976,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "平",
+          "start_seconds": 129.52,
+          "end_seconds": 130.2,
+          "confidence": 0.9979,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "安",
+          "start_seconds": 130.2,
+          "end_seconds": 130.5,
+          "confidence": 0.9989,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 118.8–134",
+        "onset_reason": "Cropped model separates the pause from previous sustain.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 130.5,
+      "end": 133.74,
+      "text": "每个明天都有笑颜",
+      "section": "桥段",
+      "confidence": 0.9083,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "每",
+          "start_seconds": 130.5,
+          "end_seconds": 130.78,
+          "confidence": 0.9277,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "个",
+          "start_seconds": 130.78,
+          "end_seconds": 131.0,
+          "confidence": 0.9834,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "明",
+          "start_seconds": 131.0,
+          "end_seconds": 131.24,
+          "confidence": 0.9884,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "天",
+          "start_seconds": 131.24,
+          "end_seconds": 131.8,
+          "confidence": 0.9974,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "都",
+          "start_seconds": 131.8,
+          "end_seconds": 132.02,
+          "confidence": 0.8992,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "有",
+          "start_seconds": 132.02,
+          "end_seconds": 132.24,
+          "confidence": 0.8992,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "笑",
+          "start_seconds": 132.24,
+          "end_seconds": 132.88,
+          "confidence": 0.9304,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "颜",
+          "start_seconds": 132.88,
+          "end_seconds": 133.74,
+          "confidence": 0.6403,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 118.8–134",
+        "onset_reason": "Independent first-word onset.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 133.96,
+      "end": 137.68,
+      "text": "你为大家付出的点滴",
+      "section": "桥段",
+      "confidence": 0.9879,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "你",
+          "start_seconds": 133.96,
+          "end_seconds": 134.42,
+          "confidence": 0.984,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "为",
+          "start_seconds": 134.42,
+          "end_seconds": 134.66,
+          "confidence": 0.9985,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "大",
+          "start_seconds": 134.66,
+          "end_seconds": 135.08,
+          "confidence": 0.996,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "家",
+          "start_seconds": 135.08,
+          "end_seconds": 135.5,
+          "confidence": 0.996,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "付",
+          "start_seconds": 135.5,
+          "end_seconds": 135.9,
+          "confidence": 0.9989,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "出",
+          "start_seconds": 135.9,
+          "end_seconds": 136.3,
+          "confidence": 0.9994,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "的",
+          "start_seconds": 136.3,
+          "end_seconds": 136.62,
+          "confidence": 0.9898,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "点",
+          "start_seconds": 136.62,
+          "end_seconds": 137.06,
+          "confidence": 0.9419,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "滴",
+          "start_seconds": 137.06,
+          "end_seconds": 137.68,
+          "confidence": 0.9865,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-medium.json",
+        "onset_reason": "Whole-track onset; contextual DTW punctuation swallowed first syllable.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 137.8,
+      "end": 141.06,
+      "text": "我们一件一件记心间",
+      "section": "桥段",
+      "confidence": 0.7577,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "我",
+          "start_seconds": 137.8,
+          "end_seconds": 138.09,
+          "confidence": 0.9963,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "们",
+          "start_seconds": 138.09,
+          "end_seconds": 138.38,
+          "confidence": 0.9963,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "一",
+          "start_seconds": 138.38,
+          "end_seconds": 138.64,
+          "confidence": 0.9351,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "件",
+          "start_seconds": 138.64,
+          "end_seconds": 138.74,
+          "confidence": 0.5478,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "一",
+          "start_seconds": 138.74,
+          "end_seconds": 139.06,
+          "confidence": 0.9932,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "件",
+          "start_seconds": 139.06,
+          "end_seconds": 139.24,
+          "confidence": 0.9996,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "记",
+          "start_seconds": 139.24,
+          "end_seconds": 139.66,
+          "confidence": 0.5397,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "心",
+          "start_seconds": 139.66,
+          "end_seconds": 140.12,
+          "confidence": 0.6308,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "间",
+          "start_seconds": 140.12,
+          "end_seconds": 141.06,
+          "confidence": 0.1804,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 133.6–148.7",
+        "onset_reason": "Independent first-word onset.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 141.26,
+      "end": 144.74,
+      "text": "这一杯敬相识的缘",
+      "section": "桥段",
+      "confidence": 0.7705,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "这",
+          "start_seconds": 141.26,
+          "end_seconds": 141.66,
+          "confidence": 0.9436,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "一",
+          "start_seconds": 141.66,
+          "end_seconds": 141.84,
+          "confidence": 0.9919,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "杯",
+          "start_seconds": 141.84,
+          "end_seconds": 141.98,
+          "confidence": 0.7587,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "敬",
+          "start_seconds": 141.98,
+          "end_seconds": 142.44,
+          "confidence": 0.6627,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "相",
+          "start_seconds": 142.44,
+          "end_seconds": 142.8,
+          "confidence": 0.518,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "识",
+          "start_seconds": 142.8,
+          "end_seconds": 143.4,
+          "confidence": 0.7973,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "的",
+          "start_seconds": 143.4,
+          "end_seconds": 143.94,
+          "confidence": 0.9901,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "缘",
+          "start_seconds": 143.94,
+          "end_seconds": 144.74,
+          "confidence": 0.5021,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 133.6–148.7",
+        "onset_reason": "Independent first-word onset.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 144.74,
+      "end": 148.0,
+      "text": "这一首唱不变的情",
+      "section": "桥段",
+      "confidence": 0.9599,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "这",
+          "start_seconds": 144.74,
+          "end_seconds": 145.32,
+          "confidence": 0.9886,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "一",
+          "start_seconds": 145.32,
+          "end_seconds": 145.5,
+          "confidence": 0.9981,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "首",
+          "start_seconds": 145.5,
+          "end_seconds": 145.7,
+          "confidence": 0.981,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "唱",
+          "start_seconds": 145.7,
+          "end_seconds": 146.36,
+          "confidence": 0.9165,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "不",
+          "start_seconds": 146.36,
+          "end_seconds": 146.62,
+          "confidence": 0.9868,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "变",
+          "start_seconds": 146.62,
+          "end_seconds": 147.16,
+          "confidence": 0.992,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "的",
+          "start_seconds": 147.16,
+          "end_seconds": 147.66,
+          "confidence": 0.926,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "情",
+          "start_seconds": 147.66,
+          "end_seconds": 148.0,
+          "confidence": 0.8904,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 133.6–148.7",
+        "onset_reason": "Independent first-word onset.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 149.32,
+      "end": 152.8,
+      "text": "Hock Siew，Hock Siew",
+      "section": "最后副歌",
+      "confidence": 0.4146,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "Hock",
+          "start_seconds": 149.32,
+          "end_seconds": 149.88,
+          "confidence": 0.0185,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 2
+        },
+        {
+          "text": "Siew",
+          "start_seconds": 149.88,
+          "end_seconds": 150.08,
+          "confidence": 0.012,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 2
+        },
+        {
+          "text": "Hock",
+          "start_seconds": 150.22,
+          "end_seconds": 150.72,
+          "confidence": 0.6432,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 2
+        },
+        {
+          "text": "Siew",
+          "start_seconds": 150.72,
+          "end_seconds": 152.8,
+          "confidence": 0.9846,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 2
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 148.5–158.5",
+        "onset_reason": "Independent repeated name-chant onset.",
+        "review_status": "model_reviewed; listening review not performed",
+        "word_timing_limit": "Repeated phonetic name chant; use phrase-level captions rather than per-word karaoke."
+      }
+    },
+    {
+      "start": 152.92,
+      "end": 154.78,
+      "text": "兄弟同心，携手向前走",
+      "section": "最后副歌",
+      "confidence": 0.5957,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "兄",
+          "start_seconds": 152.92,
+          "end_seconds": 153.16,
+          "confidence": 0.5829,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "弟",
+          "start_seconds": 153.16,
+          "end_seconds": 153.42,
+          "confidence": 0.9997,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "同",
+          "start_seconds": 153.42,
+          "end_seconds": 153.62,
+          "confidence": 0.8882,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "心",
+          "start_seconds": 153.62,
+          "end_seconds": 153.88,
+          "confidence": 0.2833,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "携",
+          "start_seconds": 153.92,
+          "end_seconds": 154.08,
+          "confidence": 0.5378,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "手",
+          "start_seconds": 154.08,
+          "end_seconds": 154.24,
+          "confidence": 0.9954,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "向",
+          "start_seconds": 154.24,
+          "end_seconds": 154.4,
+          "confidence": 0.0005,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "前",
+          "start_seconds": 154.4,
+          "end_seconds": 154.58,
+          "confidence": 0.1627,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "走",
+          "start_seconds": 154.58,
+          "end_seconds": 154.78,
+          "confidence": 0.9105,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 148.5–158.5",
+        "onset_reason": "Independent first-word onset.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 154.8,
+      "end": 156.58,
+      "text": "拿督斯里谢惠福",
+      "section": "最后副歌",
+      "confidence": 0.3544,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "拿",
+          "start_seconds": 154.8,
+          "end_seconds": 155.06,
+          "confidence": 0.8175,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "督",
+          "start_seconds": 155.06,
+          "end_seconds": 155.26,
+          "confidence": 0.4082,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "斯",
+          "start_seconds": 155.26,
+          "end_seconds": 155.5,
+          "confidence": 0.073,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "里",
+          "start_seconds": 155.5,
+          "end_seconds": 155.74,
+          "confidence": 0.1083,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "谢",
+          "start_seconds": 155.74,
+          "end_seconds": 155.9,
+          "confidence": 0.0044,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "惠",
+          "start_seconds": 155.9,
+          "end_seconds": 156.16,
+          "confidence": 0.4595,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "福",
+          "start_seconds": 156.16,
+          "end_seconds": 156.58,
+          "confidence": 0.61,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 148.5–158.5",
+        "onset_reason": "Phonetic name observation; display exact supplied 拿督斯里谢惠福.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 156.64,
+      "end": 158.34,
+      "text": "这份敬爱藏在心头",
+      "section": "最后副歌",
+      "confidence": 0.926,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "这",
+          "start_seconds": 156.64,
+          "end_seconds": 156.78,
+          "confidence": 0.8121,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "份",
+          "start_seconds": 156.78,
+          "end_seconds": 156.84,
+          "confidence": 0.9917,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "敬",
+          "start_seconds": 156.84,
+          "end_seconds": 157.0,
+          "confidence": 0.6768,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "爱",
+          "start_seconds": 157.0,
+          "end_seconds": 157.08,
+          "confidence": 0.9912,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "藏",
+          "start_seconds": 157.08,
+          "end_seconds": 157.3,
+          "confidence": 0.9884,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "在",
+          "start_seconds": 157.3,
+          "end_seconds": 157.54,
+          "confidence": 0.991,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "心",
+          "start_seconds": 157.54,
+          "end_seconds": 158.06,
+          "confidence": 0.9725,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "头",
+          "start_seconds": 158.06,
+          "end_seconds": 158.34,
+          "confidence": 0.9842,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 148.5–158.5",
+        "onset_reason": "Independent first-word onset.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 158.4,
+      "end": 160.22,
+      "text": "Hock Siew，Hock Siew",
+      "section": "最后副歌",
+      "confidence": 0.4511,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "Hock",
+          "start_seconds": 158.4,
+          "end_seconds": 159.02,
+          "confidence": 0.031,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 2
+        },
+        {
+          "text": "Siew",
+          "start_seconds": 159.02,
+          "end_seconds": 159.36,
+          "confidence": 0.0487,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 2
+        },
+        {
+          "text": "Hock",
+          "start_seconds": 159.48,
+          "end_seconds": 159.8,
+          "confidence": 0.7351,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 2
+        },
+        {
+          "text": "Siew",
+          "start_seconds": 159.8,
+          "end_seconds": 160.22,
+          "confidence": 0.9894,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 2
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "forced-alignment-context-medium.json window 7",
+        "onset_reason": "Contextual punctuation boundary; cropped recognition agrees at 158.40s.",
+        "review_status": "model_reviewed; listening review not performed",
+        "word_timing_limit": "Repeated phonetic name chant; use phrase-level captions rather than per-word karaoke."
+      }
+    },
+    {
+      "start": 160.44,
+      "end": 162.06,
+      "text": "风雨同路，情义长留",
+      "section": "最后副歌",
+      "confidence": 0.6624,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "风",
+          "start_seconds": 160.44,
+          "end_seconds": 160.52,
+          "confidence": 0.9302,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "雨",
+          "start_seconds": 160.52,
+          "end_seconds": 160.72,
+          "confidence": 0.8994,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "同",
+          "start_seconds": 160.72,
+          "end_seconds": 160.94,
+          "confidence": 0.4931,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "路",
+          "start_seconds": 160.94,
+          "end_seconds": 161.14,
+          "confidence": 0.8236,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "情",
+          "start_seconds": 161.18,
+          "end_seconds": 161.44,
+          "confidence": 0.6804,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "义",
+          "start_seconds": 161.44,
+          "end_seconds": 161.62,
+          "confidence": 0.5402,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "长",
+          "start_seconds": 161.62,
+          "end_seconds": 161.84,
+          "confidence": 0.8903,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "留",
+          "start_seconds": 161.84,
+          "end_seconds": 162.06,
+          "confidence": 0.0417,
+          "matched": false,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 158.4–172",
+        "onset_reason": "Independent first-word onset.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 162.1,
+      "end": 163.92,
+      "text": "愿你平安，幸福永久",
+      "section": "最后副歌",
+      "confidence": 0.9818,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "愿",
+          "start_seconds": 162.1,
+          "end_seconds": 162.32,
+          "confidence": 0.9691,
+          "matched": false,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "你",
+          "start_seconds": 162.32,
+          "end_seconds": 162.58,
+          "confidence": 0.9326,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "平",
+          "start_seconds": 162.58,
+          "end_seconds": 162.86,
+          "confidence": 0.9953,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "安",
+          "start_seconds": 162.86,
+          "end_seconds": 163.0,
+          "confidence": 0.9997,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "幸",
+          "start_seconds": 163.0,
+          "end_seconds": 163.26,
+          "confidence": 0.9926,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "福",
+          "start_seconds": 163.26,
+          "end_seconds": 163.48,
+          "confidence": 0.9996,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "永",
+          "start_seconds": 163.48,
+          "end_seconds": 163.66,
+          "confidence": 0.9667,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "久",
+          "start_seconds": 163.66,
+          "end_seconds": 163.92,
+          "confidence": 0.9986,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 158.4–172",
+        "onset_reason": "Independent first-word onset.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    },
+    {
+      "start": 164.08,
+      "end": 170.1,
+      "text": "兄弟相伴，一起到白头！",
+      "section": "最后副歌",
+      "confidence": 0.8461,
+      "timing_source": "whisper_medium_cross_attention_dtw_with_independent_asr_onsets",
+      "words": [
+        {
+          "text": "兄",
+          "start_seconds": 164.08,
+          "end_seconds": 164.16,
+          "confidence": 0.9917,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "弟",
+          "start_seconds": 164.16,
+          "end_seconds": 164.4,
+          "confidence": 0.9996,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "相",
+          "start_seconds": 164.4,
+          "end_seconds": 164.96,
+          "confidence": 0.7426,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "伴",
+          "start_seconds": 164.96,
+          "end_seconds": 165.84,
+          "confidence": 0.9997,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "一",
+          "start_seconds": 166.06,
+          "end_seconds": 166.38,
+          "confidence": 0.8934,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "起",
+          "start_seconds": 166.38,
+          "end_seconds": 166.7,
+          "confidence": 0.8934,
+          "matched": true,
+          "estimated_timing": true,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "到",
+          "start_seconds": 166.7,
+          "end_seconds": 167.12,
+          "confidence": 0.8785,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "白",
+          "start_seconds": 167.12,
+          "end_seconds": 167.72,
+          "confidence": 0.4777,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        },
+        {
+          "text": "头",
+          "start_seconds": 167.72,
+          "end_seconds": 170.1,
+          "confidence": 0.7383,
+          "matched": true,
+          "estimated_timing": false,
+          "native_fragment_count": 1
+        }
+      ],
+      "alignment_review": {
+        "onset_source": "asr-onset-refinement.json crop 158.4–172",
+        "onset_reason": "Independent first-word onset; final sustain ends at 170.10s.",
+        "review_status": "model_reviewed; listening review not performed"
+      }
+    }
+  ]
+}

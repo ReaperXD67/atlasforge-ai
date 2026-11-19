@@ -1,0 +1,772 @@
+{
+  "status": "admitted_for_edit",
+  "review_date": "2026-11-19",
+  "method": "Complete native-stream decode and chronological sampled visual review; identity comparison for group photo; denser review of occlusion/hand contact where needed.",
+  "limits": "Sampled review, not every-frame perfection or independent full-speed playback.",
+  "clips": [
+    {
+      "clip": "rain-arrival",
+      "path": "videos\\dato-benz-brothers-united\\assets\\native\\rain-arrival.mp4",
+      "sha256": "ec17dcb0b1c64dac16dd84b4d5691316af64c09ff0de50b0e4a2d968eae93266",
+      "duration_seconds": 10.041667,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "frames": 241,
+      "full_decode": true,
+      "reviewed_times": [
+        0.1,
+        1.4,
+        2.8,
+        4.2,
+        5.6,
+        7.0,
+        8.4,
+        9.7
+      ],
+      "contact_sheet": "output\\benz-production\\qa\\rain-arrival-contact.jpg",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_or_morphology_issue_found": false,
+      "recommended_usable_range": {
+        "start": 0.2,
+        "end": 9.75
+      },
+      "strong_action_range": {
+        "start": 2.6,
+        "end": 9.7
+      },
+      "observed_action": "Three men advance along the wet street, bend under the crate, adjust their support and continue walking. Independent legs, arms, wet fabric, rain and puddle motion are visible.",
+      "notes": "The1.4-second leaning moment reads as exertion. A cut to a detail can emphasize the lift. Distant generated shop lettering is background texture, so avoid extracting it as a readable insert.",
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.75
+      }
+    },
+    {
+      "clip": "hands-help",
+      "path": "videos\\dato-benz-brothers-united\\assets\\native\\hands-help.mp4",
+      "sha256": "75111ca8b7c928cb75096c8fad9bee6bfbf712d840180d1990de8c01033d2abb",
+      "duration_seconds": 10.041667,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "frames": 241,
+      "full_decode": true,
+      "reviewed_times": [
+        0.1,
+        1.4,
+        2.8,
+        4.2,
+        5.6,
+        7.0,
+        8.4,
+        9.7
+      ],
+      "contact_sheet": "output\\benz-production\\qa\\hands-help-contact.jpg",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_or_morphology_issue_found": false,
+      "recommended_usable_range": {
+        "start": 0.2,
+        "end": 9.5
+      },
+      "strong_action_range": {
+        "start": 0.2,
+        "end": 7.8
+      },
+      "observed_action": "A secure forearm clasp supports an actual pull-up onto the threshold, followed by standing, grip release and a warm smile. Body and hand positions change coherently against the doorway.",
+      "notes": "At8.4–9.7seconds the men advance beyond the upper frame. Those tailframes work as torso/hand detail, while the clearest complete-action payoff is before7.8seconds.",
+      "admitted_range": {
+        "start": 0.2,
+        "end": 7.8
+      }
+    },
+    {
+      "clip": "community-boxes",
+      "path": "videos\\dato-benz-brothers-united\\assets\\native\\community-boxes.mp4",
+      "sha256": "7f59bd5d9422cf9610c2ed74b6949c91e6c6bb4d2444f6dbebf5502598fad2e8",
+      "duration_seconds": 10.041667,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "frames": 241,
+      "full_decode": true,
+      "decode_stderr": "",
+      "reviewed_times": [
+        0.1,
+        1.47,
+        2.84,
+        4.21,
+        5.59,
+        6.96,
+        8.33,
+        9.7
+      ],
+      "contact_sheet": "output\\benz-production\\qa\\community-boxes-contact.jpg",
+      "recommended_usable_range": {
+        "start": 0.2,
+        "end": 9.75
+      },
+      "strong_action_range": {
+        "start": 3.8,
+        "end": 9.7
+      },
+      "observed_action": "A grocery box passes between supporting hands before an elderly man receives it. Carriers step, turn and transfer weight while the elderly recipient approaches and smiles.",
+      "notes": "The handover remains readable and the box keeps its overall shape. Small food and distant wall-text details are background texture; no major body, grip or shape failure was found in sampled frames.",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_or_morphology_issue_found_in_admitted_range": false,
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.75
+      }
+    },
+    {
+      "clip": "burden-shared",
+      "path": "videos\\dato-benz-brothers-united\\assets\\native\\burden-shared.mp4",
+      "sha256": "8f3ee8dfaae02f6ba2db842ef6d3365eb38150679f41678f7ebddfd4b84c21d5",
+      "duration_seconds": 10.041667,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "frames": 241,
+      "full_decode": true,
+      "decode_stderr": "",
+      "reviewed_times": [
+        0.1,
+        1.47,
+        2.84,
+        4.21,
+        5.59,
+        6.96,
+        8.33,
+        9.7
+      ],
+      "contact_sheet": "output\\benz-production\\qa\\burden-shared-contact.jpg",
+      "recommended_usable_range": {
+        "start": 0.2,
+        "end": 9.75
+      },
+      "strong_action_range": {
+        "start": 1.4,
+        "end": 8.8
+      },
+      "observed_action": "Two men take secure positions at a long timber beam, lift it together and carry it through the workshop. Legs, arms and the beam move coherently against the fixed workbenches.",
+      "notes": "Strong shared-load metaphor and actual lift/carry action. No major hand or body morphology failure found in sampled frames.",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_or_morphology_issue_found_in_admitted_range": false,
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.75
+      }
+    },
+    {
+      "clip": "through-storm",
+      "path": "videos\\dato-benz-brothers-united\\assets\\native\\through-storm.mp4",
+      "sha256": "4cc9486d075ae12247534daa20725807708c6c7526ea2fd1cfeba3e4da7e660a",
+      "duration_seconds": 10.041667,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "frames": 241,
+      "full_decode": true,
+      "decode_stderr": "",
+      "reviewed_times": [
+        0.1,
+        1.47,
+        2.84,
+        4.21,
+        5.59,
+        6.96,
+        8.33,
+        9.7
+      ],
+      "contact_sheet": "output\\benz-production\\qa\\through-storm-contact.jpg",
+      "recommended_usable_range": {
+        "start": 0.2,
+        "end": 9.7
+      },
+      "strong_action_range": {
+        "start": 2.8,
+        "end": 9.5
+      },
+      "observed_action": "A younger man carries an umbrella beside an older man as both walk through the wet street toward a warmly lit open door. A man at the threshold gestures to welcome them.",
+      "notes": "Independent walking, umbrella movement and a clear arrival progression. Coherent silhouettes and hands in reviewed frames. Generated shop lettering remains background context.",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_or_morphology_issue_found_in_admitted_range": false,
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.7
+      }
+    },
+    {
+      "clip": "dawn-brothers",
+      "path": "videos\\dato-benz-brothers-united\\assets\\native\\dawn-brothers.mp4",
+      "sha256": "09c986ed5117fa6cd629341ded395fbfe8269cc192f87a704875cfa2f7508da5",
+      "duration_seconds": 10.041667,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "frames": 241,
+      "full_decode": true,
+      "decode_stderr": "",
+      "reviewed_times": [
+        0.1,
+        1.47,
+        2.84,
+        4.21,
+        5.59,
+        6.96,
+        8.33,
+        9.7
+      ],
+      "contact_sheet": "output\\benz-production\\qa\\dawn-brothers-contact.jpg",
+      "recommended_usable_range": {
+        "start": 0.2,
+        "end": 7.8
+      },
+      "strong_action_range": {
+        "start": 0.2,
+        "end": 6.9
+      },
+      "observed_action": "Four friends walk along the pier together toward the dawn horizon. A shoulder gesture, separate footfalls, fabric and water motion make the action independent of the camera.",
+      "notes": "Prefer the clear forward walk through 7.8s. In the dense 8.5–9.7s review the group reaches the rail and repositions/crouches, causing heavy body occlusion and rapid composition changes. This tail is weaker for the dignified walk payoff and is excluded from the recommended range. Dense evidence: dawn-brothers-late-contact.jpg. The late change should not be described as a confirmed hard cut or identity failure.",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_or_morphology_issue_found_in_admitted_range": false,
+      "admitted_range": {
+        "start": 0.2,
+        "end": 7.8
+      }
+    },
+    {
+      "clip": "shared-table",
+      "path": "videos\\dato-benz-brothers-united\\assets\\native\\shared-table.mp4",
+      "sha256": "fa9255d7baa61d0c5ada948e64cb6966096254fb3e633decb90a2fac980cb8d2",
+      "duration_seconds": 10.041667,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "frames": 241,
+      "full_decode": true,
+      "decode_stderr": "",
+      "reviewed_times": [
+        0.1,
+        1.47,
+        2.84,
+        4.21,
+        5.59,
+        6.96,
+        8.33,
+        9.7
+      ],
+      "contact_sheet": "output\\benz-production\\qa\\shared-table-contact.jpg",
+      "recommended_usable_range": {
+        "start": 0.2,
+        "end": 9.7
+      },
+      "strong_action_range": {
+        "start": 0.2,
+        "end": 6.9
+      },
+      "observed_action": "Four friends gather at a round table, set food and cups down, settle into their seats and exchange warm conversation as the camera arcs around them. Steam, shoulders, faces and hands move independently.",
+      "notes": "The camera arc reveals the same four people from another angle. Serving and settling provide the strongest early action; the later smiles support a quieter gratitude passage. No major anatomy or object-shape failure found in sampled frames.",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_or_morphology_issue_found_in_admitted_range": false,
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.7
+      }
+    },
+    {
+      "clip": "shoulder-support",
+      "path": "videos\\dato-benz-brothers-united\\assets\\native\\shoulder-support.mp4",
+      "sha256": "4ac6f32dd6acd657ff924820505911a2120d279bf7c33d434b79350504e72de1",
+      "duration_seconds": 10.041667,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "frames": 241,
+      "full_decode": true,
+      "reviewed_times": [
+        0.1,
+        1.477,
+        2.855,
+        4.232,
+        5.61,
+        6.987,
+        8.364,
+        9.742
+      ],
+      "contact_sheet": "output\\benz-production\\qa\\shoulder-support-contact.jpg",
+      "individual_frames": [
+        "output\\benz-production\\qa\\shoulder-support-00-0.100s.png",
+        "output\\benz-production\\qa\\shoulder-support-01-1.477s.png",
+        "output\\benz-production\\qa\\shoulder-support-02-2.855s.png",
+        "output\\benz-production\\qa\\shoulder-support-03-4.232s.png",
+        "output\\benz-production\\qa\\shoulder-support-04-5.610s.png",
+        "output\\benz-production\\qa\\shoulder-support-05-6.987s.png",
+        "output\\benz-production\\qa\\shoulder-support-06-8.364s.png",
+        "output\\benz-production\\qa\\shoulder-support-07-9.742s.png"
+      ],
+      "recommended_usable_range": {
+        "start": 0.2,
+        "end": 9.7
+      },
+      "strong_action_range": {
+        "start": 4.0,
+        "end": 9.7
+      },
+      "observed_action": "The blue-shirted man places and keeps a reassuring hand on the grey-shirted man’s shoulder. The grey-shirted man raises his head, meets his friend’s eyes, gestures briefly and begins to smile. Rain and background traffic move independently.",
+      "notes": "Stable two-person anatomy and shoulder contact across the eight frames. The clearest emotional turn is in the second half.",
+      "editorial_admission": "accepted_with_source_ranges",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_or_morphology_issue_found": false,
+      "p0_issue_found": false,
+      "review_method": "Eight chronological frames plus full technical decode; motion/anatomy visually inspected across sampled source frames.",
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.7
+      }
+    },
+    {
+      "clip": "passing-kindness",
+      "path": "videos\\dato-benz-brothers-united\\assets\\native\\passing-kindness.mp4",
+      "sha256": "64182b2414d53c415ef76c662d54b214065a7ef1536a6a2c52c79fa92de90024",
+      "duration_seconds": 10.041667,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "frames": 241,
+      "full_decode": true,
+      "reviewed_times": [
+        0.1,
+        1.477,
+        2.855,
+        4.232,
+        5.61,
+        6.987,
+        8.364,
+        9.742
+      ],
+      "contact_sheet": "output\\benz-production\\qa\\passing-kindness-contact.jpg",
+      "individual_frames": [
+        "output\\benz-production\\qa\\passing-kindness-00-0.100s.png",
+        "output\\benz-production\\qa\\passing-kindness-01-1.477s.png",
+        "output\\benz-production\\qa\\passing-kindness-02-2.855s.png",
+        "output\\benz-production\\qa\\passing-kindness-03-4.232s.png",
+        "output\\benz-production\\qa\\passing-kindness-04-5.610s.png",
+        "output\\benz-production\\qa\\passing-kindness-05-6.987s.png",
+        "output\\benz-production\\qa\\passing-kindness-06-8.364s.png",
+        "output\\benz-production\\qa\\passing-kindness-07-9.742s.png"
+      ],
+      "recommended_usable_range": {
+        "start": 0.2,
+        "end": 9.7
+      },
+      "strong_action_range": {
+        "start": 1.2,
+        "end": 7.1
+      },
+      "observed_action": "A canvas bag passes from the older blue-shirted man to the younger man, then to an elderly recipient who reaches, grasps it and holds it to his chest while smiling. Actors turn, advance and change hand positions independently of the lateral camera movement.",
+      "notes": "The handoff and gratitude payoff read clearly. Late blue-shirted re-entry is background continuity, while the most legible gift transfer is before 7.1 seconds. Full-resolution5.61second frame was inspected for hand contact.",
+      "editorial_admission": "accepted_with_source_ranges",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_or_morphology_issue_found": false,
+      "p0_issue_found": false,
+      "review_method": "Eight chronological frames plus full technical decode; motion/anatomy visually inspected across sampled source frames.",
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.7
+      }
+    },
+    {
+      "clip": "sea-journey",
+      "path": "videos\\dato-benz-brothers-united\\assets\\native\\sea-journey.mp4",
+      "sha256": "19e01cb9f8b506210a1f56f0ece790d8b089527067747c7d1d7025194580ac35",
+      "duration_seconds": 10.041667,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "frames": 241,
+      "full_decode": true,
+      "reviewed_times": [
+        0.1,
+        1.477,
+        2.855,
+        4.232,
+        5.61,
+        6.987,
+        8.364,
+        9.742
+      ],
+      "contact_sheet": "output\\benz-production\\qa\\sea-journey-contact.jpg",
+      "individual_frames": [
+        "output\\benz-production\\qa\\sea-journey-00-0.100s.png",
+        "output\\benz-production\\qa\\sea-journey-01-1.477s.png",
+        "output\\benz-production\\qa\\sea-journey-02-2.855s.png",
+        "output\\benz-production\\qa\\sea-journey-03-4.232s.png",
+        "output\\benz-production\\qa\\sea-journey-04-5.610s.png",
+        "output\\benz-production\\qa\\sea-journey-05-6.987s.png",
+        "output\\benz-production\\qa\\sea-journey-06-8.364s.png",
+        "output\\benz-production\\qa\\sea-journey-07-9.742s.png"
+      ],
+      "recommended_usable_range": {
+        "start": 0.2,
+        "end": 9.7
+      },
+      "strong_action_range": {
+        "start": 0.2,
+        "end": 9.7
+      },
+      "observed_action": "The wooden boat progresses over water with a changing wake, ripples and reflections; three seated men make independent head and torso turns as the camera arcs from side to rear. The previously occluded third man becomes more visible with the changing angle.",
+      "notes": "The third man is already visible behind the near seated man at 0.1 seconds; the later reveal does not indicate an extra person appearing. Full-resolution0.1and6.987second frames were checked. Dynamic water supplies the strongest non-camera movement.",
+      "editorial_admission": "accepted_with_source_ranges",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_or_morphology_issue_found": false,
+      "p0_issue_found": false,
+      "review_method": "Eight chronological frames plus full technical decode; motion/anatomy visually inspected across sampled source frames.",
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.7
+      }
+    },
+    {
+      "clip": "warm-conversation",
+      "path": "videos\\dato-benz-brothers-united\\assets\\native\\warm-conversation.mp4",
+      "sha256": "056d32df16896eb70d6c4849071f4fbf702e7247cb8c5d109533faf29b04bb5a",
+      "duration_seconds": 10.041667,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "frames": 241,
+      "full_decode": true,
+      "reviewed_times": [
+        0.1,
+        1.477,
+        2.855,
+        4.232,
+        5.61,
+        6.987,
+        8.364,
+        9.742
+      ],
+      "contact_sheet": "output\\benz-production\\qa\\warm-conversation-contact.jpg",
+      "individual_frames": [
+        "output\\benz-production\\qa\\warm-conversation-00-0.100s.png",
+        "output\\benz-production\\qa\\warm-conversation-01-1.477s.png",
+        "output\\benz-production\\qa\\warm-conversation-02-2.855s.png",
+        "output\\benz-production\\qa\\warm-conversation-03-4.232s.png",
+        "output\\benz-production\\qa\\warm-conversation-04-5.610s.png",
+        "output\\benz-production\\qa\\warm-conversation-05-6.987s.png",
+        "output\\benz-production\\qa\\warm-conversation-06-8.364s.png",
+        "output\\benz-production\\qa\\warm-conversation-07-9.742s.png"
+      ],
+      "recommended_usable_range": {
+        "start": 0.2,
+        "end": 9.7
+      },
+      "strong_action_range": {
+        "start": 3.7,
+        "end": 9.7
+      },
+      "observed_action": "Three men converse, gesture with their hands, turn toward each other, touch one another’s shoulders and break into smiles and laughter. Expressions, heads and arms change independently while the camera drifts through the courtyard.",
+      "notes": "Faces and visible hands remain coherent in the sampled sequence. The second half is the strongest brotherhood payoff.",
+      "editorial_admission": "accepted_with_source_ranges",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_or_morphology_issue_found": false,
+      "p0_issue_found": false,
+      "review_method": "Eight chronological frames plus full technical decode; motion/anatomy visually inspected across sampled source frames.",
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.7
+      }
+    },
+    {
+      "clip": "open-door",
+      "path": "videos\\dato-benz-brothers-united\\assets\\native\\open-door.mp4",
+      "sha256": "2b93eba251ac4748fce8b642d043fe539e5963dad0cfcd560c3d6659b808ba1e",
+      "duration_seconds": 10.041667,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "frames": 241,
+      "full_decode": true,
+      "reviewed_times": [
+        0.1,
+        1.477,
+        2.855,
+        4.232,
+        5.61,
+        6.987,
+        8.364,
+        9.742
+      ],
+      "contact_sheet": "output\\benz-production\\qa\\open-door-contact.jpg",
+      "individual_frames": [
+        "output\\benz-production\\qa\\open-door-00-0.100s.png",
+        "output\\benz-production\\qa\\open-door-01-1.477s.png",
+        "output\\benz-production\\qa\\open-door-02-2.855s.png",
+        "output\\benz-production\\qa\\open-door-03-4.232s.png",
+        "output\\benz-production\\qa\\open-door-04-5.610s.png",
+        "output\\benz-production\\qa\\open-door-05-6.987s.png",
+        "output\\benz-production\\qa\\open-door-06-8.364s.png",
+        "output\\benz-production\\qa\\open-door-07-9.742s.png"
+      ],
+      "recommended_usable_range": {
+        "start": 1.6,
+        "end": 9.7
+      },
+      "strong_action_range": {
+        "start": 2.5,
+        "end": 9.7
+      },
+      "observed_action": "Two men swing the double doors open and move aside while volunteers carrying boxes walk forward through the doorway, changing footfall, expression and box position. The opening reveals moving people and sunlight rather than a static background.",
+      "notes": "Trim 0–1.6 seconds: the initial open doors first swing closed and then reopen. The admitted range preserves a clear opening/welcome action. Generated box and wall lettering is background texture; do not extract it as a readable insert.",
+      "excluded_ranges": [
+        {
+          "start": 0,
+          "end": 1.6,
+          "reason": "Doors close before the intended welcoming opening; avoid narrative reversal."
+        }
+      ],
+      "editorial_admission": "accepted_with_source_ranges",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_or_morphology_issue_found": false,
+      "p0_issue_found": false,
+      "review_method": "Eight chronological frames plus full technical decode; motion/anatomy visually inspected across sampled source frames.",
+      "admitted_range": {
+        "start": 1.6,
+        "end": 9.7
+      }
+    },
+    {
+      "clip": "photo-brothers",
+      "path": "videos\\dato-benz-brothers-united\\assets\\native\\photo-brothers.mp4",
+      "sha256": "81eb7a3d70a214501acc612f6f15f1181c7a09d3e254cb25bdf3337ddfb4e20f",
+      "duration_seconds": 7.041667,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "frames": 169,
+      "full_decode": true,
+      "decode_stderr": "",
+      "reviewed_times": [
+        0.1,
+        1.05,
+        2.0,
+        2.95,
+        3.9,
+        4.84,
+        5.79,
+        6.74
+      ],
+      "contact_sheet": "output\\benz-production\\qa\\photo-brothers-contact.jpg",
+      "recommended_usable_range": {
+        "start": 0.1,
+        "end": 6.75
+      },
+      "strong_action_range": {
+        "start": 0.2,
+        "end": 6.75
+      },
+      "observed_action": "The four men from the supplied group photo turn toward the camera, smile and walk forward. The flags and clothing move independently. The source venue, balloons, floral displays and clothing remain recognisable.",
+      "identity_review": {
+        "source": "videos/dato-benz-brothers-united/assets/photos/brothers.jpg",
+        "people_in_source": 4,
+        "people_in_generated_clip": 4,
+        "result": "Visually source-consistent in sampled frames; no obvious person substitution or extra principal person found.",
+        "comparison": "Central light-blue shirt, boutonniere, short hair and face remain recognisable as expression warms. Two sunglasses-wearing men remain to the left and the short-haired black-shirted man remains to the right. The far-left man is partly occluded by a moving flag in some samples.",
+        "limits": "Manual visual consistency assessment. Walking, smiles and flag movement are generated interpretation; this is not authentic event footage or biometric identity verification."
+      },
+      "notes": "Suitable for a brief personal memory before the untouched original seaside photo. Highlight levels rise on the central shirt as the group steps into sun. Preserve the framing that keeps the four people together.",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_or_morphology_issue_found_in_admitted_range": false,
+      "admitted_range": {
+        "start": 0.1,
+        "end": 6.75
+      }
+    },
+    {
+      "clip": "wet-footsteps",
+      "path": "videos\\dato-benz-brothers-united\\assets\\native\\wet-footsteps.mp4",
+      "sha256": "0553169381fe2ba220077f1c01980540f9dc47e50646a2a98f072abc65898bed",
+      "duration_seconds": 10.083333,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "frames": 242,
+      "full_decode": true,
+      "reviewed_times": [
+        0.1,
+        1.483,
+        2.867,
+        4.25,
+        5.633,
+        7.017,
+        8.4,
+        9.783
+      ],
+      "contact_sheet": "output\\benz-production\\qa\\wet-footsteps-contact.jpg",
+      "individual_frames": [
+        "output\\benz-production\\qa\\wet-footsteps-00-0.100s.png",
+        "output\\benz-production\\qa\\wet-footsteps-01-1.483s.png",
+        "output\\benz-production\\qa\\wet-footsteps-02-2.867s.png",
+        "output\\benz-production\\qa\\wet-footsteps-03-4.250s.png",
+        "output\\benz-production\\qa\\wet-footsteps-04-5.633s.png",
+        "output\\benz-production\\qa\\wet-footsteps-05-7.017s.png",
+        "output\\benz-production\\qa\\wet-footsteps-06-8.400s.png",
+        "output\\benz-production\\qa\\wet-footsteps-07-9.783s.png"
+      ],
+      "recommended_usable_range": {
+        "start": 0.2,
+        "end": 9.75
+      },
+      "strong_action_range": {
+        "start": 0.2,
+        "end": 9.75
+      },
+      "observed_action": "Three people stride through a rain-soaked street. Six legs alternate weight and step with independently changing trouser folds, shoe angles, water splashes and ripples. The low tracking camera follows their motion.",
+      "notes": "Coherent visible lower-body anatomy in all eight frames. No duplicated/fused leg or severe shoe morph was identified in the sampled sequence; strong physical splash motion.",
+      "editorial_admission": "accepted_with_source_ranges",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_or_morphology_issue_found": false,
+      "p0_issue_found": false,
+      "review_method": "Eight chronological frames plus full technical decode; motion/anatomy visually inspected across sampled source frames.",
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.75
+      }
+    },
+    {
+      "id": "covered-path",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_issue_found": false,
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "observed_action": "Three men take successive steps through rain toward the warm doorway; the umbrella and shoulders move relative to the stable buildings and fresh puddles ripple.",
+      "sha256": "d908f7ff464a0b68b38c30533dd402cbac3699ff67cbe0434feb70a306172613",
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "full_decode": true
+    },
+    {
+      "id": "packing-table",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_issue_found": false,
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "observed_action": "The woman lifts and replaces rice parcels, then reaches toward the produce; the man keeps both hands on the box. Coherent hands, packets and rigid box. The requested box lift is not present.",
+      "sha256": "e9de822443bfd3b415321247d3abb9f0c963ce96593b6839ab50c7ce8c91c307",
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "full_decode": true
+    },
+    {
+      "id": "workshop-team",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_issue_found": false,
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "observed_action": "Two men visibly raise and carry a rigid timber beam together with stable hand grips, independent knee and shoulder movement and sunlit airborne dust.",
+      "sha256": "8bb977769caf3d717ce8d05c247f6f9dc02d6eef994775aa1c7092655c6ff9ac",
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "full_decode": true
+    },
+    {
+      "id": "tea-pour",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_issue_found": false,
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "observed_action": "A continuous tea stream fills the cup, then the hands tilt the teapot back and lower it. Steam rises and friends move independently in the background.",
+      "sha256": "c1fa943523921945a1705f1b0e60eea9e9b07c4a0679df0b0c04255d21269b87",
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "full_decode": true
+    },
+    {
+      "id": "joined-hands",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_issue_found": false,
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "observed_action": "The top hand makes a small reassuring press and the three men lift their heads and exchange natural smiles. Stacked hands and fingers remain coherent.",
+      "sha256": "d9ef4c24861516ec775cc8febe8d6ce368a57f5b384cf7105cb18e9352b364b4",
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "full_decode": true
+    },
+    {
+      "id": "open-shutters",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_issue_found": false,
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "observed_action": "The man moves his arms against the shutters and lowers his shoulders slightly as the sunlight broadens across the room. The shutter opening is subtle, not a dramatic full swing.",
+      "sha256": "b85fed471ae18e55bd661bc556ef62b66a7505601e43a05509a69a3596e48bf9",
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "full_decode": true
+    },
+    {
+      "id": "sea-dawn",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_issue_found": false,
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "observed_action": "Successive waves undulate across the full water surface and reflections fragment independently; distant boat moves gradually right against the shore.",
+      "sha256": "71183de07a7c8b6a86eb8beb0c361ddd4ca4b1685a9b76397360a711cca2c826",
+      "admitted_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "full_decode": true
+    }
+  ]
+}

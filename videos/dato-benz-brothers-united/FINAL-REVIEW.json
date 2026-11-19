@@ -1,0 +1,185 @@
+{
+  "status": "sampled_encoded_visual_and_subtitle_checks_passed",
+  "presentation_status": "completed_recipient_confirmed",
+  "identity_note": "User confirmed this song is for Hock Siew and identified him in the seaside photograph. A separate Benz song will follow later.",
+  "reviewed_at_utc": "2026-11-19T09:43:44.329410+00:00",
+  "independent_visual": {
+    "reviewed_at_utc": "2026-11-19T09:41:11.407096+00:00",
+    "reviewer": "benz_direction independent encoded visual review",
+    "method": "Viewed all 40 shot midpoint samples in three contact sheets, six encoded lyric-name crops and the full-resolution closing dedication proof. Compared the closing portrait to the supplied seaside original and retained the earlier chronological native source review.",
+    "verdict": "Pass within sampled visual scope; no blocking issue found.",
+    "limits": "This is sampled encoded-frame visual review. It is not an independent complete real-time playback, audio audition, every-frame anatomy assessment or proof of word-level lyric sync.",
+    "proofs": [
+      {
+        "path": "videos\\dato-benz-brothers-united\\renders\\review\\contact-sheet-01.jpg",
+        "sha256": "b6f2101fa0ddf227af8c75d8727ac12869ba616aedd2439fe7aa4bcf1fb4586d"
+      },
+      {
+        "path": "videos\\dato-benz-brothers-united\\renders\\review\\contact-sheet-02.jpg",
+        "sha256": "a316b03f87356223e86954e21053167c8671dd688ff4a1e4553c713976917338"
+      },
+      {
+        "path": "videos\\dato-benz-brothers-united\\renders\\review\\contact-sheet-03.jpg",
+        "sha256": "4a3a28d7a9127dc4c561b132009d24cf0008db424f2a272503bbb83f920b4b94"
+      },
+      {
+        "path": "videos\\dato-benz-brothers-united\\renders\\review\\name-lyric-proofs.png",
+        "sha256": "12680989e29a4ca586721659fa36e28bc07f9898b407edf2fed43078b50b0661"
+      },
+      {
+        "path": "videos\\dato-benz-brothers-united\\renders\\review\\closing-dedication.png",
+        "sha256": "04fe66ab63bf7644c94374ea52ccf423db23458d616be43db24ab7e99398afb5"
+      }
+    ],
+    "findings": [
+      {
+        "area": "honoree name",
+        "result": "All six name-crop appearances are legible and spell 拿督斯里谢惠福 or Hock Siew correctly. No missing-glyph box or cut-off characters seen."
+      },
+      {
+        "area": "original photo closing",
+        "result": "The supplied seaside original is shown at its correct 3:4 aspect, with the two faces and clasping/supporting hands visible. No face retouching or generated replacement apparent in the original-photo panel."
+      },
+      {
+        "area": "closing typography",
+        "result": "献给拿督斯里谢惠福, Hock Siew, 有你，兄弟同心。, 愿你平安，幸福永久。, 兄弟情义 · 一路同行 are legible, comfortably spaced and clear of the photograph."
+      },
+      {
+        "area": "subject framing and contact",
+        "result": "Reviewed samples retain intentional full-body, medium and hand-detail compositions. No blocking accidental face crop, hand-contact failure or overlay collision was found. Detail shots intentionally omit heads."
+      },
+      {
+        "area": "native source admission",
+        "result": "The encoded dawn walk ends before the previously excluded late source tail. The generated four-person group memory remains source-consistent in its reviewed encoded sample."
+      },
+      {
+        "area": "story flow",
+        "result": "The sampled order moves from journey and rain to practical support, shared work, gratitude/tea, united dawn and a personal real-photo conclusion. Returning source windows support motif progression."
+      }
+    ],
+    "blocking_findings": [],
+    "files_modified": "Only this local QA evidence JSON; media and project source were not changed."
+  },
+  "independent_subtitles": {
+    "passed": true,
+    "stage": "static canonical/ASS integrity and encoded visual subtitle review complete",
+    "ass_sha256": "841385b3b26a7432c73fa6a2b08d3a952c83a4f2a6f6fbac6a90fcd479f70676",
+    "captions_sha256": "6d3a6b8f711526f7944b5d391cb16340fd1e17db761d1dd41b4d76598a75bd10",
+    "lyric_events": 40,
+    "all_events": 47,
+    "exact_canonical_text": true,
+    "ass_vs_captions_timing_max_error_seconds": 2.842170943040401e-14,
+    "lyric_clock": {
+      "start": 22.3,
+      "end": 170.1
+    },
+    "all_events_within_master": true,
+    "lyric_events_monotonic_no_overlap": true,
+    "exact_names": {
+      "Hock Siew": true,
+      "拿督斯里谢惠福": true,
+      "浅顶": true
+    },
+    "stale_visible_names_found": false,
+    "opening_and_closing_events": [
+      {
+        "start": 0.2,
+        "end": 5.0,
+        "style": "Title",
+        "text": "有你，兄弟同心"
+      },
+      {
+        "start": 0.65,
+        "end": 5.0,
+        "style": "Small",
+        "text": "献给拿督斯里谢惠福"
+      },
+      {
+        "start": 185.47,
+        "end": 196.76,
+        "style": "Small",
+        "text": "献给拿督斯里谢惠福"
+      },
+      {
+        "start": 185.47,
+        "end": 196.76,
+        "style": "Dedication",
+        "text": "Hock Siew"
+      },
+      {
+        "start": 185.97,
+        "end": 196.76,
+        "style": "Dedication",
+        "text": "有你，兄弟同心。"
+      },
+      {
+        "start": 186.67,
+        "end": 196.76,
+        "style": "Dedication",
+        "text": "愿你平安，幸福永久。"
+      },
+      {
+        "start": 187.27,
+        "end": 196.76,
+        "style": "Small",
+        "text": "兄弟情义 · 一路同行"
+      }
+    ],
+    "final_edit": {
+      "shots": 40,
+      "frames": 5903,
+      "fps": 30,
+      "duration_seconds": 196.76,
+      "closing_start": 184.76666666666668
+    },
+    "limitations": "Source text integrity only. Model-derived vocal sync is previously documented; encoded visual legibility reviewed separately.",
+    "reviewed_at_utc": "2026-11-19T09:41:33.236172+00:00",
+    "encoded_visual_review": {
+      "passed": true,
+      "p0_subtitle_issue_found": false,
+      "name_lyric_appearances_reviewed": 6,
+      "name_appearance_times_seconds": [
+        31.133,
+        82.933,
+        91.333,
+        151.033,
+        155.667,
+        159.3
+      ],
+      "opening_title_frame_seconds": 2.3,
+      "place_name_frame_seconds": 26.7,
+      "longest_line_frame_seconds": 99.6,
+      "closing_dedication_frame_seconds": 192.76,
+      "exact_visible_names": [
+        "Hock Siew",
+        "拿督斯里谢惠福",
+        "浅顶"
+      ],
+      "visible_title": "有你，兄弟同心",
+      "visible_dedication": "献给拿督斯里谢惠福",
+      "closing_visible_text": [
+        "献给拿督斯里谢惠福",
+        "Hock Siew",
+        "有你，兄弟同心。",
+        "愿你平安，幸福永久。",
+        "兄弟情义 · 一路同行"
+      ],
+      "findings": [
+        "Names and title are correctly spelled and readable.",
+        "No missing Chinese glyphs, tofu boxes, clipping, unwanted line wraps or subtitle overlap found in sampled encoded frames.",
+        "Longest lyric remains on one readable line within frame.",
+        "No stale Dato Benz or Bosston/Pragon text in ASS events or inspected encoded typography."
+      ],
+      "proof_files": [
+        "videos/dato-benz-brothers-united/renders/review/name-lyric-proofs.png",
+        "videos/dato-benz-brothers-united/renders/review/closing-dedication.png",
+        "output/benz-production/qa/encoded-title.png",
+        "output/benz-production/qa/encoded-place-name.png",
+        "output/benz-production/qa/encoded-longest-lyric.png"
+      ],
+      "limits": "Visual encoded-frame sampling and complete ASS text comparison; not a full-speed human listening review."
+    }
+  },
+  "root_review": "Viewed all40midpoints,6namecrops and closingproof; no blocking typography/cropping issue seen.",
+  "limits": "Sampled frames; not independent complete playback, human audio audition or identity verification."
+}

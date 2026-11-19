@@ -1,0 +1,159 @@
+{
+  "passed": true,
+  "verified_at_utc": "2026-11-19T09:39:44.605999+00:00",
+  "video": "renders/Hock-Siew-Brothers-United-Cinematic.mp4",
+  "video_sha256": "22c94202d9f31a5c39e7ad1dff7f895b0022f0a3626a1b3a29b6f41ad7a52de5",
+  "size_bytes": 347331183,
+  "duration_seconds": 196.766667,
+  "audio_master_seconds": 196.76,
+  "frames": 5903,
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "full_decode": true,
+  "audio": {
+    "offset_samples": 0,
+    "per_channel_correlation": [
+      0.9996083238504844,
+      0.9995996725407412
+    ],
+    "per_channel_least_squares_gain_db": [
+      -0.03307302662011599,
+      -0.03270324693794029
+    ],
+    "gain_tolerance_db": 0.15,
+    "compared_samples_per_channel": 9444480,
+    "encoded_aac_sha256": "3d942035a4e5e8d23b80a74c0e8b40d3c0261df3d58df823d5f4bb8c78e295d9"
+  },
+  "lyrics": {
+    "supplied_lines": 40,
+    "caption_cues": 40,
+    "text_completeness": "passed",
+    "cue_order_bounds": "passed",
+    "rendered_ass_text": "passed",
+    "timing_limits": "Model-derived vocal alignment; encoded crops and listening remain separate review."
+  },
+  "native_clip_count": 21,
+  "picture_binding": {
+    "passed": true,
+    "samples": [
+      {
+        "shot": "shot-02",
+        "frame": 205,
+        "time": 6.833333333333333,
+        "rgb_mae_0_255": 0.730969,
+        "global_bt709_luma_ssim": 0.999801
+      },
+      {
+        "shot": "shot-07",
+        "frame": 904,
+        "time": 30.133333333333333,
+        "rgb_mae_0_255": 0.574436,
+        "global_bt709_luma_ssim": 0.999923
+      },
+      {
+        "shot": "shot-11",
+        "frame": 1488,
+        "time": 49.6,
+        "rgb_mae_0_255": 0.699451,
+        "global_bt709_luma_ssim": 0.999869
+      },
+      {
+        "shot": "shot-16",
+        "frame": 2168,
+        "time": 72.26666666666667,
+        "rgb_mae_0_255": 0.730444,
+        "global_bt709_luma_ssim": 0.999852
+      },
+      {
+        "shot": "shot-20",
+        "frame": 2756,
+        "time": 91.86666666666666,
+        "rgb_mae_0_255": 0.916158,
+        "global_bt709_luma_ssim": 0.99973
+      },
+      {
+        "shot": "shot-25",
+        "frame": 3397,
+        "time": 113.23333333333333,
+        "rgb_mae_0_255": 0.821889,
+        "global_bt709_luma_ssim": 0.999878
+      },
+      {
+        "shot": "shot-30",
+        "frame": 4093,
+        "time": 136.43333333333334,
+        "rgb_mae_0_255": 0.74485,
+        "global_bt709_luma_ssim": 0.999907
+      },
+      {
+        "shot": "shot-34",
+        "frame": 4653,
+        "time": 155.1,
+        "rgb_mae_0_255": 0.510764,
+        "global_bt709_luma_ssim": 0.999917
+      },
+      {
+        "shot": "shot-39",
+        "frame": 5438,
+        "time": 181.26666666666668,
+        "rgb_mae_0_255": 0.70567,
+        "global_bt709_luma_ssim": 0.999891
+      }
+    ],
+    "thresholds": {
+      "maximum_rgb_mae": 5,
+      "minimum_luma_ssim": 0.97
+    },
+    "method": "Native central-picture band at exact EDL clock vs staged source. No resize, alignment search or colour fitting.",
+    "limits": "Sampled source correspondence, not proof of subject motion or every-frame image quality."
+  },
+  "source_hashes": {
+    "align_lyrics.py": "c52e4e32b34e750b79b63b181e471ad5034ddd15c86db42648cee63a6a33bcbb",
+    "align_lyrics_context.py": "d9a37ade2d99375e07c965c097dfda01cf408050b96f6af50f07e122f6529872",
+    "author_edit.py": "c715d68dc5a9307c00dad4f28f3c3b486f93543c9cfa5df9c9a86c1aeed87609",
+    "captions.json": "6d3a6b8f711526f7944b5d391cb16340fd1e17db761d1dd41b4d76598a75bd10",
+    "compile_captions.py": "61028dee76398523e51695eff667aa11bfba9425b44140130513b9beaef09827",
+    "edit-plan.json": "e47c0434380cd6d002cbd81c10ff82d75fa8bdd3cdde0e95e81eab671892f1c2",
+    "film.ass": "841385b3b26a7432c73fa6a2b08d3a952c83a4f2a6f6fbac6a90fcd479f70676",
+    "generation-jobs.json": "e6d87e4277f5f27f17a7de95f6b4f32cbfd88ef2a79e51d7180a76d4dc8b4ee1",
+    "line-alignment.json": "f2f2a77a45844fb5c33693bbf5c43109a2c51dfdb2bd680c4720994c7eaeca71",
+    "lyrics.txt": "0360ef17171c888730ec0e453c004c98332c8bd231e7679bb56eb2ada5716f9f",
+    "native-clips.json": "eb1f3958072d6cb8211b620248c21c6954498095b7acc802405f10b6deb1213e",
+    "NATIVE-REVIEW.json": "8a2b327ab0b0f6f3221d70f7f97a8018956d0167d9abe00b72c5eff63f2278e3",
+    "native-turbo-review.json": "05bf430991cfc046c454d4447dd330fd07887b6d5767740b74a462f61c34278a",
+    "planned-shots.json": "a5ed14ca66a143be887a26495b6d2ad20b0c05aa39aabcb262ffb2a66a1aaf74",
+    "prepare_film.py": "d162eb66aec46b0e175a0df5c3954c8e66521de2b5fcc8ee9b9d4d445f73a689",
+    "requirements-render.txt": "88c97500f870eca2354079824d3dd4cd9591dc62269aceda54bc3c392f60acb6",
+    "source-bindings.json": "22a306547e2d4198bce380dc18b5dfe550885bd2ffd0783ac292e07915f2544e",
+    "verify_film.py": "5e2fa4cb60257ecea3b2ffc713d3d501cf02ed59943bbdbf8385d605c9e7e141"
+  },
+  "visual_review": {
+    "contact_sheets": [
+      "renders/review/contact-sheet-01.jpg",
+      "renders/review/contact-sheet-02.jpg",
+      "renders/review/contact-sheet-03.jpg"
+    ],
+    "sampled_shots": 40,
+    "spelling_crops": 6,
+    "spelling_sheet": "renders/review/name-lyric-proofs.png",
+    "closing_dedication": "renders/review/closing-dedication.png",
+    "review_status": "sampled encoded images inspected by root, renderer and independent direction/subtitle reviewers; see FINAL-REVIEW.json"
+  },
+  "sharing_copy": {
+    "path": "renders/Hock-Siew-Brothers-United-Cinematic-720p.mp4",
+    "size_bytes": 102793509,
+    "sha256": "1d90ad2a453ddf8400cda5023f5ac561b0bd06cda2eda3feb7455d4b8b31d3e4",
+    "full_decode": true,
+    "audio_payload_identical": true
+  },
+  "presentation_status": "completed_recipient_confirmed",
+  "identity_confirmation_required": false,
+  "credit_budget": {
+    "authorized_existing": 2250,
+    "used": 1924,
+    "verified_remaining": 326,
+    "additional_purchases": 0
+  },
+  "recipient_confirmation": "User confirmed Hock Siew in the seaside photo; later song will be for Benz."
+}

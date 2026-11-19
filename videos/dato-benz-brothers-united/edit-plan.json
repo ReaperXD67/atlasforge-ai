@@ -1,0 +1,412 @@
+{
+  "revision": 2,
+  "duration_seconds": 196.76,
+  "fps": 30,
+  "frames": 5903,
+  "closing_start": 184.76666666666668,
+  "source_mode": "native-ai-video-and-supplied-memory",
+  "editorial_method": "Phrase-aware section order; unique chronological source intervals; real memory bookend",
+  "shots": [
+    {
+      "id": "shot-01",
+      "kind": "native",
+      "clip": "sea-journey",
+      "start_frame": 0,
+      "end_frame": 138,
+      "source_at": 0.2,
+      "rate": 0.9076433121019108,
+      "description": "A journey begins: moving water and an open horizon"
+    },
+    {
+      "id": "shot-02",
+      "kind": "native",
+      "clip": "sea-dawn",
+      "start_frame": 138,
+      "end_frame": 273,
+      "source_at": 0.2,
+      "rate": 1.0,
+      "description": "Morning light and water establish the coastal world"
+    },
+    {
+      "id": "shot-03",
+      "kind": "native",
+      "clip": "wet-footsteps",
+      "start_frame": 273,
+      "end_frame": 402,
+      "source_at": 0.2,
+      "rate": 1.0,
+      "description": "A human rhythm enters the rain"
+    },
+    {
+      "id": "shot-04",
+      "kind": "native",
+      "clip": "rain-arrival",
+      "start_frame": 402,
+      "end_frame": 537,
+      "source_at": 0.2,
+      "rate": 0.915335463258786,
+      "description": "Friends move toward the same doorway"
+    },
+    {
+      "id": "shot-05",
+      "kind": "native",
+      "clip": "open-door",
+      "start_frame": 537,
+      "end_frame": 669,
+      "source_at": 1.6,
+      "rate": 0.9529411764705882,
+      "description": "Warmth and welcome before the first vocal"
+    },
+    {
+      "id": "shot-06",
+      "kind": "native",
+      "clip": "warm-conversation",
+      "start_frame": 669,
+      "end_frame": 825,
+      "source_at": 0.2,
+      "rate": 1.0,
+      "description": "The day and place where friendship began"
+    },
+    {
+      "id": "shot-07",
+      "kind": "native",
+      "clip": "shoulder-support",
+      "start_frame": 825,
+      "end_frame": 983,
+      "source_at": 0.2,
+      "rate": 0.9563758389261745,
+      "description": "A name held with respect and companionship"
+    },
+    {
+      "id": "shot-08",
+      "kind": "native",
+      "clip": "hands-help",
+      "start_frame": 983,
+      "end_frame": 1137,
+      "source_at": 0.2,
+      "rate": 0.9230769230769231,
+      "description": "A visible hand offered with practical care"
+    },
+    {
+      "id": "shot-09",
+      "kind": "native",
+      "clip": "shared-table",
+      "start_frame": 1137,
+      "end_frame": 1287,
+      "source_at": 0.2,
+      "rate": 0.9726962457337883,
+      "description": "There is room for everyone at the table"
+    },
+    {
+      "id": "shot-10",
+      "kind": "native",
+      "clip": "shoulder-support",
+      "start_frame": 1287,
+      "end_frame": 1427,
+      "source_at": 5.236912751677853,
+      "rate": 0.9563758389261745,
+      "description": "Respect grows from everyday gestures"
+    },
+    {
+      "id": "shot-11",
+      "kind": "native",
+      "clip": "warm-conversation",
+      "start_frame": 1427,
+      "end_frame": 1550,
+      "source_at": 5.4,
+      "rate": 1.0,
+      "description": "Return to the warmth behind the friendship"
+    },
+    {
+      "id": "shot-12",
+      "kind": "native",
+      "clip": "community-boxes",
+      "start_frame": 1550,
+      "end_frame": 1704,
+      "source_at": 0.2,
+      "rate": 0.981164383561644,
+      "description": "Sincerity becomes action in the community"
+    },
+    {
+      "id": "shot-13",
+      "kind": "native",
+      "clip": "packing-table",
+      "start_frame": 1704,
+      "end_frame": 1833,
+      "source_at": 0.2,
+      "rate": 1.0,
+      "description": "Hands prepare help for someone else"
+    },
+    {
+      "id": "shot-14",
+      "kind": "native",
+      "clip": "hands-help",
+      "start_frame": 1833,
+      "end_frame": 1926,
+      "source_at": 4.93846153846154,
+      "rate": 0.9230769230769231,
+      "description": "A later moment of the same completed helping action"
+    },
+    {
+      "id": "shot-15",
+      "kind": "native",
+      "clip": "burden-shared",
+      "start_frame": 1926,
+      "end_frame": 2084,
+      "source_at": 0.2,
+      "rate": 1.0,
+      "description": "The weight is shared between friends"
+    },
+    {
+      "id": "shot-16",
+      "kind": "native",
+      "clip": "covered-path",
+      "start_frame": 2084,
+      "end_frame": 2253,
+      "source_at": 0.2,
+      "rate": 0.986301369863014,
+      "description": "Care continues through ordinary weather"
+    },
+    {
+      "id": "shot-17",
+      "kind": "native",
+      "clip": "rain-arrival",
+      "start_frame": 2253,
+      "end_frame": 2431,
+      "source_at": 4.3190095846645375,
+      "rate": 0.915335463258786,
+      "description": "A later stage of the journey together"
+    },
+    {
+      "id": "shot-18",
+      "kind": "native",
+      "clip": "joined-hands",
+      "start_frame": 2431,
+      "end_frame": 2559,
+      "source_at": 0.2,
+      "rate": 1.0,
+      "description": "The first chorus gathers the circle"
+    },
+    {
+      "id": "shot-19",
+      "kind": "native",
+      "clip": "workshop-team",
+      "start_frame": 2559,
+      "end_frame": 2682,
+      "source_at": 0.2,
+      "rate": 1.0,
+      "description": "Togetherness expressed through shared work"
+    },
+    {
+      "id": "shot-20",
+      "kind": "native",
+      "clip": "sea-dawn",
+      "start_frame": 2682,
+      "end_frame": 2830,
+      "source_at": 4.7,
+      "rate": 1.0,
+      "description": "Flowing water carries the long-lived friendship"
+    },
+    {
+      "id": "shot-21",
+      "kind": "native",
+      "clip": "workshop-team",
+      "start_frame": 2830,
+      "end_frame": 2914,
+      "source_at": 4.3,
+      "rate": 1.0,
+      "description": "Shared effort links the community"
+    },
+    {
+      "id": "shot-22",
+      "kind": "native",
+      "clip": "sea-journey",
+      "start_frame": 2914,
+      "end_frame": 3090,
+      "source_at": 4.375159235668789,
+      "rate": 0.9076433121019108,
+      "description": "The horizon opens as sincerity travels farther"
+    },
+    {
+      "id": "shot-23",
+      "kind": "native",
+      "clip": "wet-footsteps",
+      "start_frame": 3090,
+      "end_frame": 3213,
+      "source_at": 4.5,
+      "rate": 1.0,
+      "description": "Instrumental breath: a later ripple and footstep"
+    },
+    {
+      "id": "shot-24",
+      "kind": "native",
+      "clip": "open-door",
+      "start_frame": 3213,
+      "end_frame": 3336,
+      "source_at": 5.792941176470588,
+      "rate": 0.9529411764705882,
+      "description": "The doorway opens farther into warmth"
+    },
+    {
+      "id": "shot-25",
+      "kind": "native",
+      "clip": "covered-path",
+      "start_frame": 3336,
+      "end_frame": 3459,
+      "source_at": 5.756164383561646,
+      "rate": 0.986301369863014,
+      "description": "The path continues in one direction"
+    },
+    {
+      "id": "shot-26",
+      "kind": "native",
+      "clip": "burden-shared",
+      "start_frame": 3459,
+      "end_frame": 3583,
+      "source_at": 5.466666666666667,
+      "rate": 1.0,
+      "description": "The work reaches its later payoff"
+    },
+    {
+      "id": "shot-27",
+      "kind": "native",
+      "clip": "shared-table",
+      "start_frame": 3583,
+      "end_frame": 3726,
+      "source_at": 5.063481228668942,
+      "rate": 0.9726962457337883,
+      "description": "The brothers gather close for the blessing"
+    },
+    {
+      "id": "shot-28",
+      "kind": "native",
+      "clip": "tea-pour",
+      "start_frame": 3726,
+      "end_frame": 3870,
+      "source_at": 0.2,
+      "rate": 0.9028213166144202,
+      "description": "A quiet act of care accompanies the wishes"
+    },
+    {
+      "id": "shot-29",
+      "kind": "native",
+      "clip": "passing-kindness",
+      "start_frame": 3870,
+      "end_frame": 4019,
+      "source_at": 0.2,
+      "rate": 1.0,
+      "description": "The original kindness passes onward"
+    },
+    {
+      "id": "shot-30",
+      "kind": "native",
+      "clip": "packing-table",
+      "start_frame": 4019,
+      "end_frame": 4167,
+      "source_at": 4.5,
+      "rate": 1.0,
+      "description": "Small deeds are remembered one by one"
+    },
+    {
+      "id": "shot-31",
+      "kind": "native",
+      "clip": "tea-pour",
+      "start_frame": 4167,
+      "end_frame": 4342,
+      "source_at": 4.533542319749217,
+      "rate": 0.9028213166144202,
+      "description": "The cup and toast meet the lyric about the bond"
+    },
+    {
+      "id": "shot-32",
+      "kind": "native",
+      "clip": "community-boxes",
+      "start_frame": 4342,
+      "end_frame": 4480,
+      "source_at": 5.23664383561644,
+      "rate": 0.981164383561644,
+      "description": "The lasting friendship continues through action"
+    },
+    {
+      "id": "shot-33",
+      "kind": "native",
+      "clip": "joined-hands",
+      "start_frame": 4480,
+      "end_frame": 4596,
+      "source_at": 4.466666666666667,
+      "rate": 1.0,
+      "description": "The final chorus returns to the united circle"
+    },
+    {
+      "id": "shot-34",
+      "kind": "native",
+      "clip": "passing-kindness",
+      "start_frame": 4596,
+      "end_frame": 4710,
+      "source_at": 5.166666666666667,
+      "rate": 1.0,
+      "description": "The helping hand is now offered by others"
+    },
+    {
+      "id": "shot-35",
+      "kind": "native",
+      "clip": "open-shutters",
+      "start_frame": 4710,
+      "end_frame": 4810,
+      "source_at": 0.2,
+      "rate": 0.9664429530201344,
+      "description": "New light arrives as the name is celebrated"
+    },
+    {
+      "id": "shot-36",
+      "kind": "native",
+      "clip": "through-storm",
+      "start_frame": 4810,
+      "end_frame": 4922,
+      "source_at": 0.2,
+      "rate": 1.0,
+      "description": "Shared weather meets the storm-and-loyalty line"
+    },
+    {
+      "id": "shot-37",
+      "kind": "native",
+      "clip": "dawn-brothers",
+      "start_frame": 4922,
+      "end_frame": 5136,
+      "source_at": 0.2,
+      "rate": 1.0,
+      "description": "The long final phrase walks into the horizon"
+    },
+    {
+      "id": "shot-38",
+      "kind": "native",
+      "clip": "open-shutters",
+      "start_frame": 5136,
+      "end_frame": 5334,
+      "source_at": 3.421476510067115,
+      "rate": 0.9664429530201344,
+      "description": "Instrumental release into the morning before the real memory"
+    },
+    {
+      "id": "shot-39",
+      "kind": "native",
+      "clip": "photo-brothers",
+      "start_frame": 5334,
+      "end_frame": 5543,
+      "source_at": 0.1,
+      "rate": 0.9545454545454546,
+      "description": "Accepted native animation of the supplied group memory"
+    },
+    {
+      "id": "closing-memory",
+      "kind": "photo",
+      "path": "assets/photos/seaside.jpg",
+      "start_frame": 5543,
+      "end_frame": 5903,
+      "description": "Unretouched supplied seaside photograph with local Mandarin dedication"
+    }
+  ],
+  "captions_sha256": "6d3a6b8f711526f7944b5d391cb16340fd1e17db761d1dd41b4d76598a75bd10",
+  "audio_sha256": "60ee65f074f36b2d31660bee652e111cd84538e51b74a0685cbd895291cd6547",
+  "closing_message": "有你，兄弟同心。愿你平安，幸福永久。"
+}

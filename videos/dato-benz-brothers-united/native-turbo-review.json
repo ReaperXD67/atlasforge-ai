@@ -1,0 +1,84 @@
+{
+  "reviewer": "Root editorial QA",
+  "method": "Eight chronological 16:9 frames per clip plus complete FFmpeg decode; inspect subject motion relative to camera and physical contact. This is sampled visual review.",
+  "reviewed": "2026-11-19",
+  "clips": [
+    {
+      "id": "covered-path",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_issue_found": false,
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "observed_action": "Three men take successive steps through rain toward the warm doorway; the umbrella and shoulders move relative to the stable buildings and fresh puddles ripple."
+    },
+    {
+      "id": "packing-table",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_issue_found": false,
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "observed_action": "The woman lifts and replaces rice parcels, then reaches toward the produce; the man keeps both hands on the box. Coherent hands, packets and rigid box. The requested box lift is not present."
+    },
+    {
+      "id": "workshop-team",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_issue_found": false,
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "observed_action": "Two men visibly raise and carry a rigid timber beam together with stable hand grips, independent knee and shoulder movement and sunlit airborne dust."
+    },
+    {
+      "id": "tea-pour",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_issue_found": false,
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "observed_action": "A continuous tea stream fills the cup, then the hands tilt the teapot back and lower it. Steam rises and friends move independently in the background."
+    },
+    {
+      "id": "joined-hands",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_issue_found": false,
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "observed_action": "The top hand makes a small reassuring press and the three men lift their heads and exchange natural smiles. Stacked hands and fingers remain coherent."
+    },
+    {
+      "id": "open-shutters",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_issue_found": false,
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "observed_action": "The man moves his arms against the shutters and lowers his shoulders slightly as the sunlight broadens across the room. The shutter opening is subtle, not a dramatic full swing."
+    },
+    {
+      "id": "sea-dawn",
+      "recommended_for_editing": true,
+      "independent_subject_motion_observed": true,
+      "major_anatomy_issue_found": false,
+      "usable_range": {
+        "start": 0.2,
+        "end": 9.8
+      },
+      "observed_action": "Successive waves undulate across the full water surface and reflections fragment independently; distant boat moves gradually right against the shore."
+    }
+  ]
+}

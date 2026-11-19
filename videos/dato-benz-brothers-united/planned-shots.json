@@ -1,0 +1,455 @@
+{
+  "schema_version": 1,
+  "title": "有你，兄弟同心",
+  "dedication": "献给我们敬爱的哥哥 拿督斯里谢惠福 Hock Siew",
+  "master_duration_seconds": 196.76,
+  "aspect_ratio": "16:9",
+  "look": "Amber practical light, rainy cyan shadows, restrained 35mm photographic texture, Malaysian neighbourhood, warm dawn release.",
+  "plan_status": "Current 20-clip production allocation. Measured lyric timing determines final picture cuts. Submitted prompt/job provenance is recorded in the generation ledger.",
+  "shots": [
+    {
+      "order": 1,
+      "id": "sea-journey",
+      "generation_route": "text_to_video_hero",
+      "model_family_internal": "gen-4.5",
+      "title": "A horizon that connects us",
+      "lyric_intent": "Opening journey; chorus sincerity carried farther",
+      "requested_source_seconds": 10,
+      "planned_editorial_seconds": 8.95,
+      "subject_action_required": true,
+      "plate_prompt": null,
+      "motion_prompt": "A small boat travels steadily across the warm morning sea. Two adult friends stand quietly beside the rail, clothing moving in the breeze as water passes below. The camera glides along the rail and reveals the open horizon.",
+      "reference_policy": "Fictional symbolic action. Supplied real portraits are reserved for authentic closing tribute.",
+      "status": "planned",
+      "prompt_status": "Editorial proposal. Exact submitted prompts and job IDs are recorded separately in the production ledger."
+    },
+    {
+      "order": 2,
+      "id": "rain-arrival",
+      "generation_route": "text_to_video_hero",
+      "model_family_internal": "gen-4.5",
+      "title": "We carry the road together",
+      "lyric_intent": "Opening weather motif; shared support",
+      "requested_source_seconds": 10,
+      "planned_editorial_seconds": 8.95,
+      "subject_action_required": true,
+      "plate_prompt": null,
+      "motion_prompt": "Three adult friends carry one heavy wooden crate through pouring rain along a Malaysian shophouse walkway. One man bears the leading end, then his friends step into rhythm beside him. Rain splashes around their shoes. A shoulder-height tracking camera keeps the shared effort and warm doorway ahead in view. Continuous grounded physical action.",
+      "reference_policy": "Fictional symbolic action. Supplied real portraits are reserved for authentic closing tribute.",
+      "status": "planned",
+      "prompt_status": "Editorial proposal. Exact submitted prompts and job IDs are recorded separately in the production ledger."
+    },
+    {
+      "order": 3,
+      "id": "wet-footsteps",
+      "generation_route": "image_to_video",
+      "model_family_internal": "gen-4-turbo",
+      "title": "Every step has company",
+      "lyric_intent": "Opening journey and rain detail",
+      "requested_source_seconds": 10,
+      "planned_editorial_seconds": 8.95,
+      "subject_action_required": true,
+      "plate_prompt": "Cinematic live-action frame, a contemporary Malaysian Chinese neighbourhood, natural proportions and believable materials, warm amber practical light against cool rainy cyan shadows, soft 35mm photographic texture, restrained anamorphic depth, widescreen 16:9. Plain unbranded clothing and blank surfaces, natural faces where visible. Keep the lower fifth visually calm for lyric compositing. Low ground-level close-up of three adult men’s worn dark shoes beside a puddle on a rain-soaked shophouse pavement. Their legs are mid-stride, with a warm illuminated doorway reflected in the water. The foreground puddle is sharp, architecture softly recedes.",
+      "motion_prompt": "Three pairs of shoes walk steadily through the puddle, sending small splashes and concentric ripples across the warm reflection. The low camera tracks beside their pace.",
+      "reference_policy": "Fictional symbolic action. Supplied real portraits are reserved for authentic closing tribute.",
+      "status": "planned",
+      "prompt_status": "Editorial proposal. Exact submitted prompts and job IDs are recorded separately in the production ledger."
+    },
+    {
+      "order": 4,
+      "id": "shoulder-support",
+      "generation_route": "text_to_video_hero",
+      "model_family_internal": "gen-4.5",
+      "title": "A small gesture of care",
+      "lyric_intent": "Verse one: 来自你一路的关怀",
+      "requested_source_seconds": 10,
+      "planned_editorial_seconds": 8.95,
+      "subject_action_required": true,
+      "plate_prompt": null,
+      "motion_prompt": "One friend rests a hand gently on the other man’s shoulder as they walk forward together beneath the shophouse awning. Their pace settles into rhythm while rain falls beyond the covered path. A composed shoulder-height camera follows the gesture.",
+      "reference_policy": "Fictional symbolic action. Supplied real portraits are reserved for authentic closing tribute.",
+      "status": "planned",
+      "prompt_status": "Editorial proposal. Exact submitted prompts and job IDs are recorded separately in the production ledger."
+    },
+    {
+      "order": 5,
+      "id": "hands-help",
+      "generation_route": "text_to_video_hero",
+      "model_family_internal": "gen-4.5",
+      "title": "A hand when it matters",
+      "lyric_intent": "Verse two: 你总愿意伸手分担",
+      "requested_source_seconds": 10,
+      "planned_editorial_seconds": 8.95,
+      "subject_action_required": true,
+      "plate_prompt": null,
+      "motion_prompt": "Close cinematic shot of one adult man reaching down from a dry shophouse doorway and securely gripping his friend’s forearm. The friend uses that support to step up from the wet pavement. Their clasp tightens, weight shifts and the helping arm pulls with believable effort. Warm doorway light, cool rain, stable camera and coherent hands.",
+      "reference_policy": "Fictional symbolic action. Supplied real portraits are reserved for authentic closing tribute.",
+      "status": "planned",
+      "prompt_status": "Editorial proposal. Exact submitted prompts and job IDs are recorded separately in the production ledger."
+    },
+    {
+      "order": 6,
+      "id": "burden-shared",
+      "generation_route": "text_to_video_hero",
+      "model_family_internal": "gen-4.5",
+      "title": "The load becomes ours",
+      "lyric_intent": "Verse two: support through difficulty",
+      "requested_source_seconds": 10,
+      "planned_editorial_seconds": 8.95,
+      "subject_action_required": true,
+      "plate_prompt": null,
+      "motion_prompt": "Four adult friends in plain navy and earth-toned work shirts lift one long timber beam together in a modest covered community courtyard. They bend their knees, secure their grips and raise it in one coordinated effort. A waist-height camera follows the lift, revealing their shared rhythm. Soft amber daylight, a rain-wet floor and physically coherent weight.",
+      "reference_policy": "Fictional symbolic action. Supplied real portraits are reserved for authentic closing tribute.",
+      "status": "planned",
+      "prompt_status": "Editorial proposal. Exact submitted prompts and job IDs are recorded separately in the production ledger."
+    },
+    {
+      "order": 7,
+      "id": "warm-conversation",
+      "generation_route": "text_to_video_hero",
+      "model_family_internal": "gen-4.5",
+      "title": "Listening is a kind of care",
+      "lyric_intent": "Verse one and bridge gratitude",
+      "requested_source_seconds": 10,
+      "planned_editorial_seconds": 8.95,
+      "subject_action_required": true,
+      "plate_prompt": null,
+      "motion_prompt": "Two adult friends share a quiet conversation at a modest shophouse table. One sets down his cup and listens, the other gives a small grateful smile and a relaxed shoulder touch. Warm practical light and a gentle eye-level camera keep the interaction intimate.",
+      "reference_policy": "Fictional symbolic action. Supplied real portraits are reserved for authentic closing tribute.",
+      "status": "planned",
+      "prompt_status": "Editorial proposal. Exact submitted prompts and job IDs are recorded separately in the production ledger."
+    },
+    {
+      "order": 8,
+      "id": "shared-table",
+      "generation_route": "text_to_video_hero",
+      "model_family_internal": "gen-4.5",
+      "title": "A place kept for every brother",
+      "lyric_intent": "Bridge: 今天我们聚在你身旁",
+      "requested_source_seconds": 10,
+      "planned_editorial_seconds": 8.95,
+      "subject_action_required": true,
+      "plate_prompt": null,
+      "motion_prompt": "The arriving friend pulls out the chair and sits as the men make room with easy gestures. Hands slide a cup and a plate toward him. The camera drifts along the table to reveal the welcome.",
+      "reference_policy": "Fictional symbolic action. Supplied real portraits are reserved for authentic closing tribute.",
+      "status": "planned",
+      "prompt_status": "Editorial proposal. Exact submitted prompts and job IDs are recorded separately in the production ledger."
+    },
+    {
+      "order": 9,
+      "id": "community-boxes",
+      "generation_route": "text_to_video_hero",
+      "model_family_internal": "gen-4.5",
+      "title": "Concern becomes action",
+      "lyric_intent": "Verse two: 无私奉献，不求喝彩",
+      "requested_source_seconds": 10,
+      "planned_editorial_seconds": 8.95,
+      "subject_action_required": true,
+      "plate_prompt": null,
+      "motion_prompt": "In a modest Malaysian neighbourhood courtyard, two adult volunteers carry an unlabelled grocery box together and offer it to an elderly neighbour at her doorway. The neighbour reaches for the box, and one volunteer keeps supporting its weight until she has a safe grip. Respectful eye-level framing, warm overcast light and natural small smiles. One uninterrupted physical handover.",
+      "reference_policy": "Fictional symbolic action. Supplied real portraits are reserved for authentic closing tribute.",
+      "status": "planned",
+      "prompt_status": "Editorial proposal. Exact submitted prompts and job IDs are recorded separately in the production ledger."
+    },
+    {
+      "order": 10,
+      "id": "covered-path",
+      "generation_route": "image_to_video",
+      "model_family_internal": "gen-4-turbo",
+      "title": "Beside someone through difficulty",
+      "lyric_intent": "Verse two and final: 风雨同路",
+      "requested_source_seconds": 10,
+      "planned_editorial_seconds": 8.95,
+      "subject_action_required": true,
+      "plate_prompt": "Cinematic live-action frame, a contemporary Malaysian Chinese neighbourhood, natural proportions and believable materials, warm amber practical light against cool rainy cyan shadows, soft 35mm photographic texture, restrained anamorphic depth, widescreen 16:9. Plain unbranded clothing and blank surfaces, natural faces where visible. Keep the lower fifth visually calm for lyric compositing. Medium rear view of two adults sharing one deep navy umbrella on a rain-soaked neighbourhood path. One is an older man, the other a younger friend in an earth-coloured shirt. The umbrella sits centrally above both figures, warm windows reflect along the wet path.",
+      "motion_prompt": "The younger man shifts the umbrella toward the older man and matches his slower walking pace. Rain visibly strikes and runs off the umbrella edge as they continue together. The camera follows from behind.",
+      "reference_policy": "Fictional symbolic action. Supplied real portraits are reserved for authentic closing tribute.",
+      "status": "planned",
+      "prompt_status": "Editorial proposal. Exact submitted prompts and job IDs are recorded separately in the production ledger."
+    },
+    {
+      "order": 11,
+      "id": "packing-table",
+      "generation_route": "image_to_video",
+      "model_family_internal": "gen-4-turbo",
+      "title": "Care in ordinary work",
+      "lyric_intent": "Verse two: kindness through practical action",
+      "requested_source_seconds": 10,
+      "planned_editorial_seconds": 8.95,
+      "subject_action_required": true,
+      "plate_prompt": "Cinematic live-action frame, a contemporary Malaysian Chinese neighbourhood, natural proportions and believable materials, warm amber practical light against cool rainy cyan shadows, soft 35mm photographic texture, restrained anamorphic depth, widescreen 16:9. Plain unbranded clothing and blank surfaces, natural faces where visible. Keep the lower fifth visually calm for lyric compositing. Side-on cinematic detail of three adult volunteers preparing grocery boxes at a long wooden community table. One open box holds plain rice packaging and vegetables, another empty box waits beside it. A soft warm window lights the careful hands and ordinary room.",
+      "motion_prompt": "The volunteers place groceries into one box, fold its top flaps and slide the finished box toward the waiting hands at the table’s end. The camera tracks gently alongside their coordinated work.",
+      "reference_policy": "Fictional symbolic action. Supplied real portraits are reserved for authentic closing tribute.",
+      "status": "planned",
+      "prompt_status": "Editorial proposal. Exact submitted prompts and job IDs are recorded separately in the production ledger."
+    },
+    {
+      "order": 12,
+      "id": "workshop-team",
+      "generation_route": "image_to_video",
+      "model_family_internal": "gen-4-turbo",
+      "title": "Strength in shared work",
+      "lyric_intent": "Chorus: 让大家并肩一起走",
+      "requested_source_seconds": 10,
+      "planned_editorial_seconds": 8.95,
+      "subject_action_required": true,
+      "plate_prompt": "Proposed starting-frame content: two adult workers in plain navy and earth-coloured shirts stand on opposite sides of a timber workbench, both securely holding one wooden plank. Coherent grips and clear supporting arms. Warm Malaysian workshop daylight, natural photographic texture and a calm lower fifth. Actual generated plate provenance is recorded separately.",
+      "motion_prompt": "The two workers lift the wooden plank together and slide it onto the workbench. One supports the far end while the other guides it square. Their grips and the plank remain coherent as the camera observes the coordinated work.",
+      "reference_policy": "Fictional symbolic action. Supplied real portraits are reserved for authentic closing tribute.",
+      "status": "planned",
+      "prompt_status": "Editorial proposal. Exact submitted prompts and job IDs are recorded separately in the production ledger."
+    },
+    {
+      "order": 13,
+      "id": "through-storm",
+      "generation_route": "text_to_video_hero",
+      "model_family_internal": "gen-4.5",
+      "title": "Brothers answer the call",
+      "lyric_intent": "Final chorus: 风雨同路，情义长留",
+      "requested_source_seconds": 10,
+      "planned_editorial_seconds": 8.95,
+      "subject_action_required": true,
+      "plate_prompt": null,
+      "motion_prompt": "At the threshold of a modest Malaysian shophouse in heavy evening rain, three adult friends in plain navy and earth shirts arrive together. Their waiting friend opens the door and they step inside one after another, greeting him with a firm shoulder clasp. A gentle camera pullback reveals the group gathering into the warm room, coherent faces and body contact.",
+      "reference_policy": "Fictional symbolic action. Supplied real portraits are reserved for authentic closing tribute.",
+      "status": "planned",
+      "prompt_status": "Editorial proposal. Exact submitted prompts and job IDs are recorded separately in the production ledger."
+    },
+    {
+      "order": 14,
+      "id": "tea-pour",
+      "generation_route": "image_to_video",
+      "model_family_internal": "gen-4-turbo",
+      "title": "A cup for the bond we share",
+      "lyric_intent": "Bridge: 这一杯敬相识的缘",
+      "requested_source_seconds": 10,
+      "planned_editorial_seconds": 8.95,
+      "subject_action_required": true,
+      "plate_prompt": "Proposed starting-frame content: intimate side-on close view of an adult hand holding a small ceramic teapot above a waiting ceramic cup, the second hand steadying the cup on a worn wooden table. Distinct fingers and spout, warm amber light, soft steam and gentle shallow focus. Actual generated plate provenance is recorded separately.",
+      "motion_prompt": "A hand tips the small ceramic pot and pours a steady stream of amber tea into the waiting cup. Steam curls upward while the other hand steadies the cup. The camera remains close and still, holding the continuous pour.",
+      "reference_policy": "Fictional symbolic action. Supplied real portraits are reserved for authentic closing tribute.",
+      "status": "planned",
+      "prompt_status": "Editorial proposal. Exact submitted prompts and job IDs are recorded separately in the production ledger."
+    },
+    {
+      "order": 15,
+      "id": "passing-kindness",
+      "generation_route": "text_to_video_hero",
+      "model_family_internal": "gen-4.5",
+      "title": "What one gives travels onward",
+      "lyric_intent": "Bridge: remembered acts of care",
+      "requested_source_seconds": 10,
+      "planned_editorial_seconds": 8.95,
+      "subject_action_required": true,
+      "plate_prompt": null,
+      "motion_prompt": "An adult volunteer carries an unlabelled grocery box to a waiting neighbour and passes its weight carefully into the neighbour’s arms. Their hands make a clear secure transfer before releasing. A warm eye-level camera follows the gesture.",
+      "reference_policy": "Fictional symbolic action. Supplied real portraits are reserved for authentic closing tribute.",
+      "status": "planned",
+      "prompt_status": "Editorial proposal. Exact submitted prompts and job IDs are recorded separately in the production ledger."
+    },
+    {
+      "order": 16,
+      "id": "joined-hands",
+      "generation_route": "image_to_video",
+      "model_family_internal": "gen-4-turbo",
+      "title": "The promise belongs to everyone",
+      "lyric_intent": "Chorus: brothers together",
+      "requested_source_seconds": 10,
+      "planned_editorial_seconds": 8.95,
+      "subject_action_required": true,
+      "plate_prompt": "Cinematic live-action frame, a contemporary Malaysian Chinese neighbourhood, natural proportions and believable materials, warm amber practical light against cool rainy cyan shadows, soft 35mm photographic texture, restrained anamorphic depth, widescreen 16:9. Plain unbranded clothing and blank surfaces, natural faces where visible. Keep the lower fifth visually calm for lyric compositing. Overhead close view of four distinct adult hands resting together around the centre of a worn wooden table. Plain navy, beige and muted olive cuffs distinguish the friends. Soft warm daylight reveals believable skin, clear fingers and tabletop grain.",
+      "motion_prompt": "The hands come together in a firm shared clasp, pause, then rise slightly as the friends stand together. The camera holds overhead so every gesture remains readable.",
+      "reference_policy": "Fictional symbolic action. Supplied real portraits are reserved for authentic closing tribute.",
+      "status": "planned",
+      "prompt_status": "Editorial proposal. Exact submitted prompts and job IDs are recorded separately in the production ledger."
+    },
+    {
+      "order": 17,
+      "id": "open-shutters",
+      "generation_route": "image_to_video",
+      "model_family_internal": "gen-4-turbo",
+      "title": "A brighter day begins",
+      "lyric_intent": "Final chorus: wishes for a peaceful future",
+      "requested_source_seconds": 10,
+      "planned_editorial_seconds": 8.95,
+      "subject_action_required": true,
+      "plate_prompt": "Cinematic live-action frame, a contemporary Malaysian Chinese neighbourhood, natural proportions and believable materials, warm amber practical light against cool rainy cyan shadows, soft 35mm photographic texture, restrained anamorphic depth, widescreen 16:9. Plain unbranded clothing and blank surfaces, natural faces where visible. Keep the lower fifth visually calm for lyric compositing. Inside a modest community room at dawn, two adult silhouettes stand beside tall timber shutters. The first narrow gap reveals warm golden light and a softly misty Malaysian neighbourhood outside. The interior is quiet with cyan shadows and practical wooden furniture.",
+      "motion_prompt": "The two men pull the shutters open together. Golden light widens across the room and a light curtain moves in the morning breeze. The camera glides toward the newly revealed view.",
+      "reference_policy": "Fictional symbolic action. Supplied real portraits are reserved for authentic closing tribute.",
+      "status": "planned",
+      "prompt_status": "Editorial proposal. Exact submitted prompts and job IDs are recorded separately in the production ledger."
+    },
+    {
+      "order": 18,
+      "id": "open-door",
+      "generation_route": "text_to_video_hero",
+      "model_family_internal": "gen-4.5",
+      "title": "Warmth waits inside",
+      "lyric_intent": "Opening welcome and final renewal",
+      "requested_source_seconds": 10,
+      "planned_editorial_seconds": 8.95,
+      "subject_action_required": true,
+      "plate_prompt": null,
+      "motion_prompt": "An adult man opens the timber community-room doors to the warm morning outside. His friends enter together as sunlight spreads across the floor. The camera moves gently back to reveal the welcome.",
+      "reference_policy": "Fictional symbolic action. Supplied real portraits are reserved for authentic closing tribute.",
+      "status": "planned",
+      "prompt_status": "Editorial proposal. Exact submitted prompts and job IDs are recorded separately in the production ledger."
+    },
+    {
+      "order": 19,
+      "id": "sea-dawn",
+      "generation_route": "image_to_video",
+      "model_family_internal": "gen-4-turbo",
+      "title": "Affection flows onward",
+      "lyric_intent": "Chorus: 情义细水永远长流; final calm",
+      "requested_source_seconds": 10,
+      "planned_editorial_seconds": 8.95,
+      "subject_action_required": true,
+      "plate_prompt": "Cinematic live-action frame, a contemporary Malaysian Chinese neighbourhood, natural proportions and believable materials, warm amber practical light against cool rainy cyan shadows, soft 35mm photographic texture, restrained anamorphic depth, widescreen 16:9. Plain unbranded clothing and blank surfaces, natural faces where visible. Keep the lower fifth visually calm for lyric compositing. A wide cinematic view from the rail of a small boat at golden dawn, facing a quiet Malaysian coastline. Low mountains sit beyond textured water, a dark rail anchors the foreground, and sunlight forms a warm path across the sea. Calm lower centre for later lyric placement.",
+      "motion_prompt": "Small waves flow past the boat and warm reflections break and reform across the surface. A light breeze moves a short rope tied to the rail. The camera rests at the boat’s natural gentle level.",
+      "reference_policy": "Fictional symbolic action. Supplied real portraits are reserved for authentic closing tribute.",
+      "status": "planned",
+      "prompt_status": "Editorial proposal. Exact submitted prompts and job IDs are recorded separately in the production ledger."
+    },
+    {
+      "order": 20,
+      "id": "dawn-brothers",
+      "generation_route": "text_to_video_hero",
+      "model_family_internal": "gen-4.5",
+      "title": "We walk the road together",
+      "lyric_intent": "Final chorus: 兄弟相伴，一起到白头",
+      "requested_source_seconds": 10,
+      "planned_editorial_seconds": 8.95,
+      "subject_action_required": true,
+      "plate_prompt": null,
+      "motion_prompt": "Wide rear view of five adult friends in plain navy, beige and muted olive shirts walking shoulder to shoulder along a quiet waterfront at golden dawn. One man places his hand briefly on his friend’s shoulder as they continue forward together. Their steps and clothing move naturally in the sea breeze. A measured camera follow opens onto the warm horizon, dignified and hopeful.",
+      "reference_policy": "Fictional symbolic action. Supplied real portraits are reserved for authentic closing tribute.",
+      "status": "planned",
+      "prompt_status": "Editorial proposal. Exact submitted prompts and job IDs are recorded separately in the production ledger."
+    }
+  ],
+  "closing": {
+    "planned_start": 179.0,
+    "planned_duration_seconds": 17.76,
+    "animated_memory": {
+      "id": "photo-brothers",
+      "requested_source_seconds": 7,
+      "source": "assets/photos/brothers.jpg",
+      "planned_start": 179.0,
+      "planned_end": 186.0,
+      "note": "A real-photo-led generated memory shot. Exact task and identity review are recorded separately."
+    },
+    "source": "assets/photos/seaside.jpg",
+    "original_photo_start": 186.0,
+    "original_photo_duration_seconds": 10.76,
+    "source_treatment": "Original seaside photograph with respectful framing and composed Mandarin text.",
+    "message": [
+      "愿你平安，幸福永久。",
+      "兄弟同心，一路同行。"
+    ],
+    "dedication": "献给我们敬爱的哥哥 拿督斯里谢惠福 Hock Siew",
+    "end_mark": "有你，兄弟同心"
+  },
+  "budget": {
+    "authorized_credit_ceiling": 2250,
+    "hero_targets": 12,
+    "hero_seconds": 120,
+    "hero_estimated_credits": 1440,
+    "i2v_targets": 8,
+    "i2v_seconds": 80,
+    "i2v_estimated_credits": 400,
+    "photo_memory_estimated_credits": 84,
+    "first_pass_estimated_credits": 1924,
+    "reserve_for_specific_reshoots_and_finishing": 326,
+    "note": "Production allocation. Actual accepted charges and remaining workspace balance control further generation."
+  },
+  "prompt_sources": [
+    "https://help.runwayml.com/hc/en-us/articles/48324313115155-Image-to-Video-Prompting-Guide",
+    "https://help.runwayml.com/hc/en-us/articles/39789879462419-Gen-4-Video-Prompting-Guide",
+    "https://help.runwayml.com/hc/en-us/articles/46749315925395-Camera-Terms-Prompts-Examples"
+  ],
+  "canonical_sung_lines": 40,
+  "editorial_associations": [
+    {
+      "section": "instrumental",
+      "sources": [
+        "sea-journey",
+        "wet-footsteps",
+        "open-door"
+      ],
+      "intent": "A journey toward welcome"
+    },
+    {
+      "section": "主歌一",
+      "line_numbers": [
+        1,
+        8
+      ],
+      "sources": [
+        "warm-conversation",
+        "shoulder-support",
+        "hands-help",
+        "shared-table"
+      ],
+      "intent": "A connection grows through ordinary care"
+    },
+    {
+      "section": "主歌二",
+      "line_numbers": [
+        9,
+        16
+      ],
+      "sources": [
+        "community-boxes",
+        "packing-table",
+        "burden-shared",
+        "covered-path"
+      ],
+      "intent": "Concern becomes practical support"
+    },
+    {
+      "section": "副歌",
+      "line_numbers": [
+        17,
+        24
+      ],
+      "sources": [
+        "joined-hands",
+        "workshop-team",
+        "passing-kindness",
+        "sea-dawn",
+        "sea-journey"
+      ],
+      "intent": "The circle widens; water supports 细水长流"
+    },
+    {
+      "section": "桥段",
+      "line_numbers": [
+        25,
+        32
+      ],
+      "sources": [
+        "shared-table",
+        "warm-conversation",
+        "tea-pour",
+        "passing-kindness"
+      ],
+      "intent": "Gratitude and remembered care; cup gesture on 这一杯敬相识的缘"
+    },
+    {
+      "section": "最后副歌",
+      "line_numbers": [
+        33,
+        40
+      ],
+      "sources": [
+        "through-storm",
+        "open-shutters",
+        "dawn-brothers",
+        "sea-dawn",
+        "photo-brothers"
+      ],
+      "intent": "Care is returned, with wishes for health and lifelong companionship"
+    }
+  ]
+}
