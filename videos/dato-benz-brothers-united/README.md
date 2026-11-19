@@ -1,10 +1,25 @@
 # 有你，兄弟同心
 
-**Current status: realism research complete; new generation held.** The user reports that the boss rejected V2's face/body appearance as unnatural. V2's encoding, audio and subtitle checks passed, but that did not establish acceptable likeness or natural movement. It is retained as a technical archive, not an accepted creative result.
+**Current status: both short realism tests are ready for user review; no candidate is accepted.** Following the user-completed Max upgrade, one Kling O3 Pro test and one Seedance 2.5 test completed. Both raw outputs are 1920×1080 at 24fps, 5.041667 seconds (121 frames), without audio, and passed full decoding. These technical checks do not establish natural likeness. Further generation and the full MV remain held until the user reviews both complete clips. V2 remains a rejected technical archive.
 
-Read [REALISM-RESEARCH.md](REALISM-RESEARCH.md) for the failure audit, current model/reference-control comparison and recommended route. [REALISM-PILOT.md](REALISM-PILOT.md) defines an originals-only reference set and a small normal-speed comparison before any new full-song batch. Real Hock Siew footage is the preferred natural-person backbone when available. Kling O3Pro and Seedance2 are proposed test candidates; neither has passed a test on the new references. Research spent zero credits.
+Read [REALISM-RESEARCH.md](REALISM-RESEARCH.md) for the failure audit and [REALISM-PILOT.md](REALISM-PILOT.md) for the test protocol. The current pair uses the original `17-27-29` photograph (Hock Siew is the left-hand man) for face, torso and actual white-shirt proportions, plus the original seaside photograph as alternate facial evidence only. No generated portrait is an identity anchor. Seedance 2.5 replaces the earlier proposed Seedance 2.0 at the user's request. The complete raw clips must be reviewed at normal speed before further tests or a full-song batch. Real footage remains the preferred natural-person material when available. Research itself spent zero credits.
 
-Three new frontal full-body photographs have been catalogued in [reference-intake-v3.json](reference-intake-v3.json). The user explicitly identified Hock Siew as the left-hand man. They strengthen body/outfit evidence but are near-duplicates, not multiple angles or motion evidence. Private images remain local and have not been uploaded for generation. [CLIENT-STATUS.json](CLIENT-STATUS.json) is the current acceptance/stage record. Benz's later song is a separate project.
+Three new frontal full-body photographs are catalogued in [reference-intake-v3.json](reference-intake-v3.json). They strengthen body/outfit evidence but are near-duplicates, not multiple angles or motion evidence. The selected original references were uploaded to Runway for this authorized pair; private media and signed URLs are excluded from Git. [pilot-v3.json](pilot-v3.json) records the jobs, inputs and realized charges; [CLIENT-STATUS.json](CLIENT-STATUS.json) records current acceptance. Benz's later song is separate.
+
+## Review the short pair
+
+- Untouched Kling output: `assets/pilot-v3/kling-o3-pro-portrait-01.mp4`.
+- Untouched Seedance 2.5 output: `assets/pilot-v3/seedance-2.5-portrait-01.mp4`.
+- [PILOT-REVIEW.md](PILOT-REVIEW.md): scoped sampled observations and the pending user verdict.
+- [PILOT-TECHNICAL.json](PILOT-TECHNICAL.json): output hashes, dimensions, cadence, duration, audio absence and decode results.
+
+Watch each complete silent clip at normal speed. Neither has music, grading, retiming, face restoration or a selective edit to hide defects. Portrait framing does not validate full-body proportions, hands, feet or gait. Chronological still samples cannot establish natural movement or personal recognition.
+
+Recheck the existing local files from the repository root in PowerShell:
+
+```powershell
+.venv\Scripts\python.exe videos/dato-benz-brothers-united/inspect_pilot.py
+```
 
 ## Archived V2
 
@@ -41,10 +56,10 @@ Private files remain local under `assets/`: the original `bgm.wav`, both confirm
 
 The first vocal starts at 22.30s and the final phrase ends at 170.10s. Phrase timing combines supplied-text acoustic alignment with independently cropped recognition. Hock Siew chants use phrase sync; uncertain character subdivisions are labelled estimated in [line-alignment.json](line-alignment.json). No word-perfect karaoke or human listening review is claimed.
 
-Native 24fps avoids V1's avoidable 24→30 conversion cadence. In a tested unretimed three-second excerpt, near-duplicate adjacent pairs fell from 18 to zero. This is a scoped cadence measurement, not a claim about every scene. Native footage is 720p, upscaled to 1080p; tight contextual crops are softer. No native 4K or recovered ground-truth detail is claimed.
+Native 24fps avoids V1's avoidable 24→30 conversion cadence. In a tested unretimed three-second excerpt, near-duplicate adjacent pairs fell from 18 to zero. This is a scoped cadence measurement, not a claim about every scene. Archived V2 native footage is 720p, upscaled to 1080p; tight contextual crops are softer. The new raw pilot pair is 1920×1080 as returned by the providers. Neither workflow establishes native 4K or recovered ground-truth detail.
 
-V1 used 1,924 credits; V2 added six 10-second Turbo takes for 300. **Total: 2,224 of the authorized 2,250 existing Runway credits used; 26 remain**, verified against the workspace. No extra credits were purchased. Reused existing footage required no generation spend.
+The archived V1/V2 work used 2,224 credits (1,924 + 300), leaving 26 before the user upgraded to Max. The verified post-upgrade balance was **7,276**. The current two-test pair charged **425 credits**: Kling O3 Pro 85 and Seedance 2.5 340, taking the observed balance through 7,191 to **6,851**. No Max discount was observed on these submissions. Both jobs completed and the final balance was verified at 6,851. These charges do not imply accepted footage or permission to spend the remaining balance.
 
 ## V1 archive
 
-The earlier ensemble edit remains intact under `renders/Hock-Siew-Brothers-United-Cinematic[ -720p].mp4`, with its original `prepare_film.py`, `edit-plan.json`, [DELIVERY.json](DELIVERY.json), [REVIEW.md](REVIEW.md) and [DIRECTION.md](DIRECTION.md). It is retained for comparison; V2 is the current delivery. The directory name retains the project's earlier working title.
+The earlier ensemble edit remains intact under `renders/Hock-Siew-Brothers-United-Cinematic[ -720p].mp4`, with its original `prepare_film.py`, `edit-plan.json`, [DELIVERY.json](DELIVERY.json), [REVIEW.md](REVIEW.md) and [DIRECTION.md](DIRECTION.md). It is retained for comparison alongside the rejected V2; the short realism pair is ready for user review. The directory name retains the project's earlier working title.

@@ -1,0 +1,108 @@
+{
+  "version": "pilot-v3",
+  "client_date": "2026-11-19",
+  "subject": "Hock Siew / 拿督斯里谢惠福",
+  "stage": "raw_pair_ready_pending_user_review",
+  "authorization": "User authorized one short Kling and one Seedance 2.5 test after user-completed Max upgrade; full MV held until review.",
+  "plan": "Max",
+  "credits": {
+    "before": 7276,
+    "after_kling_submission": 7191,
+    "after_both_submissions": 6851,
+    "kling": 85,
+    "seedance_2_5": 340,
+    "total": 425,
+    "pricing_basis": "Observed workspace balance deltas; not public Dev estimates.",
+    "final_verified_balance": 6851
+  },
+  "inputs": [
+    {
+      "path": "assets/references-v3/originals/photo_2026-11-19_17-27-29.jpg",
+      "sha256": "e2c23d422b02ad1a8188069c91c65b46321f781e0f93832122c5a362e12ef497",
+      "asset_id": "4f2d0bc6-f61a-44e1-99c4-e4828b161cec",
+      "tag": "hock_frontal_left",
+      "role": "Primary original face/body/white-shirt reference. User confirmed LEFT man."
+    },
+    {
+      "path": "assets/photos/seaside.jpg",
+      "sha256": "f82de273f4ca26487851dd402ecc7557c190c5f4af1c6dbeaca69f0fefa55b71",
+      "asset_id": "e2fabb16-8662-4049-8cde-61f858c0b054",
+      "tag": "hock_alternate_face",
+      "role": "Original alternate facial angle only; no burgundy outfit or boat location transfer."
+    }
+  ],
+  "common_request": {
+    "duration": 5,
+    "ratio": "16:9",
+    "resolution": "1080p",
+    "generateAudio": false,
+    "mode": "reference_images_only_no_generated_anchor_or_start_frame",
+    "prompt": "One continuous natural documentary shot of the real man identified by the supplied photographs. In reference image 1 he is the man on the LEFT, wearing the white shirt and cream trousers; he is the only person in this video. Reference image 2 shows the same man seated on the boat in burgundy: use it only as an alternate facial view, not as the outfit or location. Preserve his photographed age, broad face, hairline, eyes, ears, jaw, neck, shoulder width and torso proportions, and the actual white shirt from reference 1. An eye-level waist-up shot in the same ordinary wood-panelled indoor setting as reference 1. His arms rest comfortably, with hands below the frame. Static camera, ordinary soft ambient light and natural unretouched skin and fabric. He stands comfortably, breathes subtly, blinks once and turns his head only slightly, then settles with an expression close to the frontal photo. Real-time normal human movement throughout all five seconds. Keep his facial structure and body build stable throughout the shot. A simple observed personal moment, without a posed glamour treatment, dialogue, text, graphics or other people."
+  },
+  "candidates": [
+    {
+      "model": "kling-o3-pro",
+      "task_id": "491d93e2-2310-48e0-90ed-fcbca5e4b942",
+      "status": "succeeded",
+      "path": "assets/pilot-v3/kling-o3-pro-portrait-01.mp4",
+      "user_acceptance": "pending",
+      "native_output": {
+        "model": "kling-o3-pro",
+        "task_id": "491d93e2-2310-48e0-90ed-fcbca5e4b942",
+        "path": "assets/pilot-v3/kling-o3-pro-portrait-01.mp4",
+        "sha256": "b0aac625059ee71b1acae7c312d906084207a5fa825fa3ca562a750f3a47de72",
+        "bytes": 6466303,
+        "codec": "h264",
+        "width": 1920,
+        "height": 1080,
+        "frame_rate": "24/1",
+        "duration_seconds": 5.041667,
+        "decoded_frames": 121,
+        "audio_streams": 0,
+        "full_decode": "passed",
+        "sample_sheet": "renders/pilot-v3/kling-o3-pro-samples.jpg",
+        "sample_interval_seconds": 0.5,
+        "raw_file_modified": false,
+        "likeness_and_naturalness": "requires_complete_clip_user_review"
+      }
+    },
+    {
+      "model": "seedance-2.5",
+      "task_id": "566fd028-cd6b-4763-83d9-99f7f80b935e",
+      "status": "succeeded",
+      "path": "assets/pilot-v3/seedance-2.5-portrait-01.mp4",
+      "user_acceptance": "pending",
+      "native_output": {
+        "model": "seedance-2.5",
+        "task_id": "566fd028-cd6b-4763-83d9-99f7f80b935e",
+        "path": "assets/pilot-v3/seedance-2.5-portrait-01.mp4",
+        "sha256": "9751992f5af4860e2b3733cbea8b3faea201edd476a57c71efbbe1652fabe4b3",
+        "bytes": 1303149,
+        "codec": "h264",
+        "width": 1920,
+        "height": 1080,
+        "frame_rate": "24/1",
+        "duration_seconds": 5.041667,
+        "decoded_frames": 121,
+        "audio_streams": 0,
+        "full_decode": "passed",
+        "sample_sheet": "renders/pilot-v3/seedance-2.5-samples.jpg",
+        "sample_interval_seconds": 0.5,
+        "raw_file_modified": false,
+        "likeness_and_naturalness": "requires_complete_clip_user_review"
+      }
+    }
+  ],
+  "limitations": [
+    "Waist-up portrait tests do not validate full-body gait, feet or occluded arms.",
+    "New frontal photos are near-duplicates; unobserved angles/movement remain synthesized.",
+    "No human user/boss likeness approval or model winner yet."
+  ],
+  "full_mv_started": false,
+  "technical_checks": "passed",
+  "technical_report": "PILOT-TECHNICAL.json",
+  "review_report": "PILOT-REVIEW.md",
+  "candidate_comparison": "Not blind or controlled random-seed experiment; same exposed request and originals, two different model implementations.",
+  "further_generation_held": true,
+  "model_winner": null
+}

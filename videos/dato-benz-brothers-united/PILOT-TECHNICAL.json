@@ -1,0 +1,46 @@
+{
+  "original_reference_hashes": "matched",
+  "outputs": [
+    {
+      "model": "kling-o3-pro",
+      "task_id": "491d93e2-2310-48e0-90ed-fcbca5e4b942",
+      "path": "assets/pilot-v3/kling-o3-pro-portrait-01.mp4",
+      "sha256": "b0aac625059ee71b1acae7c312d906084207a5fa825fa3ca562a750f3a47de72",
+      "bytes": 6466303,
+      "codec": "h264",
+      "width": 1920,
+      "height": 1080,
+      "frame_rate": "24/1",
+      "duration_seconds": 5.041667,
+      "decoded_frames": 121,
+      "audio_streams": 0,
+      "full_decode": "passed",
+      "sample_sheet": "renders/pilot-v3/kling-o3-pro-samples.jpg",
+      "sample_interval_seconds": 0.5,
+      "raw_file_modified": false,
+      "likeness_and_naturalness": "requires_complete_clip_user_review"
+    },
+    {
+      "model": "seedance-2.5",
+      "task_id": "566fd028-cd6b-4763-83d9-99f7f80b935e",
+      "path": "assets/pilot-v3/seedance-2.5-portrait-01.mp4",
+      "sha256": "9751992f5af4860e2b3733cbea8b3faea201edd476a57c71efbbe1652fabe4b3",
+      "bytes": 1303149,
+      "codec": "h264",
+      "width": 1920,
+      "height": 1080,
+      "frame_rate": "24/1",
+      "duration_seconds": 5.041667,
+      "decoded_frames": 121,
+      "audio_streams": 0,
+      "full_decode": "passed",
+      "sample_sheet": "renders/pilot-v3/seedance-2.5-samples.jpg",
+      "sample_interval_seconds": 0.5,
+      "raw_file_modified": false,
+      "likeness_and_naturalness": "requires_complete_clip_user_review"
+    }
+  ],
+  "technical_checks": "passed",
+  "creative_acceptance": "pending_user_review",
+  "note": "Chronological samples and full decoding do not prove natural motion or personal likeness."
+}

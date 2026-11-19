@@ -1,5 +1,5 @@
 {
-  "stage": "research_only_no_generation",
+  "stage": "originals_catalogued_pilot_started",
   "received_client_date": "2026-11-19",
   "subject": "Hock Siew / 拿督斯里谢惠福",
   "records": [
@@ -13,7 +13,8 @@
       "subject_position": "left_hand_man_user_confirmed",
       "view": "near_frontal_two_person_standing",
       "reference_role": "body_proportions_wardrobe_frontal_expression",
-      "limits": "Near-duplicate pose/angle across this set; second person and arm overlap; no movement or profile evidence."
+      "limits": "Near-duplicate pose/angle across this set; second person and arm overlap; no movement or profile evidence.",
+      "uploaded_to_generation_provider": false
     },
     {
       "filename": "photo_2026-11-19_17-27-29.jpg",
@@ -25,7 +26,8 @@
       "subject_position": "left_hand_man_user_confirmed",
       "view": "near_frontal_two_person_standing",
       "reference_role": "body_proportions_wardrobe_frontal_expression",
-      "limits": "Near-duplicate pose/angle across this set; second person and arm overlap; no movement or profile evidence."
+      "limits": "Near-duplicate pose/angle across this set; second person and arm overlap; no movement or profile evidence.",
+      "uploaded_to_generation_provider": true
     },
     {
       "filename": "photo_2026-11-19_17-27-32.jpg",
@@ -37,11 +39,15 @@
       "subject_position": "left_hand_man_user_confirmed",
       "view": "near_frontal_two_person_standing",
       "reference_role": "body_proportions_wardrobe_frontal_expression",
-      "limits": "Near-duplicate pose/angle across this set; second person and arm overlap; no movement or profile evidence."
+      "limits": "Near-duplicate pose/angle across this set; second person and arm overlap; no movement or profile evidence.",
+      "uploaded_to_generation_provider": false
     }
   ],
   "private_media_committed": false,
-  "uploaded_to_generation_provider": false,
+  "uploaded_to_generation_provider": true,
   "subject_confirmation": "User explicitly identified the left-hand man using a red outline in a separate screenshot.",
-  "annotation_usage": "Identity clarification only; annotated screenshot is not a generation reference."
+  "annotation_usage": "Identity clarification only; annotated screenshot is not a generation reference.",
+  "uploaded_filenames": [
+    "photo_2026-11-19_17-27-29.jpg"
+  ]
 }
