@@ -1,10 +1,10 @@
 # 有你，兄弟同心 — Hock Siew tribute
 
-Current route: V2 centers one recognizable Hock Siew throughout. The user confirmed him in both the seaside photograph and the central light-blue-shirt figure in the group photograph. A separate Benz song will be supplied later; no second MV has been started. V1 remains archived locally.
+Current status: the client rejected V2's face/body naturalness. Research and a controlled pilot protocol are complete; new generation is held at the user's request pending references/credits and next-stage instructions. See REALISM-RESEARCH.md, REALISM-PILOT.md and CLIENT-STATUS.json. Three new frontal/body originals have been catalogued; the user explicitly marked the left-hand man as Hock Siew. No new generation or provider upload occurred during research. V1/V2 remain archived, and no separate Benz MV has been started.
 
 Create a complete personal Mandarin tribute music video from the latest supplied recording, 有你，兄弟同心 (1).wav. It is 196.760 seconds, 48 kHz stereo PCM. The user's corrected 40 sung lines in lyrics.txt are canonical, including Hock Siew and 拿督斯里谢惠福. Measure lyric entrances against the recording and preserve the master soundtrack.
 
-The film honors an admired elder brother through loyalty, generosity and shared burdens. Introduce Hock Siew immediately and show his face throughout every named lyric. Six reference-led solo native takes retain his likeness, age, stocky build and burgundy clothing. Reuse the existing group-photo animation with a reviewed crop showing only Hock Siew, followed by the original seaside image in the final dedication. Other generated performers appear only in face-free contextual details of work, care, rain and water. These scenes are artistic interpretations, not documentary event footage.
+The film honours an admired elder brother through loyalty, generosity and shared burdens. Natural likeness and real body/motion are now the primary creative acceptance criteria. Prefer genuine Hock Siew footage; if generated inserts are needed, compare short original-reference-driven candidates before a full film. Do not treat a generated portrait, generic body description, successful encoding or sparse still samples as proof of the real person. Keep all forty lyrics and the original soundtrack clock intact. The final seaside dedication remains a useful personal anchor.
 
 The closing reads “献给拿督斯里谢惠福”, “Hock Siew”, “有你，兄弟同心。”, “愿你平安，幸福永久。” and “兄弟情义 · 一路同行”. Type is set during editing so spelling and layout stay exact.
 

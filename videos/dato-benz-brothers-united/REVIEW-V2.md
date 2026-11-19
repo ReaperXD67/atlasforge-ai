@@ -1,5 +1,7 @@
 # V2 review — one recognizable Hock Siew
 
+**Subsequent client result: rejected for unnatural face/body appearance.** The technical and sampled checks below are historical evidence, not creative acceptance. The user reports that the boss found the result fake. See [REALISM-RESEARCH.md](REALISM-RESEARCH.md) and [CLIENT-STATUS.json](CLIENT-STATUS.json) for the replacement criteria and generation hold.
+
 V2 addresses the user's central correction: this tribute honours one man. Hock Siew opens the film, remains visible throughout all six named lyric intervals, and occupies approximately 125.4 seconds of the full 196.760-second song. No anonymous actor's face substitutes for him. The supplied seaside photograph and light-blue-shirt group photograph were both confirmed by the user.
 
 ## Picture and editorial changes

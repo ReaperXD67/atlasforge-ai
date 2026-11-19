@@ -1,0 +1,47 @@
+{
+  "stage": "research_only_no_generation",
+  "received_client_date": "2026-11-19",
+  "subject": "Hock Siew / 拿督斯里谢惠福",
+  "records": [
+    {
+      "filename": "photo_2026-11-19_17-27-24.jpg",
+      "local_path": "assets/references-v3/originals/photo_2026-11-19_17-27-24.jpg",
+      "width": 960,
+      "height": 1280,
+      "bytes": 142394,
+      "sha256": "ec01cf694bbe522e9b43d7f45e9f175ae913bb7a3e062588f267ad5efa5a43ff",
+      "subject_position": "left_hand_man_user_confirmed",
+      "view": "near_frontal_two_person_standing",
+      "reference_role": "body_proportions_wardrobe_frontal_expression",
+      "limits": "Near-duplicate pose/angle across this set; second person and arm overlap; no movement or profile evidence."
+    },
+    {
+      "filename": "photo_2026-11-19_17-27-29.jpg",
+      "local_path": "assets/references-v3/originals/photo_2026-11-19_17-27-29.jpg",
+      "width": 960,
+      "height": 1280,
+      "bytes": 144279,
+      "sha256": "e2c23d422b02ad1a8188069c91c65b46321f781e0f93832122c5a362e12ef497",
+      "subject_position": "left_hand_man_user_confirmed",
+      "view": "near_frontal_two_person_standing",
+      "reference_role": "body_proportions_wardrobe_frontal_expression",
+      "limits": "Near-duplicate pose/angle across this set; second person and arm overlap; no movement or profile evidence."
+    },
+    {
+      "filename": "photo_2026-11-19_17-27-32.jpg",
+      "local_path": "assets/references-v3/originals/photo_2026-11-19_17-27-32.jpg",
+      "width": 960,
+      "height": 1280,
+      "bytes": 141381,
+      "sha256": "89c30f72a42e88414d25027b8230891e1b14fdf20145db5750eabe6af3e60d8e",
+      "subject_position": "left_hand_man_user_confirmed",
+      "view": "near_frontal_two_person_standing",
+      "reference_role": "body_proportions_wardrobe_frontal_expression",
+      "limits": "Near-duplicate pose/angle across this set; second person and arm overlap; no movement or profile evidence."
+    }
+  ],
+  "private_media_committed": false,
+  "uploaded_to_generation_provider": false,
+  "subject_confirmation": "User explicitly identified the left-hand man using a red outline in a separate screenshot.",
+  "annotation_usage": "Identity clarification only; annotated screenshot is not a generation reference."
+}

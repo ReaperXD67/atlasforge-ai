@@ -1,0 +1,20 @@
+{
+  "updated_client_date": "2026-11-19",
+  "subject": "Hock Siew / 拿督斯里谢惠福",
+  "latest_rendered_version": "V2",
+  "technical_delivery_checks": "passed_for_archived_V2",
+  "creative_acceptance": "rejected_as_unnatural_face_and_body_per_user_report",
+  "current_stage": "research_complete_reference_assessment_and_pilot_preparation",
+  "research_complete": true,
+  "new_generation_held": true,
+  "generation_calls_this_research_stage": 0,
+  "credits_spent_this_research_stage": 0,
+  "new_private_reference_uploads_to_provider": 0,
+  "new_reference_photos_received": 3,
+  "subject_position_confirmed": "left_hand_man_in_all_three_new_photos_user_red_outline",
+  "reference_intake": "reference-intake-v3.json",
+  "research_report": "REALISM-RESEARCH.md",
+  "future_pilot_protocol": "REALISM-PILOT.md",
+  "model_winner_demonstrated_for_new_references": null,
+  "accepted_new_video": null
+}

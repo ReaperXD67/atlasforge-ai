@@ -1,10 +1,16 @@
 # 有你，兄弟同心
 
-**Current version: V2, completed and verified, a personal tribute to 拿督斯里谢惠福 / Hock Siew.** The user confirmed him in the seaside photograph and the central light-blue-shirt figure in the group photograph. Benz's later song is a separate project.
+**Current status: realism research complete; new generation held.** The user reports that the boss rejected V2's face/body appearance as unnatural. V2's encoding, audio and subtitle checks passed, but that did not establish acceptable likeness or natural movement. It is retained as a technical archive, not an accepted creative result.
 
-V2 introduces Hock Siew in its first frame and shows him throughout every named lyric. Six reference-led solo moving takes retain his likeness and familiar burgundy clothing. The existing group-photo animation is reused as a crop showing only Hock Siew. Other performers appear only in reviewed, face-free details of hands, work, rain and water. The original seaside photograph closes the film with Mandarin wishes.
+Read [REALISM-RESEARCH.md](REALISM-RESEARCH.md) for the failure audit, current model/reference-control comparison and recommended route. [REALISM-PILOT.md](REALISM-PILOT.md) defines an originals-only reference set and a small normal-speed comparison before any new full-song batch. Real Hock Siew footage is the preferred natural-person backbone when available. Kling O3Pro and Seedance2 are proposed test candidates; neither has passed a test on the new references. Research spent zero credits.
 
-The 196.760-second song and all forty supplied lyric lines are unchanged. The 44-shot edit has approximately 125.4 seconds of recognizable Hock Siew, 179.1 seconds of native moving footage and 17.7 seconds of original photographs. Twelve intentional, non-adjacent returns to his portrait are recorded as musical motifs. Context footage is not replayed. Generated scenes are artistic interpretations, rather than documentary events.
+Three new frontal full-body photographs have been catalogued in [reference-intake-v3.json](reference-intake-v3.json). The user explicitly identified Hock Siew as the left-hand man. They strengthen body/outfit evidence but are near-duplicates, not multiple angles or motion evidence. Private images remain local and have not been uploaded for generation. [CLIENT-STATUS.json](CLIENT-STATUS.json) is the current acceptance/stage record. Benz's later song is a separate project.
+
+## Archived V2
+
+V2 placed a generated Hock Siew interpretation in its first frame and throughout every named lyric. Six reference-derived solo takes used burgundy clothing, and the earlier group-photo animation was cropped around the confirmed subject. Other performers appeared in face-free contextual details. The original seaside photograph closed the film. The client's rejection supersedes the earlier internal sampled likeness judgements.
+
+The 196.760-second song and all forty supplied lyric lines are unchanged. The 44-shot edit marked approximately125.4seconds as protagonist coverage, with179.1seconds of native moving footage and17.7seconds of original photographs. That coverage measure is not an identity-accuracy or realism score. Twelve intentional, non-adjacent portrait returns are recorded in the edit; contextual footage is not replayed.
 
 ## Watch and inspect
 
