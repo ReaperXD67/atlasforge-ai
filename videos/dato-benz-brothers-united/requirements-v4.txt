@@ -1,0 +1,8 @@
+# Observed working Python 3.11 environment; fresh installation not independently tested.
+-r requirements-render.txt
+scipy==1.17.1
+librosa==0.11.0
+soundfile==0.14.0
+torch==2.13.0
+transformers==5.14.1
+safetensors==0.8.0

@@ -3,7 +3,7 @@
   "concept": "The Bridge We Build / 同心成桥",
   "on_screen_song_title": "有你，兄弟同心",
   "subject": "Hock Siew / 拿督斯里谢惠福",
-  "status": "authored_image_only_plan_not_generated_or_accepted",
+  "status": "generated_and_rendered_technically_verified_client_review_pending",
   "canvas": {
     "width": 1920,
     "height": 1080,
@@ -12,7 +12,7 @@
   "duration_seconds": 196.76,
   "canonical_captions": "captions.json",
   "caption_sha256": "6d3a6b8f711526f7944b5d391cb16340fd1e17db761d1dd41b4d76598a75bd10",
-  "timing_evidence": "Frozen phrase/caption clock. No audiomap found in project root; no new beat or BPM measurement claimed.",
+  "timing_evidence": "Frozen40-cue vocal phrase clock. Canonical analysis recovered in research/v4/audiomap-cpu-generic.json; no unverified BPM adopted. Executable54-shot plan is edit-plan-v4.json.",
   "anchor_asset": "12-bridge-anchor",
   "generation_order": [
     "12-bridge-anchor",
@@ -1156,7 +1156,7 @@
       ],
       "photo_moments": [
         {
-          "start": 184.75,
+          "start": 185.1,
           "end": 196.76,
           "path": "assets/references-v3/originals/photo_2026-11-19_17-27-29.jpg",
           "instruction": "Final clear authentic portrait crop and Mandarin dedication; use a source-preserving crop to keep companions out.",

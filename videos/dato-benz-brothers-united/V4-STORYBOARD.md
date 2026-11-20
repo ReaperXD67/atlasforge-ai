@@ -1,6 +1,6 @@
 # V4 — The Bridge We Build
 
-**Authored image-only storyboard; not a claim of generated assets or an accepted film.** The original song title is 《有你，兄弟同心》. The recurring strand connects homes, carries a burden through a storm and becomes a monumental bridge across mountains and sea. The first chorus reveals the bridge; the final chorus reveals the larger living world it supports.
+**Authored image-only storyboard, now executed as the verified V4 cut; client creative acceptance is pending.** The original song title is 《有你，兄弟同心》. The recurring strand connects homes, carries a burden through a storm and becomes a monumental bridge across mountains and sea. The first chorus reveals the bridge; the final chorus reveals the larger living world it supports.
 
 ## Identity and factual boundaries
 
@@ -10,13 +10,15 @@ January 6 is an exact lyric reference, not a verified birthday. 浅顶 is retain
 
 ## Source and music clock
 
-Keep `assets/bgm.wav` and all forty cues in `captions.json` unchanged. The plan uses the measured phrase anchors already in that file. No audiomap was found in the project root; this storyboard does not invent a BPM or claim beat measurement. A later actual beat/onset analysis may refine visual accents without moving vocal text.
+Keep `assets/bgm.wav` and all forty cues in `captions.json` unchanged. The plan uses the measured phrase anchors already in that file. Canonical audio analysis subsequently recovered with a process-local generic CPU target; see `research/v4/canonical-analyzer-generic.md`. No unverified BPM is adopted. The frozen vocal phrase clock still drives the edit.
 
 ## Visual system and asset contract
 
-Generate the style anchor first: `assets/art-v4/12-bridge-anchor.png` (already being produced by the coordinator). It shows the bronze bridge and cinnabar silk across the misty blue-green ink sea. Every later generated plate uses that image as a **style/material reference only**, never as a human-identity reference. Use tactile ivory paper, aged bronze, blue-green ink, living green and a restrained cinnabar strand. Keep one coherent geography/material language. Prompts and exact layer/photo plans are in [art-direction-v4.json](art-direction-v4.json).
+Generate the style anchor first: `assets/art-v4/12-bridge-anchor.png` (generated first and used as the material reference). It shows the bronze bridge and cinnabar silk across the misty blue-green ink sea. Every later generated plate uses that image as a **style/material reference only**, never as a human-identity reference. Use tactile ivory paper, aged bronze, blue-green ink, living green and a restrained cinnabar strand. Keep one coherent geography/material language. Prompts and exact layer/photo plans are in [art-direction-v4.json](art-direction-v4.json).
 
 All readable content is real editor typography. Do not ask image generation to draw the song title, name, dates, lyrics or dedication. Preserve space for lyrics in the lower 18 percent and for actual photographic prints where specified.
+
+The broad plate spans below express the narrative; [edit-plan-v4.json](edit-plan-v4.json) is the actual54-shot timing/framing record. In the outro, the executed cut revisits the climax/coast before entering the memory-book plate at180.5s and the final photograph at185.1s.
 
 ## Eighteen major plates
 

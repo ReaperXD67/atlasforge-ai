@@ -10,14 +10,33 @@ Reviewed at 2026-11-20T05:10:52+00:00. Reviewer: independent storyboard/art work
 - Plan SHA256 at review: `a9e7b98fa89b395334fa498d66a162386daf898ae90bde2af546edf7a4ea0dcd`.
 - The contact sheets precede the final twelve chapter luma-mask changes. No full encoded film or continuous sound playback has been reviewed here. Exact seam timing, lyrical performance sync, compression artifacts and motion comfort still need continuous-picture review.
 
+## Final encoded-frame review
+
+Reviewed at 2026-11-20T05:28:13+00:00 from actual decoded MP4 samples, master SHA256 `9d4172daf450b2fcc2280c12da275a27fefdfa0d361b6fbb1922c052c0fb03d2`. This review leaves the source files, edit plan and renderer unchanged.
+
+Inspected `renders/v4/qa/shot-midpoints-01.png` through `shot-midpoints-04.png`, covering all 54 encoded shot interiors. Inspected the complete 18-frame first/middle/last name-anchor gallery and all six name-anchor middle samples at original 1920×1080 resolution. Also inspected full-resolution `opening-authentic-photo.png` (extraction target 1.500s) and `closing-dedication.png` (target 192.760s).
+
+| Named cue | First / middle / last encoded sample times |
+| --- | --- |
+| 拿督斯里谢惠福 |29.542 /31.125 /32.750s |
+| Hock Siew，Hock Siew |81.042 /82.917 /84.833s |
+| Hock Siew，Hock Siew |90.458 /91.333 /92.250s |
+| Hock Siew，Hock Siew |149.333 /151.042 /152.792s |
+| 拿督斯里谢惠福 |154.833 /155.667 /156.542s |
+| Hock Siew，Hock Siew |158.417 /159.292 /160.167s |
+
+**No new observed P0/P1 visual defect in these encoded samples.** The six name cues consistently show the user-confirmed Hock photograph, with face and upper body unobstructed and a legible corresponding name lyric. No surrounding companion face is presented as a second honoree. The opening authentic portrait remains recognizable. The final original-photo print and Mandarin dedication are separated and readable. The repaired title is on the warm sky at 20.250s; the garden framing, cup payoff and chorus region changes remain present in the encoded frame sheets. No sampled blank picture, displaced face/body, unintended generated person or clipped lyric was observed.
+
+This is an encoded-sample visual review, **not full continuous playback or listening**. It cannot establish every seam's motion quality, musical phrasing, emotional response or client acceptance. Technical decode/frame-count/caption-binding/motion-audit results belong to the separate verification reports; they do not substitute for those judgments.
+
 ## Targeted correction recheck
 
-Rechecked at 2026-11-20T05:14:49+00:00 against `v4-renderer/targeted-result.json`, plan SHA256 `8e6b6ee6581e0d3c9e0098a2366d919951f6ddf7d6e3ee9027e49c50926f33b3`. Inspected all three targeted contact sheets (36 samples /18 affected shots), plus full-resolution `targeted/frame-001.png` and `targeted/frame-035.png`.
+Rechecked at 2026-11-20T05:14:49+00:00 against `v4-renderer/targeted-result.json`, plan SHA256 `8e6b6ee6581e0d3c9e0098a2366d919951f6ddf7d6e3ee9027e49c50926f33b3`. Inspected all three targeted contact sheets (36 samples / 18 affected shots), plus full-resolution `targeted/frame-001.png` and `targeted/frame-035.png`.
 
-- **Closed at sampled-frame level — title contrast.** The first correction removed the panel but left dark type on a dark upper-left patch. The final correction moved both lines to the warm upper-right sky. Inspected `v4-renderer/renders/title-final/frame-001.png` at21.193s, full1920×1080, at 2026-11-20T05:15:49+00:00: dark title and dedication are clearly readable, separated from bridge geometry, without a presentation panel or clipping. Final plan SHA256: `7f05e91871dc1958ac75fa473719b5ff57b069bc933d42ca68ca9cab8af1e929`.
+- **Closed at sampled-frame level — title contrast.** The first correction removed the panel but left dark type on a dark upper-left patch. The final correction moved both lines to the warm upper-right sky. Inspected `v4-renderer/renders/title-final/frame-001.png` at 21.193s, full1920×1080, at 2026-11-20T05:15:49+00:00: dark title and dedication are clearly readable, separated from bridge geometry, without a presentation panel or clipping. Final plan SHA256: `7f05e91871dc1958ac75fa473719b5ff57b069bc933d42ca68ca9cab8af1e929`.
 
 - **Closed at sampled-frame level — chorus variety.** Revised non-name shots now show distinct near bronze/bridge, river/home and horizon regions. The tail no longer repeats an indistinguishable wide reveal in the contact-sheet read. Continuous motion comfort and cut rhythm still need encoded review.
-- **Closed at sampled-frame level — cup payoff.** s39/s40 use cropped reflection/material views; the complete cup becomes readable at141.61s during the toast phrase. The visual hierarchy now supports the intended lyric.
+- **Closed at sampled-frame level — cup payoff.** s39/s40 use cropped reflection/material views; the complete cup becomes readable at 141.61s during the toast phrase. The visual hierarchy now supports the intended lyric.
 - **Closed at sampled-frame level — garden template void.** Art-only shots exclude the empty medallion and give the living garden/pond the frame. The seaside-photo anchor remains identifiable.
 - **Closed at sampled-frame level — final photo mount.** At193.612s the translated original portrait fits the right-page mount more convincingly. Dedication text is directly on ivory paper, legible and separated from the face. The photo remains a rigid original crop.
 

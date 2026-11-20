@@ -2,9 +2,19 @@
 
 A personal Mandarin music film for **Hock Siew / 拿督斯里谢惠福**. The folder retains an older working name; Benz is a separate, unstarted future commission.
 
-**Current status: V4 is rendering after source and visual preflight.** The user and boss rejected V3, so V4 is an image-only rebuild. It uses 18 original environment artworks, one transparent bronze foreground prop and the supplied real photographs. Hock’s photographed face, body and clothing are unchanged; literal crops exclude companions’ faces. There is no generated human likeness, AI video or reused V3 footage. Client creative acceptance remains pending.
+**Current status: V4 is exported, technically verified and ready for user/boss review.** The user and boss rejected V3, so V4 is an image-only rebuild. It uses 18 original environment artworks, one transparent bronze foreground prop and the supplied real photographs. Hock’s photographed face, body and clothing are unchanged; literal crops exclude companions’ faces. There is no generated human likeness, AI video or reused V3 footage. Client creative acceptance remains pending.
 
 The concept, **同心成桥 / The Bridge We Build**, follows a cinnabar strand through paper landscapes, shelter, rivers and a monumental bridge, then returns to an authentic photograph and Mandarin dedication. The original 196.760-second recording and all forty frozen lyric cues drive 54 shots. [BRIEF.md](BRIEF.md), [SPEC.md](SPEC.md) and [V4-STORYBOARD.md](V4-STORYBOARD.md) describe the scope and story; [edit-plan-v4.json](edit-plan-v4.json) is the executable edit.
+
+## Watch V4
+
+Local outputs (media stays outside Git):
+
+- `renders/v4/Hock-Siew-Image-Film-V4.mp4` — **1920×1080, 24fps, 430.00MB**, H.264 with 320kbps AAC.
+- `renders/v4/Hock-Siew-Image-Film-V4-720p.mp4` — **1280×720, 114.21MB**, with the same encoded AAC stream.
+- [DELIVERY-V4.json](DELIVERY-V4.json) records exact SHA256 hashes, dimensions, timing, verification and acceptance status.
+
+Both files fully decoded. The master contains 4,723 frames (196.791667s) covering the unchanged 196.760s song. Audio correlation is above 0.99959, with zero-sample measured lag in eight checks. All nine exact render-to-encode picture comparisons passed. The complete encoded review sampled all 54 shots and name anchors; no new P0/P1 framing defect was observed. This is technical and sampled visual evidence, with client creative approval still pending.
 
 ## V4 workflow
 
@@ -12,7 +22,7 @@ Private photos/audio, generated artwork, depth maps, local font/vendor copies an
 
 The isolated [renderer guide](v4-renderer/README.md) documents its plan contract and controls. It pins HyperFrames **0.9.72**, reuses reviewed Three.js 0.187.0/GSAP 3.14.2, and narrowly adapts gre’s MIT luma-wipe shader. [Upstream decisions](research/v4/upstream.md) explain licenses, maintenance and why additional rendering frameworks were not installed.
 
-Run from the repository root, using the existing project environment and local media/model/font cache:
+Run from the repository root, using the existing project environment and local media/model/font cache. [requirements-v4.txt](requirements-v4.txt) records the observed Python package versions; clean installation was not separately tested. [Skill/runtime update](research/v4/skills-update.md) records the reviewed refresh:
 
 ```powershell
 .venv\Scripts\python.exe videos/dato-benz-brothers-united/generate_depth_v4.py
@@ -26,9 +36,10 @@ powershell -NoProfile -ExecutionPolicy Bypass -File render.ps1 -Output ../render
 Pop-Location
 .venv\Scripts\python.exe videos/dato-benz-brothers-united/finalize_film_v4.py --share
 .venv\Scripts\python.exe videos/dato-benz-brothers-united/verify_film_v4.py --file videos/dato-benz-brothers-united/renders/v4/Hock-Siew-Image-Film-V4.mp4 --contact-sheets
+.venv\Scripts\python.exe videos/dato-benz-brothers-united/audit_delivery_v4.py
 ```
 
-Source/build preflight, depth preparation, composition checks, 110 full-plan snapshots, 36 revised-shot snapshots, final title recheck and bounded GPU encodes passed. The complete render/finalize/encoded-verification sequence is in progress. The finalizer preserves the rendered picture bitstream and encodes the canonical WAV directly to 320kbps AAC; the optional 720p copy shares that AAC stream.
+Source/build preflight, depth preparation, composition checks, 110 full-plan snapshots, 36 revised-shot snapshots, final title recheck, full export, finalization and encoded verification passed. The actual 0.9.72 hardware-GPU render took 6m49.8s. A 394-frame, 2fps encoded movement audit found no unintended freeze before the deliberate closing hold. The current official check retained one DOM-density warning and twenty DOM-only stillness warnings because camera motion draws inside WebGL; the encoded-pixel audit and sampled review cover that limitation. The finalizer preserves the rendered picture bitstream and encodes the canonical WAV directly to 320kbps AAC; the optional 720p copy shares that AAC stream.
 
 ## Evidence and limits
 

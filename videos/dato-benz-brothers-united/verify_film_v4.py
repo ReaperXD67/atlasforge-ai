@@ -45,6 +45,8 @@ PHOTO_ORIGINALS = {
 NAME_STARTS = (29.54, 81.04, 90.42, 149.32, 154.8, 158.4)
 VIDEO_SUFFIXES = {".mp4", ".mkv", ".mov", ".webm", ".avi", ".m4v", ".gif"}
 ART_NAME = re.compile(r"^(?:0[1-9]|1[0-8])-[a-z0-9-]+\.png$")
+REFERENCE_MANIFEST = RENDERER / "renders/bindings/reference-bindings.json"
+PICTURE_MIN_PSNR_DB, PICTURE_MAX_MAE = 25., 5.
 
 
 def require(condition, message):
@@ -347,6 +349,113 @@ def frame(video, at):
     return Image.open(io.BytesIO(raw)).convert("RGB")
 
 
+def exact_frame(video, number):
+    """Decode by zero-based frame index; no timestamp seek or alignment search."""
+    raw = run([ffmpeg(), "-v", "error", "-i", video, "-map", "0:v:0", "-an",
+               "-vf", f"select=eq(n\\,{number})", "-fps_mode", "passthrough",
+               "-frames:v", "1", "-f", "image2pipe", "-c:v", "png", "-"])
+    return Image.open(io.BytesIO(raw)).convert("RGB")
+
+
+def pixel_metrics(expected, actual):
+    require(expected.size == actual.size == (WIDTH, HEIGHT),
+            "Picture binding requires full-size1920x1080 reference/encoded frames")
+    difference = np.asarray(actual, dtype=np.float32) - np.asarray(expected, dtype=np.float32)
+    mae = float(np.abs(difference).mean())
+    mse = float(np.square(difference).mean())
+    psnr = 10 * math.log10(255 ** 2 / mse) if mse > 0 else float("inf")
+    return {"mean_absolute_error_0_255": round(mae, 6), "mean_squared_error": round(mse, 6),
+            "psnr_db": round(psnr, 6) if math.isfinite(psnr) else None,
+            "psnr_infinite": not math.isfinite(psnr),
+            "maximum_absolute_error": float(np.abs(difference).max()),
+            "passed": psnr >= PICTURE_MIN_PSNR_DB and mae <= PICTURE_MAX_MAE}
+
+
+def binding_references(plan):
+    manifest = read_json(REFERENCE_MANIFEST)
+    require(manifest["plan_sha256"] == sha256(ROOT / "edit-plan-v4.json"),
+            "Picture references belong to a different edit plan")
+    require(manifest["build_receipt_sha256"] == sha256(RENDERER / "build-receipt.json"),
+            "Picture references belong to a different renderer build receipt")
+    require(manifest["resolution"] == [WIDTH, HEIGHT] and manifest["fps"] == FPS
+            and abs(manifest["duration"] - DURATION) < 1e-8 and not manifest.get("errors"),
+            "Picture-reference capture dimensions/clock/errors failed")
+    for source in manifest.get("build_sources", []):
+        require(source["expected_sha256"] == source["actual_sha256"]
+                == sha256(local(source["path"], RENDERER)),
+                f"Picture-reference renderer source changed: {source['path']}")
+    references = sorted(manifest["references"], key=lambda item: item["frame"])
+    require(len(references) == len({r["frame"] for r in references}) == 9,
+            "Expected nine unique exact-frame picture references")
+    for item in references:
+        number = item["frame"]
+        require(isinstance(number, int) and 0 <= number < FRAMES
+                and abs(item["time_seconds"] - number / FPS) < 1e-8,
+                "Reference frame/time mismatch")
+        reference = local(item["path"], REFERENCE_MANIFEST.parent)
+        require(reference.suffix.lower() == ".png" and sha256(reference) == item["sha256"],
+                f"Reference PNG hash changed: {item['path']}")
+        with Image.open(reference) as image:
+            require(image.format == "PNG" and image.size == (WIDTH, HEIGHT), "Invalid reference PNG")
+            require("A" not in image.getbands() or image.getchannel("A").getextrema() == (255, 255),
+                    "Reference screenshot is not fully opaque")
+        scene = next(s["id"] for s in plan["scenes"] if s["start"] <= number / FPS < s["end"])
+        require(item["scene"] == scene, f"Reference scene/time mismatch: {item['path']}")
+    return manifest, references
+
+
+def picture_binding(video, plan):
+    if not REFERENCE_MANIFEST.is_file():
+        return {"available": False, "tested": False,
+                "limits": "No frozen exact-frame reference manifest; visual samples remain separate."}
+    manifest, references = binding_references(plan)
+    directory = QA / "picture-binding"
+    directory.mkdir(parents=True, exist_ok=True)
+    # Remove only our known numbered outputs so a failed extraction cannot admit
+    # stale images. Every resolved target is checked inside the QA directory.
+    for index in range(1, len(references) + 1):
+        target = directory / f"encoded-{index:02}.png"
+        require(target.resolve().is_relative_to(QA.resolve()), "Unsafe QA extraction target")
+        target.unlink(missing_ok=True)
+    selection = "+".join(f"eq(n\\,{item['frame']})" for item in references)
+    run([ffmpeg(), "-y", "-v", "error", "-xerror", "-i", video, "-map", "0:v:0", "-an", "-sn", "-dn",
+         "-vf", f"select={selection}", "-fps_mode", "passthrough", "-frames:v", len(references),
+         "-start_number", "1", directory / "encoded-%02d.png"])
+    samples = []
+    for index, item in enumerate(references, start=1):
+        expected_path = local(item["path"], REFERENCE_MANIFEST.parent)
+        actual_path = directory / f"encoded-{index:02}.png"
+        require(actual_path.is_file(), f"Exact encoded-frame extraction missing at{item['frame']}")
+        with Image.open(expected_path) as expected, Image.open(actual_path) as actual:
+            metrics = pixel_metrics(expected.convert("RGB"), actual.convert("RGB"))
+        samples.append({"frame": item["frame"], "time_seconds": item["time_seconds"], "scene": item["scene"],
+                        "reference": expected_path.relative_to(ROOT).as_posix(),
+                        "reference_sha256": item["sha256"],
+                        "encoded_frame": actual_path.relative_to(ROOT).as_posix(),
+                        "encoded_frame_sha256": sha256(actual_path), **metrics})
+    calibration = {"performed": False}
+    benchmark = RENDERER / "renders/V4-GPU-4s.mp4"
+    opening = next((item for item in references if item["frame"] == 0), None)
+    if benchmark.is_file() and opening:
+        with Image.open(local(opening["path"], REFERENCE_MANIFEST.parent)) as expected:
+            measured = pixel_metrics(expected.convert("RGB"), exact_frame(benchmark, 0))
+        calibration = {"performed": True, "benchmark": benchmark.relative_to(ROOT).as_posix(),
+                       "benchmark_sha256": sha256(benchmark), "frame": 0, **measured,
+                       "limits": "Known completed4-second GPU benchmark opening only; its later plan predates title/closing edits. This calibration does not validate the master."}
+    result = {"available": True, "tested": True, "passed": all(s["passed"] for s in samples),
+              "reference_manifest": REFERENCE_MANIFEST.relative_to(ROOT).as_posix(),
+              "reference_manifest_sha256": sha256(REFERENCE_MANIFEST),
+              "plan_sha256": manifest["plan_sha256"], "build_receipt_sha256": manifest["build_receipt_sha256"],
+              "thresholds": {"minimum_psnr_db": PICTURE_MIN_PSNR_DB, "maximum_mean_absolute_error_0_255": PICTURE_MAX_MAE},
+              "threshold_calibration": calibration, "samples": samples,
+              "method": "One decode pass; FFmpeg select by exact zero-based frame index; full-size RGB8 code-value PSNR/MAE. No resize, spatial/time alignment search or colour fitting. Independent of AAC/audio checks.",
+              "limits": "Nine sampled render-to-encode pixel correspondences, not every-frame identity, semantic correctness, visual quality or client acceptance."}
+    # Persist measured failures as well as successes for diagnosis.
+    write_json(QA / "picture-binding.json", result)
+    require(result["passed"], "Encoded picture binding failed PSNR/MAE thresholds; see qa/picture-binding.json")
+    return result
+
+
 def contact_sheets(video, plan, cues):
     QA.mkdir(parents=True, exist_ok=True)
     font = ImageFont.truetype(str(ROOT / "assets/fonts/NotoSerifCJKsc-Regular.otf"), 18)
@@ -416,13 +525,14 @@ def verify(video, make_sheets=False):
     require(counts and int(counts[-1]) == FRAMES and "progress=end" in progress,
             "Every-frame video/audio decode did not complete with4723 frames")
     audio = audio_check(video)
+    binding = picture_binding(video, plan)
     result = {"passed": True, "stage": "full_encoded_technical_verification",
               "verified_at_utc": datetime.now(timezone.utc).isoformat(),
               "file": str(video), "sha256": sha256(video), "bytes": video.stat().st_size,
               "width": WIDTH, "height": HEIGHT, "fps": FPS, "frames": int(counts[-1]),
               "duration_seconds": float(metadata["format"]["duration"]), "source_song_seconds": DURATION,
               "frame_rounding_seconds": FRAMES / FPS - DURATION,
-              "full_video_audio_decode": True, "audio": audio, "preflight": source_checks,
+              "full_video_audio_decode": True, "audio": audio, "picture_binding": binding, "preflight": source_checks,
               "ffmpeg_binary": ffmpeg(), "ffmpeg_version": run([ffmpeg(), "-version"]).decode().splitlines()[0],
               "ffprobe_version": run(["ffprobe", "-version"]).decode().splitlines()[0],
               "native_ai_video": False, "generated_human_pixels": False,

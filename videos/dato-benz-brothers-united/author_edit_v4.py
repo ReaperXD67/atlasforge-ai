@@ -200,10 +200,14 @@ def main() -> None:
     (ROOT/'edit-plan-v4.json').write_text(json.dumps(plan,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     ledger=[]
     for previous,current in zip(scenes,scenes[1:]):
+        def delta(scene):
+            first,last=scene['camera'][0],scene['camera'][-1]
+            return {axis:round(last[axis]-first[axis],4) for axis in ('x','y','z')}
         ledger.append(dict(time=current['start'],from_scene=previous['id'],to_scene=current['id'],
-                           technique='lyric-led match/cut',carrier='cinnabar strand / architectural contour',
-                           exit_vector=dict(axis='x',sign=-1),entry_vector=dict(axis='x',sign=-1),
-                           note='3D foreground overlap and plate-specific perspective; inspect encoded seam.'))
+                           technique='chapter luma reveal' if current['transition']['kind']=='luma' else 'lyric-led composed cut',
+                           carrier='cinnabar strand / architectural contour',
+                           outgoing_camera_delta=delta(previous),incoming_camera_delta=delta(current),
+                           note='Authored music-montage cut, not a measured matched-velocity seam-gate pass. Actual framing is inspected in encoded samples.'))
     (ROOT/'seams-v4.json').write_text(json.dumps(ledger,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(dict(scenes=len(scenes),plates=len({s['src'] for s in scenes}),duration=DURATION,cues=len(cues))))
 

@@ -1,0 +1,163 @@
+{
+  "version": 4,
+  "subject": "Hock Siew / 拿督斯里谢惠福",
+  "title": "有你，兄弟同心",
+  "client_date": "2026-11-20",
+  "status": "rendered_technically_verified_ready_for_user_and_boss_review",
+  "creative_acceptance": "pending_user_and_boss",
+  "concept": "同心成桥 / The Bridge We Build",
+  "image_only": true,
+  "native_ai_video": false,
+  "generated_human_pixels": false,
+  "source_pipeline_commit": "882bbae96fae1be5d90f41c446efaafd49f2292f",
+  "edit_plan_sha256": "7f05e91871dc1958ac75fa473719b5ff57b069bc933d42ca68ca9cab8af1e929",
+  "original_song": {
+    "path": "assets/bgm.wav",
+    "sha256": "60ee65f074f36b2d31660bee652e111cd84538e51b74a0685cbd895291cd6547",
+    "duration_seconds": 196.76,
+    "unchanged": true
+  },
+  "canonical_lyrics": {
+    "path": "captions.json",
+    "sha256": "6d3a6b8f711526f7944b5d391cb16340fd1e17db761d1dd41b4d76598a75bd10",
+    "cues": 40,
+    "unchanged": true
+  },
+  "edit": {
+    "shots": 54,
+    "unique_artwork_plates": 18,
+    "transparent_foreground_props": 1,
+    "native_art_dimensions": [
+      1672,
+      941
+    ],
+    "relative_artwork_depth_maps": 18,
+    "original_photo_sources": 3,
+    "photo_treatment": "Original bytes, literal crop, rigid aspect-preserving photo plane; no AI repaint/retouch/face/body/depth warp.",
+    "final_dedication_start_seconds": 185.1,
+    "final_dedication_seconds": 11.66
+  },
+  "outputs": [
+    {
+      "path": "renders/v4/Hock-Siew-Image-Film-V4.mp4",
+      "sha256": "9d4172daf450b2fcc2280c12da275a27fefdfa0d361b6fbb1922c052c0fb03d2",
+      "bytes": 430001667,
+      "width": 1920,
+      "height": 1080,
+      "fps": 24,
+      "frames": 4723,
+      "picture_codec": "h264",
+      "audio_codec": "aac",
+      "audio_sample_rate": 48000,
+      "audio_bit_rate": 323022,
+      "duration_seconds": 196.791667
+    },
+    {
+      "path": "renders/v4/Hock-Siew-Image-Film-V4-720p.mp4",
+      "sha256": "f58b07178ca757fdc47f985a67381e0f9be592a3d082e8b57e2e57bc5d764f40",
+      "bytes": 114209878,
+      "width": 1280,
+      "height": 720,
+      "fps": 24,
+      "frames": 4723,
+      "picture_codec": "h264",
+      "audio_codec": "aac",
+      "audio_sample_rate": 48000,
+      "audio_bit_rate": 323022,
+      "duration_seconds": 196.791667
+    }
+  ],
+  "encoding": {
+    "hyperframes": "0.9.72",
+    "render_seconds": 409.8,
+    "capture": "screenshot / hardware GPU",
+    "picture_reencoded_for_master": false,
+    "master_picture_bitstream_identical_to_render": true,
+    "master_share_aac_payload_identical": true
+  },
+  "checks": {
+    "full_master_video_audio_decode": true,
+    "full_share_decode": true,
+    "frames": 4723,
+    "picture_seconds": 196.791667,
+    "original_song_seconds": 196.76,
+    "audio_correlation": [
+      0.9996083238504844,
+      0.9995996725407412
+    ],
+    "audio_gain_db": [
+      -0.03307302662011599,
+      -0.03270324693794029
+    ],
+    "sampled_audio_lag_samples": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "exact_picture_bindings": {
+      "count": 9,
+      "passed": true,
+      "psnr_db_range": [
+        35.251587,
+        41.608467
+      ],
+      "mae_range": [
+        1.619707,
+        2.873262
+      ]
+    },
+    "encoded_motion_audit": {
+      "samples": 394,
+      "sample_fps": 2,
+      "low_change_intervals_before_dedication": [],
+      "near_black_frames": false,
+      "deliberate_final_hold": true
+    },
+    "current_official_check": {
+      "ok": true,
+      "lint_errors": 0,
+      "runtime_errors": 0,
+      "layout_errors": 0,
+      "contrast_passed": 5,
+      "contrast_checked": 5,
+      "retained_warnings": [
+        "42 timed DOM elements are forty fixed cues plus two titles.",
+        "20 DOM dead-stretch warnings do not observe WebGL camera drawing; encoded pixel-change audit found no unintended freeze before the deliberate dedication hold."
+      ]
+    }
+  },
+  "generation": {
+    "built_in_image_calls": 19,
+    "runway_generation_calls": 0,
+    "runway_credits_spent": 0,
+    "new_private_photo_uploads": 0,
+    "purchases_or_plan_changes": false
+  },
+  "evidence": {
+    "technical_report": "renders/v4/qa/technical-verification.json",
+    "technical_report_sha256": "ed56b03d5505007d4e60c0785e3175c856620f39fdd091620178dad028c25af0",
+    "picture_binding_report": "renders/v4/qa/picture-binding.json",
+    "picture_binding_report_sha256": "7daa5be33b411c7828e83e526252e2b79d7975ada5e304c30aa323dcc86b70c8",
+    "delivery_audit": "renders/v4/qa/delivery-audit.json",
+    "delivery_audit_sha256": "dae8a2b0f3877fdd7a7600309d3913d222a752ad6229684b8b2e40b5df5b8e7e",
+    "visual_review": "VISUAL-REVIEW-V4.md",
+    "source_review": "research/v4/",
+    "prompts": [
+      "art-direction-v4.json",
+      "art-v4-worker-a.json",
+      "art-v4-worker-b.json",
+      "artwork-v4.json"
+    ]
+  },
+  "limits": [
+    "Client creative approval is pending.",
+    "Generated artwork has estimated relative2.5D; this is an image art film, not native AI video.",
+    "Photo pixels are preserved from the originals but displayed through normal crop/scale/resampling and delivery compression.",
+    "Full decode/audio correspondence and sampled picture bindings are technical evidence; semantic review uses sampled encoded images and does not claim continuous listening/playback."
+  ]
+}
