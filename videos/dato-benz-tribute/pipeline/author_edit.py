@@ -32,7 +32,8 @@ def clause_cut(cue,end):
 def main():
     contract=input_contract(); cues=read_json(ROOT/'captions.json')
     layout=read_json(ROOT/'art-layout.json'); assets={x['id']:x for x in layout['assets']}
-    names={int(k[:2]):k for k in assets if k[:2].isdigit()}
+    names={int(k[:2]):k for k in assets if k[:2].isdigit() and not assets[k].get('variant')}
+    variant_names={3:'03-support-detail',9:'09-light-detail',10:'10-threshold-detail',17:'17-community-detail'}
     duration=contract['duration']; scenes=[]
     # One table describes the film's content; supplied lyrics remain private.
     plates=[2,3,2,4,5,6,5,9,8,9,7,10,1,9,3,12,
@@ -53,7 +54,9 @@ def main():
     }
 
     def add(start,end,number,view='wide',*,transition='cut',title=None,subtitle=None,foreground=False):
-        asset=assets[names[number]]; identity=asset['containsIdentity']
+        key=variant_names.get(number,names[number]) if view=='detail' else names[number]
+        if number==12 and view=='detail':key='10-threshold-detail'
+        asset=assets[key]; identity=asset['containsIdentity']
         s=dict(id=f's{len(scenes)+1:02d}-{asset["id"].split("-",1)[1]}',start=start,end=end,
                src=asset['path'],containsIdentity=identity,layers=[],
                transition=dict(kind=transition,duration=.42),captionTheme='light')
@@ -66,13 +69,21 @@ def main():
         else:
             s.update(depthSrc=f'assets/depth/{asset["id"]}.png',depthStrength=.30)
             a,b=details[number]
-            if view=='detail':s.update(focalRect=a,focalRectEnd=b)
+            if asset.get('variant'):
+                s.update(focalRect=[.005,.005,.98,.98],focalRectEnd=[.018,.01,.965,.965])
+            elif view=='tree':s.update(focalRect=[.35,.13,.55,.55],focalRectEnd=[.33,.12,.58,.58])
+            elif view=='counter':
+                targets={7:[.40,.24,.55,.55],13:[.40,.12,.58,.58],15:[.34,.22,.60,.60],17:[.04,.33,.60,.60]}
+                r=targets.get(number,[.25,.18,.65,.65]);s.update(focalRect=r,focalRectEnd=[max(0,r[0]-.02),r[1],r[2],r[3]])
+            elif view=='detail':s.update(focalRect=a,focalRectEnd=b)
             elif view=='travel':s.update(focalRect=[.02,.02,.94,.94],focalRectEnd=[.05,.01,.94,.94])
-            elif view=='reveal':s.update(focalRect=a,focalRectEnd=[.002,.002,.994,.994])
-            else:s.update(focalRect=[.03,.02,.94,.94],focalRectEnd=[.005,.005,.99,.99])
+            elif view=='reveal':s.update(focalRect=a,focalRectEnd=[.012,.012,.976,.976])
+            elif view=='release':s.update(focalRect=[.02,.02,.96,.96],focalRectEnd=[.012,.012,.976,.976])
+            else:s.update(focalRect=[.03,.02,.94,.94],focalRectEnd=[.01,.01,.98,.98])
             if number in (2,3,13):s['atmosphere']=dict(kind='rain',strength=.16)
             elif number in (7,9,15,17):s['atmosphere']=dict(kind='water',strength=.18,waterLine=.62)
             else:s['atmosphere']=dict(kind='light',strength=.14)
+            if asset.get('variant') and number==17:s['atmosphere']=dict(kind='light',strength=.14)
         if foreground:
             s['layers'].append(dict(id='near-glass',kind='foreground',src='assets/art/foreground-glass.png',
                 height=11,x=0,y=0,z=3,
@@ -94,8 +105,9 @@ def main():
         n=plates[i]; chapter=i in (0,4,9,13,16,20,25,29)
         if i in split_indices and end-start>=3.3:
             cut=clause_cut(cue,end)
-            add(start,cut,n,'detail',transition='luma' if chapter else 'cut')
-            add(cut,end,n,'reveal' if i in (15,25,31) else 'travel')
+            add(start,cut,n,'tree' if i==31 else 'detail',transition='luma' if chapter else 'cut')
+            second='release' if i in (15,31) else ('counter' if n in (7,13,15) or i==30 else 'travel')
+            add(cut,end,n,second)
         else:
             add(start,end,n,'reveal' if i in (2,4,6,18,22) else 'wide',
                 transition='luma' if chapter and not assets[names[n]]['containsIdentity'] else 'cut',

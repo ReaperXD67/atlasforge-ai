@@ -2,9 +2,9 @@
 
 GOAL: A living-person tribute in which one light grows into shared shelter and community, with Benz physically integrated into the image world.
 
-OUTPUT: 1920×1080, 24fps, original trimmed183.025500-second recording. 4,393 picture frames cover183.041667seconds. Preserve the supplied WAV and32 measured lyric cues; the first vocal is12.890s. The unsung cut introduction is not restored.
+OUTPUT: 1920×1080, 24 fps, original trimmed 183.025500-second recording. 4,393 picture frames cover 183.041667 seconds. Preserve the supplied WAV and 32 measured lyric cues; the first vocal is at 12.890 seconds. The unsung cut introduction is not restored.
 
-LOOK: Photographic rain glass, wet stone, warm wood and natural foliage. Petroleum teal `#102F37`, slate `#35525B`, amber `#D5A15A`, cream `#E4D8BE`, dawn gold `#E6BE79`. The physical amber source motivates rain highlights, water reflections, shelter and the new brighter climax. Native artwork1672×941 is composed for1080p delivery, not represented as native1080p source detail. Eighteen main artworks plus one transparent glass foreground.
+LOOK: Photographic rain glass, wet stone, warm wood and natural foliage. Petroleum teal `#102F37`, slate `#35525B`, amber `#D5A15A`, cream `#E4D8BE`, dawn gold `#E6BE79`. The physical amber source motivates rain highlights, water reflections, shelter and the new brighter climax. Native artwork at 1672×941 is composed for 1080p delivery, not represented as native 1080p source detail. Twenty-two main artworks (eight integrated portraits and 14 face-free environments/details), plus one transparent glass foreground. Four native close details avoid excessive digital enlargement and repetitive wide-to-wide cuts.
 
 PERSON: Eight integrated portrait sources, not photo cards. Preserve the photographed age/build/face/glasses/coat as closely as generated editing allows. Keep known waist/upper-thigh framing and no invented walking or feet. A supplied reference and geometric guards do not establish exact likeness: inspect actual outputs. No depth on any identity image. Background atmosphere reserves the full subject rectangle plus0.015padding; same-camera protected-region prototype pixels were unchanged with all three effects.
 

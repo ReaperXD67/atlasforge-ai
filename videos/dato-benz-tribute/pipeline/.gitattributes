@@ -1,2 +1,2 @@
 # Renderer source receipts use exact local bytes; preserve them across checkout.
-* -text
+* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

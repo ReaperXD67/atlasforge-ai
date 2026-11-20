@@ -115,12 +115,18 @@ def main() -> None:
         raise ValueError("No numbered artwork inputs are present")
     sources = {}
     indices = set()
+    base_indices = set()
+    detail_variants = {'03-support-detail', '09-light-detail', '10-threshold-detail', '17-community-detail'}
     for plate in selected:
         plate = plate.resolve()
         checksum, size = assert_art(plate)
         index = int(plate.name[:2])
-        if index in indices:
+        if plate.stem in sources:
+            raise ValueError(f"Duplicate artwork input: {plate.stem}")
+        if plate.stem not in detail_variants and index in base_indices:
             raise ValueError(f"Duplicate artwork scene number: {index}")
+        if plate.stem not in detail_variants:
+            base_indices.add(index)
         indices.add(index)
         sources[plate.stem] = (plate, checksum, size)
     downloads = []
