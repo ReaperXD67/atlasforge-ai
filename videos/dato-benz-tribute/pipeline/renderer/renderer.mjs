@@ -1,6 +1,21 @@
 import * as THREE from './assets/vendor/three.module.js';
 
 const plan=window.BENZ_PLAN;
+const identityPolicy=plan.identityPolicy??'integrated';
+const identityExcluded=identityPolicy==='excluded';
+function validateIdentityPolicy(){
+ if(!['integrated','excluded'].includes(identityPolicy))throw Error('identityPolicy must be integrated or excluded.');
+ if(!identityExcluded)return;
+ const fields=['faceBounds','subjectBounds','subjectPadding','faceMargin','faceSafeMargin','identity','identityReference','person','portrait','photo'];
+ for(const s of [null,...plan.scenes]){
+  const records=s?[[s,`scene ${s.id}`],...(s.layers||[]).map(l=>[l,`layer in ${s.id}`])]:[[plan,'plan']];
+  for(const [record,label]of records){
+   if(record.containsIdentity!==undefined&&typeof record.containsIdentity!=='boolean')throw Error(`identityPolicy excluded requires boolean containsIdentity: ${label}`);
+   if(record.containsIdentity===true||fields.some(key=>Object.hasOwn(record,key)))throw Error(`identityPolicy excluded forbids identity, face or subject metadata: ${label}`);
+   if(['photo','portrait','person','identity','card'].includes(record.kind))throw Error(`identityPolicy excluded forbids identity/card layers: ${label}`);
+  }
+ }
+}
 const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
 const lerp=(a,b,t)=>a+(b-a)*t;
 const smooth=x=>{x=clamp(x);return x*x*(3-2*x);};
@@ -141,7 +156,7 @@ function projectRect(item,rect){
 }
 function setCamera(item,p){const a=cameraAt(item.keys,p);item.camera.position.set(a.x,a.y,a.z);item.camera.lookAt(...a.look);item.camera.updateMatrixWorld();}
 function faceCheck(item,p){
- if(!item.spec.containsIdentity)return null;
+ if(identityExcluded||!item.spec.containsIdentity)return null;
  setCamera(item,p);const r=projectRect(item,item.spec.faceBounds),margin=item.spec.faceMargin??item.spec.faceSafeMargin??.10,eps=1e-5;
  return {at:p,face_screen_bounds:r,face_safe_margin:margin,passed:r[0]>=margin-eps&&r[1]>=margin-eps&&r[2]<=1-margin+eps&&r[3]<=1-margin+eps};
 }
@@ -203,6 +218,7 @@ export function seek(t){
 }
 window.seek=seek;window.__hf=window.__hf||{};window.__hf.buildReady=window.__hf.buildReady||{};
 const ready=(async()=>{
+ validateIdentityPolicy();window.BENZ_IDENTITY_POLICY=identityPolicy;
  await document.fonts.ready;scenes=await Promise.all(plan.scenes.map(buildScene));
  const frameChecks=[],coverageChecks=[];
  for(const item of scenes){
@@ -219,6 +235,6 @@ const ready=(async()=>{
  for(const item of scenes)if(item.spec.transition?.mask)item.mask=await texture(item.spec.transition.mask,true);
  for(const item of scenes){setCamera(item,0);await renderer.compileAsync(item.scene,item.camera);}await renderer.compileAsync(compositeScene,compositeCamera);
  const clock={time:0},timeline=gsap.timeline({paused:true});timeline.to(clock,{time:plan.duration,duration:plan.duration,ease:'none',onUpdate:()=>seek(clock.time)},0);window.BENZ_REGISTER(timeline);window.addEventListener('hf-seek',e=>seek(e.detail.time));seek(0);window.BENZ_READY=true;
- return {scenes:scenes.length,textures:textures.size,shared_geometries:geometries.size,face_checks:frameChecks.length};
+ return {scenes:scenes.length,textures:textures.size,shared_geometries:geometries.size,face_checks:frameChecks.length,identity_policy:identityPolicy,identity_scene_count:scenes.filter(s=>s.spec.containsIdentity).length};
 })();
 window.BENZ_READY_PROMISE=ready;window.__hf.buildReady['benz-world']=ready;ready.catch(error=>{window.BENZ_ERROR=String(error.stack||error);console.error(error);});

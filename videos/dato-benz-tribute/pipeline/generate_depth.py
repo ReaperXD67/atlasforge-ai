@@ -47,9 +47,9 @@ MODEL_HASHES = {
     "model.safetensors": "3152477ce0d8d6978d76b995120de97cb5b928701fd0f817769f59e249a16b70",
     "README.md": "319566441daaac0c5ed83e75a8fd19bae0863f3275e23f147c06fe0906edf6fb",
 }
-ENVIRONMENT_IDS = {2, 3, 5, 7, 9, 10, 12, 13, 15, 17}
+ENVIRONMENT_IDS = {2, 3, 5, 7, 9, 10, 12, 13, 15, 17, 19, 20, 21, 22, 23, 24, 25, 26}
 IDENTITY_IDS = {1, 4, 6, 8, 11, 14, 16, 18}
-ART_NAME = re.compile(r"^(0[1-9]|1[0-8])-[a-z0-9-]+\.png$")
+ART_NAME = re.compile(r"^(0[1-9]|1[0-9]|2[0-6])-[a-z0-9-]+\.png$")
 
 
 def digest(path: Path) -> str:

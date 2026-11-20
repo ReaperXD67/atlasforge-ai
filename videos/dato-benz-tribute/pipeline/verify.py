@@ -1,4 +1,4 @@
-"""Verify the actual trimmed song, integrated identity contract and MP4 export.
+"""Verify the trimmed song, explicit identity policy and completed MP4 export.
 
 Private recording/cues/reference PNGs stay local. A pass establishes signal,
 file and sampled picture correspondence, not personal likeness or client taste.
@@ -15,7 +15,7 @@ from scipy.signal import correlate,correlation_lags
 from media import ROOT,ffmpeg,input_contract,probe,read_json,run,sha256,stream_hash,write_json
 
 RENDERER=ROOT/'pipeline/renderer';QA=ROOT/'renders/qa'
-ENVIRONMENT_IDS={2,3,5,7,9,10,12,13,15,17}
+ENVIRONMENT_IDS={2,3,5,7,9,10,12,13,15,17,*range(19,27)}
 IDENTITY_IDS={1,4,6,8,11,14,16,18}
 VIDEO_SUFFIXES={'.mp4','.webm','.mkv','.mov','.gif','.avi'}
 
@@ -49,10 +49,36 @@ def rect(value,label):
     require(isinstance(value,list) and len(value)==4 and all(isinstance(x,(int,float)) and math.isfinite(x) for x in value),f'Invalid normalized rectangle {label}')
     x,y,w,h=value;require(x>=0 and y>=0 and w>0 and h>0 and x+w<=1.00001 and y+h<=1.00001,f'Rectangle outside image {label}')
 
-def scene_contract(scene,depths):
+def exclusions_contract():
+    """Local denied media fingerprints persist even if old files are archived."""
+    path=ROOT/'timing-evidence/identity-exclusions.json'
+    data=read_json(path);records=data.get('records',[])
+    require(data.get('policy')=='excluded','Missing explicit private exclusion manifest')
+    require({x.get('index') for x in records if x.get('kind')=='rejected_identity_art'}>=IDENTITY_IDS,
+            'Exclusion manifest must retain all eight rejected identity-art fingerprints')
+    require(any(x.get('kind')=='private_source_photo' for x in records),'Original source photo fingerprint missing')
+    require(all(re.fullmatch(r'[0-9a-f]{64}',x.get('sha256','')) for x in records),'Invalid denied media fingerprint')
+    return dict(paths={x['path'] for x in records},hashes={x['sha256'] for x in records},
+                manifest=path.relative_to(ROOT).as_posix(),manifest_sha256=sha256(path),records=len(records))
+
+def assert_person_free_input(path,exclusions):
+    relative=path.relative_to(ROOT.resolve()).as_posix()
+    require(relative not in exclusions['paths'] and sha256(path) not in exclusions['hashes'],
+            f'Excluded source photograph or known identity artwork entered the new film: {relative}')
+    require(not relative.startswith('assets/source/'),'Private source photograph cannot enter an identity-excluded build')
+
+def scene_contract(scene,depths,identity_policy='integrated',exclusions=None):
     source=local(scene['src']);require(source.parent==(ROOT/'assets/art').resolve() and source.suffix.lower()=='.png','Main scene must use a finished integrated art PNG')
     number=int(source.name[:2]);identity=number in IDENTITY_IDS
-    require(number in ENVIRONMENT_IDS|IDENTITY_IDS and scene.get('containsIdentity',False)==identity,f'Identity classification mismatch: {scene["id"]}')
+    if identity_policy=='excluded':
+        require(exclusions is not None,'Excluded identity policy requires frozen denied-media fingerprints')
+        require(number in ENVIRONMENT_IDS and number not in IDENTITY_IDS,'Known identity source index excluded')
+        require(not scene.get('containsIdentity') and not scene.get('faceBounds') and not scene.get('subjectBounds'),
+                f'Person/face metadata is forbidden in an identity-excluded scene: {scene["id"]}')
+        assert_person_free_input(source,exclusions);identity=False
+    else:
+        require(identity_policy=='integrated','Unknown identity policy')
+        require(number in ENVIRONMENT_IDS|IDENTITY_IDS and scene.get('containsIdentity',False)==identity,f'Identity classification mismatch: {scene["id"]}')
     if identity:
         require(not scene.get('depthSrc') and not scene.get('depthStrength'),f'Identity plate must remain rigid: {scene["id"]}')
         rect(scene.get('faceBounds'),f'{scene["id"]}.faceBounds')
@@ -62,9 +88,10 @@ def scene_contract(scene,depths):
         record=depths.get(source.stem);require(record is not None,'No frozen artwork depth provenance')
         require(record['source_sha256']==sha256(source) and record['depth_sha256']==sha256(local(scene['depthSrc'])),'Artwork/depth bytes differ from provenance')
     for layer in scene.get('layers',[]):
-        require(layer.get('kind','art') in ('art','foreground') and not layer.get('containsIdentity') and not layer.get('faceBounds'),'Human/photo card overlays are excluded')
+        require(layer.get('kind','art') in ('art','foreground') and not layer.get('containsIdentity') and not layer.get('faceBounds') and not layer.get('subjectBounds'),'Human/photo card overlays are excluded')
         require(not layer.get('border') and not layer.get('frameColor'),'Framed photo layer is excluded')
         require(local(layer['src']).suffix.lower()=='.png','Foreground layer must be local PNG art')
+        if identity_policy=='excluded':assert_person_free_input(local(layer['src']),exclusions)
     return identity
 
 def preflight():
@@ -75,10 +102,16 @@ def preflight():
     require(len(cues)==32 and cues[0]['start']>0,'Trimmed recording requires32 canonical sung lines, with measured initial instrumental')
     require(all(a['end']<=b['start'] for a,b in zip(cues,cues[1:])),'Canonical cues overlap')
     require(all(0<=c['start']<c['end']<=duration for c in cues),'Invalid cue intervals')
+    identity_policy=plan.get('identityPolicy','integrated')
+    require(identity_policy in ('integrated','excluded'),'Identity policy must be explicitly integrated or excluded')
+    directive_path=ROOT/'timing-evidence/identity-exclusions.json'
+    if directive_path.is_file() and read_json(directive_path).get('enforce_for_current_version'):
+        require(identity_policy=='excluded','Current user/boss directive requires explicit identityPolicy: excluded; the old integrated plan is not a current delivery')
+    exclusions=exclusions_contract() if identity_policy=='excluded' else None
     depths=read_json(ROOT/'depth-provenance.json')['depths'];end=0;used=set();identity=[]
     for scene in plan['scenes']:
         require(abs(scene['start']-end)<1e-8 and scene['end']>scene['start'],'Scene gap/overlap')
-        end=scene['end'];has_identity=scene_contract(scene,depths)
+        end=scene['end'];has_identity=scene_contract(scene,depths,identity_policy,exclusions)
         if has_identity:identity.append(scene['id'])
         for key in ('src','depthSrc'):
             if scene.get(key):used.add(scene[key])
@@ -90,14 +123,20 @@ def preflight():
         cursor=cue['start'];spans=[]
         for scene in plan['scenes']:
             if scene['end']<=cursor or scene['start']>=cue['end']:continue
-            require(scene.get('containsIdentity'),f'Name cue lacks integrated Benz: {cue["start"]}')
+            if identity_policy=='integrated':require(scene.get('containsIdentity'),f'Name cue lacks integrated Benz: {cue["start"]}')
+            else:require(not scene.get('containsIdentity') and scene.get('src'),f'Name cue requires person-free story artwork: {cue["start"]}')
             cursor=min(cue['end'],scene['end']);spans.append(scene['id'])
         require(abs(cursor-cue['end'])<1e-8,'Name cue coverage incomplete');coverage.append(dict(start=cue['start'],end=cue['end'],scenes=spans))
     receipt=read_json(RENDERER/'build-receipt.json')
     require(receipt['plan_sha256']==sha256(plan_path) and receipt['scene_count']==len(plan['scenes']) and receipt['cue_count']==len(cues),'Build receipt stale')
+    if identity_policy=='excluded':
+        require(receipt.get('identity_policy_mode')=='excluded' and receipt.get('identity_scene_count')==0,
+                'Compiler did not enforce the current zero-identity policy')
     copies={};frozen=[]
     for item in receipt['inputs']:
         original=local(item['source']);require(original.suffix.lower() not in VIDEO_SUFFIXES,'Video input in image-only build')
+        if identity_policy=='excluded' and original.suffix.lower() in ('.png','.jpg','.jpeg','.webp'):
+            assert_person_free_input(original,exclusions)
         require(sha256(original)==item['sha256'] and original.stat().st_size==item['bytes'],'Source hash/size changed after build')
         if item.get('local'):
             require(sha256(local(item['local'],RENDERER))==item['sha256'],'Frozen media copy differs');copies[item['source']]=item['local']
@@ -125,9 +164,17 @@ def preflight():
     smoke_path,smoke=max(current,key=lambda pair:pair[0].stat().st_mtime_ns)
     require(not smoke['errors'] and smoke['repeat_seek_identical'],'Current browser/seek receipt failed')
     face=smoke['contracts']['face'];framing=smoke['contracts']['coverage']
-    require(face and {x['scene'] for x in face}>=set(identity) and all(x['passed'] for x in face),'Integrated identity framing failed')
-    require(all(x['passed'] or x.get('allow_matte') for x in framing),'Image-plane coverage failed')
-    return plan,cues,dict(passed=True,stage='source_plan_build_preflight',input_contract=contract,shots=len(plan['scenes']),caption_cues=len(cues),expected_frames=frames,fps=fps,duration_seconds=duration,plan_sha256=sha256(plan_path),build_receipt_sha256=sha256(RENDERER/'build-receipt.json'),dom_cue_text_time_exact=True,embedded_plan_exact=True,identity_scenes=identity,identity_depth_prohibited=True,literal_photo_overlays=False,framing_receipt=smoke_path.relative_to(ROOT).as_posix(),face_framing_checks=len(face),coverage_checks=len(framing),name_cue_coverage=coverage,frozen_inputs=frozen,semantic_limits='Metadata and safe framing do not algorithmically establish likeness, natural anatomy or client approval; inspect the finished artworks/encoded samples.')
+    if identity_policy=='integrated':
+        require(face and {x['scene'] for x in face}>=set(identity) and all(x['passed'] for x in face),'Integrated identity framing failed')
+    else:
+        require(not identity and not face,'Identity-excluded build must have zero identity scenes and zero face checks')
+        built=smoke['contracts']['build']
+        require(built.get('identity_policy')=='excluded' and built.get('identity_scene_count')==0 and built.get('face_checks')==0,
+                'Browser runtime did not enforce the current zero-identity policy')
+    require(framing and {x['scene'] for x in framing}>={s['id'] for s in plan['scenes']}
+            and all(x['passed'] or x.get('allow_matte') for x in framing),
+            'Image-plane coverage failed or does not cover every current scene')
+    return plan,cues,dict(passed=True,stage='source_plan_build_preflight',input_contract=contract,shots=len(plan['scenes']),caption_cues=len(cues),expected_frames=frames,fps=fps,duration_seconds=duration,plan_sha256=sha256(plan_path),build_receipt_sha256=sha256(RENDERER/'build-receipt.json'),dom_cue_text_time_exact=True,embedded_plan_exact=True,identity_policy=identity_policy,identity_scenes=identity,identity_depth_prohibited=True,literal_photo_overlays=False,denied_media_manifest=exclusions['manifest'] if exclusions else None,denied_media_manifest_sha256=exclusions['manifest_sha256'] if exclusions else None,framing_receipt=smoke_path.relative_to(ROOT).as_posix(),face_framing_checks=len(face),coverage_checks=len(framing),name_cue_coverage=coverage,name_cue_coverage_kind='integrated identity' if identity_policy=='integrated' else 'person-free story artwork',frozen_inputs=frozen,semantic_limits='Policy/path/hash checks exclude known rejected media but cannot algorithmically prove there is no person-like shape in a new artwork; visual review remains separate.')
 
 def stereo(path,rate):return np.frombuffer(run([ffmpeg(),'-v','error','-xerror','-i',path,'-map','0:a:0','-vn','-ac','2','-ar',rate,'-f','f32le','-']),dtype='<f4').reshape(-1,2)
 
@@ -194,7 +241,7 @@ def verify(video,contacts=False,share=None):
     progress=run([ffmpeg(),'-v','error','-xerror','-i',video,'-progress','pipe:1','-nostats','-f','null','-']).decode();decoded=re.findall(r'^frame=(\d+)$',progress,re.M)
     require(decoded and int(decoded[-1])==frames and 'progress=end' in progress,'Complete master decode failed')
     audio=audio_check(video,contract);binding=picture_binding(video,plan)
-    result=dict(passed=True,stage='full_encoded_verification',verified_at_utc=datetime.now(timezone.utc).isoformat(),file=str(video),sha256=sha256(video),bytes=video.stat().st_size,width=1920,height=1080,fps=fps,frames=frames,duration_seconds=float(metadata['format']['duration']),source_song_seconds=duration,full_video_audio_decode=True,audio=audio,picture_binding=binding,preflight=source,native_ai_video=False,identity_treatment='Integrated main scene plates; no photo cards and no identity depth deformation',acceptance='Pending user/boss review',ffmpeg_version=run([ffmpeg(),'-version']).decode().splitlines()[0],limits=['Metadata/guard checks do not establish facial likeness or anatomy correctness.','Sound is measured, not heard.','Technical verification and sampled images do not prove creative acceptance.'])
+    result=dict(passed=True,stage='full_encoded_verification',verified_at_utc=datetime.now(timezone.utc).isoformat(),file=str(video),sha256=sha256(video),bytes=video.stat().st_size,width=1920,height=1080,fps=fps,frames=frames,duration_seconds=float(metadata['format']['duration']),source_song_seconds=duration,full_video_audio_decode=True,audio=audio,picture_binding=binding,preflight=source,native_ai_video=False,identity_treatment='Identity excluded; known photographs/depictions denied and name cues covered by person-free story art' if source['identity_policy']=='excluded' else 'Integrated main scene plates; no photo cards and no identity depth deformation',acceptance='Pending user/boss review',ffmpeg_version=run([ffmpeg(),'-version']).decode().splitlines()[0],limits=['Policy/path/hash guards cannot algorithmically prove that every new image has no person-like shape.','Sound is measured, not heard.','Technical verification and sampled images do not prove creative acceptance.'])
     if contacts:result['encoded_visual_samples']=contact_sheets(video,plan,cues)
     if share:
         sv=next(s for s in probe(share)['streams'] if s['codec_type']=='video');require((sv['width'],sv['height'],int(sv['nb_frames']))==(1280,720,frames),'Viewing copy format differs')

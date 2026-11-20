@@ -30,121 +30,132 @@ def clause_cut(cue,end):
 
 
 def main():
-    contract=input_contract(); cues=read_json(ROOT/'captions.json')
-    layout=read_json(ROOT/'art-layout.json'); assets={x['id']:x for x in layout['assets']}
-    names={int(k[:2]):k for k in assets if k[:2].isdigit() and not assets[k].get('variant')}
-    variant_names={3:'03-support-detail',9:'09-light-detail',10:'10-threshold-detail',17:'17-community-detail'}
-    duration=contract['duration']; scenes=[]
-    # One table describes the film's content; supplied lyrics remain private.
-    plates=[2,3,2,4,5,6,5,9,8,9,7,10,1,9,3,12,
-            11,10,5,14,13,7,13,14,16,17,15,10,18,15,17,17]
-    split_indices={1,7,9,10,11,13,14,15,17,20,22,25,26,27,29,30,31}
-    # Regions are actual image areas, not the same zoom applied to every slide.
-    details={
-        2:([.03,.04,.72,.72],[.16,.02,.82,.82]),
-        3:([.08,.03,.68,.68],[.18,.12,.78,.78]),
-        5:([.20,.08,.66,.66],[.08,.12,.81,.81]),
-        7:([.08,.08,.62,.62],[.24,.05,.70,.70]),
-        9:([.10,.20,.65,.65],[.22,.08,.74,.74]),
-        10:([.10,.15,.69,.69],[.26,.12,.70,.70]),
-        12:([.15,.22,.68,.68],[.02,.02,.96,.96]),
-        13:([.03,.10,.67,.67],[.18,.06,.78,.78]),
-        15:([.14,.19,.66,.66],[.28,.04,.70,.70]),
-        17:([.22,.18,.68,.68],[.02,.01,.97,.97]),
-    }
-
-    def add(start,end,number,view='wide',*,transition='cut',title=None,subtitle=None,foreground=False):
-        key=variant_names.get(number,names[number]) if view=='detail' else names[number]
-        if number==12 and view=='detail':key='10-threshold-detail'
-        asset=assets[key]; identity=asset['containsIdentity']
-        s=dict(id=f's{len(scenes)+1:02d}-{asset["id"].split("-",1)[1]}',start=start,end=end,
-               src=asset['path'],containsIdentity=identity,layers=[],
-               transition=dict(kind=transition,duration=.42),captionTheme='light')
-        if identity:
-            s.update(faceBounds=asset['faceBounds'],subjectBounds=asset['subjectBounds'],
-                     faceMargin=.04,focalRect=[0,0,1,1],focalRectEnd=[.012,0,.985,.985])
-            if number in (1,4,6,14):s['atmosphere']=dict(kind='rain',strength=.12)
-            elif number in (16,18):s['atmosphere']=dict(kind='water',strength=.15,waterLine=.68)
-            else:s['atmosphere']=dict(kind='light',strength=.12)
+    contract=input_contract();cues=read_json(ROOT/'captions.json')
+    layout=read_json(ROOT/'art-layout.json');assets={a['id']:a for a in layout['assets']}
+    if any(a.get('containsIdentity') for a in assets.values()):
+        raise ValueError('Active artwork layout must exclude all identity artwork')
+    # Each row binds one measured sung line to physical subjects, without
+    # publishing the private lyric text. A second subject uses an aligned cut.
+    edits=[
+        ('19-storm-coast',None),
+        ('20-rope-bond','03-support-detail'),
+        ('25-woven-shelter',None),
+        ('21-shared-workshop','10-threshold-detail'),
+        ('23-rooted-growth','21-shared-workshop'),
+        ('05-quiet-strength',None),
+        ('03-shared-weight',None),
+        ('10-threshold-detail','10-open-homes'),
+        ('22-community-table',None),
+        ('23-rooted-growth','12-many-windows'),
+        ('20-rope-bond','21-shared-workshop'),
+        ('25-woven-shelter','02-storm-pass'),
+        ('24-river-confluence',None),
+        ('09-paths-converge','24-river-confluence'),
+        ('03-support-detail','19-storm-coast'),
+        ('17-community-detail','17-dawn-community'),
+        ('21-shared-workshop',None),
+        ('10-open-homes','12-many-windows'),
+        ('20-rope-bond','03-shared-weight'),
+        ('25-woven-shelter',None),
+        ('19-storm-coast','13-storm-return'),
+        ('09-light-detail',None),
+        ('13-storm-return','25-woven-shelter'),
+        ('20-rope-bond','21-shared-workshop'),
+        ('26-dawn-harbour',None),
+        ('23-rooted-growth','17-dawn-community'),
+        ('22-community-table','17-community-detail'),
+        ('10-open-homes',None),
+        ('24-river-confluence',None),
+        ('25-woven-shelter','15-lights-return'),
+        ('21-shared-workshop','20-rope-bond'),
+        ('17-community-detail','26-dawn-harbour'),
+    ]
+    assert len(edits)==len(cues)==32
+    duration=contract['duration'];scenes=[]
+    close_subjects={'03-support-detail','09-light-detail','10-threshold-detail',
+                    '17-community-detail','20-rope-bond','22-community-table',
+                    '23-rooted-growth','25-woven-shelter'}
+    def add(start,end,key,view='wide',*,transition='cut',title=None,subtitle=None,foreground=False):
+        asset=assets[key]
+        if asset.get('containsIdentity') or any(k in asset for k in ('faceBounds','subjectBounds')):
+            raise ValueError('A person source cannot enter this film')
+        s=dict(id=f's{len(scenes)+1:02d}-{key.split("-",1)[1]}',start=start,end=end,
+               src=asset['path'],containsIdentity=False,layers=[],
+               depthSrc=f'assets/depth/{key}.png',depthStrength=.25,
+               transition=dict(kind=transition,duration=.36),captionTheme='light')
+        if key in close_subjects:
+            s.update(focalRect=[.015,.015,.97,.97],focalRectEnd=[.04,.025,.94,.94])
+        elif view=='reveal':
+            s.update(focalRect=[.13,.12,.82,.82],focalRectEnd=[.015,.015,.97,.97])
+        elif view=='counter':
+            s.update(focalRect=[.30,.10,.67,.67],focalRectEnd=[.28,.10,.69,.69])
+        elif view=='travel':
+            s.update(focalRect=[.02,.02,.94,.94],focalRectEnd=[.045,.02,.94,.94])
         else:
-            s.update(depthSrc=f'assets/depth/{asset["id"]}.png',depthStrength=.30)
-            a,b=details[number]
-            if asset.get('variant'):
-                s.update(focalRect=[.005,.005,.98,.98],focalRectEnd=[.018,.01,.965,.965])
-            elif view=='tree':s.update(focalRect=[.35,.13,.55,.55],focalRectEnd=[.33,.12,.58,.58])
-            elif view=='counter':
-                targets={7:[.40,.24,.55,.55],13:[.40,.12,.58,.58],15:[.34,.22,.60,.60],17:[.04,.33,.60,.60]}
-                r=targets.get(number,[.25,.18,.65,.65]);s.update(focalRect=r,focalRectEnd=[max(0,r[0]-.02),r[1],r[2],r[3]])
-            elif view=='detail':s.update(focalRect=a,focalRectEnd=b)
-            elif view=='travel':s.update(focalRect=[.02,.02,.94,.94],focalRectEnd=[.05,.01,.94,.94])
-            elif view=='reveal':s.update(focalRect=a,focalRectEnd=[.012,.012,.976,.976])
-            elif view=='release':s.update(focalRect=[.02,.02,.96,.96],focalRectEnd=[.012,.012,.976,.976])
-            else:s.update(focalRect=[.03,.02,.94,.94],focalRectEnd=[.01,.01,.98,.98])
-            if number in (2,3,13):s['atmosphere']=dict(kind='rain',strength=.16)
-            elif number in (7,9,15,17):s['atmosphere']=dict(kind='water',strength=.18,waterLine=.62)
-            else:s['atmosphere']=dict(kind='light',strength=.14)
-            if asset.get('variant') and number==17:s['atmosphere']=dict(kind='light',strength=.14)
+            s.update(focalRect=[.02,.02,.96,.96],focalRectEnd=[.01,.01,.98,.98])
+        if key in {'02-storm-pass','13-storm-return','19-storm-coast','25-woven-shelter'}:
+            s['atmosphere']=dict(kind='rain',strength=.10)
+        elif key in {'07-light-ripples','15-lights-return','24-river-confluence','26-dawn-harbour'}:
+            s['atmosphere']=dict(kind='water',strength=.10,waterLine=.68)
+        else:
+            s['atmosphere']=dict(kind='light',strength=.10)
         if foreground:
             s['layers'].append(dict(id='near-glass',kind='foreground',src='assets/art/foreground-glass.png',
                 height=11,x=0,y=0,z=3,
                 **{'from':dict(x=0,y=0,z=3),'to':dict(x=-1.7,y=0,z=3.15),'ease':'linear'}))
         if title:
-            s.update(title=title,subtitle=subtitle or '',titleStyle=dict(left='10%',top='18%',width='43%',
+            s.update(title=title,subtitle=subtitle or '',titleStyle=dict(left='9%',top='18%',width='47%',
                       color='#fff6e1',fontSize=58,subtitleSize=28))
         scenes.append(s)
-
-    # Thirteen-second original instrumental, not a restored sung dedication.
     first=cues[0]['start']
-    add(0,first*.33,1)
-    add(first*.33,first*.66,7,'detail',transition='luma')
-    add(first*.66,first,2,'travel',transition='luma',title='兄弟同心',subtitle='Dato Benz')
-
-    for i,cue in enumerate(cues):
+    add(0,first*.33,'19-storm-coast','travel')
+    add(first*.33,first*.66,'20-rope-bond',transition='luma')
+    add(first*.66,first,'21-shared-workshop','travel',transition='luma',title='兄弟同心',subtitle='Dato Benz')
+    for i,(cue,(first_key,second_key)) in enumerate(zip(cues,edits)):
         start=cue['start'];end=cues[i+1]['start'] if i<31 else cue['end']
         if i==15:end=cue['end']
-        n=plates[i]; chapter=i in (0,4,9,13,16,20,25,29)
-        if i in split_indices and end-start>=3.3:
+        chapter=i in {0,4,9,13,16,20,24,28}
+        view='counter' if i==22 else ('reveal' if i in {6,12,24,28} else 'travel')
+        if second_key:
             cut=clause_cut(cue,end)
-            add(start,cut,n,'tree' if i==31 else 'detail',transition='luma' if chapter else 'cut')
-            second='release' if i in (15,31) else ('counter' if n in (7,13,15) or i==30 else 'travel')
-            add(cut,end,n,second)
+            add(start,cut,first_key,view,transition='luma' if chapter else 'cut')
+            add(cut,end,second_key,'wide',foreground=i==7)
         else:
-            add(start,end,n,'reveal' if i in (2,4,6,18,22) else 'wide',
-                transition='luma' if chapter and not assets[names[n]]['containsIdentity'] else 'cut',
-                foreground=n in (4,14))
+            add(start,end,first_key,view,transition='luma' if chapter else 'cut')
         if i==15:
-            a,b=cue['end'],cues[i+1]['start']; step=(b-a)/3
-            add(a,a+step,7,'detail',transition='luma')
-            add(a+step,a+2*step,9,'travel')
-            add(a+2*step,b,12,'reveal')
-
+            a,b=cue['end'],cues[i+1]['start'];step=(b-a)/3
+            add(a,a+step,'26-dawn-harbour','travel',transition='luma')
+            add(a+step,a+2*step,'07-light-ripples')
+            add(a+2*step,b,'19-storm-coast','counter')
     tail=cues[-1]['end'];dedication=174.7
     assert tail<dedication<duration
-    add(tail,dedication,7,'reveal',transition='luma')
-    add(dedication,duration,18,title='风雨同路，兄弟同心\n有难一起担，有路一起闯\n一路同行，共创辉煌',
+    add(tail,dedication,'07-light-ripples','reveal',transition='luma')
+    add(dedication,duration,'26-dawn-harbour',title='风雨同路，兄弟同心\n有难一起担，有路一起闯\n一路同行，共创辉煌',
         subtitle='献给我们敬佩的哥哥\nDato Benz')
-    scenes[-1]['titleStyle'].update(fontSize=45,top='21%',width='43%')
-    scenes[-1]['focalRectEnd']=scenes[-1]['focalRect']
-    scenes[-1]['atmosphere']=dict(kind='light',strength=.08,start=0,end=1)
-
+    closing=scenes[-1]
+    closing['titleStyle'].update(left='7%',top='18%',width='47%',fontSize=45)
+    closing['titleAlign']='center'
+    closing['focalRect']=[.012,.012,.976,.976];closing['focalRectEnd']=closing['focalRect'][:]
+    closing['depthStrength']=.12;closing['atmosphere']=dict(kind='light',strength=.06,start=0,end=1)
     cursor=0
     for s in scenes:
         assert abs(s['start']-cursor)<1e-7 and s['end']>s['start']
         cursor=s['end']
     assert abs(cursor-duration)<1e-7
-    plan=dict(version=1,duration=duration,fps=24,width=1920,height=1080,background='#071319',
-              audio='assets/bgm.wav',captions='captions.json',scenes=scenes,
+    used={s['src'] for s in scenes}
+    expected={a['path'] for a in assets.values() if a['id'][:2].isdigit()}
+    assert used==expected,'Every approved person-free main plate must appear'
+    plan=dict(version=2,duration=duration,fps=24,width=1920,height=1080,background='#071319',
+              identityPolicy='excluded',audio='assets/bgm.wav',captions='captions.json',scenes=scenes,
               concept='以光相伴 / The Light We Carry',native_ai_video=False,
               image_only=True,photo_card_overlays=False)
     write_json(ROOT/'edit-plan.json',plan)
-    # Actual deltas/regions are the evidence. Do not claim a velocity-matching
-    # numeric seam gate for an intentionally cut music montage.
     write_json(ROOT/'seam-ledger.json',[dict(time=b['start'],from_scene=a['id'],to_scene=b['id'],
-        technique=b['transition']['kind'],carrier='warm light / rain glass / architectural edge',
+        technique=b['transition']['kind'],carrier='rope / joinery / rain / water / shared light',
         source_regions=[a.get('focalRectEnd'),b.get('focalRect')],
         measured_velocity_match=False) for a,b in zip(scenes,scenes[1:])])
     print(json.dumps(dict(shots=len(scenes),duration=duration,cues=len(cues),
-                         identity_scenes=sum(s['containsIdentity'] for s in scenes))))
+                         main_plates=len(used),identity_policy='excluded',identity_scenes=0)))
 
 
 if __name__=='__main__':main()

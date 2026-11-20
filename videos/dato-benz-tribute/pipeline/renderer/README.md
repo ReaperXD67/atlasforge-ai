@@ -1,6 +1,10 @@
-# Integrated image music-film renderer
+# Image music-film renderer
 
-This renderer builds a 1920×1080, 24fps HyperFrames music film from a measured recording, local lyric cues and finished cinematic image plates. The person belongs inside the main artwork. Photo cards, frames and identity foreground layers are rejected. No generated video is used.
+This renderer builds a 1920×1080, 24fps HyperFrames music film from a measured recording, local lyric cues and finished cinematic image plates. The current Benz commission uses **`identityPolicy: "excluded"`**: no person, photograph or generated portrait is included. No generated video is used.
+
+Excluded mode rejects declared identity, face/subject metadata and person/portrait/photo/card layers at compilation and before runtime image loading. Accepted scenes retain image-coverage checks and have zero person-framing checks. The separate verifier also blocks known rejected photo/portrait bytes by path and hash. These are policy and source checks, not automatic visual recognition. Inspect every accepted artwork and encoded shot. Nine compiler and six runtime cases passed; rejected runtime cases requested no images.
+
+The legacy `integrated` mode remains reusable for other briefs; its person-safe rendering contract is documented below. It is not used by the active film.
 
 ## Run
 
@@ -11,7 +15,7 @@ node build.mjs --plan ../../edit-plan.json
 node smoke.mjs --gpu
 npm run check
 npm run preview
-powershell -NoProfile -ExecutionPolicy Bypass -File render.ps1 -Output ../../renders/Dato-Benz-picture.mp4 -Quality delivery
+powershell -NoProfile -ExecutionPolicy Bypass -File render.ps1 -Output ../../renders/Dato-Benz-Person-Free-picture.mp4 -Quality delivery
 ```
 
 `build.mjs` requires the actual recording duration and checks it against local FFprobe within 2 ms. It never inherits the previous song's duration. Source paths are relative to the Benz project root. It freezes input bytes into ignored `assets/media/`, records hashes in ignored `build-receipt.json`, and keeps the canonical cue text/times. The local Mandarin font and reviewed Three/GSAP bytes are copied from the existing licensed workspace cache.
@@ -22,6 +26,7 @@ The renderer pins HyperFrames 0.9.72. `render.ps1` uses actual hardware GPU and 
 
 ```json
 {
+  "identityPolicy": "integrated",
   "duration": 183.0255,
   "fps": 24,
   "width": 1920,

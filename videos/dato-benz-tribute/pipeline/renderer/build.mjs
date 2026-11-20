@@ -10,6 +10,7 @@ const REPO=path.resolve(FILM,'../..');
 const digest=b=>crypto.createHash('sha256').update(b).digest('hex');
 const args=process.argv.slice(2);
 const option=(name,fallback)=>{const i=args.indexOf(name);return i<0?fallback:args[i+1];};
+const validateOnly=args.includes('--validate-only');
 const planFile=path.resolve(process.cwd(),option('--plan',path.join(FILM,'edit-plan.json')));
 const plan=JSON.parse(fs.readFileSync(planFile,'utf8').replace(/^\uFEFF/,''));
 if(!Number.isFinite(plan.duration)||plan.duration<=0)throw Error('The measured recording duration is required. No inherited song-length default.');
@@ -17,6 +18,17 @@ plan.fps=plan.fps??24;plan.width=plan.width??1920;plan.height=plan.height??1080;
 plan.background=plan.background||'#071319';
 if(plan.fps!==24||plan.width!==1920||plan.height!==1080)throw Error('This verified delivery contract is 1920x1080 at24fps.');
 if(!Array.isArray(plan.scenes)||!plan.scenes.length)throw Error('Plan needs scenes.');
+plan.identityPolicy=plan.identityPolicy??'integrated';
+if(!['integrated','excluded'].includes(plan.identityPolicy))throw Error('identityPolicy must be integrated or excluded.');
+const identityExcluded=plan.identityPolicy==='excluded';
+const identityFields=['faceBounds','subjectBounds','subjectPadding','faceMargin','faceSafeMargin','identity','identityReference','person','portrait','photo'];
+function enforceExclusion(record,label){
+ if(!identityExcluded)return;
+ if(record.containsIdentity!==undefined&&typeof record.containsIdentity!=='boolean')throw Error(`identityPolicy excluded requires a boolean containsIdentity declaration: ${label}`);
+ if(record.containsIdentity===true||identityFields.some(key=>Object.hasOwn(record,key)))throw Error(`identityPolicy excluded forbids identity, face or subject metadata: ${label}`);
+ if(['photo','portrait','person','identity','card'].includes(record.kind))throw Error(`identityPolicy excluded forbids identity/card layers: ${label}`);
+}
+enforceExclusion(plan,'plan');
 const inputs=[];
 function localInput(source){
  if(typeof source!=='string'||!source||/^[a-z]+:\/\//i.test(source))throw Error('Only local project media paths are accepted.');
@@ -29,8 +41,10 @@ function freeze(source){
  const ext=path.extname(original).toLowerCase();
  if(['.mp4','.webm','.mov','.mkv','.gif'].includes(ext))throw Error('Benz composition is image-only; no video/animated media inputs.');
  const local=`assets/media/${sha256.slice(0,20)}${ext}`,target=path.join(HERE,local);
- fs.mkdirSync(path.dirname(target),{recursive:true});
- if(!fs.existsSync(target)||digest(fs.readFileSync(target))!==sha256)fs.writeFileSync(target,data);
+ if(!validateOnly){
+  fs.mkdirSync(path.dirname(target),{recursive:true});
+  if(!fs.existsSync(target)||digest(fs.readFileSync(target))!==sha256)fs.writeFileSync(target,data);
+ }
  inputs.push({source:path.relative(FILM,original).replaceAll('\\','/'),local,sha256,bytes:data.length});
  return local;
 }
@@ -39,6 +53,7 @@ const normalizedRect=(r,label)=>{
 };
 const ids=new Set();let previousEnd=0;
 for(const s of plan.scenes){
+ enforceExclusion(s,`scene ${s.id||'unnamed'}`);
  if(!s.id||ids.has(s.id))throw Error('Unique scene id is required.');ids.add(s.id);
  if(!Number.isFinite(s.start)||!Number.isFinite(s.end)||s.end<=s.start)throw Error(`Invalid scene interval ${s.id}.`);
  if(Math.abs(s.start-previousEnd)>1e-6)throw Error(`Scene ${s.id} leaves a gap or overlap after ${previousEnd}.`);
@@ -55,6 +70,7 @@ for(const s of plan.scenes){
  s.src=freeze(s.src);
  if(s.depthSrc)s.depthSrc=freeze(s.depthSrc);
  for(const layer of s.layers||[]){
+  enforceExclusion(layer,`layer in ${s.id}`);
   if(!['art','foreground'].includes(layer.kind||'art'))throw Error(`Only integrated art/foreground layers, never photo/card overlays: ${s.id}`);
   if(layer.containsIdentity||layer.faceBounds)throw Error(`Human identity belongs in the integrated main plate, not a layer: ${s.id}`);
   if(layer.border||layer.frameColor)throw Error(`Photo-frame styling is excluded from this film: ${s.id}`);
@@ -87,18 +103,18 @@ for(const cue of captions){
 }
 plan.captions=captions;
 const vendorSource=path.join(REPO,'videos/biznex-the-question-that-stayed/assets/vendor');
-const vendorTarget=path.join(HERE,'assets/vendor');fs.mkdirSync(vendorTarget,{recursive:true});
+const vendorTarget=path.join(HERE,'assets/vendor');if(!validateOnly)fs.mkdirSync(vendorTarget,{recursive:true});
 const vendors=[];
 for(const name of ['three.module.js','three.core.js','gsap.min.js','THREE-LICENSE.txt']){
- const data=fs.readFileSync(path.join(vendorSource,name));fs.writeFileSync(path.join(vendorTarget,name),data);
+ const data=fs.readFileSync(path.join(vendorSource,name));if(!validateOnly)fs.writeFileSync(path.join(vendorTarget,name),data);
  vendors.push({path:`assets/vendor/${name}`,sha256:digest(data),bytes:data.length});
 }
 const fontName='NotoSerifCJKsc-Regular.otf';
 const fontCandidates=[path.join(FILM,'assets/fonts',fontName),path.join(REPO,'videos/dato-benz-brothers-united/assets/fonts',fontName)];
 const fontSource=fontCandidates.find(x=>fs.existsSync(x));
 if(!fontSource)throw Error('The licensed local Mandarin font is required; no runtime font download.');
-fs.mkdirSync(path.join(HERE,'assets/fonts'),{recursive:true});
-const fontData=fs.readFileSync(fontSource);fs.writeFileSync(path.join(HERE,'assets/fonts',fontName),fontData);
+if(!validateOnly)fs.mkdirSync(path.join(HERE,'assets/fonts'),{recursive:true});
+const fontData=fs.readFileSync(fontSource);if(!validateOnly)fs.writeFileSync(path.join(HERE,'assets/fonts',fontName),fontData);
 vendors.push({path:`assets/fonts/${fontName}`,sha256:digest(fontData),bytes:fontData.length});
 const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const captionTags=captions.map((c,i)=>`<div id="cue-${i}" class="clip cue" data-start="${c.start}" data-duration="${c.end-c.start}" data-track-index="2" data-track-kind="captions"><span>${escape(c.text)}</span></div>`).join('\n');
@@ -106,8 +122,8 @@ const titles=plan.scenes.filter(s=>s.title||s.subtitle).map(s=>`<div id="title-$
 const audio=plan.audio?`<audio id="canonical-song" class="clip" data-start="0" data-duration="${plan.duration}" data-track-index="0" data-track-kind="audio" src="${plan.audio}"></audio>`:'';
 const json=JSON.stringify(plan).replaceAll('<','\\u003c');
 const html=`<!doctype html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=1920,height=1080"><link rel="icon" href="data:,"><title>Dato Benz · integrated image music film</title><link rel="stylesheet" href="film.css"><script src="assets/vendor/gsap.min.js"></script></head><body><div id="root" data-composition-id="main" data-width="1920" data-height="1080" data-fps="${plan.fps}" data-duration="${plan.duration}"><div class="opaque-stage" data-layout-ignore></div><canvas id="world" data-layout-ignore></canvas><div class="caption-shade" data-layout-ignore></div>${audio}${captionTags}${titles}</div><script>window.BENZ_PLAN=${json};window.BENZ_BUILD_PLAN_SHA=${JSON.stringify(digest(fs.readFileSync(planFile)))};window.BENZ_REGISTER=function(timeline){window.__timelines=window.__timelines||{};window.__timelines["main"]=timeline;};</script><script type="module" src="renderer.mjs"></script></body></html>`;
-fs.writeFileSync(path.join(HERE,'index.html'),html);
+if(!validateOnly)fs.writeFileSync(path.join(HERE,'index.html'),html);
 const sources=['renderer.mjs','film.css','build.mjs','vendor/LumaWipe.glsl'].map(name=>({path:name,sha256:digest(fs.readFileSync(path.join(HERE,name)))}));
-const receipt={schema_version:2,plan:path.relative(FILM,planFile).replaceAll('\\','/'),plan_sha256:digest(fs.readFileSync(planFile)),duration:plan.duration,fps:plan.fps,width:plan.width,height:plan.height,scene_count:plan.scenes.length,cue_count:captions.length,first_cue_start:captions[0]?.start??null,measured_audio:measuredAudio,inputs,vendors,sources,identity_policy:'Identity is integrated in the scene plate; no photo/card layers or depth on identity plates. Normalized face bounds are inspected in browser framing checks.',native_ai_video:false};
-fs.writeFileSync(path.join(HERE,'build-receipt.json'),JSON.stringify(receipt,null,2)+'\n');
-console.log(JSON.stringify({built:'index.html',scenes:plan.scenes.length,cues:captions.length,media:inputs.length,duration:plan.duration,integrated_identity_scenes:plan.scenes.filter(s=>s.containsIdentity).length}));
+const receipt={schema_version:2,plan:path.relative(FILM,planFile).replaceAll('\\','/'),plan_sha256:digest(fs.readFileSync(planFile)),duration:plan.duration,fps:plan.fps,width:plan.width,height:plan.height,scene_count:plan.scenes.length,cue_count:captions.length,first_cue_start:captions[0]?.start??null,measured_audio:measuredAudio,inputs,vendors,sources,identity_policy_mode:plan.identityPolicy,identity_scene_count:plan.scenes.filter(s=>s.containsIdentity).length,identity_policy:identityExcluded?'All identity/person declarations and framing metadata are excluded. Source artwork requires a separate face-free content review.':'Identity is integrated in the scene plate; no photo/card layers or depth on identity plates. Normalized face bounds are inspected in browser framing checks.',native_ai_video:false};
+if(!validateOnly)fs.writeFileSync(path.join(HERE,'build-receipt.json'),JSON.stringify(receipt,null,2)+'\n');
+console.log(JSON.stringify({built:validateOnly?null:'index.html',validated:true,identity_policy:plan.identityPolicy,scenes:plan.scenes.length,cues:captions.length,media:inputs.length,duration:plan.duration,integrated_identity_scenes:plan.scenes.filter(s=>s.containsIdentity).length}));
