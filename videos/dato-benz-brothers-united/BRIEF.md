@@ -1,5 +1,15 @@
 # 有你，兄弟同心 — Hock Siew tribute
 
+## Current commission — V4 image art film
+
+V3 was rejected by the user and boss on 20 November 2026. Its technical receipts remain archival evidence, not creative approval. Rebuild the full 196.760-second song as an image-only cinematic art film, with no V3 generated footage. Preserve all forty canonical lyric cues and the original song. The user explicitly selected **real photos with cinematic artwork**: his photographed face, body and clothing remain unchanged; literal framing/cropping and photo-plane compositing are allowed, with no AI repainting, face restoration or body/depth warping. Hock Siew is the left-hand man in the new white-shirt photographs; Benz is a separate future subject.
+
+Working concept: **同心成桥 / The Bridge We Build**. A cinnabar silk strand connects tactile ivory paper landscapes, blue-green ink mountains, bronze bridge structures, sheltered homes and a warm coast. The visual world develops with the sung story, returning to genuine photographs and a Mandarin dedication. No generated people, statues or invented biographical events. January 6 is only the sung date, not a verified birthday; 浅顶 is not a verified physical location. The tone celebrates a living person, friendship, health and happiness. Use composed foreground occlusion, purposeful camera journeys and lyric-led reveals rather than uniform image zooms.
+
+The user authorized autonomous research, useful reviewed pipeline/tool improvements, the complete new edit and the existing scoped GitHub workflow. No purchase or new credit top-up is authorized. Use the built-in image tool for artwork; keep private photos/audio and generated media local. Research sources and adaptations are recorded under `research/v4/`; V4 source and delivery records are separate from V1–V3.
+
+## V3 archive (rejected)
+
 Current status: V3 is rendered, technically verified and ready for client review. The 45-shot 1920×1080 master and 720p viewing copy passed full decoding; the original song, all forty canonical/ASS lyric lines, recipient-labelled name cues, zero-offset audio correspondence and nine encoded-picture bindings passed. VISUAL-REVIEW-V3.md found no blocking defect in the inspected encoded stills. User/boss personal likeness and creative acceptance remain pending. The user selected the Seedance 2.5 pilot and authorized this full MV; V1/V2 and the raw pair remain archived, with V2's naturalness rejected. See DELIVERY-V3.json, V3-DIRECTION.md, generation-jobs-v3.json, native-clips-v3.json and edit-plan-v3.json. The earlier research itself incurred no generation, provider upload or spend. No separate Benz MV has been started.
 
 Create a complete personal Mandarin tribute music video from the latest supplied recording, 有你，兄弟同心 (1).wav. It is 196.760 seconds, 48 kHz stereo PCM. The user's corrected 40 sung lines in lyrics.txt are canonical, including Hock Siew and 拿督斯里谢惠福. Measure lyric entrances against the recording and preserve the master soundtrack.

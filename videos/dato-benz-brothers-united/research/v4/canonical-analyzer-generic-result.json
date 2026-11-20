@@ -1,0 +1,28 @@
+{
+  "analyzer": "C:\\Users\\Aman\\.codex-cli\\skills\\music-to-video\\scripts\\analyze-beatgrid.py",
+  "task_scoped_env": {
+    "NUMBA_CPU_NAME": "generic",
+    "NUMBA_CACHE_DIR": "C:\\Users\\Aman\\OneDrive\\Desktop\\Freelance\\Obsidian\\videos\\dato-benz-brothers-united\\research\\v4\\numba-generic-2is_sx0x",
+    "NUMBA_DISABLE_JIT": "unset for this child only"
+  },
+  "returncode": 0,
+  "elapsed_seconds": 34.957,
+  "output_exists": true,
+  "output_path": "C:\\Users\\Aman\\OneDrive\\Desktop\\Freelance\\Obsidian\\videos\\dato-benz-brothers-united\\research\\v4\\audiomap-cpu-generic.json",
+  "timing_policy": "Original song and40canonical lyric cues unchanged; no BPM claim unless output validated; no other analyzer run.",
+  "validation": {
+    "duration_sec": 196.76,
+    "grid_entries": 422,
+    "energy_phases": 96,
+    "phrases": 27,
+    "finite_sorted_in_bounds_grid": true,
+    "events_in_bounds": true,
+    "bpm_adopted": false,
+    "recommended_pacing": "phrase_flow until musical judgment confirms grid trust"
+  },
+  "analyzer_sha256": "acc14ffbbbcfb59fbe89a6886380d584df07a14205b1a299f424810bc85baed0",
+  "audio_sha256": "60ee65f074f36b2d31660bee652e111cd84538e51b74a0685cbd895291cd6547",
+  "audiomap_sha256": "90fb80482d1bb304c0774607cd03321ca1a971a5c9c384f06dcf5ebc1b3290a6",
+  "source_audio_modified": false,
+  "canonical_lyrics_or_cues_modified": false
+}

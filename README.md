@@ -29,11 +29,12 @@ rendering, encoded-audio checks, decoded-frame review materials and portable del
 Explore the [next-story pipeline](docs/NEXT_STORY_PIPELINE.md), [voice experiments](docs/NEXT_VOICE_PASS.md),
 [visual-tool comparison](docs/NEXT_FILM_VISUAL_TOOLS.md) and [pinned BRAG adaptation](docs/BRAG_ADAPTATION.md).
 The wider studio also supports custom music films and researched 6–8 minute editorial videos.
-The [Hock Siew tribute V3](videos/dato-benz-brothers-united/README.md) is a verified full-song cut
-with original-photo-driven Seedance scenes, grounded settings and all 40 Mandarin lyric cues.
-The 1080p master and smaller viewing copy passed full decoding, soundtrack and encoded-picture checks.
-[Delivery records](videos/dato-benz-brothers-united/DELIVERY-V3.json) document timing and source
-provenance; client review of likeness and the creative finish remains pending.
+The [Hock Siew tribute](videos/dato-benz-brothers-united/README.md) is being rebuilt as
+an image-only V4 art film after the user and boss rejected V3. The new direction keeps
+his actual photographs unchanged, surrounds them with a connected cinematic paper/ink
+world, and preserves the original song and forty lyric cues. V1–V3 remain archives;
+technical verification does not imply creative approval. Private media stays local.
+
 The [BOSSTON / Pragon project](videos/bosston-pragon-good-fortune/README.md) authors a full-song
 Chinese New Year film from **17 generated AI artworks across 52 shots**, with CPU-estimated
 relative depth, continuous camera travel and selective environmental motion. Its verified V3

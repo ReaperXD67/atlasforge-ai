@@ -1,0 +1,1181 @@
+{
+  "version": 4,
+  "concept": "The Bridge We Build / 同心成桥",
+  "on_screen_song_title": "有你，兄弟同心",
+  "subject": "Hock Siew / 拿督斯里谢惠福",
+  "status": "authored_image_only_plan_not_generated_or_accepted",
+  "canvas": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 24
+  },
+  "duration_seconds": 196.76,
+  "canonical_captions": "captions.json",
+  "caption_sha256": "6d3a6b8f711526f7944b5d391cb16340fd1e17db761d1dd41b4d76598a75bd10",
+  "timing_evidence": "Frozen phrase/caption clock. No audiomap found in project root; no new beat or BPM measurement claimed.",
+  "anchor_asset": "12-bridge-anchor",
+  "generation_order": [
+    "12-bridge-anchor",
+    "01-thread",
+    "02-paper-world",
+    "03-incomplete-bridge",
+    "04-first-chapter",
+    "05-memory-arch",
+    "06-shelter",
+    "07-warm-homes",
+    "08-confluence",
+    "09-shared-storm",
+    "10-quiet-generosity",
+    "11-enduring-braid",
+    "13-coast",
+    "14-through-arches",
+    "15-gratitude-garden",
+    "16-tea-reflection",
+    "17-climax",
+    "18-memory-return"
+  ],
+  "constraints": [
+    "Image-only source art; no generated video.",
+    "All human pixels come from supplied original photos. Source bytes remain unchanged; literal display crops may exclude companions.",
+    "No generated humans, faces, bodies, hands, silhouettes or human statues.",
+    "January6 is only the lyric date, not a claimed birthday. Do not invent a precise place for 浅顶.",
+    "Readable title, names, dates, lyrics and dedication are authored during editing, not generated in the bitmap.",
+    "Original196.760-second soundtrack and all40canonical cue times remain fixed.",
+    "Every asset supports2-3purposeful compositions/reveals, not one static slide hold."
+  ],
+  "palette": {
+    "ivory": "#F1E3CB",
+    "ink_blue_green": "#173F49",
+    "aged_bronze": "#9C743E",
+    "cinnabar_silk": "#AC392C",
+    "living_green": "#637A51"
+  },
+  "assets": [
+    {
+      "id": "01-thread",
+      "name": "The first connection",
+      "path": "assets/art-v4/01-thread.png",
+      "span_sec": [
+        0,
+        7
+      ],
+      "pacing": "phrase_flow",
+      "key_cues": [
+        {
+          "id": 1,
+          "start": 22.3,
+          "end": 25.36,
+          "text": "一月六号那一天"
+        }
+      ],
+      "prompt": "Premium cinematic still artwork, widescreen16:9, one coherent miniature monumental world constructed from tactile ivory rag paper, deep blue-green ink sea and mountains, aged bronze ribs and architecture, and one continuous cinnabar silk strand. Photographic material texture and believable directional daylight, restrained contrast, subtle atmospheric depth, exquisite macro detail. No humans, people, faces, bodies, hands, human silhouettes or human statues. No readable letters, numbers, logos or watermarks. No funeral imagery, candles, trophies, fantasy palace or floating portrait. No modern corporate presentation layout. Keep the lowest18percent visually quiet for editable Mandarin lyrics. This is one clean full-bleed image, not a collage/contact sheet. Extreme macro across an ivory photographic-memory folio, where the cinnabar silk crosses a blank portrait-print mount and becomes an architectural guide line. Near paper fibres, bronze corner detail, warm sun across the surface. A clear blank3:4 print area is reserved near the left third for a genuine photograph added later; the print is blank in this artwork.",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "foreground_plan": {
+        "near": "Near torn-paper edge and loose silk",
+        "middle": "Memory mount / bronze corner",
+        "far": "Softly focused paper landscape",
+        "photo_pixels": "Never generate, repaint, retouch, relight or beautify a human/photo. Composite unchanged original pixels in the editor only."
+      },
+      "compositions": [
+        {
+          "id": "01-thread-view-1",
+          "action": "Follow silk into the mount, revealing the authentic photo",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "01-thread-view-2",
+          "action": "Let the near paper edge cross lens to enter the next world",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        }
+      ],
+      "photo_moments": [
+        {
+          "start": 0.6,
+          "end": 5.2,
+          "path": "assets/references-v3/originals/photo_2026-11-19_17-27-29.jpg",
+          "instruction": "Opening authentic recognition; user-confirmed LEFT man only in the displayed crop.",
+          "allowed_transforms": [
+            "source-preserving display crop",
+            "scale",
+            "translation",
+            "small rigid print rotation"
+          ],
+          "forbidden": [
+            "AI repaint",
+            "face restoration",
+            "body reconstruction",
+            "skin recolour",
+            "age change",
+            "facial morph"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "02-paper-world",
+      "name": "A page becomes a world",
+      "path": "assets/art-v4/02-paper-world.png",
+      "span_sec": [
+        7,
+        14
+      ],
+      "pacing": "phrase_flow",
+      "key_cues": [],
+      "prompt": "Premium cinematic still artwork, widescreen16:9, one coherent miniature monumental world constructed from tactile ivory rag paper, deep blue-green ink sea and mountains, aged bronze ribs and architecture, and one continuous cinnabar silk strand. Photographic material texture and believable directional daylight, restrained contrast, subtle atmospheric depth, exquisite macro detail. No humans, people, faces, bodies, hands, human silhouettes or human statues. No readable letters, numbers, logos or watermarks. No funeral imagery, candles, trophies, fantasy palace or floating portrait. No modern corporate presentation layout. Keep the lowest18percent visually quiet for editable Mandarin lyrics. This is one clean full-bleed image, not a collage/contact sheet. Low grazing view along a thick ivory page that folds upward into mountain contours. The same cinnabar silk follows the valley into a blue-green ink sea. Bronze structural fragments emerge from the paper, physically grounded, with dramatic near paper fibres and distant luminous atmosphere.",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "foreground_plan": {
+        "near": "Ivory fold edge",
+        "middle": "Rising paper mountain contours",
+        "far": "Ink sea / far sky",
+        "photo_pixels": "Never generate, repaint, retouch, relight or beautify a human/photo. Composite unchanged original pixels in the editor only."
+      },
+      "compositions": [
+        {
+          "id": "02-paper-world-view-1",
+          "action": "Travel along the page fold",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "02-paper-world-view-2",
+          "action": "Match the fold crest to the next cliff ridge",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        }
+      ],
+      "photo_moments": []
+    },
+    {
+      "id": "03-incomplete-bridge",
+      "name": "The gap we will cross",
+      "path": "assets/art-v4/03-incomplete-bridge.png",
+      "span_sec": [
+        14,
+        22.3
+      ],
+      "pacing": "phrase_flow",
+      "key_cues": [],
+      "prompt": "Premium cinematic still artwork, widescreen16:9, one coherent miniature monumental world constructed from tactile ivory rag paper, deep blue-green ink sea and mountains, aged bronze ribs and architecture, and one continuous cinnabar silk strand. Photographic material texture and believable directional daylight, restrained contrast, subtle atmospheric depth, exquisite macro detail. No humans, people, faces, bodies, hands, human silhouettes or human statues. No readable letters, numbers, logos or watermarks. No funeral imagery, candles, trophies, fantasy palace or floating portrait. No modern corporate presentation layout. Keep the lowest18percent visually quiet for editable Mandarin lyrics. This is one clean full-bleed image, not a collage/contact sheet. An immense incomplete aged-bronze and ivory-paper bridge spans two sculpted cliffs above the misty blue-green ink sea. A visible central gap gives the image a purpose. The single cinnabar silk crosses the gap and catches warm side light. View from within one near arch so the distant far anchorage reveals scale.",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "foreground_plan": {
+        "near": "Near bronze arch",
+        "middle": "Incomplete span and silk",
+        "far": "Far cliff / ink sea",
+        "photo_pixels": "Never generate, repaint, retouch, relight or beautify a human/photo. Composite unchanged original pixels in the editor only."
+      },
+      "compositions": [
+        {
+          "id": "03-incomplete-bridge-view-1",
+          "action": "Exit through a near arch to reveal the gap",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "03-incomplete-bridge-view-2",
+          "action": "Hold wide long enough to understand both shores",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        }
+      ],
+      "photo_moments": []
+    },
+    {
+      "id": "04-first-chapter",
+      "name": "A first chapter, not an invented biography",
+      "path": "assets/art-v4/04-first-chapter.png",
+      "span_sec": [
+        22.3,
+        29.54
+      ],
+      "pacing": "phrase_flow",
+      "key_cues": [
+        {
+          "id": 1,
+          "start": 22.3,
+          "end": 25.36,
+          "text": "一月六号那一天"
+        },
+        {
+          "id": 2,
+          "start": 25.64,
+          "end": 29.54,
+          "text": "浅顶迎来一份缘"
+        }
+      ],
+      "prompt": "Premium cinematic still artwork, widescreen16:9, one coherent miniature monumental world constructed from tactile ivory rag paper, deep blue-green ink sea and mountains, aged bronze ribs and architecture, and one continuous cinnabar silk strand. Photographic material texture and believable directional daylight, restrained contrast, subtle atmospheric depth, exquisite macro detail. No humans, people, faces, bodies, hands, human silhouettes or human statues. No readable letters, numbers, logos or watermarks. No funeral imagery, candles, trophies, fantasy palace or floating portrait. No modern corporate presentation layout. Keep the lowest18percent visually quiet for editable Mandarin lyrics. This is one clean full-bleed image, not a collage/contact sheet. A tactile open ivory folio in the same architectural world, viewed diagonally at close range. A thin blue-green river line begins at a small blank embossed date area and runs across the page toward the sea. A bronze binding and single cinnabar silk join the page to a distant small arch. No writing is printed in the artwork; editorial type will supply only the actual lyric date.",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "foreground_plan": {
+        "near": "Page corner / silk",
+        "middle": "Blank date area and river line",
+        "far": "Low distant arch",
+        "photo_pixels": "Never generate, repaint, retouch, relight or beautify a human/photo. Composite unchanged original pixels in the editor only."
+      },
+      "compositions": [
+        {
+          "id": "04-first-chapter-view-1",
+          "action": "Reveal authored January6 text only on the sung date",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "04-first-chapter-view-2",
+          "action": "Follow the line toward the portrait chapter",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        }
+      ],
+      "photo_moments": []
+    },
+    {
+      "id": "05-memory-arch",
+      "name": "The person behind the story",
+      "path": "assets/art-v4/05-memory-arch.png",
+      "span_sec": [
+        29.54,
+        36.9
+      ],
+      "pacing": "phrase_flow",
+      "key_cues": [
+        {
+          "id": 3,
+          "start": 29.54,
+          "end": 32.76,
+          "text": "拿督斯里谢惠福"
+        },
+        {
+          "id": 4,
+          "start": 33.02,
+          "end": 36.72,
+          "text": "从此写下你的篇章"
+        }
+      ],
+      "prompt": "Premium cinematic still artwork, widescreen16:9, one coherent miniature monumental world constructed from tactile ivory rag paper, deep blue-green ink sea and mountains, aged bronze ribs and architecture, and one continuous cinnabar silk strand. Photographic material texture and believable directional daylight, restrained contrast, subtle atmospheric depth, exquisite macro detail. No humans, people, faces, bodies, hands, human silhouettes or human statues. No readable letters, numbers, logos or watermarks. No funeral imagery, candles, trophies, fantasy palace or floating portrait. No modern corporate presentation layout. Keep the lowest18percent visually quiet for editable Mandarin lyrics. This is one clean full-bleed image, not a collage/contact sheet. A large empty portrait-shaped ivory print mount sits inside a monumental aged-bronze arch, tactile paper and blue-green ink landscape around it. Keep the mount approximately3:4, front facing and large near the left third, with clear space beside it. The cinnabar silk passes around its border without crossing the inner photo area. This is an empty physical print mount for an authentic photograph to be composited later, not a portrait or statue.",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "foreground_plan": {
+        "near": "Near arch edge / silk",
+        "middle": "Blank portrait mount",
+        "far": "Layered paper landscape",
+        "photo_pixels": "Never generate, repaint, retouch, relight or beautify a human/photo. Composite unchanged original pixels in the editor only."
+      },
+      "compositions": [
+        {
+          "id": "05-memory-arch-view-1",
+          "action": "Reveal the genuine photograph at the honoree name",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "05-memory-arch-view-2",
+          "action": "Move through the mount border into the next support arch",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        }
+      ],
+      "photo_moments": [
+        {
+          "start": 29.54,
+          "end": 32.76,
+          "path": "assets/references-v3/originals/photo_2026-11-19_17-27-29.jpg",
+          "instruction": "First full Mandarin-name cue; rigid printed photo, no face/body generation.",
+          "allowed_transforms": [
+            "source-preserving display crop",
+            "scale",
+            "translation",
+            "small rigid print rotation"
+          ],
+          "forbidden": [
+            "AI repaint",
+            "face restoration",
+            "body reconstruction",
+            "skin recolour",
+            "age change",
+            "facial morph"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "06-shelter",
+      "name": "The architecture of care",
+      "path": "assets/art-v4/06-shelter.png",
+      "span_sec": [
+        36.9,
+        43.48
+      ],
+      "pacing": "phrase_flow",
+      "key_cues": [
+        {
+          "id": 5,
+          "start": 36.9,
+          "end": 39.82,
+          "text": "一颗宽容厚道的心"
+        },
+        {
+          "id": 6,
+          "start": 40.4,
+          "end": 43.18,
+          "text": "装着兄弟的冷暖"
+        }
+      ],
+      "prompt": "Premium cinematic still artwork, widescreen16:9, one coherent miniature monumental world constructed from tactile ivory rag paper, deep blue-green ink sea and mountains, aged bronze ribs and architecture, and one continuous cinnabar silk strand. Photographic material texture and believable directional daylight, restrained contrast, subtle atmospheric depth, exquisite macro detail. No humans, people, faces, bodies, hands, human silhouettes or human statues. No readable letters, numbers, logos or watermarks. No funeral imagery, candles, trophies, fantasy palace or floating portrait. No modern corporate presentation layout. Keep the lowest18percent visually quiet for editable Mandarin lyrics. This is one clean full-bleed image, not a collage/contact sheet. A monumental protective vault made of interlocking aged-bronze ribs carries a cluster of small tactile ivory-paper homes above a blue-green ink ravine. Warm inhabited windows, gardens and ordinary roof forms suggest care without showing any people. The cinnabar silk distributes tension among the ribs. A low intimate camera angle shows structural support, not a trophy pedestal.",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "foreground_plan": {
+        "near": "Nearest rib / silk",
+        "middle": "Protective vault and warm homes",
+        "far": "Ravine / distant paper hills",
+        "photo_pixels": "Never generate, repaint, retouch, relight or beautify a human/photo. Composite unchanged original pixels in the editor only."
+      },
+      "compositions": [
+        {
+          "id": "06-shelter-view-1",
+          "action": "Reveal the warm windows one group at a time",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "06-shelter-view-2",
+          "action": "Move from supporting ribs toward the connected homes",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        }
+      ],
+      "photo_moments": []
+    },
+    {
+      "id": "07-warm-homes",
+      "name": "Warmth across distance",
+      "path": "assets/art-v4/07-warm-homes.png",
+      "span_sec": [
+        43.48,
+        51.66
+      ],
+      "pacing": "phrase_flow",
+      "key_cues": [
+        {
+          "id": 7,
+          "start": 43.48,
+          "end": 47.54,
+          "text": "尤其弟弟们的敬爱"
+        },
+        {
+          "id": 8,
+          "start": 47.56,
+          "end": 51.52,
+          "text": "来自你一路的关怀"
+        }
+      ],
+      "prompt": "Premium cinematic still artwork, widescreen16:9, one coherent miniature monumental world constructed from tactile ivory rag paper, deep blue-green ink sea and mountains, aged bronze ribs and architecture, and one continuous cinnabar silk strand. Photographic material texture and believable directional daylight, restrained contrast, subtle atmospheric depth, exquisite macro detail. No humans, people, faces, bodies, hands, human silhouettes or human statues. No readable letters, numbers, logos or watermarks. No funeral imagery, candles, trophies, fantasy palace or floating portrait. No modern corporate presentation layout. Keep the lowest18percent visually quiet for editable Mandarin lyrics. This is one clean full-bleed image, not a collage/contact sheet. A sweeping diagonal hillside neighbourhood of tactile ivory-paper homes at different depths, all connected by the same single cinnabar silk line and fine aged-bronze footbridges. Warm amber window light answers across the houses. Deep blue-green ink valleys and paper mountains recede behind. Low near roofs create strong parallax; the scale is intimate yet expansive. No humans or human silhouettes in any window.",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "foreground_plan": {
+        "near": "Near roof silhouettes / silk",
+        "middle": "Warm home clusters / little bridges",
+        "far": "Ink valley / paper hills",
+        "photo_pixels": "Never generate, repaint, retouch, relight or beautify a human/photo. Composite unchanged original pixels in the editor only."
+      },
+      "compositions": [
+        {
+          "id": "07-warm-homes-view-1",
+          "action": "Follow the silk between near and far windows",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "07-warm-homes-view-2",
+          "action": "Change from intimate window detail to the full connected hillside",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        }
+      ],
+      "photo_moments": [],
+      "generation": {
+        "method": "built-in image_gen",
+        "style_reference": "assets/art-v4/12-bridge-anchor.png",
+        "output_size": [
+          1672,
+          941
+        ],
+        "inspection": "No generated people, human figures, portraits or readable text observed. Material world matches anchor; source human photos were never supplied to image generation."
+      }
+    },
+    {
+      "id": "08-confluence",
+      "name": "Separate paths become one",
+      "path": "assets/art-v4/08-confluence.png",
+      "span_sec": [
+        51.66,
+        58.18
+      ],
+      "pacing": "phrase_flow",
+      "key_cues": [
+        {
+          "id": 9,
+          "start": 51.66,
+          "end": 54.3,
+          "text": "相聚从来不是偶然"
+        },
+        {
+          "id": 10,
+          "start": 54.5,
+          "end": 57.72,
+          "text": "是你把真心连起来"
+        }
+      ],
+      "prompt": "Premium cinematic still artwork, widescreen16:9, one coherent miniature monumental world constructed from tactile ivory rag paper, deep blue-green ink sea and mountains, aged bronze ribs and architecture, and one continuous cinnabar silk strand. Photographic material texture and believable directional daylight, restrained contrast, subtle atmospheric depth, exquisite macro detail. No humans, people, faces, bodies, hands, human silhouettes or human statues. No readable letters, numbers, logos or watermarks. No funeral imagery, candles, trophies, fantasy palace or floating portrait. No modern corporate presentation layout. Keep the lowest18percent visually quiet for editable Mandarin lyrics. This is one clean full-bleed image, not a collage/contact sheet. High oblique aerial composition of three irregular blue-green ink rivers carved through layered ivory rag-paper terrain. They bend naturally toward one shared braided estuary beneath a small but elegant aged-bronze bridge. One cinnabar silk strand parallels their converging routes and joins at the crossing. Topographic paper strata and directional warm sunlight create depth; asymmetric, elegant, immense.",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "foreground_plan": {
+        "near": "Near raised paper contour",
+        "middle": "Converging rivers / bronze crossing",
+        "far": "Far layered terrain",
+        "photo_pixels": "Never generate, repaint, retouch, relight or beautify a human/photo. Composite unchanged original pixels in the editor only."
+      },
+      "compositions": [
+        {
+          "id": "08-confluence-view-1",
+          "action": "Trace separate tributaries in successive framed views",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "08-confluence-view-2",
+          "action": "Reveal their union on the connecting-hearts lyric",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        }
+      ],
+      "photo_moments": [],
+      "generation": {
+        "method": "built-in image_gen",
+        "style_reference": "assets/art-v4/12-bridge-anchor.png",
+        "output_size": [
+          1672,
+          941
+        ],
+        "inspection": "No generated people, human figures, portraits or readable text observed. Material world matches anchor; source human photos were never supplied to image generation."
+      }
+    },
+    {
+      "id": "09-shared-storm",
+      "name": "A burden carried together",
+      "path": "assets/art-v4/09-shared-storm.png",
+      "span_sec": [
+        58.18,
+        66
+      ],
+      "pacing": "phrase_flow",
+      "key_cues": [
+        {
+          "id": 11,
+          "start": 58.18,
+          "end": 62.34,
+          "text": "有人遇到风雨阻碍"
+        },
+        {
+          "id": 12,
+          "start": 62.34,
+          "end": 65.94,
+          "text": "你总愿意伸手分担"
+        }
+      ],
+      "prompt": "Premium cinematic still artwork, widescreen16:9, one coherent miniature monumental world constructed from tactile ivory rag paper, deep blue-green ink sea and mountains, aged bronze ribs and architecture, and one continuous cinnabar silk strand. Photographic material texture and believable directional daylight, restrained contrast, subtle atmospheric depth, exquisite macro detail. No humans, people, faces, bodies, hands, human silhouettes or human statues. No readable letters, numbers, logos or watermarks. No funeral imagery, candles, trophies, fantasy palace or floating portrait. No modern corporate presentation layout. Keep the lowest18percent visually quiet for editable Mandarin lyrics. This is one clean full-bleed image, not a collage/contact sheet. A powerful storm-dark blue-green ink gorge in the same paper world. A huge suspended ivory stone/paper block is held securely by several interlocking aged-bronze support ribs forming one bridge structure. The cinnabar silk traces how the load is shared across the supports. Strong diagonal composition, rain suggested by fine paper-cut streaks and backlit mist, one warm opening in the clouds. No people or hands; structural cooperation is the metaphor.",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "foreground_plan": {
+        "near": "Near diagonal rib / fine paper streaks",
+        "middle": "Suspended mass / shared supports",
+        "far": "Storm gorge and warm cloud opening",
+        "photo_pixels": "Never generate, repaint, retouch, relight or beautify a human/photo. Composite unchanged original pixels in the editor only."
+      },
+      "compositions": [
+        {
+          "id": "09-shared-storm-view-1",
+          "action": "Enter on the heavy diagonal during the obstacle line",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "09-shared-storm-view-2",
+          "action": "Reveal balanced multiple supports at the sharing-burdens line",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        }
+      ],
+      "photo_moments": [],
+      "generation": {
+        "method": "built-in image_gen",
+        "style_reference": "assets/art-v4/12-bridge-anchor.png",
+        "output_size": [
+          1672,
+          941
+        ],
+        "inspection": "No generated people, human figures, portraits or readable text observed. Material world matches anchor; source human photos were never supplied to image generation."
+      }
+    },
+    {
+      "id": "10-quiet-generosity",
+      "name": "A small light inside the shelter",
+      "path": "assets/art-v4/10-quiet-generosity.png",
+      "span_sec": [
+        66,
+        73.4
+      ],
+      "pacing": "phrase_flow",
+      "key_cues": [
+        {
+          "id": 13,
+          "start": 66.0,
+          "end": 69.36,
+          "text": "无私奉献，不求喝彩"
+        },
+        {
+          "id": 14,
+          "start": 69.46,
+          "end": 72.7,
+          "text": "把情义放在心里面"
+        }
+      ],
+      "prompt": "Premium cinematic still artwork, widescreen16:9, one coherent miniature monumental world constructed from tactile ivory rag paper, deep blue-green ink sea and mountains, aged bronze ribs and architecture, and one continuous cinnabar silk strand. Photographic material texture and believable directional daylight, restrained contrast, subtle atmospheric depth, exquisite macro detail. No humans, people, faces, bodies, hands, human silhouettes or human statues. No readable letters, numbers, logos or watermarks. No funeral imagery, candles, trophies, fantasy palace or floating portrait. No modern corporate presentation layout. Keep the lowest18percent visually quiet for editable Mandarin lyrics. This is one clean full-bleed image, not a collage/contact sheet. An intimate view inside a vast protective ivory-paper vault with aged-bronze ribs. A single modest warm window and small blank folded note are sheltered in the architecture, without a figure. The cinnabar silk passes quietly beside them and continues onward. Most of the scene is tactile material and gentle blue-green shadow, with a concentrated warm human-scale light. No altar, candle, pedestal or readable text.",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "foreground_plan": {
+        "near": "Near paper rib / folded edge",
+        "middle": "Warm modest window / blank note / silk",
+        "far": "Quiet vault depth",
+        "photo_pixels": "Never generate, repaint, retouch, relight or beautify a human/photo. Composite unchanged original pixels in the editor only."
+      },
+      "compositions": [
+        {
+          "id": "10-quiet-generosity-view-1",
+          "action": "Move from vast structure to a tiny sheltered detail",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "10-quiet-generosity-view-2",
+          "action": "Let the silk leave the detail without a triumphant spectacle",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        }
+      ],
+      "photo_moments": [],
+      "generation": {
+        "method": "built-in image_gen",
+        "style_reference": "assets/art-v4/12-bridge-anchor.png",
+        "output_size": [
+          1672,
+          941
+        ],
+        "inspection": "No generated people, human figures, portraits or readable text observed. Material world matches anchor; source human photos were never supplied to image generation."
+      }
+    },
+    {
+      "id": "11-enduring-braid",
+      "name": "Years become strength",
+      "path": "assets/art-v4/11-enduring-braid.png",
+      "span_sec": [
+        73.4,
+        81.04
+      ],
+      "pacing": "phrase_flow",
+      "key_cues": [
+        {
+          "id": 15,
+          "start": 73.4,
+          "end": 77.06,
+          "text": "一句兄弟，一份牵挂"
+        },
+        {
+          "id": 16,
+          "start": 77.1,
+          "end": 81.0,
+          "text": "岁月走过依然不变"
+        }
+      ],
+      "prompt": "Premium cinematic still artwork, widescreen16:9, one coherent miniature monumental world constructed from tactile ivory rag paper, deep blue-green ink sea and mountains, aged bronze ribs and architecture, and one continuous cinnabar silk strand. Photographic material texture and believable directional daylight, restrained contrast, subtle atmospheric depth, exquisite macro detail. No humans, people, faces, bodies, hands, human silhouettes or human statues. No readable letters, numbers, logos or watermarks. No funeral imagery, candles, trophies, fantasy palace or floating portrait. No modern corporate presentation layout. Keep the lowest18percent visually quiet for editable Mandarin lyrics. This is one clean full-bleed image, not a collage/contact sheet. Extreme macro of weathered aged-bronze grain, fine ivory-paper strata and a strong cinnabar silk braid. Their growth-ring contours gradually align into the curved structural ribs of the distant bridge, with blue-green ink sea visible through the opening. Rich tactile detail, an elegant continuous S curve, warm afternoon side light. No hearts, wedding symbols or jewellery.",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "foreground_plan": {
+        "near": "Near silk fibres / bronze grain",
+        "middle": "Braided S curve / growth rings",
+        "far": "Bridge opening / ink sea",
+        "photo_pixels": "Never generate, repaint, retouch, relight or beautify a human/photo. Composite unchanged original pixels in the editor only."
+      },
+      "compositions": [
+        {
+          "id": "11-enduring-braid-view-1",
+          "action": "Travel along the braid through macro details",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "11-enduring-braid-view-2",
+          "action": "Match its curve into the hero bridge reveal",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        }
+      ],
+      "photo_moments": [],
+      "generation": {
+        "method": "built-in image_gen",
+        "style_reference": "assets/art-v4/12-bridge-anchor.png",
+        "output_size": [
+          1672,
+          941
+        ],
+        "inspection": "No generated people, human figures, portraits or readable text observed. Material world matches anchor; source human photos were never supplied to image generation."
+      }
+    },
+    {
+      "id": "12-bridge-anchor",
+      "name": "The bridge we build",
+      "path": "assets/art-v4/12-bridge-anchor.png",
+      "span_sec": [
+        81.04,
+        94.34
+      ],
+      "pacing": "phrase_flow",
+      "key_cues": [
+        {
+          "id": 17,
+          "start": 81.04,
+          "end": 84.86,
+          "text": "Hock Siew，Hock Siew"
+        },
+        {
+          "id": 18,
+          "start": 84.92,
+          "end": 86.78,
+          "text": "兄弟把你记在心头"
+        },
+        {
+          "id": 19,
+          "start": 86.78,
+          "end": 88.62,
+          "text": "你的宽容，你的守候"
+        },
+        {
+          "id": 20,
+          "start": 88.64,
+          "end": 90.4,
+          "text": "让大家并肩一起走"
+        },
+        {
+          "id": 21,
+          "start": 90.42,
+          "end": 92.28,
+          "text": "Hock Siew，Hock Siew"
+        },
+        {
+          "id": 22,
+          "start": 92.3,
+          "end": 94.2,
+          "text": "情义细水永远长流"
+        }
+      ],
+      "prompt": "Premium cinematic still artwork, widescreen16:9, one coherent miniature monumental world constructed from tactile ivory rag paper, deep blue-green ink sea and mountains, aged bronze ribs and architecture, and one continuous cinnabar silk strand. Photographic material texture and believable directional daylight, restrained contrast, subtle atmospheric depth, exquisite macro detail. No humans, people, faces, bodies, hands, human silhouettes or human statues. No readable letters, numbers, logos or watermarks. No funeral imagery, candles, trophies, fantasy palace or floating portrait. No modern corporate presentation layout. Keep the lowest18percent visually quiet for editable Mandarin lyrics. This is one clean full-bleed image, not a collage/contact sheet. The hero style anchor: a complete monumental aged-bronze bridge with tactile ivory-paper structural elements crosses a misty blue-green ink sea between sculpted paper cliffs. One cinnabar silk strand flows clearly along and across the span, connecting both shores. The composition has majestic scale, near architectural framing and open sea depth, with warm living daylight rather than a memorial mood. Reserve a quiet left-third zone for a genuine photographic print to enter during the name calls, without baking a frame, text or person into the art.",
+      "style_reference": null,
+      "foreground_plan": {
+        "near": "Near arch / silk",
+        "middle": "Complete bridge span",
+        "far": "Misty ink sea / paper cliffs",
+        "photo_pixels": "Never generate, repaint, retouch, relight or beautify a human/photo. Composite unchanged original pixels in the editor only."
+      },
+      "compositions": [
+        {
+          "id": "12-bridge-anchor-view-1",
+          "action": "Large reveal on first chorus arrival",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "12-bridge-anchor-view-2",
+          "action": "Bring in authentic photographic memories only on name calls",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "12-bridge-anchor-view-3",
+          "action": "Return from portrait detail to the full bridge on walking-together line",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        }
+      ],
+      "photo_moments": [
+        {
+          "start": 81.04,
+          "end": 84.86,
+          "path": "assets/references-v3/originals/photo_2026-11-19_17-27-29.jpg",
+          "instruction": "First chorus name call.",
+          "allowed_transforms": [
+            "source-preserving display crop",
+            "scale",
+            "translation",
+            "small rigid print rotation"
+          ],
+          "forbidden": [
+            "AI repaint",
+            "face restoration",
+            "body reconstruction",
+            "skin recolour",
+            "age change",
+            "facial morph"
+          ]
+        },
+        {
+          "start": 90.42,
+          "end": 92.28,
+          "path": "assets/photos/brothers.jpg",
+          "instruction": "Name call; display crop isolates the user-confirmed central Hock, not the surrounding companions.",
+          "allowed_transforms": [
+            "source-preserving display crop",
+            "scale",
+            "translation",
+            "small rigid print rotation"
+          ],
+          "forbidden": [
+            "AI repaint",
+            "face restoration",
+            "body reconstruction",
+            "skin recolour",
+            "age change",
+            "facial morph"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "13-coast",
+      "name": "The connection reaches farther",
+      "path": "assets/art-v4/13-coast.png",
+      "span_sec": [
+        94.34,
+        102.92
+      ],
+      "pacing": "phrase_flow",
+      "key_cues": [
+        {
+          "id": 23,
+          "start": 94.34,
+          "end": 97.12,
+          "text": "从浅顶唱到马来西亚"
+        },
+        {
+          "id": 24,
+          "start": 97.14,
+          "end": 102.92,
+          "text": "愿这份真心传到更远的地方"
+        }
+      ],
+      "prompt": "Premium cinematic still artwork, widescreen16:9, one coherent miniature monumental world constructed from tactile ivory rag paper, deep blue-green ink sea and mountains, aged bronze ribs and architecture, and one continuous cinnabar silk strand. Photographic material texture and believable directional daylight, restrained contrast, subtle atmospheric depth, exquisite macro detail. No humans, people, faces, bodies, hands, human silhouettes or human statues. No readable letters, numbers, logos or watermarks. No funeral imagery, candles, trophies, fantasy palace or floating portrait. No modern corporate presentation layout. Keep the lowest18percent visually quiet for editable Mandarin lyrics. This is one clean full-bleed image, not a collage/contact sheet. The same blue-green ink river and aged-bronze bridge system opens toward a sunlit tropical coastline made of tactile ivory paper. Low tree canopies, a modest unlabelled harbour edge and open sea communicate distance and connection. The cinnabar silk continues toward the horizon. This is a symbolic invented coastline, with no identifiable landmark, map label or claim of a precise real location.",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "foreground_plan": {
+        "near": "Near coast contour / silk",
+        "middle": "River mouth / modest harbour",
+        "far": "Open warm horizon",
+        "photo_pixels": "Never generate, repaint, retouch, relight or beautify a human/photo. Composite unchanged original pixels in the editor only."
+      },
+      "compositions": [
+        {
+          "id": "13-coast-view-1",
+          "action": "Follow the shared river toward the sea",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "13-coast-view-2",
+          "action": "Widen the view as the wish travels farther",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        }
+      ],
+      "photo_moments": []
+    },
+    {
+      "id": "14-through-arches",
+      "name": "Instrumental passage through the bridge",
+      "path": "assets/art-v4/14-through-arches.png",
+      "span_sec": [
+        102.92,
+        119.42
+      ],
+      "pacing": "phrase_flow",
+      "key_cues": [],
+      "prompt": "Premium cinematic still artwork, widescreen16:9, one coherent miniature monumental world constructed from tactile ivory rag paper, deep blue-green ink sea and mountains, aged bronze ribs and architecture, and one continuous cinnabar silk strand. Photographic material texture and believable directional daylight, restrained contrast, subtle atmospheric depth, exquisite macro detail. No humans, people, faces, bodies, hands, human silhouettes or human statues. No readable letters, numbers, logos or watermarks. No funeral imagery, candles, trophies, fantasy palace or floating portrait. No modern corporate presentation layout. Keep the lowest18percent visually quiet for editable Mandarin lyrics. This is one clean full-bleed image, not a collage/contact sheet. A spectacular interior perspective through a sequence of monumental aged-bronze arches and suspended tactile ivory-paper pages above the blue-green ink sea. Strong near/middle/far framing, one continuous cinnabar silk route and warm reflected daylight. The structure is coherent and can support a camera travelling through several openings. No text on the suspended pages and no people.",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "foreground_plan": {
+        "near": "Very near arch / page edges",
+        "middle": "Successive linked arches / silk",
+        "far": "Reflected ink sea / far opening",
+        "photo_pixels": "Never generate, repaint, retouch, relight or beautify a human/photo. Composite unchanged original pixels in the editor only."
+      },
+      "compositions": [
+        {
+          "id": "14-through-arches-view-1",
+          "action": "Pass near occluders on musical accents",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "14-through-arches-view-2",
+          "action": "Rack focus between layered arches",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "14-through-arches-view-3",
+          "action": "Use a curved match into the garden opening",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        }
+      ],
+      "photo_moments": []
+    },
+    {
+      "id": "15-gratitude-garden",
+      "name": "Thanks become living wishes",
+      "path": "assets/art-v4/15-gratitude-garden.png",
+      "span_sec": [
+        119.42,
+        133.96
+      ],
+      "pacing": "phrase_flow",
+      "key_cues": [
+        {
+          "id": 25,
+          "start": 119.42,
+          "end": 122.88,
+          "text": "今天我们聚在你身旁"
+        },
+        {
+          "id": 26,
+          "start": 122.9,
+          "end": 126.34,
+          "text": "把感谢都唱成祝愿"
+        },
+        {
+          "id": 27,
+          "start": 126.64,
+          "end": 130.5,
+          "text": "愿你健康，愿你平安"
+        },
+        {
+          "id": 28,
+          "start": 130.5,
+          "end": 133.74,
+          "text": "每个明天都有笑颜"
+        }
+      ],
+      "prompt": "Premium cinematic still artwork, widescreen16:9, one coherent miniature monumental world constructed from tactile ivory rag paper, deep blue-green ink sea and mountains, aged bronze ribs and architecture, and one continuous cinnabar silk strand. Photographic material texture and believable directional daylight, restrained contrast, subtle atmospheric depth, exquisite macro detail. No humans, people, faces, bodies, hands, human silhouettes or human statues. No readable letters, numbers, logos or watermarks. No funeral imagery, candles, trophies, fantasy palace or floating portrait. No modern corporate presentation layout. Keep the lowest18percent visually quiet for editable Mandarin lyrics. This is one clean full-bleed image, not a collage/contact sheet. A luminous communal garden courtyard sheltered beneath the completed bronze-and-ivory bridge. Living green paper foliage, warm sun, calm shallow blue-green water and small blank photographic-print mounts integrated into the architecture. One cinnabar silk line links the garden paths and the mounts. A positive living celebration of health and companionship, never an empty memorial or altar; no people in the generated art.",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "foreground_plan": {
+        "near": "Near leaves / silk",
+        "middle": "Garden paths / blank memory mounts",
+        "far": "Bridge canopy / bright sky",
+        "photo_pixels": "Never generate, repaint, retouch, relight or beautify a human/photo. Composite unchanged original pixels in the editor only."
+      },
+      "compositions": [
+        {
+          "id": "15-gratitude-garden-view-1",
+          "action": "Open the courtyard at the gathering lyric",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "15-gratitude-garden-view-2",
+          "action": "Reveal real photographic memories as thanks become wishes",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "15-gratitude-garden-view-3",
+          "action": "Expand upward toward daylight on health and peace",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        }
+      ],
+      "photo_moments": [
+        {
+          "start": 119.42,
+          "end": 123.0,
+          "path": "assets/photos/brothers.jpg",
+          "instruction": "Actual supplied event memory; displayed crop keeps only the honoree.",
+          "allowed_transforms": [
+            "source-preserving display crop",
+            "scale",
+            "translation",
+            "small rigid print rotation"
+          ],
+          "forbidden": [
+            "AI repaint",
+            "face restoration",
+            "body reconstruction",
+            "skin recolour",
+            "age change",
+            "facial morph"
+          ]
+        },
+        {
+          "start": 126.64,
+          "end": 130.5,
+          "path": "assets/photos/seaside.jpg",
+          "instruction": "Authentic health/peace memory; display crop keeps Hock, without inventing the other side of his body.",
+          "allowed_transforms": [
+            "source-preserving display crop",
+            "scale",
+            "translation",
+            "small rigid print rotation"
+          ],
+          "forbidden": [
+            "AI repaint",
+            "face restoration",
+            "body reconstruction",
+            "skin recolour",
+            "age change",
+            "facial morph"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "16-tea-reflection",
+      "name": "A cup holds the shared memory",
+      "path": "assets/art-v4/16-tea-reflection.png",
+      "span_sec": [
+        133.96,
+        149.32
+      ],
+      "pacing": "phrase_flow",
+      "key_cues": [
+        {
+          "id": 29,
+          "start": 133.96,
+          "end": 137.68,
+          "text": "你为大家付出的点滴"
+        },
+        {
+          "id": 30,
+          "start": 137.8,
+          "end": 141.06,
+          "text": "我们一件一件记心间"
+        },
+        {
+          "id": 31,
+          "start": 141.26,
+          "end": 144.74,
+          "text": "这一杯敬相识的缘"
+        },
+        {
+          "id": 32,
+          "start": 144.74,
+          "end": 148.0,
+          "text": "这一首唱不变的情"
+        }
+      ],
+      "prompt": "Premium cinematic still artwork, widescreen16:9, one coherent miniature monumental world constructed from tactile ivory rag paper, deep blue-green ink sea and mountains, aged bronze ribs and architecture, and one continuous cinnabar silk strand. Photographic material texture and believable directional daylight, restrained contrast, subtle atmospheric depth, exquisite macro detail. No humans, people, faces, bodies, hands, human silhouettes or human statues. No readable letters, numbers, logos or watermarks. No funeral imagery, candles, trophies, fantasy palace or floating portrait. No modern corporate presentation layout. Keep the lowest18percent visually quiet for editable Mandarin lyrics. This is one clean full-bleed image, not a collage/contact sheet. A cinematic macro of one simple ivory porcelain tea cup on a tactile ivory-paper table in the same world. Its calm blue-green reflective surface contains the unmistakable curved silhouette of the completed aged-bronze bridge, a poetic optical miniature, not a second literal teapot or floating object. A single cinnabar silk strand curves around the cup base and continues toward a distant bronze arch. Warm window-like daylight, restrained reflections, clear air without steam. No hands, people, faces, text, pouring vessel or impossible fluid stream.",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "foreground_plan": {
+        "near": "Near cup rim / silk",
+        "middle": "Calm reflective cup surface / bridge reflection",
+        "far": "Distant arch / soft paper depth",
+        "photo_pixels": "Never generate, repaint, retouch, relight or beautify a human/photo. Composite unchanged original pixels in the editor only."
+      },
+      "compositions": [
+        {
+          "id": "16-tea-reflection-view-1",
+          "action": "Gather small reflected details during the memory lyrics",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "16-tea-reflection-view-2",
+          "action": "Land the cup reveal at141.26 on the toast lyric",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "16-tea-reflection-view-3",
+          "action": "Match the cup circle into the final bridge arch",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        }
+      ],
+      "photo_moments": [],
+      "generation": {
+        "method": "built-in image_gen",
+        "style_reference": "assets/art-v4/12-bridge-anchor.png",
+        "output_size": [
+          1672,
+          941
+        ],
+        "inspection": "No generated people, human figures, portraits or readable text observed. Material world matches anchor; source human photos were never supplied to image generation."
+      }
+    },
+    {
+      "id": "17-climax",
+      "name": "The shared world in full light",
+      "path": "assets/art-v4/17-climax.png",
+      "span_sec": [
+        149.32,
+        170.1
+      ],
+      "pacing": "phrase_flow",
+      "key_cues": [
+        {
+          "id": 33,
+          "start": 149.32,
+          "end": 152.8,
+          "text": "Hock Siew，Hock Siew"
+        },
+        {
+          "id": 34,
+          "start": 152.92,
+          "end": 154.78,
+          "text": "兄弟同心，携手向前走"
+        },
+        {
+          "id": 35,
+          "start": 154.8,
+          "end": 156.58,
+          "text": "拿督斯里谢惠福"
+        },
+        {
+          "id": 36,
+          "start": 156.64,
+          "end": 158.34,
+          "text": "这份敬爱藏在心头"
+        },
+        {
+          "id": 37,
+          "start": 158.4,
+          "end": 160.22,
+          "text": "Hock Siew，Hock Siew"
+        },
+        {
+          "id": 38,
+          "start": 160.44,
+          "end": 162.06,
+          "text": "风雨同路，情义长留"
+        },
+        {
+          "id": 39,
+          "start": 162.1,
+          "end": 163.92,
+          "text": "愿你平安，幸福永久"
+        },
+        {
+          "id": 40,
+          "start": 164.08,
+          "end": 170.1,
+          "text": "兄弟相伴，一起到白头！"
+        }
+      ],
+      "prompt": "Premium cinematic still artwork, widescreen16:9, one coherent miniature monumental world constructed from tactile ivory rag paper, deep blue-green ink sea and mountains, aged bronze ribs and architecture, and one continuous cinnabar silk strand. Photographic material texture and believable directional daylight, restrained contrast, subtle atmospheric depth, exquisite macro detail. No humans, people, faces, bodies, hands, human silhouettes or human statues. No readable letters, numbers, logos or watermarks. No funeral imagery, candles, trophies, fantasy palace or floating portrait. No modern corporate presentation layout. Keep the lowest18percent visually quiet for editable Mandarin lyrics. This is one clean full-bleed image, not a collage/contact sheet. A NEW grand final-chorus landscape in the same material world, wider and brighter than the first hero bridge. The complete aged-bronze and ivory-paper bridge now supports connected gardens, warm homes and river paths across the blue-green ink sea to a bright open horizon. The cinnabar silk is confidently woven through the whole structure. Foreground paper leaves and an immense near arch create strong depth. No people, statues, text or baked-in portrait. Reserve a clean photographic-memory zone for actual Hock Siew photo overlays at the name calls.",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "foreground_plan": {
+        "near": "Near arch / paper leaves / silk",
+        "middle": "Connected bridge, homes and gardens",
+        "far": "Bright sea horizon / far paper mountains",
+        "photo_pixels": "Never generate, repaint, retouch, relight or beautify a human/photo. Composite unchanged original pixels in the editor only."
+      },
+      "compositions": [
+        {
+          "id": "17-climax-view-1",
+          "action": "Reveal the larger shared world at the final chorus",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "17-climax-view-2",
+          "action": "Cut between architecture, connections and real-photo name anchors",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "17-climax-view-3",
+          "action": "Finish the sung final blessing on an opening toward the horizon",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        }
+      ],
+      "photo_moments": [
+        {
+          "start": 149.32,
+          "end": 152.8,
+          "path": "assets/references-v3/originals/photo_2026-11-19_17-27-29.jpg",
+          "instruction": "Final-chorus name call.",
+          "allowed_transforms": [
+            "source-preserving display crop",
+            "scale",
+            "translation",
+            "small rigid print rotation"
+          ],
+          "forbidden": [
+            "AI repaint",
+            "face restoration",
+            "body reconstruction",
+            "skin recolour",
+            "age change",
+            "facial morph"
+          ]
+        },
+        {
+          "start": 154.8,
+          "end": 156.58,
+          "path": "assets/references-v3/originals/photo_2026-11-19_17-27-29.jpg",
+          "instruction": "Full Mandarin-name cue.",
+          "allowed_transforms": [
+            "source-preserving display crop",
+            "scale",
+            "translation",
+            "small rigid print rotation"
+          ],
+          "forbidden": [
+            "AI repaint",
+            "face restoration",
+            "body reconstruction",
+            "skin recolour",
+            "age change",
+            "facial morph"
+          ]
+        },
+        {
+          "start": 158.4,
+          "end": 160.22,
+          "path": "assets/photos/brothers.jpg",
+          "instruction": "Last name call; central Hock only.",
+          "allowed_transforms": [
+            "source-preserving display crop",
+            "scale",
+            "translation",
+            "small rigid print rotation"
+          ],
+          "forbidden": [
+            "AI repaint",
+            "face restoration",
+            "body reconstruction",
+            "skin recolour",
+            "age change",
+            "facial morph"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "18-memory-return",
+      "name": "The world returns to a real memory",
+      "path": "assets/art-v4/18-memory-return.png",
+      "span_sec": [
+        170.1,
+        196.76
+      ],
+      "pacing": "phrase_flow",
+      "key_cues": [],
+      "prompt": "Premium cinematic still artwork, widescreen16:9, one coherent miniature monumental world constructed from tactile ivory rag paper, deep blue-green ink sea and mountains, aged bronze ribs and architecture, and one continuous cinnabar silk strand. Photographic material texture and believable directional daylight, restrained contrast, subtle atmospheric depth, exquisite macro detail. No humans, people, faces, bodies, hands, human silhouettes or human statues. No readable letters, numbers, logos or watermarks. No funeral imagery, candles, trophies, fantasy palace or floating portrait. No modern corporate presentation layout. Keep the lowest18percent visually quiet for editable Mandarin lyrics. This is one clean full-bleed image, not a collage/contact sheet. A warm closing perspective where the monumental bronze bridge and blue-green ink coastline resolve into the edge of a physical ivory photographic folio. The cinnabar silk rests gently along the paper border. An elegant large blank portrait print mount has clear space for the authentic photograph added later, with an adjacent quiet ivory area for the final Mandarin dedication. Genuine warm daylight and living green details, no black memorial ground, altar, candle, flowers or generated people.",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "foreground_plan": {
+        "near": "Near folio edge / resting silk",
+        "middle": "Blank authentic-photo mount / quiet dedication space",
+        "far": "Small bridge and coastline receding into paper",
+        "photo_pixels": "Never generate, repaint, retouch, relight or beautify a human/photo. Composite unchanged original pixels in the editor only."
+      },
+      "compositions": [
+        {
+          "id": "18-memory-return-view-1",
+          "action": "Continue the journey through the world during the instrumental tail",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "18-memory-return-view-2",
+          "action": "Resolve into the physical memory print",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        },
+        {
+          "id": "18-memory-return-view-3",
+          "action": "Settle into the unchanged authentic photo and authored dedication for the final10-12seconds",
+          "timing": "Anchor changes to actual music/phrase accents; do not invent BPM or claim a measured beat."
+        }
+      ],
+      "photo_moments": [
+        {
+          "start": 184.75,
+          "end": 196.76,
+          "path": "assets/references-v3/originals/photo_2026-11-19_17-27-29.jpg",
+          "instruction": "Final clear authentic portrait crop and Mandarin dedication; use a source-preserving crop to keep companions out.",
+          "allowed_transforms": [
+            "source-preserving display crop",
+            "scale",
+            "translation",
+            "small rigid print rotation"
+          ],
+          "forbidden": [
+            "AI repaint",
+            "face restoration",
+            "body reconstruction",
+            "skin recolour",
+            "age change",
+            "facial morph"
+          ]
+        }
+      ]
+    }
+  ]
+}

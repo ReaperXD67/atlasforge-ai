@@ -1,0 +1,2498 @@
+{
+  "version": 4,
+  "concept": "同心成桥 / The Bridge We Build",
+  "duration": 196.76,
+  "fps": 24,
+  "width": 1920,
+  "height": 1080,
+  "audio": "assets/bgm.wav",
+  "captions": "captions.json",
+  "scenes": [
+    {
+      "id": "s01-thread",
+      "start": 0,
+      "end": 3.6,
+      "src": "assets/art-v4/01-thread.png",
+      "depthSrc": "assets/depth-v4/01-thread.png",
+      "depthStrength": 0.22,
+      "meaning": "A genuine person is the reason for this journey",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.12,
+          "y": 0.05,
+          "z": 13.5,
+          "look": [
+            -0.12,
+            0.05,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.12,
+          "y": 0.05,
+          "z": 13.0,
+          "look": [
+            0.12,
+            0.05,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": [
+        {
+          "id": "authentic-hock",
+          "src": "assets/references-v3/originals/photo_2026-11-19_17-27-29.jpg",
+          "kind": "photo",
+          "crop": [
+            115,
+            65,
+            390,
+            795
+          ],
+          "x": -3.0,
+          "y": 0.25,
+          "z": 1,
+          "height": 7.5,
+          "border": 0.065
+        }
+      ]
+    },
+    {
+      "id": "s02-thread",
+      "start": 3.6,
+      "end": 7,
+      "src": "assets/art-v4/01-thread.png",
+      "depthSrc": "assets/depth-v4/01-thread.png",
+      "depthStrength": 0.4,
+      "meaning": "Follow the small red strand into paper fibres",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.9,
+          "y": -0.3,
+          "z": 8.7,
+          "look": [
+            -0.8,
+            -0.3,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.7,
+          "y": 0.1,
+          "z": 9.8,
+          "look": [
+            0.6,
+            0,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s03-paper-world",
+      "start": 7,
+      "end": 10.5,
+      "src": "assets/art-v4/02-paper-world.png",
+      "depthSrc": "assets/depth-v4/02-paper-world.png",
+      "depthStrength": 0.4,
+      "meaning": "A folded page opens into a living river",
+      "camera": [
+        {
+          "at": 0,
+          "x": -1.0,
+          "y": 0.3,
+          "z": 16.4,
+          "look": [
+            -0.45,
+            0.2,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.7,
+          "y": 0.15,
+          "z": 9.8,
+          "look": [
+            0.35,
+            0.15,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "luma",
+        "duration": 0.42
+      },
+      "layers": []
+    },
+    {
+      "id": "s04-paper-world",
+      "start": 10.5,
+      "end": 14,
+      "src": "assets/art-v4/02-paper-world.png",
+      "depthSrc": "assets/depth-v4/02-paper-world.png",
+      "depthStrength": 0.4,
+      "meaning": "Discover the larger landscape beyond the fold",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.8,
+          "y": 0.1,
+          "z": 11.1,
+          "look": [
+            -0.35,
+            0.15,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.65,
+          "y": 0.2,
+          "z": 16.4,
+          "look": [
+            0.3,
+            0.2,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s05-incomplete-bridge",
+      "start": 14,
+      "end": 18.2,
+      "src": "assets/art-v4/03-incomplete-bridge.png",
+      "depthSrc": "assets/depth-v4/03-incomplete-bridge.png",
+      "depthStrength": 0.4,
+      "meaning": "Two shores and an unfinished connection",
+      "camera": [
+        {
+          "at": 0,
+          "x": -1.4,
+          "y": 0.12,
+          "z": 12.2,
+          "look": [
+            -0.7,
+            0.12,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 1.3,
+          "y": 0.2,
+          "z": 11.7,
+          "look": [
+            0.65,
+            0.2,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "luma",
+        "duration": 0.42
+      },
+      "layers": [
+        {
+          "id": "foreground-bronze",
+          "src": "assets/art-v4/foreground-arch.png",
+          "kind": "art",
+          "height": 12.5,
+          "x": -4.3,
+          "y": 0.4,
+          "z": 4.5,
+          "from": {
+            "x": -4.3,
+            "y": 0.4,
+            "z": 4.5
+          },
+          "to": {
+            "x": -7.8,
+            "y": 0.4,
+            "z": 4.8
+          },
+          "ease": "linear"
+        }
+      ]
+    },
+    {
+      "id": "s06-incomplete-bridge",
+      "start": 18.2,
+      "end": 22.3,
+      "src": "assets/art-v4/03-incomplete-bridge.png",
+      "depthSrc": "assets/depth-v4/03-incomplete-bridge.png",
+      "depthStrength": 0.4,
+      "meaning": "Song title over the still-unfinished journey",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.8,
+          "y": 0.1,
+          "z": 11.1,
+          "look": [
+            -0.35,
+            0.15,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.65,
+          "y": 0.2,
+          "z": 16.4,
+          "look": [
+            0.3,
+            0.2,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": [],
+      "title": "有你，兄弟同心",
+      "subtitle": "献给拿督斯里谢惠福",
+      "titleStyle": {
+        "color": "#21464a",
+        "fontSize": 64,
+        "left": "55%",
+        "top": "12%",
+        "width": "35%",
+        "background": "transparent",
+        "padding": 0,
+        "border": "none"
+      }
+    },
+    {
+      "id": "s07-first-chapter",
+      "start": 22.3,
+      "end": 25.64,
+      "src": "assets/art-v4/04-first-chapter.png",
+      "depthSrc": "assets/depth-v4/04-first-chapter.png",
+      "depthStrength": 0.4,
+      "meaning": "A date written into a shared chapter",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.9,
+          "y": -0.3,
+          "z": 8.7,
+          "look": [
+            -0.8,
+            -0.3,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.7,
+          "y": 0.1,
+          "z": 9.8,
+          "look": [
+            0.6,
+            0,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "luma",
+        "duration": 0.42
+      },
+      "layers": []
+    },
+    {
+      "id": "s08-first-chapter",
+      "start": 25.64,
+      "end": 29.54,
+      "src": "assets/art-v4/04-first-chapter.png",
+      "depthSrc": "assets/depth-v4/04-first-chapter.png",
+      "depthStrength": 0.4,
+      "meaning": "The river makes room for an encounter",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.8,
+          "y": 0.1,
+          "z": 11.1,
+          "look": [
+            -0.35,
+            0.15,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.65,
+          "y": 0.2,
+          "z": 16.4,
+          "look": [
+            0.3,
+            0.2,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s09-memory-arch",
+      "start": 29.54,
+      "end": 33.02,
+      "src": "assets/art-v4/05-memory-arch.png",
+      "depthSrc": "assets/depth-v4/05-memory-arch.png",
+      "depthStrength": 0.4,
+      "meaning": "The named honoree, from the actual photograph",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.12,
+          "y": 0.05,
+          "z": 13.5,
+          "look": [
+            -0.12,
+            0.05,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.12,
+          "y": 0.05,
+          "z": 13.0,
+          "look": [
+            0.12,
+            0.05,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": [
+        {
+          "id": "authentic-hock",
+          "src": "assets/references-v3/originals/photo_2026-11-19_17-27-29.jpg",
+          "kind": "photo",
+          "crop": [
+            115,
+            65,
+            390,
+            795
+          ],
+          "x": -3.2,
+          "y": 0.25,
+          "z": 1,
+          "height": 7.3,
+          "border": 0.065
+        }
+      ]
+    },
+    {
+      "id": "s10-memory-arch",
+      "start": 33.02,
+      "end": 36.9,
+      "src": "assets/art-v4/05-memory-arch.png",
+      "depthSrc": "assets/depth-v4/05-memory-arch.png",
+      "depthStrength": 0.4,
+      "meaning": "A personal chapter opens onto the world",
+      "camera": [
+        {
+          "at": 0,
+          "x": -1.4,
+          "y": 0.12,
+          "z": 12.2,
+          "look": [
+            -0.7,
+            0.12,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 1.3,
+          "y": 0.2,
+          "z": 11.7,
+          "look": [
+            0.65,
+            0.2,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": [
+        {
+          "id": "foreground-bronze",
+          "src": "assets/art-v4/foreground-arch.png",
+          "kind": "art",
+          "height": 12.5,
+          "x": -4.3,
+          "y": 0.4,
+          "z": 4.5,
+          "from": {
+            "x": -4.3,
+            "y": 0.4,
+            "z": 4.5
+          },
+          "to": {
+            "x": -7.8,
+            "y": 0.4,
+            "z": 4.8
+          },
+          "ease": "linear"
+        }
+      ]
+    },
+    {
+      "id": "s11-shelter",
+      "start": 36.9,
+      "end": 40.4,
+      "src": "assets/art-v4/06-shelter.png",
+      "depthSrc": "assets/depth-v4/06-shelter.png",
+      "depthStrength": 0.4,
+      "meaning": "Strong supports shelter the small living world",
+      "camera": [
+        {
+          "at": 0,
+          "x": -1.0,
+          "y": 0.3,
+          "z": 16.4,
+          "look": [
+            -0.45,
+            0.2,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.7,
+          "y": 0.15,
+          "z": 9.8,
+          "look": [
+            0.35,
+            0.15,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s12-shelter",
+      "start": 40.4,
+      "end": 43.48,
+      "src": "assets/art-v4/06-shelter.png",
+      "depthSrc": "assets/depth-v4/06-shelter.png",
+      "depthStrength": 0.4,
+      "meaning": "Warm homes held within the arch",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.8,
+          "y": 0.1,
+          "z": 11.1,
+          "look": [
+            -0.35,
+            0.15,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.65,
+          "y": 0.2,
+          "z": 16.4,
+          "look": [
+            0.3,
+            0.2,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s13-warm-homes",
+      "start": 43.48,
+      "end": 47.56,
+      "src": "assets/art-v4/07-warm-homes.png",
+      "depthSrc": "assets/depth-v4/07-warm-homes.png",
+      "depthStrength": 0.4,
+      "meaning": "Affection reaches the homes along the path",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.9,
+          "y": -0.3,
+          "z": 8.7,
+          "look": [
+            -0.8,
+            -0.3,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.7,
+          "y": 0.1,
+          "z": 9.8,
+          "look": [
+            0.6,
+            0,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s14-warm-homes",
+      "start": 47.56,
+      "end": 51.66,
+      "src": "assets/art-v4/07-warm-homes.png",
+      "depthSrc": "assets/depth-v4/07-warm-homes.png",
+      "depthStrength": 0.4,
+      "meaning": "Care connects the whole hillside",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.8,
+          "y": 0.1,
+          "z": 11.1,
+          "look": [
+            -0.35,
+            0.15,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.65,
+          "y": 0.2,
+          "z": 16.4,
+          "look": [
+            0.3,
+            0.2,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s15-confluence",
+      "start": 51.66,
+      "end": 54.5,
+      "src": "assets/art-v4/08-confluence.png",
+      "depthSrc": "assets/depth-v4/08-confluence.png",
+      "depthStrength": 0.4,
+      "meaning": "Separate paths approach each other",
+      "camera": [
+        {
+          "at": 0,
+          "x": -1.4,
+          "y": 0.12,
+          "z": 12.2,
+          "look": [
+            -0.7,
+            0.12,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 1.3,
+          "y": 0.2,
+          "z": 11.7,
+          "look": [
+            0.65,
+            0.2,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "luma",
+        "duration": 0.42
+      },
+      "layers": []
+    },
+    {
+      "id": "s16-confluence",
+      "start": 54.5,
+      "end": 58.18,
+      "src": "assets/art-v4/08-confluence.png",
+      "depthSrc": "assets/depth-v4/08-confluence.png",
+      "depthStrength": 0.4,
+      "meaning": "The tributaries become one",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.8,
+          "y": 0.1,
+          "z": 11.1,
+          "look": [
+            -0.35,
+            0.15,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.65,
+          "y": 0.2,
+          "z": 16.4,
+          "look": [
+            0.3,
+            0.2,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s17-shared-storm",
+      "start": 58.18,
+      "end": 62.34,
+      "src": "assets/art-v4/09-shared-storm.png",
+      "depthSrc": "assets/depth-v4/09-shared-storm.png",
+      "depthStrength": 0.4,
+      "meaning": "The weight of a storm becomes visible",
+      "camera": [
+        {
+          "at": 0,
+          "x": -1.0,
+          "y": 0.3,
+          "z": 16.4,
+          "look": [
+            -0.45,
+            0.2,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.7,
+          "y": 0.15,
+          "z": 9.8,
+          "look": [
+            0.35,
+            0.15,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "luma",
+        "duration": 0.42
+      },
+      "layers": [
+        {
+          "id": "foreground-bronze",
+          "src": "assets/art-v4/foreground-arch.png",
+          "kind": "art",
+          "height": 12.5,
+          "x": -4.3,
+          "y": 0.4,
+          "z": 4.5,
+          "from": {
+            "x": -4.3,
+            "y": 0.4,
+            "z": 4.5
+          },
+          "to": {
+            "x": -7.8,
+            "y": 0.4,
+            "z": 4.8
+          },
+          "ease": "linear"
+        }
+      ]
+    },
+    {
+      "id": "s18-shared-storm",
+      "start": 62.34,
+      "end": 66.0,
+      "src": "assets/art-v4/09-shared-storm.png",
+      "depthSrc": "assets/depth-v4/09-shared-storm.png",
+      "depthStrength": 0.4,
+      "meaning": "Several supports carry the same burden",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.8,
+          "y": 0.1,
+          "z": 11.1,
+          "look": [
+            -0.35,
+            0.15,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.65,
+          "y": 0.2,
+          "z": 16.4,
+          "look": [
+            0.3,
+            0.2,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s19-quiet-generosity",
+      "start": 66.0,
+      "end": 69.46,
+      "src": "assets/art-v4/10-quiet-generosity.png",
+      "depthSrc": "assets/depth-v4/10-quiet-generosity.png",
+      "depthStrength": 0.4,
+      "meaning": "Quiet generosity at a human scale",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.9,
+          "y": -0.3,
+          "z": 8.7,
+          "look": [
+            -0.8,
+            -0.3,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.7,
+          "y": 0.1,
+          "z": 9.8,
+          "look": [
+            0.6,
+            0,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "luma",
+        "duration": 0.42
+      },
+      "layers": []
+    },
+    {
+      "id": "s20-quiet-generosity",
+      "start": 69.46,
+      "end": 73.4,
+      "src": "assets/art-v4/10-quiet-generosity.png",
+      "depthSrc": "assets/depth-v4/10-quiet-generosity.png",
+      "depthStrength": 0.4,
+      "meaning": "A small light rests inside shelter",
+      "camera": [
+        {
+          "at": 0,
+          "x": -1.4,
+          "y": 0.12,
+          "z": 12.2,
+          "look": [
+            -0.7,
+            0.12,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 1.3,
+          "y": 0.2,
+          "z": 11.7,
+          "look": [
+            0.65,
+            0.2,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s21-enduring-braid",
+      "start": 73.4,
+      "end": 77.1,
+      "src": "assets/art-v4/11-enduring-braid.png",
+      "depthSrc": "assets/depth-v4/11-enduring-braid.png",
+      "depthStrength": 0.4,
+      "meaning": "Many fibres become a stronger connection",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.9,
+          "y": -0.3,
+          "z": 8.7,
+          "look": [
+            -0.8,
+            -0.3,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.7,
+          "y": 0.1,
+          "z": 9.8,
+          "look": [
+            0.6,
+            0,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "luma",
+        "duration": 0.42
+      },
+      "layers": []
+    },
+    {
+      "id": "s22-enduring-braid",
+      "start": 77.1,
+      "end": 81.04,
+      "src": "assets/art-v4/11-enduring-braid.png",
+      "depthSrc": "assets/depth-v4/11-enduring-braid.png",
+      "depthStrength": 0.4,
+      "meaning": "The braid endures into the next chapter",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.8,
+          "y": 0.1,
+          "z": 11.1,
+          "look": [
+            -0.35,
+            0.15,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.65,
+          "y": 0.2,
+          "z": 16.4,
+          "look": [
+            0.3,
+            0.2,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s23-bridge-anchor",
+      "start": 81.04,
+      "end": 84.92,
+      "src": "assets/art-v4/12-bridge-anchor.png",
+      "depthSrc": "assets/depth-v4/12-bridge-anchor.png",
+      "depthStrength": 0.4,
+      "meaning": "Hock Siew，Hock Siew",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.12,
+          "y": 0.05,
+          "z": 13.5,
+          "look": [
+            -0.12,
+            0.05,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.12,
+          "y": 0.05,
+          "z": 13.0,
+          "look": [
+            0.12,
+            0.05,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": [
+        {
+          "id": "authentic-hock",
+          "src": "assets/references-v3/originals/photo_2026-11-19_17-27-29.jpg",
+          "kind": "photo",
+          "crop": [
+            115,
+            65,
+            390,
+            795
+          ],
+          "x": 3.3,
+          "y": 0.25,
+          "z": 1,
+          "height": 7.0,
+          "border": 0.065
+        }
+      ]
+    },
+    {
+      "id": "s24-bridge-anchor",
+      "start": 84.92,
+      "end": 86.78,
+      "src": "assets/art-v4/12-bridge-anchor.png",
+      "depthSrc": "assets/depth-v4/12-bridge-anchor.png",
+      "depthStrength": 0.4,
+      "meaning": "兄弟把你记在心头",
+      "camera": [
+        {
+          "at": 0,
+          "x": -4,
+          "y": -1,
+          "z": 9.5,
+          "look": [
+            -4,
+            -1,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": -3.2,
+          "y": -1.0,
+          "z": 10.2,
+          "look": [
+            -3.2,
+            -1.0,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s25-bridge-anchor",
+      "start": 86.78,
+      "end": 88.64,
+      "src": "assets/art-v4/12-bridge-anchor.png",
+      "depthSrc": "assets/depth-v4/12-bridge-anchor.png",
+      "depthStrength": 0.4,
+      "meaning": "你的宽容，你的守候",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.5,
+          "y": -1.3,
+          "z": 10,
+          "look": [
+            -0.5,
+            -1.3,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.30000000000000004,
+          "y": -1.3,
+          "z": 10.7,
+          "look": [
+            0.30000000000000004,
+            -1.3,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s26-bridge-anchor",
+      "start": 88.64,
+      "end": 90.42,
+      "src": "assets/art-v4/12-bridge-anchor.png",
+      "depthSrc": "assets/depth-v4/12-bridge-anchor.png",
+      "depthStrength": 0.4,
+      "meaning": "让大家并肩一起走",
+      "camera": [
+        {
+          "at": 0,
+          "x": 4,
+          "y": 1,
+          "z": 10.5,
+          "look": [
+            4,
+            1,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 4.8,
+          "y": 1.0,
+          "z": 11.2,
+          "look": [
+            4.8,
+            1.0,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s27-bridge-anchor",
+      "start": 90.42,
+      "end": 92.3,
+      "src": "assets/art-v4/12-bridge-anchor.png",
+      "depthSrc": "assets/depth-v4/12-bridge-anchor.png",
+      "depthStrength": 0.4,
+      "meaning": "Hock Siew，Hock Siew",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.12,
+          "y": 0.05,
+          "z": 13.5,
+          "look": [
+            -0.12,
+            0.05,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.12,
+          "y": 0.05,
+          "z": 13.0,
+          "look": [
+            0.12,
+            0.05,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": [
+        {
+          "id": "authentic-hock",
+          "src": "assets/photos/brothers.jpg",
+          "kind": "photo",
+          "crop": [
+            482,
+            120,
+            286,
+            700
+          ],
+          "x": 3.3,
+          "y": 0.25,
+          "z": 1,
+          "height": 7.0,
+          "border": 0.065
+        }
+      ]
+    },
+    {
+      "id": "s28-bridge-anchor",
+      "start": 92.3,
+      "end": 94.34,
+      "src": "assets/art-v4/12-bridge-anchor.png",
+      "depthSrc": "assets/depth-v4/12-bridge-anchor.png",
+      "depthStrength": 0.4,
+      "meaning": "情义细水永远长流",
+      "camera": [
+        {
+          "at": 0,
+          "x": 4,
+          "y": -2.0,
+          "z": 10.5,
+          "look": [
+            4,
+            -2.0,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 4.8,
+          "y": -2.0,
+          "z": 11.2,
+          "look": [
+            4.8,
+            -2.0,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s29-coast",
+      "start": 94.34,
+      "end": 97.14,
+      "src": "assets/art-v4/13-coast.png",
+      "depthSrc": "assets/depth-v4/13-coast.png",
+      "depthStrength": 0.4,
+      "meaning": "从浅顶唱到马来西亚",
+      "camera": [
+        {
+          "at": 0,
+          "x": -1.4,
+          "y": 0.12,
+          "z": 12.2,
+          "look": [
+            -0.7,
+            0.12,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 1.3,
+          "y": 0.2,
+          "z": 11.7,
+          "look": [
+            0.65,
+            0.2,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "luma",
+        "duration": 0.42
+      },
+      "layers": []
+    },
+    {
+      "id": "s30-coast",
+      "start": 97.14,
+      "end": 102.92,
+      "src": "assets/art-v4/13-coast.png",
+      "depthSrc": "assets/depth-v4/13-coast.png",
+      "depthStrength": 0.4,
+      "meaning": "愿这份真心传到更远的地方",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.8,
+          "y": 0.1,
+          "z": 11.1,
+          "look": [
+            -0.35,
+            0.15,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.65,
+          "y": 0.2,
+          "z": 16.4,
+          "look": [
+            0.3,
+            0.2,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s31-through-arches",
+      "start": 102.92,
+      "end": 106.5,
+      "src": "assets/art-v4/14-through-arches.png",
+      "depthSrc": "assets/depth-v4/14-through-arches.png",
+      "depthStrength": 0.4,
+      "meaning": "Enter the first near bronze gateway",
+      "camera": [
+        {
+          "at": 0,
+          "x": -1.0,
+          "y": 0.3,
+          "z": 16.4,
+          "look": [
+            -0.45,
+            0.2,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.7,
+          "y": 0.15,
+          "z": 9.8,
+          "look": [
+            0.35,
+            0.15,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "luma",
+        "duration": 0.42
+      },
+      "layers": [
+        {
+          "id": "foreground-bronze",
+          "src": "assets/art-v4/foreground-arch.png",
+          "kind": "art",
+          "height": 12.5,
+          "x": -4.3,
+          "y": 0.4,
+          "z": 4.5,
+          "from": {
+            "x": -4.3,
+            "y": 0.4,
+            "z": 4.5
+          },
+          "to": {
+            "x": -7.8,
+            "y": 0.4,
+            "z": 4.8
+          },
+          "ease": "linear"
+        }
+      ]
+    },
+    {
+      "id": "s32-through-arches",
+      "start": 106.5,
+      "end": 110.4,
+      "src": "assets/art-v4/14-through-arches.png",
+      "depthSrc": "assets/depth-v4/14-through-arches.png",
+      "depthStrength": 0.4,
+      "meaning": "Travel through the nested architecture",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.9,
+          "y": -0.3,
+          "z": 8.7,
+          "look": [
+            -0.8,
+            -0.3,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.7,
+          "y": 0.1,
+          "z": 9.8,
+          "look": [
+            0.6,
+            0,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": [
+        {
+          "id": "foreground-bronze",
+          "src": "assets/art-v4/foreground-arch.png",
+          "kind": "art",
+          "height": 12.5,
+          "x": -4.3,
+          "y": 0.4,
+          "z": 4.5,
+          "from": {
+            "x": -4.3,
+            "y": 0.4,
+            "z": 4.5
+          },
+          "to": {
+            "x": -7.8,
+            "y": 0.4,
+            "z": 4.8
+          },
+          "ease": "linear"
+        }
+      ]
+    },
+    {
+      "id": "s33-through-arches",
+      "start": 110.4,
+      "end": 114.9,
+      "src": "assets/art-v4/14-through-arches.png",
+      "depthSrc": "assets/depth-v4/14-through-arches.png",
+      "depthStrength": 0.4,
+      "meaning": "Arches become the bridge seen from within",
+      "camera": [
+        {
+          "at": 0,
+          "x": -1.4,
+          "y": 0.12,
+          "z": 12.2,
+          "look": [
+            -0.7,
+            0.12,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 1.3,
+          "y": 0.2,
+          "z": 11.7,
+          "look": [
+            0.65,
+            0.2,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s34-through-arches",
+      "start": 114.9,
+      "end": 119.42,
+      "src": "assets/art-v4/14-through-arches.png",
+      "depthSrc": "assets/depth-v4/14-through-arches.png",
+      "depthStrength": 0.4,
+      "meaning": "Emerge from depth toward living green",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.8,
+          "y": 0.1,
+          "z": 11.1,
+          "look": [
+            -0.35,
+            0.15,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.65,
+          "y": 0.2,
+          "z": 16.4,
+          "look": [
+            0.3,
+            0.2,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": [
+        {
+          "id": "foreground-bronze",
+          "src": "assets/art-v4/foreground-arch.png",
+          "kind": "art",
+          "height": 12.5,
+          "x": -4.3,
+          "y": 0.4,
+          "z": 4.5,
+          "from": {
+            "x": -4.3,
+            "y": 0.4,
+            "z": 4.5
+          },
+          "to": {
+            "x": -7.8,
+            "y": 0.4,
+            "z": 4.8
+          },
+          "ease": "linear"
+        }
+      ]
+    },
+    {
+      "id": "s35-gratitude-garden",
+      "start": 119.42,
+      "end": 122.9,
+      "src": "assets/art-v4/15-gratitude-garden.png",
+      "depthSrc": "assets/depth-v4/15-gratitude-garden.png",
+      "depthStrength": 0.4,
+      "meaning": "今天我们聚在你身旁",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.12,
+          "y": 0.05,
+          "z": 13.5,
+          "look": [
+            -0.12,
+            0.05,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.12,
+          "y": 0.05,
+          "z": 13.0,
+          "look": [
+            0.12,
+            0.05,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "luma",
+        "duration": 0.42
+      },
+      "layers": [
+        {
+          "id": "authentic-hock",
+          "src": "assets/references-v3/originals/photo_2026-11-19_17-27-29.jpg",
+          "kind": "photo",
+          "crop": [
+            115,
+            65,
+            390,
+            795
+          ],
+          "x": -3.7,
+          "y": 0.25,
+          "z": 1,
+          "height": 6.7,
+          "border": 0.065
+        }
+      ]
+    },
+    {
+      "id": "s36-gratitude-garden",
+      "start": 122.9,
+      "end": 126.64,
+      "src": "assets/art-v4/15-gratitude-garden.png",
+      "depthSrc": "assets/depth-v4/15-gratitude-garden.png",
+      "depthStrength": 0.4,
+      "meaning": "把感谢都唱成祝愿",
+      "camera": [
+        {
+          "at": 0,
+          "x": 4.2,
+          "y": 0.0,
+          "z": 11.0,
+          "look": [
+            4.2,
+            0.0,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 4.8,
+          "y": 0.0,
+          "z": 11.3,
+          "look": [
+            4.8,
+            0.0,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s37-gratitude-garden",
+      "start": 126.64,
+      "end": 130.5,
+      "src": "assets/art-v4/15-gratitude-garden.png",
+      "depthSrc": "assets/depth-v4/15-gratitude-garden.png",
+      "depthStrength": 0.4,
+      "meaning": "愿你健康，愿你平安",
+      "camera": [
+        {
+          "at": 0,
+          "x": 4.4,
+          "y": 0.2,
+          "z": 11.1,
+          "look": [
+            4.4,
+            0.2,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 4.800000000000001,
+          "y": 0.8,
+          "z": 11.6,
+          "look": [
+            4.800000000000001,
+            0.8,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s38-gratitude-garden",
+      "start": 130.5,
+      "end": 133.96,
+      "src": "assets/art-v4/15-gratitude-garden.png",
+      "depthSrc": "assets/depth-v4/15-gratitude-garden.png",
+      "depthStrength": 0.4,
+      "meaning": "每个明天都有笑颜",
+      "camera": [
+        {
+          "at": 0,
+          "x": 4.1,
+          "y": 0,
+          "z": 11.7,
+          "look": [
+            4.1,
+            0,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 4.3999999999999995,
+          "y": 0.0,
+          "z": 11.899999999999999,
+          "look": [
+            4.3999999999999995,
+            0.0,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": [
+        {
+          "id": "authentic-hock",
+          "src": "assets/photos/seaside.jpg",
+          "kind": "photo",
+          "crop": [
+            0,
+            210,
+            535,
+            960
+          ],
+          "x": 3.4,
+          "y": 0.25,
+          "z": 1,
+          "height": 6.6,
+          "border": 0.065
+        }
+      ]
+    },
+    {
+      "id": "s39-tea-reflection",
+      "start": 133.96,
+      "end": 137.8,
+      "src": "assets/art-v4/16-tea-reflection.png",
+      "depthSrc": "assets/depth-v4/16-tea-reflection.png",
+      "depthStrength": 0.4,
+      "meaning": "你为大家付出的点滴",
+      "camera": [
+        {
+          "at": 0,
+          "x": 0.5,
+          "y": 2.0,
+          "z": 9.0,
+          "look": [
+            0.5,
+            2.0,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 1.5,
+          "y": 1.5,
+          "z": 9.8,
+          "look": [
+            1.5,
+            1.5,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "luma",
+        "duration": 0.42
+      },
+      "layers": []
+    },
+    {
+      "id": "s40-tea-reflection",
+      "start": 137.8,
+      "end": 141.26,
+      "src": "assets/art-v4/16-tea-reflection.png",
+      "depthSrc": "assets/depth-v4/16-tea-reflection.png",
+      "depthStrength": 0.4,
+      "meaning": "我们一件一件记心间",
+      "camera": [
+        {
+          "at": 0,
+          "x": 1.5,
+          "y": 1.5,
+          "z": 9.8,
+          "look": [
+            1.5,
+            1.5,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.5,
+          "y": 2.0,
+          "z": 9.3,
+          "look": [
+            0.5,
+            2.0,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s41-tea-reflection",
+      "start": 141.26,
+      "end": 144.74,
+      "src": "assets/art-v4/16-tea-reflection.png",
+      "depthSrc": "assets/depth-v4/16-tea-reflection.png",
+      "depthStrength": 0.22,
+      "meaning": "这一杯敬相识的缘",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.3,
+          "y": 0,
+          "z": 16.4,
+          "look": [
+            -0.3,
+            0,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.3,
+          "y": 0.0,
+          "z": 15.7,
+          "look": [
+            0.3,
+            0.0,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s42-tea-reflection",
+      "start": 144.74,
+      "end": 149.32,
+      "src": "assets/art-v4/16-tea-reflection.png",
+      "depthSrc": "assets/depth-v4/16-tea-reflection.png",
+      "depthStrength": 0.4,
+      "meaning": "这一首唱不变的情",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.8,
+          "y": 0.1,
+          "z": 11.1,
+          "look": [
+            -0.35,
+            0.15,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.65,
+          "y": 0.2,
+          "z": 16.4,
+          "look": [
+            0.3,
+            0.2,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s43-climax",
+      "start": 149.32,
+      "end": 152.92,
+      "src": "assets/art-v4/17-climax.png",
+      "depthSrc": "assets/depth-v4/17-climax.png",
+      "depthStrength": 0.4,
+      "meaning": "Hock Siew，Hock Siew",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.12,
+          "y": 0.05,
+          "z": 13.5,
+          "look": [
+            -0.12,
+            0.05,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.12,
+          "y": 0.05,
+          "z": 13.0,
+          "look": [
+            0.12,
+            0.05,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": [
+        {
+          "id": "authentic-hock",
+          "src": "assets/references-v3/originals/photo_2026-11-19_17-27-29.jpg",
+          "kind": "photo",
+          "crop": [
+            115,
+            65,
+            390,
+            795
+          ],
+          "x": 3.3,
+          "y": 0.25,
+          "z": 1,
+          "height": 7.0,
+          "border": 0.065
+        }
+      ]
+    },
+    {
+      "id": "s44-climax",
+      "start": 152.92,
+      "end": 154.8,
+      "src": "assets/art-v4/17-climax.png",
+      "depthSrc": "assets/depth-v4/17-climax.png",
+      "depthStrength": 0.4,
+      "meaning": "兄弟同心，携手向前走",
+      "camera": [
+        {
+          "at": 0,
+          "x": -4.5,
+          "y": -1.0,
+          "z": 9.2,
+          "look": [
+            -4.5,
+            -1.0,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": -3.5,
+          "y": -1.0,
+          "z": 10.0,
+          "look": [
+            -3.5,
+            -1.0,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s45-climax",
+      "start": 154.8,
+      "end": 156.64,
+      "src": "assets/art-v4/17-climax.png",
+      "depthSrc": "assets/depth-v4/17-climax.png",
+      "depthStrength": 0.4,
+      "meaning": "拿督斯里谢惠福",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.12,
+          "y": 0.05,
+          "z": 13.5,
+          "look": [
+            -0.12,
+            0.05,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.12,
+          "y": 0.05,
+          "z": 13.0,
+          "look": [
+            0.12,
+            0.05,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": [
+        {
+          "id": "authentic-hock",
+          "src": "assets/photos/brothers.jpg",
+          "kind": "photo",
+          "crop": [
+            482,
+            120,
+            286,
+            700
+          ],
+          "x": 3.3,
+          "y": 0.25,
+          "z": 1,
+          "height": 7.0,
+          "border": 0.065
+        }
+      ]
+    },
+    {
+      "id": "s46-climax",
+      "start": 156.64,
+      "end": 158.4,
+      "src": "assets/art-v4/17-climax.png",
+      "depthSrc": "assets/depth-v4/17-climax.png",
+      "depthStrength": 0.4,
+      "meaning": "这份敬爱藏在心头",
+      "camera": [
+        {
+          "at": 0,
+          "x": -6.8,
+          "y": 1.0,
+          "z": 9.6,
+          "look": [
+            -6.8,
+            1.0,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": -6.2,
+          "y": 1.0,
+          "z": 10.299999999999999,
+          "look": [
+            -6.2,
+            1.0,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s47-climax",
+      "start": 158.4,
+      "end": 160.44,
+      "src": "assets/art-v4/17-climax.png",
+      "depthSrc": "assets/depth-v4/17-climax.png",
+      "depthStrength": 0.4,
+      "meaning": "Hock Siew，Hock Siew",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.12,
+          "y": 0.05,
+          "z": 13.5,
+          "look": [
+            -0.12,
+            0.05,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.12,
+          "y": 0.05,
+          "z": 13.0,
+          "look": [
+            0.12,
+            0.05,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": [
+        {
+          "id": "authentic-hock",
+          "src": "assets/references-v3/originals/photo_2026-11-19_17-27-29.jpg",
+          "kind": "photo",
+          "crop": [
+            115,
+            65,
+            390,
+            795
+          ],
+          "x": 3.3,
+          "y": 0.25,
+          "z": 1,
+          "height": 7.0,
+          "border": 0.065
+        }
+      ]
+    },
+    {
+      "id": "s48-climax",
+      "start": 160.44,
+      "end": 162.1,
+      "src": "assets/art-v4/17-climax.png",
+      "depthSrc": "assets/depth-v4/17-climax.png",
+      "depthStrength": 0.4,
+      "meaning": "风雨同路，情义长留",
+      "camera": [
+        {
+          "at": 0,
+          "x": 4.5,
+          "y": -1.7,
+          "z": 9.4,
+          "look": [
+            4.5,
+            -1.7,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 5.3,
+          "y": -1.7,
+          "z": 10.0,
+          "look": [
+            5.3,
+            -1.7,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s49-climax",
+      "start": 162.1,
+      "end": 164.08,
+      "src": "assets/art-v4/17-climax.png",
+      "depthSrc": "assets/depth-v4/17-climax.png",
+      "depthStrength": 0.4,
+      "meaning": "愿你平安，幸福永久",
+      "camera": [
+        {
+          "at": 0,
+          "x": 4.0,
+          "y": 0.4,
+          "z": 11.0,
+          "look": [
+            4.0,
+            0.4,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 4.2,
+          "y": 1.1,
+          "z": 11.7,
+          "look": [
+            4.2,
+            1.1,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s50-climax",
+      "start": 164.08,
+      "end": 170.1,
+      "src": "assets/art-v4/17-climax.png",
+      "depthSrc": "assets/depth-v4/17-climax.png",
+      "depthStrength": 0.4,
+      "meaning": "兄弟相伴，一起到白头！",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.8,
+          "y": 0.1,
+          "z": 11.1,
+          "look": [
+            -0.35,
+            0.15,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.65,
+          "y": 0.2,
+          "z": 16.4,
+          "look": [
+            0.3,
+            0.2,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s51-climax",
+      "start": 170.1,
+      "end": 175.2,
+      "src": "assets/art-v4/17-climax.png",
+      "depthSrc": "assets/depth-v4/17-climax.png",
+      "depthStrength": 0.4,
+      "meaning": "The connected world continues beyond the final words",
+      "camera": [
+        {
+          "at": 0,
+          "x": 0.7,
+          "y": 0.5,
+          "z": 16.0,
+          "look": [
+            0.7,
+            0.5,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.95,
+          "y": 0.75,
+          "z": 16.7,
+          "look": [
+            0.95,
+            0.75,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s52-coast",
+      "start": 175.2,
+      "end": 180.5,
+      "src": "assets/art-v4/13-coast.png",
+      "depthSrc": "assets/depth-v4/13-coast.png",
+      "depthStrength": 0.4,
+      "meaning": "Follow the connection back from the open coast",
+      "camera": [
+        {
+          "at": 0,
+          "x": -1.4,
+          "y": 0.12,
+          "z": 12.2,
+          "look": [
+            -0.7,
+            0.12,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 1.3,
+          "y": 0.2,
+          "z": 11.7,
+          "look": [
+            0.65,
+            0.2,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": []
+    },
+    {
+      "id": "s53-memory-return",
+      "start": 180.5,
+      "end": 185.1,
+      "src": "assets/art-v4/18-memory-return.png",
+      "depthSrc": "assets/depth-v4/18-memory-return.png",
+      "depthStrength": 0.4,
+      "meaning": "The immense world returns to a small real memory",
+      "camera": [
+        {
+          "at": 0,
+          "x": -0.8,
+          "y": 0.1,
+          "z": 11.1,
+          "look": [
+            -0.35,
+            0.15,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0.65,
+          "y": 0.2,
+          "z": 16.4,
+          "look": [
+            0.3,
+            0.2,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "luma",
+        "duration": 0.42
+      },
+      "layers": []
+    },
+    {
+      "id": "s54-memory-return",
+      "start": 185.1,
+      "end": 196.76,
+      "src": "assets/art-v4/18-memory-return.png",
+      "depthSrc": "assets/depth-v4/18-memory-return.png",
+      "depthStrength": 0,
+      "meaning": "A warm dedication to a living person",
+      "camera": [
+        {
+          "at": 0,
+          "x": 0,
+          "y": 0,
+          "z": 13.3,
+          "look": [
+            0.0,
+            0.0,
+            0
+          ]
+        },
+        {
+          "at": 1,
+          "x": 0,
+          "y": 0,
+          "z": 13.3,
+          "look": [
+            0.0,
+            0.0,
+            0
+          ]
+        }
+      ],
+      "silk": false,
+      "occluder": "none",
+      "transition": {
+        "kind": "cut",
+        "duration": 0.48
+      },
+      "layers": [
+        {
+          "id": "authentic-hock",
+          "src": "assets/references-v3/originals/photo_2026-11-19_17-27-29.jpg",
+          "kind": "photo",
+          "crop": [
+            115,
+            65,
+            390,
+            795
+          ],
+          "x": 5.3,
+          "y": 0.25,
+          "z": 1,
+          "height": 7.1,
+          "border": 0.065
+        }
+      ],
+      "title": "有你，兄弟同心。\n愿你平安，幸福永久。\n兄弟情义 · 一路同行",
+      "subtitle": "献给拿督斯里谢惠福\nHock Siew",
+      "titleStyle": {
+        "color": "#21464a",
+        "fontSize": 48,
+        "left": "10%",
+        "top": "18%",
+        "width": "42%",
+        "background": "transparent",
+        "padding": 0,
+        "border": "none"
+      }
+    }
+  ],
+  "original_audio_sha256": "60ee65f074f36b2d31660bee652e111cd84538e51b74a0685cbd895291cd6547",
+  "canonical_caption_sha256": "6d3a6b8f711526f7944b5d391cb16340fd1e17db761d1dd41b4d76598a75bd10",
+  "pacing": "Frozen vocal phrase anchors; no unverified BPM claim.",
+  "native_ai_video": false,
+  "generated_humans": false,
+  "identity_policy": "Original file bytes, literal crops, rigid flat photo planes; no face/body generation or displacement."
+}

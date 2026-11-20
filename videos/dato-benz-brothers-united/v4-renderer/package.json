@@ -1,0 +1,12 @@
+{
+  "name": "hock-siew-v4-image-film-renderer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs --plan ../edit-plan-v4.json",
+    "check": "npx --yes hyperframes@0.9.72 check --timeout 60000 --json",
+    "preview": "npx --yes hyperframes@0.9.72 preview",
+    "smoke": "node smoke.mjs",
+    "render": "powershell -NoProfile -ExecutionPolicy Bypass -File render.ps1"
+  }
+}

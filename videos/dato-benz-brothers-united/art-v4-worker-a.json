@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "worker": "A",
+  "date": "2026-11-20",
+  "purpose": "Six image-only symbolic cinematic backgrounds for the Hock Siew tribute V4.",
+  "tool": "image_gen.imagegen",
+  "execution_mode": "built-in; no API/CLI fallback; no Runway or provider purchases",
+  "reference": {
+    "path": "assets/art-v4/12-bridge-anchor.png",
+    "absolute_path": "C:\\Users\\Aman\\OneDrive\\Desktop\\Freelance\\Obsidian\\videos\\dato-benz-brothers-united\\assets\\art-v4\\12-bridge-anchor.png",
+    "role": "Style/material/palette/lighting reference only; viewed with view_image before generation; composition not copied.",
+    "sha256": "ce2d422ff7695462f1659bd29c8228b080b6fedb9e299173c65ade41a3933218",
+    "dimensions": [
+      1672,
+      941
+    ]
+  },
+  "constraints": {
+    "human_reference_photos_used": false,
+    "generate_people": false,
+    "generate_text": false,
+    "transparent_background": false,
+    "one_distinct_builtin_call_per_asset": true,
+    "source_images_preserved": true
+  },
+  "native_output_note": "Each prompt requested 1920x1080 16:9. Built-in tool returned 1672x941 PNGs, near 16:9. These are unmodified generated originals copied to workspace; 1080p film export must normalize framing/scale in the renderer.",
+  "assets": [
+    {
+      "path": "assets/art-v4/01-thread.png",
+      "source_path": "C:\\Users\\Aman\\.codex-cli\\generated_images\\01a1f744-4167-7001-8769-289e6c87addd\\exec-6d06d225-98e7-4347-8bb4-4710931c6239.png",
+      "sha256": "11fdba266767c8c38461e471ea6905abb864660cfc450299b42c2b7d8b265145",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "bytes": 2235808,
+      "prompt": "Use case: stylized-concept. Asset: cinematic 16:9 film still, 1920x1080 landscape. Create a NEW distinct scene, using the attached image ONLY as STYLE reference for tactile ivory paper, aged bronze, ink blue-green/indigo accents and warm sunlight; do not repeat its bridge or composition. Scene 01 THE THREAD: an extreme macro landscape of a single thin cinnabar-red silk thread sweeping from the lower right across softly folded rich ivory handmade paper toward the upper left, delicate individual fibres and silk weave, a small weathered bronze binding detail at the far right edge. Grazing golden light and deep cinematic soft shadows make the paper terrain sculptural and expensive. Composition: left-centre 45 percent quiet broad flat ivory plane with subtle paper texture, fully empty to receive an unchanged real photo added later in code; arrange thread and relief details at its perimeter. Shallow macro focus at far foreground and distance but quiet plane sharp enough. Full bleed, no designed frame or picture placeholder. Elegant Chinese poetic art direction, touchable practical miniature feel, not a graphic slide. Absolutely no people, faces, bodies, hands, statues, silhouettes, letters, numbers, writing, calligraphy, labels, logos or watermark. Do not invent photographs or frames in the scene. One single restrained red silk line, no extra ribbons. Output only the artwork.",
+      "referenced_image_paths": [
+        "assets/art-v4/12-bridge-anchor.png"
+      ],
+      "visual_inspection": "Accepted after viewing built-in result: extreme macro silk and bronze at right edge; broad quiet ivory left/centre plane; blue-green paper ridge edges; no visible person or writing.",
+      "status": "ready_for_parent_review"
+    },
+    {
+      "path": "assets/art-v4/02-paper-world.png",
+      "source_path": "C:\\Users\\Aman\\.codex-cli\\generated_images\\01a1f744-4167-7001-8769-289e6c87addd\\exec-21f5da1a-3249-47e6-8714-9983884de97d.png",
+      "sha256": "166a1feba33c79eadaf6185976be148a36a93d56ae1556d9e8ee26a6b75b6e08",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "bytes": 3132469,
+      "prompt": "Use case: stylized-concept. Asset: cinematic 16:9 film still, 1920x1080 landscape. Create NEW scene 02 PAPER WORLD, using attached reference ONLY for tactile handmade ivory paper fibres, aged bronze accents, indigo/mineral blue-green mountains, golden light. Do not copy its bridge or viewpoint. Scene: a wide unrolling ivory sheet seen obliquely from high bird's-eye, its curling folds magically becoming an immense miniature river landscape cut from paper, lush terraced mineral-blue mountain ridges with ink-dark pine groves, winding reflective ivory-blue river and mist tucked between strata. The sheet curls visibly at the bottom-right edge, with a very small bronze spool/binding detail there; one restrained thin cinnabar silk line follows a single sinuous path from foreground into the open distance, connecting the worlds. Broad immersive landscape, diagonally across the full 16:9 frame, tactile practical miniature sculpture photographed with subtle macro depth and atmospheric perspective, rich luminous ivory-gold highlights. A feeling of possibilities unfolding, poetic yet visually monumental. No bridge, no giant circular arch in this scene. Absolutely no humans, faces, bodies, hands, statues or human silhouettes; no writing, letters, numbers, calligraphy, text, logos or watermark. No fake photographs, graphic cards or frames. Full bleed artwork.",
+      "referenced_image_paths": [
+        "assets/art-v4/12-bridge-anchor.png"
+      ],
+      "visual_inspection": "Accepted after viewing built-in result: unrolling paper lower right becomes richly layered river landscape; single red thread follows valley; distinct bird's-eye landscape composition; no visible person or writing.",
+      "status": "ready_for_parent_review"
+    },
+    {
+      "path": "assets/art-v4/03-incomplete-bridge.png",
+      "source_path": "C:\\Users\\Aman\\.codex-cli\\generated_images\\01a1f744-4167-7001-8769-289e6c87addd\\exec-114aa04d-4248-4a5f-8433-00a4ad930dbf.png",
+      "sha256": "2e6e1da78d87df35bbe348d899fb13399a722aef4cf2bbe20a112c8c706ae6c4",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "bytes": 2727187,
+      "prompt": "Use case: stylized-concept. Asset: cinematic 16:9 film still, 1920x1080 landscape. Create NEW scene 03 THE INCOMPLETE BRIDGE. Attached image is STYLE reference only for tactile ivory paper fibres, indigo/mineral-blue mountains, weathered aged bronze accents and luminous golden light. Different composition: very wide dramatic frontal-oblique view of TWO sheer paper-strata mountain cliffs facing one another across a deep misty gorge; an ivory stone-and-bronze bridge under construction extends from each cliff toward the other, but the middle span is visibly MISSING, leaving a clear large central gap, broken ends cleanly legible. No people or machinery. One single delicate cinnabar-red silk thread crosses the gap at bridge-deck height, loose but connecting the two unfinished ends: connection still to be built. Far-distance indigo storm clouds on the left, warm sunrise breaking through to the right; surrounding peaks are handcrafted mineral pigment and layered paper miniature landscape. Strong foreground depth, readable architectural absence, monumental scale, controlled contrast, still hopeful rather than catastrophic. Do NOT generate a complete bridge, rubble, collapse, disaster or fantasy castle. No giant circular arch from reference. Absolutely no humans, faces, hands, bodies, statues, silhouettes, letters, numbers, writing, calligraphy, logos, watermark or photographic inserts. Full bleed cinematic artwork.",
+      "referenced_image_paths": [
+        "assets/art-v4/12-bridge-anchor.png"
+      ],
+      "visual_inspection": "Accepted after viewing built-in result: two cliffs and bridge ends have a clear central missing span, only silk crosses; far cool storm versus warm sunrise; ornament abstract with no readable text; no visible person.",
+      "status": "ready_for_parent_review"
+    },
+    {
+      "path": "assets/art-v4/04-first-chapter.png",
+      "source_path": "C:\\Users\\Aman\\.codex-cli\\generated_images\\01a1f744-4167-7001-8769-289e6c87addd\\exec-48100ea7-d4a6-4ae3-9704-c2a3820e1770.png",
+      "sha256": "71aea1eaf8a0bef2ac91a932ea4f6138e30c5c1308ea8789fd21d22fa4ba3107",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "bytes": 2733271,
+      "prompt": "Use case: stylized-concept. Asset: cinematic 16:9 film still, 1920x1080 landscape. Create NEW scene 04 FIRST CHAPTER using attached image ONLY as material, palette and lighting reference: rich ivory handmade paper fibres, aged bronze, ink indigo and mineral blue-green terrain, warm sunlight, one restrained cinnabar-red silk line. Different composition and subject: close three-quarter high view of a beautiful open UNWRITTEN journal on an ivory work surface. No text anywhere. The RIGHT page becomes a wondrous small three-dimensional mountain river landscape emerging from its own sculpted paper fibres, curved terraced blue-green peaks, one delicate river descending toward the lower right, mist and tiny ink pines. A single fine cinnabar silk bookmark travels from spine into the miniature landscape as a path. The LEFT page remains a broad flat completely blank ivory page, softly textured and warmly lit, occupying about 40 percent of frame for a date to be added later in code. A small worn bronze corner binding or clasp, not jewellery clutter. Low raking sunlight, beautiful shadows from curled pages, museum-grade tactile practical miniature photography, emotional sense of a beginning. Keep cinematic close wide composition, not a flat top-down stationery product grid. No bridge or circular monument. Absolutely no humans, faces, bodies, hands, silhouettes, statues, portraits, pictures or photograph placeholders. No letters, writing, numbers, ruled lines, calligraphy, glyphs, logos or watermark. Full bleed artwork.",
+      "referenced_image_paths": [
+        "assets/art-v4/12-bridge-anchor.png"
+      ],
+      "visual_inspection": "Accepted after viewing built-in result: journal left page fully blank with ample space for coded date; right page miniature river mountains and single red bookmark; no visible person or writing.",
+      "status": "ready_for_parent_review"
+    },
+    {
+      "path": "assets/art-v4/05-memory-arch.png",
+      "source_path": "C:\\Users\\Aman\\.codex-cli\\generated_images\\01a1f744-4167-7001-8769-289e6c87addd\\exec-094e998d-c68e-4370-827e-e8fc008297d4.png",
+      "sha256": "181d58ee08bc16bc89616c7ac1abb254a283fd6a62b0f036e85a024082e07bcf",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "bytes": 2511153,
+      "prompt": "Use case: stylized-concept. Asset: cinematic 16:9 film still, 1920x1080 landscape. NEW scene 05 MEMORY ARCH. Use attached image ONLY for coherent style and materials: rich handmade ivory paper fibres, old bronze with teal patina, mineral blue-green/indigo landscapes and warm golden sunlight. Do not copy the attached bridge or foreground arch. Scene: a monumental freestanding weathered BRONZE CIRCULAR MOON GATE occupies the RIGHT third of frame, seen in slight three-quarter view on an ivory folded-paper promontory; beyond its open circular aperture lies a tranquil expansive ink-blue sea and pale distant paper mountains in warm atmospheric light. Bronze relief is abstract cloud/river ornament, no writing. A single thin restrained cinnabar silk thread touches the base and leads toward distant water. Left and left-centre 50 percent is a broad uninterrupted quiet ivory handmade-paper plane, subtly lit and tactile, intentionally EMPTY so an original real photograph can later be composited there in editing. Make this a natural part of the sculptural landscape, not a graphic card, not a framed placeholder, no fake photo, no empty rectangular frame. Beautiful long side shadows and huge scale, calm grateful mood, museum-quality practical miniature mixed-media photographic art. No bridge, no crowded decorations. Absolutely no people, faces, bodies, hands, statues, human silhouettes, letters, numbers, text, writing, calligraphy, logos or watermark. Full bleed artwork.",
+      "referenced_image_paths": [
+        "assets/art-v4/12-bridge-anchor.png"
+      ],
+      "visual_inspection": "Accepted after viewing built-in result: large bronze moon gate to right opens to quiet sea; broad ivory left field for untouched source-photo overlay; no fake photograph or frame inside; no visible person or writing.",
+      "status": "ready_for_parent_review"
+    },
+    {
+      "path": "assets/art-v4/06-shelter.png",
+      "source_path": "C:\\Users\\Aman\\.codex-cli\\generated_images\\01a1f744-4167-7001-8769-289e6c87addd\\exec-5e1adb30-fa04-4f1f-bd3b-fe46dd459b14.png",
+      "sha256": "b7167e1377d4014ffcdad13502944b20e59698db3f4d8361b8b40fc483dc6a20",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "bytes": 3022146,
+      "prompt": "Use case: stylized-concept. Asset: cinematic 16:9 film still, 1920x1080 landscape. Create NEW scene 06 SHELTER, a poetic structural metaphor, using attached image ONLY as coherent materials/style reference: tactile thick ivory paper fibres, worn bronze with teal patina, ink-indigo/mineral-blue-green mountain landscape, warm gold light and one restrained thin cinnabar silk line. Different scene and angle: low intimate wide view toward a vast strong semicircular ivory arch vault with bronze reinforcement ribs, like a protective bridge buttress grown from layered paper cliffs. Under this immense arch a small cluster of beautiful miniature ivory-paper homes with simple traditional sloped blue-green roofs sits sheltered on a warm terrace. Amber light glows gently from a few tiny windows; no residents visible. Above and outside the vault in the upper-left, indigo weather clouds and slanting pale rain contrast with the completely dry, warm, calm space beneath the arch. The architecture visibly carries and diverts the weather, steadfast and reassuring; no destruction. One red silk line runs along the terrace edge and out toward the landscape, never forming extra ribbons. Hand-built sculptural Chinese art direction photographed with tactile macro richness, broad soft atmosphere, deep layered composition, warm emotional human meaning without depicting people. Do not create a giant ring portal, book or complete long bridge here. Absolutely no people, faces, bodies, hands, statues, human silhouettes, animals, letters, numbers, text, writing, calligraphy, glyphs, signs, logos, photographs, graphic cards or watermark. Full bleed artwork.",
+      "referenced_image_paths": [
+        "assets/art-v4/12-bridge-anchor.png"
+      ],
+      "visual_inspection": "Accepted after viewing built-in result: sturdy paper/bronze arch shelters miniature warm-window houses at right, rain stays outside left; one continuous silk line; no visible people, hands, statues or writing.",
+      "status": "ready_for_parent_review"
+    }
+  ]
+}

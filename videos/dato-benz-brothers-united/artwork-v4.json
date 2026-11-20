@@ -1,0 +1,134 @@
+{
+  "version": 4,
+  "built_in_calls": 19,
+  "runway_generation_calls": 0,
+  "runway_credits_spent": 0,
+  "private_photo_uploads_this_version": 0,
+  "purchase_or_topup": false,
+  "artworks": 18,
+  "transparent_props": 1,
+  "records": [
+    {
+      "id": "12-bridge-anchor",
+      "path": "assets/art-v4/12-bridge-anchor.png",
+      "sha256": "ce2d422ff7695462f1659bd29c8228b080b6fedb9e299173c65ade41a3933218",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null,
+      "tool": "built-in image_gen",
+      "prompt_summary": "Immersive monumental bronze/ivory bridge across blue-green ink mountains and sea; near cropped bronze arch; red silk connection; warm light; tactile paper; no people/text.",
+      "planned_prompt_reference": "art-direction-v4.json",
+      "style_reference": null,
+      "human_reference_input": false
+    },
+    {
+      "id": "13-coast",
+      "path": "assets/art-v4/13-coast.png",
+      "sha256": "1eb35717de4e3815165b282f6cd30f96982fff29f05511d04b606da05d5e46e4",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null,
+      "tool": "built-in image_gen",
+      "prompt_summary": "Aerial tropical river estuary opening to calm sea; S-curve red silk connects small warm homes; nearby paper foliage; same anchor material; no actual place label or people.",
+      "planned_prompt_reference": "art-direction-v4.json",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "human_reference_input": false
+    },
+    {
+      "id": "14-through-arches",
+      "path": "assets/art-v4/14-through-arches.png",
+      "sha256": "deea170469340025e2f4c28076583a041f49d4cc18935a301d53459b5b80b2f1",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null,
+      "tool": "built-in image_gen",
+      "prompt_summary": "Interior passage through nested massive bronze circular gateways toward a luminous ink valley; near/far scale contrast; red silk; no people/text.",
+      "planned_prompt_reference": "art-direction-v4.json",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "human_reference_input": false
+    },
+    {
+      "id": "15-gratitude-garden",
+      "path": "assets/art-v4/15-gratitude-garden.png",
+      "sha256": "80a83e7797dd3487f35be5978c29cac23148a7429d8334cd2d0d0acca96d237e",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null,
+      "tool": "built-in image_gen",
+      "prompt_summary": "Sunlit living magnolia/bamboo garden with reflective pool and empty left paper inset for later real-photo composition; healthy green; no generated photo/person.",
+      "planned_prompt_reference": "art-direction-v4.json",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "human_reference_input": false
+    },
+    {
+      "id": "17-climax",
+      "path": "assets/art-v4/17-climax.png",
+      "sha256": "75d9e9a3239909817bda69d99d90d35b4d032b48717d700ae4276dc460af2261",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null,
+      "tool": "built-in image_gen",
+      "prompt_summary": "Largest bright turquoise/green mountain-island world; connected branching bridge, warm homes, cinnabar line, distant coast; new composition, no people/text.",
+      "planned_prompt_reference": "art-direction-v4.json",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "human_reference_input": false
+    },
+    {
+      "id": "18-memory-return",
+      "path": "assets/art-v4/18-memory-return.png",
+      "sha256": "3b277f43f8503a3d3eecd3006cba198b23fd5280bf954bc141fe6df6d4af8ead",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null,
+      "tool": "built-in image_gen",
+      "prompt_summary": "Sunlit ivory paper journal; bridge/coast embossed on left; empty right photo mount; actual photo and exact dedication inserted later; warm living-person appreciation.",
+      "planned_prompt_reference": "art-direction-v4.json",
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "human_reference_input": false
+    },
+    {
+      "id": "foreground-arch",
+      "path": "assets/art-v4/foreground-arch.png",
+      "sha256": "5996be234968cc8331d3d238f543bb7f51f237a05d165925771b959b2ded443e",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "tool": "built-in image_gen",
+      "prompt_summary": "Isolated detailed weathered bronze/limestone circular arch, cinnabar loop, transparent centre and outside; foreground only, no scene/photo/person.",
+      "planned_prompt_reference": null,
+      "style_reference": "assets/art-v4/12-bridge-anchor.png",
+      "human_reference_input": false
+    }
+  ],
+  "additional_prompt_ledgers": [
+    "art-v4-worker-a.json",
+    "art-direction-v4.json"
+  ],
+  "native_ai_video": false,
+  "generated_human_pixels": false,
+  "notes": "Prompt summaries here supplement the authored full prompt set and worker execution ledgers; local generated media is excluded from Git."
+}

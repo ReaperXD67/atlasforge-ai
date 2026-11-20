@@ -1,0 +1,17 @@
+# V4 image music film — production specification
+
+GOAL: Celebrate the living Hock Siew through a coherent journey from separate paths to shared shelter and a connected world, ending in a genuine personal photograph.
+
+OUTPUT: 1920×1080, 24fps, 196.760-second original song; 4,723 video frames cover 196.791667 seconds. Retain the existing 24fps delivery clock. The native generated artwork is 1672×941, composed/scaled for 1080p output; do not call it native 1080p artwork.
+
+LOOK: Original generated environment plates use ivory `#F1E3CB`, blue-green ink `#173F49`, weathered bronze `#9C743E`, cinnabar silk `#AC392C` and living green `#637A51`. Eighteen distinct artworks, one transparent bronze foreground prop. No footage, generated humans or face/body reconstruction. Original photos are copied unchanged into flat, aspect-preserving planes; literal source-pixel crops isolate the honoree. Noto Serif CJK SC, actual local font, 42px or larger lyric type; title 64px; dedication 48px. Minimum 10% horizontal text margin, 7.5% bottom caption margin. No grade, grain, beauty restoration or facial relighting is applied to the photographs.
+
+OBJECTS: One connecting red strand, an initially incomplete bridge, interlocking supports, sheltered homes, converging rivers, a storm, a woven braid, a complete bridge, open coast, garden and a tea cup. These are symbolic art, not claims about actual locations or events. All named human appearances use real Hock photographs. January 6 is only the lyric date. No invented birthday or location for 浅顶.
+
+MOTION: 54 authored shots. The vocal line starts are frozen from the canonical captions. Intro and instrumental passages use multiple composed distances. Camera travel, independent foreground occlusion and restrained estimated depth on art provide parallax; the photo is a rigid plane with no anatomy displacement. Background depth strength is 0–0.4 world units. Main plate height 15.4 units at z=-1; perspective lens 45°. Camera ranges 8.7–16.4 units for macro-to-wide scale reveals, and 13–13.5 for readable authentic photos. No decorative particle field or infinite oscillation. Final dedication holds for 11.66 seconds.
+
+SHOTS: [edit-plan-v4.json](edit-plan-v4.json) is the executable 54-shot specification, including intervals, source artwork, original-photo crops, camera keys and purpose. [V4-STORYBOARD.md](V4-STORYBOARD.md) explains the 18-plate narrative. Source prompts and constraints are in [art-direction-v4.json](art-direction-v4.json); the artwork ledger records realized files and native dimensions.
+
+BANNED: V3 video reuse; invented lookalikes, actors presented as Hock, statues or generated human silhouettes; skin/body/depth warping; logo-bearing companion clothing borrowed onto him; random fantasy creatures; equal-duration slide holds; a dissolve on every lyric; repeated full-screen name cards; corporate KPI graphics; funeral candles, altars, tombs or memorial language; artificial claims that the boss has accepted the film.
+
+QA: Inspect every shot after its cut and near its later composition, all name cues, the cup cue at 141.26 seconds, the 149.32-second climax and 185.1-second dedication. Compare unchanged original media hashes and 40 caption strings/times. Re-seek out of order. Check encoding/decode, duration, resolution and soundtrack correlation at zero offset separately from the visual review. Sound is measured, not heard by the agent.

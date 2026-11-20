@@ -1,0 +1,850 @@
+[
+  {
+    "time": 3.6,
+    "from_scene": "s01-thread",
+    "to_scene": "s02-thread",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 7,
+    "from_scene": "s02-thread",
+    "to_scene": "s03-paper-world",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 10.5,
+    "from_scene": "s03-paper-world",
+    "to_scene": "s04-paper-world",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 14,
+    "from_scene": "s04-paper-world",
+    "to_scene": "s05-incomplete-bridge",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 18.2,
+    "from_scene": "s05-incomplete-bridge",
+    "to_scene": "s06-incomplete-bridge",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 22.3,
+    "from_scene": "s06-incomplete-bridge",
+    "to_scene": "s07-first-chapter",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 25.64,
+    "from_scene": "s07-first-chapter",
+    "to_scene": "s08-first-chapter",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 29.54,
+    "from_scene": "s08-first-chapter",
+    "to_scene": "s09-memory-arch",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 33.02,
+    "from_scene": "s09-memory-arch",
+    "to_scene": "s10-memory-arch",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 36.9,
+    "from_scene": "s10-memory-arch",
+    "to_scene": "s11-shelter",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 40.4,
+    "from_scene": "s11-shelter",
+    "to_scene": "s12-shelter",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 43.48,
+    "from_scene": "s12-shelter",
+    "to_scene": "s13-warm-homes",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 47.56,
+    "from_scene": "s13-warm-homes",
+    "to_scene": "s14-warm-homes",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 51.66,
+    "from_scene": "s14-warm-homes",
+    "to_scene": "s15-confluence",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 54.5,
+    "from_scene": "s15-confluence",
+    "to_scene": "s16-confluence",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 58.18,
+    "from_scene": "s16-confluence",
+    "to_scene": "s17-shared-storm",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 62.34,
+    "from_scene": "s17-shared-storm",
+    "to_scene": "s18-shared-storm",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 66.0,
+    "from_scene": "s18-shared-storm",
+    "to_scene": "s19-quiet-generosity",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 69.46,
+    "from_scene": "s19-quiet-generosity",
+    "to_scene": "s20-quiet-generosity",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 73.4,
+    "from_scene": "s20-quiet-generosity",
+    "to_scene": "s21-enduring-braid",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 77.1,
+    "from_scene": "s21-enduring-braid",
+    "to_scene": "s22-enduring-braid",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 81.04,
+    "from_scene": "s22-enduring-braid",
+    "to_scene": "s23-bridge-anchor",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 84.92,
+    "from_scene": "s23-bridge-anchor",
+    "to_scene": "s24-bridge-anchor",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 86.78,
+    "from_scene": "s24-bridge-anchor",
+    "to_scene": "s25-bridge-anchor",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 88.64,
+    "from_scene": "s25-bridge-anchor",
+    "to_scene": "s26-bridge-anchor",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 90.42,
+    "from_scene": "s26-bridge-anchor",
+    "to_scene": "s27-bridge-anchor",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 92.3,
+    "from_scene": "s27-bridge-anchor",
+    "to_scene": "s28-bridge-anchor",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 94.34,
+    "from_scene": "s28-bridge-anchor",
+    "to_scene": "s29-coast",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 97.14,
+    "from_scene": "s29-coast",
+    "to_scene": "s30-coast",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 102.92,
+    "from_scene": "s30-coast",
+    "to_scene": "s31-through-arches",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 106.5,
+    "from_scene": "s31-through-arches",
+    "to_scene": "s32-through-arches",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 110.4,
+    "from_scene": "s32-through-arches",
+    "to_scene": "s33-through-arches",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 114.9,
+    "from_scene": "s33-through-arches",
+    "to_scene": "s34-through-arches",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 119.42,
+    "from_scene": "s34-through-arches",
+    "to_scene": "s35-gratitude-garden",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 122.9,
+    "from_scene": "s35-gratitude-garden",
+    "to_scene": "s36-gratitude-garden",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 126.64,
+    "from_scene": "s36-gratitude-garden",
+    "to_scene": "s37-gratitude-garden",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 130.5,
+    "from_scene": "s37-gratitude-garden",
+    "to_scene": "s38-gratitude-garden",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 133.96,
+    "from_scene": "s38-gratitude-garden",
+    "to_scene": "s39-tea-reflection",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 137.8,
+    "from_scene": "s39-tea-reflection",
+    "to_scene": "s40-tea-reflection",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 141.26,
+    "from_scene": "s40-tea-reflection",
+    "to_scene": "s41-tea-reflection",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 144.74,
+    "from_scene": "s41-tea-reflection",
+    "to_scene": "s42-tea-reflection",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 149.32,
+    "from_scene": "s42-tea-reflection",
+    "to_scene": "s43-climax",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 152.92,
+    "from_scene": "s43-climax",
+    "to_scene": "s44-climax",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 154.8,
+    "from_scene": "s44-climax",
+    "to_scene": "s45-climax",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 156.64,
+    "from_scene": "s45-climax",
+    "to_scene": "s46-climax",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 158.4,
+    "from_scene": "s46-climax",
+    "to_scene": "s47-climax",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 160.44,
+    "from_scene": "s47-climax",
+    "to_scene": "s48-climax",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 162.1,
+    "from_scene": "s48-climax",
+    "to_scene": "s49-climax",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 164.08,
+    "from_scene": "s49-climax",
+    "to_scene": "s50-climax",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 170.1,
+    "from_scene": "s50-climax",
+    "to_scene": "s51-climax",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 175.2,
+    "from_scene": "s51-climax",
+    "to_scene": "s52-coast",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 180.5,
+    "from_scene": "s52-coast",
+    "to_scene": "s53-memory-return",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  },
+  {
+    "time": 185.1,
+    "from_scene": "s53-memory-return",
+    "to_scene": "s54-memory-return",
+    "technique": "lyric-led match/cut",
+    "carrier": "cinnabar strand / architectural contour",
+    "exit_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "entry_vector": {
+      "axis": "x",
+      "sign": -1
+    },
+    "note": "3D foreground overlap and plate-specific perspective; inspect encoded seam."
+  }
+]

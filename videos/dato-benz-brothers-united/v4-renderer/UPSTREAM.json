@@ -1,0 +1,38 @@
+{
+  "observed_date": "2026-11-20",
+  "three": {
+    "version": "0.187.0",
+    "commit": "7e89746a687bb88271253698fa108b1dd59825d0",
+    "license": "MIT",
+    "source": "https://github.com/mrdoob/three.js/tree/7e89746a687bb88271253698fa108b1dd59825d0",
+    "reuse": "Exact previously verified local module bytes copied by build; per-file SHA256 recorded in build-receipt.json."
+  },
+  "gsap": {
+    "version": "3.14.2",
+    "license": "Standard No Charge GSAP License",
+    "license_url": "https://gsap.com/community/standard-license/",
+    "reuse": "Existing local vendor; original license header retained. No new animation framework."
+  },
+  "luma_wipe": {
+    "repository": "https://github.com/gl-transitions/gl-transitions",
+    "commit": "deeebdee7581cdfe924ed9cf104ea2fd10e63155",
+    "source_file": "transitions/LumaWipe.glsl",
+    "author": "gre",
+    "license": "MIT",
+    "license_file": "vendor/LICENSE-gl-transitions.txt",
+    "original": "vendor/LumaWipe.glsl",
+    "adaptation": "Renderer embeds its grayscale-mask blend in a Three.js ShaderMaterial; sampler names changed to fromImage/toImage. A screen-derivative smoothstep adds approximately one-pixel edge antialiasing to the original threshold. UV coordinates are never displaced. The fallback contour mask is original analytical code."
+  },
+  "depth_anything": {
+    "status": "Optional externally prepared non-human-art depth textures only; no inference dependency in renderer.",
+    "model": "depth-anything/Depth-Anything-V2-Small-hf",
+    "revision": "5426e4f0f36572d16453bbda7a8389317b1bef99",
+    "license": "Apache-2.0",
+    "license_url": "https://github.com/DepthAnything/Depth-Anything-V2/blob/a561b849ebae10a6f5ef49e26c83cbbcd36c71bf/LICENSE",
+    "restriction": "Never depth-warp a literal photo layer. Other V2 model sizes have different, noncommercial weight licenses."
+  },
+  "hyperframes": {
+    "version": "0.9.72",
+    "use": "Current installed CLI pinned for official HTML preview/check/render; compatibility check passed. Initial silent 16-second technical study used 0.8.152 before the pin was upgraded."
+  }
+}
