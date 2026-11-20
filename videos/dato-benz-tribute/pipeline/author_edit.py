@@ -1,7 +1,7 @@
 """Bind the image-film design to private, verified recording/caption inputs.
 
-The executable plan stays local. No song text, audio, reference photo or
-production receipt is embedded in this reusable authoring source.
+The executable plan and canonical lyric dataset stay local. No audio,
+reference photo or production receipt is embedded in this authoring source.
 """
 from __future__ import annotations
 

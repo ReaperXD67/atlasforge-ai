@@ -2,7 +2,7 @@
 
 GOAL: A living-person tribute told entirely through meaningful, person-free cinematic environments and objects. Benz is named in lyrics/dedication only; no photograph, generated likeness or other depiction appears.
 
-OUTPUT: 1920×1080, 24fps, supplied trimmed recording unchanged. Preserve all 32 measured lyric cues and the retained instrumental/tail. Do not restore the cut introduction. The executable local edit plan defines the exact picture clock and shot count; these are verified after the revised composition is built.
+OUTPUT: 1920×1080, 24 fps, 60 shots and 4,393 picture frames covering 183.041667 seconds. The supplied trimmed recording is 183.025500 seconds; preserve all 32 measured lyric cues and the retained instrumental/tail. The first sung line starts at 12.890 seconds. Do not restore the cut introduction. The local executable edit plan and final-file verification bind these clocks to the actual recording.
 
 LOOK: Photographic storm coast, wet stone, warm wood, woven fibre, roots, glass and water. Petroleum teal `#102F37`, slate `#35525B`, amber `#D5A15A`, cream `#E4D8BE`, dawn gold `#E6BE79`. Progress from weather and shelter to bright lived-in community, with varied midtones and natural green/blue relief. One physical warm source motivates highlights and reflections. Output resolution is not a claim that source artwork has native 1080p detail; record each native size locally.
 
