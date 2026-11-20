@@ -1,0 +1,7 @@
+assets/
+index.html
+build-receipt.json
+renders/
+*-result.json
+.hyperframes/
+*.log

@@ -1,0 +1,11 @@
+# User-authorized publication: pipeline, design documents and project READMEs only.
+/*
+!/.gitignore
+!/README.md
+!/BRIEF.md
+!/SPEC.md
+!/pipeline/
+!/design/
+**/__pycache__/
+**/*.pyc
+**/node_modules/

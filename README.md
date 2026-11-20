@@ -37,6 +37,11 @@ picture bindings. [Delivery records](videos/dato-benz-brothers-united/DELIVERY-V
 retain hashes and sampled review; client creative acceptance remains pending. V1–V3
 remain archives. Private source media and outputs stay local.
 
+The [Dato Benz film](videos/dato-benz-tribute/README.md) is in production with
+integrated cinematic portraits instead of photo cards, subject-protected environmental
+motion and a verified trimmed-song lyric clock. Its pipeline/design/README sources are
+published; personal media, lyrics, timing data and renders stay local.
+
 The [BOSSTON / Pragon project](videos/bosston-pragon-good-fortune/README.md) authors a full-song
 Chinese New Year film from **17 generated AI artworks across 52 shots**, with CPU-estimated
 relative depth, continuous camera travel and selective environmental motion. Its verified V3

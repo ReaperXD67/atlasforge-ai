@@ -1,0 +1,48 @@
+{
+  "observed_date": "2026-11-20",
+  "three": {
+    "version": "0.187.0",
+    "commit": "7e89746a687bb88271253698fa108b1dd59825d0",
+    "license": "MIT",
+    "source": "https://github.com/mrdoob/three.js/tree/7e89746a687bb88271253698fa108b1dd59825d0",
+    "reuse": "Exact previously verified local module bytes copied by build; per-file SHA256 recorded in build-receipt.json."
+  },
+  "gsap": {
+    "version": "3.14.2",
+    "license": "Standard No Charge GSAP License",
+    "license_url": "https://gsap.com/community/standard-license/",
+    "reuse": "Existing local vendor; original license header retained. No new animation framework."
+  },
+  "luma_wipe": {
+    "repository": "https://github.com/gl-transitions/gl-transitions",
+    "commit": "deeebdee7581cdfe924ed9cf104ea2fd10e63155",
+    "source_file": "transitions/LumaWipe.glsl",
+    "author": "gre",
+    "license": "MIT",
+    "license_file": "vendor/LICENSE-gl-transitions.txt",
+    "original": "vendor/LumaWipe.glsl",
+    "adaptation": "Renderer embeds its grayscale-mask blend in a Three.js ShaderMaterial; sampler names changed to fromImage/toImage. A screen-derivative smoothstep adds approximately one-pixel edge antialiasing to the original threshold. UV coordinates are never displaced. The fallback contour mask is original analytical code."
+  },
+  "depth_anything": {
+    "status": "Optional externally prepared non-human-art depth textures only; no inference dependency in renderer.",
+    "model": "depth-anything/Depth-Anything-V2-Small-hf",
+    "revision": "5426e4f0f36572d16453bbda7a8389317b1bef99",
+    "license": "Apache-2.0",
+    "license_url": "https://github.com/DepthAnything/Depth-Anything-V2/blob/a561b849ebae10a6f5ef49e26c83cbbcd36c71bf/LICENSE",
+    "restriction": "Never depth-warp a literal photo layer. Other V2 model sizes have different, noncommercial weight licenses."
+  },
+  "hyperframes": {
+    "version": "0.9.72",
+    "use": "Pinned local composition check/preview/render CLI. Prototype check on integrated artwork passed with0 lint/runtime/layout/contrast errors; fullfilm check is separate."
+  },
+  "adapted_existing_renderer": {
+    "path": "videos/dato-benz-brothers-united/v4-renderer/renderer.mjs",
+    "sha256": "db0608c958004d9f3cd8632d3403995e088d0458c2bfe31351b49f1897678cdf",
+    "changes": "Removed photo-card paths and procedural launch props; added source-coordinate subject keep-out FX, strict identity/depth/frame guards, focal-region framing, shared plane geometry and trimmed-audio duration binding."
+  },
+  "subject_keepout": {
+    "implementation": "Original small inline GLSL shader in renderer.mjs; no additional package or copied upstream shader.",
+    "effect_scope": "Finite-timeline rain/light/water affect only background outside manually supplied subjectBounds with protective padding; face/body receive unchanged sample from the finished integrated source artwork.",
+    "limits": "This preserves the artwork during rendering; it is not a claim that image generation preserved original-photo pixels or exact personal likeness."
+  }
+}
